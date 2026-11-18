@@ -1,8 +1,8 @@
 // Adapts the reviewed content JSON (content/*.json) to the shared types.
 import type { ColourKey, ConfusablePair, Lesson, MatnLine, Phase, QuestionKind, Topic } from '../core/types'
-// TODO(core): switch to '../../content/rules.json', '../../content/pairs.json', '../../content/mutun.json' once they exist.
-import rawRules from './fallback/rules.json'
-import rawPairs from './fallback/pairs.json'
+// Content: reviewed rules/pairs from content/ (see docs/04-content-review.md). Mutun switches when docs/05 verification lands.
+import rawRules from '../../content/rules.json'
+import rawPairs from '../../content/pairs.json'
 import rawMutun from './fallback/mutun.json'
 
 interface RawRule {
@@ -30,8 +30,8 @@ const CATS: [id: string, nameAr: string, nameEn: string, intro: string][] = [
 ]
 export const topics: Topic[] = CATS.map(([id, nameAr, nameEn, intro], order) => ({ id, nameAr, nameEn, intro, order }))
 
-export const pairs: ConfusablePair[] = (rawPairs as { id?: string; a: string; b: string; hint: string }[]).map(p => ({
-  id: p.id ?? `${p.a}~${p.b}`, a: p.a, b: p.b, hint: p.hint,
+export const pairs: ConfusablePair[] = (rawPairs as { id?: string; a: string; b: string; hint?: string; difference?: string }[]).map(p => ({
+  id: p.id ?? `${p.a}~${p.b}`, a: p.a, b: p.b, hint: p.hint ?? p.difference ?? '',
 }))
 
 export const mutun: MatnLine[] = rawMutun as MatnLine[]
