@@ -1,0 +1,100 @@
+import { beforeEach, describe, expect, it } from 'vitest'
+import * as S from './store'
+import { today } from './day'
+import { lessons, phases } from '../content'
+import { makeWirdIcs } from './ics'
+
+beforeEach(() => S.resetAll())
+
+describe('store', () => {
+  it('starts with defaults and onboards into phase 1', () => {
+    const d = S.getSnapshot()
+    expect(d.settings).toMatchObject({ reciterId: 'husary-muallim', munfasilLength: 4, wirdTime: '05:30', teacherDays: [], theme: 'system' })
+    S.completeOnboarding({ introCourseDone: true, teacherDays: [4] })
+    const p = S.getSnapshot().phases
+    expect(p[0]).toMatchObject({ status: 'active', activatedOn: today(), tasksDone: [0, 1] })
+    expect(p.slice(1).every(x => x.status === 'locked')).toBe(true)
+    expect(JSON.parse(localStorage.getItem(S.STORAGE_KEY)!).settings.teacherDays).toEqual([4])
+  })
+
+  it('introduces a lesson, records attempts, moves the phase to milestone', () => {
+    S.completeOnboarding({})
+    const p1 = phases[0].lessonIds
+    for (const id of p1) S.introduceLesson(id)
+    expect(S.getSnapshot().items.map(i => i.id)).toEqual(p1.map(id => `lesson:${id}`))
+    expect(S.getSnapshot().phases[0].status).toBe('milestone')
+    const a = S.recordAttempt({ refId: p1[0], kind: 'lesson', source: 'review', correct: true, countsForSchedule: true })
+    expect(a.itemId).toBe(`lesson:${p1[0]}`)
+    expect(S.getSnapshot().items[0].reps).toBe(1)
+  })
+
+  it('logs and resolves corrections', () => {
+    const c = S.logCorrection({ verseKey: '1:7', severity: 'jali', lessonIds: [lessons[0].id] })
+    expect(S.getSnapshot().items.find(i => i.refId === c.id)).toMatchObject({ state: 'manzil', severity: 'jali' })
+    expect(S.suggestPassages()).toContainEqual({ from: '1:7', to: '1:7', reason: 'correction' })
+    S.resolveCorrection(c.id, 'correct', 's1')
+    expect(S.getSnapshot().corrections[0]).toMatchObject({ status: 'resolved', resolvedInSessionId: 's1' })
+    expect(S.getSnapshot().items.find(i => i.refId === c.id)!.state).toBe('closed')
+  })
+
+  it('passes a phase when every milestone passage passed, activating the next', () => {
+    S.completeOnboarding({})
+    const s = S.planSession()
+    S.updateSession(s.id, { status: 'done', milestoneResults: phases[0].milestone.map(m => ({ phaseId: 1, passageId: m.id, result: 'passed' as const })) })
+    expect(S.getSnapshot().phases.slice(0, 2).map(p => p.status)).toEqual(['passed', 'active'])
+    S.skipPhase(2, 'teacher away')
+    expect(S.getSnapshot().phases.slice(1, 3).map(p => p.status)).toEqual(['skipped', 'active'])
+  })
+
+  it('round-trips export/import and rebuilds items', () => {
+    S.completeOnboarding({})
+    S.introduceLesson(lessons[0].id)
+    S.recordAttempt({ refId: lessons[0].id, kind: 'lesson', source: 'review', correct: true, countsForSchedule: true })
+    const before = S.getSnapshot()
+    const json = S.exportJson()
+    expect(S.getSnapshot().settings.lastExportOn).toBe(today())
+    S.resetAll()
+    S.importJson(json)
+    const after = S.getSnapshot()
+    expect(after.items).toEqual(before.items)
+    expect(after.attempts).toEqual(before.attempts)
+    expect(() => S.importJson('{"schemaVersion":99}')).toThrow(/newer/)
+    expect(() => S.importJson('nope')).toThrow(/JSON/)
+    expect(S.getSnapshot().attempts).toEqual(before.attempts) // unchanged after a refused import
+  })
+
+  it('migrates a schemaVersion 0 backup', () => {
+    const v0 = {
+      schemaVersion: 0,
+      settings: { wirdTime: '06:00' },
+      items: [{ id: 'old', kind: 'lesson', refId: 'izhar', state: 'sabqi', introducedOn: '2026-01-01', step: 0, dueOn: '2026-01-02', createdAt: '2026-01-01T09:00:00.000Z' }],
+      attempts: [{ id: 'a', itemId: 'old', refId: 'izhar', kind: 'lesson', on: '2026-01-02', at: '2026-01-02T09:00:00.000Z', source: 'review', correct: true, countsForSchedule: true }],
+    }
+    const d = S.migrate(v0, '2026-01-05')
+    expect(d.schemaVersion).toBe(1)
+    expect(d.settings).toMatchObject({ wirdTime: '06:00', reciterId: 'husary-muallim', munfasilLength: 4 })
+    expect(d.introductions).toEqual([{ lessonId: 'izhar', on: '2026-01-01', at: '2026-01-01T09:00:00.000Z' }])
+    expect(d.items).toEqual([expect.objectContaining({ id: 'lesson:izhar', state: 'sabqi', reps: 1, sabqiCorrect: 1, dueOn: '2026-01-03' })])
+    expect(d.sessions).toEqual([])
+  })
+
+  it('keeps unreadable stored data untouched', () => {
+    localStorage.setItem(S.STORAGE_KEY, '{"schemaVersion":42}')
+    S.reload()
+    expect(S.getLoadError()?.raw).toBe('{"schemaVersion":42}')
+    S.updateSettings({ wirdTime: '07:00' })
+    expect(localStorage.getItem(S.STORAGE_KEY)).toBe('{"schemaVersion":42}')
+  })
+})
+
+describe('ics', () => {
+  it('makes a daily wird event and a weekly teacher event', () => {
+    const ics = makeWirdIcs({ wirdTime: '05:30', teacherDays: [4] }, 'https://x.app/#/plan', new Date(2026, 10, 19, 12))
+    expect(ics).toContain('DTSTART:20261119T053000\r\n')
+    expect(ics).toContain('RRULE:FREQ=DAILY')
+    expect(ics).toContain('URL:https://x.app/#/today')
+    expect(ics).toContain('RRULE:FREQ=WEEKLY;BYDAY=TH')
+    expect(ics).toContain('DTSTART;VALUE=DATE:20261119')
+    expect(makeWirdIcs({ wirdTime: '05:30', teacherDays: [] })).not.toContain('WEEKLY')
+  })
+})

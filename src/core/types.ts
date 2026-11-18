@@ -123,6 +123,9 @@ export interface ReviewItem extends Row {
   reps: number
   lapses: number
   correctedBeforeTaught?: boolean
+  sabqiCorrect?: number // correct sabqi answers so far (graduation rule, §6.3)
+  severity?: 'jali' | 'khafi' // correction items: sets the step cap
+  linkedLessonIds?: string[] // correction items: lessons reset on "still wrong"
 }
 
 export type AttemptSource = 'pretest' | 'learn' | 'review' | 'relearn' | 'early' | 'analyser' | 'selfrate' | 'teacher'
@@ -161,6 +164,7 @@ export interface Correction extends Row {
   status: 'open' | 'resolved'
   resolvedInSessionId?: string
   by: 'learner' | 'teacher'
+  on?: Day // study day it was logged (falls back to createdAt)
 }
 
 export interface PhaseProgress {
@@ -180,6 +184,7 @@ export interface Introduction { lessonId: string; on: Day; at: Iso }
 
 export interface UserData {
   schemaVersion: number
+  updatedAt?: Iso
   settings: Settings
   introductions: Introduction[] // when each lesson entered review (F2 done)
   items: ReviewItem[] // cache, rebuildable from introductions + attempts + corrections

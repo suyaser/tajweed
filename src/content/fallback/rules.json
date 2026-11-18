@@ -1,0 +1,273 @@
+[
+ {
+  "id": "ibtida",
+  "cat": "waqf",
+  "phase": 1,
+  "ar": "الابتداء وهمزة الوصل",
+  "en": "Starting again after a stop",
+  "color": "clear",
+  "definition": "Start from a place where the meaning is complete. If the word begins with همزة الوصل (ٱ), give it a vowel.",
+  "list": [
+   [
+    "With ال: فتحة",
+    "اَلْحَمْدُ لِلَّهِ"
+   ],
+   [
+    "A verb whose third letter has ضمة: ضمة",
+    "اُدْعُ إِلَىٰ سَبِيلِ رَبِّكَ (16:125)"
+   ],
+   [
+    "Otherwise: كسرة",
+    "اِهْدِنَا الصِّرَاطَ (1:6)"
+   ]
+  ],
+  "facts": [
+   {
+    "q": "You start on a word with ال. Which vowel does همزة الوصل take?",
+    "options": [
+     "فتحة",
+     "ضمة",
+     "كسرة",
+     "سكون"
+    ],
+    "answer": 0,
+    "why": "With ال, همزة الوصل takes a فتحة: اَلْحَمْدُ لِلَّهِ."
+   },
+   {
+    "q": "You start on ٱهْدِنَا (1:6). Which vowel does همزة الوصل take?",
+    "options": [
+     "فتحة",
+     "ضمة",
+     "كسرة",
+     "سكون"
+    ],
+    "answer": 2,
+    "why": "The third letter (د) has كسرة, so همزة الوصل takes a كسرة: اِهْدِنَا."
+   }
+  ],
+  "sources": [
+   {
+    "title": "Tajweed Path artifact v3",
+    "locator": "docs/reference/artifact-v3.html"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Fallback placeholder for development only; replaced by the reviewed content/rules.json."
+  }
+ },
+ {
+  "id": "izhar",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإظهار الحلقي",
+  "en": "Clear noon before a throat letter",
+  "color": "clear",
+  "letters": "ء ه ع ح غ خ",
+  "definition": "Say the نون or تنوين clearly, with no غنة.",
+  "conditions": [
+   "In the same word or the next word."
+  ],
+  "tip": "Don't hum or pause between the نون and the throat letter.",
+  "examples": [
+   {
+    "verse": "2:62",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "مَنْ ءَامَنَ",
+    "focus": "نْ ءَ",
+    "stop": false
+   },
+   {
+    "verse": "1:7",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أَنْعَمْتَ",
+    "focus": "نْعَ",
+    "stop": false
+   },
+   {
+    "verse": "2:10",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "عَذَابٌ أَلِيمٌۢ",
+    "focus": "بٌ أَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "Tajweed Path artifact v3",
+    "locator": "docs/reference/artifact-v3.html"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Fallback placeholder for development only; replaced by the reviewed content/rules.json."
+  }
+ },
+ {
+  "id": "idgh-g",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإدغام بغنة",
+  "en": "Merge, with nasal sound",
+  "color": "ghunnah",
+  "letters": "ي ن م و",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "definition": "Merge the نون into the next letter and hold a غنة. The next letter takes a شدة.",
+  "conditions": [
+   "Only across two words. The letters spell يَنْمُو."
+  ],
+  "examples": [
+   {
+    "verse": "2:8",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "مَن يَقُولُ",
+    "focus": "ن يَ",
+    "stop": false
+   },
+   {
+    "verse": "2:5",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "هُدًى مِّن",
+    "focus": "دًى مِّ",
+    "stop": false
+   },
+   {
+    "verse": "13:11",
+    "word_from": 34,
+    "word_to": 35,
+    "text": "مِن وَالٍ",
+    "focus": "ن وَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "Tajweed Path artifact v3",
+    "locator": "docs/reference/artifact-v3.html"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Fallback placeholder for development only; replaced by the reviewed content/rules.json."
+  }
+ },
+ {
+  "id": "ikhfa",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإخفاء الحقيقي",
+  "en": "Hidden noon",
+  "color": "ghunnah",
+  "letters": "ص ذ ث ك ج ش ق س د ط ز ف ت ض ظ",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "definition": "Hide the نون: the tongue moves toward the next letter without a full ن, while the غنة sounds from the nose.",
+  "examples": [
+   {
+    "verse": "2:3",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "يُنفِقُونَ",
+    "focus": "نفِ",
+    "stop": false
+   },
+   {
+    "verse": "2:4",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "مِن قَبْلِكَ",
+    "focus": "ن قَ",
+    "stop": false
+   },
+   {
+    "verse": "3:4",
+    "word_from": 13,
+    "word_to": 14,
+    "text": "عَذَابٌ شَدِيدٌ",
+    "focus": "بٌ شَ",
+    "stop": false
+   },
+   {
+    "verse": "2:22",
+    "word_from": 21,
+    "word_to": 21,
+    "text": "أَندَادًا",
+    "focus": "ندَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "Tajweed Path artifact v3",
+    "locator": "docs/reference/artifact-v3.html"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Fallback placeholder for development only; replaced by the reviewed content/rules.json."
+  }
+ },
+ {
+  "id": "munfasil",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد الجائز المنفصل",
+  "en": "Permitted, hamza in the next word",
+  "color": "madd45",
+  "counts": {
+   "min": 4,
+   "max": 5,
+   "note": "4 or 5 counts (حفص من طريق الشاطبية)"
+  },
+  "definition": "A حرف مد ends a word and the next word starts with a همزة.",
+  "tip": "Choose one length and keep it through your whole recitation. المتصل must never be shorter than المنفصل.",
+  "examples": [
+   {
+    "verse": "2:21",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "يَٰٓأَيُّهَا",
+    "focus": "يَٰٓأَ",
+    "stop": false
+   },
+   {
+    "verse": "108:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِنَّآ أَعْطَيْنَٰكَ",
+    "focus": "نَّآ أَ",
+    "stop": false
+   },
+   {
+    "verse": "51:21",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَفِىٓ أَنفُسِكُمْ",
+    "focus": "فِىٓ أَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "Tajweed Path artifact v3",
+    "locator": "docs/reference/artifact-v3.html"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Fallback placeholder for development only; replaced by the reviewed content/rules.json."
+  }
+ }
+]
