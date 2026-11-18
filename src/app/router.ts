@@ -69,7 +69,9 @@ export function useRoute(): Route {
 export const href = (...parts: (string | number)[]) => '#/' + parts.map((p) => encodeURIComponent(String(p)).replace(/%2F/g, '/')).join('/')
 
 export function navigate(path: string, opts: { replace?: boolean } = {}) {
-  const h = path.startsWith('#') ? path : href(path.replace(/^\//, ''))
+  // Keep a `?query` part as written: only the path segments are encoded.
+  const [p, q] = path.replace(/^#?\/?/, '').split('?')
+  const h = path.startsWith('#') ? path : href(p) + (q ? '?' + q : '')
   if (opts.replace) {
     history.replaceState(null, '', h)
     window.dispatchEvent(new HashChangeEvent('hashchange'))
