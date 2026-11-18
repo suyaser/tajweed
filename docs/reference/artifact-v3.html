@@ -1,0 +1,733 @@
+<title>Tajweed Path</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Reem+Kufi:wght@500;700&family=Marcellus&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: illuminated header band (gold star lattice on green), tab bar, one reading column; rules = sticky index + sections; map = right-to-left tree. */
+:root{
+  --bg:#f4f1e8; --surface:#fffdf8; --ink:#1c2621; --muted:#5b665e; --line:#e2dccb;
+  --green:#0f5b45; --on-green:#f5f0e1; --gold:#a8791e; --gold-soft:#e7d6a8; --soft:#e6efe8; --link:#0f5b45;
+  --t-clear:#6a3fb5; --t-ghunnah:#1f8f37; --t-silent:#7f8984; --t-merge:#b0368a;
+  --t-madd2:#a8741a; --t-madd45:#d22b2b; --t-madd246:#e06b12; --t-madd6:#8c0f1f;
+  --t-qalqalah:#1f7fc0; --t-heavy:#1c3f9e; --t-light:#0b8585;
+  --good:#1d8a4a; --bad:#c23b3b;
+  --f-quran:"Amiri Quran","Amiri","Noto Naskh Arabic","Geeza Pro",serif;
+  --f-ar:"Amiri","Noto Naskh Arabic","Geeza Pro",serif;
+  --f-kufi:"Reem Kufi","Amiri","Geeza Pro",sans-serif;
+  --f-disp:"Marcellus","Georgia",serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1613; --surface:#13211c; --ink:#ece6d4; --muted:#a3ab9e; --line:#283a32;
+  --green:#14533f; --on-green:#f5f0e1; --gold:#d8b45c; --gold-soft:#4d4128; --soft:#1b3129; --link:#7fd6b0;
+  --t-clear:#b593f2; --t-ghunnah:#5fd876; --t-silent:#97a29d; --t-merge:#ef86cf;
+  --t-madd2:#e3b763; --t-madd45:#ff6f6f; --t-madd246:#ffa45e; --t-madd6:#ff5875;
+  --t-qalqalah:#65bff5; --t-heavy:#8aa5ff; --t-light:#55d8d3; --good:#62d68f; --bad:#ff7d7d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1613; --surface:#13211c; --ink:#ece6d4; --muted:#a3ab9e; --line:#283a32;
+  --green:#14533f; --on-green:#f5f0e1; --gold:#d8b45c; --gold-soft:#4d4128; --soft:#1b3129; --link:#7fd6b0;
+  --t-clear:#b593f2; --t-ghunnah:#5fd876; --t-silent:#97a29d; --t-merge:#ef86cf;
+  --t-madd2:#e3b763; --t-madd45:#ff6f6f; --t-madd246:#ffa45e; --t-madd6:#ff5875;
+  --t-qalqalah:#65bff5; --t-heavy:#8aa5ff; --t-light:#55d8d3; --good:#62d68f; --bad:#ff7d7d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.75 var(--f-body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0;font-weight:400}
+a{color:var(--link);text-underline-offset:3px}
+p{margin:0}
+/* Arabic inside English lines: isolated, Naskh face, a step larger */
+.a,[lang="ar"]{font-family:var(--f-ar)}
+bdi.a{font-size:1.2em;line-height:1;font-weight:inherit}
+.kufi{font-family:var(--f-kufi)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+button,select,input{font:inherit;color:inherit}
+
+/* header */
+.band{background-color:var(--green);color:var(--on-green);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><g fill='none' stroke='%23d8b45c' stroke-opacity='.32' stroke-width='1.1'><rect x='16' y='16' width='32' height='32'/><rect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/><path d='M0 0L16 16M64 0L48 16M0 64L16 48M64 64L48 48M32 0V9M32 55V64M0 32H9M55 32H64'/></g></svg>");
+  border-bottom:3px double var(--gold)}
+.band .wrap{display:flex;gap:24px 40px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:30px 26px}
+.title .ar{font-family:var(--f-kufi);font-size:2.9rem;line-height:1.2;font-weight:700;color:#f3d98f}
+.title h1{font-family:var(--f-disp);font-size:1.6rem;letter-spacing:.04em}
+.title p{opacity:.85;max-width:56ch;font-size:15px;margin-top:6px}
+.title .eyebrow{color:#f3d98f}
+.cartouche{border:1px solid #d8b45c;outline:1px solid #d8b45c;outline-offset:4px;border-radius:999px;padding:10px 28px;text-align:center;background:rgb(0 0 0 / .18)}
+.cartouche .v{font-family:var(--f-quran);font-size:1.9rem;line-height:1.8;color:#f3d98f}
+.cartouche small{display:block;font-size:13px;opacity:.8;font-family:var(--f-ar)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--gold)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--gold-soft)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;align-items:stretch}
+nav.tabs a{display:grid;justify-items:center;padding:8px 16px 6px;text-decoration:none;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a b{font-family:var(--f-ar);font-size:1.2rem;font-weight:700;line-height:1.3}
+nav.tabs a small{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+nav.tabs a[aria-current="page"]{color:var(--green);border-color:var(--gold)}
+:root[data-theme="dark"] nav.tabs a[aria-current="page"]{color:var(--link)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) nav.tabs a[aria-current="page"]{color:var(--link)}}
+nav.tabs .score{margin-inline-start:auto;align-self:center;font-size:13px;color:var(--muted);white-space:nowrap;padding-inline-start:12px;font-variant-numeric:tabular-nums}
+
+main{padding-block:32px 72px}
+section[data-view]{display:grid;gap:28px}
+.lead{max-width:70ch;color:var(--muted)}
+.h2{display:grid;gap:2px}
+.h2 .ar{font-family:var(--f-kufi);font-size:1.9rem;color:var(--green);line-height:1.3}
+:root[data-theme="dark"] .h2 .ar{color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .h2 .ar{color:var(--gold)}}
+.h2 h2{font-family:var(--f-disp);font-size:1.25rem;color:var(--muted)}
+.orn{display:flex;align-items:center;gap:14px;color:var(--gold);font-family:var(--f-quran);font-size:1.4rem}
+.orn::before,.orn::after{content:"";flex:1;border-top:1px solid var(--gold-soft)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px var(--gold-soft)}
+
+/* 8-point star badge */
+.star{position:relative;display:grid;place-items:center;width:var(--s,52px);height:var(--s,52px);flex:none;color:var(--on-green);font-family:var(--f-kufi);font-weight:700}
+.star::before,.star::after{content:"";position:absolute;inset:15%;background:var(--green);border:1px solid var(--gold)}
+.star::after{transform:rotate(45deg)}
+.star>*{position:relative;z-index:1}
+
+/* plan */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px;margin:0;padding:0;list-style:none}
+.principles li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:4px;align-content:start}
+.principles .tag{font-family:var(--f-ar);font-size:1.25rem;color:var(--gold);line-height:1.4}
+.principles b{font-family:var(--f-disp);font-weight:400;font-size:1.1rem}
+.principles span.t{color:var(--muted);font-size:15px}
+.routine{display:flex;flex-wrap:wrap;border-radius:10px;overflow:hidden;margin-top:12px}
+.routine div{flex:var(--m) 1 140px;padding:12px 14px;background:var(--c);color:var(--on-green);min-width:0}
+.routine b{font-family:var(--f-disp);font-weight:400;font-size:1.6rem;display:block;line-height:1.2;font-variant-numeric:tabular-nums}
+.routine span{font-size:14px}
+.progress{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));width:0;transition:width .3s}
+.timeline{display:grid;gap:0;position:relative}
+.phase{display:grid;grid-template-columns:60px 1fr;gap:18px;position:relative;padding-bottom:22px}
+.phase::before{content:"";position:absolute;left:29px;top:56px;bottom:0;border-left:2px dotted var(--gold)}
+.phase:last-child::before{display:none}
+.phase .star{--s:60px;font-size:1.5rem}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:10px;min-width:0}
+.pcard .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.pcard h3{font-family:var(--f-ar);font-size:1.6rem;font-weight:700;line-height:1.3}
+.pcard h3 small{font-family:var(--f-disp);font-weight:400;font-size:1rem;color:var(--muted);margin-inline-start:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:2px 10px;border-radius:99px;background:var(--soft);color:var(--ink);white-space:nowrap}
+.pcard .goal{color:var(--muted)}
+.pcard ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.pcard label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.pcard input{margin-top:6px;accent-color:var(--green);width:17px;height:17px;flex:none}
+.pcard input:checked+span{color:var(--muted);text-decoration:line-through}
+.pcard .done{border-top:1px dashed var(--gold-soft);padding-top:10px;font-size:15px}
+.rchips{display:flex;flex-wrap:wrap;gap:6px}
+.rchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:1px 10px;background:var(--bg);cursor:pointer;font-family:var(--f-ar);font-size:1.02rem}
+.rchip i,.dot{width:9px;height:9px;border-radius:50%;background:var(--rc);flex:none}
+@media (max-width:560px){.phase{grid-template-columns:1fr;gap:8px}.phase::before{display:none}.phase .star{--s:44px;font-size:1.1rem}}
+
+/* map: right-to-left tree */
+.treebox{overflow-x:auto;padding:24px 8px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:inset 0 0 0 5px var(--surface),inset 0 0 0 6px var(--gold-soft)}
+.tree{display:flex;align-items:center;min-width:max-content;--br:var(--gold)}
+.tree ul{list-style:none;margin:0;padding:0;padding-inline-start:26px;position:relative;display:flex;flex-direction:column}
+.tree ul::before{content:"";position:absolute;inset-inline-start:0;top:50%;width:26px;border-top:2px solid var(--br)}
+.tree li{position:relative;display:flex;align-items:center;padding-inline-start:20px;padding-block:3px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;border-inline-start:2px solid var(--br)}
+.tree li::after{content:"";position:absolute;inset-inline-start:0;top:50%;width:20px;border-top:2px solid var(--br)}
+.tree li:first-child::before{top:50%}
+.tree li:last-child::before{bottom:50%}
+.tree li:only-child::before{display:none}
+.t-root{--s:132px;font-size:1.8rem}
+.t-root small{display:block;font:12px var(--f-disp);text-align:center;opacity:.9;letter-spacing:.06em}
+.t-cat{display:grid;text-align:start;background:var(--green);color:var(--on-green);border:1px solid var(--gold);border-radius:12px;padding:5px 14px;cursor:pointer;min-width:190px;height:52px;align-content:center}
+.t-cat b{font-family:var(--f-ar);font-size:1.15rem;line-height:1.3}
+.t-cat small{font-size:11px;opacity:.85;line-height:1.3}
+.t-grp{font-family:var(--f-ar);font-size:1rem;color:var(--gold);border:1px dashed var(--gold);border-radius:8px;padding:2px 10px;white-space:nowrap;height:32px;display:grid;align-items:center}
+.t-leaf{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-inline-start:4px solid var(--rc);border-radius:8px;padding:2px 12px;cursor:pointer;white-space:nowrap;height:38px}
+.t-leaf:hover{border-color:var(--rc)}
+.t-leaf b{font-family:var(--f-ar);font-size:1.1rem;font-weight:400}
+.t-leaf .ok{color:var(--good);font-weight:700}
+@media (max-width:820px){
+  .treebox{padding:16px}
+  .tree{flex-direction:column;align-items:stretch;min-width:0;gap:14px}
+  .t-root{align-self:center;--s:110px;font-size:1.5rem}
+  .tree ul::before{display:none}
+  .tree ul{padding-inline-start:14px}
+  .tree>ul{padding-inline-start:0}
+  .tree li{flex-direction:column;align-items:stretch}
+  .tree li::after{top:var(--mid)}
+  .tree li:first-child::before{top:0}
+  .tree li:last-child::before{bottom:auto;height:var(--mid)}
+  .tree li:only-child::before{display:block}
+  .tree>ul>li{padding-inline-start:0}
+  .tree>ul>li::before,.tree>ul>li::after{display:none}
+  .tree li.lc{--mid:29px}.tree li.lg{--mid:19px}.tree li.ll{--mid:22px}
+  .tree>ul>li+li{margin-top:10px}
+  .t-cat{min-width:0}.t-leaf,.t-grp{white-space:normal;height:auto;min-height:38px}
+}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px}
+.legend span{display:inline-flex;gap:7px;align-items:center;font-family:var(--f-ar);font-size:1.05rem;color:var(--rc)}
+
+/* rules */
+.rlayout{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:start}
+.index{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);display:grid;gap:2px;max-height:calc(100vh - 100px);overflow:auto}
+.index button{display:flex;justify-content:space-between;gap:8px;align-items:center;text-align:start;background:none;border:0;border-inline-start:3px solid transparent;padding:5px 10px;cursor:pointer;border-radius:0 8px 8px 0}
+.index button:hover{background:var(--soft);border-color:var(--gold)}
+.index b{font-family:var(--f-ar);font-weight:400;font-size:1.08rem;line-height:1.35}
+.index small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.rmain{display:grid;gap:30px;min-width:0}
+.search{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search input{flex:1 1 260px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+.csec{display:grid;gap:16px;scroll-margin-top:90px}
+.chead{display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--gold-soft);padding-bottom:12px}
+.chead .star{--s:46px;font-size:1rem}
+.chead h2{font-family:var(--f-ar);font-weight:700;font-size:1.75rem;line-height:1.3}
+.chead p{color:var(--muted);font-size:15px}
+.chooser{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px}
+.chooser .q{font-size:14px;font-weight:600;color:var(--gold);letter-spacing:.04em}
+.crow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:center;border-top:1px dashed var(--line);padding-top:8px}
+.crow:first-of-type{border-top:0;padding-top:0}
+.crow .rchip{justify-self:end;border-color:var(--rc);color:var(--rc);font-weight:700}
+.tiles{display:flex;flex-wrap:wrap;gap:5px;direction:rtl}
+.tile{min-width:34px;height:36px;padding:0 6px;display:grid;place-items:center;border:1px solid var(--rc,var(--gold));border-radius:7px;background:var(--bg);font-family:var(--f-quran);font-size:1.35rem;line-height:1;color:var(--rc,var(--ink))}
+.tile.wide{font-family:var(--f-ar);font-size:1rem}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;border-top:1px dashed var(--line);padding-top:6px}
+.mrow:first-of-type{border-top:0;padding-top:0}
+.mrow .rchip{justify-self:start;border-color:var(--rc)}
+.beats{display:inline-flex;gap:4px;align-items:center}
+.beats i{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--line)}
+.beats i.on{background:var(--rc);border-color:var(--rc)}
+.beats i.opt{border-color:var(--rc);background:repeating-linear-gradient(45deg,transparent 0 3px,color-mix(in srgb,var(--rc) 40%,transparent) 3px 5px)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:16px;align-items:start}
+
+.rule{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--rc);border-radius:14px;padding:18px 18px 16px;display:grid;gap:12px;min-width:0;box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px var(--gold-soft)}
+.rule .rh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.rule h3{font-family:var(--f-ar);font-weight:700;font-size:1.6rem;line-height:1.35;color:var(--rc)}
+.rule .en{color:var(--muted);font-size:14px;line-height:1.4}
+.rule .ctag{font-family:var(--f-ar);font-size:.95rem;border:1px solid var(--rc);color:var(--rc);border-radius:99px;padding:0 10px;white-space:nowrap;line-height:1.7}
+.facts{margin:0;display:grid;gap:8px;background:var(--bg);border-radius:10px;padding:10px 12px}
+.facts>div{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center}
+.facts dt{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.facts dd{margin:0;font-size:15px;min-width:0}
+.facts .len{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.list{margin:0;display:grid;gap:8px}
+.list>div{border-inline-start:3px solid var(--gold-soft);padding-inline-start:10px}
+.list dt{font-weight:600}
+.list dd{margin:0;color:var(--muted);font-size:15px}
+.exh{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:10px}
+.exh::after{content:"";flex:1;border-top:1px solid var(--line)}
+.ayah{margin:0;display:grid;gap:0}
+.ayah .v{font-family:var(--f-quran);font-size:1.8rem;line-height:2.1;text-align:right;direction:rtl}
+.ayah .v .br{color:var(--gold);font-size:.85em}
+.ayah figcaption{font-size:13px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.ayah figcaption a{font-family:var(--f-ar);font-size:1.05rem;text-decoration:none}
+.ayah+.ayah{border-top:1px dotted var(--line);padding-top:4px}
+.hl{color:var(--rc)}
+.stop{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.05em;border:1px solid currentColor;border-radius:4px;padding:0 6px;color:var(--t-madd246);text-transform:uppercase}
+.tip{display:grid;grid-template-columns:24px 1fr;gap:8px;font-size:15px;background:color-mix(in srgb,var(--gold) 10%,var(--surface));border-radius:10px;padding:10px 12px}
+.tip .ic{width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--surface);display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:2px}
+.learn{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:600;cursor:pointer;justify-self:start}
+.learn input{accent-color:var(--good);width:17px;height:17px}
+@media (max-width:900px){.rlayout{grid-template-columns:1fr}.index{position:static;display:flex;overflow-x:auto;max-height:none;gap:6px;padding-bottom:4px}.index button{flex:none;border:1px solid var(--line);border-radius:99px;padding:3px 12px}.index small{display:none}}
+
+/* practice */
+.quiz{max-width:680px;width:100%;justify-self:center;display:grid;gap:16px}
+.qbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.qbar select{padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-family:var(--f-ar);font-size:1.05rem}
+.qcard{background:var(--surface);border:1px solid var(--gold);border-radius:18px;padding:24px;display:grid;gap:16px;box-shadow:inset 0 0 0 5px var(--surface),inset 0 0 0 6px var(--gold-soft)}
+.qcard .v{font-family:var(--f-quran);font-size:2.5rem;line-height:2.1;text-align:center;direction:rtl}
+.qcard .v .br{color:var(--gold);font-size:.8em}
+.qcard .v .q{color:var(--green);text-decoration:underline wavy var(--gold);text-decoration-thickness:2px;text-underline-offset:14px}
+:root[data-theme="dark"] .qcard .v .q{color:var(--link)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .qcard .v .q{color:var(--link)}}
+.qmeta{display:flex;justify-content:center;gap:12px;font-size:13px;color:var(--muted);flex-wrap:wrap;align-items:center}
+.qmeta a{font-family:var(--f-ar);font-size:1.05rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
+.opt{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:8px 12px;cursor:pointer;display:grid;justify-items:center;text-align:center}
+.opt b{font-family:var(--f-ar);font-size:1.3rem;line-height:1.5}
+.opt small{color:var(--muted);font-size:12px}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,var(--surface))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--surface))}
+.feedback{font-size:15px;border-radius:10px;padding:12px 14px;background:var(--bg)}
+.btn{background:var(--green);color:var(--on-green);border:1px solid var(--gold);border-radius:10px;padding:9px 18px;font-weight:600;cursor:pointer}
+.btn.ghost{background:none;color:var(--link);border-color:var(--line)}
+.stat{font-variant-numeric:tabular-nums;font-weight:600}
+
+/* resources */
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:16px}
+.res h3{font-family:var(--f-ar);font-weight:700;font-size:1.45rem;color:var(--gold);line-height:1.3}
+.res h3 small{font:400 .95rem var(--f-disp);color:var(--muted);margin-inline-start:8px}
+.res ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+.res li b{display:block;font-weight:600}
+.res li span{color:var(--muted);font-size:15px;display:block}
+.eps{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.eps a{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;border:1px solid var(--gold);text-decoration:none;font-family:var(--f-ar);font-size:1.1rem}
+
+dialog{border:0;padding:0;max-width:min(580px,calc(100vw - 32px));width:100%;background:transparent;color:var(--ink)}
+dialog::backdrop{background:rgb(4 20 14 / .55)}
+dialog .rule{max-height:86vh;overflow:auto}
+.close{background:none;border:1px solid var(--line);border-radius:8px;padding:2px 10px;cursor:pointer;font-size:13px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="band"><div class="wrap">
+  <div class="title">
+    <div class="eyebrow">رواية حفص عن عاصم · Hafs from Asim</div>
+    <div class="ar" lang="ar" dir="rtl">مسار التجويد</div>
+    <h1>Tajweed Path</h1>
+    <p>A step-by-step plan, a mind map of every core rule, rule cards with Quranic examples, and a quiz. Your ticks are saved in this browser.</p>
+  </div>
+  <div class="cartouche" lang="ar" dir="rtl"><div class="v">﴿ وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا ﴾</div><small>المزمل · ٤</small></div>
+</div></header>
+
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <a href="#plan"><b lang="ar">الخطة</b><small>Plan</small></a>
+  <a href="#map"><b lang="ar">الخريطة</b><small>Mind map</small></a>
+  <a href="#rules"><b lang="ar">الأحكام</b><small>Rules</small></a>
+  <a href="#practice"><b lang="ar">التدريب</b><small>Practice</small></a>
+  <a href="#resources"><b lang="ar">المصادر</b><small>Resources</small></a>
+  <span class="score" id="learnedScore"></span>
+</div></nav>
+
+<main class="wrap" id="main">
+
+<!-- PLAN -->
+<section data-view="plan">
+  <div class="h2"><div class="ar" lang="ar">أصول التعلّم</div><h2>Seven principles</h2></div>
+  <ul class="principles">
+    <li><span class="tag" lang="ar">التلقي والمشافهة</span><b>Learn from a teacher</b><span class="t">Tajweed passes from mouth to ear. Books and videos explain; a qualified teacher hears what you can't. One session a week is enough to start.</span></li>
+    <li><span class="tag" lang="ar">الجلي قبل الخفي</span><b>Clear errors first</b><span class="t">Fix اللحن الجلي (a wrong letter or vowel, which can change meaning) before اللحن الخفي (fine details of the rules).</span></li>
+    <li><span class="tag" lang="ar">الأداء قبل المصطلح</span><b>Sound before names</b><span class="t">Saying ع and ح correctly matters more than knowing their names. Theory serves your tongue.</span></li>
+    <li><span class="tag" lang="ar">قارئ قدوة</span><b>One model reciter</b><span class="t">Copy one teaching recitation, المصحف المعلم للحصري, until it becomes your natural way of reading.</span></li>
+    <li><span class="tag" lang="ar">سجّل واستمع</span><b>Record yourself</b><span class="t">Record, then compare with the model. You will catch most of your own mistakes.</span></li>
+    <li><span class="tag" lang="ar">قليل دائم</span><b>Daily and small</b><span class="t">Forty minutes a day beats one long session a week. Tajweed is a skill of the tongue and needs repetition.</span></li>
+    <li><span class="tag" lang="ar">طبّق فورًا</span><b>Apply on real verses</b><span class="t">Every rule you learn, find it in جزء عمّ the same day. Keep a mistakes log and check it weekly.</span></li>
+  </ul>
+
+  <div class="panel">
+    <div class="eyebrow">الورد اليومي · Daily routine, 40 minutes</div>
+    <div class="routine">
+      <div style="--m:10;--c:#0f5b45"><b>10′</b><span>Listen and repeat after الحصري, ayah by ayah</span></div>
+      <div style="--m:10;--c:#2f6f4f"><b>10′</b><span>Today's rule: one video and one card from this page</span></div>
+      <div style="--m:15;--c:#7a5a16"><b>15′</b><span>Recite and record a short passage, applying the rule</span></div>
+      <div style="--m:5;--c:#5b3f0e"><b>5′</b><span>Quiz, then update your mistakes log</span></div>
+    </div>
+  </div>
+
+  <div class="orn" aria-hidden="true">۞</div>
+  <div class="qbar"><div class="h2"><div class="ar" lang="ar">مراحل الخطة</div><h2>Roadmap</h2></div><span class="stat" id="planPct"></span></div>
+  <div class="progress"><i id="planBar"></i></div>
+  <div class="timeline" id="phases"></div>
+</section>
+
+<!-- MAP -->
+<section data-view="map" hidden>
+  <div class="h2"><div class="ar" lang="ar">خريطة أحكام التجويد</div><h2>Mind map</h2></div>
+  <p class="lead">Read it from right to left, as in a muṣḥaf. Tap a topic to open its section, or a rule to open its card. A ✓ means you marked the rule as learned.</p>
+  <div class="treebox"><div class="tree" dir="rtl" id="tree"></div></div>
+  <div class="legend" id="legend"></div>
+</section>
+
+<!-- RULES -->
+<section data-view="rules" hidden>
+  <div class="rlayout">
+    <nav class="index" id="index" aria-label="Topics"></nav>
+    <div class="rmain">
+      <div class="search"><input type="search" id="q" placeholder="ابحث… search: إخفاء، مد، الراء، ghunnah" aria-label="Search rules"></div>
+      <div class="legend" id="legend2"></div>
+      <div id="sections" class="rmain"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section data-view="practice" hidden>
+  <div class="quiz">
+    <div class="h2"><div class="ar" lang="ar">اختبر نفسك</div><h2>Which rule is it?</h2></div>
+    <div class="qbar">
+      <label>Topic <select id="qcat"></select></label>
+      <span class="stat" id="qscore">0 / 0</span>
+    </div>
+    <div class="qcard" id="qcard"></div>
+    <p class="lead" style="font-size:15px">Read the words aloud before you answer. Then open the ayah and listen to check yourself.</p>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section data-view="resources" hidden>
+  <div class="h2"><div class="ar" lang="ar">المصادر</div><h2>Resources</h2></div>
+  <div class="res">
+    <div class="panel"><h3>الاستماع والترديد<small>Listen &amp; repeat</small></h3><ul>
+      <li><b><a href="https://www.youtube.com/results?search_query=%D8%A7%D9%84%D8%AD%D8%B5%D8%B1%D9%8A+%D8%A7%D9%84%D9%85%D8%B5%D8%AD%D9%81+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%85" target="_blank" rel="noopener">المصحف المعلم · الحصري</a></b><span>He reads, pauses, and you repeat. The best daily model.</span></li>
+      <li><b><a href="https://www.youtube.com/results?search_query=%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A7%D9%88%D9%8A+%D8%A7%D9%84%D9%85%D8%B5%D8%AD%D9%81+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%85+%D9%85%D8%B9+%D8%A7%D9%84%D8%A3%D8%B7%D9%81%D8%A7%D9%84" target="_blank" rel="noopener">المصحف المعلم · المنشاوي مع الأطفال</a></b><span>Children repeat after him, so you hear common mistakes being corrected.</span></li>
+      <li><b><a href="https://quran.com" target="_blank" rel="noopener">Quran.com</a></b><span>Ayah audio and word-by-word playback. Every example on this page links there.</span></li>
+    </ul></div>
+    <div class="panel"><h3>الشرح<small>Explanations</small></h3><ul>
+      <li><b><a href="https://www.youtube.com/playlist?list=PL1i_D1Vw3d5PrPubon8D1z9Cl3Hl8jJsX" target="_blank" rel="noopener">تعلم التجويد بطريقة عملية مبسطة · م. علاء حامد</a></b><span>Your intro course: 6 short practical lessons. Watch one a day in Phase 1, then tick the rules it covered on the mind map.</span>
+        <div class="eps">
+          <a href="https://www.youtube.com/watch?v=exqxpd33s1Q" target="_blank" rel="noopener" aria-label="Episode 1">١</a><a href="https://www.youtube.com/watch?v=mgKuf7JMYQg" target="_blank" rel="noopener" aria-label="Episode 2">٢</a><a href="https://www.youtube.com/watch?v=P9gOC0jKqpU" target="_blank" rel="noopener" aria-label="Episode 3">٣</a><a href="https://www.youtube.com/watch?v=VKxwdOPBLt4" target="_blank" rel="noopener" aria-label="Episode 4">٤</a><a href="https://www.youtube.com/watch?v=hp-GlZQhBEk" target="_blank" rel="noopener" aria-label="Episode 5">٥</a><a href="https://www.youtube.com/watch?v=Th6uDpvHxrQ" target="_blank" rel="noopener" aria-label="Episode 6">٦</a>
+        </div></li>
+      <li><b><a href="https://www.youtube.com/results?search_query=%D8%A3%D9%8A%D9%85%D9%86+%D8%B3%D9%88%D9%8A%D8%AF+%D8%A7%D9%84%D8%AA%D8%AC%D9%88%D9%8A%D8%AF+%D8%A7%D9%84%D9%85%D8%B5%D9%88%D8%B1" target="_blank" rel="noopener">التجويد المصور · د. أيمن سويد</a></b><span>The most detailed visual explanation of المخارج والصفات. Use it in Phase 2.</span></li>
+    </ul></div>
+    <div class="panel"><h3>متون للحفظ<small>Texts to memorise</small></h3><ul>
+      <li><b>تحفة الأطفال · الجمزوري</b><span>61 lines on النون والميم, اللام and المد. Memorise in Phases 3–4.</span></li>
+      <li><b>المقدمة الجزرية · ابن الجزري</b><span>107 lines on المخارج, الصفات and all the rules. The standard text for mastery.</span></li>
+    </ul></div>
+    <div class="panel"><h3>كتب وأدوات<small>Books &amp; tools</small></h3><ul>
+      <li><b>مصحف التجويد الملوّن · دار المعرفة</b><span>The colours on this page follow its scheme, so your eye learns both at once.</span></li>
+      <li><b>القاعدة النورانية</b><span>Only if reading letters and vowels is still slow. Finish it before Phase 2.</span></li>
+      <li><b>Tajweed Rules of the Qur'an</b><span>Kareema Carol Czerepinski, 3 parts. A clear English textbook with exercises.</span></li>
+      <li><b><a href="https://www.tarteel.ai" target="_blank" rel="noopener">Tarteel</a></b><span>Listens while you recite and flags missed or wrong words. It cannot judge fine tajweed; a teacher still can.</span></li>
+    </ul></div>
+  </div>
+</section>
+</main>
+
+<dialog id="dlg"><div id="dlgBody"></div></dialog>
+
+<script>
+const SURAH='الفاتحة,البقرة,آل عمران,النساء,المائدة,الأنعام,الأعراف,الأنفال,التوبة,يونس,هود,يوسف,الرعد,إبراهيم,الحجر,النحل,الإسراء,الكهف,مريم,طه,الأنبياء,الحج,المؤمنون,النور,الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الانفطار,المطففين,الانشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس'.split(',');
+const ad=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+
+const CATS=[
+ {id:'found',ar:'المخارج والصفات',n:'Foundations',i:'Before any rule: each letter from its place (المخرج) with its qualities (الصفات).'},
+ {id:'nun',ar:'النون الساكنة والتنوين',n:'Noon with sukoon & tanween',i:'Look at the letter after the نْ or the تنوين. That letter decides which of the four rules applies.',ask:'The next letter is…'},
+ {id:'meem',ar:'الميم الساكنة',n:'Meem with sukoon',i:'Look at the letter after the مْ. There are three outcomes.',ask:'The next letter is…'},
+ {id:'ghunnah',ar:'الغنة',n:'The nasal sound',i:'A sound from the nose (الخيشوم), held for two counts on every نّ and مّ.'},
+ {id:'lam',ar:'أحكام اللام',n:'Laam rules',i:'Two questions: is it the ل of ال, or the ل in the name اللَّه?',ask:'The letter after ال is…'},
+ {id:'ra',ar:'أحكام الراء',n:'Heavy or light ر',i:'Look at the ر\'s own vowel first. If it has سكون, look at the letter before it.'},
+ {id:'qal',ar:'القلقلة',n:'The echo',i:'Five letters bounce when they carry سكون: قطب جد.'},
+ {id:'madd',ar:'المدود',n:'Lengthening',i:'Every مد starts at 2 counts. A همزة or a سكون after it makes it longer.'},
+ {id:'merge',ar:'المثلان والمتجانسان والمتقاربان',n:'When two letters meet',i:'When two letters meet and the first has سكون, they may merge into one.'},
+ {id:'waqf',ar:'الوقف والابتداء',n:'Stopping & starting',i:'Where to stop, how to stop, and how to start again.'},
+ {id:'hafs',ar:'كلمات خاصة برواية حفص',n:'Special words in Hafs',i:'A few words in رواية حفص have their own way of reading.'},
+];
+const COLORS={clear:'إظهار',ghunnah:'غنة / إخفاء',silent:'حرف لا يُنطق',merge:'إدغام',madd2:'مد حركتان',madd45:'مد ٤–٥',madd246:'مد ٢ · ٤ · ٦',madd6:'مد ٦ حركات',qalqalah:'قلقلة',heavy:'تفخيم',light:'ترقيق'};
+
+// L: letter tiles · b: [min,max] counts · ex: [text with {highlight}, "surah:ayah", note, stopping]
+const RULES=[
+ {id:'makharij',c:'found',ar:'مخارج الحروف',e:'Articulation points',cl:'clear',q:0,
+  d:'Where each letter is born: 17 points in 5 areas. Getting these right fixes most clear errors.',
+  list:[['الجوف · the open space','ا و ي when they are حروف مد. The sound comes from the open space of the mouth and throat.'],
+   ['الحلق · the throat, 3 points','Deepest ء هـ · middle ع ح · nearest the mouth غ خ'],
+   ['اللسان · the tongue, 10 points','18 letters: ق ك ج ش ي ض ل ن ر ط د ت ص س ز ظ ذ ث'],
+   ['الشفتان · the lips, 2 points','ف from the inner lower lip and upper teeth · ب م و from both lips'],
+   ['الخيشوم · the nasal passage','The غنة of ن and م']],
+  h:'To find a letter\'s point, put a همزة with فتحة before it and stop: أَبْ، أَتْ، أَثْ. Where the sound stops is its مخرج.',
+  tip:'Drill the pairs learners mix up: ح ه · ع ء · ص س · ط ت · ق ك · ذ ز ظ · ث س · ض د'},
+ {id:'sifat',c:'found',ar:'صفات الحروف',e:'Qualities of the letters',cl:'clear',q:0,
+  d:'Two letters can share a مخرج and still sound different because of their qualities, like ص and س.',
+  list:[['الهمس and الجهر','Breath flows with فَحَثَّهُ شَخْصٌ سَكَتْ; the other letters are voiced.'],
+   ['الشدة · التوسط · الرخاوة','Sound stops: أَجِدْ قَطٍ بَكَتْ · in between: لِنْ عُمَرْ · the rest flow.'],
+   ['الاستعلاء and الاستفال','The tongue rises and the letter is always heavy: خُصَّ ضَغْطٍ قِظْ'],
+   ['الإطباق and الانفتاح','The tongue covers the palate: ص ض ط ظ, the heaviest letters.'],
+   ['Single qualities','الصفير ص ز س · القلقلة ق ط ب ج د · اللين وْ يْ after فتحة · الانحراف ل ر · التكرير ر · التفشي ش · الاستطالة ض']]},
+
+ {id:'izhar',c:'nun',ar:'الإظهار الحلقي',e:'Clear noon before a throat letter',cl:'clear',L:'ء ه ع ح غ خ',
+  d:'Say the نون or تنوين clearly, with no غنة.',h:'In the same word or the next word.',
+  ex:[['مَ{نْ آ}مَنَ','2:62'],['أَ{نْعَ}مْتَ عَلَيْهِمْ','1:7'],['عَذَا{بٌ أَ}لِيمٌ','2:10']],
+  tip:'Don\'t hum or pause between the نون and the throat letter.'},
+ {id:'idgh-g',c:'nun',ar:'الإدغام بغنة',e:'Merge, with nasal sound',cl:'ghunnah',L:'ي ن م و',b:[2,2],k:'غنة of 2 counts',
+  d:'Merge the نون into the next letter and hold a غنة. The next letter takes a شدة.',h:'Only across two words. The letters spell يَنْمُو.',
+  ex:[['وَمِنَ النَّاسِ مَ{ن يَّ}قُولُ','2:8'],['عَلَىٰ هُ{دًى مِّ}ن رَّبِّهِمْ','2:5'],['وَمَا لَهُم مِّن دُونِهِ مِ{ن وَّ}الٍ','13:11']],
+  tip:'Inside one word there is no merging: دُنْيَا، بُنْيَانٌ، صِنْوَانٌ، قِنْوَانٌ keep a clear نون (إظهار مطلق).'},
+ {id:'idgh-n',c:'nun',ar:'الإدغام بلا غنة',e:'Full merge, no nasal sound',cl:'silent',L:'ل ر',
+  d:'The نون disappears completely into ل or ر, with no غنة.',
+  ex:[['هُ{دًى لِّ}لْمُتَّقِينَ','2:2'],['مِ{ن رَّ}بِّهِمْ','2:5'],['إِنَّ اللَّهَ غَفُو{رٌ رَّ}حِيمٌ','2:173']],
+  tip:'Exception in حفص: مَنْ ۜ رَاقٍ (75:27) has a سكت, so the نون stays clear.'},
+ {id:'iqlab',c:'nun',ar:'الإقلاب',e:'Noon turns into meem',cl:'ghunnah',L:'ب',b:[2,2],k:'غنة of 2 counts',
+  d:'Change the نون into a hidden ميم, with غنة. The muṣḥaf marks it with a small ميم ( ۢ ).',
+  ex:[['مِ{نۢ بَ}عْدِ مِيثَاقِهِ','2:27'],['يَا آدَمُ أَ{نۢبِ}ئْهُم','2:33'],['وَأَنَّ اللَّهَ سَمِي{عٌۢ بَ}صِيرٌ','22:61']],
+  tip:'Close the lips gently while the غنة runs. Don\'t press hard and don\'t leave a gap.'},
+ {id:'ikhfa',c:'nun',ar:'الإخفاء الحقيقي',e:'Hidden noon',cl:'ghunnah',L:'ص ذ ث ك ج ش ق س د ط ز ف ت ض ظ',b:[2,2],k:'غنة of 2 counts',
+  d:'Hide the نون: the tongue moves toward the next letter without a full ن, while the غنة sounds from the nose.',
+  ex:[['الَّذِينَ يُ{نفِ}قُونَ','2:3'],['وَمَا أُنزِلَ مِ{ن قَ}بْلِكَ','2:4'],['لَهُمْ عَذَا{بٌ شَ}دِيدٌ','3:4'],['فَلَا تَجْعَلُوا لِلَّهِ أَ{ندَ}ادًا','2:22']],
+  tip:'The غنة is heavy before ص ض ط ظ ق and light before the others. Don\'t touch the tongue to the gum as in a full ن.'},
+
+ {id:'m-ikhfa',c:'meem',ar:'الإخفاء الشفوي',e:'Hidden meem',cl:'ghunnah',L:'ب',b:[2,2],k:'غنة of 2 counts',
+  d:'Close the lips lightly on the مْ and hold a غنة before the ب.',
+  ex:[['تَرْمِيهِ{م بِ}حِجَارَةٍ','105:4'],['وَمَن يَعْتَصِ{م بِ}اللَّهِ','3:101']]},
+ {id:'m-idgham',c:'meem',ar:'الإدغام الشفوي',e:'Meem merges into meem',cl:'ghunnah',L:'م',b:[2,2],k:'غنة of 2 counts',
+  d:'The two ميم become one مّ with a غنة.',
+  ex:[['كَ{م مِّ}ن فِئَةٍ','2:249'],['وَلَكُ{م مَّ}ا كَسَبْتُمْ','2:134']]},
+ {id:'m-izhar',c:'meem',ar:'الإظهار الشفوي',e:'Clear meem',cl:'clear',L:'باقي الحروف',
+  d:'Before every other letter, say the مْ clearly with no غنة.',
+  ex:[['عَلَيْهِ{مْ وَ}لَا الضَّالِّينَ','1:7'],['هُ{مْ فِ}يهَا خَالِدُونَ','2:39'],['أَلَ{مْ تَ}رَ كَيْفَ','105:1']],
+  tip:'Be extra clear before و and ف. They also use the lips, so the ميم tends to slide into them.'},
+
+ {id:'ghunnah',c:'ghunnah',ar:'الغنة المشددة',e:'Doubled noon and meem',cl:'ghunnah',L:'نّ مّ',b:[2,2],k:'غنة of 2 counts',
+  d:'Every نّ and مّ is read with a full غنة from the nose.',
+  ex:[['إِ{نَّ} الَّذِينَ كَفَرُوا','2:6'],['ثُ{مَّ} يُمِيتُكُمْ ثُ{مَّ} يُحْيِيكُمْ','2:28'],['مِنَ الْجِ{نَّ}ةِ وَال{نَّ}اسِ','114:6']],
+  tip:'Keep both counts. It is easy to cut the غنة short in small words like إِنَّ and ثُمَّ.'},
+
+ {id:'lam-q',c:'lam',ar:'اللام القمرية',e:'The laam of al- is said',cl:'clear',L:'ء ب غ ح ج ك و خ ف ع ق ي م ه',
+  d:'The ل of ال is pronounced with سكون.',h:'The 14 letters gather in ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ.',
+  ex:[['ا{لْ}حَمْدُ لِلَّهِ','1:2'],['وَانشَقَّ ا{لْ}قَمَرُ','54:1']]},
+ {id:'lam-s',c:'lam',ar:'اللام الشمسية',e:'The laam of al- is silent',cl:'silent',L:'ت ث د ذ ر ز س ش ص ض ط ظ ل ن',
+  d:'The ل of ال is not pronounced; the next letter takes a شدة.',
+  ex:[['ا{ل}رَّحْمَٰنِ ا{ل}رَّحِيمِ','1:3'],['وَا{ل}شَّمْسِ وَضُحَاهَا','91:1'],['قُلْ أَعُوذُ بِرَبِّ ا{ل}نَّاسِ','114:1']]},
+ {id:'lam-jh',c:'lam',ar:'تفخيم لام لفظ الجلالة',e:'Heavy laam in the name of Allah',cl:'heavy',
+  d:'The ل in اللَّه is heavy, with a full mouth, when the letter before it has فتحة or ضمة.',
+  ex:[['إِذْ قَالَ ا{للَّ}هُ يَا عِيسَىٰ','3:55'],['إِذَا جَاءَ نَصْرُ ا{للَّ}هِ','110:1']]},
+ {id:'lam-jl',c:'lam',ar:'ترقيق لام لفظ الجلالة',e:'Light laam in the name of Allah',cl:'light',
+  d:'The ل in اللَّه is light when the letter before it has كسرة, even if the كسرة is on the previous word.',
+  ex:[['بِسْمِ ا{للَّ}هِ','1:1'],['الْحَمْدُ {لِلَّ}هِ','1:2'],['قُلِ ا{للَّ}هُمَّ مَالِكَ الْمُلْكِ','3:26']]},
+
+ {id:'ra-h',c:'ra',ar:'تفخيم الراء',e:'Heavy raa',cl:'heavy',
+  d:'The ر is heavy when it has فتحة or ضمة, or when it has سكون and:',
+  list:[['…comes after فتحة or ضمة','مَرْيَمَ · الْقُرْآنُ'],['…comes after the كسرة of همزة الوصل','ارْجِعِي'],['…comes after كسرة but before a heavy letter','مِرْصَادًا · قِرْطَاسٍ']],
+  ex:[['{رَ}بِّ الْعَالَمِينَ','1:2'],['وَاذْكُرْ فِي الْكِتَابِ مَ{رْ}يَمَ','19:16'],['ا{رْ}جِعِي إِلَىٰ رَبِّكِ','89:28'],['إِنَّ جَهَنَّمَ كَانَتْ مِ{رْ}صَادًا','78:21']],
+  tip:'One light tap of the tongue. Don\'t roll the ر (التكرير).'},
+ {id:'ra-l',c:'ra',ar:'ترقيق الراء',e:'Light raa',cl:'light',
+  d:'The ر is light in three cases:',
+  list:[['It has كسرة','رِجَالٌ'],['It has سكون after an original كسرة in the same word, with no heavy letter after it','فِرْعَوْنَ'],['You stop on it after يْ or a كسرة','قَدِيرْ · خَبِيرْ']],
+  ex:[['{رِ}جَالٌ لَّا تُلْهِيهِمْ','24:37'],['مِنْ آلِ فِ{رْ}عَوْنَ','2:49'],['عَلَىٰ كُلِّ شَيْءٍ قَدِي{رٌ}','2:20','',1]],
+  tip:'Both ways are allowed in فِرْقٍ (26:63). When stopping, مِصْرَ is preferred heavy and الْقِطْرِ light.'},
+
+ {id:'qal-s',c:'qal',ar:'القلقلة الصغرى',e:'Small echo',cl:'qalqalah',L:'ق ط ب ج د',
+  d:'A light bounce when a قلقلة letter has سكون in the middle of a word or phrase.',
+  ex:[['يَ{قْ}طَعُونَ مَا أَمَرَ اللَّهُ','2:27'],['يَ{جْ}عَلُونَ أَصَابِعَهُمْ','2:19'],['فَأُولَٰئِكَ يَ{دْ}خُلُونَ الْجَنَّةَ','4:124']],
+  tip:'It is an echo, not a vowel. Don\'t add a short "uh" after the letter.'},
+ {id:'qal-k',c:'qal',ar:'القلقلة الكبرى',e:'Big echo when stopping',cl:'qalqalah',L:'ق ط ب ج د',
+  d:'A stronger bounce when you stop on a قلقلة letter at the end of a word. Strongest when that letter has شدة, as in الْحَقّ.',
+  ex:[['قُلْ أَعُوذُ بِرَبِّ الْفَلَ{قِ}','113:1','',1],['قُلْ هُوَ اللَّهُ أَحَ{دٌ}','112:1','',1],['وَاللَّهُ مِن وَرَائِهِم مُّحِي{طٌ}','85:20','',1]]},
+
+ {id:'tabii',c:'madd',g:'المد الطبيعي وما يلحق به',ar:'المد الطبيعي',e:'Natural lengthening',cl:'madd2',L:'ا و ي',b:[2,2],k:'2 counts',
+  d:'A حرف مد with no همزة or سكون after it. Every other مد is built on this one.',h:'ا after فتحة · وْ after ضمة · يْ after كسرة',
+  ex:[['وَإِذْ قَ{ا}لَ رَبُّكَ','2:30'],['وَمِنَ النَّاسِ مَن يَقُ{و}لُ','2:8'],['وَإِذَا قِ{ي}لَ لَهُمْ','2:11']],
+  tip:'Two equal counts. Cutting it short is a clear error because it changes the word.'},
+ {id:'iwad',c:'madd',g:'المد الطبيعي وما يلحق به',ar:'مد العوض',e:'Stopping on tanween with fatha',cl:'madd2',b:[2,2],k:'2 counts, only when stopping',
+  d:'When you stop on a word ending in تنوين الفتح, the تنوين becomes an alif: عَلِيمًا is read عَلِيمَا.',
+  ex:[['فِي دِينِ اللَّهِ أَفْوَا{جًا}','110:2','',1],['إِنَّهُ كَانَ تَوَّا{بًا}','110:3','',1]],
+  tip:'Not for التاء المربوطة: رَحْمَةً is stopped as رَحْمَهْ.'},
+ {id:'silah-s',c:'madd',g:'المد الطبيعي وما يلحق به',ar:'مد الصلة الصغرى',e:'The pronoun هـ stretched',cl:'madd2',b:[2,2],k:'2 counts',
+  d:'The pronoun هـ (him, his) between two voweled letters is stretched as if a small و or ي follows it.',
+  ex:[['إِنَّ{هُۥ} كَانَ تَوَّابًا','110:3'],['وَلَمْ يَكُن لَّ{هُۥ} كُفُوًا أَحَدٌ','112:4']],
+  tip:'Exceptions in حفص: يَرْضَهُ لَكُمْ (39:7) is short, and فِيهِۦ مُهَانًا (25:69) is long.'},
+ {id:'badal',c:'madd',g:'المد بسبب الهمز',ar:'مد البدل',e:'Hamza before the madd',cl:'madd2',b:[2,2],k:'2 counts in Hafs',
+  d:'A همزة comes before the حرف مد in the same word.',
+  ex:[['وَالَّذِينَ {آ}مَنُوا','2:9'],['فَزَادَهُمْ {إِي}مَانًا','3:173'],['مِّنَ الَّذِينَ {أُو}تُوا الْكِتَابَ','2:101']]},
+ {id:'muttasil',c:'madd',g:'المد بسبب الهمز',ar:'المد الواجب المتصل',e:'Obligatory, hamza in the same word',cl:'madd45',b:[4,5],k:'4 or 5 counts · 6 when stopping on the همزة',
+  d:'A حرف مد followed by a همزة in the same word. It must be lengthened.',
+  ex:[['إِذَا جَ{اءَ} نَصْرُ اللَّهِ','110:1'],['أَوْ كَصَيِّبٍ مِّنَ السَّمَ{اءِ}','2:19'],['يَسُومُونَكُمْ سُ{وءَ} الْعَذَابِ','2:49']]},
+ {id:'munfasil',c:'madd',g:'المد بسبب الهمز',ar:'المد الجائز المنفصل',e:'Permitted, hamza in the next word',cl:'madd45',b:[4,5],k:'4 or 5 counts (حفص من طريق الشاطبية)',
+  d:'A حرف مد ends a word and the next word starts with a همزة.',
+  ex:[['{يَا أَ}يُّهَا النَّاسُ','2:21'],['إِنَّ{ا أَ}عْطَيْنَاكَ الْكَوْثَرَ','108:1'],['وَفِ{ي أَ}نفُسِكُمْ','51:21']],
+  tip:'Choose one length and keep it through your whole recitation. المتصل must never be shorter than المنفصل.'},
+ {id:'silah-k',c:'madd',g:'المد بسبب الهمز',ar:'مد الصلة الكبرى',e:'The pronoun هـ before a hamza',cl:'madd45',b:[4,5],k:'4 or 5 counts, same as المنفصل',
+  d:'A صلة where the next word starts with a همزة.',
+  ex:[['يَحْسَبُ أَنَّ مَالَ{هُۥٓ أَ}خْلَدَهُ','104:3'],['مَن ذَا الَّذِي يَشْفَعُ عِندَ{هُۥٓ إِ}لَّا بِإِذْنِهِ','2:255']]},
+ {id:'arid',c:'madd',g:'المد بسبب السكون',ar:'المد العارض للسكون',e:'Temporary sukoon when stopping',cl:'madd246',b:[2,6],k:'2, 4 or 6 counts',
+  d:'A حرف مد followed by a letter that gets سكون only because you stop on it.',
+  ex:[['الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِ{ي}نَ','1:2','',1],['وَإِيَّاكَ نَسْتَعِ{ي}نُ','1:5','',1],['الرَّحْمَٰنِ الرَّحِ{ي}مِ','1:3','',1]],
+  tip:'Only when stopping. If you keep reading it is a normal 2-count مد. Use the same length at every stop.'},
+ {id:'lin',c:'madd',g:'المد بسبب السكون',ar:'مد اللين',e:'Soft و and ي when stopping',cl:'madd246',b:[2,6],k:'2, 4 or 6 counts',
+  d:'وْ or يْ after a فتحة, when you stop on the letter after it.',
+  ex:[['لِإِيلَافِ قُرَ{يْ}شٍ','106:1','',1],['فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَ{يْ}تِ','106:3','',1],['وَآمَنَهُم مِّنْ خَ{وْ}فٍ','106:4','',1]],
+  tip:'When you keep reading, a لين letter has no lengthening at all.'},
+ {id:'lazim-k',c:'madd',g:'المد بسبب السكون',ar:'المد اللازم الكلمي',e:'Necessary, inside a word',cl:'madd6',b:[6,6],k:'6 counts',
+  d:'A حرف مد followed by a permanent سكون or شدة in the same word. With شدة it is مثقل. With a plain سكون it is مخفف, found only in آلْآنَ, twice in سورة يونس.',
+  ex:[['غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّ{ا}لِّينَ','1:7'],['الْحَ{ا}قَّةُ','69:1'],['{آ}لْآنَ وَقَدْ كُنتُم بِهِ تَسْتَعْجِلُونَ','10:51']]},
+ {id:'lazim-h',c:'madd',g:'المد بسبب السكون',ar:'المد اللازم الحرفي',e:'Opening letters of some surahs',cl:'madd6',L:'ن ق ص ع س ل ك م',b:[6,6],k:'6 counts',
+  d:'In the letters that open some سور, a letter whose name is three letters with a مد in the middle (مِيمْ، نُونْ، قَافْ) gets 6 counts.',
+  h:'6 counts: نقص عسلكم (ع may be 4 or 6). 2 counts: حي طهر. The ألف has no مد.',
+  ex:[['{الٓمٓ}','2:1'],['{قٓ} وَالْقُرْآنِ الْمَجِيدِ','50:1'],['{نٓ} وَالْقَلَمِ وَمَا يَسْطُرُونَ','68:1']],
+  tip:'In الٓمٓ the لام merges into the ميم: أَلِفْ لَامْ مِّيمْ.'},
+
+ {id:'mithlayn',c:'merge',ar:'إدغام المثلين',e:'Two identical letters',cl:'merge',
+  d:'The same letter twice, the first with سكون: read them as one letter with شدة.',
+  ex:[['اضْرِ{ب بِّ}عَصَاكَ الْحَجَرَ','2:60'],['وَقَ{د دَّ}خَلُوا بِالْكُفْرِ','5:61'],['فَمَا رَبِحَ{ت تِّ}جَارَتُهُمْ','2:16']],
+  tip:'No merging when the first is a حرف مد: فِي يَوْمٍ (14:18), قَالُوا وَهُمْ (26:96).'},
+ {id:'mutajanisayn',c:'merge',ar:'إدغام المتجانسين',e:'Same place, different qualities',cl:'merge',
+  d:'Two letters from the same مخرج, the first with سكون. In حفص they merge in these pairs:',
+  list:[['Pairs','ت ← ط · ط ← ت · د ← ت · ت ← د · ذ ← ظ · ث ← ذ · ب ← م']],
+  ex:[['قَ{د تَّ}بَيَّنَ الرُّشْدُ','2:256'],['وَقَالَ{ت طَّ}ائِفَةٌ','3:72'],['وَلَوْ أَنَّهُمْ إِ{ذ ظَّ}لَمُوا','4:64'],['يَا بُنَيَّ ارْكَ{ب مَّ}عَنَا','11:42'],['لَئِن بَسَ{طتَ} إِلَيَّ يَدَكَ','5:28']],
+  tip:'ط into ت is incomplete: keep the heaviness of the ط, as in بَسَطتَ and أَحَطتُ.'},
+ {id:'mutaqaribayn',c:'merge',ar:'إدغام المتقاربين',e:'Close letters',cl:'merge',
+  d:'Two letters with close مخارج or qualities, the first with سكون. In حفص they merge in ل ← ر and ق ← ك.',
+  ex:[['وَقُ{ل رَّ}بِّ ارْحَمْهُمَا','17:24'],['أَلَمْ نَخْلُ{قكُّ}م مِّن مَّاءٍ مَّهِينٍ','77:20']],
+  tip:'Exception: بَلْ ۜ رَانَ (83:14) has a سكت, so there is no merging.'},
+
+ {id:'waqf-signs',c:'waqf',ar:'علامات الوقف',e:'Reading the stop marks',cl:'clear',q:0,
+  d:'Small marks above the line tell you where you may stop.',
+  list:[['مـ · وقف لازم','You must stop: continuing can change the meaning.'],['لا · لا تقف','Don\'t stop. If you stop for breath, go back and start from a sensible place.'],['ج · وقف جائز','Stopping and continuing are equal.'],['صلى · الوصل أولى','You may stop, but continuing is better.'],['قلى · الوقف أولى','You may continue, but stopping is better.'],['ۛ ۛ · المعانقة','Two sets of three dots: stop at one of them, not both.']],
+  ex:[['ذَٰلِكَ الْكِتَابُ لَا رَيْبَ {ۛ} فِيهِ {ۛ} هُدًى لِّلْمُتَّقِينَ','2:2','Stop after رَيْبَ or after فِيهِ, not both']]},
+ {id:'waqf-how',c:'waqf',ar:'كيفية الوقف',e:'How to stop on a word',cl:'clear',q:0,
+  d:'Stopping changes the last letter of the word.',
+  list:[['The last vowel becomes سكون','نَسْتَعِينُ ← نَسْتَعِينْ'],['تنوين الفتح becomes ألف','عَلِيمًا ← عَلِيمَا'],['التاء المربوطة becomes هاء ساكنة','الْحَاقَّةُ ← الْحَاقَّهْ'],['Advanced','الروم والإشمام are optional ways to hint at the last vowel. Learn them from a teacher.']]},
+ {id:'ibtida',c:'waqf',ar:'الابتداء وهمزة الوصل',e:'Starting again after a stop',cl:'clear',q:0,
+  d:'Start from a place where the meaning is complete. If the word begins with همزة الوصل (ٱ), give it a vowel:',
+  list:[['With ال: فتحة','اَلْحَمْدُ لِلَّهِ'],['A verb whose third letter has ضمة: ضمة','اُدْعُ إِلَىٰ سَبِيلِ رَبِّكَ (16:125)'],['Otherwise: كسرة','اِهْدِنَا الصِّرَاطَ (1:6), and nouns like اِسْم، اِبْن، اِمْرَأَة']]},
+
+ {id:'sakt',c:'hafs',ar:'السكت',e:'A short breathless pause',cl:'clear',
+  d:'A very short pause without taking a breath, in four places in حفص.',
+  ex:[['وَلَمْ يَجْعَل لَّهُ عِوَجًا {ۜ} قَيِّمًا','18:1'],['مَن بَعَثَنَا مِن مَّرْقَدِنَا {ۜ} هَٰذَا','36:52'],['وَقِيلَ مَنْ {ۜ} رَاقٍ','75:27'],['كَلَّا بَلْ {ۜ} رَانَ','83:14']]},
+ {id:'imalah',c:'hafs',ar:'الإمالة',e:'Tilting the alif toward ي',cl:'clear',
+  d:'The only إمالة in حفص: the رَا in مَجْرَاهَا is tilted toward كسرة and ي.',
+  ex:[['بِسْمِ اللَّهِ {مَجْرٰ}يهَا وَمُرْسَاهَا','11:41']]},
+ {id:'ishmam',c:'hafs',ar:'الإشمام',e:'Rounding the lips',cl:'clear',
+  d:'In تَأْمَنَّا, round the lips as for a ضمة while the merged نون is said. It can also be read with الروم.',
+  ex:[['قَالُوا يَا أَبَانَا مَا لَكَ لَا {تَأْمَنَّا} عَلَىٰ يُوسُفَ','12:11']]},
+ {id:'tashil',c:'hafs',ar:'التسهيل',e:'Easing the second hamza',cl:'clear',
+  d:'The second همزة is softened, between a همزة and an alif.',
+  ex:[['{ءَاعْ}جَمِيٌّ وَعَرَبِيٌّ','41:44']],
+  tip:'Another word with two readings: ضَعْف in 30:54 may be read with فتحة or ضمة on the ض.'},
+];
+
+const PHASES=[
+ {w:'Weeks 1–2',t:'التأسيس',te:'Foundations',g:'Read fluently and fix الفاتحة.',
+  items:['Watch the 6 episodes of م. علاء حامد\'s course, one a day, for the big picture','After each episode, open the mind map and read the cards it mentions','Know the letters, الحركات، السكون، الشدة and التنوين by sight and sound (القاعدة النورانية if still slow)','Learn the difference between اللحن الجلي and اللحن الخفي','Recite الفاتحة to a teacher and fix every clear error','Start the daily 40-minute routine with الحصري'],
+  done:'الفاتحة has no clear errors.',r:['ibtida']},
+ {w:'Weeks 3–6',t:'المخارج والصفات',te:'Where and how letters are made',g:'Every letter from its right place.',
+  items:['Learn the 5 areas and 17 points','Drill each letter as أَبْ، أَتْ، أَثْ… and record it','Drill the confusing pairs: ح ه · ع ء · ص س · ط ت · ق ك · ذ ز ظ · ث س · ض د','Learn الصفات with opposites, then the single qualities','Ask your teacher to check every letter once'],
+  done:'Each letter sounds right on its own and inside words.',r:['makharij','sifat']},
+ {w:'Weeks 7–9',t:'النون والميم والغنة',te:'Nasal rules',g:'The most frequent rules in the Quran.',
+  items:['أحكام النون الساكنة والتنوين: the 4 rules','أحكام الميم الساكنة: the 3 rules','الغنة المشددة: hold 2 counts','أحكام اللام: ال and the لام of اللَّه','Find 10 examples of each rule in جزء عمّ','Memorise the matching lines of تحفة الأطفال'],
+  done:'سورة الضحى to سورة الناس recited with correct غنة and نون rules.',r:['izhar','idgh-g','idgh-n','iqlab','ikhfa','m-ikhfa','m-idgham','m-izhar','ghunnah','lam-q','lam-s','lam-jh','lam-jl']},
+ {w:'Weeks 10–13',t:'المد والقلقلة والتفخيم',te:'Lengths, echo, heavy and light',g:'Correct lengths and the right weight for each letter.',
+  items:['المد الطبيعي and what follows it: العوض، الصلة، البدل','المد بسبب الهمز: choose your المنفصل length (4 or 5) and keep it','المد بسبب السكون: العارض، اللين، اللازم','القلقلة الصغرى والكبرى','الراء heavy and light; the heavy letters خص ضغط قظ','Count on your fingers while reciting until counts feel natural'],
+  done:'جزء عمّ with even, consistent مد lengths.',r:['tabii','iwad','silah-s','badal','muttasil','munfasil','silah-k','arid','lin','lazim-k','lazim-h','qal-s','qal-k','ra-h','ra-l']},
+ {w:'Weeks 14–16',t:'الوصل والوقف',te:'Joining and stopping',g:'Read long passages with meaning and flow.',
+  items:['المثلان والمتجانسان والمتقاربان','علامات الوقف and how to stop on each word ending','الابتداء and همزة الوصل','The special words of حفص: السكت، الإمالة، الإشمام، التسهيل','Recite سورة الملك to your teacher'],
+  done:'A full page read with correct stops and starts.',r:['mithlayn','mutajanisayn','mutaqaribayn','waqf-signs','waqf-how','ibtida','sakt','imalah','ishmam','tashil']},
+ {w:'Month 5 on',t:'الإتقان',te:'Mastery',g:'From knowing the rules to reciting without thinking about them.',
+  items:['Memorise المقدمة الجزرية','Recite the whole Quran to a teacher, page by page (ختمة)','Practise the three speeds: التحقيق (slow), التدوير (medium), الحدر (fast)','Keep a mistakes log and review it every week','Ask your teacher about the path to الإجازة'],
+  done:'A teacher confirms your recitation is free of clear errors and consistent in the rules.',r:[]},
+];
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let learned=load('tj-learned',{}), plan=load('tj-plan',{});
+const byId=Object.fromEntries(RULES.map(r=>[r.id,r]));
+const catOf=Object.fromEntries(CATS.map(c=>[c.id,c]));
+const hl=(t,cls)=>t.replace(/\{(.*?)\}/g,`<span class="${cls}">$1</span>`);
+const refA=ref=>{const [s,a]=ref.split(':');return `<a href="https://quran.com/${s}/${a}" target="_blank" rel="noopener" lang="ar" dir="rtl">${SURAH[s-1]} · ${ad(a)} ↗</a>`};
+const verse=(t,cls)=>`<span class="br">﴿</span> ${hl(t,cls)} <span class="br">﴾</span>`;
+const tiles=L=>`<div class="tiles">${L.split(' ').map(x=>`<span class="tile${x.length>2?' wide':''}">${x}</span>`).join('')}</div>`;
+const beats=([a,b])=>`<span class="beats" aria-label="${a===b?a:a+' to '+b} counts">${[1,2,3,4,5,6].map(i=>`<i class="${i<=a?'on':i<=b?'opt':''}"></i>`).join('')}</span>`;
+const rchip=id=>{const r=byId[id];return `<button class="rchip" data-open="${id}" style="--rc:var(--t-${r.cl})" lang="ar"><i></i>${r.ar}</button>`};
+
+// Wrap Arabic runs inside English text in <bdi class="a"> so mixed lines keep their order and get the Naskh face.
+const AR='\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDFF\\uFE70-\\uFEFF';
+const RUN=new RegExp(`[${AR}]+(?:[\\s\\u060C\\u061B←·/]+[${AR}]+)*`,'g'), HAS=new RegExp(`[${AR}]`);
+function bidi(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>!HAS.test(n.data)||n.parentElement.closest('[lang="ar"],[dir="rtl"],bdi,script,style,option,textarea,.tiles')?2:1});
+  const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  for(const n of nodes){
+    const f=document.createDocumentFragment();let last=0;
+    n.data.replace(RUN,(m,i)=>{f.append(n.data.slice(last,i));const b=document.createElement('bdi');b.className='a';b.lang='ar';b.textContent=m;f.append(b);last=i+m.length});
+    f.append(n.data.slice(last));n.replaceWith(f);
+  }
+}
+
+/* ---------- card ---------- */
+function card(r,closable){
+  const facts=[r.L&&`<div><dt>Letters</dt><dd>${tiles(r.L)}</dd></div>`,r.b&&`<div><dt>Length</dt><dd class="len">${beats(r.b)}<span>${r.k}</span></dd></div>`,r.h&&`<div><dt>Note</dt><dd>${r.h}</dd></div>`].filter(Boolean).join('');
+  return `<article class="rule" id="r-${r.id}" style="--rc:var(--t-${r.cl})">
+  <div class="rh"><div><h3 lang="ar" dir="rtl">${r.ar}</h3><p class="en">${r.e}</p></div>${closable?'<button class="close" data-close>Close</button>':`<span class="ctag" lang="ar">${COLORS[r.cl]}</span>`}</div>
+  <p>${r.d}</p>
+  ${r.list?`<dl class="list">${r.list.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>`:''}
+  ${facts?`<dl class="facts">${facts}</dl>`:''}
+  ${r.ex?`<div class="exh">Examples · أمثلة</div>${r.ex.map(([t,ref,note,stop])=>`<figure class="ayah"><p class="v" lang="ar">${verse(t,'hl')}</p><figcaption>${stop?'<i class="stop">when stopping</i>':''}${note?`<span>${note}</span>`:''}${refA(ref)}</figcaption></figure>`).join('')}`:''}
+  ${r.tip?`<p class="tip"><span class="ic">!</span><span>${r.tip}</span></p>`:''}
+  <label class="learn"><input type="checkbox" data-learn="${r.id}" ${learned[r.id]?'checked':''}> I can do this · <span lang="ar">أتقنته</span></label>
+  </article>`;
+}
+
+/* ---------- plan ---------- */
+function renderPlan(){
+  $('#phases').innerHTML=PHASES.map((p,pi)=>{const n=p.items.filter((_,i)=>plan[(pi+1)+'-'+i]).length;
+   return `<div class="phase"><div class="star"><span>${ad(pi+1)}</span></div><div class="pcard">
+   <div class="top"><h3>${p.t}<small>${p.te}</small></h3><span class="chip">${p.w} · <span data-pc="${pi}">${n}/${p.items.length}</span></span></div>
+   <p class="goal">${p.g}</p>
+   <ul>${p.items.map((it,i)=>{const k=(pi+1)+'-'+i;return `<li><label><input type="checkbox" id="p${k}" data-plan="${k}" ${plan[k]?'checked':''}><span>${it}</span></label></li>`}).join('')}</ul>
+   <div class="done"><b>Done when:</b> ${p.done}</div>
+   ${p.r.length?`<div class="rchips">${p.r.map(rchip).join('')}</div>`:''}
+   </div></div>`}).join('');
+  bidi($('#phases'));planStats();
+}
+function planStats(){
+  const total=PHASES.reduce((s,p)=>s+p.items.length,0), done=Object.values(plan).filter(Boolean).length;
+  $('#planPct').textContent=`${done} / ${total} steps`; $('#planBar').style.width=(done/total*100)+'%';
+  PHASES.forEach((p,pi)=>{const el=document.querySelector(`[data-pc="${pi}"]`);if(el)el.textContent=`${p.items.filter((_,i)=>plan[(pi+1)+'-'+i]).length}/${p.items.length}`});
+}
+
+/* ---------- map ---------- */
+function renderMap(){
+  const leaf=r=>`<li class="ll"><button class="t-leaf" data-open="${r.id}" style="--rc:var(--t-${r.cl})"><b>${r.ar}</b>${learned[r.id]?'<span class="ok">✓</span>':''}</button></li>`;
+  $('#tree').innerHTML=`<div class="star t-root"><span>التجويد<small>TAJWEED</small></span></div><ul>${CATS.map(c=>{
+    const rs=RULES.filter(r=>r.c===c.id), n=rs.filter(r=>learned[r.id]).length;
+    const groups=[...new Set(rs.map(r=>r.g).filter(Boolean))];
+    const inner=groups.length?groups.map(g=>`<li class="lg"><span class="t-grp">${g}</span><ul>${rs.filter(r=>r.g===g).map(leaf).join('')}</ul></li>`).join(''):rs.map(leaf).join('');
+    return `<li class="lc"><button class="t-cat" data-goto="${c.id}"><b>${c.ar}</b><small dir="ltr">${c.n} · ${n}/${rs.length}</small></button><ul>${inner}</ul></li>`}).join('')}</ul>`;
+  $('#learnedScore').textContent=`${RULES.filter(r=>learned[r.id]).length} / ${RULES.length} rules learned`;
+  $$('#index [data-goto]').forEach(b=>{const rs=RULES.filter(r=>r.c===b.dataset.goto);b.querySelector('small').textContent=`${rs.filter(r=>learned[r.id]).length}/${rs.length}`});
+}
+const legend=Object.entries(COLORS).map(([k,v])=>`<span style="--rc:var(--t-${k})"><i class="dot"></i>${v}</span>`).join('');
+$('#legend').innerHTML=$('#legend2').innerHTML=legend;
+
+/* ---------- rules ---------- */
+$('#index').innerHTML=CATS.map(c=>`<button data-goto="${c.id}"><b lang="ar">${c.ar}</b><small></small></button>`).join('');
+$('#sections').innerHTML=CATS.map((c,ci)=>{
+  const rs=RULES.filter(r=>r.c===c.id);
+  let extra='';
+  if(c.ask) extra=`<div class="chooser"><div class="q">${c.ask}</div>${rs.filter(r=>r.L).map(r=>`<div class="crow" style="--rc:var(--t-${r.cl})">${tiles(r.L)}${rchip(r.id)}</div>`).join('')}</div>`;
+  if(c.id==='madd') extra=`<div class="chooser"><div class="q">Lengths at a glance · solid = required, striped = allowed</div>${rs.map(r=>`<div class="mrow" style="--rc:var(--t-${r.cl})">${rchip(r.id)}${beats(r.b)}</div>`).join('')}</div>`;
+  return `<section class="csec" id="sec-${c.id}" data-sec="${c.id}"><div class="chead"><div class="star"><span>${ad(ci+1)}</span></div><div><h2 lang="ar" dir="rtl">${c.ar}</h2><p>${c.n}. ${c.i}</p></div></div>
+  <div class="extra">${extra}</div><div class="cards">${rs.map(r=>card(r)).join('')}</div></section>`}).join('');
+bidi($('#sections'));
+$('#q').addEventListener('input',()=>{
+  const q=$('#q').value.trim().toLowerCase();
+  $$('#sections .rule').forEach(el=>{el.hidden=!!q&&!el.textContent.toLowerCase().includes(q)});
+  $$('#sections .csec').forEach(s=>{s.hidden=!!q&&!s.querySelector('.rule:not([hidden])');s.querySelector('.extra').hidden=!!q});
+});
+
+/* ---------- interactions ---------- */
+function openRule(id){$('#dlgBody').innerHTML=card(byId[id],1);bidi($('#dlgBody'));$('#dlg').showModal()}
+$('#dlg').addEventListener('click',e=>{if(e.target===$('#dlg')||e.target.closest('[data-close]'))$('#dlg').close()});
+document.addEventListener('click',e=>{
+  const o=e.target.closest('[data-open]'); if(o){e.preventDefault();openRule(o.dataset.open);return}
+  const g=e.target.closest('[data-goto]'); if(g){if(location.hash!=='#rules'){location.hash='rules';route()}document.getElementById('sec-'+g.dataset.goto).scrollIntoView({behavior:'smooth',block:'start'})}
+});
+document.addEventListener('change',e=>{
+  const l=e.target.dataset.learn, p=e.target.dataset.plan;
+  if(l){learned[l]=e.target.checked;save('tj-learned',learned);$$(`[data-learn="${l}"]`).forEach(x=>x.checked=e.target.checked);renderMap()}
+  if(p){plan[p]=e.target.checked;save('tj-plan',plan);planStats()}
+});
+
+/* ---------- quiz ---------- */
+const QR=RULES.filter(r=>r.ex&&r.q!==0);
+$('#qcat').innerHTML='<option value="all">كل الموضوعات · All</option>'+CATS.filter(c=>QR.some(r=>r.c===c.id)).map(c=>`<option value="${c.id}">${c.ar}</option>`).join('');
+let score=0,asked=0;
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+function ask(){
+  const cat=$('#qcat').value, pool=QR.filter(r=>cat==='all'||r.c===cat);
+  const r=pool[Math.random()*pool.length|0], [t,ref,,stop]=r.ex[Math.random()*r.ex.length|0];
+  const opts=shuffle([r,...[...shuffle(QR.filter(x=>x.c===r.c&&x!==r)),...shuffle(QR.filter(x=>x.c!==r.c))].slice(0,3)]);
+  $('#qcard').innerHTML=`<div class="eyebrow" style="text-align:center">Which rule applies to the underlined part?</div>
+   <p class="v" lang="ar">${verse(t,'q')}</p>
+   <div class="qmeta">${stop?'<i class="stop">you are stopping here</i>':''}${refA(ref)}</div>
+   <div class="opts">${opts.map(o=>`<button class="opt" data-ans="${o.id}"><b lang="ar">${o.ar}</b><small>${o.e}</small></button>`).join('')}</div>
+   <div id="fb"></div>`;
+  $('#qcard').dataset.right=r.id;
+}
+$('#qcard').addEventListener('click',e=>{
+  if(e.target.id==='next'){ask();return}
+  const b=e.target.closest('[data-ans]'); if(!b||b.disabled)return;
+  const right=$('#qcard').dataset.right, ok=b.dataset.ans===right;
+  asked++; if(ok)score++; $('#qscore').textContent=`${score} / ${asked}`;
+  $$('.opt').forEach(x=>{x.disabled=true;if(x.dataset.ans===right)x.classList.add('right')});
+  if(!ok)b.classList.add('wrong');
+  const r=byId[right];
+  $('#fb').innerHTML=`<div class="feedback"><b>${ok?'Correct.':'Not quite.'}</b> <b lang="ar">${r.ar}</b>: ${r.d}</div>
+   <div class="qbar" style="margin-top:12px"><button class="btn ghost" data-open="${r.id}">Open the rule card</button><button class="btn" id="next">Next question</button></div>`;
+  bidi($('#fb'));$('#next').focus();
+});
+$('#qcat').addEventListener('change',ask);
+
+/* ---------- routing ---------- */
+const VIEWS=['plan','map','rules','practice','resources'];
+function route(){
+  const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'plan';
+  $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v);
+  $$('nav.tabs a').forEach(a=>a.hash==='#'+v?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+}
+addEventListener('hashchange',route);
+bidi(document.querySelector('[data-view="plan"]'));bidi(document.querySelector('[data-view="resources"]'));
+renderPlan();renderMap();ask();route();
+</script>
