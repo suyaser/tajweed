@@ -1,0 +1,21 @@
+[
+ {"a": "ikhfa", "b": "idgh-g", "difference": "الإخفاء: the نون is hidden before 15 letters and the next letter has no شدة. الإدغام بغنة: the نون merges into ي ن م و and the next letter takes a شدة."},
+ {"a": "ikhfa", "b": "iqlab", "difference": "Before ب the نون becomes a hidden ميم on the lips (الإقلاب); before the other 15 letters it is hidden toward that letter's place (الإخفاء)."},
+ {"a": "m-ikhfa", "b": "m-izhar", "difference": "A مْ before ب is hidden with a held غنة; before any letter other than ب and م it is said clearly with no held غنة."},
+ {"a": "m-idgham", "b": "ghunnah", "difference": "Both are a مّ with a 2-count غنة. الإدغام الشفوي is made from a مْ meeting a م across two words; الغنة المشددة is any نّ or مّ already written with a شدة."},
+ {"a": "idgh-g", "b": "idgh-n", "difference": "Into ي ن م و the نون merges with a غنة; into ل and ر it merges with no غنة (حفص من طريق الشاطبية)."},
+ {"a": "idgh-g", "b": "izhar", "difference": "Across two words a نون before ي ن م و merges; inside one word (دُنْيَا، بُنْيَٰنٌ، صِنْوَانٌ، قِنْوَانٌ) it stays clear (الإظهار المطلق), as it does before a throat letter (الإظهار الحلقي)."},
+ {"a": "lam-q", "b": "lam-s", "difference": "The ل of ال is said before ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ (القمرية); before the other 14 letters it is silent and the next letter takes a شدة (الشمسية)."},
+ {"a": "lam-jh", "b": "lam-jl", "difference": "The ل of the name اللَّه is heavy after فتحة or ضمة or at the start, and light after any كسرة."},
+ {"a": "ra-h", "b": "ra-l", "difference": "Look at the ر's own vowel: فتحة or ضمة is heavy, كسرة is light. With سكون, look at the letter before it (and, after a كسرة, at a heavy letter after it)."},
+ {"a": "qal-s", "b": "qal-k", "difference": "The قلقلة letter has a سكون in the middle or while you keep reading (الصغرى), or you stop on it at the end of a word (الكبرى, stronger)."},
+ {"a": "muttasil", "b": "munfasil", "difference": "The همزة is in the same word as the حرف مد (المتصل, obligatory) or starts the next word (المنفصل, permitted). In حفص من الشاطبية both are 4 or 5, read equal."},
+ {"a": "arid", "b": "lazim-k", "difference": "The سكون after the حرف مد comes only from stopping (العارض: 2, 4 or 6) or is part of the word, usually a شدة (اللازم: always 6)."},
+ {"a": "lin", "b": "arid", "difference": "Before the stopped letter there is a وْ or يْ after a فتحة (اللين), or a true حرف مد (العارض). When both come in one recitation, اللين may not be longer than العارض."},
+ {"a": "silah-s", "b": "silah-k", "difference": "The pronoun هـ stretched before a word that does not start with a همزة is 2 counts (الصغرى); before a همزة it is 4 or 5, like المنفصل (الكبرى)."},
+ {"a": "badal", "b": "muttasil", "difference": "The همزة comes before the حرف مد (البدل, 2 counts in حفص) or after it in the same word (المتصل, 4 or 5)."},
+ {"a": "tabii", "b": "iwad", "difference": "المد الطبيعي is a written حرف مد; مد العوض is the alif that replaces تنوين الفتح only when you stop. Both are 2 counts."},
+ {"a": "mithlayn", "b": "mutajanisayn", "difference": "The same letter twice (المثلين) or two letters from the same مخرج with different qualities, such as د and ت (المتجانسين)."},
+ {"a": "mutajanisayn", "b": "mutaqaribayn", "difference": "Same مخرج (المتجانسين: ت ط، د ت، ذ ظ، ث ذ، ب م) or close مخارج (المتقاربين: ل ر، ق ك)."},
+ {"a": "mithlayn", "b": "mutaqaribayn", "difference": "The same letter twice, as in هَل لَّكَ (المثلين), or two close letters, as in قُل رَّبِّ (المتقاربين)."}
+]
