@@ -124,8 +124,8 @@ export default function Today() {
               {practice.map(p => (
                 <li key={p.id}>
                   <a href={href('listen', rangeParam(p.closing!.from, p.closing!.to))}>
-                    <span lang="ar">{rangeRef(p.closing!.from, p.closing!.to)}</span>{' '}
-                    <span className="t-sm muted"><T>{`(${getLesson(p.id)?.nameAr ?? ''})`}</T></span> <span aria-hidden="true">›</span>
+                    <bdi lang="ar">{rangeRef(p.closing!.from, p.closing!.to)}</bdi>{' '}
+                    <bdi lang="ar" className="t-sm muted">{getLesson(p.id)?.nameAr}</bdi> <span aria-hidden="true">›</span>
                   </a>
                 </li>
               ))}
