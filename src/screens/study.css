@@ -129,3 +129,10 @@
 .s-lsteps li small { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .s-lsteps li[aria-current] [lang="ar"] { color: var(--gold-ink); font-weight: 700; }
 .s-lsteps .star { background: var(--bg); }
+
+/* how it works (#/guide, onboarding) */
+.g-basics { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s3); }
+.g-basic { display: flex; gap: var(--s3); align-items: flex-start; }
+.g-n { flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: var(--gold-display); font-weight: 700; }
+.g-page, .g-full { display: grid; gap: var(--s4); }
+.today-hint { margin-top: var(--s1); }

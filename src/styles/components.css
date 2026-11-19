@@ -27,7 +27,10 @@
 .topbar-late { font: var(--t-sm); opacity: 0.85; }
 .topbar a, .focusbar a { color: inherit; }
 .back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--target); text-decoration: none; font-weight: 600; }
-.gear, .rail-gear { display: grid; place-items: center; width: var(--target); height: var(--target); border-radius: var(--r-ctl); text-decoration: none; font-size: 22px; }
+.topbar-actions { display: flex; gap: var(--s1); margin-inline-start: auto; }
+.gear, .rail-gear { display: grid; justify-items: center; align-content: center; gap: 2px; min-width: 56px; min-height: 56px; padding: 4px 8px; border-radius: var(--r-ctl); text-decoration: none; }
+.gear small, .rail-gear small { font-size: 11px; font-weight: 600; letter-spacing: 0.02em; }
+.gear-ico { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid currentColor; font-size: 18px; font-weight: 700; line-height: 1; }
 
 /* focus mode bar */
 .focusbar {
@@ -87,7 +90,8 @@
   .rail-brand { margin-bottom: var(--s4); text-align: center; }
   .rail-brand .kufi { font: var(--k-h2); font-size: 22px; line-height: 1.3; color: var(--gold-display); }
   .rail-orn { font-family: var(--f-quran); font-size: 28px; color: var(--gold-display); }
-  .rail-gear { margin-top: auto; align-self: center; }
+  .rail-gear { align-self: stretch; }
+  .rail-help { margin-top: auto; }
   /* laptop: the band lives in the rail; the header is a slim surface strip */
   /* laptop: the band lives in the rail; the header is a page title on the surface (artifact .h2: Kufi Arabic, Marcellus English) */
   .topbar, .topbar-today {
@@ -107,7 +111,7 @@
   .topbar.topbar-today .topbar-en { color: var(--on-green); opacity: 0.85; }
   .topbar-today .topbar-dates { color: var(--on-green); flex-direction: column; align-items: flex-end; gap: 0; font: var(--t-body); }
   .topbar-today .topbar-dates [lang="ar"] { color: var(--gold-display); font-size: 20px; }
-  .topbar .gear { display: none; }
+  .topbar .topbar-actions { display: none; }
   .shell-main { max-width: 840px; padding-inline: var(--s8); }
   .shell-main:has(.today, .wide) { max-width: 1180px; }
   .shell-col:has(.today, .wide) .topbar { padding-inline: max(var(--s8), calc((100% - 1180px) / 2 + var(--s8))); }
@@ -182,6 +186,7 @@
 .empty { display: grid; gap: var(--s3); justify-items: center; text-align: center; padding: var(--s6) var(--s4); }
 .empty .orn { width: 100%; }
 .nudge { grid-template-columns: 1fr auto auto; align-items: center; padding: var(--s3) var(--s4); }
+@media (max-width: 599px) { .nudge { grid-template-columns: 1fr auto; } .nudge > :nth-child(2):not(.icon-btn) { grid-row: 2; justify-self: start; } .nudge > .icon-btn { grid-column: 2; grid-row: 1; align-self: start; } }
 
 /* ================= buttons ================= */
 .btn {

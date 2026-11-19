@@ -6,6 +6,7 @@ import { Button, Card, CorrectionTag, EmptyState, OrnHeading, SegmentedControl, 
 import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, upcomingSession } from './path/helpers'
 import { startClass } from './path/ui'
 import './path.css'
+import { Hint } from './study/Hint'
 
 export default function Teacher() {
   const d = useData()
@@ -18,6 +19,7 @@ export default function Teacher() {
 
   return (
     <div className="p-stack">
+      <Hint id="teacher">Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.</Hint>
       <Card level="e2" eyebrow={next ? `Next session · ${dayLabel(next.on)}` : teacherDay ? `Next teacher day · ${dayLabel(teacherDay)}` : 'Next session'}>
         {next ? (
           <>
