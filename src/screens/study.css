@@ -43,7 +43,13 @@
 .s-draft { color: var(--gold-ink); border: 1px solid var(--gold-soft); border-radius: var(--r-ctl); padding: var(--s2) var(--s3); }
 .s-facts { display: grid; grid-template-columns: auto 1fr; gap: var(--s2) var(--s3); align-items: center; }
 .s-pairs-list { display: grid; gap: var(--s2); }
-.s-pairs-list li { display: grid; gap: 2px; }
+.s-pairs-list li { display: grid; gap: 2px; } /* two rows: the term, then its line (each one element: UX B1) */
+/* Find: each word token is a 44px+ target (UX minor 6) */
+.s-find .w[role="button"] { display: inline-block; min-width: 44px; min-height: 44px; text-align: center; }
+/* small inline links (Today's unit card) get a full-height tap area */
+.s-links { display: flex; flex-wrap: wrap; column-gap: var(--s4); }
+.s-links a { min-height: 44px; display: inline-flex; align-items: center; }
+.s-ob-progress { display: grid; gap: 2px; }
 .s-ex-list { display: grid; gap: var(--s3); }
 .s-ex-row + .s-ex-row { border-top: 1px dashed var(--line); padding-top: var(--s3); }
 .s-tip { color: var(--gold-ink); }

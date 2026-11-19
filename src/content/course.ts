@@ -15,9 +15,14 @@ export function buildCourse(raw: RawCourse, has: (lessonId: string) => boolean) 
   const units: Unit[] = raw.units.map(({ lessons, mutun, ...u }) => ({
     ...u, finale: u.finale ?? null, lessonIds: lessons.filter(has), mutun: mutun ?? [],
   }))
+  // one object per id, so it is stable as an effect dependency (engineering minor 8)
+  const cache = new Map<string, CourseLesson>()
   const lesson = (id: string): CourseLesson => {
-    const l = raw.lessons[id]
-    return { ...NONE, ...l, contrastWith: l?.contrastWith && has(l.contrastWith) ? l.contrastWith : null }
+    if (!cache.has(id)) {
+      const l = raw.lessons[id]
+      cache.set(id, { ...NONE, ...l, contrastWith: l?.contrastWith && has(l.contrastWith) ? l.contrastWith : null })
+    }
+    return cache.get(id)!
   }
   return { units, lesson }
 }

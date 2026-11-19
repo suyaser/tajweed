@@ -38,7 +38,7 @@ export function FullGuide() {
         <ul className="s-bullets">
           <li>Lessons open one after another. Today always shows the next one.</li>
           <li>At most two new lessons a day. Spacing is what makes them stick.</li>
-          <li>After a unit's last lesson comes its finale: a whole passage you recite. “I recited it” opens the next unit.</li>
+          <li>After a unit's last lesson comes its finale: a passage you recite. “I recited it” opens the next unit.</li>
           <li>Some units list lines of تحفة الأطفال or الجزرية to memorise. They are optional.</li>
         </ul>
         <p><a href={href('plan')}>Open the course map ›</a></p>
@@ -47,7 +47,7 @@ export function FullGuide() {
       <Sec ar="الدرس" en="The seven lesson steps">
         <ol className="s-bullets">
           <li><T>اسمع Hear: three real words with the rule, from the reciter. Play each as often as you like.</T></li>
-          <li><T>لاحظ Notice: two words, one with the rule and one without. Which is which, by ear?</T></li>
+          <li><T>لاحظ Notice: two words, one with the sound you just heard and one without. Which is which, by ear? Then both are named.</T></li>
           <li><T>تعلّم Learn: the rule card, with its name, definition and examples.</T></li>
           <li><T>ردّد Say: repeat after the reciter, record yourself, compare, and say if it sounded the same.</T></li>
           <li><T>استخرج Find: tap every word in an ayah that has the rule.</T></li>
@@ -87,9 +87,18 @@ export function FullGuide() {
 
       <Sec ar="بياناتك" en="Your data">
         <ul className="s-bullets">
-          <li>Everything stays on this device. Nothing is sent anywhere.</li>
-          <li>Install the app to your home screen so the browser doesn't clear it.</li>
-          <li>Back up from Settings now and then. A backup file restores everything on a new phone.</li>
+          <li>Your progress is kept on this device by default. No account is needed.</li>
+          <li>If you sign in (optional), your progress is backed up to our server and kept in step on your other devices.</li>
+          <li>Your recordings never leave this device, signed in or not.</li>
+          <li>Not signed in? Install the app to your home screen so the browser doesn't clear it, and save a backup file from Settings now and then.</li>
+        </ul>
+      </Sec>
+
+      <Sec ar="الحساب والحلقة" en="Account and circles (optional)">
+        <ul className="s-bullets">
+          <li>Sign in from Settings with an email link or Google to back up and sync your progress.</li>
+          <li>Teacher link: a read-only page of your progress for your teacher. You can turn it off any time.</li>
+          <li><T>A circle (حلقة) is a small group of friends who see who studied on which days this week. No scores and no ranking.</T></li>
         </ul>
       </Sec>
     </div>

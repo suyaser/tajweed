@@ -1,4 +1,4 @@
-import { splitBidi, arDigits, arRefs, isArabicLine } from './bidi'
+import { splitBidi, arDigits, arRefs, carryMarks, isArabicLine } from './bidi'
 
 test('wraps multi-word Arabic runs as one island, keeps Latin punctuation outside', () => {
   expect(splitBidi('This is النون الساكنة والتنوين, then إدغام.')).toEqual([
@@ -36,4 +36,10 @@ test('colon references render as Arabic surah + Arabic-Indic digits inside the i
   expect(isArabicLine(s)).toBe(true)
   expect(splitBidi(arRefs('Exception: مَنْ ۜ رَاقٍ (75:27) has a سكت')).map((p) => p.text)).toEqual(['Exception: ', 'مَنْ ۜ رَاقٍ (القيامة ٢٧)', ' has a ', 'سكت'])
   expect(arRefs('أَرْجِهْ (7:111، 26:36)')).toBe('أَرْجِهْ (الأعراف ١١١، الشعراء ٣٦)')
+})
+
+test('a vowel mark with no letter rides a tatweel; marks on letters are untouched', () => {
+  expect(carryMarks('فتحة َ and a شدة (ّ)')).toBe('فتحة ـَ and a شدة (ـّ)')
+  expect(carryMarks('رَبِّ')).toBe('رَبِّ')
+  expect(splitBidi(carryMarks('فتحة َ')).map(p => p.ar)).toEqual([true])
 })

@@ -1,5 +1,5 @@
 // Verse loading, audio and the example verse block shared by Learn, Review and Today.
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useId, useState, type ReactNode } from 'react'
 import type { Example, Verse } from '../../core/types'
 import { useData } from '../../core/store'
 import { getVerse, RECITERS, wordSegments } from '../../quran'
@@ -29,6 +29,7 @@ export function useStudyAudio() {
   const { settings } = useData()
   const reciter = RECITERS.find(r => r.id === settings.reciterId) ?? RECITERS[0]
   const { state, player } = usePlayer()
+  const [owner, setOwner] = useState<string | null>(null) // the PlayButton that started the current playback
   const ayah = (v: Verse) => { player.load([v], reciter, { skipBasmala: true }); player.play() }
   /** Just the example's words (tajweed review M5): never the whole ayah when timings exist. */
   const example = (v: Verse, ex: Example) => {
@@ -46,16 +47,23 @@ export function useStudyAudio() {
     })
   }
   const offline = state.status === 'offline' || (typeof navigator !== 'undefined' && navigator.onLine === false)
-  return { state, player, reciter, ayah, example, passage, exampleThen, offline, busy: state.status === 'playing' || state.status === 'loading', stop: () => player.stop() }
+  return { state, player, reciter, ayah, example, passage, exampleThen, offline, busy: state.status === 'playing' || state.status === 'loading', stop: () => player.stop(), owner, setOwner }
 }
 export type StudyAudio = ReturnType<typeof useStudyAudio>
 
-/** ▶ with a text label; says so when audio is unavailable (design §5.3 states). */
+/** ▶ with a text label, ❚❚ while it plays (tap to stop); says so when audio is unavailable (design §5.3 states). */
 export function PlayButton({ label, onClick, audio, children = '▶' }: { label: string; onClick?: () => void; audio: StudyAudio; children?: ReactNode }) {
+  const id = useId()
   if (audio.offline) return <span className="t-sm muted s-play-off">Audio needs a connection</span>
+  const playing = audio.busy && audio.owner === id
+  const tap = () => {
+    if (playing) return audio.stop()
+    audio.setOwner(id)
+    onClick?.()
+  }
   return (
-    <button type="button" className="icon-btn s-play-btn" onClick={onClick} disabled={!onClick} aria-label={`Play ${label}`}>
-      {children}
+    <button type="button" className="icon-btn s-play-btn" onClick={tap} disabled={!onClick} aria-pressed={playing} aria-label={`${playing ? 'Stop' : 'Play'} ${label}`}>
+      {playing ? <span aria-hidden="true">❚❚</span> : children}
     </button>
   )
 }

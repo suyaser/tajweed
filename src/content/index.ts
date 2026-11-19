@@ -9,7 +9,7 @@ import also from './also.json'
 const ALSO = also as Record<string, string[] | undefined>
 
 interface RawRule {
-  id: string; cat: string; phase: number; ar: string; en: string; color: string; definition: string
+  id: string; cat: string; ar: string; en: string; color: string; definition: string
   letters?: string; counts?: { min: number; max: number; note?: string }; conditions?: string[]; tip?: string
   list?: string[][]
   examples?: { verse: string; word_from: number; word_to: number; text: string; focus: string; stop?: boolean; note?: string }[]
@@ -60,7 +60,7 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   if (r.counts && r.cat === 'madd') questionKinds.push('length')
   if (facts.length) questionKinds.push('fact')
   return {
-    id: r.id, topicId: r.cat, phaseId: r.phase, order, nameAr: r.ar, nameEn: r.en, colour: NO_COLOUR.has(r.cat) ? undefined : (r.color as ColourKey),
+    id: r.id, topicId: r.cat, order, nameAr: r.ar, nameEn: r.en, colour: NO_COLOUR.has(r.cat) ? undefined : (r.color as ColourKey),
     summary: r.definition, letters: r.letters, counts: r.counts, conditions: r.conditions, tip: r.tip,
     list: r.list as [string, string][] | undefined, examples, facts, questionKinds,
     confusableWith: pairs.flatMap(p => (p.a === r.id ? [p.b] : p.b === r.id ? [p.a] : [])),

@@ -18,7 +18,7 @@ const TABS: { id: Tab; ar: string; en: string; to: string }[] = [
 const META: Record<RouteName, { kind: Kind; tab?: Tab; ar: string; en: string; parent?: string; gear?: true }> = {
   onboarding: { kind: 'bare', ar: 'مسار التجويد', en: 'Tajweed Path' },
   today: { kind: 'tab', tab: 'today', ar: 'اليوم', en: 'Today', gear: true },
-  learn: { kind: 'focus', tab: 'today', ar: 'السبق', en: 'Lesson', parent: 'today' },
+  learn: { kind: 'focus', tab: 'today', ar: 'السبق', en: 'New lesson', parent: 'today' },
   review: { kind: 'focus', tab: 'today', ar: 'المراجعة', en: 'Review', parent: 'today' },
   listen: { kind: 'focus', tab: 'today', ar: 'التلقي', en: 'Listen', parent: 'today' },
   rules: { kind: 'tab', tab: 'rules', ar: 'الأحكام', en: 'Rules' },
@@ -108,7 +108,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
             <button type="button" className="icon-btn close" onClick={() => navigate(parent)}>
               <span aria-hidden="true">✕</span> Close
             </button>
-            <span className="focusbar-title" lang="ar">{meta.ar}</span>
+            <span className="focusbar-title"><span lang="ar">{meta.ar}</span> <small className="t-sm muted">{meta.en}</small></span>
             <span className="focusbar-status t-sm">{focusStatus}</span>
           </header>
         )}

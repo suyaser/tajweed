@@ -159,9 +159,11 @@ export function buildQueue(data: UserData, units: Unit[], today: Day, extra = 0)
   const next = courseProgress(data, units).next
   if (next.kind === 'done') q.sabaqReason = 'done'
   else if (next.kind === 'finale') Object.assign(q, { sabaqReason: 'finale', finaleUnit: next.unit.id })
-  else if (data.introductions.filter(i => i.on === today).length >= NEW_PER_DAY) q.sabaqReason = 'pace'
-  else if (due.length > BACKLOG_LIMIT) q.sabaqReason = 'backlog'
-  else q.sabaq = next.id
+  else {
+    const gate = lessonGate(data, units, next.id, today)
+    if (gate) q.sabaqReason = gate as 'pace' | 'backlog'
+    else q.sabaq = next.id
+  }
 
   // welcome back after ≥ 7 days away
   const activeDays = [
@@ -175,6 +177,20 @@ export function buildQueue(data: UserData, units: Unit[], today: Day, extra = 0)
     q.welcomeBack = { due: n, daysToCatchUp: Math.max(1, Math.ceil(n / DAILY_CAP)) }
   }
   return q
+}
+
+/**
+ * Can this lesson be started today (spec §4)? null = yes. Done lessons always open (replay); otherwise it must be
+ * unlocked (next in the course, or catch-up), fewer than NEW_PER_DAY lessons done today, and at most BACKLOG_LIMIT
+ * منزل reviews overdue.
+ */
+export function lessonGate(data: Pick<UserData, 'introductions' | 'finales' | 'items'>, units: Unit[], lessonId: string, today: Day): null | 'locked' | 'pace' | 'backlog' {
+  const p = courseProgress(data, units)
+  if (p.done.has(lessonId)) return null
+  if (!p.unlocked(lessonId)) return 'locked'
+  if (data.introductions.filter(i => i.on === today).length >= NEW_PER_DAY) return 'pace'
+  if (data.items.filter(i => !i.deletedAt && i.state === 'manzil' && i.dueOn <= today).length > BACKLOG_LIMIT) return 'backlog'
+  return null
 }
 
 /* ---------------- Levels (§6.7) ---------------- */

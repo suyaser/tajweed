@@ -4,6 +4,8 @@ import { today } from './day'
 import { lessons } from '../content'
 import { courseOrder, units } from '../content/course'
 import { makeWirdIcs } from './ics'
+import { courseProgress } from './course'
+import { lessonGate } from './scheduler'
 
 beforeEach(() => S.resetAll())
 
@@ -12,7 +14,7 @@ describe('store', () => {
     const d = S.getSnapshot()
     expect(d.settings).toMatchObject({ reciterId: 'husary-muallim', munfasilLength: 4, wirdTime: '05:30', teacherDays: [], theme: 'system' })
     expect(d.finales).toEqual([])
-    S.completeOnboarding({ introCourseDone: true, teacherDays: [4] })
+    S.completeOnboarding({ teacherDays: [4] })
     expect(S.getSnapshot().settings.onboardedOn).toBe(today())
     expect(JSON.parse(localStorage.getItem(S.STORAGE_KEY)!).settings.teacherDays).toEqual([4])
   })
@@ -82,18 +84,41 @@ describe('store', () => {
     expect(d.finales).toEqual([])
   })
 
-  it('migrates v1 to v2: introduced lessons stay done, fully done units get their finale (spec §4)', () => {
-    const u = units.find(x => x.lessonIds.length)!
+  it('migrates a realistic v1 learner without sending them back to the start (engineering M4)', () => {
+    // v1: every v1 lesson of units 1–3 and two of unit 4, done in v1's own order; none of the 9 v2 lessons
+    const v1Ids = ['tabii', 'arid', 'iwad', 'ibtida', 'lam-q', 'lam-s', 'lam-jh', 'lam-jl', 'ghunnah', 'izhar', 'idgh-g', 'idgh-n',
+      'iqlab', 'ikhfa', 'qal-s', 'qal-k', 'muttasil', 'munfasil', 'mithlayn', 'm-izhar', 'm-idgham']
+    const day = (i: number) => `2026-06-${String(1 + i).padStart(2, '0')}`
     const v1 = {
-      schemaVersion: 1, settings: {}, attempts: [], sessions: [], corrections: [], days: [],
-      phases: [{ id: 1, status: 'active', activatedOn: '2026-01-01', milestoneOn: null, passedOn: null, tasksDone: [] }],
-      introductions: u.lessonIds.map((lessonId, i) => ({ lessonId, on: `2026-01-0${1 + (i % 9)}`, at: '2026-01-01T09:00:00.000Z' })),
+      schemaVersion: 1, updatedAt: '2026-10-01T09:00:00.000Z',
+      settings: { wirdTime: '05:30', munfasilLength: 4, introCourseDone: true, teacherDays: [4], onboardedOn: '2026-06-01' },
+      attempts: [{ id: 'a1', itemId: 'lesson:tabii', refId: 'tabii', kind: 'lesson', on: '2026-07-01', at: '2026-07-01T09:00:00.000Z', source: 'review', correct: true, countsForSchedule: true }],
+      sessions: [], corrections: [], days: [],
+      phases: [{ id: 1, status: 'passed', activatedOn: '2026-06-01', milestoneOn: '2026-06-20', passedOn: '2026-06-21', tasksDone: [] }],
+      introductions: v1Ids.map((lessonId, i) => ({ lessonId, on: day(i), at: `${day(i)}T09:00:00.000Z` })),
     }
-    const d = S.migrate(v1, '2026-02-01')
+    const d = S.migrate(v1, '2026-11-20')
     expect(d.schemaVersion).toBe(2)
-    expect(d.introductions).toHaveLength(u.lessonIds.length)
-    expect(d.finales).toEqual(u.finale ? [{ unitId: u.id, on: expect.any(String) }] : [])
-    expect(d.phases).toHaveLength(1) // kept as is
+    expect(d.introductions).toHaveLength(v1Ids.length)
+    expect(d.finales.map(f => f.unitId)).toEqual(['u0', 'u1', 'u2', 'u3'])
+    expect('phases' in d).toBe(false)
+    expect('introCourseDone' in d.settings).toBe(false)
+    const p = courseProgress(d, units)
+    // the frontier is unit 4, not basics: m-ikhfa is next
+    expect(p.next).toMatchObject({ kind: 'lesson', id: 'm-ikhfa' })
+    // the v2 lessons of passed units are catch-up: open, but they don't lock unit 4
+    for (const id of ['basics', 'istiadha', 'tafkhim', 'sakinayn']) expect([p.unlocked(id), p.catchUp(id)]).toEqual([true, true])
+    expect(p.unlocked('silah-s')).toBe(false)
+    expect(lessonGate(d, units, 'basics', '2026-11-20')).toBe(null)
+    expect(lessonGate(d, units, 'm-ikhfa', '2026-11-20')).toBe(null)
+    expect(lessonGate(d, units, 'silah-s', '2026-11-20')).toBe('locked')
+  })
+
+  it('migrates a v1 learner who has not finished unit 1: basics first', () => {
+    const d = S.migrate({ schemaVersion: 1, settings: {}, attempts: [], sessions: [], corrections: [], days: [], phases: [],
+      introductions: [{ lessonId: 'tabii', on: '2026-06-01', at: '2026-06-01T09:00:00.000Z' }] }, '2026-11-20')
+    expect(d.finales).toEqual([])
+    expect(courseProgress(d, units).next).toMatchObject({ kind: 'lesson', id: 'basics' })
   })
 
   it('keeps unreadable stored data untouched', () => {

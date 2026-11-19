@@ -23,7 +23,7 @@ function defaultSettings(at = nowIso()): Settings {
   return {
     id: uuid(), createdAt: at, updatedAt: at, deletedAt: null,
     wirdTime: '05:30', timezone, reciterId: 'husary-muallim', munfasilLength: 4, teacherDays: [],
-    textSize: 'm', theme: 'system', tajweedPatterns: false, onboardedOn: null, introCourseDone: false, lastExportOn: null,
+    textSize: 'm', theme: 'system', tajweedPatterns: false, onboardedOn: null, lastExportOn: null,
   }
 }
 
@@ -31,7 +31,7 @@ export function defaultData(): UserData {
   const at = nowIso()
   return {
     schemaVersion: SCHEMA_VERSION, updatedAt: at, settings: defaultSettings(at), introductions: [], items: [],
-    attempts: [], sessions: [], corrections: [], phases: [], days: [], finales: [],
+    attempts: [], sessions: [], corrections: [], days: [], finales: [],
   }
 }
 
@@ -49,9 +49,9 @@ export const migrations: Record<number, (d: Raw) => Raw> = {
       d.introductions ??
       (d.items ?? []).filter((i: Raw) => i.kind === 'lesson').map((i: Raw) => ({ lessonId: i.refId, on: i.introducedOn, at: i.createdAt })),
     items: d.items ?? [], attempts: d.attempts ?? [], sessions: d.sessions ?? [], corrections: d.corrections ?? [],
-    phases: d.phases ?? [], days: d.days ?? [],
+    days: d.days ?? [],
   }),
-  // v1 → v2 (spec §4): every introduced lesson stays done; units whose lessons are all done count their finale as done.
+  // v1 → v2 (spec §4): every introduced lesson stays done; units whose v1 lessons are all done count as passed (course.ts).
   1: d => ({ ...d, schemaVersion: 2, finales: migratedFinales(rows(Array.isArray(d.introductions) ? d.introductions : [], ['lessonId', 'on']), units) }),
 }
 
@@ -83,9 +83,10 @@ export function migrate(raw: Raw, on = today()): UserData {
   const sessions = rows(d.sessions, ['id', 'on'], { plannedPassages: [], milestoneResults: [], status: 'planned', deletedAt: null })
   const days = rows(d.days, ['id'], { parts: { listen: null, sabaq: null, recite: null, review: null }, listenSeconds: 0 })
   const finales = rows(Array.isArray(d.finales) ? d.finales : [], ['unitId', 'on'])
-  const phases = Array.isArray(d.phases) ? d.phases : [] // v1 only, kept as is
+  delete settings.introCourseDone // retired v1 fields
+  const { phases: _v1Phases, ...rest } = d
   return {
-    ...d, settings, introductions, attempts, corrections, sessions, days, phases, finales,
+    ...rest, settings, introductions, attempts, corrections, sessions, days, finales,
     items: rebuildItems(introductions, attempts, corrections, on),
   }
 }

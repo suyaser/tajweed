@@ -32,7 +32,6 @@ export interface FactQuestion { id: string; lessonId: string; prompt: string; op
 export interface Lesson {
   id: string
   topicId: string
-  phaseId: number
   order: number
   nameAr: string
   nameEn: string
@@ -117,7 +116,6 @@ export interface Settings extends Row {
   theme: 'system' | 'light' | 'dark'
   tajweedPatterns: boolean // second cue for colour
   onboardedOn: Day | null
-  introCourseDone: boolean
   lastExportOn: Day | null
 }
 
@@ -178,16 +176,6 @@ export interface Correction extends Row {
   on?: Day // study day it was logged (falls back to createdAt)
 }
 
-export interface PhaseProgress {
-  id: number
-  status: 'locked' | 'active' | 'milestone' | 'passed' | 'skipped'
-  activatedOn: Day | null
-  milestoneOn: Day | null
-  passedOn: Day | null
-  skipReason?: string
-  tasksDone: number[]
-}
-
 export type PartMark = null | 'auto' | 'manual'
 export interface DayLog { id: Day; parts: { listen: PartMark; sabaq: PartMark; recite: PartMark; review: PartMark }; listenSeconds: number }
 
@@ -202,7 +190,6 @@ export interface UserData {
   attempts: Attempt[]
   sessions: Session[]
   corrections: Correction[]
-  phases: PhaseProgress[] // v1 only, kept for old backups; v2 progress is introductions + finales
   days: DayLog[]
   finales: { unitId: string; on: Day }[] // v2: unit finales recited (spec §4)
 }
