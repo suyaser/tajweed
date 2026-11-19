@@ -85,3 +85,17 @@ export function alsoLessons(ex: Example, verse: Pick<Verse, 'text' | 'tajweed' |
   ids.delete(ex.lessonId)
   return [...ids].sort()
 }
+
+const wordEx = (v: Pick<Verse, 'verseKey' | 'words'>, from: number, to: number): Example => ({
+  id: '', lessonId: '', verseKey: v.verseKey, wordFrom: from, wordTo: to,
+  text: v.words.slice(from - 1, to).join(' '), focus: '', stopping: to === v.words.length,
+})
+
+/** Lesson ids whose rule shows anywhere in the ayah, read with a stop at its end (v2 closing passages). */
+export const lessonsInAyah = (v: Pick<Verse, 'verseKey' | 'text' | 'tajweed' | 'words'>): string[] =>
+  alsoLessons(wordEx(v, 1, v.words.length), v, [])
+
+/** 1-based word numbers in the ayah that show `lessonId` (v2 Find step). Empty when the data can't detect it. */
+export function findTargets(v: Pick<Verse, 'verseKey' | 'text' | 'tajweed' | 'words'>, lessonId: string): number[] {
+  return v.words.map((_, i) => i + 1).filter(n => alsoLessons(wordEx(v, n, n), v, []).includes(lessonId))
+}
