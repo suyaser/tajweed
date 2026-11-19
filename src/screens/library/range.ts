@@ -48,12 +48,12 @@ export function capRange({ from, to }: Range, max = MAX_AYAT): Range {
 /** URL form: `93:1-93:11`, or `93:5` for one ayah. */
 export const rangeParam = ({ from, to }: Range) => (from === to ? from : `${from}-${to}`)
 
-/** On-screen form (design B4): `الضحى · ١–١١`, `الضحى · ٥`, `الإخلاص ١ – الناس ٦`. */
+/** On-screen form (design B4): `الضحى ١–١١`, `الضحى ٥`, `الإخلاص ١ – الناس ٦`. */
 export function rangeLabel({ from, to }: Range): string {
   const [s1, a1] = from.split(':').map(Number)
   const [s2, a2] = to.split(':').map(Number)
   if (s1 !== s2) return `${surahName(s1)} ${toArabicDigits(a1)} – ${surahName(s2)} ${toArabicDigits(a2)}`
-  return `${surahName(s1)} · ${toArabicDigits(a1)}${a1 === a2 ? '' : '–' + toArabicDigits(a2)}`
+  return `${surahName(s1)} ${toArabicDigits(a1)}${a1 === a2 ? '' : '–' + toArabicDigits(a2)}`
 }
 
 export const refLabel = (k: VerseKey) => rangeLabel({ from: k, to: k })

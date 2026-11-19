@@ -18,18 +18,19 @@ export function Button({ variant = 'primary', block, href, className = '', type 
   return <button type={type} className={cls} {...rest} />
 }
 
-export type OptionState = 'idle' | 'correct' | 'wrong' | 'revealed'
+export type OptionState = 'idle' | 'correct' | 'wrong' | 'revealed' | 'picked'
 
 /** Quiz answer: borders + glyph + word, never a red/green fill (design §5.5). */
 export function OptionButton({ ar, en, state = 'idle', children, ...rest }: { ar?: string; en?: string; state?: OptionState } & ButtonHTMLAttributes<HTMLButtonElement>) {
-  const glyph = state === 'wrong' ? '↺' : state === 'idle' ? null : '✓'
+  const glyph = state === 'wrong' ? '↺' : state === 'idle' || state === 'picked' ? null : '✓'
   return (
     <button type="button" className="opt" data-state={state} {...rest}>
       {glyph && <span className="opt-glyph" aria-hidden="true">{glyph}</span>}
       {ar && <b lang="ar">{ar}</b>}
       {children}
       {en && <small>{en}</small>}
-      {state !== 'idle' && <span className="sr-only">{state === 'wrong' ? ', not quite' : ', correct'}</span>}
+      {state === 'picked' && <small className="opt-picked">Your guess</small>}
+      {state !== 'idle' && state !== 'picked' && <span className="sr-only">{state === 'wrong' ? ', not quite' : ', correct'}</span>}
     </button>
   )
 }
@@ -76,6 +77,16 @@ export function Card({ level = 'e1', stripe, eyebrow, children, className = '', 
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       {children}
     </Tag>
+  )
+}
+
+/** Placeholder lines while text loads, so a screen never flashes blank (verse-shaped: right-aligned, tall lines). */
+export function Skeleton({ lines = 3, label = 'Loading…', verse = false }: { lines?: number; label?: string; verse?: boolean }) {
+  return (
+    <div className={`skel${verse ? ' skel-verse' : ''}`} role="status" aria-busy="true">
+      <span className="sr-only">{label}</span>
+      {Array.from({ length: lines }, (_, i) => <i key={i} aria-hidden="true" />)}
+    </div>
   )
 }
 
@@ -142,7 +153,7 @@ export interface AudioTransportProps {
   loading?: boolean
   /** Text shown instead of playing, e.g. "Audio needs a connection." */
   unavailable?: string
-  /** What is playing, used in labels: "Play الضحى · ٥". */
+  /** What is playing, used in labels: "Play الضحى ٥". */
   label: string
   /** Who is speaking now: the reciter's name, or "You". */
   speaker?: string

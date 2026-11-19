@@ -40,11 +40,20 @@ export default function Rules(_: ScreenProps) {
   const byTopic = topics.map((t) => ({ t, ls: shown.filter((l) => l.topicId === t.id), all: lessons.filter((l) => l.topicId === t.id) }))
 
   return (
-    <div className="lib">
+    <div className="lib wide">
+      <nav className="lib-topics" aria-label="Topics">
+        {byTopic.map(({ t, all }) => (
+          <button key={t.id} type="button" onClick={() => { setQ(''); setView('list'); goToTopic(t.id) }}>
+            <b lang="ar">{t.nameAr}</b>
+            <small>{all.filter((l) => isKnown(status.get(l.id)!)).length}/{all.length} known</small>
+          </button>
+        ))}
+      </nav>
+      <div className="lib-body">
       <div className="lib-tools">
         <input
           type="search" dir="auto" className="lib-search" value={q} onChange={(e) => { setQ(e.target.value); if (e.target.value) setView('list') }}
-          placeholder="ابحث · search: إخفاء، مد، ghunnah" aria-label="Search rules"
+          placeholder="Search · ابحث — e.g. إخفاء or مد" aria-label="Search rules"
         />
         <div className="lib-row">
           <SegmentedControl label="View" value={view} onChange={setView} options={[{ value: 'list', label: 'List' }, { value: 'map', label: 'Map' }]} />
@@ -53,14 +62,6 @@ export default function Rules(_: ScreenProps) {
             <Legend colours={COLOUR_KEYS} />
           </details>
         </div>
-        <nav className="lib-topics" aria-label="Topics">
-          {byTopic.map(({ t, all }) => (
-            <button key={t.id} type="button" onClick={() => { setQ(''); setView('list'); goToTopic(t.id) }}>
-              <b lang="ar">{t.nameAr}</b>
-              <small>{all.filter((l) => isKnown(status.get(l.id)!)).length}/{all.length} known</small>
-            </button>
-          ))}
-        </nav>
       </div>
 
       {view === 'map' ? (
@@ -95,6 +96,7 @@ export default function Rules(_: ScreenProps) {
           <span className="chev" aria-hidden="true">›</span>
         </a>
       </nav>
+      </div>
     </div>
   )
 }
@@ -138,7 +140,7 @@ function Chooser({ topicId, ls }: { topicId: string; ls: Lesson[] }) {
 function MindMap({ status, onTopic }: { status: Map<string, LessonStatus>; onTopic: (id: string) => void }) {
   return (
     <div className="treebox">
-      <p className="t-sm muted">Read it from right to left, as in a muṣḥaf. Tap a topic to open its section, or a rule to open its card.</p>
+      <p className="t-sm muted"><span className="lib-map-rtl">Read it from right to left, as in a muṣḥaf. </span>Tap a topic to open its section, or a rule to open its card.</p>
       <div className="tree" dir="rtl" lang="ar">
         <div className="star t-root" aria-hidden="true"><span>التجويد<small lang="en">TAJWEED</small></span></div>
         <ul aria-label="التجويد">

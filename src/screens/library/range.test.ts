@@ -20,8 +20,8 @@ describe('parseRange', () => {
   })
 
   it('labels with Arabic-Indic digits', () => {
-    expect(rangeLabel({ from: '93:1', to: '93:11' })).toBe('الضحى · ١–١١')
-    expect(rangeLabel({ from: '93:5', to: '93:5' })).toBe('الضحى · ٥')
+    expect(rangeLabel({ from: '93:1', to: '93:11' })).toBe('الضحى ١–١١')
+    expect(rangeLabel({ from: '93:5', to: '93:5' })).toBe('الضحى ٥')
     expect(rangeLabel({ from: '112:1', to: '114:6' })).toBe('الإخلاص ١ – الناس ٦')
   })
 })

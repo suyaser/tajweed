@@ -2,7 +2,7 @@
 import type { Example, Lesson } from '../../core/types'
 import { getLesson } from '../../content'
 import { href } from '../../app/router'
-import { Card, CountBeats, LetterTiles, RuleChip, T } from '../../components'
+import { Card, CountBeats, LetterTiles, Line, RuleChip, T } from '../../components'
 import { rangeParam, verseRef } from './helpers'
 import { ExampleVerse, PlayButton, useVerse, type StudyAudio } from './verse'
 
@@ -27,7 +27,7 @@ export function RuleBody({ lesson, audio }: { lesson: Lesson; audio: StudyAudio 
   return (
     <Card stripe={lesson.colour} as="article" className="s-rule-body">
       <header>
-        <h2 className="a-h3" lang="ar" style={lesson.colour && { color: `var(--t-${lesson.colour})` }}>{lesson.nameAr}</h2>
+        <h2 className="a-h3" lang="ar">{lesson.nameAr}</h2>
         <p className="muted">{lesson.nameEn}</p>
       </header>
       {lesson.review.status !== 'verified' && (
@@ -47,7 +47,7 @@ export function RuleBody({ lesson, audio }: { lesson: Lesson; audio: StudyAudio 
       {lesson.conditions?.length ? <ul className="s-bullets">{lesson.conditions.map((c, i) => <li key={i}><T>{c}</T></li>)}</ul> : null}
       {lesson.list?.length ? (
         <ul className="s-pairs-list">
-          {lesson.list.map(([a, b], i) => <li key={i}><span><T>{a}</T></span> <span className="muted"><T>{b}</T></span></li>)}
+          {lesson.list.map(([a, b], i) => <li key={i}><span><T>{a}</T></span> <Line text={b} /></li>)}
         </ul>
       ) : null}
       {lesson.examples.length > 0 && (

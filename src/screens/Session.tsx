@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import type { Correction, Session as SessionT, UserData } from '../core/types'
-import { logCorrection, resolveCorrection, updateSession, useData } from '../core/store'
+import { logCorrection, resolveCorrection, undoCorrection, updateSession, useData } from '../core/store'
 import { getLesson, lessons, phases as contentPhases } from '../content'
 import { navigate } from '../app/router'
 import type { ScreenProps } from '../app/App'
-import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, StarBadge, T, type WordMark } from '../components'
-import { dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, milestoneFor, refLabel, type Planned } from './path/helpers'
+import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, Skeleton, StarBadge, T, type WordMark } from '../components'
+import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, milestoneFor, refLabel, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip, startClass, useVerses } from './path/ui'
 import './path.css'
 
@@ -68,7 +68,7 @@ function OpenCorrections({ d }: { d: UserData }) {
         {open.map((c) => (
           <li key={c.id} className="p-item">
             <span className="p-item-main">
-              <span className="a-lg" lang="ar">{refLabel(c.verseKey)}</span>
+              <span className="a-lg" lang="ar">{corrLabel(c)}</span>
               <span className="t-sm muted"><T>{ruleNames(c) || 'No rule tagged'}</T></span>
             </span>
             <CorrectionTag severity={c.severity} />
@@ -113,6 +113,8 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
   for (const c of mine) if (c.wordPosition) marks[`${c.verseKey}/${c.wordPosition}`] = 'ring'
   if (target?.word) marks[`${target.key}/${target.word}`] = 'ring'
   const openHere = p ? live(d.corrections).filter((c) => (c.status === 'open' || c.resolvedInSessionId === s.id) && c.sessionId !== s.id && inRange(c.verseKey, p.from, p.to)) : []
+  // re-check: the word corrected in an earlier class wears the same neutral ring (M8)
+  for (const c of openHere) if (c.wordPosition && c.status === 'open') marks[`${c.verseKey}/${c.wordPosition}`] = 'ring'
   // a result already given here wins: passing phase 1's الفاتحة must not turn the card into phase 2's
   const given = p && s.milestoneResults.flatMap((r) => {
     const m = contentPhases.find((x) => x.id === r.phaseId)?.milestone.find((x) => x.id === r.passageId)
@@ -137,7 +139,7 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
       {p && (
         <section aria-label="Passage">
           <h2 className="a-h3" lang="ar">{refLabel(p.from, p.to)}</h2>
-          {loading && <p className="muted">Loading the text…</p>}
+          {loading && <Skeleton verse lines={3} label="Loading the text…" />}
           {error && <p className="muted">{error} You can still log a correction on the whole ayah after reconnecting.</p>}
           {ayahs && (
             <Passage
@@ -154,7 +156,8 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
 
       {saved && (
         <p className="p-saved" role="status">
-          Saved · <CorrectionTag severity={saved.severity} /> · <span lang="ar">{refLabel(saved.verseKey)}</span>
+          Saved · <span className="a-lg" lang="ar">{corrLabel(saved)}</span> · <CorrectionTag severity={saved.severity} />
+          <button type="button" className="p-linkbtn" onClick={() => { undoCorrection(saved.id); setSaved(null) }}>Undo</button>
         </p>
       )}
 
@@ -202,7 +205,7 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
         d={d}
         onClose={() => setTarget(null)}
         onSave={(c) => {
-          setSaved(logCorrection({ ...c, verseKey: target!.key, wordPosition: target!.word, sessionId: s.id, by: 'teacher' }))
+          setSaved(logCorrection({ ...c, verseKey: target!.key, wordPosition: target!.word, word: target!.text, sessionId: s.id, by: 'teacher' }))
           setTarget(null)
         }}
       />
@@ -215,7 +218,7 @@ function Recheck({ c, sessionId, d }: { c: Correction; sessionId: string; d: Use
   return (
     <li className="p-item p-item-col">
       <span className="p-item-main">
-        <span><span className="a-lg" lang="ar">{refLabel(c.verseKey)}</span> <CorrectionTag severity={c.severity} /></span>
+        <span><span className="a-lg" lang="ar">{corrLabel(c)}</span> <CorrectionTag severity={c.severity} /></span>
         <span className="t-sm muted"><T>{ruleNames(c) || 'No rule tagged'}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
       </span>
       {c.status === 'resolved' ? (
@@ -271,8 +274,9 @@ function CorrectionSheet({ target, verse, d, onClose, onSave }: {
     >
       <div className="p-sev" role="group" aria-label="Severity">
         {(['jali', 'khafi'] as const).map((sv) => (
-          <button key={sv} type="button" className="p-sevbtn" aria-pressed={severity === sv} onClick={() => setSeverity(sv)}>
-            <CorrectionTag severity={sv} gloss />
+          <button key={sv} type="button" className="opt s-pick p-sevbtn" aria-pressed={severity === sv} onClick={() => setSeverity(sv)}>
+            <b lang="ar">{sv === 'jali' ? 'جلي' : 'خفي'}</b>
+            <small>{sv === 'jali' ? 'clear error: a letter or vowel' : 'fine detail of a rule'}</small>
           </button>
         ))}
       </div>
@@ -304,6 +308,7 @@ function CorrectionSheet({ target, verse, d, onClose, onSave }: {
         </>
       )}
       <Button block disabled={!severity} onClick={() => severity && onSave({ severity, lessonIds: picked, note: note?.trim() || undefined })}>Save</Button>
+      {!severity && <p className="t-sm muted p-sev-why"><T>Choose جلي or خفي to save.</T></p>}
     </Sheet>
   )
 }
@@ -357,7 +362,7 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
             {mine.map((c) => (
               <li key={c.id} className="p-item">
                 <span className="p-item-main">
-                  <a className="a-lg" lang="ar" href={listenHref(c.verseKey)}>{refLabel(c.verseKey)}</a>
+                  <a className="a-lg" lang="ar" href={listenHref(c.verseKey)}>{corrLabel(c)}</a>
                   <span className="t-sm muted"><T>{ruleNames(c) || 'No rule tagged'}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
                 </span>
                 <CorrectionTag severity={c.severity} />

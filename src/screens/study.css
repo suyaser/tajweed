@@ -71,10 +71,18 @@
 
 /* onboarding */
 .s-ob { display: grid; gap: var(--s5); }
+/* first run: the welcome band is a full-bleed splash on phone; the step's main button stays in thumb reach */
+@media (max-width: 767px) {
+  .s-ob-band { margin: calc(-1 * var(--s6)) calc(-1 * var(--gutter)) 0; border-radius: 0; min-height: 46vh; padding-top: calc(var(--s8) + env(safe-area-inset-top, 0px)); }
+}
+.s-ob .s-study > .btn-block { position: sticky; bottom: calc(var(--s3) + env(safe-area-inset-bottom, 0px)); z-index: 2; box-shadow: 0 0 0 6px var(--bg); }
 .s-ob-band { display: grid; justify-items: center; text-align: center; gap: var(--s2); padding: var(--s6) var(--s4); border-radius: var(--r-card); }
 .s-ob-band .k-h1 { color: var(--gold-display); }
 .s-ob-brand { font-family: var(--f-disp); letter-spacing: 0.2em; color: var(--on-green); }
-.s-ob-band .verse { background: var(--surface); color: var(--ink); border-radius: var(--r-card); padding: var(--s2) var(--s4); }
+.s-ob-band .verse { color: var(--gold-display); background: rgb(0 0 0 / 0.18); border: 1px solid #d8b45c; outline: 1px solid #d8b45c; outline-offset: 4px; border-radius: 28px; padding: var(--s1) var(--s6); margin: var(--s2) var(--s1) var(--s1); }
+.s-ob-band .verse .verse-text, .s-ob-band .verse .ref { color: inherit; text-align: center; }
+.s-ob-band .verse .br { color: inherit; }
+.s-ob-band .verse figcaption { justify-content: center; opacity: 0.85; }
 .s-ob-top { display: flex; justify-content: space-between; align-items: center; min-height: var(--target); }
 .s-ob-stars { color: var(--gold); font-size: 18px; letter-spacing: 0.1em; }
 .s-ob-head { display: grid; gap: var(--s1); }
@@ -82,7 +90,8 @@
 .s-ob-list { display: grid; gap: var(--s2); }
 .s-ob-list li::before { content: "۞"; color: var(--gold); margin-inline-end: var(--s2); }
 .s-ob-choice { gap: var(--s2); font-weight: 600; }
-.s-ob-choice[aria-pressed="true"] { border-color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
+.s-ob-choice[aria-pressed="true"], .s-pick[aria-pressed="true"] { background: var(--soft); border-color: var(--gold); }
+.s-ob-choice[aria-pressed="true"]::before, .s-pick[aria-pressed="true"]::before { content: "✓"; position: absolute; inset-inline-start: 12px; top: 50%; translate: 0 -50%; color: var(--gold-ink); font-weight: 700; }
 .s-ob-reciters { display: grid; border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); }
 .s-ob-reciter { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); padding: var(--s3) var(--s4); min-height: 64px; flex-wrap: wrap; }
 .s-ob-reciter + .s-ob-reciter { border-top: 1px solid var(--line); }
@@ -100,3 +109,23 @@
   .s-ex-list { grid-template-columns: 1fr 1fr; }
   .s-ex-row + .s-ex-row { border-top: 0; padding-top: 0; }
 }
+
+/* Today: one column on phone; on a wide screen the wird is the main column and the week + teacher sit beside it */
+.today { display: grid; gap: var(--section-gap); align-content: start; }
+.today-side, .today-nudges { display: grid; gap: var(--s4); align-content: start; }
+.today-nudges:empty { display: none; }
+@media (min-width: 1200px) {
+  .today { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; column-gap: var(--s8); }
+  .today > .s-summary, .today-main, .today-nudges { grid-column: 1; }
+  .today-side { grid-column: 2; grid-row: 1 / span 4; position: sticky; top: calc(72px + var(--s6)); }
+}
+
+/* lesson stepper: four stars joined by a gold rule, Arabic label over the English */
+.s-lsteps { display: grid; justify-items: center; gap: var(--s2); }
+.s-lsteps ol { display: flex; gap: var(--s5); position: relative; }
+.s-lsteps ol::before { content: ""; position: absolute; top: 16px; inset-inline: 24px; border-top: 1px dotted var(--gold); }
+.s-lsteps li { position: relative; display: grid; justify-items: center; gap: 2px; min-width: 52px; }
+.s-lsteps li [lang="ar"] { font: var(--a-sm); line-height: 1.5; margin-top: var(--s1); }
+.s-lsteps li small { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.s-lsteps li[aria-current] [lang="ar"] { color: var(--gold-ink); font-weight: 700; }
+.s-lsteps .star { background: var(--bg); }

@@ -106,10 +106,8 @@ function Milestone({ ph, status, passed, pr }: { ph: Phase; status: PhaseProgres
           return (
             <li key={m.id} className="p-item p-item-col">
               <span className="p-item-main">
-                <span>
-                  <span aria-hidden="true">{s ? '■' : '□'}</span> <span className="a-lg" lang="ar">{m.label}</span>
-                </span>
-                <span className="t-sm muted">{s ? `passed ${dayLabel(s.on)}` : 'not yet'}</span>
+                <span className="a-lg" lang="ar">{m.label}</span>
+                {s ? <span className="t-sm"><span aria-hidden="true">★ </span>passed {dayLabel(s.on)}</span> : <span className="p-pill">Not yet</span>}
               </span>
               {!s && pr && pr.status !== 'locked' && (
                 <span className="p-actions">

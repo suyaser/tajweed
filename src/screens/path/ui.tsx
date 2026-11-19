@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import type { Session, Verse, VerseKey } from '../../core/types'
 import { getSnapshot, planSession, suggestPassages, updateSession } from '../../core/store'
 import { today } from '../../core/day'
-import { ayahCount, getRange, surahName, tajweedSpans } from '../../quran'
+import { ayahCount, getRange, surahName, tajweedSpans, toArabicDigits } from '../../quran'
 import { Button, CorrectionTag, SegmentedControl, type PassageAyah } from '../../components'
 import { navigate } from '../../app/router'
 import { mergePassages, nextTeacherDay, upcomingSession, type Planned } from './helpers'
@@ -43,7 +43,7 @@ export const REASON: Record<Planned['reason'], { glyph: string; label: string }>
   milestone: { glyph: '◆', label: 'Milestone' },
   correction: { glyph: '↺', label: 'Re-check' },
   recent: { glyph: '○', label: 'Since last time' },
-  ask: { glyph: '?', label: 'You asked' },
+  ask: { glyph: '+', label: 'Added by you' },
 }
 
 export function ReasonChip({ p }: { p: Planned }) {
@@ -77,7 +77,11 @@ export function AddToNextSession({ p }: { p: Planned }) {
 
 /** Surah picker + ayah range. */
 export function AddPassage({ onAdd, reason = 'ask' }: { onAdd: (p: Planned) => void; reason?: Planned['reason'] }) {
-  const [surah, setSurah] = useState(93)
+  // default: the surah of the most recent planned passage, else الفاتحة (m24)
+  const [surah, setSurah] = useState(() => {
+    const last = [...getSnapshot().sessions].filter((s) => !s.deletedAt).sort((a, b) => (a.on < b.on ? 1 : -1)).find((s) => s.plannedPassages.length)?.plannedPassages.at(-1)
+    return last ? +last.from.split(':')[0] : 1
+  })
   const [a1, setA1] = useState(1)
   const [a2, setA2] = useState(1)
   const max = ayahCount(surah)
@@ -89,7 +93,7 @@ export function AddPassage({ onAdd, reason = 'ask' }: { onAdd: (p: Planned) => v
         <span>Surah</span>
         <select value={surah} onChange={(e) => { setSurah(+e.target.value); setA1(1); setA2(1) }}>
           {Array.from({ length: 114 }, (_, i) => (
-            <option key={i} value={i + 1} lang="ar">{`${i + 1} · ${surahName(i + 1)}`}</option>
+            <option key={i} value={i + 1} lang="ar">{`${surahName(i + 1)} (${toArabicDigits(i + 1)})`}</option>
           ))}
         </select>
       </label>
@@ -113,6 +117,8 @@ export { download } from '../../app/download'
 /** "Start class": the given plan (moved to today), or a plan made on the fly from the suggestions. */
 export function startClass(sessionId?: string) {
   const on = today()
-  if (sessionId) updateSession(sessionId, { on })
+  // A class planned for the calendar date keeps it, even between 00:00 and 03:00 when the study day is still yesterday (M13).
+  const planned = sessionId && getSnapshot().sessions.find((x) => x.id === sessionId)?.on
+  if (sessionId && planned !== today(new Date(Date.now() + 3 * 3600_000))) updateSession(sessionId, { on })
   navigate(`#/teacher/${sessionId ?? planSession({ on }).id}?sheet=1`)
 }

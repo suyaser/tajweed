@@ -58,7 +58,7 @@ function pick<T extends { id: string }>(pool: T[], last: string | null | undefin
 export const LENGTHS = [
   { id: '2', labelAr: '٢', labelEn: '2' },
   { id: '45', labelAr: '٤ أو ٥', labelEn: '4 or 5' },
-  { id: '246', labelAr: '٢ · ٤ · ٦', labelEn: '2·4·6' },
+  { id: '246', labelAr: '٢ أو ٤ أو ٦', labelEn: '2, 4 or 6' },
   { id: '6', labelAr: '٦', labelEn: '6' },
 ]
 // Read at the same length in حفص من الشاطبية (review: المتصل = المنفصل); الصلة الكبرى follows the المنفصل.

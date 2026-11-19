@@ -15,18 +15,21 @@ const cmp = (a: VerseKey, b: VerseKey) => {
 }
 export const inRange = (key: VerseKey, from: VerseKey, to: VerseKey) => cmp(key, from) >= 0 && cmp(key, to) <= 0
 
-/** 'الضحى · ٥', 'الضحى · ١–١١', 'الفاتحة' (whole surah), 'الإخلاص – الناس' (whole surahs), 'النبأ · ٣ – عبس · ٤٢'. */
+/** 'الضحى ٥', 'الضحى ١–١١', 'الفاتحة' (whole surah), 'الإخلاص – الناس' (whole surahs), 'النبأ ٣ – عبس ٤٢'. */
 export function refLabel(from: VerseKey, to: VerseKey = from): string {
   const [s1, a1] = parse(from)
   const [s2, a2] = parse(to)
   const whole = a1 === 1 && a2 === ayahCount(s2)
   if (s1 === s2) {
     if (whole && a2 > 1) return surahName(s1)
-    return `${surahName(s1)} · ${toArabicDigits(a1)}${a2 !== a1 ? '–' + toArabicDigits(a2) : ''}`
+    return `${surahName(s1)} ${toArabicDigits(a1)}${a2 !== a1 ? '–' + toArabicDigits(a2) : ''}`
   }
   if (whole) return `${surahName(s1)} – ${surahName(s2)}`
-  return `${surahName(s1)} · ${toArabicDigits(a1)} – ${surahName(s2)} · ${toArabicDigits(a2)}`
+  return `${surahName(s1)} ${toArabicDigits(a1)} – ${surahName(s2)} ${toArabicDigits(a2)}`
 }
+
+/** 'نَسْتَعِينُ · الفاتحة ٥', or just the reference for a whole-ayah correction (UX M8). */
+export const corrLabel = (c: { verseKey: VerseKey; word?: string }) => (c.word ? `${c.word} · ` : '') + refLabel(c.verseKey)
 
 /** Spec F5: `#/listen/93:1-93:5`, or `#/listen/93:5` for one ayah. */
 export const listenHref = (from: VerseKey, to: VerseKey = from) => `#/listen/${from}${to !== from ? '-' + to : ''}`

@@ -140,10 +140,15 @@ export default function Review({ params }: ScreenProps) {
     )
   }
 
+  // re-asks are counted apart, so a miss never moves the bar backwards (m3)
+  const firstAsk = (e: typeof entry) => !e.relearn && !e.contrast
+  const base = entries.filter(firstAsk).length
+  const n = entries.slice(0, idx + 1).filter(firstAsk).length
+  const againLeft = entries.slice(idx + (firstAsk(entry) ? 1 : 0)).filter((e) => !firstAsk(e)).length
   const progress = (
     <div className="s-rv-progress">
-      <span className="t-sm num">{idx + 1} of {entries.length}</span>
-      <div className="s-rv-bar" aria-hidden="true"><i style={{ width: `${((idx + 1) / entries.length) * 100}%` }} /></div>
+      <span className="t-sm num">{n} of {base}{againLeft > 0 && ` · ${againLeft} to look at again`}</span>
+      <div className="s-rv-bar" aria-hidden="true"><i style={{ width: `${(n / Math.max(1, base)) * 100}%` }} /></div>
     </div>
   )
   const halfway = idx === 10 && entries.length > 12

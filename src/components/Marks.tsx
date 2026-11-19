@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import type { ColourKey } from '../core/types'
 import { arDigits } from './bidi'
+import { T } from './Text'
 
 /** Muṣḥaf palette legend names (design §3.2). */
 export const COLOURS: Record<ColourKey, { ar: string; en: string }> = {
@@ -10,7 +11,7 @@ export const COLOURS: Record<ColourKey, { ar: string; en: string }> = {
   merge: { ar: 'إدغام', en: 'Merge' },
   madd2: { ar: 'مد حركتان', en: 'Madd 2' },
   madd45: { ar: 'مد ٤–٥', en: 'Madd 4–5' },
-  madd246: { ar: 'مد ٢·٤·٦', en: 'Madd 2·4·6' },
+  madd246: { ar: 'مد ٢ أو ٤ أو ٦', en: 'Madd 2, 4 or 6' },
   madd6: { ar: 'مد ٦', en: 'Madd 6' },
   qalqalah: { ar: 'قلقلة', en: 'Qalqalah' },
   heavy: { ar: 'تفخيم', en: 'Heavy' },
@@ -125,13 +126,25 @@ export function Legend({ colours, isolate, onIsolate, notShown }: LegendProps) {
 }
 
 /* ---------- letters, beats ---------- */
-export function LetterTiles({ letters, colour, size = 'sm' }: { letters: string | string[]; colour?: ColourKey; size?: 'sm' | 'option' }) {
-  const list = Array.isArray(letters) ? letters : letters.split(' ').filter(Boolean)
+/** Tiles for a letters string. Content may carry groups (`·`), group labels (`الهمس:`) and a gloss in brackets
+ *  (`ا و ي (حروف المد)`): groups get a gap, labels and the gloss are text, never tiles (M5). Latin → plain text. */
+export function LetterTiles({ letters, colour, size = 'sm' }: { letters: string | string[]; colour?: ColourKey | null; size?: 'sm' | 'option' }) {
+  if (!Array.isArray(letters) && /[A-Za-z]/.test(letters)) return <span><T>{letters}</T></span>
+  const raw = Array.isArray(letters) ? letters.join(' ') : letters
+  const note = raw.match(/\(([^)]+)\)/)?.[1]
+  const groups = raw.replace(/\([^)]*\)/g, '').split('·').map((g) => {
+    const m = g.match(/^\s*([^:]+):(.*)$/)
+    return { label: m?.[1].trim(), tiles: (m ? m[2] : g).split(/\s+/).filter(Boolean) }
+  }).filter((g) => g.tiles.length)
   return (
     <span className={`tiles tiles-${size}`} dir="rtl" lang="ar" style={rc(colour)}>
-      {list.map((l, i) => (
-        <span key={i} className={`tile${[...l].length > 2 ? ' wide' : ''}`}>{l}</span>
+      {groups.map((g, gi) => (
+        <span key={gi} className="tile-group">
+          {g.label && <span className="tile-label">{g.label}</span>}
+          {g.tiles.map((l, i) => <span key={i} className={`tile${[...l.replace(/[\u064B-\u0652]/g, '')].length > 1 ? ' wide' : ''}`}>{l}</span>)}
+        </span>
       ))}
+      {note && <span className="tile-label">({note})</span>}
     </span>
   )
 }
@@ -197,7 +210,7 @@ export function CorrectionBadge({ children = 'correction open' }: { children?: R
 }
 
 /* ---------- week dots ---------- */
-export type DayMark = 'studied' | 'not' | 'future'
+export type DayMark = 'studied' | 'not' | 'future' | 'before'
 const WEEK = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 
 /** 7 day marks (Saturday first by default), no fraction, no streak (design §5.2). */
@@ -207,7 +220,7 @@ export function ProgressDots({ days, today, labels = WEEK }: { days: DayMark[]; 
     <ol className="dots" aria-label={`${n} ${n === 1 ? 'day' : 'days'} studied this week`}>
       {days.map((d, i) => (
         <li key={i} data-mark={d} data-today={today === i || undefined}>
-          <span className="sr-only">{`${labels[i]}: ${d === 'not' ? 'not studied' : d}`}</span>
+          <span className="sr-only">{`${labels[i]}: ${d === 'not' ? 'not studied' : d === 'before' ? 'before you started' : d}`}</span>
         </li>
       ))}
     </ol>

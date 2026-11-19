@@ -6,7 +6,7 @@ import { getLesson } from '../../content'
 import { useRecorder } from '../../audio/useRecorder'
 import { playModelThenMe } from '../../audio/compare'
 import { save } from '../../audio/recordings'
-import { Button, Card, CorrectionTag, RecordButton, T, VerseBlock } from '../../components'
+import { Button, Card, CorrectionTag, RecordButton, Skeleton, T, VerseBlock } from '../../components'
 import { verseRef } from './helpers'
 import { useVerse, type StudyAudio } from './verse'
 
@@ -45,7 +45,7 @@ export function CorrectionStep({ c, audio, onRate, onNext }: {
           text={vs.verse?.text ?? ''} size="focus" reference={verseRef(c.verseKey)}
           marks={c.wordPosition ? { [c.wordPosition]: 'ring' } : undefined}
         />
-        {!vs.verse && <p className="t-sm muted">{vs.failed ? 'The text needs a connection. Recite from your muṣḥaf.' : 'Loading…'}</p>}
+        {!vs.verse && (vs.failed ? <p className="t-sm muted">The text needs a connection. Recite from your muṣḥaf.</p> : <Skeleton verse lines={2} />)}
         {c.note && <p><span className="muted">Your teacher's note: </span><T>{c.note}</T></p>}
         {lessons.length > 0 && <p className="t-sm muted"><T>{`Rule: ${lessons.map(l => l!.nameAr).join(' · ')}`}</T></p>}
       </Card>

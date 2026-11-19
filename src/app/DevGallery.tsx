@@ -58,21 +58,21 @@ function Demo({ theme }: { theme: 'light' | 'dark' }) {
       </Sec>
 
       <Sec title="VerseBlock · tajweed colours, isolate via legend">
-        <VerseBlock segments={BAQARAH_4} reference="البقرة · ٤" size="read" isolate={isolate} actions={<button className="icon-btn" aria-label="Play البقرة ٤">▶</button>} />
+        <VerseBlock segments={BAQARAH_4} reference="البقرة ٤" size="read" isolate={isolate} actions={<button className="icon-btn" aria-label="Play البقرة ٤">▶</button>} />
         <Legend colours={LEGEND} isolate={isolate} onIsolate={setIsolate} notShown={['مد البدل', 'السكت']} />
       </Sec>
 
       <Sec title="VerseBlock · question underline (neutral), stopping tag">
         <Card level="e2">
           <p>Which rule is the underlined part?</p>
-          <VerseBlock text="إِنَّ ٱلْإِنسَٰنَ لَفِى خُسْرٍ" focus={[2, 2]} reference="العصر · ٢" size="focus" stopping />
+          <VerseBlock text="إِنَّ ٱلْإِنسَٰنَ لَفِى خُسْرٍ" focus={[2, 2]} reference="العصر ٢" size="focus" stopping />
         </Card>
       </Sec>
 
       <Sec title="VerseBlock · tap a word (ring), roving keys ← →">
         <VerseBlock
           text="مِن شَرِّ مَا خَلَقَ"
-          reference="الفلق · ٢"
+          reference="الفلق ٢"
           marks={tapped ? { [tapped]: 'ring' } : undefined}
           onWord={(n) => setTapped(n)}
         />
@@ -91,7 +91,7 @@ function Demo({ theme }: { theme: 'light' | 'dark' }) {
           onLoop={() => setLoop(({ 1: 3, 3: 5, 5: 10, 10: 1 } as Record<number, number>)[loop])} onRate={() => setRate(rate === 1 ? 0.75 : 1)} onGap={() => setGap(!gap)}
           onSeekAyah={(i) => setAyah(Math.min(3, i + 1))}
         />
-        <AudioTransport playing={false} label="الضحى · ١" unavailable="Audio needs a connection. The text is here; recording still works." loop={1} rate={1} gap={false}
+        <AudioTransport playing={false} label="الضحى ١" unavailable="Audio needs a connection. The text is here; recording still works." loop={1} rate={1} gap={false}
           onPlayPause={() => {}} onPrev={() => {}} onNext={() => {}} onLoop={() => {}} onRate={() => {}} onGap={() => {}} />
       </Sec>
 
@@ -170,7 +170,7 @@ function Demo({ theme }: { theme: 'light' | 'dark' }) {
           Install to home screen so your data is kept.
         </Nudge>
         <Button variant="secondary" onClick={() => setSheet(true)}>Open sheet</Button>
-        <Sheet open={sheet} onClose={() => setSheet(false)} title={<T>ٱلضَّآلِّينَ · الفاتحة · ٧</T>}>
+        <Sheet open={sheet} onClose={() => setSheet(false)} title={<T>ٱلضَّآلِّينَ · الفاتحة ٧</T>}>
           <div className="gal-row">
             <Button variant="primary">■ جلي clear error</Button>
             <Button variant="secondary">□ خفي fine detail</Button>

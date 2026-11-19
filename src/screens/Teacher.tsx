@@ -3,7 +3,7 @@ import { useData } from '../core/store'
 import { today } from '../core/day'
 import { getLesson } from '../content'
 import { Button, Card, CorrectionTag, EmptyState, OrnHeading, SegmentedControl, T } from '../components'
-import { dayLabel, listenHref, live, nextTeacherDay, refLabel, severityCounts, upcomingSession } from './path/helpers'
+import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, upcomingSession } from './path/helpers'
 import { startClass } from './path/ui'
 import './path.css'
 
@@ -22,7 +22,7 @@ export default function Teacher() {
         {next ? (
           <>
             <p>
-              {next.teacherName ? <bdi lang="ar" className="a">{next.teacherName}</bdi> : 'Your teacher'} · {next.plannedPassages.length}{' '}
+              {next.teacherName || d.settings.teacherName ? <bdi lang="ar" className="a">{next.teacherName || d.settings.teacherName}</bdi> : 'Your teacher'} · {next.plannedPassages.length}{' '}
               {next.plannedPassages.length === 1 ? 'passage' : 'passages'}
             </p>
             <div className="p-actions">
@@ -54,7 +54,7 @@ export default function Teacher() {
             {open.map((c) => (
               <li key={c.id} className="p-item">
                 <div className="p-item-main">
-                  <a href={listenHref(c.verseKey)} className="a-lg" lang="ar">{refLabel(c.verseKey)}</a>
+                  <a href={listenHref(c.verseKey)} className="a-lg" lang="ar">{corrLabel(c)}</a>
                   <span className="t-sm muted">
                     <T>{c.lessonIds.map((l) => getLesson(l)?.nameAr ?? l).join('، ') || 'No rule tagged'}</T>
                     {c.note ? <> · <bdi dir="auto">{c.note}</bdi></> : null} · since {dayLabel(c.on ?? c.createdAt.slice(0, 10))}
@@ -94,10 +94,8 @@ export default function Teacher() {
                 )
               })}
             </ul>
-          ) : (
-            <EmptyState title="No sessions yet." action={<Button href="#/teacher/new">Plan a session</Button>}>
-              Plan your first one: the app suggests what to recite.
-            </EmptyState>
+          ) : next ? null : (
+            <p className="muted">No past sessions yet. They appear here after your first class.</p>
           )}
           {sessions.length > 0 && <Button variant="secondary" block href="#/teacher/new">+ Plan a session</Button>}
         </>

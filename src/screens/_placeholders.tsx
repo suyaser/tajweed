@@ -1,4 +1,4 @@
-import { Card, EmptyState } from '../components'
+import { Button, Card, EmptyState } from '../components'
 
 // Until a screen file exists in src/screens/, App renders this with the route's names.
 export const PLACEHOLDERS: Record<string, { ar: string; en: string }> = {
@@ -23,6 +23,8 @@ export const PLACEHOLDERS: Record<string, { ar: string; en: string }> = {
 }
 
 export function Placeholder({ name, params }: { name: string; params: Record<string, string> }) {
+  if (name === 'NotFound')
+    return <EmptyState title="This page doesn't exist." action={<Button href="#/today">Go to Today</Button>}>The link may be mistyped or from an older version.</EmptyState>
   const p = PLACEHOLDERS[name] ?? { ar: name, en: name }
   const keys = Object.entries(params)
   return (

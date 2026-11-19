@@ -161,6 +161,7 @@ export interface Correction extends Row {
   sessionId: string | null
   verseKey: VerseKey
   wordPosition?: number
+  word?: string // the tapped word's text, shown on every later view (UX M8)
   severity: 'jali' | 'khafi'
   lessonIds: string[]
   note?: string

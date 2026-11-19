@@ -106,6 +106,16 @@
 .listen-rec-actions { display: flex; flex-wrap: wrap; gap: var(--s1); }
 .linklike { background: none; border: 0; padding: 0; min-height: var(--target); color: var(--link); text-decoration: underline; font: inherit; cursor: pointer; }
 .listen-keys { display: none; }
+/* phone/tablet: the dock sticks to the bottom of the whole screen while the passage scrolls (M7) */
+@media (max-width: 1023px) {
+  .listen-side { display: contents; }
+  .listen-dock { order: 0; margin-inline: calc(-1 * var(--gutter)); padding: var(--s2) var(--gutter) calc(var(--s2) + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); box-shadow: var(--e3-shadow); }
+  .listen-dock .transport { border: 0; padding: var(--s1) 0 0; gap: var(--s2); background: none; }
+  .listen-dock .transport-status { min-height: 0; }
+  .listen-dock .transport-main { order: 3; }
+  .listen-dock .play { width: 56px; height: 56px; }
+  .listen-dock { background: var(--surface); }
+}
 @media (min-width: 1024px) {
   .shell[data-kind="focus"] .shell-main:has(.listen) { max-width: 1120px; }
   .listen { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; }
@@ -126,3 +136,26 @@
 .res-credits { grid-column: 1 / -1; }
 .eps { display: flex !important; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s2); }
 .eps a { display: grid; place-items: center; width: var(--target); height: var(--target); border-radius: var(--r-ctl); border: 1px solid var(--gold); text-decoration: none; font: var(--a-lg); color: var(--ink); }
+.rule-pair { display: grid; gap: 2px; }
+.rule-pair + .rule-pair { margin-top: var(--s2); }
+.rule-pair > span:first-child { font-weight: 600; }
+.lib-map-rtl { display: none; }
+@media (min-width: 1024px) { .lib-map-rtl { display: inline; } }
+
+/* Rules: on phone the topic chips sit under the tools; on laptop they become a sticky index beside the list (artifact .rlayout) */
+.lib-body { display: contents; }
+.lib-tools { order: -1; }
+@media (min-width: 1024px) {
+  .lib { grid-template-columns: 220px minmax(0, 1fr); column-gap: var(--s8); align-items: start; }
+  .lib-body { display: grid; gap: var(--section-gap); min-width: 0; }
+  .lib-tools { order: 0; }
+  .lib-topics {
+    position: sticky; top: calc(72px + var(--s6)); flex-direction: column; gap: 2px; overflow: visible;
+    margin: 0; padding: 0; max-height: calc(100dvh - 120px); overflow-y: auto;
+  }
+  .lib-topics button {
+    justify-items: start; text-align: start; border: 0; border-inline-start: 3px solid transparent;
+    border-radius: 0 var(--r-ctl) var(--r-ctl) 0; background: none; padding: var(--s1) var(--s3);
+  }
+  .lib-topics button:hover { background: var(--soft); border-inline-start-color: var(--gold); }
+}

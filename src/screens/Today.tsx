@@ -48,7 +48,7 @@ export default function Today() {
   const lessonId = q.sabaq ?? introducedToday
   const lesson = lessonId ? getLesson(lessonId) : undefined
   const passage = currentPassage(data, phases, lesson?.examples[0]?.verseKey)
-  const w = week(data, day)
+  const w = week(data, day, data.settings.onboardedOn)
 
   // سبق
   const skipped = m.skipSabaq === day
@@ -108,7 +108,7 @@ export default function Today() {
   const listenHref = href('listen', rangeParam(passage.from, passage.to))
 
   return (
-    <>
+    <div className="today">
       {allDone && (
         <section className="s-study s-summary" aria-label="Done for today">
           <Ornament />
@@ -118,18 +118,22 @@ export default function Today() {
         </section>
       )}
 
+      <aside className="today-side">
       <Card eyebrow="This week">
         <ProgressDots days={w.marks} today={w.todayIndex} />
-        <p className="t-sm num">{w.count} {w.count === 1 ? 'day' : 'days'} studied this week · This month: {w.month}</p>
+        <p className="t-sm num">
+          {w.count === 0 && data.settings.onboardedOn === day ? 'Your week starts today.' : `${w.count} ${w.count === 1 ? 'day' : 'days'} studied this week · This month: ${w.month}`}
+        </p>
       </Card>
 
       {near && (
         <Card eyebrow={<><span lang="ar">الشيخ</span> · Teacher {near.when}</>}>
           <p>
-            {plan[0] ? <T>{`Recite ${rangeRef(plan[0].from, plan[0].to)}`}</T> : 'Your session'}
+            {data.settings.teacherName ? <T>{`With ${data.settings.teacherName}`}</T> : 'Your session'}
+            {plan[0] && <> · <T>{`recite ${rangeRef(plan[0].from, plan[0].to)}`}</T></>}
             {openCorr > 0 && ` · ${openCorr} ${openCorr === 1 ? 'correction' : 'corrections'} to re-check`}
           </p>
-          <a href={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>Open plan ›</a>
+          <Button variant="secondary" href={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>{near.session ? 'Open the plan' : 'Plan this session'} ›</Button>
         </Card>
       )}
 
@@ -142,7 +146,9 @@ export default function Today() {
         </Card>
       )}
 
-      <section aria-labelledby="wird-h">
+      </aside>
+
+      <section aria-labelledby="wird-h" className="today-main">
         <div id="wird-h"><OrnHeading><span lang="ar">الورد</span> · Your wird, ~40′</OrnHeading></div>
         {allDone ? (
           <ul className="s-done-lines">
@@ -172,7 +178,7 @@ export default function Today() {
               ) : q.sabaq ? (
                 <>
                   {q.sabaqCorrected && <p className="eyebrow">Your teacher corrected this. Learn it today.</p>}
-                  <p className="t-sm"><T>{`New lesson: ${lesson?.nameAr ?? ''}`}</T></p>
+                  <p lang="ar" className="a-body">{lesson?.nameAr}</p>
                 </>
               ) : (
                 <SabaqReason reason={q.sabaqReason} newest={repeatNewest && newest && { name: getLesson(newest.lessonId)?.nameAr ?? '', href: repeatNewest.href }} backlog={dueManzil} activeLeft={activeLeft} passage={rangeRef(passage.from, passage.to)} listenHref={listenHref}
@@ -180,7 +186,8 @@ export default function Today() {
               )}
             </Part>
 
-            <Part n={3} id="recite" ar="التلاوة والتسجيل" en="Recite and record" min={15} mark={parts.recite} done={!!parts.recite}>
+            <Part n={3} id="recite" ar="التلاوة والتسجيل" en="Recite and record" min={15} mark={parts.recite} done={!!parts.recite}
+              action={targets.length ? undefined : <Button href={listenHref} variant={parts.recite ? 'secondary' : 'primary'}>Recite</Button>}>
               {targets.length ? (
                 <ul className="s-targets">
                   {targets.map(t => (
@@ -188,7 +195,7 @@ export default function Today() {
                   ))}
                 </ul>
               ) : (
-                <p className="t-sm"><a href={listenHref}><T>{`Recite ${rangeRef(passage.from, passage.to)} ›`}</T></a></p>
+                <p lang="ar" className="a-body">{rangeRef(passage.from, passage.to)}</p>
               )}
               {offline && <p className="t-sm muted">You can still record; the reciter won't play.</p>}
             </Part>
@@ -211,6 +218,7 @@ export default function Today() {
         )}
       </section>
 
+      <div className="today-nudges">
       {nudge === 'install' && (
         <Nudge
           action={<button type="button" className="btn btn-ghost" onClick={() => setHowOpen(true)}>How</button>}
@@ -224,6 +232,7 @@ export default function Today() {
           {backupAge == null ? 'No backup yet.' : `Last backup: ${backupAge} days ago.`}
         </Nudge>
       )}
+      </div>
       <Sheet open={howOpen} onClose={() => setHowOpen(false)} title="Install Tajweed Path">
         <ul className="s-bullets">
           <li>iPhone (Safari): tap Share, then “Add to Home Screen”.</li>
@@ -231,7 +240,7 @@ export default function Today() {
           <li>Laptop (Chrome or Edge): use the install icon in the address bar.</li>
         </ul>
       </Sheet>
-    </>
+    </div>
   )
 }
 

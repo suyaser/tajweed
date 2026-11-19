@@ -6,8 +6,8 @@ const log = (id: string, review: boolean): DayLog => ({ id, parts: { listen: nul
 
 describe('study helpers', () => {
   it('formats references in Arabic-Indic digits', () => {
-    expect(verseRef('93:5')).toBe('الضحى · ٥')
-    expect(rangeRef('93:1', '93:11')).toBe('الضحى · ١–١١')
+    expect(verseRef('93:5')).toBe('الضحى ٥')
+    expect(rangeRef('93:1', '93:11')).toBe('الضحى ١–١١')
     expect(rangeParam('1:1', '1:1')).toBe('1:1')
     expect(rangeParam('93:1', '93:5')).toBe('93:1-93:5')
   })

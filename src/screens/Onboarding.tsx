@@ -77,7 +77,7 @@ export default function Onboarding() {
         <section className="s-study">
           <Stars step={1} onSkip={next} />
           <Head ar="من أين تبدأ" en="Where you're starting">
-            Have you finished the intro course (the six episodes of م. علاء حامد)?
+            Have you finished the intro course (six episodes, by المهندس علاء حامد)?
           </Head>
           <div className="opts">
             <Choice on={!!draft.introCourseDone} onClick={() => set({ introCourseDone: true })}>Yes, I've watched it</Choice>

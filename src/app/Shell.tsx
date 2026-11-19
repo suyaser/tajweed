@@ -1,6 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
+import { today as studyDay } from '../core/day'
 
 type Tab = 'today' | 'rules' | 'teacher' | 'path'
 type Kind = 'tab' | 'pushed' | 'focus' | 'bare'
@@ -43,15 +44,18 @@ export function shellKind(r: Route): Kind {
   return m.kind
 }
 
-const today = new Date()
-const gregorian = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }).format(today)
-const hijri = (() => {
+/** The header shows the study day (03:00 boundary, core/day), not the calendar date, so it agrees with the plan (M13). */
+function dates() {
+  const now = new Date()
+  const day = new Date(studyDay(now) + 'T12:00:00Z')
+  const g = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(day)
+  let h = ''
   try {
-    return new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).format(today).replace(/\s?هـ$/, '')
-  } catch {
-    return ''
-  }
-})()
+    h = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(day).replace(/\s?هـ$/, '')
+  } catch { /* no Hijri calendar in this browser */ }
+  const late = now.getHours() < 3 ? `Still ${new Intl.DateTimeFormat('en-GB', { weekday: 'long', timeZone: 'UTC' }).format(day)}'s wird until 03:00` : ''
+  return { gregorian: g, hijri: h, late }
+}
 
 export interface ShellProps {
   route: Route
@@ -90,7 +94,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
   return (
     <div className="shell" data-kind={kind}>
       <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}>Skip to content</a>
-      {hasNav && <Rail active={meta.tab} />}
+      {hasNav && <Rail active={meta.tab} settings={route.name === 'settings'} />}
       <div className="shell-col">
         {kind === 'focus' && (
           <header className="focusbar gutter">
@@ -111,11 +115,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
             <div className="topbar-title">
               <h1 className="kufi" lang="ar">{meta.ar}</h1>
               <span className="topbar-en">{meta.en}</span>
-              {route.name === 'today' && (
-                <p className="topbar-dates">
-                  <span>{gregorian}</span> {hijri && <span lang="ar">{hijri}</span>}
-                </p>
-              )}
+              {route.name === 'today' && <Dates />}
             </div>
             {meta.gear && (
               <a className="gear" href={href('settings')} aria-label="Settings">
@@ -124,7 +124,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
             )}
           </header>
         )}
-        <main id="main" ref={mainRef} tabIndex={-1} className={`shell-main gutter${kind === 'bare' ? ' shell-bare' : ''}`}>
+        <main key={route.path} id="main" ref={mainRef} tabIndex={-1} className={`shell-main gutter${kind === 'bare' ? ' shell-bare' : ''}`}>
           {children}
         </main>
         {hasNav && miniPlayer && <div className="miniplayer">{miniPlayer}</div>}
@@ -148,7 +148,7 @@ function TabBar({ active }: { active?: Tab }) {
   )
 }
 
-function Rail({ active }: { active?: Tab }) {
+function Rail({ active, settings }: { active?: Tab; settings?: boolean }) {
   return (
     <nav className="rail lattice" aria-label="Main">
       <a className="rail-brand" href={href('today')}>
@@ -161,9 +161,19 @@ function Rail({ active }: { active?: Tab }) {
           <small>{t.en}</small>
         </a>
       ))}
-      <a className="rail-gear" href={href('settings')} aria-label="Settings">
+      <a className="rail-gear" href={href('settings')} aria-label="Settings" aria-current={settings ? 'page' : undefined}>
         <span aria-hidden="true">⚙</span>
       </a>
     </nav>
+  )
+}
+
+function Dates() {
+  const { gregorian, hijri, late } = dates()
+  return (
+    <p className="topbar-dates">
+      <span>{gregorian}</span> {hijri && <span lang="ar">{hijri}</span>}
+      {late && <span className="topbar-late">{late}</span>}
+    </p>
   )
 }

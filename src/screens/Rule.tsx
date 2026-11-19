@@ -7,7 +7,7 @@ import type { Example, Verse } from '../core/types'
 import { getVerse, RECITERS } from '../quran'
 import { usePlayer } from '../audio/usePlayer'
 import {
-  Button, COLOURS, CorrectionBadge, CountBeats, EmptyState, LetterTiles, LevelBadge, RuleChip, T, VerseBlock, arDigits,
+  Button, COLOURS, CorrectionBadge, CountBeats, EmptyState, LetterTiles, LevelBadge, Line, RuleChip, T, VerseBlock, arDigits,
 } from '../components'
 import { fmtDay, lessonStatus, useOnline } from './library/shared'
 import { rangeParam, refLabel } from './library/range'
@@ -58,7 +58,7 @@ export default function Rule({ params }: ScreenProps) {
   return (
     <article className="rule-card card card-e1 card-stripe" style={{ '--rc': lesson.colour ? `var(--t-${lesson.colour})` : 'var(--gold-ink)' } as CSSProperties}>
       <header className="rule-head">
-        <h2 className="a-h3" lang="ar" dir="rtl" style={{ color: 'var(--rc)' }}>{lesson.nameAr}</h2>
+        <h2 className="a-h3" lang="ar" dir="rtl">{lesson.nameAr}</h2>
         {lesson.colour && <RuleChip nameAr={COLOURS[lesson.colour].ar} colour={lesson.colour} />}
       </header>
       <p className="muted">{lesson.nameEn}</p>
@@ -98,7 +98,7 @@ export default function Rule({ params }: ScreenProps) {
           )}
           {lesson.conditions?.length ? <><dt>When</dt><dd><ul>{lesson.conditions.map((c, i) => <li key={i}><T>{c}</T></li>)}</ul></dd></> : null}
           {lesson.list?.length ? (
-            <><dt>List</dt><dd><ul>{lesson.list.map(([a, b], i) => <li key={i}><T>{a}</T>{b && <> · <T>{b}</T></>}</li>)}</ul></dd></>
+            <><dt>List</dt><dd><ul>{lesson.list.map(([a, b], i) => <li key={i} className="rule-pair"><span><T>{a}</T></span>{b && <Line text={b} />}</li>)}</ul></dd></>
           ) : null}
         </dl>
       )}
@@ -122,7 +122,7 @@ export default function Rule({ params }: ScreenProps) {
                   onWord={v ? (n) => { setStarted(null); player.playWord(v, n - 1) } : undefined}
                   reference={refLabel(e.verseKey)}
                   actions={
-                    <span className="rule-ex-actions" lang="en">
+                    <span className="rule-ex-actions" lang="en" dir="ltr">
                       <button
                         type="button" className="icon-btn" onClick={() => play(e)} disabled={!v || !online}
                         aria-label={online ? `${playingThis ? 'Stop' : 'Play'} ${refLabel(e.verseKey)}` : 'Play: needs a connection'}
@@ -130,7 +130,7 @@ export default function Rule({ params }: ScreenProps) {
                         <span aria-hidden="true">{playingThis ? '■' : '▶'}</span>{!online && <small> needs a connection</small>}
                       </button>
                       <a className="icon-btn" href={href('listen', rangeParam({ from: e.verseKey, to: e.verseKey }))} aria-label={`Open ${refLabel(e.verseKey)} in the player`}>
-                        <span aria-hidden="true">›</span>
+                        Player <span aria-hidden="true">›</span>
                       </a>
                     </span>
                   }
@@ -161,7 +161,7 @@ export default function Rule({ params }: ScreenProps) {
       {matn.length > 0 && (
         <p className="t-sm">
           {matn.map((m, i) => (
-            <span key={m.k}>{i ? ' · ' : ''}<a href={href('mutun', m.k)}>R2: <bdi lang="ar" className="a">{m.name} · {m.range}</bdi></a></span>
+            <span key={m.k}>{i ? ' · ' : ''}<a href={href('mutun', m.k)}>R2: <bdi lang="ar" className="a">{m.name} {m.range}</bdi></a></span>
           ))}
         </p>
       )}
@@ -183,7 +183,7 @@ export default function Rule({ params }: ScreenProps) {
         ) : (
           <>
             <Button block href={href('learn', lesson.id)}>Learn this</Button>
-            <p className="t-sm muted"><T>{`Reading a card doesn't add it to your review. Learning it does. You'll meet it in phase ${arDigits(lesson.phaseId)}.`}</T></p>
+            <p className="t-sm muted"><T>{`Reading a card doesn't add it to your review. Learning it does. You'll meet it in phase ${lesson.phaseId}.`}</T></p>
           </>
         )}
       </footer>

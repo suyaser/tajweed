@@ -7,6 +7,8 @@ import { RECITERS } from '../quran'
 import { listAll, removeAll } from '../audio/recordings'
 import { Button, Card, OrnHeading, SegmentedControl, VerseBlock } from '../components'
 import { WEEKDAYS, daysAgo, formatBytes } from './path/helpers'
+
+const WEEK_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 import { download } from './path/ui'
 import './path.css'
 
@@ -40,15 +42,16 @@ export default function Settings() {
         </Row>
         <Row label="Teacher day(s)">
           <div className="p-days" role="group" aria-label="Teacher days">
-            {WEEKDAYS.map((w, i) => (
+            {[6, 0, 1, 2, 3, 4, 5].map((i) => [i, WEEKDAYS[i]] as const).map(([i, w]) => (
               <button
                 key={w}
                 type="button"
-                className="p-day"
+                className="s-daychip"
+                aria-label={WEEK_LONG[i]}
                 aria-pressed={s.teacherDays.includes(i)}
                 onClick={() => set({ teacherDays: s.teacherDays.includes(i) ? s.teacherDays.filter((x) => x !== i) : [...s.teacherDays, i].sort() })}
               >
-                {w}
+                {w.slice(0, 2)}
               </button>
             ))}
           </div>
@@ -96,7 +99,7 @@ export default function Settings() {
           <SegmentedControl label="Quran text size" value={s.textSize} onChange={(v) => set({ textSize: v })}
             options={[{ value: 'm', label: 'M' }, { value: 'l', label: 'L' }, { value: 'xl', label: 'XL' }]} />
         </Row>
-        <VerseBlock text="قُلْ هُوَ ٱللَّهُ أَحَدٌ" reference="الإخلاص · ١" size="read" />
+        <div className="p-preview"><VerseBlock text="قُلْ هُوَ ٱللَّهُ أَحَدٌ" reference="الإخلاص ١" size="read" /></div>
         <Row label="Theme">
           <SegmentedControl label="Theme" value={s.theme} onChange={(v) => set({ theme: v })}
             options={[{ value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'system', label: 'System' }]} />
@@ -159,7 +162,8 @@ function Data({ lastExportOn }: { lastExportOn: string | null }) {
 
       <label className="p-field">
         <span>Restore from a backup</span>
-        <input type="file" accept="application/json,.json" onChange={(e) => { pick(e.target.files?.[0]); e.target.value = '' }} />
+        <input className="sr-only p-file" type="file" accept="application/json,.json" onChange={(e) => { pick(e.target.files?.[0]); e.target.value = '' }} />
+        <span className="btn btn-secondary p-file-btn" aria-hidden="true">Choose a backup file…</span>
       </label>
       {pending && (
         <div className="p-confirm" role="alertdialog" aria-label="Restore from this backup?">
@@ -185,7 +189,7 @@ function Data({ lastExportOn }: { lastExportOn: string | null }) {
 
       <p className="t-sm">
         Storage used: progress {formatBytes(local)}
-        {rec && `, recordings ${formatBytes(rec.bytes)} (${rec.n})`}.{' '}
+        {rec && (rec.n ? `, recordings ${formatBytes(rec.bytes)} (${rec.n})` : ', no recordings saved')}.{' '}
         {persisted === true
           ? 'The browser has agreed to keep this data.'
           : persisted === false

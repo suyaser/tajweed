@@ -58,7 +58,7 @@ export default function Resources(_: ScreenProps) {
       </Panel>
 
       <Panel ar="متون للحفظ" en="Texts to memorise">
-        <Item title={<Bdi>تحفة الأطفال · الجمزوري</Bdi>}>61 lines on النون والميم, اللام and المد. Memorise in Phases 3–4.</Item>
+        <Item title={<Bdi>تحفة الأطفال · الجمزوري</Bdi>}>61 lines on <Bdi>النون والميم واللام والمد</Bdi>. Memorise in Phases 3–4.</Item>
         <Item title={<Bdi>المقدمة الجزرية · ابن الجزري</Bdi>}>107 lines on المخارج, الصفات and all the rules. The standard text for mastery.</Item>
       </Panel>
 

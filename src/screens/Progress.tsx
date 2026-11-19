@@ -3,7 +3,7 @@ import { useData } from '../core/store'
 import { today } from '../core/day'
 import { LADDER, hasOpenCorrection, levelOf, type Level } from '../core/scheduler'
 import { getLesson, lessons, phases as contentPhases, topics } from '../content'
-import { Bdi, Card, CorrectionBadge, CorrectionTag, LevelBadge, ProgressDots, T } from '../components'
+import { Bdi, Card, CorrectionBadge, LevelBadge, ProgressDots, T } from '../components'
 import { accuracy, dayLabel, live, passedMilestones, studiedDays, weeks } from './path/helpers'
 import { PathTabs } from './path/ui'
 import './path.css'
@@ -58,7 +58,7 @@ function Recitation({ d }: { d: UserData }) {
         <>
           {sessions.length > 0 && (
             <>
-              <p className="t-sm">Corrections per session</p>
+              <p className="t-sm">Corrections per session <span className="muted">· newest first</span></p>
               <ul className="p-bars">
                 {sessions.map((s) => {
                   const mine = cs.filter((c) => c.sessionId === s.id)
@@ -67,8 +67,11 @@ function Recitation({ d }: { d: UserData }) {
                   return (
                     <li key={s.id}>
                       <span className="t-sm p-bar-day">{dayLabel(s.on)}</span>
-                      <span className="p-bar" aria-hidden="true">{'■'.repeat(j)}<span className="p-bar-k">{'□'.repeat(k)}</span></span>
-                      <span className="p-tags p-tags-start"><CorrectionTag severity="jali" count={j} /><CorrectionTag severity="khafi" count={k} /></span>
+                      <span className="p-bar" aria-hidden="true">
+                        {Array.from({ length: j }, (_, i) => <i key={'j' + i} className="j" />)}
+                        {Array.from({ length: k }, (_, i) => <i key={'k' + i} />)}
+                      </span>
+                      <span className="t-sm p-bar-n"><T>{`${j} جلي · ${k} خفي`}</T></span>
                     </li>
                   )
                 })}

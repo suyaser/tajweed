@@ -154,7 +154,7 @@ function LessonFlow({ lesson, applyOnly }: { lesson: Lesson; applyOnly: boolean 
       <Ornament />
       <p className="t-lg"><T>{`${lesson.nameAr} is in your سبقي.`}</T></p>
       <p>It comes back tomorrow and every day this week.</p>
-      {qs.check.length > 0 && step === 4 && <p className="num">Check: {right} of {qs.check.length}</p>}
+      {qs.check.length > 0 && step === 4 && <p className="num">You answered {right} of {qs.check.length} checks right.</p>}
       <Button block href={href('today')}>Back to today</Button>
     </section>
   )

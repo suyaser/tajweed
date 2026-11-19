@@ -91,7 +91,7 @@ export const phases: Phase[] = [
     id: 1, weeks: 'Weeks 1–2', nameAr: 'التأسيس', nameEn: 'Foundations', goal: 'Read fluently and fix الفاتحة.',
     doneWhen: 'الفاتحة has no clear errors.',
     tasks: [
-      "Watch the 6 episodes of م. علاء حامد's course, one a day, for the big picture",
+      'Watch the six episodes of the course by المهندس علاء حامد, one a day, for the big picture',
       'After each episode, open the mind map and read the cards it mentions',
       'Know the letters, الحركات، السكون، الشدة and التنوين by sight and sound (القاعدة النورانية if still slow)',
       'Learn the difference between اللحن الجلي and اللحن الخفي',

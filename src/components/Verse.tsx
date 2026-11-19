@@ -170,7 +170,7 @@ export interface VerseBlockProps {
   /** Plain Uthmani text, or `segments` when tajweed colours are known. */
   text?: string
   segments?: TajweedSegment[]
-  /** Caption: surah name + Arabic-Indic ayah, e.g. 'العصر · ٢'. */
+  /** Caption: surah name + Arabic-Indic ayah, e.g. 'العصر ٢'. */
   reference?: string
   size?: 'inline' | 'read' | 'focus'
   /** Show tajweed colours from segments (default true). Quiz prompts pass false. */
@@ -226,7 +226,7 @@ export function VerseBlock({
     <figure className={`verse verse-${size}`} lang="ar" dir="rtl" data-isolate={isolate ?? undefined} aria-describedby={hasCaption ? capId : undefined}>
       {ayah === 1 && <SurahOpening surah={surah} />}
       <p className="verse-text" onKeyDown={onWord ? roving : undefined}>
-        <span className="br" aria-hidden="true">﴿</span> {body} <span className="br" aria-hidden="true">﴾</span>
+        <span className="br" aria-hidden="true">﴿</span>{'\u00A0'}{body}<span className="nowrap">{'\u00A0'}<span className="br" aria-hidden="true">﴾</span></span>
       </p>
       {hasCaption && (
         <figcaption id={capId}>
@@ -296,12 +296,16 @@ const AyahRun = memo(function AyahRun({ a, tajweed, isolate, marks, isCurrent, w
   const end = `﴿${arDigits(a.n)}﴾`
   return (
     <span className="ayah" data-current={isCurrent || undefined}>
-      {join(toks)}{' '}
-      {onAyah ? (
-        <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang="en" aria-label={`Ayah ${a.n}`}>{end}</button>
-      ) : (
-        <span className="ayah-end">{end}</span>
-      )}{' '}
+      {join(toks.slice(0, -1))}{toks.length > 1 && ' '}
+      {/* the last word and its marker wrap together: ﴿٥﴾ never sits alone on a line (m17) */}
+      <span className="nowrap">
+        {toks[toks.length - 1]}{'\u00A0'}
+        {onAyah ? (
+          <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang="en" aria-label={`Ayah ${a.n}`}>{end}</button>
+        ) : (
+          <span className="ayah-end">{end}</span>
+        )}
+      </span>{' '}
     </span>
   )
 })

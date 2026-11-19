@@ -59,7 +59,8 @@ export function QuestionView({ q, mode, eyebrow, note, audio, onAnswer, onNext, 
   const stateOf = (id: string): OptionState => {
     if (chosen == null) return 'idle'
     if (id === q.answerId) return mode === 'pretest' ? 'revealed' : chosen === id ? 'correct' : 'revealed'
-    return mode !== 'pretest' && id === chosen ? 'wrong' : 'idle'
+    if (id !== chosen) return 'idle'
+    return mode === 'pretest' ? 'picked' : 'wrong'
   }
 
   return (

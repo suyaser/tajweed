@@ -11,7 +11,7 @@ import { segForWord, segsOf } from '../audio/player'
 import { list, remove, save, KEEP } from '../audio/recordings'
 import { playMe, playModelThenMe, type ComparePhase } from '../audio/compare'
 import {
-  AudioTransport, Button, EmptyState, Legend, Nudge, Passage, RecordButton, Sheet, T, ToggleChip, type PassageAyah,
+  AudioTransport, Button, EmptyState, Legend, Nudge, Passage, RecordButton, Sheet, Skeleton, T, ToggleChip, type PassageAyah,
 } from '../components'
 import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
 import './library.css'
@@ -207,6 +207,7 @@ export default function Listen({ params }: ScreenProps) {
             {RECITERS.map((r) => <option key={r.id} value={r.id} lang="ar">{r.nameAr}</option>)}
           </select>
         </label>
+        <ToggleChip label="Colours" value={colours ? 'on' : 'off'} pressed={colours} onClick={() => { setColours(!colours); setIsolate(null) }} />
         {listenDone && <p className="t-sm listen-done" role="status"><span aria-hidden="true">✓</span> Listening counted for today</p>}
       </header>
 
@@ -219,7 +220,7 @@ export default function Listen({ params }: ScreenProps) {
             Check your connection. Text you have opened before works offline.
           </EmptyState>
         ) : !verses ? (
-          <p className="muted" role="status"><T>{`Loading ${label}…`}</T></p>
+          <Skeleton verse lines={4} label={`Loading ${label}…`} />
         ) : (
           <>
             <Passage
@@ -271,9 +272,6 @@ export default function Listen({ params }: ScreenProps) {
           />
           {state.status === 'gap' && <Button variant="ghost" onClick={() => player.skipGap()}>Skip the pause</Button>}
           {(state.status === 'error' || state.status === 'offline') && <Button variant="secondary" onClick={() => player.play()}>Try again</Button>}
-          <div className="transport-chips">
-            <ToggleChip label="Colours" value={colours ? 'on' : 'off'} pressed={colours} onClick={() => { setColours(!colours); setIsolate(null) }} />
-          </div>
         </div>
 
         <section className="listen-rec card card-e1" aria-label="Record yourself">

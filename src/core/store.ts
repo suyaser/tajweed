@@ -271,7 +271,7 @@ export function updateSession(id: string, patch: Partial<Session>) {
 }
 
 export interface NewCorrection {
-  verseKey: string; severity: Correction['severity']; lessonIds?: string[]; wordPosition?: number
+  verseKey: string; severity: Correction['severity']; lessonIds?: string[]; wordPosition?: number; word?: string
   note?: string; sessionId?: string | null; by?: Correction['by']
 }
 
@@ -283,11 +283,18 @@ export function logCorrection(input: NewCorrection): Correction {
     id: uuid(), createdAt: at, updatedAt: at, deletedAt: null, on, sessionId: input.sessionId ?? null,
     verseKey: input.verseKey, severity: input.severity, lessonIds: (input.lessonIds ?? []).slice(0, 2),
     status: 'open', by: input.by ?? 'learner',
-    ...(input.wordPosition != null ? { wordPosition: input.wordPosition } : {}), ...(input.note ? { note: input.note } : {}),
+    ...(input.wordPosition != null ? { wordPosition: input.wordPosition } : {}), ...(input.word ? { word: input.word } : {}), ...(input.note ? { note: input.note } : {}),
   }
   const corrections = [...data.corrections, c]
   commit({ ...data, corrections, items: rebuildItems(data.introductions, data.attempts, corrections, on) })
   return c
+}
+
+/** Undo a correction just logged by mistake (soft delete, its review item goes with it). */
+export function undoCorrection(id: string) {
+  const at = nowIso()
+  const corrections = data.corrections.map(c => (c.id === id ? { ...c, deletedAt: at, updatedAt: at } : c))
+  commit({ ...data, corrections, items: rebuildItems(data.introductions, data.attempts, corrections, today()) })
 }
 
 /** Teacher re-check: "correct now" closes it; "still wrong" is a lapse and sends its lessons back to tomorrow. */

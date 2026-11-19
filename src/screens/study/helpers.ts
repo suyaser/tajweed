@@ -7,18 +7,18 @@ import { ayahCount, surahName, toArabicDigits } from '../../quran'
 
 const parse = (k: VerseKey) => k.split(':').map(Number) as [number, number]
 
-/** 'الضحى · ٥' (design B4: never 93:5 on screen). */
+/** 'الضحى ٥' (design B4: never 93:5 on screen). */
 export const verseRef = (k: VerseKey) => {
   const [s, a] = parse(k)
-  return `${surahName(s)} · ${toArabicDigits(a)}`
+  return `${surahName(s)} ${toArabicDigits(a)}`
 }
 
-/** 'الضحى · ١–١١', or two refs joined across surahs. */
+/** 'الضحى ١–١١', or two refs joined across surahs. */
 export function rangeRef(from: VerseKey, to: VerseKey) {
   if (from === to) return verseRef(from)
   const [s1, a1] = parse(from)
   const [s2, a2] = parse(to)
-  return s1 === s2 ? `${surahName(s1)} · ${toArabicDigits(a1)}–${toArabicDigits(a2)}` : `${verseRef(from)} – ${verseRef(to)}`
+  return s1 === s2 ? `${surahName(s1)} ${toArabicDigits(a1)}–${toArabicDigits(a2)}` : `${verseRef(from)} – ${verseRef(to)}`
 }
 
 /** Route param for #/listen/:range. */
@@ -40,10 +40,11 @@ export function dueLabel(due: Day, today: Day) {
 }
 
 /** Today's week dots: the same "studied" rule as Progress (any wird part, listening, a recording, an answer). */
-export function week(d: Pick<UserData, 'days' | 'attempts' | 'introductions'>, today: Day) {
+export function week(d: Pick<UserData, 'days' | 'attempts' | 'introductions'>, today: Day, startedOn?: Day | null) {
   const studied = studiedDays(d)
   const ds = weekDays(today)
-  const marks: DayMark[] = ds.map(x => (x > today ? 'future' : studied.has(x) ? 'studied' : 'not'))
+  // days before onboarding are "before you started", never "not studied" (m9)
+  const marks: DayMark[] = ds.map(x => (x > today ? 'future' : studied.has(x) ? 'studied' : startedOn && x < startedOn ? 'before' : 'not'))
   const month = [...studied].filter(x => x.slice(0, 7) === today.slice(0, 7) && x <= today).length
   return { marks, todayIndex: ds.indexOf(today), count: marks.filter(m => m === 'studied').length, month }
 }
