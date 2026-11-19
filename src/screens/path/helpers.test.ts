@@ -1,15 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import type { PhaseProgress, Session } from '../../core/types'
-import { phases } from '../../content'
 import {
-  accuracy, inRange, likelyLessons, listenHref, mergePassages, milestoneFor, nextTeacherDay, refLabel, studiedDays, weeks, wordSpan,
+  accuracy, inRange, likelyLessons, listenHref, mergePassages, nextTeacherDay, refLabel, studiedDays, weeks, wordSpan,
 } from './helpers'
-
-const session = (over: Partial<Session>): Session => ({
-  id: 's', createdAt: '', updatedAt: '', deletedAt: null, on: '2026-11-01', plannedPassages: [], milestoneResults: [], status: 'done', ...over,
-})
-const prog = (st: Record<number, PhaseProgress['status']>): PhaseProgress[] =>
-  phases.map((p) => ({ id: p.id, status: st[p.id] ?? 'locked', activatedOn: null, milestoneOn: null, passedOn: null, tasksDone: [] }))
 
 describe('path helpers', () => {
   it('labels ranges in Arabic', () => {
@@ -38,14 +30,6 @@ describe('path helpers', () => {
   it('merges passages without duplicates', () => {
     const a = [{ from: '1:1', to: '1:7', reason: 'milestone' as const }]
     expect(mergePassages(a, [{ from: '1:1', to: '1:7', reason: 'ask' }, { from: '2:1', to: '2:1', reason: 'ask' }])).toHaveLength(2)
-  })
-
-  it('matches a planned passage to the open milestone (الفاتحة is in phases 1 and 2)', () => {
-    const p = { from: '1:1', to: '1:7' }
-    expect(milestoneFor(p, phases, prog({ 1: 'milestone' }), [])).toMatchObject({ phaseId: 1, passageId: 'p1-fatiha' })
-    const passed1 = session({ milestoneResults: [{ phaseId: 1, passageId: 'p1-fatiha', result: 'passed' }] })
-    expect(milestoneFor(p, phases, prog({ 1: 'passed', 2: 'milestone' }), [passed1])).toMatchObject({ phaseId: 2, passageId: 'p2-fatiha' })
-    expect(milestoneFor({ from: '2:1', to: '2:5' }, phases, prog({ 1: 'milestone' }), [])).toBeUndefined()
   })
 
   it('suggests rules from the tapped word, then recent lessons', () => {

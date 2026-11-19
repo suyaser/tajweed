@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { Correction, Session as SessionT, UserData } from '../core/types'
-import { logCorrection, resolveCorrection, undoCorrection, updateSession, useData } from '../core/store'
-import { getLesson, lessons, phases as contentPhases } from '../content'
+import { completeFinale, logCorrection, resolveCorrection, undoCorrection, updateSession, useData } from '../core/store'
+import { getLesson, lessons } from '../content'
+import { getUnit, units } from '../content/course'
 import { navigate } from '../app/router'
 import type { ScreenProps } from '../app/App'
 import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, Skeleton, StarBadge, T, type WordMark } from '../components'
-import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, milestoneFor, refLabel, type Planned } from './path/helpers'
+import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, refLabel, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip, startClass, useVerses } from './path/ui'
 import './path.css'
 
@@ -115,16 +116,17 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
   const openHere = p ? live(d.corrections).filter((c) => (c.status === 'open' || c.resolvedInSessionId === s.id) && c.sessionId !== s.id && inRange(c.verseKey, p.from, p.to)) : []
   // re-check: the word corrected in an earlier class wears the same neutral ring (M8)
   for (const c of openHere) if (c.wordPosition && c.status === 'open') marks[`${c.verseKey}/${c.wordPosition}`] = 'ring'
-  // a result already given here wins: passing phase 1's الفاتحة must not turn the card into phase 2's
-  const given = p && s.milestoneResults.flatMap((r) => {
-    const m = contentPhases.find((x) => x.id === r.phaseId)?.milestone.find((x) => x.id === r.passageId)
-    return m && m.from === p.from && m.to === p.to ? [{ phaseId: r.phaseId, passageId: m.id, label: m.label }] : []
-  })[0]
-  const ms = given ?? (p && milestoneFor(p, contentPhases, d.phases, d.sessions.filter((x) => x.id !== s.id)))
-  const result = ms && s.milestoneResults.find((r) => r.phaseId === ms.phaseId && r.passageId === ms.passageId)?.result
+  // v2: the milestone is a unit finale (result stored as phaseId = unit number, passageId = unit id)
+  const unit = p && units.find((u) => u.finale?.from === p.from && u.finale.to === p.to &&
+    (s.milestoneResults.some((r) => r.passageId === u.id) || !d.finales.some((f) => f.unitId === u.id)))
+  const ms = unit && { phaseId: unit.n, passageId: unit.id, label: unit.finale!.label }
+  const result = ms && s.milestoneResults.find((r) => r.passageId === ms.passageId)?.result
 
-  const setResult = (r: 'passed' | 'not_yet') =>
-    ms && updateSession(s.id, { milestoneResults: [...s.milestoneResults.filter((x) => !(x.phaseId === ms.phaseId && x.passageId === ms.passageId)), { phaseId: ms.phaseId, passageId: ms.passageId, result: r }] })
+  const setResult = (r: 'passed' | 'not_yet') => {
+    if (!ms) return
+    updateSession(s.id, { milestoneResults: [...s.milestoneResults.filter((x) => x.passageId !== ms.passageId), { phaseId: ms.phaseId, passageId: ms.passageId, result: r }] })
+    if (r === 'passed') completeFinale(ms.passageId)
+  }
 
   return (
     <div className="p-stack p-class">
@@ -162,9 +164,9 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
       )}
 
       {ms && (
-        <Card eyebrow="Milestone">
+        <Card eyebrow="Unit finale">
           <p><T>{`Did your teacher pass ${ms.label}?`}</T></p>
-          <div className="p-actions" role="group" aria-label="Milestone result">
+          <div className="p-actions" role="group" aria-label="Finale result">
             <Button variant={result === 'passed' ? 'primary' : 'secondary'} aria-pressed={result === 'passed'} onClick={() => setResult('passed')}>Passed</Button>
             <Button variant={result === 'not_yet' ? 'primary' : 'secondary'} aria-pressed={result === 'not_yet'} onClick={() => setResult('not_yet')}>Not yet</Button>
           </div>
@@ -336,20 +338,17 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
           {resolved.length > 0 && ` ${resolved.length} closed: your teacher says ${resolved.length === 1 ? 'it is' : 'they are'} correct now.`}
         </p>
         {back.length > 0 && <p><T>{`${back.join(' and ')} come${back.length === 1 ? 's' : ''} back in review tomorrow.`}</T></p>}
-        {early.length > 0 && <p><T>{`${early.join(' and ')}: not learned yet, so ${early.length === 1 ? 'it is' : 'they are'} offered as your next lesson when its phase is active.`}</T></p>}
+        {early.length > 0 && <p><T>{`${early.join(' and ')}: not learned yet. ${early.length === 1 ? 'It comes' : 'They come'} into review once you reach ${early.length === 1 ? 'its lesson' : 'their lessons'} in the course.`}</T></p>}
         {untagged > 0 && <p className="muted">{untagged} {untagged === 1 ? 'correction has' : 'corrections have'} no rule. They still come back in review.</p>}
         {s.milestoneResults.map((r) => {
-          const ph = contentPhases.find((p) => p.id === r.phaseId)
-          const m = ph?.milestone.find((x) => x.id === r.passageId)
-          const st = d.phases.find((p) => p.id === r.phaseId)?.status
-          const next = contentPhases.find((p) => p.id === r.phaseId + 1)
+          const u = getUnit(r.passageId)
           return (
-            <div key={`${r.phaseId}/${r.passageId}`}>
-              <p><T>{`Milestone: ${m?.label ?? r.passageId} ${r.result === 'passed' ? 'passed' : 'not yet'}.`}</T></p>
-              {r.result === 'passed' && st === 'passed' && ph && (
+            <div key={r.passageId}>
+              <p><T>{`Unit finale: ${u?.finale?.label ?? r.passageId} ${r.result === 'passed' ? 'passed' : 'not yet'}.`}</T></p>
+              {r.result === 'passed' && u && (
                 <p className="p-row-inline">
-                  <StarBadge n={ph.id} size={32} state="done" />
-                  <T>{`Phase ${ph.id} · ${ph.nameAr} passed.${next ? ` Phase ${next.id} · ${next.nameAr} is open now.` : ''}`}</T>
+                  <StarBadge n={u.n} size={32} state="done" />
+                  <T>{`Unit ${u.n} · ${u.nameAr} complete.`}</T>
                 </p>
               )}
             </div>

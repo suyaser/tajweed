@@ -77,7 +77,7 @@ export default function Onboarding() {
       {step === 1 && (
         <section className="s-study">
           <Stars step={1} onSkip={next} />
-          <Head ar="كيف يعمل" en="How your path works">Four things to know. You can read this again any time from Help.</Head>
+          <Head ar="كيف يعمل" en="How the course works">Four things to know. You can read this again any time from Help.</Head>
           <Basics />
           <Button block onClick={next}>Got it</Button>
         </section>
@@ -92,7 +92,7 @@ export default function Onboarding() {
             <Choice on={!!draft.introCourseDone} onClick={() => set({ introCourseDone: true })}>Yes, I've watched it</Choice>
             <Choice on={!draft.introCourseDone} onClick={() => set({ introCourseDone: false })}>Not yet</Choice>
           </div>
-          <p className="t-sm muted">If you have, the episode tasks of phase 1 start ticked. You'll start from the first lesson either way.</p>
+          <p className="t-sm muted">The course follows the same surahs, so it helps. You'll start from lesson 1 either way.</p>
           <Button block onClick={next}>Next</Button>
         </section>
       )}
@@ -106,12 +106,12 @@ export default function Onboarding() {
       {step === 5 && (
         <section className="s-study">
           <Stars step={5} onSkip={finish} />
-          <Head ar="الورد اليومي" en="When will you study?" />
+          <Head ar="الورد اليومي" en="When will you study?">A teacher is optional. If you have one, pick the day you meet.</Head>
           <label className="s-field">
             <span>Wird time</span>
             <input type="time" value={draft.wirdTime} onChange={e => set({ wirdTime: e.target.value || '05:30' })} />
           </label>
-          <p className="t-sm muted">About 40 minutes. A fixed time makes it a habit.</p>
+          <p className="t-sm muted">About 20 minutes: a lesson and your review. A fixed time makes it a habit.</p>
           <fieldset className="s-field">
             <legend>Teacher day</legend>
             <div className="s-chips">
@@ -133,7 +133,7 @@ export default function Onboarding() {
           <Button variant="secondary" onClick={() => downloadIcs(draft)}>
             <span aria-hidden="true">📅</span> Add my wird to calendar
           </Button>
-          <Button block onClick={finish}>Start my path</Button>
+          <Button block onClick={finish}>Start lesson 1</Button>
         </section>
       )}
     </div>
@@ -169,12 +169,12 @@ function Welcome({ onNext }: { onNext: () => void }) {
       </Band>
       <section className="s-study">
         <Stars step={0} />
-        <h1 className="t-h2">A companion for your study with your teacher.</h1>
+        <h1 className="t-h2">A tajweed course on real Quran words, one lesson at a time.</h1>
         <ul className="s-ob-list">
-          <li>Plans each day's wird</li>
+          <li>Short lessons: hear it, say it, then learn the rule</li>
+          <li>Each lesson ends on a real passage you recite</li>
           <li>Brings rules back before you forget them</li>
-          <li>Lets you listen, repeat and record</li>
-          <li>Keeps your teacher's corrections</li>
+          <li>Keeps your teacher's corrections, if you have one</li>
         </ul>
         <Card eyebrow="An honest note">
           <p>It does not grade your recitation. Only a teacher can. Your recordings stay on this device.</p>

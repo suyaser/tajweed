@@ -4,10 +4,10 @@ import { href } from '../../app/router'
 import { Card, T } from '../../components'
 
 export const BASICS: { ar: string; en: string; body: string }[] = [
-  { ar: 'المسار', en: 'The path', body: 'Six phases, about 16 weeks to the end of phase 5. Each phase has rule lessons and ends with a passage you recite to your teacher. When your teacher passes it, the next phase opens.' },
-  { ar: 'الورد', en: 'Every day', body: 'Today lists your wird, about 40 minutes in four steps: listen and repeat, one new lesson (السبق), recite and record, then review. Do them in order and tick each one.' },
+  { ar: 'المسار', en: 'The course', body: 'Ten units that follow real surahs, from الناس back to الضحى, then الفاتحة and beyond. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.' },
+  { ar: 'الدرس', en: 'A lesson', body: 'Seven short steps, about 15 minutes: hear real words, notice the sound, learn the rule, say it, find it in an ayah, check yourself, then recite a passage. At most two new lessons a day.' },
   { ar: 'المراجعة', en: 'Review', body: 'Every rule you learn is asked daily for a week, then after 3, 7, 14, 30, 60 and 120 days. Answer right and it waits longer; answer wrong and it comes back sooner.' },
-  { ar: 'الشيخ', en: 'Your teacher', body: 'Before class, plan what to recite. During class, log each correction in a few taps. Corrections come back in your review until your teacher says they are fixed.' },
+  { ar: 'الشيخ', en: 'A teacher (optional)', body: 'The app never grades your recitation. If you have a teacher, plan what to recite, log corrections in class, and they come back in your review until fixed.' },
 ]
 
 export function Basics() {
@@ -33,25 +33,28 @@ const Sec = ({ ar, en, children }: { ar: string; en: string; children: ReactNode
 export function FullGuide() {
   return (
     <div className="g-full">
-      <Sec ar="المسار" en="The path">
-        <p><T>Your plan has six phases: التأسيس، المخارج والصفات، النون والميم والغنة، المد والقلقلة والتفخيم، الوصل والوقف، الإتقان.</T></p>
+      <Sec ar="المسار" en="The course">
+        <p><T>Ten units (0–9) that follow the surahs of the intro course by المهندس علاء حامد: الناس back towards الضحى, then الفاتحة, then rules from beyond جزء عمّ, then المخارج والصفات in full.</T></p>
         <ul className="s-bullets">
-          <li>Each phase has rule lessons. The app gives you a new one on most days, at most four a week.</li>
-          <li>Each phase also has tasks (watch, memorise, drill). Your next tasks show on Today; tick them there or on the Path tab.</li>
-          <li>When all lessons of a phase are learned, the phase moves to its milestone: passages you recite to your teacher.</li>
-          <li>Once your teacher passes half the milestone passages, the next phase opens. The rest stay on your session plan.</li>
+          <li>Lessons open one after another. Today always shows the next one.</li>
+          <li>At most two new lessons a day. Spacing is what makes them stick.</li>
+          <li>After a unit's last lesson comes its finale: a whole passage you recite. “I recited it” opens the next unit.</li>
+          <li>Some units list lines of تحفة الأطفال or الجزرية to memorise. They are optional.</li>
         </ul>
-        <p><a href={href('plan')}>Open the Path tab ›</a></p>
+        <p><a href={href('plan')}>Open the course map ›</a></p>
       </Sec>
 
-      <Sec ar="الورد اليومي" en="Your daily wird">
+      <Sec ar="الدرس" en="The seven lesson steps">
         <ol className="s-bullets">
-          <li><T>الاستماع والترديد (10′): play the passage, repeat after the reciter in the pause. Tap any word to hear it alone.</T></li>
-          <li><T>السبق (10′): one new rule. You guess first, read the card, answer a few checks, then say examples aloud.</T></li>
-          <li><T>التلاوة والتسجيل (15′): recite the ayahs listed (one for each rule of this week, and any open corrections). Record yourself and play “reciter, then me”.</T></li>
-          <li><T>المراجعة (5′): short questions on rules that are due. Only 10 minutes today? Do just this.</T></li>
+          <li><T>اسمع Hear: three real words with the rule, from the reciter. Play each as often as you like.</T></li>
+          <li><T>لاحظ Notice: two words, one with the rule and one without. Which is which, by ear?</T></li>
+          <li><T>تعلّم Learn: the rule card, with its name, definition and examples.</T></li>
+          <li><T>ردّد Say: repeat after the reciter, record yourself, compare, and say if it sounded the same.</T></li>
+          <li><T>استخرج Find: tap every word in an ayah that has the rule.</T></li>
+          <li><T>تحقّق Check: two or three quick questions.</T></li>
+          <li><T>اقرأ Recite: a real passage that uses only rules you know. Listen, recite, record, then “I recited it”.</T></li>
         </ol>
-        <p className="t-sm muted">The study day changes at 03:00, so a late-night wird still counts for the day before.</p>
+        <p className="t-sm muted">Leave mid-lesson and it resumes at the same step the same day. Finished lessons can be replayed from the course map.</p>
       </Sec>
 
       <Sec ar="سبق · سبقي · منزل" en="How review works">
@@ -61,14 +64,14 @@ export function FullGuide() {
           <li><T>منزل: older lessons. They return after 3, 7, 14, 30, 60, then 120 days. A wrong answer brings the rule back the next day and starts its ladder again.</T></li>
         </ul>
         <p className="t-sm">Each rule shows a level: <b>not started</b>, <b>learning</b>, <b>known</b>, <b>strong</b>. Strong means a month of right answers on different examples.</p>
-        <p className="t-sm muted">If more than 15 reviews are overdue, new lessons pause until you catch up.</p>
+        <p className="t-sm muted">If more than 15 reviews are overdue, new lessons pause until you catch up. The practice card on Today lists your recent passages to recite again.</p>
       </Sec>
 
-      <Sec ar="الشيخ" en="With your teacher">
+      <Sec ar="الشيخ" en="With a teacher (optional)">
         <ul className="s-bullets">
-          <li>Before class: Teacher tab → Plan a session. The app suggests your milestone passage and corrections to re-check.</li>
+          <li>Before class: Teacher tab → Plan a session. The app suggests your unit finale and corrections to re-check.</li>
           <li>In class: tap the word your teacher corrected, choose the rule and whether it was clear (جلي) or subtle (خفي).</li>
-          <li>After class: mark milestone passages passed or not yet. Corrections join your review and recite list.</li>
+          <li>After class: mark the finale passed or not yet (passed opens the next unit). Corrections join your review.</li>
           <li>Next class: re-check each correction. “Fixed” closes it; “still wrong” sends its rule back to the start.</li>
         </ul>
       </Sec>

@@ -35,8 +35,18 @@ export function useStudyAudio() {
     player.load([v], reciter, { skipBasmala: true })
     player.playWords(v, ex.wordFrom, ex.wordTo)
   }
+  /** A whole passage from its first ayah (basmala as the player decides). */
+  const passage = (vs: Verse[]) => { player.load(vs, reciter); player.play() }
+  /** The example's words, then `then` once they finish (reciter, then me). */
+  const exampleThen = (v: Verse, ex: Example, then: () => void) => {
+    example(v, ex)
+    const off = player.subscribe(() => {
+      const s = player.getState().status
+      if (s === 'idle' || s === 'error' || s === 'offline') { off(); if (s === 'idle') then() }
+    })
+  }
   const offline = state.status === 'offline' || (typeof navigator !== 'undefined' && navigator.onLine === false)
-  return { state, player, reciter, ayah, example, offline, busy: state.status === 'playing' || state.status === 'loading', stop: () => player.stop() }
+  return { state, player, reciter, ayah, example, passage, exampleThen, offline, busy: state.status === 'playing' || state.status === 'loading', stop: () => player.stop() }
 }
 export type StudyAudio = ReturnType<typeof useStudyAudio>
 
@@ -50,7 +60,7 @@ export function PlayButton({ label, onClick, audio, children = '▶' }: { label:
   )
 }
 
-const flat = (words: TajweedSegment[][]) => words.flatMap((w, i) => (i ? [{ text: ' ' }, ...w] : w))
+export const flat = (words: TajweedSegment[][]) => words.flatMap((w, i) => (i ? [{ text: ' ' }, ...w] : w))
 
 /**
  * The example's ayah from the real text, the example words underlined (neutral).

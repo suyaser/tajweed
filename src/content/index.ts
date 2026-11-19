@@ -1,5 +1,5 @@
 // Adapts the reviewed content JSON (content/*.json) to the shared types.
-import type { ColourKey, ConfusablePair, Lesson, MatnLine, Phase, QuestionKind, Topic } from '../core/types'
+import type { ColourKey, ConfusablePair, Lesson, MatnLine, QuestionKind, Topic } from '../core/types'
 // Content: reviewed rules/pairs from content/ (see docs/04-content-review.md); verified mutun (docs/05-mutun-verification.md).
 import rawRules from '../../content/rules.json'
 import rawPairs from '../../content/pairs.json'
@@ -82,80 +82,3 @@ export function drillFor(lesson: Lesson): string[] {
 
 const byId = new Map(lessons.map(l => [l.id, l]))
 export const getLesson = (id: string): Lesson | undefined => byId.get(id)
-
-const ofPhase = (n: number) => lessons.filter(l => l.phaseId === n).map(l => l.id)
-const range = (id: string, label: string, from: string, to: string) => ({ id, label, from, to })
-
-export const phases: Phase[] = [
-  {
-    id: 1, weeks: 'Weeks 1–2', nameAr: 'التأسيس', nameEn: 'Foundations', goal: 'Read fluently and fix الفاتحة.',
-    doneWhen: 'الفاتحة has no clear errors.',
-    tasks: [
-      'Watch the six episodes of the course by المهندس علاء حامد, one a day, for the big picture',
-      'After each episode, open the mind map and read the cards it mentions',
-      'Know the letters, الحركات، السكون، الشدة and التنوين by sight and sound (القاعدة النورانية if still slow)',
-      'Learn the difference between اللحن الجلي and اللحن الخفي',
-      'Recite الفاتحة to a teacher and fix every clear error',
-      'Start the daily 40-minute routine with الحصري',
-    ],
-    milestone: [range('p1-fatiha', 'الفاتحة', '1:1', '1:7')],
-  },
-  {
-    id: 2, weeks: 'Weeks 3–6', nameAr: 'المخارج والصفات', nameEn: 'Where and how letters are made', goal: 'Every letter from its right place.',
-    doneWhen: 'Each letter sounds right on its own and inside words.',
-    tasks: [
-      'Learn the 5 areas and 17 points',
-      'Drill each letter as أَبْ، أَتْ، أَثْ… and record it (each lesson’s “say it aloud” step); recite the drill to your teacher',
-      'Drill the confusing pairs: ح ه · ع ء · ص س · ط ت · ق ك · ذ ز ظ · ث س · ض د',
-      'Learn الصفات with opposites, then the single qualities',
-      'Ask your teacher to check every letter once',
-    ],
-    milestone: [range('p2-fatiha', 'الفاتحة', '1:1', '1:7'), range('p2-ikhlas-nas', 'الإخلاص – الناس', '112:1', '114:6')],
-  },
-  {
-    id: 3, weeks: 'Weeks 7–9', nameAr: 'النون والميم والغنة', nameEn: 'Nasal rules', goal: 'The most frequent rules in the Quran.',
-    doneWhen: 'سورة الضحى to سورة الناس recited with correct غنة and نون rules.',
-    tasks: [
-      'أحكام النون الساكنة والتنوين: the 4 rules', 'أحكام الميم الساكنة: the 3 rules', 'الغنة المشددة: hold 2 counts',
-      'أحكام اللام: ال and the لام of اللَّه', 'Find 10 examples of each rule in جزء عمّ', 'Memorise the matching lines of تحفة الأطفال',
-    ],
-    milestone: [range('p3-duha-adiyat', 'الضحى – العاديات', '93:1', '100:11'), range('p3-qariah-nas', 'القارعة – الناس', '101:1', '114:6')],
-  },
-  {
-    id: 4, weeks: 'Weeks 10–13', nameAr: 'المد والقلقلة والتفخيم', nameEn: 'Lengths, echo, heavy and light',
-    goal: 'Correct lengths and the right weight for each letter.', doneWhen: 'جزء عمّ with even, consistent مد lengths.',
-    tasks: [
-      'المد الطبيعي and what follows it: العوض، الصلة، البدل',
-      'المد بسبب الهمز: choose your المنفصل length (4 or 5) and keep it',
-      'المد بسبب السكون: العارض، اللين، اللازم', 'القلقلة الصغرى والكبرى',
-      'الراء heavy and light; the heavy letters خص ضغط قظ', 'Count on your fingers while reciting until counts feel natural',
-    ],
-    milestone: [
-      range('p4-naba-abasa', 'النبأ – عبس', '78:1', '80:42'),
-      range('p4-takwir-tariq', 'التكوير – الطارق', '81:1', '86:17'),
-      range('p4-ala-layl', 'الأعلى – الليل', '87:1', '92:21'),
-      range('p4-duha-adiyat', 'الضحى – العاديات', '93:1', '100:11'),
-      range('p4-qariah-kawthar', 'القارعة – الكوثر', '101:1', '108:3'),
-      range('p4-kafirun-nas', 'الكافرون – الناس', '109:1', '114:6'),
-    ],
-  },
-  {
-    id: 5, weeks: 'Weeks 14–16', nameAr: 'الوصل والوقف', nameEn: 'Joining and stopping', goal: 'Read long passages with meaning and flow.',
-    doneWhen: 'A full page read with correct stops and starts.',
-    tasks: [
-      'المثلان والمتجانسان والمتقاربان', 'علامات الوقف and how to stop on each word ending', 'الابتداء and همزة الوصل',
-      'The special words of حفص: السكت، الإمالة، الإشمام، التسهيل', 'Recite سورة الملك to your teacher',
-    ],
-    milestone: [range('p5-mulk', 'الملك', '67:1', '67:30')],
-  },
-  {
-    id: 6, weeks: 'Month 5 on', nameAr: 'الإتقان', nameEn: 'Mastery', goal: 'From knowing the rules to reciting without thinking about them.',
-    doneWhen: 'A teacher confirms your recitation is free of clear errors and consistent in the rules.',
-    tasks: [
-      'Memorise المقدمة الجزرية', 'Recite the whole Quran to a teacher, page by page (ختمة)',
-      'Practise the three speeds: التحقيق (slow), التدوير (medium), الحدر (fast)',
-      'Keep a mistakes log and review it every week', 'Ask your teacher about the path to الإجازة',
-    ],
-    milestone: [],
-  },
-].map(p => ({ ...p, lessonIds: ofPhase(p.id) }))

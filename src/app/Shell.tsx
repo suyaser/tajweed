@@ -29,6 +29,7 @@ const META: Record<RouteName, { kind: Kind; tab?: Tab; ar: string; en: string; p
   session: { kind: 'pushed', tab: 'teacher', ar: 'الجلسة', en: 'Session', parent: 'teacher' },
   plan: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path', gear: true },
   progress: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path', gear: true },
+  unit: { kind: 'pushed', tab: 'path', ar: 'الوحدة', en: 'Unit', parent: 'plan' },
   settings: { kind: 'pushed', ar: 'الإعدادات', en: 'Settings', parent: 'today' },
   guide: { kind: 'pushed', ar: 'كيف يعمل', en: 'How it works', parent: 'today' },
   account: { kind: 'pushed', ar: 'الحساب', en: 'Account and backup', parent: 'settings' },

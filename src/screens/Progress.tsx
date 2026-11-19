@@ -2,9 +2,11 @@ import type { UserData } from '../core/types'
 import { useData } from '../core/store'
 import { today } from '../core/day'
 import { LADDER, hasOpenCorrection, levelOf, type Level } from '../core/scheduler'
-import { getLesson, lessons, phases as contentPhases, topics } from '../content'
+import { getLesson, lessons, topics } from '../content'
+import { courseOrder, getUnit, units } from '../content/course'
+import { courseProgress } from '../core/course'
 import { Bdi, Card, CorrectionBadge, LevelBadge, ProgressDots, T } from '../components'
-import { accuracy, dayLabel, live, passedMilestones, studiedDays, weeks } from './path/helpers'
+import { accuracy, dayLabel, live, studiedDays, weeks } from './path/helpers'
 import { PathTabs } from './path/ui'
 import './path.css'
 
@@ -44,10 +46,7 @@ function Recitation({ d }: { d: UserData }) {
   const byRule = new Map<string, number>()
   for (const c of cs) for (const l of c.lessonIds) byRule.set(l, (byRule.get(l) ?? 0) + 1)
   const top = [...byRule].sort((a, b) => b[1] - a[1]).slice(0, 3)
-  const passed = [...passedMilestones(d.sessions)].map(([k, s]) => {
-    const [pid, mid] = k.split('/')
-    return { label: contentPhases.find((p) => p.id === +pid)?.milestone.find((m) => m.id === mid)?.label ?? mid, on: s.on }
-  })
+  const passed = d.finales.map((f) => ({ label: getUnit(f.unitId)?.finale?.label ?? f.unitId, on: f.on }))
 
   return (
     <Card eyebrow="From your teacher">
@@ -83,7 +82,7 @@ function Recitation({ d }: { d: UserData }) {
             <NameList title="Corrected most" items={top.map(([id, n]) => [getLesson(id)?.nameAr ?? id, plural(n, "time")])} />
           )}
           {passed.length > 0 && (
-            <NameList title="Milestones passed" items={passed.map((p) => [p.label, dayLabel(p.on)])} />
+            <NameList title="Unit finales recited" items={passed.map((p) => [p.label, dayLabel(p.on)])} />
           )}
         </>
       )}
@@ -186,26 +185,27 @@ function Consistency({ d }: { d: UserData }) {
 function Goals({ d }: { d: UserData }) {
   const on = today()
   const cs = live(d.corrections)
-  const passedPhases = d.phases.filter((p) => p.status === 'passed').length
+  const prog = courseProgress(d, units)
+  const unitsDone = units.filter((u) => prog.lessonsDone(u) && prog.finaleDone(u)).length
   const lastMs = live(d.sessions).filter((s) => s.milestoneResults.length).sort((a, b) => (a.on < b.on ? 1 : -1))[0]
   const jaliLast = lastMs ? cs.filter((c) => c.sessionId === lastMs.id && c.severity === 'jali').length : null
-  const quizzable = lessons.filter((l) => l.phaseId <= 5 && l.questionKinds.length)
+  const quizzable = courseOrder.filter((id) => prog.done.has(id)).map((id) => getLesson(id)!).filter((l) => l.questionKinds.length)
   const strongEnough = quizzable.filter((l) => (d.items.find((i) => i.kind === 'lesson' && i.refId === l.id)?.step ?? 0) >= 3).length
   const acc = accuracy(d.attempts, on, 14)
   const khafi = cs.filter((c) => c.severity === 'khafi')
   const w = weeks(studiedDays(d), on, 16, d.settings.onboardedOn)
   const done = live(d.sessions).filter((s) => s.status === 'done').length
   const goals: [string, string, string][] = [
-    ['S1', 'Phase milestones confirmed by your teacher', `${passedPhases} of 6 phases passed (goal: phases 1–4, phase 5 passed or scheduled)`],
-    ['S2', 'Clear errors on the last milestone session', jaliLast == null ? 'No milestone session yet' : `${jaliLast} جلي (goal: 0)`],
-    ['S3', 'Rule recognition (quiz only)', `${strongEnough} of ${quizzable.length} rules at a 14-day interval${acc.total ? ` · ${Math.round((100 * acc.correct) / acc.total)}% right in the last 2 weeks` : ''} (goal: all, and 90%)`],
+    ['S1', 'The course', `${prog.done.size} of ${courseOrder.length} lessons · ${unitsDone} of ${units.length} units done`],
+    ['S2', 'Clear errors on the last finale session', jaliLast == null ? 'No milestone session yet' : `${jaliLast} جلي (goal: 0)`],
+    ['S3', 'Rule recognition (quiz only)', `${strongEnough} of ${quizzable.length} learned rules at a 14-day interval${acc.total ? ` · ${Math.round((100 * acc.correct) / acc.total)}% right in the last 2 weeks` : ''} (goal: all, and 90%)`],
     ['S4', 'Fine-detail corrections that stick', khafi.length ? `${khafi.filter((c) => c.status === 'resolved').length} of ${khafi.length} خفي corrections resolved (goal: 80%)` : 'No خفي corrections yet'],
     ['S5', 'Consistency', `${w.full} of ${plural(w.total, 'week')} with 5 or more study days (goal: 12 of 16)`],
     ['S6', 'Teacher contact', `${plural(done, 'session')} logged (goal: 12)`],
   ]
   return (
     <details className="p-details card card-e1">
-      <summary>16-week goals</summary>
+      <summary>Goals</summary>
       <dl className="p-goals">
         {goals.map(([id, name, value]) => (
           <div key={id}>

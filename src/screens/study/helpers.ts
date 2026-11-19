@@ -1,5 +1,5 @@
 // Small pure helpers for the study-loop screens (Today, Learn, Review).
-import type { ConfusablePair, Day, Phase, Session, UserData, VerseKey } from '../../core/types'
+import type { ConfusablePair, Day, Session, UserData, VerseKey } from '../../core/types'
 import { studiedDays } from '../path/helpers'
 import type { DayMark } from '../../components'
 import { addDays, diffDays, weekDays } from '../../core/day'
@@ -76,19 +76,6 @@ export function aroundAyah(k: VerseKey): { from: VerseKey; to: VerseKey } {
   const n = ayahCount(s)
   if (n <= 20) return wholeSurah(s)
   return { from: `${s}:${Math.max(1, a - 2)}`, to: `${s}:${Math.min(n, a + 2)}` }
-}
-
-/** Spec F1: the active milestone passage, else around today's lesson example, else the active phase's first passage. */
-export function currentPassage(data: UserData, phases: Phase[], lessonExampleKey?: VerseKey): { from: VerseKey; to: VerseKey } {
-  const passed = new Set(data.sessions.flatMap(s => s.milestoneResults.filter(r => r.result === 'passed').map(r => `${r.phaseId}/${r.passageId}`)))
-  for (const p of data.phases.filter(p => p.status === 'milestone').sort((a, b) => a.id - b.id)) {
-    const m = phases.find(c => c.id === p.id)?.milestone.find(m => !passed.has(`${p.id}/${m.id}`))
-    if (m) return { from: m.from, to: m.to }
-  }
-  if (lessonExampleKey) return aroundAyah(lessonExampleKey)
-  const active = data.phases.find(p => p.status === 'active')
-  const m = phases.find(c => c.id === active?.id)?.milestone[0]
-  return m ? { from: m.from, to: m.to } : { from: '1:1', to: '1:7' }
 }
 
 /* ---- tiny per-device memory (conveniences only, never schedule state) ---- */

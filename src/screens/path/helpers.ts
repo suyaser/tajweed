@@ -1,5 +1,5 @@
 // Pure helpers for the Teacher and Path screens (tested in helpers.test.ts).
-import type { Attempt, Correction, Day, Introduction, Phase, PhaseProgress, Session, UserData, Verse, VerseKey } from '../../core/types'
+import type { Attempt, Correction, Day, Introduction, Session, UserData, Verse, VerseKey } from '../../core/types'
 import { addDays, weekDays } from '../../core/day'
 import { ayahCount, surahName, toArabicDigits } from '../../quran'
 import type { DayMark } from '../../components'
@@ -69,31 +69,6 @@ export function mergePassages(a: Planned[], b: Planned[]): Planned[] {
   return out
 }
 
-const passedKey = (phaseId: number, passageId: string) => `${phaseId}/${passageId}`
-
-/** Milestone passages already passed: key `${phaseId}/${passageId}` → the session it passed in. */
-export function passedMilestones(sessions: Session[]): Map<string, Session> {
-  const m = new Map<string, Session>()
-  for (const s of live(sessions).sort((a, b) => (a.on < b.on ? -1 : 1)))
-    for (const r of s.milestoneResults)
-      if (r.result === 'passed' && !m.has(passedKey(r.phaseId, r.passageId))) m.set(passedKey(r.phaseId, r.passageId), s)
-  return m
-}
-
-/**
- * The milestone a planned passage stands for: same range, in a phase that is not locked or passed and not yet
- * passed itself; `milestone`/`skipped` phases first (الفاتحة is in phases 1 and 2).
- */
-export function milestoneFor(p: Pick<Planned, 'from' | 'to'>, content: Phase[], progress: PhaseProgress[], sessions: Session[]) {
-  const passed = passedMilestones(sessions)
-  const rank = { milestone: 0, skipped: 0, active: 1, passed: 9, locked: 9 } as const
-  const hits = content
-    .flatMap((ph) => ph.milestone.filter((m) => m.from === p.from && m.to === p.to).map((m) => ({ phase: ph, m, st: progress.find((x) => x.id === ph.id)?.status ?? 'locked' })))
-    .filter((h) => rank[h.st] < 9 && !passed.has(passedKey(h.phase.id, h.m.id)))
-    .sort((a, b) => rank[a.st] - rank[b.st] || a.phase.id - b.phase.id)
-  return hits[0] ? { phaseId: hits[0].phase.id, passageId: hits[0].m.id, label: hits[0].m.label } : undefined
-}
-
 export { wordSpan }
 
 /**
@@ -134,7 +109,7 @@ export function weeks(studied: Set<Day>, today: Day, n = 16, since?: Day | null)
 /** Quiz accuracy on lesson answers in the last `days` days (pretest excluded). */
 export function accuracy(attempts: Attempt[], today: Day, days = 30) {
   const from = addDays(today, -(days - 1))
-  const xs = attempts.filter((a) => a.kind === 'lesson' && a.source !== 'pretest' && a.source !== 'teacher' && a.on >= from && a.on <= today)
+  const xs = attempts.filter((a) => a.kind === 'lesson' && a.source !== 'pretest' && a.source !== 'teacher' && a.source !== 'selfrate' && a.on >= from && a.on <= today)
   return { correct: xs.filter((a) => a.correct).length, total: xs.length }
 }
 

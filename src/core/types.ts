@@ -53,16 +53,23 @@ export interface Lesson {
 
 export interface ConfusablePair { id: string; a: string; b: string; hint: string }
 
-export interface Phase {
-  id: number // 1..6
-  weeks: string
+/** v2 course (content/course.json, docs/09-v2-spec.md §2). */
+export interface Unit {
+  id: string // 'u1'
+  n: number
   nameAr: string
   nameEn: string
-  goal: string
-  doneWhen: string
-  lessonIds: string[]
-  tasks: string[]
-  milestone: { id: string; label: string; from: VerseKey; to: VerseKey }[]
+  surahs: string
+  intro: string
+  lessonIds: string[] // in course order; ids missing from rules.json are dropped
+  finale: { from: VerseKey; to: VerseKey; label: string } | null
+  mutun: { matn: MatnLine['matn']; from: number; to: number; note?: string }[]
+}
+
+export interface CourseLesson {
+  closing: { from: VerseKey; to: VerseKey } | null // the Recite step's passage
+  contrastWith: string | null // the Notice step's comparison lesson
+  notice: string | null // what to listen for (Hear step)
 }
 
 export interface MatnLine {
@@ -195,8 +202,9 @@ export interface UserData {
   attempts: Attempt[]
   sessions: Session[]
   corrections: Correction[]
-  phases: PhaseProgress[]
+  phases: PhaseProgress[] // v1 only, kept for old backups; v2 progress is introductions + finales
   days: DayLog[]
+  finales: { unitId: string; on: Day }[] // v2: unit finales recited (spec §4)
 }
 
 export interface Recording { id: string; from: VerseKey; to: VerseKey; createdAt: Iso; durationMs: number; mime: string; blob: Blob }
