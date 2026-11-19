@@ -1,11 +1,12 @@
 // Spec §6: سبق · سبقي · منزل. Pure functions; `items` is a cache rebuilt from history.
-import type { Attempt, Correction, Day, Introduction, Lesson, Phase, ReviewItem, UserData } from './types'
+import type { Attempt, Correction, Day, Introduction, ReviewItem, Unit, UserData } from './types'
 import { addDays, diffDays, today as dayOf } from './day'
+import { courseProgress } from './course'
 
 export const LADDER = [1, 3, 7, 14, 30, 60, 120] // step → days
 export const DAILY_CAP = 20
 export const BACKLOG_LIMIT = 15
-export const NEW_PER_WEEK = 4 // decision 12: at most 4 new lessons in any 7 days
+export const NEW_PER_DAY = 2 // decision 22: at most 2 new lessons a study day
 const SABQI_DAYS = 7
 
 export const itemIdOf = (kind: ReviewItem['kind'], refId: string) => `${kind}:${refId}`
@@ -119,12 +120,13 @@ export function applyAttempt(items: ReviewItem[], attempt: Attempt): ReviewItem[
 
 /* ---------------- Daily queue (§6.5–6.6) ---------------- */
 
-export type SabaqReason = 'introduced-today' | 'pace' | 'no-active-phase' | 'milestone' | 'backlog'
+/** Why there is no new lesson today: the pace limit, the review backlog, a unit finale to recite first, or the course is done. */
+export type SabaqReason = 'pace' | 'backlog' | 'finale' | 'done'
 
 export interface Queue {
   sabaq: string | null
   sabaqReason?: SabaqReason // why sabaq is null
-  sabaqCorrected?: boolean // sabaq was corrected by the teacher before it was taught
+  finaleUnit?: string // sabaqReason 'finale': the unit whose finale is next
   sabqi: ReviewItem[]
   manzil: ReviewItem[]
   overflowCount: number // due manzil items left for later
@@ -132,7 +134,7 @@ export interface Queue {
 }
 
 /** `extra` raises today's cap ("10 more"). Items already reviewed today count toward the cap. */
-export function buildQueue(data: UserData, lessons: Lesson[], phases: Phase[], today: Day, extra = 0): Queue {
+export function buildQueue(data: UserData, units: Unit[], today: Day, extra = 0): Queue {
   const live = data.items.filter(i => !i.deletedAt)
   const sabqi = live.filter(i => i.state === 'sabqi' && i.dueOn <= today)
   const recentCorrected = new Set(
@@ -153,23 +155,13 @@ export function buildQueue(data: UserData, lessons: Lesson[], phases: Phase[], t
 
   const q: Queue = { sabaq: null, sabqi, manzil, overflowCount: due.length - manzil.length }
 
-  // سبق
-  const introduced = new Set(data.introductions.map(i => i.lessonId))
-  const active = data.phases.filter(p => p.status === 'active').sort((a, b) => a.id - b.id)[0]
-  const phase = active && phases.find(p => p.id === active.id)
-  const left = phase ? phase.lessonIds.filter(id => !introduced.has(id)) : []
-  if (data.introductions.some(i => i.on === today)) q.sabaqReason = 'introduced-today'
-  else if (data.introductions.filter(i => diffDays(today, i.on) < 7).length >= NEW_PER_WEEK) q.sabaqReason = 'pace'
-  else if (!phase) q.sabaqReason = data.phases.some(p => p.status === 'milestone') ? 'milestone' : 'no-active-phase'
-  else if (!left.length) q.sabaqReason = 'milestone'
+  // سبق: the next lesson in course order (spec §4)
+  const next = courseProgress(data, units).next
+  if (next.kind === 'done') q.sabaqReason = 'done'
+  else if (next.kind === 'finale') Object.assign(q, { sabaqReason: 'finale', finaleUnit: next.unit.id })
+  else if (data.introductions.filter(i => i.on === today).length >= NEW_PER_DAY) q.sabaqReason = 'pace'
   else if (due.length > BACKLOG_LIMIT) q.sabaqReason = 'backlog'
-  else {
-    const corrected = new Set(data.corrections.filter(c => !c.deletedAt && c.status === 'open').flatMap(c => c.lessonIds))
-    const phaseOf = new Map(lessons.map(l => [l.id, l.phaseId]))
-    const first = left.find(id => corrected.has(id) && phaseOf.get(id) === phase.id)
-    q.sabaq = first ?? left[0]
-    if (first) q.sabaqCorrected = true
-  }
+  else q.sabaq = next.id
 
   // welcome back after ≥ 7 days away
   const activeDays = [

@@ -6,7 +6,8 @@ import { getSnapshot, markDayPart, recordAttempt, useData } from '../core/store'
 import { buildQueue } from '../core/scheduler'
 import { makeQuestion, seeded, shuffle } from '../core/questions'
 import { diffDays, today } from '../core/day'
-import { getLesson, lessons, pairs, phases } from '../content'
+import { getLesson, lessons, pairs } from '../content'
+import { units } from '../content/course'
 import { href } from '../app/router'
 import { Button, Card, EmptyState, T } from '../components'
 import { confusableHint, mem, spread } from './study/helpers'
@@ -28,7 +29,7 @@ const topicOf = (i: ReviewItem) => (i.kind === 'correction' ? 'correction' : get
  */
 function start(d: UserData, extra: number) {
   const day = today()
-  const q = buildQueue(d, lessons, phases, day, extra)
+  const q = buildQueue(d, units, day, extra)
   const askable = (i: ReviewItem) =>
     i.kind === 'lesson' ? !!getLesson(i.refId)?.questionKinds.length
       : i.kind === 'correction' && d.corrections.some(c => c.id === i.refId && c.status === 'open' && !c.deletedAt)
@@ -102,7 +103,6 @@ export default function Review({ params }: ScreenProps) {
         <Card level="e2" eyebrow="Today's new lesson · السبق">
           <p className="a-h3" lang="ar">{l?.nameAr}</p>
           <p className="muted">{l?.nameEn}</p>
-          {run.q.sabaqCorrected && <p className="t-sm">Your teacher corrected this. Learn it today.</p>}
           <Button block href={href('learn', run.q.sabaq)}>Start lesson</Button>
           <Button variant="ghost" block onClick={() => setOffer(false)}>{entries.length ? 'Review first' : 'Not today'}</Button>
         </Card>
@@ -127,7 +127,7 @@ export default function Review({ params }: ScreenProps) {
 
   // ---- end summary ----
   if (!entry) {
-    const more = buildQueue(data, lessons, phases, day, extra + 10)
+    const more = buildQueue(data, units, day, extra + 10)
     const hasMore = more.sabqi.length + more.manzil.length > 0
     return (
       <Summary

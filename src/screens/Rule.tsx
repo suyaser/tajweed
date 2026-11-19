@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import type { ScreenProps } from '../app/App'
 import { href } from '../app/router'
 import { getLesson, mutun } from '../content'
+import { unitOf } from '../content/course'
 import { useData } from '../core/store'
 import type { Example, Verse } from '../core/types'
 import { getVerse, RECITERS } from '../quran'
@@ -183,7 +184,7 @@ export default function Rule({ params }: ScreenProps) {
         ) : (
           <>
             <Button block href={href('learn', lesson.id)}>Learn this</Button>
-            <p className="t-sm muted"><T>{`Reading a card doesn't add it to your review. Learning it does. You'll meet it in phase ${lesson.phaseId}.`}</T></p>
+            <p className="t-sm muted"><T>{`Reading a card doesn't add it to your review. Learning it does. You'll meet it in unit ${unitOf(lesson.id)?.n ?? '–'} of the course.`}</T></p>
           </>
         )}
       </footer>

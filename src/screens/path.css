@@ -94,3 +94,9 @@
 .p-file:focus-visible + .p-file-btn { outline: 2px solid var(--gold); outline-offset: 2px; }
 /* reserve the XL height so changing the size never moves the controls below (m27) */
 .p-preview { min-height: calc(56px * 2.2 + 40px); display: grid; align-content: center; }
+
+/* v2 course map and unit page */
+.p-pill[data-st="next"] { color: var(--link); border-color: var(--link); font-weight: 600; }
+.p-pill[data-st="done"] { color: var(--gold-ink); border-color: var(--gold); }
+.u-mutun summary { min-height: var(--target); cursor: pointer; }
+.u-mutun details[open] summary { color: var(--muted); }

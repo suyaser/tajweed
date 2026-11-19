@@ -1,12 +1,13 @@
 // One UserData object in localStorage, a tiny external store, and typed actions.
 import { useSyncExternalStore } from 'react'
-import type { Attempt, Correction, DayLog, PartMark, PhaseProgress, Session, Settings, UserData } from './types'
+import type { Attempt, Correction, DayLog, PartMark, Session, Settings, UserData } from './types'
 import { today } from './day'
 import { applyAttempt, itemIdOf, rebuildItems } from './scheduler'
-import { phases as contentPhases, getLesson } from '../content'
+import { courseProgress, migratedFinales } from './course'
+import { units } from '../content/course'
 
 export const STORAGE_KEY = 'tajweed-path:v1'
-export const SCHEMA_VERSION = 1
+export const SCHEMA_VERSION = 2
 
 const nowIso = () => new Date().toISOString()
 export const uuid = (): string =>
@@ -26,14 +27,11 @@ function defaultSettings(at = nowIso()): Settings {
   }
 }
 
-const lockedPhases = (): PhaseProgress[] =>
-  contentPhases.map(p => ({ id: p.id, status: 'locked', activatedOn: null, milestoneOn: null, passedOn: null, tasksDone: [] }))
-
 export function defaultData(): UserData {
   const at = nowIso()
   return {
     schemaVersion: SCHEMA_VERSION, updatedAt: at, settings: defaultSettings(at), introductions: [], items: [],
-    attempts: [], sessions: [], corrections: [], phases: lockedPhases(), days: [],
+    attempts: [], sessions: [], corrections: [], phases: [], days: [], finales: [],
   }
 }
 
@@ -51,8 +49,10 @@ export const migrations: Record<number, (d: Raw) => Raw> = {
       d.introductions ??
       (d.items ?? []).filter((i: Raw) => i.kind === 'lesson').map((i: Raw) => ({ lessonId: i.refId, on: i.introducedOn, at: i.createdAt })),
     items: d.items ?? [], attempts: d.attempts ?? [], sessions: d.sessions ?? [], corrections: d.corrections ?? [],
-    phases: d.phases ?? lockedPhases(), days: d.days ?? [],
+    phases: d.phases ?? [], days: d.days ?? [],
   }),
+  // v1 → v2 (spec §4): every introduced lesson stays done; units whose lessons are all done count their finale as done.
+  1: d => ({ ...d, schemaVersion: 2, finales: migratedFinales(rows(Array.isArray(d.introductions) ? d.introductions : [], ['lessonId', 'on']), units) }),
 }
 
 const isObj = (x: unknown): x is Raw => !!x && typeof x === 'object' && !Array.isArray(x)
@@ -69,7 +69,7 @@ export function migrate(raw: Raw, on = today()): UserData {
     if (!migrations[v]) throw new Error(`Unknown schema version ${v}.`)
     d = migrations[v](d)
   }
-  for (const k of ['introductions', 'attempts', 'sessions', 'corrections', 'phases', 'days'] as const)
+  for (const k of ['introductions', 'attempts', 'sessions', 'corrections', 'days'] as const)
     if (!Array.isArray(d[k])) throw new Error(`Backup is missing "${k}".`)
   if (!isObj(d.settings)) throw new Error('Backup is missing settings.')
   // Settings: defaults for anything missing or of the wrong type.
@@ -82,13 +82,10 @@ export function migrate(raw: Raw, on = today()): UserData {
   const corrections = rows(d.corrections, ['id', 'verseKey', 'severity'], { lessonIds: [], status: 'open', by: 'learner', sessionId: null, deletedAt: null })
   const sessions = rows(d.sessions, ['id', 'on'], { plannedPassages: [], milestoneResults: [], status: 'planned', deletedAt: null })
   const days = rows(d.days, ['id'], { parts: { listen: null, sabaq: null, recite: null, review: null }, listenSeconds: 0 })
-  // Phases: always one row per content phase.
-  const phases = lockedPhases().map(p => {
-    const x = d.phases.find((y: Raw) => isObj(y) && y.id === p.id)
-    return x ? { ...p, ...x, tasksDone: Array.isArray(x.tasksDone) ? x.tasksDone : [] } : p
-  })
+  const finales = rows(Array.isArray(d.finales) ? d.finales : [], ['unitId', 'on'])
+  const phases = Array.isArray(d.phases) ? d.phases : [] // v1 only, kept as is
   return {
-    ...d, settings, introductions, attempts, corrections, sessions, days, phases,
+    ...d, settings, introductions, attempts, corrections, sessions, days, phases, finales,
     items: rebuildItems(introductions, attempts, corrections, on),
   }
 }
@@ -150,12 +147,7 @@ export function updateSettings(patch: Partial<Settings>) {
 
 export function completeOnboarding(patch: Partial<Settings>) {
   const on = today()
-  const settings = { ...data.settings, ...patch, onboardedOn: on, updatedAt: nowIso() }
-  const episodeTasks = (contentPhases[0]?.tasks ?? []).flatMap((t, i) => (/episode/i.test(t) ? [i] : []))
-  const phases = lockedPhases().map((p): PhaseProgress =>
-    p.id === 1 ? { ...p, status: 'active', activatedOn: on, tasksDone: settings.introCourseDone ? episodeTasks : [] } : p,
-  )
-  commit({ ...data, settings, phases })
+  commit({ ...data, settings: { ...data.settings, ...patch, onboardedOn: on, updatedAt: nowIso() } })
   requestPersist()
 }
 
@@ -184,27 +176,13 @@ export function addListenSeconds(seconds: number, day = today()) {
   })
 }
 
-/** Opens the next locked phase, unless a later phase is already open (it may open at half the milestone). */
-const activateNext = (phases: PhaseProgress[], after: number, on: string) => {
-  if (phases.some(p => p.id > after && (p.status === 'active' || p.status === 'milestone'))) return phases
-  const next = phases.filter(p => p.id > after && p.status === 'locked').sort((a, b) => a.id - b.id)[0]
-  return phases.map(p => (p === next ? { ...p, status: 'active' as const, activatedOn: on } : p))
-}
-
-/** F2 step 3 done: the lesson enters سبقي. Moves its phase to `milestone` when all its lessons are in. */
+/** A lesson's Recite step done: the lesson is done and enters سبقي. */
 export function introduceLesson(lessonId: string) {
   if (data.introductions.some(i => i.lessonId === lessonId)) return
   const on = today()
   const introductions = [...data.introductions, { lessonId, on, at: nowIso() }]
-  const done = new Set(introductions.map(i => i.lessonId))
-  const phaseId = getLesson(lessonId)?.phaseId
-  const all = contentPhases.find(p => p.id === phaseId)?.lessonIds.every(id => done.has(id))
-  const moved = data.phases.map(p =>
-    p.id === phaseId && all && p.status === 'active' ? { ...p, status: 'milestone' as const, milestoneOn: on } : p,
-  )
-  const phases = settlePhases({ ...data, phases: moved }) // half the milestone may already be passed
   commit({
-    ...data, introductions, phases,
+    ...data, introductions,
     items: rebuildItems(introductions, data.attempts, data.corrections, on),
     days: withDay(data, on, l => ({ ...l, parts: { ...l.parts, sabaq: l.parts.sabaq ?? 'auto' } })),
   })
@@ -220,15 +198,21 @@ export function recordAttempt(a: NewAttempt): Attempt {
   return full
 }
 
-/** Default passages for a session plan (F6): milestones due, then ayat with open corrections. */
+/** The unit finale is recited ("I recited it"): the next unit opens (spec §4). */
+export function completeFinale(unitId: string) {
+  if (data.finales.some(f => f.unitId === unitId)) return
+  const on = today()
+  commit({
+    ...data, finales: [...data.finales, { unitId, on }],
+    days: withDay(data, on, l => ({ ...l, parts: { ...l.parts, recite: l.parts.recite ?? 'auto' } })),
+  })
+}
+
+/** Default passages for a session plan (F6): the unit finale when it is next, then ayat with open corrections. */
 export function suggestPassages(d: UserData = data): Session['plannedPassages'] {
   const out: Session['plannedPassages'] = []
-  const passed = new Set(d.sessions.flatMap(s => s.milestoneResults.filter(r => r.result === 'passed').map(r => `${r.phaseId}/${r.passageId}`)))
-  for (const p of d.phases) {
-    if (p.status !== 'milestone' && p.status !== 'skipped') continue
-    for (const m of contentPhases.find(c => c.id === p.id)?.milestone ?? [])
-      if (!passed.has(`${p.id}/${m.id}`)) out.push({ from: m.from, to: m.to, reason: 'milestone' })
-  }
+  const next = courseProgress(d, units).next
+  if (next.kind === 'finale' && next.unit.finale) out.push({ from: next.unit.finale.from, to: next.unit.finale.to, reason: 'milestone' })
   for (const c of d.corrections)
     if (!c.deletedAt && c.status === 'open' && !out.some(x => x.from === c.verseKey && x.to === c.verseKey))
       out.push({ from: c.verseKey, to: c.verseKey, reason: 'correction' })
@@ -246,28 +230,9 @@ export function planSession(input: Partial<Omit<Session, 'id' | 'createdAt' | 'u
 }
 export const startSession = planSession
 
-/**
- * Phases whose every milestone passage has passed become `passed`. The next phase opens then, or as soon as half of
- * a phase's milestone passages have passed (decision 12); the rest stay on every session plan.
- */
-function settlePhases(d: UserData): PhaseProgress[] {
-  const on = today()
-  let phases = d.phases
-  for (const cp of contentPhases) {
-    const p = phases.find(x => x.id === cp.id)
-    if (!p || p.status === 'passed' || p.status === 'locked' || !cp.milestone.length) continue
-    const passed = cp.milestone.filter(m => d.sessions.some(s => !s.deletedAt && s.milestoneResults.some(r => r.phaseId === cp.id && r.passageId === m.id && r.result === 'passed'))).length
-    const all = passed === cp.milestone.length
-    if (all) phases = phases.map(x => (x.id === cp.id ? { ...x, status: 'passed' as const, passedOn: on } : x))
-    if ((all || (p.status === 'milestone' && passed * 2 >= cp.milestone.length))) phases = activateNext(phases, cp.id, on)
-  }
-  return phases
-}
-
 export function updateSession(id: string, patch: Partial<Session>) {
   const sessions = data.sessions.map(s => (s.id === id ? { ...s, ...patch, id, updatedAt: nowIso() } : s))
-  const next = { ...data, sessions }
-  commit({ ...next, phases: settlePhases(next) })
+  commit({ ...data, sessions })
 }
 
 export interface NewCorrection {
@@ -309,30 +274,6 @@ export function resolveCorrection(id: string, result: 'correct' | 'still_wrong',
     c.id === id && correct ? { ...c, status: 'resolved' as const, resolvedInSessionId: sessionId, updatedAt: at } : c,
   )
   commit({ ...data, corrections, attempts: [...data.attempts, a], items: applyAttempt(data.items, a) })
-}
-
-export function setPhaseStatus(id: number, status: PhaseProgress['status']) {
-  const on = today()
-  const stamp = { active: 'activatedOn', milestone: 'milestoneOn', passed: 'passedOn' } as const
-  const key = stamp[status as keyof typeof stamp]
-  let phases = data.phases.map(p => (p.id === id ? { ...p, status, ...(key ? { [key]: on } : {}) } : p))
-  if (status === 'passed') phases = activateNext(phases, id, on)
-  commit({ ...data, phases })
-}
-
-/** Soft gate (F7): continue without the milestone; it stays in every session plan. */
-export function skipPhase(id: number, reason: string) {
-  const phases = data.phases.map(p => (p.id === id ? { ...p, status: 'skipped' as const, skipReason: reason } : p))
-  commit({ ...data, phases: activateNext(phases, id, today()) })
-}
-
-export function toggleTask(phaseId: number, index: number) {
-  commit({
-    ...data,
-    phases: data.phases.map(p =>
-      p.id !== phaseId ? p : { ...p, tasksDone: p.tasksDone.includes(index) ? p.tasksDone.filter(i => i !== index) : [...p.tasksDone, index].sort((a, b) => a - b) },
-    ),
-  })
 }
 
 /** Full backup (recordings live in IndexedDB and are not included). Records lastExportOn. */

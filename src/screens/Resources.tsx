@@ -52,19 +52,19 @@ export default function Resources(_: ScreenProps) {
             </span>
           }
         >
-          Your intro course: 6 short practical lessons. Watch one a day in Phase 1, then read the cards it covered on the mind map.
+          Your intro course: 6 short practical lessons. The course units follow its surahs; watch an episode alongside each unit.
         </Item>
-        <Item title={<Ext to={yt('أيمن سويد التجويد المصور')}><Bdi>التجويد المصور · د. أيمن سويد</Bdi></Ext>}>The most detailed visual explanation of المخارج والصفات. Use it in Phase 2.</Item>
+        <Item title={<Ext to={yt('أيمن سويد التجويد المصور')}><Bdi>التجويد المصور · د. أيمن سويد</Bdi></Ext>}>The most detailed visual explanation of المخارج والصفات. Use it with unit 9.</Item>
       </Panel>
 
       <Panel ar="متون للحفظ" en="Texts to memorise">
-        <Item title={<Bdi>تحفة الأطفال · الجمزوري</Bdi>}>61 lines on <Bdi>النون والميم واللام والمد</Bdi>. Memorise in Phases 3–4.</Item>
+        <Item title={<Bdi>تحفة الأطفال · الجمزوري</Bdi>}>61 lines on <Bdi>النون والميم واللام والمد</Bdi>. The unit pages show the lines that match each unit.</Item>
         <Item title={<Bdi>المقدمة الجزرية · ابن الجزري</Bdi>}>107 lines on المخارج, الصفات and all the rules. The standard text for mastery.</Item>
       </Panel>
 
       <Panel ar="كتب وأدوات" en="Books & tools">
         <Item title={<Bdi>مصحف التجويد الملوّن · دار المعرفة</Bdi>}>The colours in this app follow its scheme, so your eye learns both at once.</Item>
-        <Item title={<Bdi>القاعدة النورانية</Bdi>}>Only if reading letters and vowels is still slow. Finish it before Phase 2.</Item>
+        <Item title={<Bdi>القاعدة النورانية</Bdi>}>Only if reading letters and vowels is still slow. Use it alongside the first units.</Item>
         <Item title="Tajweed Rules of the Qur'an">Kareema Carol Czerepinski, 3 parts. A clear English textbook with exercises.</Item>
         <Item title={<Ext to="https://www.tarteel.ai">Tarteel</Ext>}>Listens while you recite and flags missed or wrong words. It cannot judge fine tajweed; a teacher still can.</Item>
       </Panel>

@@ -136,3 +136,13 @@
 .g-n { flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); color: var(--gold-ink); box-shadow: inset 0 0 0 1.5px var(--gold); font-weight: 700; }
 .g-page, .g-full { display: grid; gap: var(--s4); }
 .today-hint { margin-top: var(--s1); }
+
+/* v2 lesson: seven steps fit a 320px phone; English labels only from tablet width */
+.s-lsteps-7 ol { gap: var(--s1); }
+.s-lsteps-7 li { min-width: 40px; }
+.s-lsteps-7 li small { display: none; }
+@media (min-width: 600px) { .s-lsteps-7 ol { gap: var(--s4); } .s-lsteps-7 li { min-width: 52px; } .s-lsteps-7 li small { display: inline; } }
+.s-notice { display: grid; gap: var(--s3); }
+@media (min-width: 600px) { .s-notice { grid-template-columns: 1fr 1fr; } }
+.s-rec { display: grid; gap: var(--s2); justify-items: start; }
+.s-rec .s-part-actions { justify-content: flex-start; }

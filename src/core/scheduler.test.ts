@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { Attempt, Correction, Introduction, Lesson, Phase, ReviewItem, UserData } from './types'
+import type { Attempt, Correction, Introduction, ReviewItem, Unit, UserData } from './types'
 import { addDays, diffDays, today, weekDays } from './day'
 import { applyAttempt, buildQueue, levelOf, rebuildItems } from './scheduler'
 import { seeded } from './questions'
@@ -155,19 +155,17 @@ describe('rebuild == incremental', () => {
 
 /* ---------------- queue ---------------- */
 
-const lessonStub = (id: string, phaseId: number): Lesson => ({
-  id, topicId: 't', phaseId, order: 0, nameAr: id, nameEn: id, colour: 'clear', summary: '', examples: [], facts: [],
-  questionKinds: ['identify'], confusableWith: [], sources: [], review: { status: 'verified' },
+const unit = (id: string, lessonIds: string[], finale = true): Unit => ({
+  id, n: 0, nameAr: id, nameEn: id, surahs: '', intro: '', lessonIds, mutun: [], finale: finale ? { from: '1:1', to: '1:7', label: 'x' } : null,
 })
-const L = ['p1', 'p2', 'p3'].map(id => lessonStub(id, 1))
-const P: Phase[] = [{ id: 1, weeks: '', nameAr: '', nameEn: '', goal: '', doneWhen: '', lessonIds: ['p1', 'p2', 'p3'], tasks: [], milestone: [] }]
+const U = [unit('u1', ['p1', 'p2', 'p3']), unit('u2', ['p4'])]
 const item = (refId: string, over: Partial<ReviewItem>): ReviewItem => ({
   id: `lesson:${refId}`, kind: 'lesson', refId, state: 'manzil', introducedOn: D0, step: 1, dueOn: D0, lastReviewedOn: null,
   lastExampleId: null, reps: 0, lapses: 0, createdAt: '', updatedAt: '', deletedAt: null, ...over,
 })
 const userData = (over: Partial<UserData>): UserData => ({
   schemaVersion: 1, settings: {} as UserData['settings'], introductions: [], items: [], attempts: [], sessions: [], corrections: [],
-  phases: [{ id: 1, status: 'active', activatedOn: D0, milestoneOn: null, passedOn: null, tasksDone: [] }], days: [], ...over,
+  phases: [], days: [], finales: [], ...over,
 })
 
 describe('buildQueue', () => {
@@ -175,55 +173,48 @@ describe('buildQueue', () => {
   it('caps at 20, sabqi always fits, overflow kept', () => {
     const sabqi = Array.from({ length: 5 }, (_, i) => item(`s${i}`, { state: 'sabqi', dueOn: T }))
     const manzil = Array.from({ length: 25 }, (_, i) => item(`m${String(i).padStart(2, '0')}`, { dueOn: d(30 - i) }))
-    const q = buildQueue(userData({ items: [...sabqi, ...manzil] }), L, P, T)
+    const q = buildQueue(userData({ items: [...sabqi, ...manzil] }), U, T)
     expect(q.sabqi).toHaveLength(5)
     expect(q.manzil).toHaveLength(15)
     expect(q.overflowCount).toBe(10)
     expect(q.manzil[0].refId).toBe('m24') // most overdue first
-    expect(buildQueue(userData({ items: [...sabqi, ...manzil] }), L, P, T, 10).manzil).toHaveLength(25)
+    expect(buildQueue(userData({ items: [...sabqi, ...manzil] }), U, T, 10).manzil).toHaveLength(25)
   })
   it('orders جلي, خفي, recently corrected lessons, then the rest; جلي never cut', () => {
     const jali = Array.from({ length: 22 }, (_, i) => ({ ...item(`j${i}`, { dueOn: T }), id: `correction:j${i}`, kind: 'correction' as const, severity: 'jali' as const }))
     const khafi = { ...item('k', { dueOn: d(1) }), id: 'correction:k', kind: 'correction' as const, severity: 'khafi' as const }
-    const q1 = buildQueue(userData({ items: [khafi, ...jali] }), L, P, T)
+    const q1 = buildQueue(userData({ items: [khafi, ...jali] }), U, T)
     expect(q1.manzil).toHaveLength(22)
     expect(q1.overflowCount).toBe(1)
 
     const rest = [item('old', { dueOn: d(1), step: 3 }), item('linked', { dueOn: T }), item('old2', { dueOn: d(1), step: 1 })]
-    const q2 = buildQueue(userData({ items: [...rest, khafi, jali[0]], corrections: [corr('cc', 28, ['linked'])] }), L, P, T)
+    const q2 = buildQueue(userData({ items: [...rest, khafi, jali[0]], corrections: [corr('cc', 28, ['linked'])] }), U, T)
     expect(q2.manzil.map(i => i.refId)).toEqual(['j0', 'k', 'linked', 'old2', 'old'])
   })
   it('counts items already reviewed today toward the cap', () => {
     const manzil = Array.from({ length: 25 }, (_, i) => item(`m${i}`, { dueOn: T }))
     const done = Array.from({ length: 12 }, (_, i) => att(`done${i}`, 30, true))
-    expect(buildQueue(userData({ items: manzil, attempts: done }), L, P, T).manzil).toHaveLength(8)
+    expect(buildQueue(userData({ items: manzil, attempts: done }), U, T).manzil).toHaveLength(8)
   })
-  it('offers one sabaq; blocks it on backlog > 15, introduced today, milestone', () => {
+  it('offers the next lesson; blocks it on backlog > 15, pace, finale, done', () => {
     const introductions = [intro('p1', 0)]
-    expect(buildQueue(userData({ introductions }), L, P, T).sabaq).toBe('p2')
+    expect(buildQueue(userData({ introductions }), U, T).sabaq).toBe('p2')
     const backlog = Array.from({ length: 16 }, (_, i) => item(`m${i}`, { dueOn: T }))
-    expect(buildQueue(userData({ introductions, items: backlog }), L, P, T)).toMatchObject({ sabaq: null, sabaqReason: 'backlog' })
-    expect(buildQueue(userData({ introductions, items: backlog.slice(1) }), L, P, T).sabaq).toBe('p2')
-    expect(buildQueue(userData({ introductions: [intro('p1', 30)] }), L, P, T).sabaqReason).toBe('introduced-today')
+    expect(buildQueue(userData({ introductions, items: backlog }), U, T)).toMatchObject({ sabaq: null, sabaqReason: 'backlog' })
+    expect(buildQueue(userData({ introductions, items: backlog.slice(1) }), U, T).sabaq).toBe('p2')
+    expect(buildQueue(userData({ introductions: [intro('p1', 30)] }), U, T).sabaq).toBe('p2') // 1 today: room for one more
+    expect(buildQueue(userData({ introductions: [intro('p1', 30), intro('p2', 30)] }), U, T).sabaqReason).toBe('pace')
     const all = ['p1', 'p2', 'p3'].map(id => intro(id, 0))
-    expect(buildQueue(userData({ introductions: all }), L, P, T).sabaqReason).toBe('milestone')
-  })
-  it('introduces at most 4 lessons in any 7 days (decision 12)', () => {
-    const L6 = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'].map(id => lessonStub(id, 1))
-    const P6: Phase[] = [{ ...P[0], lessonIds: L6.map(l => l.id) }]
-    const four = [26, 27, 28, 29].map((n, i) => intro(`p${i + 1}`, n))
-    expect(buildQueue(userData({ introductions: four }), L6, P6, T)).toMatchObject({ sabaq: null, sabaqReason: 'pace' })
-    expect(buildQueue(userData({ introductions: four }), L6, P6, d(33)).sabaq).toBe('p5') // the first one is 7 days old
-  })
-  it('offers a corrected-before-taught lesson first', () => {
-    const q = buildQueue(userData({ corrections: [corr('c', 29, ['p3'])] }), L, P, T)
-    expect(q).toMatchObject({ sabaq: 'p3', sabaqCorrected: true })
+    expect(buildQueue(userData({ introductions: all, items: backlog }), U, T)).toMatchObject({ sabaq: null, sabaqReason: 'finale', finaleUnit: 'u1' })
+    expect(buildQueue(userData({ introductions: all, finales: [{ unitId: 'u1', on: T }] }), U, T).sabaq).toBe('p4')
+    const done = { introductions: [...all, intro('p4', 1)], finales: [{ unitId: 'u1', on: T }, { unitId: 'u2', on: T }] }
+    expect(buildQueue(userData(done), U, T).sabaqReason).toBe('done')
   })
   it('welcomes back after ≥ 7 days away', () => {
     const items = Array.from({ length: 34 }, (_, i) => item(`m${i}`, { dueOn: d(20) }))
-    const q = buildQueue(userData({ items, attempts: [att('m0', 22, true)] }), L, P, T)
+    const q = buildQueue(userData({ items, attempts: [att('m0', 22, true)] }), U, T)
     expect(q.welcomeBack).toEqual({ due: 34, daysToCatchUp: 2 })
-    expect(buildQueue(userData({ items, attempts: [att('m0', 25, true)] }), L, P, T).welcomeBack).toBeUndefined()
+    expect(buildQueue(userData({ items, attempts: [att('m0', 25, true)] }), U, T).welcomeBack).toBeUndefined()
   })
 })
 

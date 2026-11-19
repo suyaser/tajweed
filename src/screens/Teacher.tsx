@@ -34,7 +34,7 @@ export default function Teacher() {
           </>
         ) : (
           <>
-            <p className="muted">No plan yet. The app suggests what to recite: milestones, open corrections and what you practised.</p>
+            <p className="muted">No plan yet. The app suggests what to recite: your unit finale, open corrections and what you practised.</p>
             <div className="p-actions">
               <Button href="#/teacher/new">Plan a session</Button>
               <Button variant="secondary" onClick={() => startClass()}>Start class now</Button>

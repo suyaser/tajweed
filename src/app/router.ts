@@ -14,6 +14,7 @@ export const ROUTES = {
   teacherNew: 'teacher/new',
   session: 'teacher/:id',
   plan: 'plan',
+  unit: 'unit/:unitId',
   progress: 'progress',
   settings: 'settings',
   guide: 'guide',
