@@ -22,6 +22,7 @@ const SHADDA = 'ّ'
 const SUKUN = 'ْ'
 const DAGGER = 'ٰ'
 const isLetter = (c: string) => /[ء-غف-يٱ]/.test(c)
+const HAMZA = '(?:[ءأإؤئ]|ـ\u0654)'
 
 /** [letter, its marks][] of one word. */
 function units(word: string): [string, string][] {
@@ -33,10 +34,46 @@ function units(word: string): [string, string][] {
   return out
 }
 
-/** Rules the text shows that cpfair leaves unmarked (إظهار, اللام القمرية) or that depend on stopping. Errs towards more. */
-function textLessons(ex: Pick<Example, 'text' | 'stopping'>): string[] {
+const ALLAH = /ل([\u0650\u0651]*)ل\u0651\u064Eه[\u064E-\u0650](?:م\u0651\u064E)?$/ // ٱللَّه، لِلَّه، ٱللَّهُمَّ; not ٱللَّهْو، ٱللَّهَب
+const lastVowel = (s: string) => s.match(/[\u064B-\u0650](?=[^\u064B-\u0650]*$)/)?.[0]
+// A particle that ends in سكون and takes a vowel before همزة الوصل (قُلِ ٱللَّهُ، مِنَ ٱلنَّاسِ، لَمْ يَكُنِ ٱلَّذِينَ).
+const MOVED = /^[وف]?(قُلِ|أَنِ|إِنِ|مَنِ|عَنِ|مِنَ|قَدِ|لَقَدِ|أَوِ|لَوِ|يَكُنِ|تَكُنِ)$/
+
+/** The ل of the name اللَّه in `word`: light after a كسرة (in the word or the word before, `prev`), else heavy. */
+function allahLam(word: string, prev: string | undefined): string | undefined {
+  const m = word.match(ALLAH)
+  if (!m) return undefined
+  if (m[1].includes('\u0650')) return 'lam-jl' // لِلَّهِ
+  const before = word.slice(0, m.index).replace(/ٱ$/, '')
+  const v = before ? lastVowel(before) ?? '\u064E' /* ءَآللَّهُ */ : prev ? lastVowel(prev) : undefined
+  return v && /[\u064C\u064D\u0650\u064B]/.test(v) ? 'lam-jl' : 'lam-jh' // تنوين takes a كسرة before همزة الوصل
+}
+
+/**
+ * Rules the text shows that cpfair leaves unmarked (إظهار, اللام القمرية, the ل of اللَّه, heavy letters, ...) or that
+ * depend on stopping. `prev` is the word before the text, if any. Errs towards more.
+ */
+function textLessons(ex: Pick<Example, 'text' | 'stopping'>, prev?: string): string[] {
   const out: string[] = []
   const t = ex.text
+  const words = t.split(' ')
+  for (const [i, w] of words.entries()) {
+    const p = i ? words[i - 1] : prev
+    const lam = allahLam(w, p)
+    if (lam) out.push(lam)
+    if (p && w.startsWith('ٱ') && (/([اىو][\u06DF\u0670]?|[\u064B-\u064D][اى]?|[هكت][\u064F\u0650]مُ)$/.test(p) || MOVED.test(p)))
+      out.push('sakinayn')
+  }
+  if (/[\u06E5\u06E6] [^ءأإؤئٱ]/.test(t)) out.push('silah-s') // ۥ ۦ of the pronoun before a word with no همزة
+  if (/([\u0628-\u0644\u0647-\u064A]) \1\u0651/.test(t)) out.push('mithlayn') // هَل لَّكُم; مْ مّ and نْ نّ have their own lessons
+  if (new RegExp(`${HAMZA}(?:\u064E[\u0627\u0670]|\u064F\u0648|\u0650[\u064A\u0649])(?![\u064B-\u0653\u06DF])`).test(t)) out.push('badal')
+  if (new RegExp(`${HAMZA}(?:\u064Eآ|[\u064E-\u0650][\u0627\u0648\u064A\u0670]\u0653)`).test(t)) out.push('aqwa-maddayn') // بدل meets لازم or منفصل
+  if (/[خصضغطقظ]/.test(t)) out.push('tafkhim')
+  if (/[ضظ]/.test(t)) out.push('dad-zha')
+  if (/[\u06DF\u06E0]/.test(t)) out.push('silent-letters') // ۟ never read, ۠ read only at a stop
+  if (t.includes('\u06EA')) out.push('imalah')
+  if (t.includes('\u06EB')) out.push('ishmam')
+  if (t.includes('\u06EC')) out.push('tashil')
   if (/(نْ|[ً-ٍ]\S*)\s*[ءأإؤئهعحغخ]/.test(t)) out.push('izhar')
   if (/مْ\s*[\u0621-\u0627\u0629-\u063A\u0641-\u0644\u0646-\u064A]/.test(t)) out.push('m-izhar')
   if (/ٱلْ/.test(t)) out.push('lam-q') // اللام الشمسية comes from the spans (lam_shamsiyyah)
@@ -48,6 +85,8 @@ function textLessons(ex: Pick<Example, 'text' | 'stopping'>): string[] {
       if (m.includes(DAGGER) || l === 'ا' || ((l === 'و' || l === 'ي' || l === 'ى') && !HARAKA.test(m) && !m.includes(SHADDA)))
         out.push(m.includes(SUKUN) && (l === 'و' || l === 'ي') ? 'lin' : 'arid')
       if ('قطبجد'.includes(last[0])) out.push('qal-k')
+      const h = u[u.length - 3]
+      if ('اوي'.includes(l) && h && (/[ءأإؤئ]/.test(h[0]) || h[1].includes('\u0654'))) out.push('aqwa-maddayn') // بدل meets العارض: يَسْتَهْزِءُونَ
     }
     if (/[ً]ا?$/.test(t)) out.push('iwad')
   }
@@ -68,7 +107,7 @@ function spanLesson(rule: string, span: string, stoppedOn: boolean): string | un
  * spans on those words, from the text itself, and any lesson that lists the same words (`others`).
  */
 export function alsoLessons(ex: Example, verse: Pick<Verse, 'text' | 'tajweed' | 'words'> | undefined, others: Example[]): string[] {
-  const ids = new Set<string>(textLessons(ex))
+  const ids = new Set<string>(textLessons(ex, verse?.words[ex.wordFrom - 2]))
   if (verse) {
     const [a, b] = [wordSpan(verse, ex.wordFrom)[0], wordSpan(verse, ex.wordTo)[1]]
     const cps = Array.from(verse.text)
