@@ -363,6 +363,8 @@ Rules shared by every screen:
 
 ## 6. Scheduling rules (سبق · سبقي · منزل)
 
+> **Changed after the review round (see `07-decision-log.md` #12–13):** at most 4 new lessons per rolling 7 days; a passing سبقي graduates to step 1 (3 days), not step 2; "strong" = step ≥ 4 (30 days) and the last 3 answers correct on 3 different examples; the next phase opens once half its milestone passages are passed. The code (`src/core/scheduler.ts`) is the source of truth.
+
 ### 6.1 For the learner, in two sentences
 
 > Each day you learn **one new lesson (سبق)**, check **every lesson from the past week (سبقي)**, and review the **older lessons and teacher corrections that are due (منزل)**. Get one right and it comes back later (in 3, 7, 14, 30, 60, then 120 days); get it wrong, or have your teacher correct it, and it comes back tomorrow.
