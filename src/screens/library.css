@@ -35,10 +35,10 @@
 .tree ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
 .tree > ul > li > ul { padding-inline-start: var(--s4); border-inline-start: 2px solid var(--br); margin-inline-start: var(--s3); margin-top: var(--s2); }
 .t-root { --s: 104px; justify-self: center; font-size: 1.5rem; }
-.t-root small { display: block; font: 11px var(--f-disp); letter-spacing: 0.06em; text-align: center; opacity: 0.9; }
+.t-root small { display: block; font: 12px var(--f-disp); text-align: center; opacity: 0.9; }
 .t-cat {
   display: grid; width: 100%; text-align: start; min-height: 52px; padding: var(--s1) var(--s4); align-content: center;
-  background: var(--green); color: var(--on-green); border: 1px solid var(--gold); border-radius: 12px;
+  background: var(--green); color: var(--on-green); border: 0; border-radius: 14px;
 }
 .t-cat b { font: var(--a-sm); font-weight: 700; line-height: 1.3; }
 .t-cat small { font: var(--t-cap); opacity: 0.85; text-align: end; }
@@ -75,7 +75,7 @@
 .rule-review { color: var(--good); }
 .rule-draft { border: 1px solid var(--gold); box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 4px var(--gold-soft); border-radius: var(--r-ctl); padding: var(--s3) var(--s4); color: var(--gold-ink); }
 .rule-facts { display: grid; grid-template-columns: auto 1fr; gap: var(--s2) var(--s4); margin: 0; padding: var(--s3) var(--s4); background: var(--bg); border-radius: var(--r-ctl); }
-.rule-facts dt { font: var(--t-cap); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 4px; }
+.rule-facts dt { font: var(--t-cap); color: var(--muted); padding-top: 4px; }
 .rule-facts dd { margin: 0; min-width: 0; }
 .rule-facts ul, .rule-sources ul { margin: 0; padding-inline-start: 1.1em; }
 .rule-ex { display: grid; gap: var(--s3); }

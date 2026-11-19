@@ -15,8 +15,8 @@ export default defineConfig({
         name: 'Tajweed Path · مسار التجويد',
         short_name: 'Tajweed Path',
         description: 'A daily tajweed study companion for Hafs, with review, recitation audio and a teacher log.',
-        theme_color: '#0f5b45',
-        background_color: '#f4f1e8',
+        theme_color: '#f8f5ef',
+        background_color: '#f8f5ef',
         display: 'standalone',
         start_url: './#/today',
         icons: [

@@ -32,8 +32,9 @@ test.each([['light', light], ['dark', dark]] as const)('%s theme text and tajwee
   expect(Object.keys(t).filter((k) => k.startsWith('--t-'))).toHaveLength(11)
 })
 
-test('on-green text on the band and rail', () => {
+test('on-green text on buttons; gold titles on the sand band', () => {
   expect(ratio(light['--on-green'], light['--green'])).toBeGreaterThanOrEqual(4.5)
   expect(ratio(dark['--on-green'], dark['--green'])).toBeGreaterThanOrEqual(4.5)
-  expect(ratio(light['--gold-display'], light['--green'])).toBeGreaterThanOrEqual(4.5)
+  expect(ratio(light['--gold-display'], light['--soft'])).toBeGreaterThanOrEqual(4.5)
+  expect(ratio(dark['--gold-display'], dark['--soft'])).toBeGreaterThanOrEqual(4.5)
 })

@@ -2,6 +2,7 @@ import { useEffect, useRef, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
+import { Icon } from './icons'
 
 type Tab = 'today' | 'rules' | 'teacher' | 'path'
 type Kind = 'tab' | 'pushed' | 'focus' | 'bare'
@@ -107,7 +108,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
           </header>
         )}
         {hasNav && (
-          <header className={`topbar lattice gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
+          <header className={`topbar gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
             {kind === 'pushed' && (
               <a className="back" href={href(parent)}>
                 <span aria-hidden="true">‹</span> Back
@@ -121,12 +122,12 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
             <div className="topbar-actions">
               {route.name !== 'guide' && (
                 <a className="gear" href={href('guide')}>
-                  <span className="gear-ico" aria-hidden="true">?</span><small>Help</small>
+                  <Icon name="help" className="gear-ico" /><small>Help</small>
                 </a>
               )}
               {meta.gear && (
                 <a className="gear" href={href('settings')}>
-                  <span className="gear-ico" aria-hidden="true">⚙</span><small>Settings</small>
+                  <Icon name="settings" className="gear-ico" /><small>Settings</small>
                 </a>
               )}
             </div>
@@ -147,7 +148,7 @@ function TabBar({ active }: { active?: Tab }) {
     <nav className="tabbar" aria-label="Main">
       {TABS.map((t) => (
         <a key={t.id} href={href(t.to)} aria-current={t.id === active ? 'page' : undefined}>
-          <span className="tab-star" aria-hidden="true">✦</span>
+          <span className="tab-pill"><Icon name={t.id} className="tab-ico" /></span>
           <b lang="ar">{t.ar}</b>
           <small>{t.en}</small>
         </a>
@@ -165,16 +166,17 @@ function Rail({ active, settings, guide }: { active?: Tab; settings?: boolean; g
       </a>
       {TABS.map((t) => (
         <a key={t.id} href={href(t.to)} aria-current={t.id === active ? 'page' : undefined}>
+          <Icon name={t.id} className="tab-ico" />
           <b lang="ar">{t.ar}</b>
           <small>{t.en}</small>
         </a>
       ))}
       <a className="rail-gear rail-help" href={href('guide')} aria-current={guide ? 'page' : undefined}>
-        <span className="gear-ico" aria-hidden="true">?</span>
+        <Icon name="help" className="gear-ico" />
         <b lang="ar">كيف يعمل</b><small>Help</small>
       </a>
       <a className="rail-gear" href={href('settings')} aria-current={settings ? 'page' : undefined}>
-        <span className="gear-ico" aria-hidden="true">⚙</span>
+        <Icon name="settings" className="gear-ico" />
         <b lang="ar">الإعدادات</b><small>Settings</small>
       </a>
     </nav>

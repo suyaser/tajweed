@@ -4,23 +4,23 @@
 /* .theme-light / .theme-dark scope a subtree (dev gallery shows both themes side by side). */
 :root, .theme-light, .theme-dark {
   /* §3.1 base and semantic */
-  --bg: #f4f1e8;
-  --surface: #fffdf8;
-  --soft: #e6efe8; /* tajweed-coloured text never sits on --soft */
-  --ink: #1c2621;
-  --muted: #5b665e;
-  --line: #e2dccb;
-  --green: #0f5b45;
-  --on-green: #f5f0e1;
-  --gold: #a8791e; /* graphic only: frames, ornaments, ﴿ ﴾, focus ring */
-  --gold-ink: #7a5810; /* gold text */
-  --gold-soft: #e7d6a8;
-  --gold-display: #f3d98f; /* Kufi title on the band */
-  --link: #0f5b45;
+  --bg: #f8f5ef;
+  --surface: #ffffff;
+  --soft: #f1ebdf; /* tajweed-coloured text never sits on --soft */
+  --ink: #1c1a17;
+  --muted: #5f5850;
+  --line: #e3dccf;
+  --green: #115e57;
+  --on-green: #ffffff;
+  --gold: #a9802e; /* graphic only: frames, ornaments, ﴿ ﴾, focus ring */
+  --gold-ink: #77561a; /* gold text */
+  --gold-soft: #f1e4c4;
+  --gold-display: #7a5810; /* Kufi title on the band */
+  --link: #0f5c55;
   --good: #1a7b42;
   --bad: #c23b3b;
   --rec: #b3261e;
-  --backdrop: rgb(4 20 14 / 0.55);
+  --backdrop: rgb(20 18 15 / 0.5);
 
   /* §3.2 muṣḥaf tajweed palette, light values darkened to ≥ 4.5:1 on --bg and --surface */
   --t-clear: #6a3fb5;
@@ -37,27 +37,27 @@
 
   /* §3.3 families */
   --f-quran: "Amiri Quran", "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
-  --f-ar: "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
-  --f-kufi: "Reem Kufi", "Amiri", "Geeza Pro", sans-serif;
-  --f-disp: "Marcellus", Georgia, serif;
-  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-ar: "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-kufi: "Noto Naskh Arabic", "Amiri", "Geeza Pro", serif; /* Arabic headings (naskh) */
+  --f-disp: "Figtree", system-ui, sans-serif;
+  --f-body: "Figtree", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Latin scale: size/line-height */
-  --t-cap: 600 12px/16px var(--f-body);
+  --t-cap: 600 13px/18px var(--f-body);
   --t-sm: 400 14px/22px var(--f-body);
   --t-body: 400 16px/28px var(--f-body);
   --t-lg: 500 18px/30px var(--f-body);
-  --t-h3: 400 20px/26px var(--f-disp);
-  --t-h2: 400 24px/30px var(--f-disp);
-  --t-h1: 400 28px/34px var(--f-disp);
+  --t-h3: 600 20px/26px var(--f-disp);
+  --t-h2: 600 24px/30px var(--f-disp);
+  --t-h1: 700 28px/34px var(--f-disp);
 
   /* Arabic UI scale (≈1.2× Latin) */
-  --a-sm: 400 17px/28px var(--f-ar);
-  --a-body: 400 19px/32px var(--f-ar);
-  --a-lg: 700 22px/34px var(--f-ar);
-  --a-h3: 700 26px/36px var(--f-ar);
-  --k-h2: 500 28px/38px var(--f-kufi);
-  --k-h1: 700 40px/52px var(--f-kufi);
+  --a-sm: 500 16px/26px var(--f-ar);
+  --a-body: 400 18px/30px var(--f-ar);
+  --a-lg: 600 20px/32px var(--f-ar);
+  --a-h3: 700 24px/34px var(--f-ar);
+  --k-h2: 700 26px/40px var(--f-kufi);
+  --k-h1: 700 36px/52px var(--f-kufi);
 
   /* Quran scale (Amiri Quran). --q-read/--q-focus follow the text-size setting */
   --q-inline: 26px;
@@ -74,15 +74,15 @@
   --section-gap: 28px;
 
   /* radii */
-  --r-tile: 7px;
+  --r-tile: 8px;
   --r-beat: 4px;
-  --r-ctl: 10px;
-  --r-card: 14px;
-  --r-focus: 18px;
+  --r-ctl: 14px;
+  --r-card: 18px;
+  --r-focus: 22px;
   --r-pill: 999px;
 
-  /* elevation: frames, not shadows */
-  --frame: inset 0 0 0 4px var(--surface), inset 0 0 0 5px var(--gold-soft);
+  /* elevation: hairline borders; no inset frames (style B) */
+  --frame: 0 0 #0000;
   --e3-shadow: 0 -8px 24px rgb(0 0 0 / 0.14);
 
   /* §3.5 motion */
@@ -92,10 +92,10 @@
   --m-lamp: 80ms;
 
   /* layout */
-  --tabbar-h: 64px;
+  --tabbar-h: 72px;
   --band-h: 56px;
   --rail-w: 112px;
-  --target: 44px;
+  --target: 48px;
 
   color-scheme: light;
 }
@@ -111,9 +111,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0c1613; --surface: #13211c; --soft: #1b3129; --ink: #ece6d4; --muted: #a3ab9e; --line: #283a32;
-    --green: #14533f; --on-green: #f5f0e1; --gold: #d8b45c; --gold-ink: #d8b45c; --gold-soft: #4d4128;
-    --gold-display: #f3d98f; --link: #7fd6b0; --good: #62d68f; --bad: #ff7d7d; --rec: #ff8a80;
+    --bg: #121110; --surface: #1c1b19; --soft: #26231f; --ink: #efe9df; --muted: #aba398; --line: #34312c;
+    --green: #23756a; --on-green: #ffffff; --gold: #d9b46a; --gold-ink: #dfbe7a; --gold-soft: #3b3322;
+    --gold-display: #e8cf8f; --link: #79d3c4; --good: #62d68f; --bad: #ff7d7d; --rec: #ff8a80;
     --t-clear: #b593f2; --t-ghunnah: #5fd876; --t-silent: #97a29d; --t-merge: #ef86cf;
     --t-madd2: #e3b763; --t-madd45: #ff6f6f; --t-madd246: #ffa45e; --t-madd6: #ff5875;
     --t-qalqalah: #65bff5; --t-heavy: #8aa5ff; --t-light: #55d8d3;
@@ -121,9 +121,9 @@
   }
 }
 :root[data-theme="dark"], .theme-dark {
-  --bg: #0c1613; --surface: #13211c; --soft: #1b3129; --ink: #ece6d4; --muted: #a3ab9e; --line: #283a32;
-  --green: #14533f; --on-green: #f5f0e1; --gold: #d8b45c; --gold-ink: #d8b45c; --gold-soft: #4d4128;
-  --gold-display: #f3d98f; --link: #7fd6b0; --good: #62d68f; --bad: #ff7d7d; --rec: #ff8a80;
+  --bg: #121110; --surface: #1c1b19; --soft: #26231f; --ink: #efe9df; --muted: #aba398; --line: #34312c;
+  --green: #23756a; --on-green: #ffffff; --gold: #d9b46a; --gold-ink: #dfbe7a; --gold-soft: #3b3322;
+  --gold-display: #e8cf8f; --link: #79d3c4; --good: #62d68f; --bad: #ff7d7d; --rec: #ff8a80;
   --t-clear: #b593f2; --t-ghunnah: #5fd876; --t-silent: #97a29d; --t-merge: #ef86cf;
   --t-madd2: #e3b763; --t-madd45: #ff6f6f; --t-madd246: #ffa45e; --t-madd6: #ff5875;
   --t-qalqalah: #65bff5; --t-heavy: #8aa5ff; --t-light: #55d8d3;
