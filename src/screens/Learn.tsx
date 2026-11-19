@@ -78,7 +78,10 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   const go = (s: number) => { audio.stop(); setStep(first(s)); setQi(0); window.scrollTo(0, 0) }
   const next = () => go(step + 1)
 
-  const title = <h1 className="a-h3 s-center" lang="ar">{lesson.nameAr}</h1>
+  // practical first: the rule's name appears from the Learn step on, after hearing and noticing it
+  const title = step < LEARN && !already
+    ? <h1 className="a-h3 s-center"><span lang="ar">درس جديد</span> <span className="t-sm muted">New lesson</span></h1>
+    : <h1 className="a-h3 s-center" lang="ar">{lesson.nameAr}</h1>
   const steps = (s: number, status: string) => <Steps step={s} status={status} skip={skip} />
 
   // gate: a new lesson only when it is unlocked and today's pace allows (spec §4); replays always open
