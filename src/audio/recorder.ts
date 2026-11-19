@@ -14,6 +14,7 @@ export interface RecResult { blob: Blob; durationMs: number; mime: string }
 export class Recorder {
   state: RecState = { status: pickMime() === null ? 'unsupported' : 'idle', startedAt: null, error: null }
   private mr: MediaRecorder | null = null
+  private aborted = false // stop() while the permission prompt is open (M6)
   private listeners = new Set<() => void>()
 
   subscribe = (fn: () => void) => { this.listeners.add(fn); return () => { this.listeners.delete(fn) } }
@@ -25,6 +26,7 @@ export class Recorder {
     if (this.mr || this.state.status === 'requesting') return null
     const mime = pickMime()
     if (mime === null) { this.set({ status: 'unsupported' }); return null }
+    this.aborted = false
     this.set({ status: 'requesting', error: null })
     let stream: MediaStream
     try {
@@ -36,6 +38,7 @@ export class Recorder {
       return null
     }
     const release = () => stream.getTracks().forEach(t => t.stop())
+    if (this.aborted) { release(); this.set({ status: 'idle' }); return null } // left the screen: no mic, no take
     let mr: MediaRecorder
     try {
       mr = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined)
@@ -65,5 +68,8 @@ export class Recorder {
     })
   }
 
-  stop() { if (this.mr?.state === 'recording') this.mr.stop() }
+  stop() {
+    if (this.state.status === 'requesting') this.aborted = true
+    if (this.mr?.state === 'recording') this.mr.stop()
+  }
 }

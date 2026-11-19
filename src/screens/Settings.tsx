@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import type { Settings as SettingsT } from '../core/types'
-import { STORAGE_KEY, exportJson, getLoadError, importJson, resetAll, storagePersisted, updateSettings, useData } from '../core/store'
+import { STORAGE_KEY, exportJson, importJson, resetAll, storagePersisted, updateSettings, useData } from '../core/store'
 import { today } from '../core/day'
 import { makeWirdIcs } from '../core/ics'
 import { RECITERS } from '../quran'
@@ -27,17 +27,9 @@ export default function Settings() {
   const set = (patch: Partial<SettingsT>) => updateSettings(patch)
   const [name, setName] = useState(s.teacherName ?? '')
   const [munfasilChanged, setMunfasilChanged] = useState(false)
-  const loadError = getLoadError()
 
   return (
     <div className="p-stack">
-      {loadError && (
-        <Card level="e2" eyebrow="Your saved data could not be read">
-          <p>{loadError.message} Nothing has been changed. Download the saved data before doing anything else, then restore it or ask for help.</p>
-          <Button onClick={() => download(`tajweed-path-unreadable-${today()}.json`, loadError.raw, 'application/json')}>Download saved data</Button>
-        </Card>
-      )}
-
       <OrnHeading>Your wird</OrnHeading>
       <Card>
         <Row label="Wird time">

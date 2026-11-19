@@ -181,6 +181,7 @@ export class Player {
     if (this.el) return this.el
     const a = (this.el = this.createAudio())
     a.preload = 'auto'
+    a.crossOrigin = 'anonymous' // CORS (everyayah sends ACAO *): real, cacheable responses instead of opaque ones (M1)
     a.preservesPitch = true
     ;(a as unknown as { webkitPreservesPitch: boolean }).webkitPreservesPitch = true // Safari < 17
     const on = (t: string, f: () => void) => a.addEventListener(t, () => { if (a === this.el) f() })
@@ -200,14 +201,16 @@ export class Player {
     this.sliceEnd = null
     if (a.src !== url) {
       a.src = url
-      if (offset) a.addEventListener('loadedmetadata', () => { a.currentTime = offset }, { once: true })
+      if (offset) a.addEventListener('loadedmetadata', () => { if (a.src === url) a.currentTime = offset }, { once: true })
     } else a.currentTime = offset
     a.playbackRate = a.defaultPlaybackRate = this.state.rate
     this.set({ status: 'loading', verseKey: v.verseKey, word: null, error: null, gapLeft: 0, clip: false })
     a.play().catch(e => this.rejected(e))
     const nxt = this.verses[this.state.index + 1]
-    // Warm the HTTP / service-worker cache for the next ayah (files are ~100 KB).
-    if (nxt && typeof fetch === 'function') fetch(ayahUrl(this.reciter.folder, nxt.verseKey)).catch(() => {})
+    // Fill the service-worker cache with whole (200) responses for this ayah and the next (~100 KB each):
+    // the <audio> element's own Range requests get 206s, which are not cached.
+    if (typeof fetch === 'function')
+      for (const k of nxt ? [v.verseKey, nxt.verseKey] : [v.verseKey]) fetch(ayahUrl(this.reciter.folder, k)).catch(() => {})
   }
 
   private rejected(e: unknown) {

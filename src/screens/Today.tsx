@@ -1,7 +1,7 @@
 // #/today: the wird as a finite, ordered list (spec F1, design §5.2).
 import { useMemo, useState, type ReactNode } from 'react'
 import type { DayLog, PartMark } from '../core/types'
-import { getLoadError, markDayPart, storagePersisted, suggestPassages, useData } from '../core/store'
+import { markDayPart, storagePersisted, suggestPassages, useData } from '../core/store'
 import { buildQueue } from '../core/scheduler'
 import { diffDays, today } from '../core/day'
 import { getLesson, lessons, phases } from '../content'
@@ -41,15 +41,6 @@ export default function Today() {
   const [m, setM] = useState(mem)
   const remember = (p: Parameters<typeof setMem>[0]) => { setMem(p); setM(mem()) }
   const [howOpen, setHowOpen] = useState(false)
-  const loadError = getLoadError()
-
-  if (loadError)
-    return (
-      <Card eyebrow="Your data" className="s-alert">
-        <p>We couldn't update your data. Nothing was lost. Download a backup, then reload. If it keeps happening, send the backup to yourself and wait for an update.</p>
-        <Button onClick={() => download('tajweed-path-backup.json', loadError.raw)}>Download a backup</Button>
-      </Card>
-    )
 
   const parts = data.days.find(d => d.id === day)?.parts ?? { listen: null, sabaq: null, recite: null, review: null }
   const offline = typeof navigator !== 'undefined' && navigator.onLine === false
@@ -98,7 +89,7 @@ export default function Today() {
   const dismiss = (k: string) => remember({ dismissed: { ...dismissed, [k]: day } })
   const nudge =
     !standalone && storagePersisted() !== true && !dismissed.install ? 'install'
-      : data.attempts.length > 0 && (backupAge == null || backupAge >= 14) && !(dismissed.backup && diffDays(day, dismissed.backup) < 7) ? 'backup'
+      : data.attempts.length > 0 && (backupAge == null || backupAge >= (standalone ? 14 : 7)) && !(dismissed.backup && diffDays(day, dismissed.backup) < 7) ? 'backup'
         : null
 
   const listenHref = href('listen', rangeParam(passage.from, passage.to))
@@ -247,10 +238,4 @@ function SabaqReason({ reason, backlog, activeLeft, passage, listenHref, stale }
       </>
     )
   return <p className="t-sm">No phase is active yet. <a href={href('plan')}>Open your plan ›</a></p>
-}
-
-function download(name: string, text: string) {
-  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }))
-  Object.assign(document.createElement('a'), { href: url, download: name }).click()
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
 }

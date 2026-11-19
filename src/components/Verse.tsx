@@ -1,4 +1,4 @@
-import { useId, type KeyboardEvent, type ReactNode } from 'react'
+import { memo, useCallback, useId, useRef, type KeyboardEvent, type ReactNode } from 'react'
 import type { ColourKey } from '../core/types'
 import { arDigits } from './bidi'
 
@@ -172,31 +172,48 @@ export interface PassageProps {
 
 /** Multi-ayah block with inline ayah-end markers ﴿٥﴾, each a tap target that seeks to that ayah. */
 export function Passage({ ayahs, size = 'read', tajweed = false, currentAyah, current, marks, isolate, onWord, onAyah }: PassageProps) {
+  // Stable callbacks so a lit-word change re-renders only the ayah it touches (M7).
+  const cb = useRef({ onWord, onAyah })
+  cb.current = { onWord, onAyah }
+  const word = useCallback((k: string, w: number, t: string) => cb.current.onWord?.(k, w, t), [])
+  const ayah = useCallback((k: string) => cb.current.onAyah?.(k), [])
   return (
     <div className={`verse verse-${size} passage`} lang="ar" dir="rtl">
       <p className="verse-text" onKeyDown={onWord ? roving : undefined}>
-        {ayahs.map((a, ai) => {
-          const m: Record<number, WordMark> = {}
-          for (const [k, v] of Object.entries(marks ?? {})) if (k.startsWith(a.key + '/')) m[+k.slice(a.key.length + 1)] = v
-          const toks = tokens(a.segments ?? [{ text: a.text ?? '' }], {
-            tajweed, isolate, marks: m,
-            current: current?.key === a.key ? current.word : undefined,
-            onWord: onWord && ((w, t) => onWord(a.key, w, t)),
-            tabStop: (current ? current.key === a.key : ai === 0) ? (current?.word ?? 1) : -1,
-          }, a.key + '/')
-          const end = `﴿${arDigits(a.n)}﴾`
-          return (
-            <span key={a.key} className="ayah" data-current={currentAyah === a.key || undefined}>
-              {join(toks)}{' '}
-              {onAyah ? (
-                <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang="en" aria-label={`Ayah ${a.n}`}>{end}</button>
-              ) : (
-                <span className="ayah-end">{end}</span>
-              )}{' '}
-            </span>
-          )
-        })}
+        {ayahs.map((a, ai) => (
+          <AyahRun
+            key={a.key} a={a} tajweed={tajweed} isolate={isolate} marks={marks}
+            isCurrent={currentAyah === a.key}
+            word={current?.key === a.key ? current.word : undefined}
+            tabStop={(current ? current.key === a.key : ai === 0) ? (current?.word ?? 1) : -1}
+            onWord={onWord && word} onAyah={onAyah && ayah}
+          />
+        ))}
       </p>
     </div>
   )
 }
+
+const AyahRun = memo(function AyahRun({ a, tajweed, isolate, marks, isCurrent, word, tabStop, onWord, onAyah }: {
+  a: PassageAyah; tajweed: boolean; isolate?: ColourKey | null; marks?: Record<string, WordMark>
+  isCurrent: boolean; word?: number; tabStop: number
+  onWord?: (key: string, word: number, text: string) => void; onAyah?: (key: string) => void
+}) {
+  const m: Record<number, WordMark> = {}
+  for (const [k, v] of Object.entries(marks ?? {})) if (k.startsWith(a.key + '/')) m[+k.slice(a.key.length + 1)] = v
+  const toks = tokens(a.segments ?? [{ text: a.text ?? '' }], {
+    tajweed, isolate, marks: m, current: word, tabStop,
+    onWord: onWord && ((w, t) => onWord(a.key, w, t)),
+  }, a.key + '/')
+  const end = `﴿${arDigits(a.n)}﴾`
+  return (
+    <span className="ayah" data-current={isCurrent || undefined}>
+      {join(toks)}{' '}
+      {onAyah ? (
+        <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang="en" aria-label={`Ayah ${a.n}`}>{end}</button>
+      ) : (
+        <span className="ayah-end">{end}</span>
+      )}{' '}
+    </span>
+  )
+})

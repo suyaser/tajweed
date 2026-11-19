@@ -31,6 +31,20 @@ export function parseRange(raw: string | undefined): Range | null {
   return { from: from.join(':'), to: to.join(':') }
 }
 
+/** Longest passage #/listen loads: the whole Quran would be ~11 MB of text and thousands of words on screen (M7). */
+export const MAX_AYAT = 300
+
+/** The first `max` ayat of a range (the range itself when it is shorter). */
+export function capRange({ from, to }: Range, max = MAX_AYAT): Range {
+  let [s, a] = from.split(':').map(Number)
+  const [s2, a2] = to.split(':').map(Number)
+  for (let n = 1; n < max && !(s === s2 && a === a2); n++) {
+    if (a < ayahCount(s)) a++
+    else { s++; a = 1 }
+  }
+  return { from, to: `${s}:${a}` }
+}
+
 /** URL form: `93:1-93:11`, or `93:5` for one ayah. */
 export const rangeParam = ({ from, to }: Range) => (from === to ? from : `${from}-${to}`)
 

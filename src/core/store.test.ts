@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import * as S from './store'
 import { today } from './day'
 import { lessons, phases } from '../content'
@@ -84,6 +84,38 @@ describe('store', () => {
     expect(S.getLoadError()?.raw).toBe('{"schemaVersion":42}')
     S.updateSettings({ wirdTime: '07:00' })
     expect(localStorage.getItem(S.STORAGE_KEY)).toBe('{"schemaVersion":42}')
+  })
+
+  it('migrate() repairs malformed data instead of letting a screen crash (M4)', () => {
+    const d = S.migrate({
+      schemaVersion: 1, settings: { teacherDays: null, wirdTime: '06:00' },
+      introductions: [null, { lessonId: 'izhar', on: '2026-01-01', at: 'x' }], attempts: [null, {}], corrections: [null],
+      sessions: [null, { id: 's', on: '2026-01-02' }], phases: [], days: [null],
+    }, '2026-01-05')
+    expect(d.settings).toMatchObject({ teacherDays: [], wirdTime: '06:00', reciterId: 'husary-muallim', munfasilLength: 4 })
+    expect(d.introductions).toHaveLength(1)
+    expect([d.attempts, d.corrections, d.days]).toEqual([[], [], []])
+    expect(d.sessions).toEqual([expect.objectContaining({ id: 's', plannedPassages: [], milestoneResults: [], status: 'planned' })])
+    expect(d.phases.map(p => p.id)).toEqual([1, 2, 3, 4, 5, 6])
+    expect(d.phases.every(p => p.status === 'locked' && Array.isArray(p.tasksDone))).toBe(true)
+  })
+
+  it('surfaces a failed save and clears it once saving works again (M3)', () => {
+    const set = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new DOMException('full', 'QuotaExceededError') })
+    S.updateSettings({ wirdTime: '07:00' })
+    expect(S.getSaveError()).toBe(true)
+    expect(S.getSnapshot().settings.wirdTime).toBe('07:00') // still in memory
+    set.mockRestore()
+    S.updateSettings({ wirdTime: '07:05' })
+    expect(S.getSaveError()).toBe(false)
+  })
+
+  it('takes the other tab\'s data when it saves (M2)', () => {
+    S.completeOnboarding({})
+    const other = { ...S.getSnapshot(), settings: { ...S.getSnapshot().settings, wirdTime: '04:00' } }
+    localStorage.setItem(S.STORAGE_KEY, JSON.stringify(other))
+    window.dispatchEvent(new StorageEvent('storage', { key: S.STORAGE_KEY }))
+    expect(S.getSnapshot().settings.wirdTime).toBe('04:00')
   })
 })
 

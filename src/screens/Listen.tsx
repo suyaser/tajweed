@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ScreenProps } from '../app/App'
 import { href } from '../app/router'
 import { addListenSeconds, planSession, suggestPassages, updateSession, useData, uuid } from '../core/store'
@@ -13,7 +13,7 @@ import { playMe, playModelThenMe, type ComparePhase } from '../audio/compare'
 import {
   AudioTransport, Button, EmptyState, Legend, Nudge, Passage, RecordButton, Sheet, T, ToggleChip, type PassageAyah,
 } from '../components'
-import { DEFAULT_RANGE, parseRange, rangeLabel, refLabel } from './library/range'
+import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
 import './library.css'
 
 const LOOPS = [1, 3, 5, 10]
@@ -25,7 +25,8 @@ const typing = (t: EventTarget | null) => t instanceof HTMLElement && (t.isConte
 
 export default function Listen({ params }: ScreenProps) {
   const parsed = parseRange(params.range)
-  const range = parsed ?? DEFAULT_RANGE
+  const wanted = parsed ?? DEFAULT_RANGE
+  const range = capRange(wanted)
   const { from, to } = range
   const label = rangeLabel(range)
   const data = useData()
@@ -175,17 +176,18 @@ export default function Listen({ params }: ScreenProps) {
     el?.scrollIntoView?.({ block: 'nearest' })
   }, [busy, state.verseKey, state.word])
 
-  const ayahs: PassageAyah[] = (verses ?? []).map((v) => ({
+  // Memoised: the player re-renders this screen several times a second (M7).
+  const ayahs = useMemo<PassageAyah[]>(() => (verses ?? []).map((v) => ({
     key: v.verseKey, n: +v.verseKey.split(':')[1], text: v.text, ...(colours ? { segments: tajweedSpans(v) } : {}),
-  }))
-  const shownColours = colours && verses
+  })), [verses, colours])
+  const shownColours = useMemo(() => colours && verses
     ? [...new Set(verses.flatMap((v) => v.tajweed.map((s) => ruleColour(s.rule)).filter((c): c is ColourKey => !!c)))]
-    : []
+    : [], [verses, colours])
   const speaker = phase === 'me' || state.clip ? 'You' : reciter.nameAr
   const unavailable =
     state.status === 'offline' ? 'Audio needs a connection. The text is here; recording still works.'
     : state.status === 'error' ? "Couldn't load the recitation." : undefined
-  const marks = dotted && busy ? { [dotted]: 'lamp-dotted' as const } : undefined
+  const marks = useMemo(() => (dotted && busy ? { [dotted]: 'lamp-dotted' as const } : undefined), [dotted, busy])
   const lit = state.word && !state.clip && state.verseKey ? { key: state.verseKey, word: state.word[0] + 1 } : undefined
   const recOff =
     rec.state.status === 'denied' ? "Recording is off. You can turn the microphone on in your browser's site settings."
@@ -208,6 +210,7 @@ export default function Listen({ params }: ScreenProps) {
       </header>
 
       {params.range && !parsed && <Nudge><T>{`That passage link isn't valid, so here is ${label}.`}</T></Nudge>}
+      {range.to !== wanted.to && <Nudge><T>{`That passage is long, so here are its first ${MAX_AYAT} ayat: ${label}.`}</T></Nudge>}
 
       <div className="listen-text">
         {textError ? (

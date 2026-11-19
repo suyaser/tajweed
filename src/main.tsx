@@ -4,18 +4,24 @@ import { registerSW } from 'virtual:pwa-register'
 import './styles/tokens.css'
 import './styles/base.css'
 import './styles/components.css'
-import { App } from './app/App'
-import { useData } from './core/store'
+import { Root } from './app/App'
+import { ErrorBoundary } from './app/Recovery'
 
-function Root() {
-  const { settings } = useData()
-  return <App onboarded={!!settings.onboardedOn} theme={settings.theme} textSize={settings.textSize} tajweedPatterns={settings.tajweedPatterns} />
-}
-
-registerSW({ immediate: true })
+// A new version waits until the learner is on Today, so a deploy never reloads a class, a recording or a note (m2).
+const onToday = () => /^(#\/?(today)?)?$/.test(location.hash)
+const updateSW = registerSW({
+  immediate: true,
+  onNeedRefresh() {
+    const apply = () => { if (onToday()) updateSW(true) }
+    apply()
+    window.addEventListener('hashchange', apply)
+  },
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Root />
+    <ErrorBoundary>
+      <Root />
+    </ErrorBoundary>
   </StrictMode>,
 )

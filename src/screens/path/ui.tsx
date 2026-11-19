@@ -108,16 +108,7 @@ export function AddPassage({ onAdd, reason = 'ask' }: { onAdd: (p: Planned) => v
   )
 }
 
-export function download(name: string, text: string, type: string) {
-  const url = URL.createObjectURL(new Blob([text], { type }))
-  const a = document.createElement('a')
-  a.href = url
-  a.download = name
-  document.body.append(a)
-  a.click()
-  a.remove()
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
-}
+export { download } from '../../app/download'
 
 /** "Start class": the given plan (moved to today), or a plan made on the fly from the suggestions. */
 export function startClass(sessionId?: string) {

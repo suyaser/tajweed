@@ -70,14 +70,22 @@ export function spread<T>(xs: T[], isLong: (x: T) => boolean): T[] {
   return out
 }
 
-/** Spec F1: the active milestone passage, else the surah of today's lesson examples, else the active phase's first passage. */
+/** The lesson example's surah when short (≤ 20 ayat), else the example ayah ± 2: a whole long surah is too much to load and play (M7). */
+export function aroundAyah(k: VerseKey): { from: VerseKey; to: VerseKey } {
+  const [s, a] = parse(k)
+  const n = ayahCount(s)
+  if (n <= 20) return wholeSurah(s)
+  return { from: `${s}:${Math.max(1, a - 2)}`, to: `${s}:${Math.min(n, a + 2)}` }
+}
+
+/** Spec F1: the active milestone passage, else around today's lesson example, else the active phase's first passage. */
 export function currentPassage(data: UserData, phases: Phase[], lessonExampleKey?: VerseKey): { from: VerseKey; to: VerseKey } {
   const passed = new Set(data.sessions.flatMap(s => s.milestoneResults.filter(r => r.result === 'passed').map(r => `${r.phaseId}/${r.passageId}`)))
   for (const p of data.phases.filter(p => p.status === 'milestone').sort((a, b) => a.id - b.id)) {
     const m = phases.find(c => c.id === p.id)?.milestone.find(m => !passed.has(`${p.id}/${m.id}`))
     if (m) return { from: m.from, to: m.to }
   }
-  if (lessonExampleKey) return wholeSurah(parse(lessonExampleKey)[0])
+  if (lessonExampleKey) return aroundAyah(lessonExampleKey)
   const active = data.phases.find(p => p.status === 'active')
   const m = phases.find(c => c.id === active?.id)?.milestone[0]
   return m ? { from: m.from, to: m.to } : { from: '1:1', to: '1:7' }

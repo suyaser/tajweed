@@ -98,12 +98,14 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
   // Screen Wake Lock while in class (design §5.8.3); ignored where unsupported.
   useEffect(() => {
     let lock: { release: () => Promise<void> } | undefined
+    let alive = true
     const nav = navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<{ release: () => Promise<void> }> } }
-    const get = () => nav.wakeLock?.request('screen').then((l) => { lock = l }, () => {})
+    // a lock granted after leaving the sheet is released at once
+    const get = () => nav.wakeLock?.request('screen').then((l) => { if (alive) lock = l; else l.release().catch(() => {}) }, () => {})
     get()
     const onVis = () => document.visibilityState === 'visible' && get()
     document.addEventListener('visibilitychange', onVis)
-    return () => { document.removeEventListener('visibilitychange', onVis); lock?.release().catch(() => {}) }
+    return () => { alive = false; document.removeEventListener('visibilitychange', onVis); lock?.release().catch(() => {}) }
   }, [])
 
   const mine = live(d.corrections).filter((c) => c.sessionId === s.id)

@@ -1,9 +1,9 @@
 // Adapts the reviewed content JSON (content/*.json) to the shared types.
 import type { ColourKey, ConfusablePair, Lesson, MatnLine, Phase, QuestionKind, Topic } from '../core/types'
-// Content: reviewed rules/pairs from content/ (see docs/04-content-review.md). Mutun switches when docs/05 verification lands.
+// Content: reviewed rules/pairs from content/ (see docs/04-content-review.md); verified mutun (docs/05-mutun-verification.md).
 import rawRules from '../../content/rules.json'
 import rawPairs from '../../content/pairs.json'
-import rawMutun from './fallback/mutun.json'
+import rawMutun from '../../content/mutun.json'
 
 interface RawRule {
   id: string; cat: string; phase: number; ar: string; en: string; color: string; definition: string
@@ -34,7 +34,11 @@ export const pairs: ConfusablePair[] = (rawPairs as { id?: string; a: string; b:
   id: p.id ?? `${p.a}~${p.b}`, a: p.a, b: p.b, hint: p.hint ?? p.difference ?? '',
 }))
 
-export const mutun: MatnLine[] = rawMutun as MatnLine[]
+export const mutun: MatnLine[] = rawMutun.lines.map(l => ({
+  id: `${l.text}-${l.n}`, matn: l.text as MatnLine['matn'], n: l.n, sadr: l.sadr, ajz: l.ajuz,
+  page: l.page == null ? undefined : String(l.page), url: l.url, lessonIds: l.rules, gloss: l.gloss,
+  verified: l.verified as MatnLine['verified'],
+}))
 
 export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const examples = (r.examples ?? []).map((e, i) => ({

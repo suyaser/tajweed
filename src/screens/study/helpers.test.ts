@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { confusableHint, dueLabel, rangeParam, rangeRef, spread, teacherNear, verseRef, week } from './helpers'
+import { aroundAyah, confusableHint, dueLabel, rangeParam, rangeRef, spread, teacherNear, verseRef, week } from './helpers'
 import type { DayLog, Session } from '../../core/types'
 
 const log = (id: string, review: boolean): DayLog => ({ id, parts: { listen: null, sabaq: null, recite: null, review: review ? 'auto' : null }, listenSeconds: 0 })
@@ -10,6 +10,13 @@ describe('study helpers', () => {
     expect(rangeRef('93:1', '93:11')).toBe('الضحى · ١–١١')
     expect(rangeParam('1:1', '1:1')).toBe('1:1')
     expect(rangeParam('93:1', '93:5')).toBe('93:1-93:5')
+  })
+
+  it('listens around a lesson example: whole short surah, else the ayah ± 2', () => {
+    expect(aroundAyah('93:5')).toEqual({ from: '93:1', to: '93:11' })
+    expect(aroundAyah('2:255')).toEqual({ from: '2:253', to: '2:257' })
+    expect(aroundAyah('2:1')).toEqual({ from: '2:1', to: '2:3' })
+    expect(aroundAyah('2:286')).toEqual({ from: '2:284', to: '2:286' })
   })
 
   it('gives the confusable hint only for the partner', () => {

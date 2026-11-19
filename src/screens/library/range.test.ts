@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { normalize, parseRange, rangeLabel, rangeParam } from './range'
+import { capRange, normalize, parseRange, rangeLabel, rangeParam } from './range'
 
 describe('parseRange', () => {
   it.each([
@@ -23,6 +23,14 @@ describe('parseRange', () => {
     expect(rangeLabel({ from: '93:1', to: '93:11' })).toBe('الضحى · ١–١١')
     expect(rangeLabel({ from: '93:5', to: '93:5' })).toBe('الضحى · ٥')
     expect(rangeLabel({ from: '112:1', to: '114:6' })).toBe('الإخلاص ١ – الناس ٦')
+  })
+})
+
+describe('capRange', () => {
+  it('keeps short ranges and cuts long ones at 300 ayat', () => {
+    expect(capRange({ from: '2:1', to: '2:286' })).toEqual({ from: '2:1', to: '2:286' })
+    expect(capRange({ from: '93:5', to: '93:5' })).toEqual({ from: '93:5', to: '93:5' })
+    expect(capRange(parseRange('1:1-114:6')!)).toEqual({ from: '1:1', to: '3:7' }) // 7 + 286 + 7
   })
 })
 

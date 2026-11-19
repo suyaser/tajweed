@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Recording, Reciter, Verse } from '../core/types'
 import { Player, segAt, type Seg } from './player'
 import { ayahUrl } from './urls'
-import { MIMES, pickMime } from './recorder'
+import { MIMES, pickMime, Recorder } from './recorder'
 
 vi.mock('idb-keyval', () => {
   const db = new Map<string, unknown>()
@@ -147,6 +147,26 @@ describe('pickMime', () => {
   it('falls back to mp4 (iOS)', () => { stub(['audio/mp4', 'audio/aac']); expect(pickMime()).toBe('audio/mp4') })
   it('lets the browser choose when none match', () => { stub([]); expect(pickMime()).toBe('') })
   it('null without MediaRecorder', () => { vi.unstubAllGlobals(); expect(pickMime()).toBeNull() })
+})
+
+describe('Recorder', () => {
+  it('stop() during the permission prompt releases the mic and gives no take (M6)', async () => {
+    let grant!: (s: MediaStream) => void
+    const track = { stop: vi.fn() }
+    const MR = vi.fn()
+    vi.stubGlobal('MediaRecorder', Object.assign(MR, { isTypeSupported: () => true }))
+    vi.stubGlobal('navigator', { mediaDevices: { getUserMedia: () => new Promise<MediaStream>(r => { grant = r }) } })
+    const rec = new Recorder()
+    const take = rec.start()
+    expect(rec.state.status).toBe('requesting')
+    rec.stop() // unmount while the prompt is open
+    grant({ getTracks: () => [track] } as unknown as MediaStream)
+    expect(await take).toBeNull()
+    expect(track.stop).toHaveBeenCalled()
+    expect(MR).not.toHaveBeenCalled()
+    expect(rec.state.status).toBe('idle')
+    vi.unstubAllGlobals()
+  })
 })
 
 describe('recordings', () => {

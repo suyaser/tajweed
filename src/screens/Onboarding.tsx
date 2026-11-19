@@ -7,6 +7,7 @@ import { addDays, today } from '../core/day'
 import { getRange, RECITERS } from '../quran'
 import { usePlayer } from '../audio/usePlayer'
 import { navigate } from '../app/router'
+import { download } from '../app/download'
 import { Band, Button, Card, CountBeats, T, VerseBlock } from '../components'
 import { verseRef } from './study/helpers'
 import { useVerse } from './study/verse'
@@ -132,10 +133,7 @@ export default function Onboarding() {
 
 function downloadIcs(draft: Partial<Settings>) {
   const s = { ...getSnapshot().settings, ...draft }
-  const url = URL.createObjectURL(new Blob([makeWirdIcs(s, location.href)], { type: 'text/calendar' }))
-  const a = Object.assign(document.createElement('a'), { href: url, download: 'tajweed-wird.ics' })
-  a.click()
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
+  download('tajweed-wird.ics', makeWirdIcs(s, location.href), 'text/calendar')
 }
 
 function Welcome({ onNext }: { onNext: () => void }) {

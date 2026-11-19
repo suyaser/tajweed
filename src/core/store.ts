@@ -55,6 +55,11 @@ export const migrations: Record<number, (d: Raw) => Raw> = {
   }),
 }
 
+const isObj = (x: unknown): x is Raw => !!x && typeof x === 'object' && !Array.isArray(x)
+/** Keeps only object rows that have every key field (a null row or a half-written one would crash a screen). */
+const rows = (xs: Raw[], keys: string[], defaults: Raw = {}) =>
+  xs.filter(x => isObj(x) && keys.every(k => x[k] != null)).map(x => ({ ...defaults, ...x }))
+
 /** Validates, migrates to SCHEMA_VERSION and rebuilds the schedule. Throws on unknown/newer schemas. */
 export function migrate(raw: Raw, on = today()): UserData {
   if (!raw || typeof raw !== 'object' || !Number.isInteger(raw.schemaVersion)) throw new Error('Not a Tajweed Path backup (no schema version).')
@@ -66,8 +71,26 @@ export function migrate(raw: Raw, on = today()): UserData {
   }
   for (const k of ['introductions', 'attempts', 'sessions', 'corrections', 'phases', 'days'] as const)
     if (!Array.isArray(d[k])) throw new Error(`Backup is missing "${k}".`)
-  if (!d.settings || typeof d.settings !== 'object') throw new Error('Backup is missing settings.')
-  return { ...d, items: rebuildItems(d.introductions, d.attempts, d.corrections, on) }
+  if (!isObj(d.settings)) throw new Error('Backup is missing settings.')
+  // Settings: defaults for anything missing or of the wrong type.
+  const def: Raw = defaultSettings()
+  const settings: Raw = { ...def, ...d.settings }
+  for (const k of Object.keys(def))
+    if (def[k] != null && (typeof settings[k] !== typeof def[k] || Array.isArray(settings[k]) !== Array.isArray(def[k]))) settings[k] = def[k]
+  const introductions = rows(d.introductions, ['lessonId', 'on'])
+  const attempts = rows(d.attempts, ['id', 'refId', 'kind', 'on'])
+  const corrections = rows(d.corrections, ['id', 'verseKey', 'severity'], { lessonIds: [], status: 'open', by: 'learner', sessionId: null, deletedAt: null })
+  const sessions = rows(d.sessions, ['id', 'on'], { plannedPassages: [], milestoneResults: [], status: 'planned', deletedAt: null })
+  const days = rows(d.days, ['id'], { parts: { listen: null, sabaq: null, recite: null, review: null }, listenSeconds: 0 })
+  // Phases: always one row per content phase.
+  const phases = lockedPhases().map(p => {
+    const x = d.phases.find((y: Raw) => isObj(y) && y.id === p.id)
+    return x ? { ...p, ...x, tasksDone: Array.isArray(x.tasksDone) ? x.tasksDone : [] } : p
+  })
+  return {
+    ...d, settings, introductions, attempts, corrections, sessions, days, phases,
+    items: rebuildItems(introductions, attempts, corrections, on),
+  }
 }
 
 /* ---------------- the store ---------------- */
@@ -90,10 +113,22 @@ function load() {
 load()
 
 let persisted: boolean | null = null
-try {
-  navigator.storage?.persist?.().then(ok => { persisted = ok }, () => {})
-} catch { /* not supported */ }
+/** Asks the browser to keep our storage. Only after onboarding: Firefox shows a prompt for it (review m7). */
+function requestPersist() {
+  try {
+    navigator.storage?.persist?.().then(ok => { persisted = ok }, () => {})
+  } catch { /* not supported */ }
+}
+if (data.settings.onboardedOn) requestPersist()
 export const storagePersisted = () => persisted
+
+// Another tab (or the installed app beside a browser tab) saved: take its data instead of overwriting it later (M2).
+if (typeof window !== 'undefined')
+  window.addEventListener('storage', e => { if (e.key === STORAGE_KEY || e.key === null) reload() })
+
+/** Set when the last save failed (storage full or blocked): the data lives only in memory until a save succeeds (M3). */
+let saveError = false
+export const getSaveError = () => saveError
 
 export const getLoadError = () => loadError
 export const getSnapshot = () => data
@@ -102,7 +137,8 @@ export const useData = (): UserData => useSyncExternalStore(subscribe, getSnapsh
 
 function commit(next: UserData) {
   data = { ...next, updatedAt: nowIso() }
-  if (!loadError) try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) } catch { /* quota: kept in memory */ }
+  if (!loadError)
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); saveError = false } catch { saveError = true }
   listeners.forEach(l => l())
 }
 
@@ -120,6 +156,7 @@ export function completeOnboarding(patch: Partial<Settings>) {
     p.id === 1 ? { ...p, status: 'active', activatedOn: on, tasksDone: settings.introCourseDone ? episodeTasks : [] } : p,
   )
   commit({ ...data, settings, phases })
+  requestPersist()
 }
 
 function withDay(d: UserData, day: string, fn: (l: DayLog) => DayLog): DayLog[] {
