@@ -1,0 +1,5302 @@
+[
+ {
+  "id": "ibtida",
+  "cat": "waqf",
+  "phase": 1,
+  "ar": "الابتداء وهمزة الوصل",
+  "en": "Starting again after a stop",
+  "color": "clear",
+  "definition": "Start from a place where the meaning is sound. If the word begins with همزة الوصل (ٱ), give it a vowel; when you join it to the word before, it is not said at all.",
+  "list": [
+   [
+    "With ال: فتحة",
+    "ٱلْحَمْدُ ← اَلْحَمْدُ"
+   ],
+   [
+    "A verb whose third letter has an original ضمة: ضمة",
+    "ٱدْعُ (16:125) ← اُدْعُ"
+   ],
+   [
+    "Otherwise: كسرة",
+    "ٱهْدِنَا (1:6) ← اِهْدِنَا"
+   ],
+   [
+    "Verbs whose third letter has a ضمة that is not original: كسرة",
+    "ٱمْشُوا۟ (38:6) ← اِمْشُوا"
+   ],
+   [
+    "The nouns ٱبْن، ٱبْنَت، ٱمْرُؤ، ٱمْرَأَة، ٱثْنَان، ٱثْنَتَان، ٱسْم: كسرة",
+    "ٱسْمُهُۥ ← اِسْمُهُۥ"
+   ]
+  ],
+  "facts": [
+   {
+    "q": "You start at ٱلْحَمْدُ. The همزة الوصل takes…",
+    "options": [
+     "ضمة",
+     "سكون",
+     "فتحة",
+     "كسرة"
+    ],
+    "answer": 2,
+    "why": "With ال it is always فتحة."
+   },
+   {
+    "q": "You start at ٱهْدِنَا. The همزة الوصل takes…",
+    "options": [
+     "سكون",
+     "كسرة",
+     "ضمة",
+     "فتحة"
+    ],
+    "answer": 1,
+    "why": "The third letter (د) has a كسرة, so the همزة takes كسرة."
+   },
+   {
+    "q": "You start at ٱدْعُ. The همزة الوصل takes…",
+    "options": [
+     "ضمة",
+     "كسرة",
+     "فتحة",
+     "سكون"
+    ],
+    "answer": 0,
+    "why": "The third letter (ع) has an original ضمة."
+   },
+   {
+    "q": "You start at ٱمْشُوا۟ (38:6). The همزة الوصل takes…",
+    "options": [
+     "ضمة, as on the ش",
+     "فتحة, as with ال",
+     "سكون, as written",
+     "كسرة"
+    ],
+    "answer": 3,
+    "why": "The ضمة on ش is not original. Its root form is ٱمْشِيُوا; the ضمة was added, so the همزة takes كسرة."
+   },
+   {
+    "q": "You start at ٱبْنَ. The همزة الوصل takes…",
+    "options": [
+     "فتحة",
+     "سكون",
+     "كسرة",
+     "ضمة"
+    ],
+    "answer": 2,
+    "why": "It is one of the nouns that always take كسرة."
+   },
+   {
+    "q": "What happens to همزة الوصل when you join it to the word before?",
+    "options": [
+     "It becomes a مد",
+     "It is not said at all",
+     "It is always said with فتحة",
+     "It is said with ضمة"
+    ],
+    "answer": 1,
+    "why": "It is only said when you start with it."
+   },
+   {
+    "q": "Where should you start again after a stop?",
+    "options": [
+     "Where the meaning is sound",
+     "Always from the next word",
+     "Always from the ayah's start",
+     "From any word you like"
+    ],
+    "answer": 0,
+    "why": "A bad start can change the meaning."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، همزات الوصل",
+    "locator": "البيت 101–103، https://shamela.ws/book/581/93"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الابتداء بهمزة الوصل والضم العارض",
+    "locator": "2/480–488 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الأسماء السبعة",
+    "locator": "https://shamela.ws/book/38104/223"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "makharij-jawf",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الجوف",
+  "en": "The open space: the madd letters",
+  "color": "clear",
+  "definition": "الجوف is the empty space of the throat and mouth. It is the مخرج of the three حروف المد: ا after فتحة, وْ after ضمة, يْ after كسرة. They end with the breath and have no fixed point, so they are also called الحروف الهوائية.",
+  "letters": "ا و ي (حروف المد)",
+  "tip": "To find any letter's مخرج, put a همزة with a vowel before it and give it a سكون or شدة: أَبْ، أَتْ، أَثْ. Where the sound stops is its مخرج.",
+  "list": [
+   [
+    "Count of المخارج",
+    "17 in the view of الخليل and ابن الجزري, which most teachers follow. سيبويه counts 16 (no الجوف) and الفراء 14."
+   ]
+  ],
+  "facts": [
+   {
+    "q": "Which letters come from الجوف?",
+    "options": [
+     "ب، م، و",
+     "ا، وْ، يْ as حروف مد",
+     "ء and هـ, the throat",
+     "ق and ك, the tongue"
+    ],
+    "answer": 1,
+    "why": "الجوف is the مخرج of the three حروف المد only."
+   },
+   {
+    "q": "Which وْ comes from الجوف?",
+    "options": [
+     "The وْ after a ضمة, as in يَقُولُ",
+     "The وْ after a فتحة, as in خَوْفٍ",
+     "A وَ with a فتحة, as in وَلَدٌ",
+     "A وّ with a شدة"
+    ],
+    "answer": 0,
+    "why": "Only a و ساكنة after a ضمة is a حرف مد. After a فتحة it is لين."
+   },
+   {
+    "q": "In قِيلَ, the ي is…",
+    "options": [
+     "a ي from وسط اللسان",
+     "a لين letter",
+     "a ي with a vowel",
+     "a حرف مد from الجوف"
+    ],
+    "answer": 3,
+    "why": "A ي ساكنة after a كسرة is a حرف مد."
+   },
+   {
+    "q": "Why are the حروف المد called هوائية?",
+    "options": [
+     "They come from the nose",
+     "They are always short",
+     "Their sound ends with the breath",
+     "They are always heavy"
+    ],
+    "answer": 2,
+    "why": "They have no fixed point to stop on. Their sound runs out with the air of the mouth and throat."
+   },
+   {
+    "q": "In بَيْتِ, where does the ي come from?",
+    "options": [
+     "الشفتان",
+     "وسط اللسان",
+     "الجوف",
+     "الحلق"
+    ],
+    "answer": 1,
+    "why": "It is لين, not مد. Only حروف المد come from الجوف; a لين ي comes from the place of the ي."
+   },
+   {
+    "q": "How many مخارج are there in the view most teachers follow (ابن الجزري)?",
+    "options": [
+     "17",
+     "14",
+     "16",
+     "29"
+    ],
+    "answer": 0,
+    "why": "ابن الجزري follows الخليل: 17. سيبويه counts 16 and الفراء 14."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخارج الحروف",
+    "locator": "البيت 9–19، https://shamela.ws/book/581/54"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مخارج الحروف",
+    "locator": "1/61–68 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، عدد المخارج",
+    "locator": "1/198، https://shamela.ws/book/22642/206"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، عدد المخارج: الخليل وسيبويه والفراء",
+    "locator": "https://shamela.ws/book/7311/76"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "makharij-halq",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الحلق",
+  "en": "The throat",
+  "color": "clear",
+  "definition": "The throat has three مخارج, two letters each: أقصى الحلق (deepest, next to the chest) ء هـ; وسط الحلق ع ح; أدنى الحلق (nearest the mouth) غ خ.",
+  "letters": "ء هـ · ع ح · غ خ",
+  "tip": "Drill the pairs learners mix up: ح with هـ, and ع with ء.",
+  "facts": [
+   {
+    "q": "Which letters come from أقصى الحلق (the deepest point)?",
+    "options": [
+     "ق and ك",
+     "ء and هـ",
+     "ع and ح",
+     "غ and خ"
+    ],
+    "answer": 1,
+    "why": "أقصى الحلق is the deepest point: ء then هـ."
+   },
+   {
+    "q": "Which letters come from وسط الحلق?",
+    "options": [
+     "ع and ح",
+     "ء and هـ",
+     "غ and خ",
+     "ج and ش"
+    ],
+    "answer": 0,
+    "why": "The middle of the throat gives ع and ح."
+   },
+   {
+    "q": "Which letters come from أدنى الحلق (nearest the mouth)?",
+    "options": [
+     "ع and ح",
+     "ء and هـ",
+     "ق and ك",
+     "غ and خ"
+    ],
+    "answer": 3,
+    "why": "The top of the throat, next to the mouth, gives غ and خ."
+   },
+   {
+    "q": "How many مخارج are in the throat?",
+    "options": [
+     "2",
+     "6",
+     "3",
+     "1"
+    ],
+    "answer": 2,
+    "why": "Three points, two letters each."
+   },
+   {
+    "q": "ح and هـ differ in that…",
+    "options": [
+     "ح is from أدنى الحلق",
+     "ح: وسط الحلق; هـ: أقصى الحلق",
+     "both are from أقصى الحلق",
+     "both are from وسط الحلق"
+    ],
+    "answer": 1,
+    "why": "They are often mixed up, but their points differ."
+   },
+   {
+    "q": "The six throat letters are also the letters of which rule?",
+    "options": [
+     "الإظهار الحلقي",
+     "الإخفاء الحقيقي",
+     "الإقلاب",
+     "الإدغام بغنة"
+    ],
+    "answer": 0,
+    "why": "A نون ساكنة or تنوين before a throat letter is said clearly."
+   },
+   {
+    "q": "Which word starts with a letter from أدنى الحلق?",
+    "options": [
+     "حَمِدَ",
+     "عَلِمَ",
+     "أَحَدٌ",
+     "خَلَقَ"
+    ],
+    "answer": 3,
+    "why": "خ is from أدنى الحلق; ح and ع from the middle, ء from the deepest point."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخارج الحروف",
+    "locator": "البيت 9–19، https://shamela.ws/book/581/54"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مخارج الحروف",
+    "locator": "1/61–68 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، عدد المخارج",
+    "locator": "1/198، https://shamela.ws/book/22642/206"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، عدد المخارج: الخليل وسيبويه والفراء",
+    "locator": "https://shamela.ws/book/7311/76"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "makharij-aqsa",
+  "cat": "found",
+  "phase": 2,
+  "ar": "أقصى اللسان",
+  "en": "Back of the tongue: ق ك",
+  "color": "clear",
+  "definition": "ق comes from the back of the tongue (أقصى اللسان), near the throat, against the palate above it. ك comes from just below it, a little nearer the mouth. They are called اللهويتان, after the uvula (اللهاة).",
+  "letters": "ق ك",
+  "facts": [
+   {
+    "q": "Where does ق come from?",
+    "options": [
+     "The tip of the tongue",
+     "The back of the tongue",
+     "The middle of the tongue",
+     "The deepest point of the throat"
+    ],
+    "answer": 1,
+    "why": "Near the throat, with the palate above it. ق is the first مخرج of the tongue, at its back."
+   },
+   {
+    "q": "Compared with ق, ك comes from…",
+    "options": [
+     "a point a little nearer the mouth",
+     "a point deeper toward the throat",
+     "the lips",
+     "exactly the same point"
+    ],
+    "answer": 0,
+    "why": "ك is just below ق, toward the mouth."
+   },
+   {
+    "q": "ق and ك are called…",
+    "options": [
+     "الشجرية",
+     "النطعية",
+     "اللثوية",
+     "اللهويتان"
+    ],
+    "answer": 3,
+    "why": "They are named after اللهاة (the uvula) near their مخرج."
+   },
+   {
+    "q": "Besides the مخرج, what makes ق sound different from ك?",
+    "options": [
+     "ك has قلقلة and ق does not",
+     "Nothing else; only the مخرج",
+     "ق is heavy and has قلقلة",
+     "ك is heavy and ق is light"
+    ],
+    "answer": 2,
+    "why": "ق is مستعلٍ and مجهور; ك is light and مهموس. ق: جهر، شدة، استعلاء، قلقلة. ك: همس، شدة، استفال."
+   },
+   {
+    "q": "How many مخارج are on أقصى اللسان?",
+    "options": [
+     "None",
+     "2",
+     "1 for both",
+     "3"
+    ],
+    "answer": 1,
+    "why": "ق and ك each have their own point."
+   },
+   {
+    "q": "Which pair is easy to confuse because their مخارج are neighbours?",
+    "options": [
+     "ق and ك",
+     "ق and ب",
+     "ك and م",
+     "ق and ن"
+    ],
+    "answer": 0,
+    "why": "Their points sit next to each other at the back of the tongue."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخارج الحروف",
+    "locator": "البيت 9–19، https://shamela.ws/book/581/54"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مخارج الحروف",
+    "locator": "1/61–68 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، عدد المخارج",
+    "locator": "1/198، https://shamela.ws/book/22642/206"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، عدد المخارج: الخليل وسيبويه والفراء",
+    "locator": "https://shamela.ws/book/7311/76"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "makharij-wasat",
+  "cat": "found",
+  "phase": 2,
+  "ar": "وسط اللسان وحافته",
+  "en": "Middle and edges of the tongue: ج ش ي ض ل",
+  "color": "clear",
+  "definition": "ج ش ي (the ي that is not a حرف مد) come from the middle of the tongue against the palate above it. ض comes from one or both edges of the tongue against the upper molars; the left side is easier and more common. ل comes from the front part of the edge, up to the tip, against the gums of the upper front teeth.",
+  "letters": "ج ش ي · ض · ل",
+  "facts": [
+   {
+    "q": "ج ش ي come from…",
+    "options": [
+     "the tip of the tongue",
+     "the throat",
+     "the middle of the tongue",
+     "the back of the tongue"
+    ],
+    "answer": 2,
+    "why": "With the palate above it. They share one مخرج: وسط اللسان."
+   },
+   {
+    "q": "Which ي comes from وسط اللسان?",
+    "options": [
+     "No ي at all",
+     "A voweled or لين ي",
+     "The ي in قِيلَ",
+     "Every ي"
+    ],
+    "answer": 1,
+    "why": "As in يَوْمٍ and بَيْتِ. A ي that is a حرف مد comes from الجوف."
+   },
+   {
+    "q": "ض comes from…",
+    "options": [
+     "one or both edges of the tongue against the upper molars",
+     "the tip of the tongue with the upper front teeth",
+     "the middle of the tongue",
+     "the lips"
+    ],
+    "answer": 0,
+    "why": "ض is the only letter from حافة اللسان with the molars."
+   },
+   {
+    "q": "For ض, which side of the tongue is easier and more common?",
+    "options": [
+     "The right",
+     "The tip",
+     "The middle",
+     "The left"
+    ],
+    "answer": 3,
+    "why": "Both sides are correct; the left is easier, and both together are the least common."
+   },
+   {
+    "q": "ل comes from…",
+    "options": [
+     "the back of the tongue",
+     "the lips",
+     "the front edge of the tongue",
+     "the middle of the tongue"
+    ],
+    "answer": 2,
+    "why": "Up to its tip, against the gums of the upper teeth. ل uses the edge of the tongue from near the front to the tip."
+   },
+   {
+    "q": "ض and ظ differ in their مخرج: …",
+    "options": [
+     "both: the edge of the tongue",
+     "ض: the edge; ظ: the tip",
+     "they share one مخرج",
+     "both: the tip of the tongue"
+    ],
+    "answer": 1,
+    "why": "ض is from the edge of the tongue with the molars; ظ is from the tip with the edges of the upper front teeth. Mixing them changes the word, so learn each one's place."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخارج الحروف",
+    "locator": "البيت 9–19، https://shamela.ws/book/581/54"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مخارج الحروف",
+    "locator": "1/61–68 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، عدد المخارج",
+    "locator": "1/198، https://shamela.ws/book/22642/206"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، عدد المخارج: الخليل وسيبويه والفراء",
+    "locator": "https://shamela.ws/book/7311/76"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "makharij-taraf",
+  "cat": "found",
+  "phase": 2,
+  "ar": "طرف اللسان",
+  "en": "Tip of the tongue",
+  "color": "clear",
+  "definition": "ن: the tip of the tongue against the gum of the upper front teeth, a little below ل. ر: close to ن but further onto the top of the tongue. ط د ت: the tip against the roots of the upper front teeth. ص س ز: the tip of the tongue, near the lower front teeth, with a narrow gap for the whistle. ظ ذ ث: the tip against the edges of the upper front teeth.",
+  "letters": "ن · ر · ط د ت · ص س ز · ظ ذ ث",
+  "tip": "Drill the pairs learners mix up: ط ت · ص س · ذ ز ظ · ث س.",
+  "facts": [
+   {
+    "q": "ط د ت come from…",
+    "options": [
+     "the tip near the lower front teeth",
+     "the lips, both together",
+     "the tip against the upper teeth's roots",
+     "the tip against the upper teeth's edges"
+    ],
+    "answer": 2,
+    "why": "They share one مخرج; they differ in their صفات."
+   },
+   {
+    "q": "ظ ذ ث come from…",
+    "options": [
+     "the middle of the tongue",
+     "the tip against the upper teeth's edges",
+     "the tip against the upper teeth's roots",
+     "the tip near the lower front teeth"
+    ],
+    "answer": 1,
+    "why": "The tip just touches the edges of the upper front teeth."
+   },
+   {
+    "q": "ص س ز come from…",
+    "options": [
+     "the tip near the lower front teeth",
+     "the tip against the upper teeth's roots",
+     "the tip against the upper teeth's edges",
+     "the middle of the tongue"
+    ],
+    "answer": 0,
+    "why": "With a narrow gap. The narrow gap gives their whistle (الصفير)."
+   },
+   {
+    "q": "ر compared with ن:",
+    "options": [
+     "they are exactly the same point",
+     "ر comes from the lips",
+     "ن comes from the throat",
+     "ر is a little further back"
+    ],
+    "answer": 3,
+    "why": "ر is a little further onto the top of the tongue. They are neighbours at the tip of the tongue."
+   },
+   {
+    "q": "ذ and ز differ in their مخرج: …",
+    "options": [
+     "ذ is from the throat",
+     "ز is from the lips",
+     "ذ: upper teeth; ز: lower teeth",
+     "they share one مخرج"
+    ],
+    "answer": 2,
+    "why": "ذ: the tip with the edges of the upper teeth; ز: the tip near the lower front teeth. Learners often say ز for ذ; keep the tip on the upper teeth."
+   },
+   {
+    "q": "Which group are called النطعية?",
+    "options": [
+     "ل ن ر",
+     "ط د ت",
+     "ظ ذ ث",
+     "ص س ز"
+    ],
+    "answer": 1,
+    "why": "They come from near نِطع (the front of the palate)."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخارج الحروف",
+    "locator": "البيت 9–19، https://shamela.ws/book/581/54"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مخارج الحروف",
+    "locator": "1/61–68 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، عدد المخارج",
+    "locator": "1/198، https://shamela.ws/book/22642/206"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، عدد المخارج: الخليل وسيبويه والفراء",
+    "locator": "https://shamela.ws/book/7311/76"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "makharij-shafatan",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الشفتان والخيشوم",
+  "en": "The lips and the nose",
+  "color": "clear",
+  "definition": "ف: the inside of the lower lip against the edges of the upper front teeth. و ب م (the و that is not a حرف مد): both lips; ب and م close them, و rounds them without closing. الخيشوم, the nasal passage, is the مخرج of the غنة of ن and م.",
+  "letters": "ف · و ب م · الغنة",
+  "facts": [
+   {
+    "q": "ف comes from…",
+    "options": [
+     "the throat",
+     "lower lip and upper teeth",
+     "both lips together",
+     "the tip of the tongue"
+    ],
+    "answer": 1,
+    "why": "The inside of the lower lip with the edges of the upper front teeth. ف is the only letter from this مخرج."
+   },
+   {
+    "q": "ب م و (not a حرف مد) come from…",
+    "options": [
+     "both lips",
+     "the lower lip and the upper teeth",
+     "الجوف",
+     "الخيشوم"
+    ],
+    "answer": 0,
+    "why": "They share the lips."
+   },
+   {
+    "q": "How do ب، م and و differ?",
+    "options": [
+     "all three close the lips",
+     "all three leave the lips open",
+     "و closes the lips more than ب",
+     "و rounds the lips, not closing"
+    ],
+    "answer": 3,
+    "why": "ب and م close the lips. The و is made with rounded, open lips."
+   },
+   {
+    "q": "الخيشوم is the مخرج of…",
+    "options": [
+     "ق",
+     "ف",
+     "the غنة",
+     "the حروف المد"
+    ],
+    "answer": 2,
+    "why": "The غنة of ن and م comes from the nasal passage."
+   },
+   {
+    "q": "How many مخارج do the lips have?",
+    "options": [
+     "4",
+     "2",
+     "1",
+     "3"
+    ],
+    "answer": 1,
+    "why": "ف has its own point; و ب م share the other."
+   },
+   {
+    "q": "If you pinch your nose while saying نّ, the sound stops. What does that show?",
+    "options": [
+     "The غنة comes from الخيشوم",
+     "ن comes from the lips",
+     "The غنة comes from the throat",
+     "Nothing"
+    ],
+    "answer": 0,
+    "why": "Blocking the nasal passage blocks the غنة."
+   },
+   {
+    "q": "Why be careful with a مْ before و or ف?",
+    "options": [
+     "They are throat letters",
+     "They are heavy letters",
+     "They have قلقلة",
+     "The ميم can slip into them"
+    ],
+    "answer": 3,
+    "why": "They are close to the ميم. تحفة الأطفال: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي»."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخارج الحروف",
+    "locator": "البيت 9–19، https://shamela.ws/book/581/54"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مخارج الحروف",
+    "locator": "1/61–68 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، عدد المخارج",
+    "locator": "1/198، https://shamela.ws/book/22642/206"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، عدد المخارج: الخليل وسيبويه والفراء",
+    "locator": "https://shamela.ws/book/7311/76"
+   },
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام الميم الساكنة",
+    "locator": "الأبيات 18–23، https://shamela.ws/book/9632/4"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "sifat-hams",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الهمس والجهر",
+  "en": "Breathy and voiced letters",
+  "color": "clear",
+  "definition": "الهمس: the breath flows with the letter. Its 10 letters gather in «فَحَثَّهُ شَخْصٌ سَكَتْ». الجهر, its opposite: the breath is held back. Every other letter is مجهور.",
+  "letters": "الهمس: ف ح ث ه ش خ ص س ك ت",
+  "facts": [
+   {
+    "q": "Which phrase gathers the letters of الهمس?",
+    "options": [
+     "لِنْ عُمَرْ",
+     "خُصَّ ضَغْطٍ قِظْ",
+     "فَحَثَّهُ شَخْصٌ سَكَتْ",
+     "أَجِدْ قَطٍ بَكَتْ"
+    ],
+    "answer": 2,
+    "why": "These are the 10 مهموس letters."
+   },
+   {
+    "q": "What is الهمس?",
+    "options": [
+     "The tongue rises to the palate",
+     "The breath flows with the letter",
+     "The breath is held back",
+     "The sound stops completely"
+    ],
+    "answer": 1,
+    "why": "Its opposite, الجهر, holds the breath back."
+   },
+   {
+    "q": "How many letters are مهموس?",
+    "options": [
+     "10",
+     "8",
+     "5",
+     "19"
+    ],
+    "answer": 0,
+    "why": "ف ح ث ه ش خ ص س ك ت."
+   },
+   {
+    "q": "Which of these letters is مجهور?",
+    "options": [
+     "ت",
+     "ك",
+     "س",
+     "د"
+    ],
+    "answer": 3,
+    "why": "د is not in فَحَثَّهُ شَخْصٌ سَكَتْ."
+   },
+   {
+    "q": "س and ز come from the same مخرج. What separates them?",
+    "options": [
+     "ز is heavy and س is light",
+     "Nothing; they are the same",
+     "س is مهموس, ز is مجهور",
+     "س has قلقلة and ز does not"
+    ],
+    "answer": 2,
+    "why": "They differ only in الهمس and الجهر."
+   },
+   {
+    "q": "What is the opposite of الهمس?",
+    "options": [
+     "الانفتاح",
+     "الجهر",
+     "الشدة",
+     "الاستفال"
+    ],
+    "answer": 1,
+    "why": "Each of these two-sided qualities has an opposite."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف",
+    "locator": "البيت 20–26، https://shamela.ws/book/581/57"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، صفات الحروف",
+    "locator": "1/79–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، القلقلة ومراتبها",
+    "locator": "https://shamela.ws/book/38104/75"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "sifat-shidda",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الشدة والتوسط والرخاوة",
+  "en": "Stopped, in-between and flowing sound",
+  "color": "clear",
+  "definition": "الشدة: the sound is held back completely when the letter has a سكون. Its 8 letters gather in «أَجِدْ قَطٍ بَكَتْ». التوسط (البينية): the sound is partly held. Its 5 letters gather in «لِنْ عُمَرْ». الرخاوة: the sound flows; it covers all the other letters.",
+  "letters": "الشدة: أ ج د ق ط ب ك ت · التوسط: ل ن ع م ر",
+  "facts": [
+   {
+    "q": "Which phrase gathers the letters of الشدة?",
+    "options": [
+     "أَجِدْ قَطٍ بَكَتْ",
+     "لِنْ عُمَرْ",
+     "فَحَثَّهُ شَخْصٌ سَكَتْ",
+     "خُصَّ ضَغْطٍ قِظْ"
+    ],
+    "answer": 0,
+    "why": "These 8 letters stop the sound."
+   },
+   {
+    "q": "Which phrase gathers the letters of التوسط?",
+    "options": [
+     "أَجِدْ قَطٍ بَكَتْ",
+     "قُطْبُ جَدٍ",
+     "فِرَّ مِن لُّبٍّ",
+     "لِنْ عُمَرْ"
+    ],
+    "answer": 3,
+    "why": "These 5 letters are between شدة and رخاوة."
+   },
+   {
+    "q": "What happens to the sound in الشدة?",
+    "options": [
+     "It flows partly",
+     "The breath flows with it",
+     "It is held back completely",
+     "It flows completely"
+    ],
+    "answer": 2,
+    "why": "With a سكون. Example: أَجْ، أَدْ."
+   },
+   {
+    "q": "Which of these letters is رخو?",
+    "options": [
+     "ق",
+     "س",
+     "د",
+     "ل"
+    ],
+    "answer": 1,
+    "why": "س is in neither أَجِدْ قَطٍ بَكَتْ nor لِنْ عُمَرْ."
+   },
+   {
+    "q": "Which two letters are both شديد and مهموس?",
+    "options": [
+     "ك and ت",
+     "ب and د",
+     "ق and ط",
+     "ج and ء"
+    ],
+    "answer": 0,
+    "why": "They are in both أَجِدْ قَطٍ بَكَتْ and فَحَثَّهُ شَخْصٌ سَكَتْ: the sound stops, then a little breath follows."
+   },
+   {
+    "q": "ع belongs to…",
+    "options": [
+     "الشدة",
+     "الرخاوة",
+     "الهمس",
+     "التوسط"
+    ],
+    "answer": 3,
+    "why": "ع is in لِنْ عُمَرْ."
+   },
+   {
+    "q": "How many letters have الشدة?",
+    "options": [
+     "10",
+     "7",
+     "8",
+     "5"
+    ],
+    "answer": 2,
+    "why": "أ ج د ق ط ب ك ت."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف",
+    "locator": "البيت 20–26، https://shamela.ws/book/581/57"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، صفات الحروف",
+    "locator": "1/79–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، القلقلة ومراتبها",
+    "locator": "https://shamela.ws/book/38104/75"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "sifat-istila",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الاستعلاء والإطباق",
+  "en": "Raised, covered and their opposites",
+  "color": "clear",
+  "definition": "الاستعلاء: the back of the tongue rises toward the palate, so the letter is always heavy. Its 7 letters gather in «خُصَّ ضَغْطٍ قِظْ». Its opposite is الاستفال. الإطباق: the tongue also covers the palate, in ص ض ط ظ, the heaviest letters. Its opposite is الانفتاح.",
+  "letters": "الاستعلاء: خ ص ض غ ط ق ظ · الإطباق: ص ض ط ظ",
+  "list": [
+   [
+    "الإذلاق and الإصمات",
+    "Six letters are said lightly from the tip of the tongue or the lips: «فِرَّ مِن لُّبٍّ» (الإذلاق). The rest are مصمتة."
+   ]
+  ],
+  "facts": [
+   {
+    "q": "Which phrase gathers the letters of الاستعلاء?",
+    "options": [
+     "خُصَّ ضَغْطٍ قِظْ",
+     "أَجِدْ قَطٍ بَكَتْ",
+     "قُطْبُ جَدٍ",
+     "لِنْ عُمَرْ"
+    ],
+    "answer": 0,
+    "why": "These 7 letters are always heavy."
+   },
+   {
+    "q": "Which are the letters of الإطباق?",
+    "options": [
+     "خ غ ق",
+     "ص س ز",
+     "ق ط ب ج د",
+     "ص ض ط ظ"
+    ],
+    "answer": 3,
+    "why": "The tongue covers the palate on these four."
+   },
+   {
+    "q": "Every مطبق letter is also…",
+    "options": [
+     "مستفل",
+     "رخو",
+     "مستعلٍ",
+     "مهموس"
+    ],
+    "answer": 2,
+    "why": "The four مطبق letters are among the seven مستعلي letters."
+   },
+   {
+    "q": "What is الاستعلاء?",
+    "options": [
+     "The sound stops completely",
+     "The back of the tongue rises",
+     "The tongue lies low in the mouth",
+     "The breath flows with it"
+    ],
+    "answer": 1,
+    "why": "Toward the palate, so the letter is heavy. Its opposite, الاستفال, keeps the tongue low and the letter light."
+   },
+   {
+    "q": "Which letter is مستفل (light)?",
+    "options": [
+     "س",
+     "ص",
+     "ق",
+     "غ"
+    ],
+    "answer": 0,
+    "why": "س is not in خُصَّ ضَغْطٍ قِظْ."
+   },
+   {
+    "q": "Which phrase gathers the letters of الإذلاق?",
+    "options": [
+     "لِنْ عُمَرْ",
+     "خُصَّ ضَغْطٍ قِظْ",
+     "فَحَثَّهُ شَخْصٌ سَكَتْ",
+     "فِرَّ مِن لُّبٍّ"
+    ],
+    "answer": 3,
+    "why": "ف ر م ن ل ب."
+   },
+   {
+    "q": "Which group has the strongest heaviness?",
+    "options": [
+     "ر ل",
+     "All heavy letters are equal",
+     "ص ض ط ظ",
+     "خ غ ق"
+    ],
+    "answer": 2,
+    "why": "الإطباق adds to الاستعلاء."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف",
+    "locator": "البيت 20–26، https://shamela.ws/book/581/57"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، صفات الحروف",
+    "locator": "1/79–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، القلقلة ومراتبها",
+    "locator": "https://shamela.ws/book/38104/75"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "sifat-safir",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الصفير والقلقلة واللين",
+  "en": "Whistle, echo and soft letters",
+  "color": "clear",
+  "definition": "الصفير: a whistle-like sound in ص ز س. القلقلة: a bounce when ق ط ب ج د («قُطْبُ جَدٍ») have a سكون. اللين: وْ and يْ after a فتحة are said softly and easily, as in خَوْفٍ and بَيْتِ.",
+  "letters": "الصفير: ص ز س · القلقلة: ق ط ب ج د · اللين: وْ يْ",
+  "facts": [
+   {
+    "q": "Which letters have الصفير?",
+    "options": [
+     "ش ض ر",
+     "ق ط ب",
+     "ظ ذ ث",
+     "ص ز س"
+    ],
+    "answer": 3,
+    "why": "Their narrow gap makes the whistle."
+   },
+   {
+    "q": "Which phrase gathers the letters of القلقلة?",
+    "options": [
+     "لِنْ عُمَرْ",
+     "فِرَّ مِن لُّبٍّ",
+     "قُطْبُ جَدٍ",
+     "خُصَّ ضَغْطٍ قِظْ"
+    ],
+    "answer": 2,
+    "why": "ق ط ب ج د."
+   },
+   {
+    "q": "When does القلقلة sound?",
+    "options": [
+     "Never in حفص",
+     "When the letter has a سكون",
+     "When it has a فتحة",
+     "Only when it has a شدة"
+    ],
+    "answer": 1,
+    "why": "In the middle of a word or at a stop. A voweled قلقلة letter does not bounce."
+   },
+   {
+    "q": "What are the letters of اللين?",
+    "options": [
+     "وْ and يْ after a فتحة",
+     "و and ي after ضمة and كسرة",
+     "ا after فتحة",
+     "Any و or ي"
+    ],
+    "answer": 0,
+    "why": "As in خَوْفٍ and بَيْتِ."
+   },
+   {
+    "q": "Which word has a لين letter?",
+    "options": [
+     "قِيلَ",
+     "يَقُولُ",
+     "قَالَ",
+     "قُرَيْشٍ"
+    ],
+    "answer": 3,
+    "why": "The يْ after a فتحة in قُرَيْشٍ is لين; the others are حروف مد."
+   },
+   {
+    "q": "Why do the قلقلة letters bounce?",
+    "options": [
+     "They are مهموس letters",
+     "They come from the throat",
+     "They are شديد and مجهور",
+     "They are heavy letters"
+    ],
+    "answer": 2,
+    "why": "With a سكون neither sound nor breath flows until the bounce. The bounce lets a fully closed letter be heard."
+   },
+   {
+    "q": "Which of these has صفير?",
+    "options": [
+     "ظ",
+     "ز",
+     "ذ",
+     "ث"
+    ],
+    "answer": 1,
+    "why": "ز is one of ص ز س."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف",
+    "locator": "البيت 20–26، https://shamela.ws/book/581/57"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، صفات الحروف",
+    "locator": "1/79–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، القلقلة ومراتبها",
+    "locator": "https://shamela.ws/book/38104/75"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "sifat-inhiraf",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الانحراف والتكرير والتفشي والاستطالة",
+  "en": "Leaning, repeating, spreading, stretching",
+  "color": "clear",
+  "definition": "الانحراف: the sound leans, after leaving its مخرج, toward another (ل ر). التكرير: the ر tends to trill; you learn it in order to avoid it. التفشي: the air spreads in the mouth with ش. الاستطالة: the sound of ض runs along the edge of the tongue until it nears the place of ل.",
+  "letters": "الانحراف: ل ر · التكرير: ر · التفشي: ش · الاستطالة: ض",
+  "facts": [
+   {
+    "q": "Which letters have الانحراف?",
+    "options": [
+     "ض",
+     "ل and ر",
+     "ر only",
+     "ش"
+    ],
+    "answer": 1,
+    "why": "Their sound leans toward another مخرج."
+   },
+   {
+    "q": "What should you do with التكرير of the ر?",
+    "options": [
+     "Keep it to one tap",
+     "Roll the ر clearly",
+     "Add a vowel after it",
+     "Make it heavy every time"
+    ],
+    "answer": 0,
+    "why": "So the ر is not rolled. التكرير is learned in order to avoid overdoing it, especially on a رّ."
+   },
+   {
+    "q": "التفشي belongs to…",
+    "options": [
+     "ض",
+     "س",
+     "ص",
+     "ش"
+    ],
+    "answer": 3,
+    "why": "The air spreads through the mouth with ش."
+   },
+   {
+    "q": "الاستطالة belongs to…",
+    "options": [
+     "ل",
+     "ر",
+     "ض",
+     "ظ"
+    ],
+    "answer": 2,
+    "why": "The sound of ض stretches along the edge of the tongue."
+   },
+   {
+    "q": "Which letter has التكرير?",
+    "options": [
+     "د",
+     "ر",
+     "ل",
+     "ن"
+    ],
+    "answer": 1,
+    "why": "Only ر."
+   },
+   {
+    "q": "In خَرَّ (ر with شدة), what is the main risk?",
+    "options": [
+     "Rolling the ر several times",
+     "Making it light",
+     "Dropping the شدة",
+     "Adding a غنة"
+    ],
+    "answer": 0,
+    "why": "A ر with شدة is where the trill slips in most."
+   },
+   {
+    "q": "What is الانحراف?",
+    "options": [
+     "The breath flows with it",
+     "The tongue covers the palate",
+     "The sound bounces at the end",
+     "The sound leans to another مخرج"
+    ],
+    "answer": 3,
+    "why": "In ل and ر."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف",
+    "locator": "البيت 20–26، https://shamela.ws/book/581/57"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، صفات الحروف",
+    "locator": "1/79–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، القلقلة ومراتبها",
+    "locator": "https://shamela.ws/book/38104/75"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الراءات",
+    "locator": "البيت 41–43، https://shamela.ws/book/581/66"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "izhar",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإظهار الحلقي",
+  "en": "Clear noon before a throat letter",
+  "color": "clear",
+  "definition": "Say the نون الساكنة or the تنوين clearly, without holding a غنة, when one of the six throat letters (حروف الحلق) comes after it.",
+  "letters": "ء هـ ع ح غ خ",
+  "conditions": [
+   "The throat letter can be in the same word (أَنْعَمْتَ) or the next word (مَنْ ءَامَنَ).",
+   "The نون keeps only the small غنة it always has; it is not held or lengthened."
+  ],
+  "tip": "Don't hum or pause between the نون and the throat letter.",
+  "examples": [
+   {
+    "verse": "1:7",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أَنْعَمْتَ",
+    "focus": "نْعَ",
+    "stop": false
+   },
+   {
+    "verse": "2:62",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "مَنْ ءَامَنَ",
+    "focus": "نْ ءَ",
+    "stop": false
+   },
+   {
+    "verse": "2:10",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "عَذَابٌ أَلِيمٌۢ",
+    "focus": "بٌ أَ",
+    "stop": false
+   },
+   {
+    "verse": "80:34",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مِنْ أَخِيهِ",
+    "focus": "نْ أَ",
+    "stop": false
+   },
+   {
+    "verse": "79:40",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَنْ خَافَ",
+    "focus": "نْ خَ",
+    "stop": false
+   },
+   {
+    "verse": "81:27",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِنْ هُوَ",
+    "focus": "نْ هُ",
+    "stop": false
+   },
+   {
+    "verse": "83:5",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "لِيَوْمٍ عَظِيمٍ",
+    "focus": "مٍ عَ",
+    "stop": false
+   },
+   {
+    "verse": "108:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "وَٱنْحَرْ",
+    "focus": "نْحَ",
+    "stop": false
+   },
+   {
+    "verse": "79:12",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "كَرَّةٌ خَاسِرَةٌ",
+    "focus": "ةٌ خَ",
+    "stop": false
+   },
+   {
+    "verse": "87:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "غُثَآءً أَحْوَىٰ",
+    "focus": "ءً أَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام النون الساكنة والتنوين",
+    "locator": "الأبيات 6–16، https://shamela.ws/book/9632/2"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، النون الساكنة والتنوين",
+    "locator": "البيت 65–68، https://shamela.ws/book/581/76"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإقلاب وتفخيم الغنة",
+    "locator": "1/181–183 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإظهار المطلق",
+    "locator": "https://shamela.ws/book/7311/74"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، غنة الإخفاء تتبع ما بعدها",
+    "locator": "https://shamela.ws/book/7311/90"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "idgh-g",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإدغام بغنة",
+  "en": "Merge, with nasal sound",
+  "color": "ghunnah",
+  "definition": "Merge the نون الساكنة or تنوين into the next letter and hold a غنة of two counts. The letters gather in يَنْمُو.",
+  "letters": "ي ن م و",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "conditions": [
+   "Only across two words: the نون ends one word and the letter starts the next.",
+   "Inside one word there is no merging. دُنْيَا، بُنْيَٰنٌ، صِنْوَانٌ، قِنْوَانٌ keep a clear نون (الإظهار المطلق).",
+   "With ن and م the merge is complete (إدغام كامل). With ي and و it is incomplete (إدغام ناقص): the غنة of the نون stays.",
+   "حفص من طريق الشاطبية reads يسٓ ۝ وَٱلْقُرْءَانِ and نٓ ۚ وَٱلْقَلَمِ with إظهار, when you join them."
+  ],
+  "tip": "Hold the غنة for its two counts; don't clip it, and don't let it turn into a full ن.",
+  "examples": [
+   {
+    "verse": "2:8",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "مَن يَقُولُ",
+    "focus": "ن يَ",
+    "stop": false
+   },
+   {
+    "verse": "2:5",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "هُدًى مِّن",
+    "focus": "دًى مِّ",
+    "stop": false
+   },
+   {
+    "verse": "13:11",
+    "word_from": 34,
+    "word_to": 35,
+    "text": "مِن وَالٍ",
+    "focus": "ن وَ",
+    "stop": false
+   },
+   {
+    "verse": "78:15",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "حَبًّا وَنَبَاتًا",
+    "focus": "بًّا وَ",
+    "stop": false
+   },
+   {
+    "verse": "80:19",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "مِن نُّطْفَةٍ",
+    "focus": "ن نُّ",
+    "stop": false
+   },
+   {
+    "verse": "79:45",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مَن يَخْشَىٰهَا",
+    "focus": "ن يَ",
+    "stop": false
+   },
+   {
+    "verse": "80:13",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "صُحُفٍ مُّكَرَّمَةٍ",
+    "focus": "فٍ مُّ",
+    "stop": false
+   },
+   {
+    "verse": "80:38",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وُجُوهٌ يَوْمَئِذٍ",
+    "focus": "هٌ يَ",
+    "stop": false
+   },
+   {
+    "verse": "79:13",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "زَجْرَةٌ وَٰحِدَةٌ",
+    "focus": "ةٌ وَٰ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام النون الساكنة والتنوين",
+    "locator": "الأبيات 6–16، https://shamela.ws/book/9632/2"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، النون الساكنة والتنوين",
+    "locator": "البيت 65–68، https://shamela.ws/book/581/76"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإقلاب وتفخيم الغنة",
+    "locator": "1/181–183 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإظهار المطلق",
+    "locator": "https://shamela.ws/book/7311/74"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، غنة الإخفاء تتبع ما بعدها",
+    "locator": "https://shamela.ws/book/7311/90"
+   },
+   {
+    "title": "متن الشاطبية (حرز الأماني)، إظهار نون يس ون",
+    "locator": "البيت 281، https://shamela.ws/book/7754/29"
+   },
+   {
+    "title": "الوافي في شرح الشاطبية (عبد الفتاح القاضي)، إظهار يس ون لحفص",
+    "locator": "https://shamela.ws/book/38075/134"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "idgh-n",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإدغام بلا غنة",
+  "en": "Full merge, no nasal sound",
+  "color": "silent",
+  "definition": "The نون الساكنة or تنوين disappears completely into ل or ر, with no غنة. The ل or ر takes a شدة.",
+  "letters": "ل ر",
+  "conditions": [
+   "Across two words only.",
+   "No غنة is the way of حفص من طريق الشاطبية; reading it with غنة is from طريق الطيبة and is not used here.",
+   "Exception: مَنْ ۜ رَاقٍ (75:27) has a سكت in حفص, so the نون stays clear."
+  ],
+  "examples": [
+   {
+    "verse": "2:2",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "هُدًى لِّلْمُتَّقِينَ",
+    "focus": "دًى لِّ",
+    "stop": false
+   },
+   {
+    "verse": "2:5",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مِّن رَّبِّهِمْ",
+    "focus": "ن رَّ",
+    "stop": false
+   },
+   {
+    "verse": "2:173",
+    "word_from": 24,
+    "word_to": 25,
+    "text": "غَفُورٌ رَّحِيمٌ",
+    "focus": "رٌ رَّ",
+    "stop": false
+   },
+   {
+    "verse": "78:36",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مِّن رَّبِّكَ",
+    "focus": "ن رَّ",
+    "stop": false
+   },
+   {
+    "verse": "83:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَيْلٌ لِّلْمُطَفِّفِينَ",
+    "focus": "لٌ لِّ",
+    "stop": false
+   },
+   {
+    "verse": "81:25",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "شَيْطَٰنٍ رَّجِيمٍ",
+    "focus": "نٍ رَّ",
+    "stop": false
+   },
+   {
+    "verse": "93:4",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "خَيْرٌ لَّكَ",
+    "focus": "رٌ لَّ",
+    "stop": false
+   },
+   {
+    "verse": "90:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "أَن لَّن",
+    "focus": "ن لَّ",
+    "stop": false
+   },
+   {
+    "verse": "83:25",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مِن رَّحِيقٍ",
+    "focus": "ن رَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام النون الساكنة والتنوين",
+    "locator": "الأبيات 6–16، https://shamela.ws/book/9632/2"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، النون الساكنة والتنوين",
+    "locator": "البيت 65–68، https://shamela.ws/book/581/76"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإقلاب وتفخيم الغنة",
+    "locator": "1/181–183 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإظهار المطلق",
+    "locator": "https://shamela.ws/book/7311/74"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، غنة الإخفاء تتبع ما بعدها",
+    "locator": "https://shamela.ws/book/7311/90"
+   },
+   {
+    "title": "الوافي في شرح الشاطبية (عبد الفتاح القاضي)، شرح البيت 286: بلا غنة في اللام والرا",
+    "locator": "https://shamela.ws/book/38075/136"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الغنة مع اللام والراء من طريق الطيبة",
+    "locator": "1/287 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "iqlab",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإقلاب",
+  "en": "Noon turns into meem",
+  "color": "ghunnah",
+  "definition": "Before ب, change the نون الساكنة or تنوين into a hidden ميم, with a غنة of two counts. The muṣḥaf marks it with a small ميم (ۢ).",
+  "letters": "ب",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "conditions": [
+   "In one word (أَنۢبِئْهُم) or across two words (مِنۢ بَعْدِ)."
+  ],
+  "tip": "Teachers differ on the lips here: some close them lightly (إطباق), others leave a very slight gap (فرجة). Follow your teacher. Either way, don't press the lips hard and don't add a full ب or ن.",
+  "examples": [
+   {
+    "verse": "2:27",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "مِنۢ بَعْدِ",
+    "focus": "نۢ بَ",
+    "stop": false
+   },
+   {
+    "verse": "2:33",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أَنۢبِئْهُم",
+    "focus": "نۢبِ",
+    "stop": false
+   },
+   {
+    "verse": "22:61",
+    "word_from": 14,
+    "word_to": 15,
+    "text": "سَمِيعٌۢ بَصِيرٌ",
+    "focus": "عٌۢ بَ",
+    "stop": false
+   },
+   {
+    "verse": "80:16",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "كِرَامٍۭ بَرَرَةٍ",
+    "focus": "مٍۭ بَ",
+    "stop": false
+   },
+   {
+    "verse": "80:27",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "فَأَنۢبَتْنَا",
+    "focus": "نۢبَ",
+    "stop": false
+   },
+   {
+    "verse": "92:8",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَنۢ بَخِلَ",
+    "focus": "نۢ بَ",
+    "stop": false
+   },
+   {
+    "verse": "104:4",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "لَيُنۢبَذَنَّ",
+    "focus": "نۢبَ",
+    "stop": false
+   },
+   {
+    "verse": "89:23",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "يَوْمَئِذٍۭ بِجَهَنَّمَ",
+    "focus": "ذٍۭ بِ",
+    "stop": false
+   },
+   {
+    "verse": "91:12",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱنۢبَعَثَ",
+    "focus": "نۢبَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام النون الساكنة والتنوين",
+    "locator": "الأبيات 6–16، https://shamela.ws/book/9632/2"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، النون الساكنة والتنوين",
+    "locator": "البيت 65–68، https://shamela.ws/book/581/76"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإقلاب وتفخيم الغنة",
+    "locator": "1/181–183 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإظهار المطلق",
+    "locator": "https://shamela.ws/book/7311/74"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، غنة الإخفاء تتبع ما بعدها",
+    "locator": "https://shamela.ws/book/7311/90"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "How the lips sit during الإقلاب: closed lightly (الإطباق) or a very slight gap (الفرجة). This is a modern difference in performance, not a route matter; هداية القاري (1/183) places the hidden ميم between the lips and غاية المريد only warns against pressing them. No book source for الفرجة was found. The card tells the learner to follow the teacher."
+  }
+ },
+ {
+  "id": "ikhfa",
+  "cat": "nun",
+  "phase": 3,
+  "ar": "الإخفاء الحقيقي",
+  "en": "Hidden noon",
+  "color": "ghunnah",
+  "definition": "Hide the نون الساكنة or تنوين before the 15 remaining letters: the tongue moves toward the next letter without a full ن, while a غنة of two counts sounds from the nose.",
+  "letters": "ص ذ ث ك ج ش ق س د ط ز ف ت ض ظ",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "conditions": [
+   "In one word or across two words.",
+   "The غنة is heavy (مفخمة) before the heavy letters ص ض ط ظ ق and light before the others: it follows the letter after it."
+  ],
+  "tip": "Don't press the tongue on the gum as for a full ن, and don't hold the tongue on the next letter's place before its time.",
+  "examples": [
+   {
+    "verse": "2:3",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "يُنفِقُونَ",
+    "focus": "نفِ",
+    "stop": false
+   },
+   {
+    "verse": "2:4",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "مِن قَبْلِكَ",
+    "focus": "ن قَ",
+    "stop": false
+   },
+   {
+    "verse": "3:4",
+    "word_from": 13,
+    "word_to": 14,
+    "text": "عَذَابٌ شَدِيدٌ",
+    "focus": "بٌ شَ",
+    "stop": false
+   },
+   {
+    "verse": "2:22",
+    "word_from": 21,
+    "word_to": 21,
+    "text": "أَندَادًا",
+    "focus": "ندَ",
+    "stop": false
+   },
+   {
+    "verse": "78:40",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "عَذَابًا قَرِيبًا",
+    "focus": "بًا قَ",
+    "stop": false
+   },
+   {
+    "verse": "79:37",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَن طَغَىٰ",
+    "focus": "ن طَ",
+    "stop": false,
+    "note": "heavy غنة before ط"
+   },
+   {
+    "verse": "80:8",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَن جَآءَكَ",
+    "focus": "ن جَ",
+    "stop": false
+   },
+   {
+    "verse": "81:19",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "رَسُولٍ كَرِيمٍ",
+    "focus": "لٍ كَ",
+    "stop": false
+   },
+   {
+    "verse": "78:18",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يُنفَخُ",
+    "focus": "نفَ",
+    "stop": false
+   },
+   {
+    "verse": "79:45",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "مُنذِرُ",
+    "focus": "نذِ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام النون الساكنة والتنوين",
+    "locator": "الأبيات 6–16، https://shamela.ws/book/9632/2"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، النون الساكنة والتنوين",
+    "locator": "البيت 65–68، https://shamela.ws/book/581/76"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإقلاب وتفخيم الغنة",
+    "locator": "1/181–183 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإظهار المطلق",
+    "locator": "https://shamela.ws/book/7311/74"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، غنة الإخفاء تتبع ما بعدها",
+    "locator": "https://shamela.ws/book/7311/90"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "m-ikhfa",
+  "cat": "meem",
+  "phase": 3,
+  "ar": "الإخفاء الشفوي",
+  "en": "Hidden meem",
+  "color": "ghunnah",
+  "definition": "A ميم ساكنة before ب is hidden with a غنة of two counts.",
+  "letters": "ب",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "conditions": [
+   "Across two words only (تَرْمِيهِم بِحِجَارَةٍ)."
+  ],
+  "tip": "As with الإقلاب, teachers differ between closing the lips lightly and leaving a very slight gap. Follow your teacher.",
+  "examples": [
+   {
+    "verse": "105:4",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "تَرْمِيهِم بِحِجَارَةٍ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "3:101",
+    "word_from": 10,
+    "word_to": 12,
+    "text": "وَمَن يَعْتَصِم بِٱللَّهِ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "79:14",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هُم بِٱلسَّاهِرَةِ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "81:22",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "صَاحِبُكُم بِمَجْنُونٍ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "84:24",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "فَبَشِّرْهُم بِعَذَابٍ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "88:22",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "عَلَيْهِم بِمُصَيْطِرٍ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "100:11",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "رَبَّهُم بِهِمْ",
+    "focus": "م بِ",
+    "stop": false
+   },
+   {
+    "verse": "91:14",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "رَبُّهُم بِذَنۢبِهِمْ",
+    "focus": "م بِ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام الميم الساكنة",
+    "locator": "الأبيات 18–23، https://shamela.ws/book/9632/4"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الميم الساكنة",
+    "locator": "البيت 63–64، https://shamela.ws/book/581/75"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإظهار الشفوي",
+    "locator": "1/183، 1/199–200 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإقلاب والإخفاء الشفوي",
+    "locator": "https://shamela.ws/book/7311/79"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Same lips question as الإقلاب (الإطباق or الفرجة). Follow the teacher."
+  }
+ },
+ {
+  "id": "m-idgham",
+  "cat": "meem",
+  "phase": 3,
+  "ar": "الإدغام الشفوي",
+  "en": "Meem merges into meem",
+  "color": "ghunnah",
+  "definition": "A ميم ساكنة before another ميم: the two become one مّ, held with a غنة of two counts. It is also called إدغام مثلين صغير.",
+  "letters": "م",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "examples": [
+   {
+    "verse": "2:249",
+    "word_from": 49,
+    "word_to": 50,
+    "text": "كَم مِّن",
+    "focus": "م مِّ",
+    "stop": false
+   },
+   {
+    "verse": "2:134",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "وَلَكُم مَّا",
+    "focus": "م مَّ",
+    "stop": false
+   },
+   {
+    "verse": "83:4",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "أَنَّهُم مَّبْعُوثُونَ",
+    "focus": "م مَّ",
+    "stop": false
+   },
+   {
+    "verse": "83:14",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "قُلُوبِهِم مَّا",
+    "focus": "م مَّ",
+    "stop": false
+   },
+   {
+    "verse": "85:20",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "وَرَآئِهِم مُّحِيطٌۢ",
+    "focus": "م مُّ",
+    "stop": false
+   },
+   {
+    "verse": "97:4",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "رَبِّهِم مِّن",
+    "focus": "م مِّ",
+    "stop": false
+   },
+   {
+    "verse": "104:8",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "عَلَيْهِم مُّؤْصَدَةٌ",
+    "focus": "م مُّ",
+    "stop": false
+   },
+   {
+    "verse": "106:4",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "أَطْعَمَهُم مِّن",
+    "focus": "م مِّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام الميم الساكنة",
+    "locator": "الأبيات 18–23، https://shamela.ws/book/9632/4"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الميم الساكنة",
+    "locator": "البيت 63–64، https://shamela.ws/book/581/75"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإظهار الشفوي",
+    "locator": "1/183، 1/199–200 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإقلاب والإخفاء الشفوي",
+    "locator": "https://shamela.ws/book/7311/79"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "m-izhar",
+  "cat": "meem",
+  "phase": 3,
+  "ar": "الإظهار الشفوي",
+  "en": "Clear meem",
+  "color": "clear",
+  "definition": "Before every letter other than ب and م, say the ميم ساكنة clearly, without holding a غنة.",
+  "letters": "all letters except ب and م",
+  "conditions": [
+   "In one word (يَمْلِكُونَ) or across two words (أَلَمْ تَرَ)."
+  ],
+  "tip": "Be extra clear before و and ف. They are made with the lips too, so the ميم easily slides into them (تحفة الأطفال: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي»).",
+  "examples": [
+   {
+    "verse": "1:7",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "عَلَيْهِمْ وَلَا",
+    "focus": "مْ وَ",
+    "stop": false
+   },
+   {
+    "verse": "2:39",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "هُمْ فِيهَا",
+    "focus": "مْ فِ",
+    "stop": false
+   },
+   {
+    "verse": "105:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "أَلَمْ تَرَ",
+    "focus": "مْ تَ",
+    "stop": false
+   },
+   {
+    "verse": "78:3",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هُمْ فِيهِ",
+    "focus": "مْ فِ",
+    "stop": false
+   },
+   {
+    "verse": "78:6",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "أَلَمْ نَجْعَلِ",
+    "focus": "مْ نَ",
+    "stop": false
+   },
+   {
+    "verse": "1:7",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "عَلَيْهِمْ غَيْرِ",
+    "focus": "مْ غَ",
+    "stop": false
+   },
+   {
+    "verse": "79:33",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "لَّكُمْ وَلِأَنْعَٰمِكُمْ",
+    "focus": "مْ وَ",
+    "stop": false
+   },
+   {
+    "verse": "78:37",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "يَمْلِكُونَ",
+    "focus": "مْلِ",
+    "stop": false
+   },
+   {
+    "verse": "83:16",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "إِنَّهُمْ لَصَالُوا۟",
+    "focus": "مْ لَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أحكام الميم الساكنة",
+    "locator": "الأبيات 18–23، https://shamela.ws/book/9632/4"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الميم الساكنة",
+    "locator": "البيت 63–64، https://shamela.ws/book/581/75"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإخفاء والإظهار الشفوي",
+    "locator": "1/183، 1/199–200 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الإقلاب والإخفاء الشفوي",
+    "locator": "https://shamela.ws/book/7311/79"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "ghunnah",
+  "cat": "ghunnah",
+  "phase": 3,
+  "ar": "الغنة المشددة",
+  "en": "Doubled noon and meem",
+  "color": "ghunnah",
+  "definition": "Every نّ and مّ is read with a full غنة of two counts from the nose (الخيشوم).",
+  "letters": "نّ مّ",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "غنة of 2 counts"
+  },
+  "tip": "Keep both counts. It is easy to clip the غنة in short words like إِنَّ and ثُمَّ.",
+  "examples": [
+   {
+    "verse": "2:6",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "إِنَّ",
+    "focus": "نَّ",
+    "stop": false
+   },
+   {
+    "verse": "2:28",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "ثُمَّ",
+    "focus": "مَّ",
+    "stop": false
+   },
+   {
+    "verse": "114:6",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلْجِنَّةِ",
+    "focus": "نَّ",
+    "stop": false
+   },
+   {
+    "verse": "78:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "عَمَّ",
+    "focus": "مَّ",
+    "stop": false
+   },
+   {
+    "verse": "78:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلنَّبَإِ",
+    "focus": "نَّ",
+    "stop": false
+   },
+   {
+    "verse": "114:4",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْخَنَّاسِ",
+    "focus": "نَّ",
+    "stop": false
+   },
+   {
+    "verse": "108:3",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "إِنَّ",
+    "focus": "نَّ",
+    "stop": false
+   },
+   {
+    "verse": "80:21",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ثُمَّ",
+    "focus": "مَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، النون والميم المشددتان",
+    "locator": "الأبيات 17، https://shamela.ws/book/9632/4"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، غنة النون والميم المشددتين",
+    "locator": "البيت 62، https://shamela.ws/book/581/74"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مقدار الغنة حركتان",
+    "locator": "1/180 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lam-q",
+  "cat": "lam",
+  "phase": 3,
+  "ar": "اللام القمرية",
+  "en": "The laam of al- is said",
+  "color": "clear",
+  "definition": "The ل of ال is pronounced, with a سكون, before 14 letters. They gather in «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ».",
+  "letters": "ء ب غ ح ج ك و خ ف ع ق ي م ه",
+  "examples": [
+   {
+    "verse": "1:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلْحَمْدُ",
+    "focus": "ٱلْحَ",
+    "stop": false
+   },
+   {
+    "verse": "54:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْقَمَرُ",
+    "focus": "ٱلْقَ",
+    "stop": false
+   },
+   {
+    "verse": "1:6",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْمُسْتَقِيمَ",
+    "focus": "ٱلْمُ",
+    "stop": false
+   },
+   {
+    "verse": "113:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْفَلَقِ",
+    "focus": "ٱلْفَ",
+    "stop": false
+   },
+   {
+    "verse": "97:1",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "ٱلْقَدْرِ",
+    "focus": "ٱلْقَ",
+    "stop": false
+   },
+   {
+    "verse": "105:1",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "ٱلْفِيلِ",
+    "focus": "ٱلْفِ",
+    "stop": false
+   },
+   {
+    "verse": "101:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلْقَارِعَةُ",
+    "focus": "ٱلْقَ",
+    "stop": false
+   },
+   {
+    "verse": "103:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْعَصْرِ",
+    "focus": "ٱلْعَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، لام أل",
+    "locator": "الأبيات 24–29، https://shamela.ws/book/9632/5"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، لام أل: الإظهار القمري والإدغام الشمسي",
+    "locator": "1/204–206، 1/240 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lam-s",
+  "cat": "lam",
+  "phase": 3,
+  "ar": "اللام الشمسية",
+  "en": "The laam of al- is silent",
+  "color": "silent",
+  "definition": "Before the other 14 letters the ل of ال is not pronounced; it merges into the next letter, which takes a شدة.",
+  "letters": "ت ث د ذ ر ز س ش ص ض ط ظ ل ن",
+  "examples": [
+   {
+    "verse": "1:3",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلرَّحْمَٰنِ",
+    "focus": "ٱلرَّ",
+    "stop": false
+   },
+   {
+    "verse": "91:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلشَّمْسِ",
+    "focus": "ٱلشَّ",
+    "stop": false
+   },
+   {
+    "verse": "114:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلنَّاسِ",
+    "focus": "ٱلنَّ",
+    "stop": false
+   },
+   {
+    "verse": "1:6",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلصِّرَٰطَ",
+    "focus": "ٱلصِّ",
+    "stop": false
+   },
+   {
+    "verse": "81:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلشَّمْسُ",
+    "focus": "ٱلشَّ",
+    "stop": false
+   },
+   {
+    "verse": "86:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "وَٱلطَّارِقِ",
+    "focus": "ٱلطَّ",
+    "stop": false
+   },
+   {
+    "verse": "93:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلضُّحَىٰ",
+    "focus": "ٱلضُّ",
+    "stop": false
+   },
+   {
+    "verse": "95:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلتِّينِ",
+    "focus": "ٱلتِّ",
+    "stop": false
+   },
+   {
+    "verse": "92:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلَّيْلِ",
+    "focus": "ٱلَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، لام أل",
+    "locator": "الأبيات 24–29، https://shamela.ws/book/9632/5"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، لام أل: الإظهار القمري والإدغام الشمسي",
+    "locator": "1/204–206، 1/240 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lam-jh",
+  "cat": "lam",
+  "phase": 3,
+  "ar": "تفخيم لام لفظ الجلالة",
+  "en": "Heavy laam in the name of Allah",
+  "color": "heavy",
+  "definition": "The ل in the name اللَّه (and in اللَّهُمَّ) is heavy, with a full mouth, after a فتحة or a ضمة. When you start from the name itself, its همزة الوصل has a فتحة, so the ل is heavy too.",
+  "examples": [
+   {
+    "verse": "3:55",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "قَالَ ٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "110:1",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "نَصْرُ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "112:1",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هُوَ ٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "112:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "Starting from the name: heavy."
+   },
+   {
+    "verse": "104:6",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "نَارُ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "96:14",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "بِأَنَّ ٱللَّهَ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "98:8",
+    "word_from": 13,
+    "word_to": 14,
+    "text": "رَّضِىَ ٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "91:13",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "رَسُولُ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، لام لفظ الجلالة",
+    "locator": "البيت 44، https://shamela.ws/book/581/67"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، تفخيم لام الجلالة وترقيقها",
+    "locator": "1/119–120 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، ترقيق لام الجلالة بعد الكسر الأصلي والعارض",
+    "locator": "https://shamela.ws/book/38104/92"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lam-jl",
+  "cat": "lam",
+  "phase": 3,
+  "ar": "ترقيق لام لفظ الجلالة",
+  "en": "Light laam in the name of Allah",
+  "color": "light",
+  "definition": "The ل in the name اللَّه is light after a كسرة, whether the كسرة is original or added to join the words (قُلِ ٱللَّهُمَّ), and whether it is in the same word (لِلَّهِ) or the word before.",
+  "examples": [
+   {
+    "verse": "1:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "بِسْمِ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "1:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "لِلَّهِ",
+    "focus": "لِلَّ",
+    "stop": false
+   },
+   {
+    "verse": "3:26",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "قُلِ ٱللَّهُمَّ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "The كسرة on قُلِ is added to join the words; the ل is still light."
+   },
+   {
+    "verse": "110:2",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "دِينِ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "85:8",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "بِٱللَّهِ",
+    "focus": "بِٱللَّ",
+    "stop": false
+   },
+   {
+    "verse": "82:19",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "لِّلَّهِ",
+    "focus": "لِّلَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، لام لفظ الجلالة",
+    "locator": "البيت 44، https://shamela.ws/book/581/67"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، تفخيم لام الجلالة وترقيقها",
+    "locator": "1/119–120 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، ترقيق لام الجلالة بعد الكسر الأصلي والعارض",
+    "locator": "https://shamela.ws/book/38104/92"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "ra-h",
+  "cat": "ra",
+  "phase": 4,
+  "ar": "تفخيم الراء",
+  "en": "Heavy raa",
+  "color": "heavy",
+  "definition": "The ر is heavy in these cases:",
+  "tip": "One light tap of the tongue. Don't roll the ر (التكرير).",
+  "list": [
+   [
+    "It has فتحة or ضمة",
+    "رَبِّ · نَصْرُ"
+   ],
+   [
+    "It has سكون after a فتحة or ضمة",
+    "مَرْيَمَ · تَرْمِيهِم"
+   ],
+   [
+    "It has سكون after the كسرة of همزة الوصل, or an added كسرة",
+    "ٱرْجِعِىٓ"
+   ],
+   [
+    "It has سكون after a كسرة, with a heavy letter (ص ض ط ظ ق خ غ) after it in the same word",
+    "مِرْصَادًا · قِرْطَاسٍ"
+   ],
+   [
+    "You stop on it after a ساكن letter that comes after a فتحة or ضمة",
+    "وَٱلْفَجْرْ · خُسْرْ"
+   ],
+   [
+    "The heavy letter after a كسرة must be in the same word and have no كسرة itself",
+    "فِرْقَةٍ is heavy; فِرْقٍ has both readings"
+   ]
+  ],
+  "examples": [
+   {
+    "verse": "1:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "رَبِّ",
+    "focus": "رَ",
+    "stop": false
+   },
+   {
+    "verse": "19:16",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "مَرْيَمَ",
+    "focus": "مَرْ",
+    "stop": false
+   },
+   {
+    "verse": "89:28",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱرْجِعِىٓ",
+    "focus": "ٱرْ",
+    "stop": false,
+    "note": "Heavy when you start here with the كسرة of همزة الوصل, and when you join it to the ayah before."
+   },
+   {
+    "verse": "78:21",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "مِرْصَادًا",
+    "focus": "مِرْ",
+    "stop": false
+   },
+   {
+    "verse": "108:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْكَوْثَرَ",
+    "focus": "ثَرَ",
+    "stop": false
+   },
+   {
+    "verse": "110:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "نَصْرُ",
+    "focus": "رُ",
+    "stop": false
+   },
+   {
+    "verse": "105:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "تَرْمِيهِم",
+    "focus": "تَرْ",
+    "stop": false
+   },
+   {
+    "verse": "89:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْفَجْرِ",
+    "focus": "جْرِ",
+    "stop": true,
+    "note": "Stopping: وَٱلْفَجْرْ. The letter before the ر is ساكن and before that is a فتحة."
+   },
+   {
+    "verse": "103:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "خُسْرٍ",
+    "focus": "سْرٍ",
+    "stop": true,
+    "note": "Stopping: خُسْرْ, after a ضمة."
+   },
+   {
+    "verse": "89:14",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "لَبِٱلْمِرْصَادِ",
+    "focus": "مِرْ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الراءات",
+    "locator": "البيت 41–43، https://shamela.ws/book/581/66"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أحكام الراء",
+    "locator": "1/122–132 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الراء الموقوف عليها والكلمات ذات الوجهين",
+    "locator": "https://shamela.ws/book/38104/100"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "ra-l",
+  "cat": "ra",
+  "phase": 4,
+  "ar": "ترقيق الراء",
+  "en": "Light raa",
+  "color": "light",
+  "definition": "The ر is light in these cases:",
+  "tip": "A few words have both readings. فِرْقٍ (26:63): heavy or light, light is read first. When you stop: مِصْرَ both, heavy preferred; ٱلْقِطْرِ both, light preferred; يَسْرِ (89:4), وَنُذُرِ (سورة القمر), أَنْ أَسْرِ and فَأَسْرِ both, light preferred. Ask your teacher which to use.",
+  "list": [
+   [
+    "It has كسرة",
+    "رِجَالٌ · شَرِّ"
+   ],
+   [
+    "It has سكون after an original كسرة in the same word, with no heavy letter after it",
+    "فِرْعَوْنَ · وَٱسْتَغْفِرْهُ"
+   ],
+   [
+    "You stop on it after يْ",
+    "قَدِيرْ · خَبِيرْ"
+   ],
+   [
+    "You stop on it right after a كسرة",
+    "مُّنتَشِرْ"
+   ],
+   [
+    "You stop on it after a ساكن letter that is not a حرف استعلاء, coming after a كسرة",
+    "حِجْرْ · ٱلذِّكْرْ"
+   ],
+   [
+    "The ر of مَجْر۪ىٰهَا (الإمالة)",
+    "11:41"
+   ]
+  ],
+  "examples": [
+   {
+    "verse": "24:37",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "رِجَالٌ",
+    "focus": "رِ",
+    "stop": false
+   },
+   {
+    "verse": "2:49",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "فِرْعَوْنَ",
+    "focus": "فِرْ",
+    "stop": false
+   },
+   {
+    "verse": "2:20",
+    "word_from": 25,
+    "word_to": 25,
+    "text": "قَدِيرٌ",
+    "focus": "رٌ",
+    "stop": true,
+    "note": "Stopping: قَدِيرْ, after يْ."
+   },
+   {
+    "verse": "114:4",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "شَرِّ",
+    "focus": "رِّ",
+    "stop": false
+   },
+   {
+    "verse": "98:7",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ٱلْبَرِيَّةِ",
+    "focus": "رِ",
+    "stop": false
+   },
+   {
+    "verse": "110:3",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "وَٱسْتَغْفِرْهُ",
+    "focus": "فِرْ",
+    "stop": false
+   },
+   {
+    "verse": "89:5",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "حِجْرٍ",
+    "focus": "جْرٍ",
+    "stop": true,
+    "note": "Stopping: حِجْرْ. The ج is ساكن and before it is a كسرة."
+   },
+   {
+    "verse": "100:11",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "لَّخَبِيرٌۢ",
+    "focus": "يرٌۢ",
+    "stop": true,
+    "note": "Stopping: لَخَبِيرْ, after يْ."
+   },
+   {
+    "verse": "79:17",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "فِرْعَوْنَ",
+    "focus": "فِرْ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الراءات",
+    "locator": "البيت 41–43، https://shamela.ws/book/581/66"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أحكام الراء",
+    "locator": "1/122–132 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الراء الموقوف عليها والكلمات ذات الوجهين",
+    "locator": "https://shamela.ws/book/38104/100"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، وجها فرق",
+    "locator": "2/103، https://shamela.ws/book/22642"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، مصر والقطر",
+    "locator": "https://shamela.ws/book/38104/101"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "فِرْقٍ when stopping: هداية القاري gives both readings in وصل and وقف; الميزان says the difference is only in وصل and that the stop is heavy by agreement. The preferences for مصر، القطر، يسر، نذر، أسر are sourced but the teacher should confirm which the learner uses."
+  }
+ },
+ {
+  "id": "qal-s",
+  "cat": "qal",
+  "phase": 4,
+  "ar": "القلقلة الصغرى",
+  "en": "Small echo",
+  "color": "qalqalah",
+  "definition": "A light bounce on a قلقلة letter (قُطْبُ جَدٍ) that has a سكون in the middle of a word, or at the end of a word when you keep reading.",
+  "letters": "ق ط ب ج د",
+  "tip": "It is an echo, not a vowel. Don't add a short \"uh\" after the letter.",
+  "examples": [
+   {
+    "verse": "2:27",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "وَيَقْطَعُونَ",
+    "focus": "قْ",
+    "stop": false
+   },
+   {
+    "verse": "2:19",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "يَجْعَلُونَ",
+    "focus": "جْ",
+    "stop": false
+   },
+   {
+    "verse": "4:124",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "يَدْخُلُونَ",
+    "focus": "دْ",
+    "stop": false
+   },
+   {
+    "verse": "78:12",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "سَبْعًا",
+    "focus": "بْ",
+    "stop": false
+   },
+   {
+    "verse": "97:1",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "ٱلْقَدْرِ",
+    "focus": "دْ",
+    "stop": false
+   },
+   {
+    "verse": "112:3",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يَلِدْ",
+    "focus": "دْ",
+    "stop": false
+   },
+   {
+    "verse": "87:14",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قَدْ",
+    "focus": "دْ",
+    "stop": false
+   },
+   {
+    "verse": "85:12",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "بَطْشَ",
+    "focus": "طْ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف: قلقلة قطب جد",
+    "locator": "البيت 22، https://shamela.ws/book/581/58"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مراتب القلقلة",
+    "locator": "1/85–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، مراتب القلقلة وتحفظ د. أيمن سويد",
+    "locator": "https://shamela.ws/book/38104/75"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "qal-k",
+  "cat": "qal",
+  "phase": 4,
+  "ar": "القلقلة الكبرى",
+  "en": "Big echo when stopping",
+  "color": "qalqalah",
+  "definition": "A stronger bounce when you stop on a قلقلة letter at the end of a word. Many teachers count a third, strongest level when that letter has a شدة, as in وَتَبَّ.",
+  "letters": "ق ط ب ج د",
+  "examples": [
+   {
+    "verse": "113:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْفَلَقِ",
+    "focus": "قِ",
+    "stop": true
+   },
+   {
+    "verse": "112:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أَحَدٌ",
+    "focus": "دٌ",
+    "stop": true
+   },
+   {
+    "verse": "85:20",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "مُّحِيطٌۢ",
+    "focus": "طٌۢ",
+    "stop": true
+   },
+   {
+    "verse": "113:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "خَلَقَ",
+    "focus": "قَ",
+    "stop": true
+   },
+   {
+    "verse": "111:1",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وَتَبَّ",
+    "focus": "بَّ",
+    "stop": true,
+    "note": "A قلقلة letter with شدة at a stop: the strongest level for those who count three."
+   },
+   {
+    "verse": "85:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْبُرُوجِ",
+    "focus": "جِ",
+    "stop": true
+   },
+   {
+    "verse": "112:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلصَّمَدُ",
+    "focus": "دُ",
+    "stop": true
+   },
+   {
+    "verse": "84:16",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "بِٱلشَّفَقِ",
+    "focus": "قِ",
+    "stop": true
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، صفات الحروف: قلقلة قطب جد",
+    "locator": "البيت 22، https://shamela.ws/book/581/58"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مراتب القلقلة",
+    "locator": "1/85–86 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، مراتب القلقلة وتحفظ د. أيمن سويد",
+    "locator": "https://shamela.ws/book/38104/75"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "A third, strongest level for a stopped مشدد قلقلة letter is one view; الميزان records د. أيمن سويد's reservation. The card now says \"many teachers\"."
+  }
+ },
+ {
+  "id": "tabii",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد الطبيعي",
+  "en": "Natural lengthening",
+  "color": "madd2",
+  "definition": "A حرف مد with no همزة or سكون after it: ا after فتحة, وْ after ضمة, يْ after كسرة. Every other مد is built on this one.",
+  "group": "المد الطبيعي وما يلحق به",
+  "letters": "ا و ي",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "2 counts"
+  },
+  "tip": "Two even counts. Cutting it short is a clear error (لحن جلي) because it changes the word.",
+  "examples": [
+   {
+    "verse": "2:30",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "قَالَ",
+    "focus": "قَا",
+    "stop": false
+   },
+   {
+    "verse": "2:8",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "يَقُولُ",
+    "focus": "قُو",
+    "stop": false
+   },
+   {
+    "verse": "2:11",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "قِيلَ",
+    "focus": "قِي",
+    "stop": false
+   },
+   {
+    "verse": "1:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "مَٰلِكِ",
+    "focus": "مَٰ",
+    "stop": false
+   },
+   {
+    "verse": "112:3",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "يُولَدْ",
+    "focus": "يُو",
+    "stop": false
+   },
+   {
+    "verse": "96:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلْإِنسَٰنَ",
+    "focus": "سَٰ",
+    "stop": false
+   },
+   {
+    "verse": "114:4",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْوَسْوَاسِ",
+    "focus": "وَا",
+    "stop": false
+   },
+   {
+    "verse": "1:7",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "صِرَٰطَ",
+    "focus": "رَٰ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "iwad",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "مد العوض",
+  "en": "Stopping on tanween with fatha",
+  "color": "madd2",
+  "definition": "When you stop on a word ending in تنوين الفتح, the تنوين becomes an alif of two counts: عَلِيمًا is read عَلِيمَا.",
+  "group": "المد الطبيعي وما يلحق به",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "2 counts, only when stopping"
+  },
+  "conditions": [
+   "Only when stopping.",
+   "Not for التاء المربوطة: رَحْمَةً is stopped as رَحْمَهْ."
+  ],
+  "examples": [
+   {
+    "verse": "110:2",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "أَفْوَاجًا",
+    "focus": "جًا",
+    "stop": true
+   },
+   {
+    "verse": "110:3",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "تَوَّابًۢا",
+    "focus": "بًۢا",
+    "stop": true
+   },
+   {
+    "verse": "78:6",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "مِهَٰدًا",
+    "focus": "دًا",
+    "stop": true
+   },
+   {
+    "verse": "78:7",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أَوْتَادًا",
+    "focus": "دًا",
+    "stop": true
+   },
+   {
+    "verse": "100:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ضَبْحًا",
+    "focus": "حًا",
+    "stop": true
+   },
+   {
+    "verse": "100:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "قَدْحًا",
+    "focus": "حًا",
+    "stop": true
+   },
+   {
+    "verse": "78:9",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "سُبَاتًا",
+    "focus": "تًا",
+    "stop": true
+   }
+  ],
+  "sources": [
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   },
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "silah-s",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "مد الصلة الصغرى",
+  "en": "The pronoun هـ stretched",
+  "color": "madd2",
+  "definition": "The pronoun هـ (him, his) between two voweled letters is stretched for two counts, as if a small و or ي follows it, when the next word does not start with a همزة.",
+  "group": "المد الطبيعي وما يلحق به",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "2 counts"
+  },
+  "conditions": [
+   "No صلة if the letter before or after the هاء is ساكن: مِنْهُ، لَهُ ٱلْمُلْكُ، وَيَتَّقْهِ (24:52, the ق is ساكن in حفص).",
+   "No صلة when you stop on it.",
+   "حفص exceptions: يَرْضَهُ لَكُمْ (39:7) has a short ضمة and no صلة; فِيهِۦ مُهَانًا (25:69) has a صلة although the letter before is ساكن; أَرْجِهْ (7:111، 26:36) and فَأَلْقِهْ (27:28) have a سكون."
+  ],
+  "examples": [
+   {
+    "verse": "110:3",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "إِنَّهُۥ كَانَ",
+    "focus": "هُۥ",
+    "stop": false
+   },
+   {
+    "verse": "112:4",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "لَّهُۥ كُفُوًا",
+    "focus": "هُۥ",
+    "stop": false
+   },
+   {
+    "verse": "79:17",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "إِنَّهُۥ طَغَىٰ",
+    "focus": "هُۥ",
+    "stop": false
+   },
+   {
+    "verse": "85:13",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِنَّهُۥ هُوَ",
+    "focus": "هُۥ",
+    "stop": false
+   },
+   {
+    "verse": "100:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "بِهِۦ جَمْعًا",
+    "focus": "هِۦ",
+    "stop": false
+   },
+   {
+    "verse": "87:15",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "رَبِّهِۦ فَصَلَّىٰ",
+    "focus": "هِۦ",
+    "stop": false
+   },
+   {
+    "verse": "101:9",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "فَأُمُّهُۥ هَاوِيَةٌ",
+    "focus": "هُۥ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، هاء الكناية واستثناءات حفص",
+    "locator": "https://shamela.ws/book/7311/271"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ويتقه",
+    "locator": "1/359–360 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، فيه مهانا",
+    "locator": "https://shamela.ws/book/7311/272"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "badal",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "مد البدل",
+  "en": "Hamza before the madd",
+  "color": "madd2",
+  "definition": "A همزة comes before a حرف مد in the same word, with no همزة or سكون after the مد: ءَامَنُوا، إِيمَانًا، أُوتُوا. In حفص it is two counts.",
+  "group": "المد بسبب الهمز",
+  "counts": {
+   "min": 2,
+   "max": 2,
+   "note": "2 counts in حفص"
+  },
+  "examples": [
+   {
+    "verse": "2:9",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ءَامَنُوا۟",
+    "focus": "ءَا",
+    "stop": false
+   },
+   {
+    "verse": "3:173",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "إِيمَٰنًا",
+    "focus": "إِي",
+    "stop": false
+   },
+   {
+    "verse": "2:101",
+    "word_from": 14,
+    "word_to": 14,
+    "text": "أُوتُوا۟",
+    "focus": "أُو",
+    "stop": false
+   },
+   {
+    "verse": "79:20",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلْءَايَةَ",
+    "focus": "ءَا",
+    "stop": false
+   },
+   {
+    "verse": "106:4",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وَءَامَنَهُم",
+    "focus": "ءَا",
+    "stop": false
+   },
+   {
+    "verse": "103:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ءَامَنُوا۟",
+    "focus": "ءَا",
+    "stop": false
+   },
+   {
+    "verse": "84:7",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أُوتِىَ",
+    "focus": "أُو",
+    "stop": false
+   },
+   {
+    "verse": "87:17",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْءَاخِرَةُ",
+    "focus": "ءَا",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "muttasil",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد الواجب المتصل",
+  "en": "Obligatory, hamza in the same word",
+  "color": "madd45",
+  "definition": "A حرف مد followed by a همزة in the same word. It must be lengthened beyond two counts.",
+  "group": "المد بسبب الهمز",
+  "counts": {
+   "min": 4,
+   "max": 5,
+   "note": "4 or 5 counts (4 is the first way). When you stop on a final همزة (ٱلسَّمَآءِ): after 4, read 4 or 6; after 5, read 5 or 6."
+  },
+  "conditions": [
+   "حفص من طريق الشاطبية: 4 (التوسط, read first) or 5 (فويق التوسط). Six counts while joining is from طريق الطيبة."
+  ],
+  "tip": "Use the same length every time. In this route المتصل and المنفصل are read equal: 4 with 4, or 5 with 5.",
+  "examples": [
+   {
+    "verse": "110:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "جَآءَ",
+    "focus": "آءَ",
+    "stop": false
+   },
+   {
+    "verse": "2:19",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلسَّمَآءِ",
+    "focus": "آءِ",
+    "stop": false
+   },
+   {
+    "verse": "2:49",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "سُوٓءَ",
+    "focus": "وٓءَ",
+    "stop": false
+   },
+   {
+    "verse": "78:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يَتَسَآءَلُونَ",
+    "focus": "آءَ",
+    "stop": false
+   },
+   {
+    "verse": "78:14",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "مَآءً",
+    "focus": "آءً",
+    "stop": false
+   },
+   {
+    "verse": "80:25",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْمَآءَ",
+    "focus": "آءَ",
+    "stop": false
+   },
+   {
+    "verse": "98:5",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "حُنَفَآءَ",
+    "focus": "آءَ",
+    "stop": false
+   },
+   {
+    "verse": "78:19",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلسَّمَآءُ",
+    "focus": "آءُ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مراتب المتصل والمنفصل لحفص من الشاطبية",
+    "locator": "1/284–286 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، المتصل والمنفصل والقصر من الطيبة",
+    "locator": "https://shamela.ws/book/7311/125"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، التسوية بين المتصل والمنفصل",
+    "locator": "https://shamela.ws/book/7311/147"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، المتصل أقوى من المنفصل",
+    "locator": "1/351، https://shamela.ws/book/22642/359"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "munfasil",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد الجائز المنفصل",
+  "en": "Permitted, hamza in the next word",
+  "color": "madd45",
+  "definition": "A حرف مد ends a word and the next word starts with a همزة.",
+  "group": "المد بسبب الهمز",
+  "counts": {
+   "min": 4,
+   "max": 5,
+   "note": "4 or 5 counts (حفص من طريق الشاطبية)"
+  },
+  "conditions": [
+   "حفص من طريق الشاطبية: 4 (التوسط, read first) or 5 counts. Shortening it to 2 is from طريق الطيبة, not this route.",
+   "Only when you join the two words. If you stop on the first word it is a مد طبيعي."
+  ],
+  "tip": "Choose one length and keep it through your whole recitation, equal to your المتصل: 4 with 4, or 5 with 5.",
+  "examples": [
+   {
+    "verse": "108:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِنَّآ أَعْطَيْنَٰكَ",
+    "focus": "آ أَ",
+    "stop": false
+   },
+   {
+    "verse": "51:21",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَفِىٓ أَنفُسِكُمْ",
+    "focus": "ىٓ أَ",
+    "stop": false
+   },
+   {
+    "verse": "2:21",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "يَٰٓأَيُّهَا",
+    "focus": "يَٰٓأَ",
+    "stop": false,
+    "note": "يَا and أَيُّهَا are written joined, but يَا is its own word, so this is منفصل."
+   },
+   {
+    "verse": "78:23",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "فِيهَآ أَحْقَابًا",
+    "focus": "آ أَ",
+    "stop": false
+   },
+   {
+    "verse": "97:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِنَّآ أَنزَلْنَٰهُ",
+    "focus": "آ أَ",
+    "stop": false
+   },
+   {
+    "verse": "109:2",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "لَآ أَعْبُدُ",
+    "focus": "آ أَ",
+    "stop": false
+   },
+   {
+    "verse": "79:45",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِنَّمَآ أَنتَ",
+    "focus": "آ أَ",
+    "stop": false
+   },
+   {
+    "verse": "101:10",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَمَآ أَدْرَىٰكَ",
+    "focus": "آ أَ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، مراتب المتصل والمنفصل لحفص من الشاطبية",
+    "locator": "1/284–286 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، المتصل والمنفصل والقصر من الطيبة",
+    "locator": "https://shamela.ws/book/7311/125"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، التسوية بين المتصل والمنفصل",
+    "locator": "https://shamela.ws/book/7311/147"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، المتصل أقوى من المنفصل",
+    "locator": "1/351، https://shamela.ws/book/22642/359"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "silah-k",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "مد الصلة الكبرى",
+  "en": "The pronoun هـ before a hamza",
+  "color": "madd45",
+  "definition": "A صلة (the pronoun هـ between two voweled letters) where the next word starts with a همزة. It is read like المنفصل.",
+  "group": "المد بسبب الهمز",
+  "counts": {
+   "min": 4,
+   "max": 5,
+   "note": "4 or 5 counts, the same as your المنفصل"
+  },
+  "examples": [
+   {
+    "verse": "104:3",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "مَالَهُۥٓ أَخْلَدَهُۥ",
+    "focus": "هُۥٓ أَ",
+    "stop": false
+   },
+   {
+    "verse": "2:255",
+    "word_from": 24,
+    "word_to": 25,
+    "text": "عِندَهُۥٓ إِلَّا",
+    "focus": "هُۥٓ إِ",
+    "stop": false
+   },
+   {
+    "verse": "83:12",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "بِهِۦٓ إِلَّا",
+    "focus": "هِۦٓ إِ",
+    "stop": false
+   },
+   {
+    "verse": "89:25",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "عَذَابَهُۥٓ أَحَدٌ",
+    "focus": "هُۥٓ أَ",
+    "stop": false
+   },
+   {
+    "verse": "89:26",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "وَثَاقَهُۥٓ أَحَدٌ",
+    "focus": "هُۥٓ أَ",
+    "stop": false
+   },
+   {
+    "verse": "90:7",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "يَرَهُۥٓ أَحَدٌ",
+    "focus": "هُۥٓ أَ",
+    "stop": false
+   },
+   {
+    "verse": "92:11",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مَالُهُۥٓ إِذَا",
+    "focus": "هُۥٓ إِ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، هاء الكناية واستثناءات حفص",
+    "locator": "https://shamela.ws/book/7311/271"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ويتقه",
+    "locator": "1/359–360 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، فيه مهانا",
+    "locator": "https://shamela.ws/book/7311/272"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "arid",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد العارض للسكون",
+  "en": "Temporary sukoon when stopping",
+  "color": "madd246",
+  "definition": "A حرف مد followed by a letter that gets a سكون only because you stop on it.",
+  "group": "المد بسبب السكون",
+  "counts": {
+   "min": 2,
+   "max": 6,
+   "note": "2, 4 or 6 counts"
+  },
+  "conditions": [
+   "Only when stopping. If you keep reading it is a normal two-count مد.",
+   "2 (القصر), 4 (التوسط) or 6 (الإشباع) are all correct."
+  ],
+  "tip": "Pick one length and use it at every such stop in the same recitation (التسوية).",
+  "examples": [
+   {
+    "verse": "1:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْعَٰلَمِينَ",
+    "focus": "مِينَ",
+    "stop": true
+   },
+   {
+    "verse": "1:5",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "نَسْتَعِينُ",
+    "focus": "عِينُ",
+    "stop": true
+   },
+   {
+    "verse": "1:3",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلرَّحِيمِ",
+    "focus": "حِيمِ",
+    "stop": true
+   },
+   {
+    "verse": "1:4",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلدِّينِ",
+    "focus": "دِّينِ",
+    "stop": true
+   },
+   {
+    "verse": "95:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "وَٱلزَّيْتُونِ",
+    "focus": "تُونِ",
+    "stop": true
+   },
+   {
+    "verse": "114:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلنَّاسِ",
+    "focus": "نَّاسِ",
+    "stop": true
+   },
+   {
+    "verse": "109:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْكَٰفِرُونَ",
+    "focus": "رُونَ",
+    "stop": true
+   },
+   {
+    "verse": "105:1",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "ٱلْفِيلِ",
+    "focus": "فِيلِ",
+    "stop": true
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، واللفظ في نظيره كمثله",
+    "locator": "البيت 31، https://shamela.ws/book/581/61"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، التسوية",
+    "locator": "https://shamela.ws/book/7311/146"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، أوجه اللين مع العارض",
+    "locator": "https://shamela.ws/book/7311/152"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lin",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "مد اللين",
+  "en": "Soft و and ي when stopping",
+  "color": "madd246",
+  "definition": "وْ or يْ after a فتحة (حرفا اللين), when you stop on the letter after it.",
+  "group": "المد بسبب السكون",
+  "counts": {
+   "min": 2,
+   "max": 6,
+   "note": "2, 4 or 6 counts"
+  },
+  "conditions": [
+   "When you keep reading, a لين letter is not lengthened at all."
+  ],
+  "tip": "When اللين and العارض both come in one recitation, اللين may not be longer than العارض. If العارض is 2, اللين is 2; if العارض is 4, اللين is 2 or 4; if العارض is 6, اللين is 2, 4 or 6.",
+  "examples": [
+   {
+    "verse": "106:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "قُرَيْشٍ",
+    "focus": "رَيْشٍ",
+    "stop": true
+   },
+   {
+    "verse": "106:3",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْبَيْتِ",
+    "focus": "بَيْتِ",
+    "stop": true
+   },
+   {
+    "verse": "106:4",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "خَوْفٍۭ",
+    "focus": "خَوْفٍۭ",
+    "stop": true
+   },
+   {
+    "verse": "106:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "وَٱلصَّيْفِ",
+    "focus": "صَّيْفِ",
+    "stop": true
+   },
+   {
+    "verse": "90:8",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "عَيْنَيْنِ",
+    "focus": "نَيْنِ",
+    "stop": true
+   },
+   {
+    "verse": "90:9",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "وَشَفَتَيْنِ",
+    "focus": "تَيْنِ",
+    "stop": true
+   },
+   {
+    "verse": "90:10",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلنَّجْدَيْنِ",
+    "focus": "دَيْنِ",
+    "stop": true
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد وأحكامه",
+    "locator": "الأبيات 35–47، https://shamela.ws/book/9632/6"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lazim-k",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد اللازم الكلمي",
+  "en": "Necessary, inside a word",
+  "color": "madd6",
+  "definition": "A حرف مد followed by a permanent سكون or شدة in the same word. With a شدة it is مثقل. With a plain سكون it is مخفف; in حفص that is only آلْـَٔانَ, twice in سورة يونس (10:51، 10:91), in its first way (الإبدال).",
+  "group": "المد بسبب السكون",
+  "counts": {
+   "min": 6,
+   "max": 6,
+   "note": "6 counts"
+  },
+  "examples": [
+   {
+    "verse": "1:7",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ٱلضَّآلِّينَ",
+    "focus": "ضَّآلِّ",
+    "stop": false
+   },
+   {
+    "verse": "69:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلْحَآقَّةُ",
+    "focus": "حَآقَّ",
+    "stop": false
+   },
+   {
+    "verse": "10:51",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "ءَآلْـَٰٔنَ",
+    "focus": "ءَآلْ",
+    "stop": false,
+    "note": "مخفف: the plain سكون of the ل. Its other way is التسهيل."
+   },
+   {
+    "verse": "79:34",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلطَّآمَّةُ",
+    "focus": "طَّآمَّ",
+    "stop": false
+   },
+   {
+    "verse": "80:33",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلصَّآخَّةُ",
+    "focus": "صَّآخَّ",
+    "stop": false
+   },
+   {
+    "verse": "83:32",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "لَضَآلُّونَ",
+    "focus": "ضَآلُّ",
+    "stop": false
+   },
+   {
+    "verse": "93:7",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ضَآلًّا",
+    "focus": "ضَآلًّ",
+    "stop": false
+   },
+   {
+    "verse": "89:18",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "تَحَٰٓضُّونَ",
+    "focus": "حَٰٓضُّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد اللازم وفواتح السور",
+    "locator": "الأبيات 48–57، https://shamela.ws/book/9632/7"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "lazim-h",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "المد اللازم الحرفي",
+  "en": "Opening letters of some surahs",
+  "color": "madd6",
+  "definition": "In the letters that open some سور, a letter whose name has three letters with a مد in the middle (مِيمْ، نُونْ، قَافْ) gets 6 counts. They gather in «نَقَصَ عَسَلُكُمْ».",
+  "group": "المد بسبب السكون",
+  "letters": "ن ق ص ع س ل ك م",
+  "counts": {
+   "min": 6,
+   "max": 6,
+   "note": "6 counts; ع is 4 or 6 (6 preferred)"
+  },
+  "conditions": [
+   "ع (in كٓهيعٓصٓ and عٓسٓقٓ) is 4 or 6, and 6 is preferred (الشاطبية: «وَفِي عَيْنٍ الْوَجْهَانِ وَالطُّولُ فُضِّلَا»).",
+   "حي طهر (حَا، يَا، طَا، هَا، رَا) are two counts (مد طبيعي حرفي).",
+   "The ألف has no مد."
+  ],
+  "tip": "In الٓمٓ the لام merges into the ميم: أَلِفْ لَامْ مِّيمْ.",
+  "examples": [
+   {
+    "verse": "2:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "الٓمٓ",
+    "focus": "لٓمٓ",
+    "stop": false
+   },
+   {
+    "verse": "50:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قٓ",
+    "focus": "قٓ",
+    "stop": false
+   },
+   {
+    "verse": "68:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "نٓ",
+    "focus": "نٓ",
+    "stop": false
+   },
+   {
+    "verse": "19:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "كٓهيعٓصٓ",
+    "focus": "كٓ",
+    "stop": false,
+    "note": "كَافْ 6; هَا، يَا 2; عَيْنْ 4 or 6; صَادْ 6."
+   },
+   {
+    "verse": "42:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "عٓسٓقٓ",
+    "focus": "سٓقٓ",
+    "stop": false,
+    "note": "عَيْنْ 4 or 6; سِينْ، قَافْ 6."
+   },
+   {
+    "verse": "26:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "طسٓمٓ",
+    "focus": "سٓمٓ",
+    "stop": false,
+    "note": "طَا 2; سِينْ، مِيمْ 6."
+   },
+   {
+    "verse": "38:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "صٓ",
+    "focus": "صٓ",
+    "stop": false
+   },
+   {
+    "verse": "7:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "الٓمٓصٓ",
+    "focus": "لٓمٓصٓ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، أقسام المد اللازم وفواتح السور",
+    "locator": "الأبيات 48–57، https://shamela.ws/book/9632/7"
+   },
+   {
+    "title": "متن الشاطبية (حرز الأماني)، وفي عين الوجهان والطول فضلا",
+    "locator": "البيت 177، https://shamela.ws/book/7754/21"
+   },
+   {
+    "title": "الوافي في شرح الشاطبية (عبد الفتاح القاضي)، الطول في عين أفضل",
+    "locator": "https://shamela.ws/book/38075/79"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام المد الفرعي",
+    "locator": "1/279 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، البدل لحفص حركتان",
+    "locator": "https://shamela.ws/book/7311/131"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
+    "locator": "https://shamela.ws/book/7311/132"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "mithlayn",
+  "cat": "merge",
+  "phase": 5,
+  "ar": "إدغام المثلين",
+  "en": "Two identical letters",
+  "color": "merge",
+  "definition": "The same letter twice, the first with سكون: read them as one letter with a شدة.",
+  "conditions": [
+   "No merging when the first is a حرف مد: فِى يَوْمٍ (14:18)، قَالُوا۟ وَهُمْ (26:96).",
+   "A لين letter does merge: أَو وَّزَنُوهُمْ.",
+   "مَالِيَهْ ۜ هَلَكَ (69:28-29): سكت or إدغام; see السكت."
+  ],
+  "examples": [
+   {
+    "verse": "2:60",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "ٱضْرِب بِّعَصَاكَ",
+    "focus": "ب بِّ",
+    "stop": false
+   },
+   {
+    "verse": "5:61",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "وَقَد دَّخَلُوا۟",
+    "focus": "د دَّ",
+    "stop": false
+   },
+   {
+    "verse": "2:16",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "رَبِحَت تِّجَٰرَتُهُمْ",
+    "focus": "ت تِّ",
+    "stop": false
+   },
+   {
+    "verse": "79:18",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هَل لَّكَ",
+    "focus": "ل لَّ",
+    "stop": false
+   },
+   {
+    "verse": "89:17",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "بَل لَّا",
+    "focus": "ل لَّ",
+    "stop": false
+   },
+   {
+    "verse": "90:8",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "نَجْعَل لَّهُۥ",
+    "focus": "ل لَّ",
+    "stop": false
+   },
+   {
+    "verse": "83:3",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "أَو وَّزَنُوهُمْ",
+    "focus": "و وَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، المثلان والمتقاربان والمتجانسان",
+    "locator": "الأبيات 30–34، https://shamela.ws/book/9632/5"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، إدغام المثلين والمتجانسين",
+    "locator": "البيت 50–51، https://shamela.ws/book/581/68"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، المثلان والمتجانسان والمتقاربان ونخلقكم",
+    "locator": "1/233–255 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، إظهار المثلين بعد حرف المد",
+    "locator": "https://shamela.ws/book/38104/129"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، المتجانسان لحفص",
+    "locator": "https://shamela.ws/book/38104/131"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، نخلقكم: الكامل أولى",
+    "locator": "https://shamela.ws/book/38104/135"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "mutajanisayn",
+  "cat": "merge",
+  "phase": 5,
+  "ar": "إدغام المتجانسين",
+  "en": "Same place, different qualities",
+  "color": "merge",
+  "definition": "Two letters from the same مخرج with different qualities, the first with سكون. In حفص they merge in these pairs:",
+  "tip": "ط into ت is incomplete (ناقص): keep the heaviness (الإطباق) of the ط, as in بَسَطتَ and أَحَطتُ.",
+  "list": [
+   [
+    "ت ← ط",
+    "وَقَالَت طَّآئِفَةٌ"
+   ],
+   [
+    "ط ← ت (incomplete)",
+    "بَسَطتَ · أَحَطتُ · فَرَّطتُمْ"
+   ],
+   [
+    "د ← ت",
+    "قَد تَّبَيَّنَ"
+   ],
+   [
+    "ت ← د",
+    "أَثْقَلَت دَّعَوَا"
+   ],
+   [
+    "ذ ← ظ",
+    "إِذ ظَّلَمُوٓا۟"
+   ],
+   [
+    "ث ← ذ",
+    "يَلْهَث ذَّٰلِكَ (7:176)"
+   ],
+   [
+    "ب ← م",
+    "ٱرْكَب مَّعَنَا (11:42)"
+   ]
+  ],
+  "examples": [
+   {
+    "verse": "2:256",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "قَد تَّبَيَّنَ",
+    "focus": "د تَّ",
+    "stop": false
+   },
+   {
+    "verse": "3:72",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَقَالَت طَّآئِفَةٌ",
+    "focus": "ت طَّ",
+    "stop": false
+   },
+   {
+    "verse": "4:64",
+    "word_from": 11,
+    "word_to": 12,
+    "text": "إِذ ظَّلَمُوٓا۟",
+    "focus": "ذ ظَّ",
+    "stop": false
+   },
+   {
+    "verse": "11:42",
+    "word_from": 14,
+    "word_to": 15,
+    "text": "ٱرْكَب مَّعَنَا",
+    "focus": "ب مَّ",
+    "stop": false
+   },
+   {
+    "verse": "5:28",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "بَسَطتَ",
+    "focus": "طتَ",
+    "stop": false
+   },
+   {
+    "verse": "7:189",
+    "word_from": 20,
+    "word_to": 21,
+    "text": "أَثْقَلَت دَّعَوَا",
+    "focus": "ت دَّ",
+    "stop": false
+   },
+   {
+    "verse": "10:89",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "أُجِيبَت دَّعْوَتُكُمَا",
+    "focus": "ت دَّ",
+    "stop": false
+   },
+   {
+    "verse": "7:176",
+    "word_from": 20,
+    "word_to": 21,
+    "text": "يَلْهَث ذَّٰلِكَ",
+    "focus": "ث ذَّٰ",
+    "stop": false
+   },
+   {
+    "verse": "27:22",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "أَحَطتُ",
+    "focus": "طتُ",
+    "stop": false
+   },
+   {
+    "verse": "12:80",
+    "word_from": 21,
+    "word_to": 21,
+    "text": "فَرَّطتُمْ",
+    "focus": "طتُ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، المثلان والمتقاربان والمتجانسان",
+    "locator": "الأبيات 30–34، https://shamela.ws/book/9632/5"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، إدغام المثلين والمتجانسين",
+    "locator": "البيت 50–51، https://shamela.ws/book/581/68"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، المثلان والمتجانسان والمتقاربان ونخلقكم",
+    "locator": "1/233–255 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، إظهار المثلين بعد حرف المد",
+    "locator": "https://shamela.ws/book/38104/129"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، المتجانسان لحفص",
+    "locator": "https://shamela.ws/book/38104/131"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، نخلقكم: الكامل أولى",
+    "locator": "https://shamela.ws/book/38104/135"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "mutaqaribayn",
+  "cat": "merge",
+  "phase": 5,
+  "ar": "إدغام المتقاربين",
+  "en": "Close letters",
+  "color": "merge",
+  "definition": "Two letters with close مخارج or qualities, the first with سكون. Apart from the نون and ال rules, حفص merges them in ل ← ر and ق ← ك.",
+  "conditions": [
+   "ق into ك in أَلَمْ نَخْلُقكُّم (77:20): the complete merge (الإدغام الكامل, no trace of the ق) is read first; the incomplete merge (الناقص, keeping the heaviness of the ق) is also correct.",
+   "Exception: بَلْ ۜ رَانَ (83:14) has a سكت, so there is no merging."
+  ],
+  "examples": [
+   {
+    "verse": "17:24",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "وَقُل رَّبِّ",
+    "focus": "ل رَّ",
+    "stop": false
+   },
+   {
+    "verse": "77:20",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "نَخْلُقكُّم",
+    "focus": "قكُّ",
+    "stop": false
+   },
+   {
+    "verse": "4:158",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "بَل رَّفَعَهُ",
+    "focus": "ل رَّ",
+    "stop": false
+   },
+   {
+    "verse": "23:93",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "قُل رَّبِّ",
+    "focus": "ل رَّ",
+    "stop": false
+   },
+   {
+    "verse": "23:118",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَقُل رَّبِّ",
+    "focus": "ل رَّ",
+    "stop": false
+   },
+   {
+    "verse": "20:114",
+    "word_from": 14,
+    "word_to": 15,
+    "text": "وَقُل رَّبِّ",
+    "focus": "ل رَّ",
+    "stop": false
+   },
+   {
+    "verse": "18:22",
+    "word_from": 15,
+    "word_to": 16,
+    "text": "قُل رَّبِّىٓ",
+    "focus": "ل رَّ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "تحفة الأطفال (الجمزوري)، المثلان والمتقاربان والمتجانسان",
+    "locator": "الأبيات 30–34، https://shamela.ws/book/9632/5"
+   },
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، إدغام المثلين والمتجانسين",
+    "locator": "البيت 50–51، https://shamela.ws/book/581/68"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، المثلان والمتجانسان والمتقاربان ونخلقكم",
+    "locator": "1/233–255 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، إظهار المثلين بعد حرف المد",
+    "locator": "https://shamela.ws/book/38104/129"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، المتجانسان لحفص",
+    "locator": "https://shamela.ws/book/38104/131"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، نخلقكم: الكامل أولى",
+    "locator": "https://shamela.ws/book/38104/135"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "نخلقكم: books read (الميزان، هداية القاري، النشر) give الإدغام الكامل and الناقص for حفص من الشاطبية with الكامل first; a forum تحرير says الكامل only from الشاطبية. Confirm with the teacher."
+  }
+ },
+ {
+  "id": "waqf-signs",
+  "cat": "waqf",
+  "phase": 5,
+  "ar": "علامات الوقف",
+  "en": "Reading the stop marks",
+  "color": "clear",
+  "definition": "Small marks above the line in مصحف المدينة tell you where you may stop.",
+  "list": [
+   [
+    "مـ · الوقف اللازم",
+    "You must stop: joining could change the meaning."
+   ],
+   [
+    "لا · الوقف الممنوع",
+    "Don't stop here. If you stop for breath, go back and start from a sensible place."
+   ],
+   [
+    "ج · الوقف الجائز",
+    "Stopping and joining are equal."
+   ],
+   [
+    "صلى · الوصل أولى",
+    "You may stop, but joining is better."
+   ],
+   [
+    "قلى · الوقف أولى",
+    "You may join, but stopping is better."
+   ],
+   [
+    "∴ ∴ · تعانق الوقف",
+    "Two sets of three dots: stop at one of them, not both."
+   ],
+   [
+    "At the end of an ayah",
+    "Stopping at the end of an ayah (رأس الآية) is a سنة, even where a لا is printed there; some scholars disagree. Follow your teacher."
+   ]
+  ],
+  "facts": [
+   {
+    "q": "What does مـ mean?",
+    "options": [
+     "Stopping and joining are equal",
+     "Joining is better",
+     "الوقف اللازم: you must stop",
+     "Don't stop"
+    ],
+    "answer": 2,
+    "why": "Joining there could change the meaning."
+   },
+   {
+    "q": "What does لا mean?",
+    "options": [
+     "Joining is better",
+     "Don't stop here",
+     "You must stop",
+     "Stopping is better"
+    ],
+    "answer": 1,
+    "why": "It marks الوقف الممنوع."
+   },
+   {
+    "q": "What does ج mean?",
+    "options": [
+     "Stopping and joining are equal",
+     "You must stop here",
+     "Don't stop here",
+     "Joining is better"
+    ],
+    "answer": 0,
+    "why": "الوقف الجائز."
+   },
+   {
+    "q": "What does صلى mean?",
+    "options": [
+     "Stopping is better",
+     "You must stop here",
+     "Don't stop here",
+     "Joining is better"
+    ],
+    "answer": 3,
+    "why": "الوصل أولى."
+   },
+   {
+    "q": "What does قلى mean?",
+    "options": [
+     "Don't stop here",
+     "You must stop here",
+     "Stopping is better",
+     "Joining is better"
+    ],
+    "answer": 2,
+    "why": "الوقف أولى."
+   },
+   {
+    "q": "You see two sets of three dots close together. What do you do?",
+    "options": [
+     "Stop only at the second",
+     "Stop at one of them, not at both",
+     "Stop at both",
+     "Never stop at either"
+    ],
+    "answer": 1,
+    "why": "This is تعانق الوقف, as in لَا رَيْبَ ۛ فِيهِ ۛ (2:2)."
+   },
+   {
+    "q": "You stopped at a لا in the middle of an ayah to breathe. What now?",
+    "options": [
+     "Start again where the meaning is sound",
+     "Carry on from the next word",
+     "Start from the next ayah",
+     "Nothing; carry on as you are"
+    ],
+    "answer": 0,
+    "why": "Starting after a forbidden stop can spoil the meaning."
+   }
+  ],
+  "sources": [
+   {
+    "title": "مساعد الطيار، «وقوف المصاحف» (ملتقى أهل التفسير)",
+    "locator": "https://mtafsir.net/threads/وقوف-المصاحف-من-إجوبة-الدكتور-مساعد-الطيار-لملتقى-أهل-الحديث.623/post-6783"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، علامات الوقف في المصحف",
+    "locator": "https://shamela.ws/book/38104/194"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، تعانق الوقف",
+    "locator": "https://shamela.ws/book/38104/204"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام الوقف، والوقف على رؤوس الآي سنة",
+    "locator": "1/368–387 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الخلاف في «لا» على رؤوس الآي",
+    "locator": "https://shamela.ws/book/38104/196"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "The sign meanings are confirmed from secondary sources (الميزان، مساعد الطيار); the end notes of مصحف المدينة itself were not read. Stopping at a رأس آية that carries لا is a scholarly difference."
+  }
+ },
+ {
+  "id": "waqf-how",
+  "cat": "waqf",
+  "phase": 5,
+  "ar": "كيفية الوقف",
+  "en": "How to stop on a word",
+  "color": "clear",
+  "definition": "Stopping changes the last letter of the word.",
+  "list": [
+   [
+    "The last vowel becomes سكون",
+    "نَسْتَعِينُ ← نَسْتَعِينْ"
+   ],
+   [
+    "تنوين الفتح becomes an alif",
+    "عَلِيمًا ← عَلِيمَا"
+   ],
+   [
+    "التاء المربوطة becomes a هاء ساكنة",
+    "ٱلْحَآقَّةُ ← ٱلْحَآقَّهْ"
+   ],
+   [
+    "A ت written open (رَحْمَتَ، نِعْمَتَ) stays a ت ساكنة in حفص",
+    "رَحْمَتَ ← رَحْمَتْ"
+   ],
+   [
+    "Advanced",
+    "الروم (part of the vowel, said quietly) and الإشمام (rounding the lips after the سكون, with no sound) are optional ways to hint at the last vowel. Learn them from a teacher."
+   ]
+  ],
+  "facts": [
+   {
+    "q": "How do you stop on نَسْتَعِينُ?",
+    "options": [
+     "نَسْتَعِينْ",
+     "نَسْتَعِينُ",
+     "نَسْتَعِينَا",
+     "نَسْتَعِينَهْ"
+    ],
+    "answer": 0,
+    "why": "The last vowel becomes a سكون."
+   },
+   {
+    "q": "How do you stop on عَلِيمًا?",
+    "options": [
+     "عَلِيمْ",
+     "عَلِيمُنْ",
+     "عَلِيمَهْ",
+     "عَلِيمَا"
+    ],
+    "answer": 3,
+    "why": "تنوين الفتح becomes an alif (مد العوض)."
+   },
+   {
+    "q": "How do you stop on رَحْمَةً?",
+    "options": [
+     "رَحْمَتْ",
+     "رَحْمَا",
+     "رَحْمَهْ",
+     "رَحْمَتَا"
+    ],
+    "answer": 2,
+    "why": "التاء المربوطة becomes a هاء ساكنة, even with تنوين الفتح."
+   },
+   {
+    "q": "What is الروم?",
+    "options": [
+     "Dropping the last letter",
+     "Saying part of the last vowel quietly",
+     "Rounding the lips with no sound",
+     "Saying the full vowel"
+    ],
+    "answer": 1,
+    "why": "About a third of the vowel, heard only by someone close."
+   },
+   {
+    "q": "How does حفص stop on رَحْمَتَ when it is written with an open ت?",
+    "options": [
+     "رَحْمَتْ",
+     "رَحْمَهْ",
+     "رَحْمَتَا",
+     "رَحْمَا"
+    ],
+    "answer": 0,
+    "why": "A ت written open stays a ت ساكنة; only a تاء مربوطة becomes a هاء."
+   },
+   {
+    "q": "What is الإشمام at a stop?",
+    "options": [
+     "Saying part of the vowel quietly",
+     "Adding a هاء after the letter",
+     "Lengthening the last letter",
+     "Rounding the lips, with no sound"
+    ],
+    "answer": 3,
+    "why": "As for a ضمة, right after the سكون. It is seen, not heard."
+   },
+   {
+    "q": "On which vowel can الإشمام be used?",
+    "options": [
+     "كسرة",
+     "All of them",
+     "ضمة only",
+     "فتحة"
+    ],
+    "answer": 2,
+    "why": "الروم works on ضمة and كسرة; الإشمام on ضمة only; neither on فتحة."
+   },
+   {
+    "q": "Can الروم or الإشمام be used on a فتحة?",
+    "options": [
+     "Only الإشمام",
+     "No",
+     "Yes, both",
+     "Only الروم"
+    ],
+    "answer": 1,
+    "why": "Neither is used on a فتحة."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الوقف بالروم والإشمام",
+    "locator": "البيت 104–105، https://shamela.ws/book/581/94"
+   },
+   {
+    "title": "متن الشاطبية (حرز الأماني)، باب الوقف على أواخر الكلم",
+    "locator": "البيت 370–373، https://shamela.ws/book/7754"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، كيفية الوقف",
+    "locator": "https://shamela.ws/book/38104/208"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الوقف على هاء التأنيث المرسومة تاءً",
+    "locator": "2/462 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، أقسام الوقف، والوقف على رؤوس الآي سنة",
+    "locator": "1/368–387 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الخلاف في «لا» على رؤوس الآي",
+    "locator": "https://shamela.ws/book/38104/196"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "sakt",
+  "cat": "hafs",
+  "phase": 5,
+  "ar": "السكت",
+  "en": "A short breathless pause",
+  "color": "clear",
+  "definition": "A very short pause, without taking a breath, then you carry on. حفص من طريق الشاطبية has it in four places, when you join the words.",
+  "list": [
+   [
+    "عِوَجَا ۜ قَيِّمًا",
+    "18:1-2"
+   ],
+   [
+    "مِن مَّرْقَدِنَا ۜ هَٰذَا",
+    "36:52"
+   ],
+   [
+    "وَقِيلَ مَنْ ۜ رَاقٍ",
+    "75:27"
+   ],
+   [
+    "كَلَّا بَلْ ۜ رَانَ",
+    "83:14"
+   ],
+   [
+    "Optional",
+    "مَالِيَهْ ۜ هَلَكَ (69:28-29): سكت (read first) or إدغام. Between الأنفال and التوبة: الوقف، السكت or الوصل, all without البسملة."
+   ],
+   [
+    "Not in this route",
+    "Other سكتات of حفص (on ال، شَىْء، or a ساكن before a همزة) are from طريق الطيبة."
+   ]
+  ],
+  "exhaustive": true,
+  "examples": [
+   {
+    "verse": "18:1",
+    "word_from": 11,
+    "word_to": 11,
+    "text": "عِوَجَا",
+    "focus": "عِوَجَا",
+    "stop": false,
+    "note": "سكت, then قَيِّمًا (18:2). Stopping at the end of the ayah is also allowed."
+   },
+   {
+    "verse": "36:52",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "مَّرْقَدِنَا هَٰذَا",
+    "focus": "مَّرْقَدِنَا",
+    "stop": false
+   },
+   {
+    "verse": "75:27",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَنْ رَاقٍ",
+    "focus": "مَنْ",
+    "stop": false
+   },
+   {
+    "verse": "83:14",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "بَلْ رَانَ",
+    "focus": "بَلْ",
+    "stop": false
+   },
+   {
+    "verse": "69:28",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "مَالِيَهْ",
+    "focus": "مَالِيَهْ",
+    "stop": false,
+    "note": "Optional: سكت (read first) or إدغام when you join it to هَلَكَ (69:29)."
+   },
+   {
+    "verse": "8:75",
+    "word_from": 22,
+    "word_to": 22,
+    "text": "عَلِيمٌۢ",
+    "focus": "عَلِيمٌۢ",
+    "stop": false,
+    "note": "Optional: joining the end of الأنفال to التوبة, you may stop, pause (سكت) or join, without البسملة."
+   }
+  ],
+  "sources": [
+   {
+    "title": "متن الشاطبية (حرز الأماني)، سكتات حفص",
+    "locator": "البيت 830–831، https://shamela.ws/book/7754/72"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، ماليه هلك وبين الأنفال والتوبة",
+    "locator": "https://shamela.ws/book/7311/292"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ماليه هلك: الإظهار مع السكت مقدم",
+    "locator": "1/237 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الوافي في شرح الشاطبية (عبد الفتاح القاضي)، بين الأنفال وبراءة",
+    "locator": "https://shamela.ws/book/38075/48"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، السكت العام من الطيبة",
+    "locator": "1/287–288 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "imalah",
+  "cat": "hafs",
+  "phase": 5,
+  "ar": "الإمالة",
+  "en": "Tilting the alif toward ي",
+  "color": "clear",
+  "definition": "The only إمالة in حفص: the رَا in مَجْر۪ىٰهَا (11:41) is tilted toward a كسرة and the alif toward a ي (إمالة كبرى). The ر is light.",
+  "exhaustive": true,
+  "examples": [
+   {
+    "verse": "11:41",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "مَجْر۪ىٰهَا",
+    "focus": "ر۪ىٰ",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "متن الشاطبية (حرز الأماني)، وحفصهم يوالي بمجراها",
+    "locator": "البيت 311، https://shamela.ws/book/7754"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ما انفرد به حفص: مجريها، ءاعجمي، ضعف",
+    "locator": "2/577–578 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ },
+ {
+  "id": "ishmam",
+  "cat": "hafs",
+  "phase": 5,
+  "ar": "الإشمام",
+  "en": "Rounding the lips",
+  "color": "clear",
+  "definition": "تَأْمَ۫نَّا (12:11) has two ways in حفص من طريق الشاطبية: الإشمام (merge the two نون and round the lips as for a ضمة at the merge) and الروم or الاختلاس (say the first نون with part of its ضمة, without merging). المرصفي reads الاختلاس first.",
+  "exhaustive": true,
+  "examples": [
+   {
+    "verse": "12:11",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "تَأْمَ۫نَّا",
+    "focus": "مَ۫نَّا",
+    "stop": false
+   }
+  ],
+  "sources": [
+   {
+    "title": "متن الشاطبية (حرز الأماني)، تأمنا",
+    "locator": "البيت 773–774، https://shamela.ws/book/7754"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، تأمنا: الاختلاس مقدم",
+    "locator": "1/261 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ما انفرد به حفص: مجريها، ءاعجمي، ضعف",
+    "locator": "2/577–578 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "تأمنا: both الإشمام and الروم/الاختلاس are from الشاطبية. هداية القاري (1/261) reads الاختلاس first; many teachers teach الإشمام first. The artifact said الإشمام is the main way. Confirm which to drill."
+  }
+ },
+ {
+  "id": "tashil",
+  "cat": "hafs",
+  "phase": 5,
+  "ar": "التسهيل",
+  "en": "Easing the second hamza",
+  "color": "clear",
+  "definition": "The second همزة is said softly, between a همزة and an alif. In حفص it is required in only one word: ءَا۬عْجَمِىٌّ (41:44).",
+  "tip": "Another word with two readings in حفص: ضَعْف in سورة الروم (30:54, three times) may be read with فتحة or ضمة on the ض; فتحة is read first.",
+  "list": [
+   [
+    "Required",
+    "ءَا۬عْجَمِىٌّ (41:44)"
+   ],
+   [
+    "A second way",
+    "ءَآلذَّكَرَيْنِ (6:143، 6:144)، ءَآلْـَٔانَ (10:51، 10:91)، ءَآللَّهُ (10:59، 27:59): the first way is الإبدال (a long alif of 6 counts); التسهيل is also correct."
+   ]
+  ],
+  "exhaustive": true,
+  "examples": [
+   {
+    "verse": "41:44",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ءَا۬عْجَمِىٌّ",
+    "focus": "ءَا۬",
+    "stop": false,
+    "note": "Required."
+   },
+   {
+    "verse": "6:143",
+    "word_from": 10,
+    "word_to": 10,
+    "text": "ءَآلذَّكَرَيْنِ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "Second way (the first is الإبدال)."
+   },
+   {
+    "verse": "6:144",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "ءَآلذَّكَرَيْنِ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "Second way."
+   },
+   {
+    "verse": "10:51",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "ءَآلْـَٰٔنَ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "Second way."
+   },
+   {
+    "verse": "10:91",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ءَآلْـَٰٔنَ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "Second way."
+   },
+   {
+    "verse": "10:59",
+    "word_from": 14,
+    "word_to": 14,
+    "text": "ءَآللَّهُ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "Second way."
+   },
+   {
+    "verse": "27:59",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ءَآللَّهُ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "Second way."
+   }
+  ],
+  "sources": [
+   {
+    "title": "متن الشاطبية (حرز الأماني)، آلذكرين وأخواتها",
+    "locator": "البيت 192–193، https://shamela.ws/book/7754"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الإبدال مقدم",
+    "locator": "2/501 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، مد الفرق",
+    "locator": "https://shamela.ws/book/38104/176"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ما انفرد به حفص: مجريها، ءاعجمي، ضعف",
+    "locator": "2/577–578 (ط. الثانية، paging per the OpenITI copy of https://shamela.ws/book/22869)"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": ""
+  }
+ }
+]

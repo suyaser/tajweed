@@ -1,0 +1,2816 @@
+{
+ "editions": {
+  "tuhfa": {
+   "title": "تحفة الأطفال والغلمان في تجويد القرآن",
+   "author": "سليمان الجمزوري",
+   "editor": "مذيلة بشرح وجيز للشيخ علي محمد الضباع",
+   "source_url": "https://shamela.ws/book/9632",
+   "lines": 61
+  },
+  "jazariyya": {
+   "title": "المقدمة فيما على قارئ القرآن أن يعلمه (الجزرية)",
+   "author": "محمد بن محمد بن محمد ابن الجزري",
+   "editor": "د. عبد المحسن بن محمد القاسم (ط 2، 1441هـ/2020م)",
+   "source_url": "https://shamela.ws/book/581",
+   "lines": 107
+  }
+ },
+ "notes": {
+  "gloss": "gloss is a one-line English summary of what the line teaches, written for this app. It is not a translation.",
+  "text": "sadr/ajuz are the edition text exactly as on the Shamela page (Unicode code points kept as published), with footnote markers removed. Compare text after Unicode NFC normalisation; the Jazariyya page stores shadda before the vowel.",
+  "verified": "two-copies = compared word by word by script against a second copy (see docs/05-mutun-verification.md). It is not the two-person check against the printed book that spec C7 requires.",
+  "section": "section is an app label from the edition's headings, not part of the matn.",
+  "rules": "An empty rules list means the line teaches a topic with no app rule id yet (Tuhfa 29: لام الفعل)."
+ },
+ "lines": [
+  {
+   "text": "tuhfa",
+   "n": 1,
+   "section": "مقدمة",
+   "sadr": "يَقُولُ رَاجِي رَحْمَةِ الْغَفُورِ",
+   "ajuz": "دَوْمًا سُلَيْمَانُ هُوَ الجَمْزُورِي",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "The author names himself: Sulayman al-Jamzuri, hoping for the mercy of the Forgiving.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 2,
+   "section": "مقدمة",
+   "sadr": "(الْحَمْدُ للَّهِ) مُصَلِّيًا عَلَى",
+   "ajuz": "(مُحَمَّدٍ) وَآلهِ وَمَنْ تَلاَ",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Opens with praise of Allah and blessings on the Prophet, his family and those who follow.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 3,
+   "section": "مقدمة",
+   "sadr": "وَبَعْدُ: هَذَا النَّظْمُ لِلْمُرِيدِ",
+   "ajuz": "فِي النُّونِ والتَّنْوِينِ وَالْمُدُودِ",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "States the topic: a poem for the learner on noon sakinah, tanween and the madd.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 4,
+   "section": "مقدمة",
+   "sadr": "سَمَّيْتُهُ (بِتُحْفَةِ الأَطْفَالِ)",
+   "ajuz": "عَنْ شَيْخِنَا الْمِيهِىِّ ذِي الْكَمالِ",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Names the poem Tuhfat al-Atfal and credits his teacher al-Mihi.",
+   "variants": [
+    {
+     "word": "الْمِيهِىِّ",
+     "other_reading": "الْمِيهِيِّ",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية); Quranpedia 21539 (تحفة الأطفال، ت ابن سالم، 2006)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 5,
+   "section": "مقدمة",
+   "sadr": "أَرْجُو بِهِ أَنْ يَنْفَعَ الطُّلاَّبَا",
+   "ajuz": "وَالأَجْرَ وَالْقَبُولَ وَالثَّوَابَا",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Hopes it benefits students and earns reward and acceptance.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 6,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "لِلنُّونِ إِنْ تَسْكُنْ وَلِلتَّنْوِينِ",
+   "ajuz": "أَرْبَعُ أَحْكَامٍ فَخُذْ تَبْيِينِي",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "izhar",
+    "idgh-g",
+    "idgh-n",
+    "iqlab",
+    "ikhfa"
+   ],
+   "gloss": "Noon sakinah and tanween have four rulings.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 7,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "فَالأَوَّلُ الإظْهَارُ قَبْلَ أَحْرُفِ",
+   "ajuz": "لِلْحَلْقِ سِتٌّ رُتِّبَتْ فَلْتَعْرِفِ",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "izhar"
+   ],
+   "gloss": "First ruling: izhar (clear noon) before the six throat letters.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 8,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "هَمْزٌ فَهَاءٌ ثُمَّ عَيْنٌ حَاءُ",
+   "ajuz": "مُهْمَلَتَانِ ثُمَّ غَيْنٌ خَاءُ",
+   "page": 2,
+   "url": "https://shamela.ws/book/9632/2",
+   "rules": [
+    "izhar"
+   ],
+   "gloss": "Lists the six throat letters: hamza, ha, ayn, ha, ghayn, kha.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 9,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "والثَّانِ إِدْغَامٌ بِسِتَّةٍ أَتَتْ",
+   "ajuz": "فِي (يَرْمَلُونَ) عِنْدَهُمْ قَدْ ثَبَتَتْ",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "idgh-g",
+    "idgh-n"
+   ],
+   "gloss": "Second ruling: idgham (merging) into the six letters of يرملون.",
+   "variants": [
+    {
+     "word": "والثَّانِ",
+     "other_reading": "وَالثَّانِيْ",
+     "kind": "orthographic",
+     "source": "Quranpedia 21539 (تحفة الأطفال، ت ابن سالم، 2006)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 10,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "لَكِنَّهَا قِسْمَانِ قِسْمٌ يُدْغَمَا",
+   "ajuz": "فِيهِ بِغُنَّةٍ (بِيَنْمُو) عُلِمَا",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "idgh-g"
+   ],
+   "gloss": "Idgham with ghunnah happens in the four letters of ينمو.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 11,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "إِلاَّ إِذَا كَانَا بِكِلْمَةٍ فَلاَ",
+   "ajuz": "تُدْغِمْ كَدُنْيَا ثُمَّ صِنْوَانٍ تَلاَ",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "idgh-g"
+   ],
+   "gloss": "Exception: no merging when noon and the letter are in one word, as in دنيا and صنوان.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 12,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "وَالثَّانِ إِدْغَامٌ بِغَيْرِ غُنَّهْ",
+   "ajuz": "فِي اللاَّمِ وَالرَّا ثُمَّ كَرِّرَنَّهْ",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "idgh-n"
+   ],
+   "gloss": "Idgham without ghunnah happens in lam and ra.",
+   "variants": [
+    {
+     "word": "وَالثَّانِ",
+     "other_reading": "وَالثَّاني",
+     "kind": "orthographic",
+     "source": "Quranpedia 21539 (تحفة الأطفال، ت ابن سالم، 2006)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 13,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "وَالثَّالثُ الإِقْلاَبُ عِنْدَ الْبَاءِ",
+   "ajuz": "مِيمًا بِغُنَّةٍ مَعَ الإِخْفَاءِ",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "iqlab"
+   ],
+   "gloss": "Third ruling: iqlab, turning noon into meem with ghunnah before ba, with ikhfa.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 14,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "وَالرَّابِعُ الإِخْفَاءُ عِنْدَ الْفَاضِلِ",
+   "ajuz": "مِنَ الحُرُوفِ وَاجِبٌ لِلْفَاضِلِ",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "ikhfa"
+   ],
+   "gloss": "Fourth ruling: ikhfa (hiding) before the remaining letters is required.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 15,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "فِي خَمْسَةٍ مِنْ بَعْدِ عَشْرٍ رَمْزُهَا",
+   "ajuz": "فِي كِلْمِ هَذَا البَيْتِ قَد ضَّمَّنْتُهَا",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "ikhfa"
+   ],
+   "gloss": "The ikhfa letters are fifteen, coded in the first letters of the next line.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 16,
+   "section": "أحكام النون الساكنة والتنوين",
+   "sadr": "صِفْ ذَا ثَنَا كَمْ جَادَ شَخْصٌ قَدْ سَمَا",
+   "ajuz": "دُمْ طَيِّبًا زِدْ فِي تُقًى ضَعْ ظَالِمَا",
+   "page": 3,
+   "url": "https://shamela.ws/book/9632/3",
+   "rules": [
+    "ikhfa"
+   ],
+   "gloss": "The code line whose word initials give the fifteen ikhfa letters.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 17,
+   "section": "أحكام النون والميم المشددتين",
+   "sadr": "وَغُنَّ مِيمًا ثُمَّ نُونًا شُدِّدَا",
+   "ajuz": "وَسَمِّ كُلاً حَرْفَ غُنَّةٍ بَدَا",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "ghunnah"
+   ],
+   "gloss": "Make ghunnah on doubled meem and noon; each is called a letter of ghunnah.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 18,
+   "section": "أحكام الميم الساكنة",
+   "sadr": "وَالمِيمُ إِنْ تَسْكُنْ تَجِي قَبْلَ الْهِجَا",
+   "ajuz": "لاَ أَلِفٍ لَيِّنَةٍ لِذِي الْحِجَا",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "m-ikhfa",
+    "m-idgham",
+    "m-izhar"
+   ],
+   "gloss": "Meem sakinah comes before any letter except the soft alif.",
+   "variants": [
+    {
+     "word": "لِذِي",
+     "other_reading": "لِذِى",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 19,
+   "section": "أحكام الميم الساكنة",
+   "sadr": "أَحْكَامُهَا ثَلاَثَةٌ لِمَنْ ضَبَطْ",
+   "ajuz": "إِخْفَاءٌ ادْغَامٌ وَإِظْهَارٌ فَقَطْ",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "m-ikhfa",
+    "m-idgham",
+    "m-izhar"
+   ],
+   "gloss": "Meem sakinah has three rulings: ikhfa, idgham and izhar.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 20,
+   "section": "أحكام الميم الساكنة",
+   "sadr": "فَالأَوَّلُ الإِخْفَاءُ عِنْدَ الْبَاءِ",
+   "ajuz": "وَسَمِّهِ الشَّفْوِيَّ لِلْقُرَّاءِ",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "m-ikhfa"
+   ],
+   "gloss": "First: ikhfa before ba, called the labial (shafawi) ikhfa.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 21,
+   "section": "أحكام الميم الساكنة",
+   "sadr": "وَالثَّانِ إِدْغَامٌ بِمِثْلِهَا أَتَى",
+   "ajuz": "وَسَمِّ إدْغَامًا صَغِيرًا يَا فَتَى",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "m-idgham"
+   ],
+   "gloss": "Second: idgham into another meem, called the small idgham.",
+   "variants": [
+    {
+     "word": "وَالثَّانِ",
+     "other_reading": "وَالثّاني",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    },
+    {
+     "word": "وَالثَّانِ",
+     "other_reading": "وَالثّانِيْ",
+     "kind": "orthographic",
+     "source": "Quranpedia 21539 (تحفة الأطفال، ت ابن سالم، 2006)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 22,
+   "section": "أحكام الميم الساكنة",
+   "sadr": "وَالثَّالِثُ الإِظْهَارُ فِي الْبَقِيَّهْ",
+   "ajuz": "مِنْ أَحْرُفٍ وَسَمِّهَا شَفْوِيَّهْ",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "m-izhar"
+   ],
+   "gloss": "Third: izhar before all other letters, called labial izhar.",
+   "variants": [
+    {
+     "word": "الْبَقِيَّهْ",
+     "other_reading": "الْبَقِيَّةْ",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 23,
+   "section": "أحكام الميم الساكنة",
+   "sadr": "وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي",
+   "ajuz": "لِقُرْبِهَا وَلاتِّحَادِ فَاعْرِفِ",
+   "page": 4,
+   "url": "https://shamela.ws/book/9632/4",
+   "rules": [
+    "m-izhar"
+   ],
+   "gloss": "Take care to keep meem clear before waw and fa, because of nearness and shared place.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 24,
+   "section": "حكم لام أل ولام الفعل",
+   "sadr": "لِلاَمِ أَلْ حَالاَنِ قَبْلَ الأَحْرُفِ",
+   "ajuz": "أُولاَهُمَا إِظْهَارُهَا فَلْتَعْرِفِ",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "lam-q",
+    "lam-s"
+   ],
+   "gloss": "The lam of al- has two states; the first is izhar.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 25,
+   "section": "حكم لام أل ولام الفعل",
+   "sadr": "قَبْلَ ارْبَعٍ مَعْ عَشْرَةٍ خُذْ عِلْمَهُ",
+   "ajuz": "مِنِ (ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ)",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "lam-q"
+   ],
+   "gloss": "Izhar before fourteen letters, gathered in ابغ حجك وخف عقيمه.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 26,
+   "section": "حكم لام أل ولام الفعل",
+   "sadr": "ثَانِيهِمَا إِدْغَامُهَا فِي أَرْبَعِ",
+   "ajuz": "وَعَشْرَةٍ أَيْضًا وَرَمْزَهَا فَعِ",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "lam-s"
+   ],
+   "gloss": "The second state: idgham into the other fourteen letters, coded in the next line.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 27,
+   "section": "حكم لام أل ولام الفعل",
+   "sadr": "طِبْ ثُمَّ صِلْ رُحْمًا تَفُزْ ضِفْ ذَا نِعَمْ",
+   "ajuz": "دَعْ سُوءَ ظَنٍّ زُرْ شَرِيفًا لِلْكَرَمْ",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "lam-s"
+   ],
+   "gloss": "The code line whose word initials give the fourteen sun letters.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 28,
+   "section": "حكم لام أل ولام الفعل",
+   "sadr": "وَاللاَّمُ الاُولَى سَمِّهَا قَمَرِيَّهْ",
+   "ajuz": "وَاللاَّمَ الاُخْرَى سَمِّهَا شَمْسِيَّهْ",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "lam-q",
+    "lam-s"
+   ],
+   "gloss": "Call the first lam qamariyyah (moon) and the second shamsiyyah (sun).",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 29,
+   "section": "حكم لام أل ولام الفعل",
+   "sadr": "وأظْهِرَنَّ لاَمَ فِعْلٍ مُطْلَقَا",
+   "ajuz": "فِي نَحْوِ قُلْ نَعَمْ وَقُلْنَا وَالْتَقَى",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [],
+   "gloss": "The lam of a verb is always pronounced clearly, as in قل نعم، قلنا، التقى.",
+   "variants": [
+    {
+     "word": "وأظْهِرَنَّ",
+     "other_reading": "واظْهِرَنْ",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 30,
+   "section": "في المثلين والمتقاربين والمتجانسين",
+   "sadr": "إِنْ فِي الصِّفَاتِ وَالمَخَارِجِ اتَّفَقْ",
+   "ajuz": "حَرْفَانِ فَالْمِثْلاَنِ فِيهِمَا أَحَقْ",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "mithlayn"
+   ],
+   "gloss": "Two letters sharing makhraj and qualities are called mithlan (identical).",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 31,
+   "section": "في المثلين والمتقاربين والمتجانسين",
+   "sadr": "وَإِنْ يَكُونَا مَخْرَجًا تَقَارَبَا",
+   "ajuz": "وَفِي الصِّفَاتِ اخْتَلَفَا يُلَقَّبَا",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "mutaqaribayn"
+   ],
+   "gloss": "Letters close in makhraj and different in qualities are called mutaqaribayn.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 32,
+   "section": "في المثلين والمتقاربين والمتجانسين",
+   "sadr": "مُتَقَارِبَيْنِ أَوْ يَكُونَا اتَّفَقَا",
+   "ajuz": "فِي مَخْرَجٍ دُونَ الصِّفَاتِ حُقِّقَا",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "mutaqaribayn",
+    "mutajanisayn"
+   ],
+   "gloss": "Letters sharing a makhraj but not qualities are called mutajanisayn.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 33,
+   "section": "في المثلين والمتقاربين والمتجانسين",
+   "sadr": "بِالْمُتَجَانِسَيْنِ ثُمَّ إِنْ سَكَنْ",
+   "ajuz": "أَوَّلُ كُلٍّ فَالصَّغِيرَ سَمِّيَنْ",
+   "page": 5,
+   "url": "https://shamela.ws/book/9632/5",
+   "rules": [
+    "mithlayn",
+    "mutaqaribayn",
+    "mutajanisayn"
+   ],
+   "gloss": "If the first of the two letters has sukun, the pair is called saghir (small).",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 34,
+   "section": "في المثلين والمتقاربين والمتجانسين",
+   "sadr": "أَوْ حُرِّكَ الحَرْفَانِ فِي كُلٍّ فَقُلْ",
+   "ajuz": "كُلٌّ كَبِيرٌ وافْهَمَنْهُ بِالْمُثُلْ",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "mithlayn",
+    "mutaqaribayn",
+    "mutajanisayn"
+   ],
+   "gloss": "If both letters are voweled, the pair is called kabir (big).",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 35,
+   "section": "أقسام المد",
+   "sadr": "وَالْمَدُّ أَصْلِيٌّ وَفَرْعِيٌّ لَهُ",
+   "ajuz": "وَسَمِّ أَوَّلاً طَبِيعِيًّا وَهُو",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "tabii"
+   ],
+   "gloss": "Madd is original (asli) or secondary (far'i); the original is called natural (tabi'i).",
+   "variants": [
+    {
+     "word": "أَصْلِيٌّ وَفَرْعِيٌّ",
+     "other_reading": "أَصْلِىُّ وَفَرْعِىٌّ",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 36,
+   "section": "أقسام المد",
+   "sadr": "مَا لاَ تَوَقُّفٌ لَهُ عَلَى سَبَبْ",
+   "ajuz": "وَلا بِدُونِهِ الحُرُوفُ تُجْتَلَبْ",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "tabii"
+   ],
+   "gloss": "Natural madd needs no cause, and the letter cannot be said without it.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 37,
+   "section": "أقسام المد",
+   "sadr": "بلْ أَيُّ حَرْفٍ غَيْرُ هَمْزٍ أَوْ سُكُونْ",
+   "ajuz": "جَا بَعْدَ مَدٍّ فَالطَّبِيعِيَّ يَكُونْ",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "tabii"
+   ],
+   "gloss": "Any madd letter not followed by hamza or sukun is natural madd.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 38,
+   "section": "أقسام المد",
+   "sadr": "وَالآخَرُ الْفَرْعِيُّ مَوْقُوفٌ عَلَى",
+   "ajuz": "سَبَبْ كَهَمْزٍ أَوْ سُكُونٍ مُسْجَلا",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "muttasil",
+    "munfasil",
+    "badal",
+    "arid",
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Secondary madd depends on a cause: a hamza or a sukun.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 39,
+   "section": "أقسام المد",
+   "sadr": "حُرُوفُهُ ثَلاَثَةٌ فَعِيهَا",
+   "ajuz": "مِنْ لَفْظِ (وَايٍ) وَهْيَ فِي نُوحِيهَا",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "tabii"
+   ],
+   "gloss": "The three madd letters are in the word واي, as found in نوحيها.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 40,
+   "section": "أقسام المد",
+   "sadr": "وَالكَسْرُ قَبْلَ الْيَا وَقَبْلَ الْواوِ ضَمْ",
+   "ajuz": "شَرْطٌ وَفَتْحٌ قَبْلَ أَلْفٍ يُلْتَزَمْ",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "tabii"
+   ],
+   "gloss": "Conditions: kasra before ya, damma before waw, fatha before alif.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 41,
+   "section": "أقسام المد",
+   "sadr": "وَاللِّينُ مِنْهَا الْيَا وَوَاوٌ سُكِّنَا",
+   "ajuz": "إِنِ انْفِتَاحٌ قَبْلَ كُلٍّ أُعْلِنَا",
+   "page": 6,
+   "url": "https://shamela.ws/book/9632/6",
+   "rules": [
+    "lin"
+   ],
+   "gloss": "The soft (lin) letters are ya and waw with sukun after a fatha.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 42,
+   "section": "أحكام المد",
+   "sadr": "لِلْمَدِّ أَحْكَامٌ ثَلاَثَةٌ تَدُومْ",
+   "ajuz": "وَهْيَ الْوُجُوبُ وَالْجَوَازُ وَاللُّزُومْ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "muttasil",
+    "munfasil",
+    "arid",
+    "badal",
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Madd has three rulings: obligatory, permitted and necessary.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 43,
+   "section": "أحكام المد",
+   "sadr": "فَوَاجِبٌ إِنْ جَاءَ هَمْزٌ بَعْدَ مَدْ",
+   "ajuz": "فِي كِلْمَةٍ وَذَا بِمُتَّصِلٍ يُعَدْ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "muttasil"
+   ],
+   "gloss": "Obligatory: hamza after a madd letter in the same word; called muttasil (joined).",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 44,
+   "section": "أحكام المد",
+   "sadr": "وَجَائِزٌ مَدٌّ وَقَصْرٌ إِنْ فُصِلْ",
+   "ajuz": "كُلٌّ بِكِلْمَةٍ وَهَذَا المُنْفَصِلْ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "munfasil"
+   ],
+   "gloss": "Permitted: madd and hamza in separate words, lengthened or shortened; called munfasil.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 45,
+   "section": "أحكام المد",
+   "sadr": "وَمِثْلُ ذَا إِنْ عَرَضَ السُّكُونُ",
+   "ajuz": "وَقْفًا كَتَعْلَمُونَ نَسْتَعِينُ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "arid"
+   ],
+   "gloss": "Also permitted: a sukun that appears only on stopping, as in تعلمون، نستعين.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 46,
+   "section": "أحكام المد",
+   "sadr": "أَوْ قُدِّمَ الْهَمْزُ عَلَى المَدِّ وَذَا",
+   "ajuz": "بَدَلْ كَآمَنُوا وَإِيمَانًا خُذَا",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "badal"
+   ],
+   "gloss": "Also permitted: hamza before the madd letter, called badal, as in آمنوا، إيمانا.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 47,
+   "section": "أحكام المد",
+   "sadr": "وَلاَزِمٌ إِنِ السُّكُونُ أُصِّلاَ",
+   "ajuz": "وَصْلاً وَوَقْفًا بَعْدَ مَدٍّ طُوِّلاَ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Necessary (lazim): a fixed sukun after the madd letter in joining and stopping; lengthen it.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 48,
+   "section": "أقسام المد اللازم",
+   "sadr": "أَقْسَامُ لاَزِمٍ لَدَيْهِمْ أَرْبَعَهْ",
+   "ajuz": "وَتِلْكَ كِلْمِيٌّ وَحَرْفِيٌّ مَعَهْ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Lazim madd has four kinds: word (kalimi) and letter (harfi).",
+   "variants": [
+    {
+     "word": "أَرْبَعَهْ",
+     "other_reading": "أَرْبَعَةْ",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 49,
+   "section": "أقسام المد اللازم",
+   "sadr": "كِلاَهُمَا مُخَفَّفٌ مُثَقَّلُ",
+   "ajuz": "فَهَذِهِ أَرْبَعَةٌ تُفَصَّلُ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Each is either light (mukhaffaf) or heavy (muthaqqal), making four.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 50,
+   "section": "أقسام المد اللازم",
+   "sadr": "فَإِنْ بِكِلْمَةٍ سُكُونٌ اجْتَمَعْ",
+   "ajuz": "مَعْ حَرْفِ مَدٍّ فَهْوَ كِلْمِيٌّ وَقَعْ",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "lazim-k"
+   ],
+   "gloss": "Kalimi: the sukun meets a madd letter inside a word.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 51,
+   "section": "أقسام المد اللازم",
+   "sadr": "أَوْ فِي ثُلاَثِيِّ الحُرُوفِ وُجِدَا",
+   "ajuz": "وَالمَدُّ وَسْطُهُ فَحَرْفِيٌّ بَدَا",
+   "page": 7,
+   "url": "https://shamela.ws/book/9632/7",
+   "rules": [
+    "lazim-h"
+   ],
+   "gloss": "Harfi: in a three-letter letter-name whose middle letter is a madd letter.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 52,
+   "section": "أقسام المد اللازم",
+   "sadr": "كِلاَهُمَا مُثَقَّلٌ إِنْ أُدْغِمَا",
+   "ajuz": "مَخَفَّفٌ كُلٌّ إِذَا لَمْ يُدْغَمَا",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Heavy if the sukun is merged (idgham), light if it is not.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 53,
+   "section": "أقسام المد اللازم",
+   "sadr": "وَاللاَّزِمُ الْحَرْفِيُّ أَوَّلَ السُّوَرْ",
+   "ajuz": "وُجُودُهُ وَفِي ثَمَانٍ انْحَصَرْ",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "lazim-h"
+   ],
+   "gloss": "Harfi lazim occurs at the openings of surahs, in eight letters.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 54,
+   "section": "أقسام المد اللازم",
+   "sadr": "يَجْمَعُهَا حُرُوفُ (كَمْ عَسَلْ نَقَصْ)",
+   "ajuz": "وَعَيْنُ ذُو وَجْهَيْنِ والطُّولُ أَخَصْ",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "lazim-h"
+   ],
+   "gloss": "The eight letters of كم عسل نقص; ayn has two ways, the long one preferred.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 55,
+   "section": "أقسام المد اللازم",
+   "sadr": "وَمَا سِوَى الحَرْفِ الثُّلاَثِي لاَ أَلِفْ",
+   "ajuz": "فَمَدُّهُ مَدًّا طَبِيعِيًّا أُلِفْ",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "lazim-h",
+    "tabii"
+   ],
+   "gloss": "Letter-names other than three-letter ones (and not alif) get natural madd.",
+   "variants": [
+    {
+     "word": "سِوَى",
+     "other_reading": "سِوَي",
+     "kind": "orthographic",
+     "source": "Quranpedia book 18289 (الشرح المبسط المفيد لما تضمنه نظم الجمزورية)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 56,
+   "section": "أقسام المد اللازم",
+   "sadr": "وَذَاكَ أَيْضًا فِي فَوَاتِحِ السُّوَرْ",
+   "ajuz": "فِي لَفْظِ (حَيٍّ طَاهِرٍ) قَدِ انْحَصَرْ",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "tabii"
+   ],
+   "gloss": "These two-letter openings are the letters of حي طاهر.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 57,
+   "section": "أقسام المد اللازم",
+   "sadr": "وَيَجْمَعُ الْفَوَاتِحَ الأَرْبَعْ عَشَرْ",
+   "ajuz": "(صِلْهُ سُحَيْرًا مَنْ قَطَعْكَ) ذَا اشْتَهَرْ",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "lazim-h"
+   ],
+   "gloss": "All fourteen opening letters are gathered in صله سحيرا من قطعك.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 58,
+   "section": "الخاتمة",
+   "sadr": "وَتَمَّ ذَا النَّظْمُ بِحَمْدِ اللَّهِ",
+   "ajuz": "عَلَى تَمَامِهِ بِلاَ تَنَاهِي",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "The poem is complete, with endless praise to Allah.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 59,
+   "section": "الخاتمة",
+   "sadr": "أَبْيَاتُهُ نَدٌّ بَداَ لِذِ النُّهَى",
+   "ajuz": "تَارِيخُهَا بُشْرَى لِمَنْ يُتْقِنُهَا",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Gives the line count and the date of composition in abjad numbers.",
+   "variants": [
+    {
+     "word": "لِذِ",
+     "other_reading": "لِذِيْ",
+     "kind": "orthographic",
+     "source": "Quranpedia 21539 (تحفة الأطفال، ت ابن سالم، 2006)"
+    },
+    {
+     "word": "تَارِيخُهَا",
+     "other_reading": "تَارِيخُهُ",
+     "kind": "lexical",
+     "source": "Quranpedia 21539 (تحفة الأطفال، ت ابن سالم، 2006)"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 60,
+   "section": "الخاتمة",
+   "sadr": "ثُمَّ الصَّلاَةُ وَالسَّلاَمُ أَبَدَا",
+   "ajuz": "عَلَى خِتَامِ الأَنْبِيَاءِ أَحْمَدَا",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Ends with blessings and peace on the Prophet Ahmad, seal of the prophets.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "tuhfa",
+   "n": 61,
+   "section": "الخاتمة",
+   "sadr": "وَالآلِ وَالصَّحْبِ وَكُلِّ تَابِعِ",
+   "ajuz": "وَكُلِّ قَارِئٍ وكُلِّ سَامِعِ",
+   "page": 8,
+   "url": "https://shamela.ws/book/9632/8",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "And on his family, companions, followers, every reciter and every listener.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 1,
+   "section": "مقدمة الناظم",
+   "sadr": "يَقُولُ رَاجِي عَفْوِ رَبٍّ سَامِعِ",
+   "ajuz": "مُحَمَّدُ ابْنُ الجَزَرِيِّ الشَّافِعِي",
+   "page": 51,
+   "url": "https://shamela.ws/book/581/51",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "The author names himself: Muhammad Ibn al-Jazari al-Shafi'i, hoping for his Lord's pardon.",
+   "variants": [
+    {
+     "word": "ابْنُ",
+     "other_reading": "بْنُ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 2,
+   "section": "مقدمة الناظم",
+   "sadr": "الحَمْدُ لِلَّهِ وَصَلَّى اللَّهُ",
+   "ajuz": "عَلَى نَبِيِّهِ وَمُصْطَفَاهُ",
+   "page": 51,
+   "url": "https://shamela.ws/book/581/51",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Praise of Allah and blessings on His chosen Prophet.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 3,
+   "section": "مقدمة الناظم",
+   "sadr": "مُحَمَّدٍ وَآلِهِ وَصَحْبِهِ",
+   "ajuz": "وَمُقْرِئِ القُرْآنِ مَعْ مُحِبِّهِ",
+   "page": 51,
+   "url": "https://shamela.ws/book/581/51",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Blessings on Muhammad, his family, companions, the Quran teacher and those who love him.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 4,
+   "section": "مقدمة الناظم",
+   "sadr": "وَبَعْدُ: إِنَّ هَذِهِ «مُقَدِّمَهْ",
+   "ajuz": "فِيمَا عَلَى قَارِئِهِ أَنْ يَعْلَمَهْ»",
+   "page": 52,
+   "url": "https://shamela.ws/book/581/52",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "This is an introduction to what the reciter must know.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 5,
+   "section": "مقدمة الناظم",
+   "sadr": "إِذْ وَاجِبٌ عَلَيْهِمُ مُحَتَّمُ",
+   "ajuz": "قَبْلَ الشُّرُوعِ أَوَّلاً أَنْ يَعْلَمُوا",
+   "page": 52,
+   "url": "https://shamela.ws/book/581/52",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "It is a duty for reciters to learn these things before they start.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 6,
+   "section": "مقدمة الناظم",
+   "sadr": "مَخَارِجَ الحُرُوفِ وَالصِّفَاتِ",
+   "ajuz": "لِيَلْفِظُوا بِأَفْصَحِ اللُّغَاتِ",
+   "page": 52,
+   "url": "https://shamela.ws/book/581/52",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "They must know the makharij and sifat to speak in the most eloquent way.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 7,
+   "section": "مقدمة الناظم",
+   "sadr": "مُحَرِّرِي التَّجْوِيدِ وَالمَوَاقِفِ",
+   "ajuz": "وَمَا الَّذِي رُسِمَ فِي المَصَاحِفِ",
+   "page": 52,
+   "url": "https://shamela.ws/book/581/52",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "They must master tajweed, the stops, and how words are written in the mushaf.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 8,
+   "section": "مقدمة الناظم",
+   "sadr": "مِنْ كُلِّ مَقْطُوعٍ وَمَوْصُولٍ بِهَا",
+   "ajuz": "وَتَاءِ أُنْثَى لَمْ تَكُنْ تُكْتَبْ بِـ «هَا»",
+   "page": 53,
+   "url": "https://shamela.ws/book/581/53",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Including cut and joined words, and the feminine ta not written as ha.",
+   "variants": [
+    {
+     "word": "بِهَا",
+     "other_reading": "بتا",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 9,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "مَخَارِجُ الحُرُوفِ سَبْعَةَ عَشَرْ",
+   "ajuz": "عَلَى الَّذِي يَخْتَارُهُ مَنِ اخْتَبَرْ",
+   "page": 54,
+   "url": "https://shamela.ws/book/581/54",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "There are seventeen makharij, on the view chosen by the experts.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 10,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "فَأَلِفُ الجَوْفِ وَأُخْتَاهَا وَهِي",
+   "ajuz": "حُرُوفُ مَدٍّ لِلْهَوَاءِ تَنْتَهِي",
+   "page": 54,
+   "url": "https://shamela.ws/book/581/54",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Alif and its two sisters (madd letters) come from the jawf and end with the air.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 11,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "ثُمَّ لِأَقْصَى الحَلْقِ: هَمْزٌ هَاءُ",
+   "ajuz": "ثُمَّ لِوَسْطِهِ: فَعَيْنٌ حَاءُ",
+   "page": 54,
+   "url": "https://shamela.ws/book/581/54",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Deepest throat: hamza and ha; middle throat: ayn and ha.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 12,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "أَدْنَاهُ: غَيْنٌ خَاؤُهَا، وَالقَافُ",
+   "ajuz": "أَقْصَى اللِّسَانِ فَوْقُ، ثُمَّ الكَافُ",
+   "page": 54,
+   "url": "https://shamela.ws/book/581/54",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Nearest throat: ghayn and kha; qaf from the back of the tongue, then kaf.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 13,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "أَسْفَلُ، وَالوَسْطُ: فَجِيمُ الشِّينُ يَا",
+   "ajuz": "وَالضَّادُ: مِنْ حَافَتِهِ إِذْ وَلِيَا",
+   "page": 54,
+   "url": "https://shamela.ws/book/581/54",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Kaf lower; jeem, sheen, ya from the middle; dad from the tongue's side.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 14,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "لَاضْرَاسَ مِنْ أَيْسَرَ أَوْ يُمْنَاهَا",
+   "ajuz": "وَاللَّامُ: أَدْنَاهَا لِمُنْتَهَاهَا",
+   "page": 55,
+   "url": "https://shamela.ws/book/581/55",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Dad touches the molars, left or right; lam from the edge to the tip.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 15,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "وَالنُّونُ: مِنْ طَرَفِهِ تَحْتُ اجْعَلُوا",
+   "ajuz": "وَالرَّا: يُدَانِيهِ لِظَهْرٍ أَدْخَلُ",
+   "page": 55,
+   "url": "https://shamela.ws/book/581/55",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Noon from the tip, below lam; ra near it, closer to the back of the tongue.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 16,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "وَالطَّاءُ وَالدَّالُ وَتَا: مِنْهُ وَمِنْ",
+   "ajuz": "عُلْيَا الثَّنَايَا، وَالصَّفِيرُ: مُسْتَكِنْ",
+   "page": 55,
+   "url": "https://shamela.ws/book/581/55",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Ta, dal, ta from the tip with the upper incisors; the whistling letters rest...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 17,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "مِنْهُ وَمِنْ فَوْقِ الثَّنَايَا السُّفْلَى",
+   "ajuz": "وَالظَّاءُ وَالذَّالُ وَثَا: لِلْعُلْيَا",
+   "page": 56,
+   "url": "https://shamela.ws/book/581/56",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "...from the tip above the lower incisors; tha, dhal, tha toward the upper ones.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 18,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "مِنْ طَرَفَيْهِمَا، وَمِنْ بَطْنِ الشَّفَهْ",
+   "ajuz": "فَالْفَا مَعَ اطْرَافِ الثَّنَايَا المُشْرِفَهْ",
+   "page": 56,
+   "url": "https://shamela.ws/book/581/56",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "From the two tips; fa from inside the lower lip with the edges of the upper incisors.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 19,
+   "section": "في معرفة مخارج الحروف",
+   "sadr": "لِلشَّفَتَيْنِ: الوَاوُ بَاءٌ مِيمُ",
+   "ajuz": "وَغُنَّةٌ: مَخْرَجُهَا الخَيْشُومُ",
+   "page": 56,
+   "url": "https://shamela.ws/book/581/56",
+   "rules": [
+    "makharij"
+   ],
+   "gloss": "Waw, ba, meem from the two lips; ghunnah comes from the nose.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 20,
+   "section": "في صفات الحروف",
+   "sadr": "صِفَاتُهَا: جَهْرٌ، وَرِخْوٌ، مُسْتَفِلْ",
+   "ajuz": "مُنْفَتِحٌ، مُصْمَتَةٌ، وَالضِّدَّ: قُلْ",
+   "page": 57,
+   "url": "https://shamela.ws/book/581/57",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Qualities: jahr, rikhwah, istifal, infitah, ismat, and their opposites.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 21,
+   "section": "في صفات الحروف",
+   "sadr": "مَهْمُوسُهَا: «فَحَثَّهُ شَخْصٌ سَكَتْ»",
+   "ajuz": "شَدِيدُهَا: لَفْظُ «أَجِدْ قَطٍ بَكَتْ»",
+   "page": 57,
+   "url": "https://shamela.ws/book/581/57",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Hams letters: فحثه شخص سكت; shiddah letters: أجد قط بكت.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 22,
+   "section": "في صفات الحروف",
+   "sadr": "وَبَيْنَ رِخْوٍ وَالشَّدِيدِ: «لِنْ عُمَرْ»",
+   "ajuz": "وَسَبْعُ عُلْوٍ: «خُصَّ ضَغْطٍ قِظْ» حَصَرْ",
+   "page": 57,
+   "url": "https://shamela.ws/book/581/57",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Between soft and strong: لن عمر; the seven high letters: خص ضغط قظ.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 23,
+   "section": "في صفات الحروف",
+   "sadr": "وَصَادُ ضَادٌ طَاءُ ظَاءٌ: مُطْبَقَهْ",
+   "ajuz": "وَ «فَرَّ مِنْ لُبِّ»: الحُرُوفُ المُذْلَقَهْ",
+   "page": 58,
+   "url": "https://shamela.ws/book/581/58",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Itbaq: sad, dad, ta, za; idhlaq letters: فر من لب.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 24,
+   "section": "في صفات الحروف",
+   "sadr": "صَفِيرُهَا: صَادٌ وَزَايٌ سِينُ",
+   "ajuz": "قَلْقَلَةٌ: «قُطْبُ جَدٍ»، وَاللِّينُ",
+   "page": 58,
+   "url": "https://shamela.ws/book/581/58",
+   "rules": [
+    "sifat",
+    "qal-s"
+   ],
+   "gloss": "Safir: sad, zay, seen; qalqalah: قطب جد; and lin...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 25,
+   "section": "في صفات الحروف",
+   "sadr": "وَاوٌ وَيَاءٌ سُكِّنَا وَانْفَتَحَا",
+   "ajuz": "قَبْلَهُمَا، وَالِانْحِرَافُ صُحِّحَا",
+   "page": 58,
+   "url": "https://shamela.ws/book/581/58",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "...is waw and ya with sukun after a fatha; inhiraf is true of...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 26,
+   "section": "في صفات الحروف",
+   "sadr": "فِي اللَّامِ وَالرَّا، وَبِتَكْرِيرٍ جُعِلْ",
+   "ajuz": "وَلِلتَّفَشِّي: الشِّينُ، ضَاداً: اسْتَطِلْ",
+   "page": 59,
+   "url": "https://shamela.ws/book/581/59",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "...lam and ra; ra has takrir; sheen has tafashshi; dad has istitalah.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 27,
+   "section": "في التجويد",
+   "sadr": "وَالأَخْذُ بِالتَّجْوِيدِ حَتْمٌ لَازِمُ",
+   "ajuz": "مَنْ لَمْ يُصَحِّحِ القُرَانَ آثِمُ",
+   "page": 60,
+   "url": "https://shamela.ws/book/581/60",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Applying tajweed is a firm duty; whoever does not correct his Quran is sinful.",
+   "variants": [
+    {
+     "word": "يُصَحِّحِ القُرَانَ",
+     "other_reading": "يُجَوِّدِ الْقُرَآنَ",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 28,
+   "section": "في التجويد",
+   "sadr": "لِأَنَّهُ بِهِ الإِلَهُ أَنْزَلَا",
+   "ajuz": "وَهَكَذَا مِنْهُ إِلَيْنَا وَصَلَا",
+   "page": 60,
+   "url": "https://shamela.ws/book/581/60",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Because Allah revealed it with tajweed, and so it reached us.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 29,
+   "section": "في التجويد",
+   "sadr": "وَهُوَ أَيْضاً حِلْيَةُ التِّلَاوَةِ",
+   "ajuz": "وَزِينَةُ الأَدَاءِ وَالقِرَاءَةِ",
+   "page": 60,
+   "url": "https://shamela.ws/book/581/60",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Tajweed is also the ornament of recitation and the beauty of performance.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 30,
+   "section": "في التجويد",
+   "sadr": "وَهُوَ: «إِعْطَاءُ الحُرُوفِ حَقَّهَا",
+   "ajuz": "مِنْ صِفَةٍ لَهَا وَمُسْتَحَقَّهَا",
+   "page": 61,
+   "url": "https://shamela.ws/book/581/61",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Definition: giving each letter its right of qualities, inherent and resulting...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 31,
+   "section": "في التجويد",
+   "sadr": "وَرَدُّ كُلِّ وَاحِدٍ لِأَصْلِهِ",
+   "ajuz": "وَاللَّفْظُ فِي نَظِيرِهِ كَمِثْلِهِ",
+   "page": 61,
+   "url": "https://shamela.ws/book/581/61",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "...returning each letter to its makhraj, and saying it the same way wherever it occurs...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 32,
+   "section": "في التجويد",
+   "sadr": "مُكَمَّلاً مِنْ غَيْرِ مَا تَكَلُّفِ",
+   "ajuz": "بِاللُّطْفِ فِي النُّطْقِ بِلَا تَعَسُّفِ»",
+   "page": 61,
+   "url": "https://shamela.ws/book/581/61",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "...complete, without strain, gently, without excess.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 33,
+   "section": "في التجويد",
+   "sadr": "وَلَيْسَ بَيْنَهُ وَبَيْنَ تَرْكِهِ",
+   "ajuz": "إِلَّا رِيَاضَةُ امْرِئٍ بِفَكِّهِ",
+   "page": 61,
+   "url": "https://shamela.ws/book/581/61",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Between knowing it and leaving it there is only practice with the jaw.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 34,
+   "section": "في الترقيقات",
+   "sadr": "فَرَقِّقَنْ مُسْتَفِلاً مِنْ أَحْرُفِ",
+   "ajuz": "وَحَاذِرَنْ تَفْخِيمَ لَفْظِ الأَلِفِ",
+   "page": 62,
+   "url": "https://shamela.ws/book/581/62",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Make low letters light, and avoid making alif heavy.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 35,
+   "section": "في الترقيقات",
+   "sadr": "وَهَمْزَ: «أَلْحَمْدُ، أَعُوذُ، إِهْدِنَا",
+   "ajuz": "أَللَّهِ» ثُمَّ لَامَ: «لِلَّهِ، لَنَا",
+   "page": 63,
+   "url": "https://shamela.ws/book/581/63",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Keep light the hamza of الحمد، أعوذ، اهدنا، الله and the lam of لله، لنا...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 36,
+   "section": "في الترقيقات",
+   "sadr": "وَلْيَتَلَطَّفْ، وَعَلَى اللَّهِ، وَلَا الضْ»",
+   "ajuz": "وَالمِيمَ مِنْ «مَخْمَصَةٍ» وَمِنْ «مَرَضْ»",
+   "page": 63,
+   "url": "https://shamela.ws/book/581/63",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "...وليتلطف، وعلى الله، ولا الضالين, and meem in مخمصة and مرض.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 37,
+   "section": "في الترقيقات",
+   "sadr": "وَبَاءَ: «بَرْقٍ، بَاطِلٍ، بِهِمْ، بِذِي»",
+   "ajuz": "وَاحْرِصْ عَلَى الشِّدَّةِ وَالجَهْرِ الَّذِي",
+   "page": 64,
+   "url": "https://shamela.ws/book/581/64",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Keep ba light in برق، باطل، بهم، بذي; keep its shiddah and jahr...",
+   "variants": [
+    {
+     "word": "وَاحْرِصْ",
+     "other_reading": "فاحرص",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 38,
+   "section": "في الترقيقات",
+   "sadr": "فِيهَا وَفِي الجِيمِ؛ كَـ «حُبِّ، الصَّبْرِ",
+   "ajuz": "رَبْوَةٍ، اجْتُثَّتْ، وَحَجِّ، الفَجْرِ»",
+   "page": 64,
+   "url": "https://shamela.ws/book/581/64",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "...in ba and jeem, as in حب، الصبر، ربوة، اجتثت، حج، الفجر.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 39,
+   "section": "في الترقيقات",
+   "sadr": "وَبَيِّنَنْ مُقَلْقَلاً إِنْ سَكَنَا",
+   "ajuz": "وَإِنْ يَكُنْ فِي الوَقْفِ كَانَ أَبْيَنَا",
+   "page": 64,
+   "url": "https://shamela.ws/book/581/64",
+   "rules": [
+    "qal-s",
+    "qal-k"
+   ],
+   "gloss": "Make qalqalah clear on a sakin qalqalah letter, clearer when stopping.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 40,
+   "section": "في الترقيقات",
+   "sadr": "وَحَاءَ: «حَصْحَصَ، أَحَطْتُ، الحَقُّ»",
+   "ajuz": "وَسِينَ: «مُسْتَقِيمِ، يَسْطُو، يَسْقُو»",
+   "page": 65,
+   "url": "https://shamela.ws/book/581/65",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Make ha clear in حصحص، أحطت، الحق and seen in مستقيم، يسطو، يسقو.",
+   "variants": [
+    {
+     "word": "يَسْطُو يَسْقُو",
+     "other_reading": "يَسْطُوا يَسْقُوا",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 41,
+   "section": "في الراءات",
+   "sadr": "وَرَقِّقِ الرَّاءَ إِذَا مَا كُسِرَتْ",
+   "ajuz": "كَذَاكَ بَعْدَ الكَسْرِ حَيْثُ سَكَنَتْ",
+   "page": 66,
+   "url": "https://shamela.ws/book/581/66",
+   "rules": [
+    "ra-l"
+   ],
+   "gloss": "Make ra light when it has kasra, or has sukun after a kasra...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 42,
+   "section": "في الراءات",
+   "sadr": "إِنْ لَمْ تَكُنْ مِنْ قَبْلِ حَرْفِ اسْتِعْلَا",
+   "ajuz": "أَوْ كَانَتِ الكَسْرَةُ لَيْسَتْ أَصْلَا",
+   "page": 66,
+   "url": "https://shamela.ws/book/581/66",
+   "rules": [
+    "ra-l",
+    "ra-h"
+   ],
+   "gloss": "...unless a high letter follows it, or the kasra before it is not original.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 43,
+   "section": "في الراءات",
+   "sadr": "وَالخُلْفُ فِي «فِرْقٍ»؛ لِكَسْرٍ يُوجَدُ",
+   "ajuz": "وَأَخْفِ تَكْرِيراً إِذَا تُشَدَّدُ",
+   "page": 66,
+   "url": "https://shamela.ws/book/581/66",
+   "rules": [
+    "ra-l",
+    "ra-h",
+    "sifat"
+   ],
+   "gloss": "Both ways are allowed in فرق; and hide the takrir of a doubled ra.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 44,
+   "section": "في اللامات",
+   "sadr": "وَفَخِّمِ اللَّامَ مِنِ اسْمِ «اللَّهِ»",
+   "ajuz": "عَنْ فَتْحٍ اَوْ ضَمٍّ كَـ «عَبْدُ اللَّهِ»",
+   "page": 67,
+   "url": "https://shamela.ws/book/581/67",
+   "rules": [
+    "lam-jh",
+    "lam-jl"
+   ],
+   "gloss": "Make the lam of Allah heavy after a fatha or damma, as in عبد الله.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 45,
+   "section": "في التحذيرات",
+   "sadr": "وَحَرْفَ الِاسْتِعْلَاءِ فَخِّمْ، وَاخْصُصَا",
+   "ajuz": "لِاطْبَاقَ أَقْوَى؛ نَحْوُ: «قَالَ» وَ «العَصَا»",
+   "page": 68,
+   "url": "https://shamela.ws/book/581/68",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Make the high letters heavy, the itbaq letters most of all, as in قال and العصا.",
+   "variants": [
+    {
+     "word": "لِاطْبَاقَ",
+     "other_reading": "الاِطْبَاقَ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 46,
+   "section": "في التحذيرات",
+   "sadr": "وَبَيِّنِ الإِطْبَاقَ مِنْ «أَحَطْتُ» مَعْ",
+   "ajuz": "«بَسَطْتَ»، وَالخُلْفُ بِـ «نَخْلُقْكُمْ» وَقَعْ",
+   "page": 68,
+   "url": "https://shamela.ws/book/581/68",
+   "rules": [
+    "sifat",
+    "mutaqaribayn"
+   ],
+   "gloss": "Keep itbaq in أحطت and بسطت; نخلقكم has two ways.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 47,
+   "section": "في التحذيرات",
+   "sadr": "وَاحْرِصْ عَلَى السُّكُونِ فِي «جَعَلْنَا»",
+   "ajuz": "«أَنْعَمْتَ» وَ «المَغْضُوبِ» مَعْ «ضَلَلْنَا»",
+   "page": 68,
+   "url": "https://shamela.ws/book/581/68",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Keep the sukun clear in جعلنا، أنعمت، المغضوب، ضللنا.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 48,
+   "section": "في التحذيرات",
+   "sadr": "وَخَلِّصِ انْفِتَاحَ «مَحْذُوراً، عَسَى»",
+   "ajuz": "خَوْفَ اشْتِبَاهِهِ بِـ «مَحْظُوراً، عَصَى»",
+   "page": 69,
+   "url": "https://shamela.ws/book/581/69",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Keep the open sound in محذورا، عسى so they are not confused with محظورا، عصى.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 49,
+   "section": "في التحذيرات",
+   "sadr": "وَرَاعِ شِدَّةً بِكَافٍ وَبِتَا",
+   "ajuz": "كَـ «شِرْكِكُمْ» وَ «تَتَوَفَّى، فِتْنَتَا»",
+   "page": 69,
+   "url": "https://shamela.ws/book/581/69",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Keep the shiddah in kaf and ta, as in شرككم، تتوفى، فتنة.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 50,
+   "section": "في التحذيرات",
+   "sadr": "وَأَوَّلَيْ مِثْلٍ وَجِنْسٍ إِنْ سَكَنْ",
+   "ajuz": "أَدْغِمْ؛ كَـ «قُلْ رَبِّ» وَ «بَلْ لَا»، وَأَبِنْ",
+   "page": 69,
+   "url": "https://shamela.ws/book/581/69",
+   "rules": [
+    "mithlayn",
+    "mutaqaribayn",
+    "mutajanisayn"
+   ],
+   "gloss": "Merge a sakin first letter into an identical or same-kind letter, as in قل رب، بل لا...",
+   "variants": [
+    {
+     "word": "وَأَوَّلَيْ",
+     "other_reading": "وَأَوَّلَى",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 51,
+   "section": "في التحذيرات",
+   "sadr": "«فِي يَوْمِ» مَعْ «قَالُوا وَهُمْ» وَ «قُلْ نَعَمْ»",
+   "ajuz": "«سَبِّحْهُ، لَا تُزِغْ قُلُوبَ، فَالْتَقَمْ»",
+   "page": 69,
+   "url": "https://shamela.ws/book/581/69",
+   "rules": [
+    "mithlayn",
+    "mutaqaribayn"
+   ],
+   "gloss": "...but keep clear in في يوم، قالوا وهم، قل نعم، سبحه، لا تزغ قلوب، فالتقم.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 52,
+   "section": "في الظاءات",
+   "sadr": "وَالضَّادَ بِاسْتِطَالَةٍ وَمَخْرَجِ",
+   "ajuz": "مَيِّزْ مِنَ الظَّاءِ، وَكُلُّهَا تَجِي",
+   "page": 70,
+   "url": "https://shamela.ws/book/581/70",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "Tell dad from za by istitalah and makhraj; all za words come in...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 53,
+   "section": "في الظاءات",
+   "sadr": "فِي «الظَّعْنِ، ظِلُّ، الظُّهْرِ، عُظْمُ، الحِفْظِ",
+   "ajuz": "أَيْقِظْ، وَأَنْظِرْ، عَظْمَ، ظَهْرِ، اللَّفْظِ",
+   "page": 70,
+   "url": "https://shamela.ws/book/581/70",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "The list of za words begins: الظعن، ظل، الظهر، عظم، الحفظ، أيقظ...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 54,
+   "section": "في الظاءات",
+   "sadr": "ظَاهِرْ، لَظَى، شُوَاظُ، كَظْمٍ، ظَلَمَا",
+   "ajuz": "أُغْلُظْ، ظَلَامَ، ظُفْرٍ، انْتَظِرْ، ظَمَا",
+   "page": 71,
+   "url": "https://shamela.ws/book/581/71",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "The za word list continues: ظاهر، لظى، شواظ، كظم، ظلما...",
+   "variants": [
+    {
+     "word": "أُغْلُظْ",
+     "other_reading": "اُغْلُظْ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 55,
+   "section": "في الظاءات",
+   "sadr": "أَظْفَرَ، ظَنّاً كَيْفَ جَا، وَعِظْ» سِوَى",
+   "ajuz": "«عِضِينَ»، «ظَلَّ»: النَّحْلِ، زُخْرُفٍ؛ سَوَا",
+   "page": 71,
+   "url": "https://shamela.ws/book/581/71",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "Continues, except عضين; ظل in al-Nahl and al-Zukhruf.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 56,
+   "section": "في الظاءات",
+   "sadr": "وَ «ظَلْتَ، ظَلْتُمْ» وَبِرُومٍ: «ظَلُّوا»",
+   "ajuz": "كَالحِجْرِ: «ظَلَّتْ» شُعَرَا: «نَظَلُّ»",
+   "page": 72,
+   "url": "https://shamela.ws/book/581/72",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "Continues: ظلت، ظلتم، ظلوا in al-Rum, ظلت in al-Hijr, نظل in al-Shu'ara.",
+   "variants": [
+    {
+     "word": "وَظَلْتَ",
+     "other_reading": "فظلت",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 57,
+   "section": "في الظاءات",
+   "sadr": "«يَظْلَلْنَ، مَحْظُوراً» مَعَ «المُحْتَظِرِ»",
+   "ajuz": "وَ «كُنْتَ فَظّاً» وَجَمِيعَ «النَّظَرِ»",
+   "page": 72,
+   "url": "https://shamela.ws/book/581/72",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "Continues: يظللن، محظورا، المحتظر، فظا, and every النظر...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 58,
+   "section": "في الظاءات",
+   "sadr": "إِلَّا بِـ «وَيْلٌ» «هَلْ» وَأُولَى «نَاضِرَهْ»",
+   "ajuz": "وَ «الغَيْظُ» لَا الرَّعْدُ وَهُودٌ؛ قَاصِرَهْ",
+   "page": 73,
+   "url": "https://shamela.ws/book/581/73",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "...except in ويل and هل and the first ناضرة; الغيظ except in al-Ra'd and Hud.",
+   "variants": [
+    {
+     "word": "هَلْ",
+     "other_reading": "وهل",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 59,
+   "section": "في الظاءات",
+   "sadr": "وَ «الحَظُّ» لَا «الحَضُّ عَلَى الطَّعَامِ»",
+   "ajuz": "وَفِي «ظَنِينٍ»: الخِلَافُ سَامِي",
+   "page": 73,
+   "url": "https://shamela.ws/book/581/73",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "الحظ but not الحض على الطعام; ظنين has a known difference of reading.",
+   "variants": [
+    {
+     "word": "ظَنِينٍ",
+     "other_reading": "ضَنِيْنٍ",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 60,
+   "section": "في التحذيرات",
+   "sadr": "وَإِنْ تَلَاقَيَا: البَيَانُ لَازِمُ",
+   "ajuz": "«أَنْقَضَ ظَهْرَكَ، يَعَضُّ الظَّالِمُ»",
+   "page": 74,
+   "url": "https://shamela.ws/book/581/74",
+   "rules": [
+    "makharij",
+    "sifat"
+   ],
+   "gloss": "When dad and za meet, keep them clear: أنقض ظهرك، يعض الظالم.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 61,
+   "section": "في التحذيرات",
+   "sadr": "وَ «اضْطُرَّ» مَعْ «وَعَظْتَ» مَعْ «أَفَضْتُمُ»",
+   "ajuz": "وَصَفِّ «هَا»: «جِبَاهُهُمْ، عَلَيْهِمُ»",
+   "page": 74,
+   "url": "https://shamela.ws/book/581/74",
+   "rules": [
+    "sifat"
+   ],
+   "gloss": "Keep clear اضطر، وعظت، أفضتم, and keep ha pure in جباههم، عليهم.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 62,
+   "section": "في التحذيرات",
+   "sadr": "وأَظْهِرِ الغُنَّةَ مِنْ: نُونٍ، وَمِنْ",
+   "ajuz": "مِيمٍ؛ إِذَا مَا شُدِّدَا، وَأَخْفِيَنْ",
+   "page": 74,
+   "url": "https://shamela.ws/book/581/74",
+   "rules": [
+    "ghunnah",
+    "m-ikhfa"
+   ],
+   "gloss": "Show the ghunnah of doubled noon and meem, and hide...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 63,
+   "section": "في التحذيرات",
+   "sadr": "المِيمَ إِنْ تَسْكُنْ بِغُنَّةٍ لَدَى",
+   "ajuz": "بَاءٍ عَلَى المُخْتَارِ مِنْ أَهْلِ الأَدَا",
+   "page": 75,
+   "url": "https://shamela.ws/book/581/75",
+   "rules": [
+    "m-ikhfa"
+   ],
+   "gloss": "...a sakin meem with ghunnah before ba, the chosen view of the experts.",
+   "variants": [
+    {
+     "word": "لَدَى بَاءٍ",
+     "other_reading": "عند الباء",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    },
+    {
+     "word": "الأَدَا",
+     "other_reading": "الأداء",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 64,
+   "section": "في التحذيرات",
+   "sadr": "وَأَظْهِرَنْهَا عِنْدَ: بَاقِي الأَحْرُفِ",
+   "ajuz": "وَاحْذَرْ لَدَى وَاوٍ وَفَا: أَنْ تَخْتَفِي",
+   "page": 75,
+   "url": "https://shamela.ws/book/581/75",
+   "rules": [
+    "m-izhar"
+   ],
+   "gloss": "Keep meem clear before other letters; take care before waw and fa.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 65,
+   "section": "في معرفة النون الساكنة والتنوين",
+   "sadr": "وَحُكْمُ تَنْوِينٍ وَنُونٍ يُلْفَى",
+   "ajuz": "إِظْهَارٌ، ادْغَامٌ، وَقَلْبٌ، إِخْفَا",
+   "page": 76,
+   "url": "https://shamela.ws/book/581/76",
+   "rules": [
+    "izhar",
+    "idgh-g",
+    "idgh-n",
+    "iqlab",
+    "ikhfa"
+   ],
+   "gloss": "Tanween and noon sakinah: izhar, idgham, iqlab, ikhfa.",
+   "variants": [
+    {
+     "word": "إِخْفَا",
+     "other_reading": "اخْفَا",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 66,
+   "section": "في معرفة النون الساكنة والتنوين",
+   "sadr": "فَعِنْدَ حَرْفِ الحَلْقِ: أَظْهِرْ، وَادَّغِمْ",
+   "ajuz": "فِي اللَّامِ وَالرَّا لَا بِغُنَّةٍ لَزِمْ",
+   "page": 76,
+   "url": "https://shamela.ws/book/581/76",
+   "rules": [
+    "izhar",
+    "idgh-n"
+   ],
+   "gloss": "Izhar before throat letters; idgham without ghunnah in lam and ra, always.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 67,
+   "section": "في معرفة النون الساكنة والتنوين",
+   "sadr": "وَأَدْغِمَنْ بِغُنَّةٍ فِي: «يُومِنُ»",
+   "ajuz": "إِلَّا بِكِلْمَةٍ؛ كَـ «دُنْيَا، عَنْوَنُوا»",
+   "page": 77,
+   "url": "https://shamela.ws/book/581/77",
+   "rules": [
+    "idgh-g"
+   ],
+   "gloss": "Idgham with ghunnah in the letters of يومن, except inside one word: دنيا، عنونوا.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 68,
+   "section": "في معرفة النون الساكنة والتنوين",
+   "sadr": "وَالقَلْبُ عِنْدَ: البَا بِغُنَّةٍ، كَذَا",
+   "ajuz": "لِاخْفَا لَدَى: بَاقِي الحُرُوفِ؛ أُخِذَا",
+   "page": 77,
+   "url": "https://shamela.ws/book/581/77",
+   "rules": [
+    "iqlab",
+    "ikhfa"
+   ],
+   "gloss": "Iqlab before ba with ghunnah; ikhfa before the other letters.",
+   "variants": [
+    {
+     "word": "لِاخْفَا",
+     "other_reading": "إخفا",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 69,
+   "section": "في المدات",
+   "sadr": "وَالمَدُّ: لَازِمٌ، وَوَاجِبٌ أَتَى",
+   "ajuz": "وَجَائِزٌ، وَهْوَ وَقَصْرٌ ثَبَتَا",
+   "page": 78,
+   "url": "https://shamela.ws/book/581/78",
+   "rules": [
+    "lazim-k",
+    "lazim-h",
+    "muttasil",
+    "munfasil",
+    "arid"
+   ],
+   "gloss": "Madd is necessary, obligatory or permitted; permitted allows long or short.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 70,
+   "section": "في المدات",
+   "sadr": "فَلَازِمٌ: إِنْ جَاءَ بَعْدَ حَرْفِ مَدْ",
+   "ajuz": "سَاكِنُ حَالَيْنِ، وَبِالطُّولِ يُمَدْ",
+   "page": 78,
+   "url": "https://shamela.ws/book/581/78",
+   "rules": [
+    "lazim-k",
+    "lazim-h"
+   ],
+   "gloss": "Necessary: a sukun fixed in both states after a madd letter; lengthen it fully.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 71,
+   "section": "في المدات",
+   "sadr": "وَوَاجِبٌ: إِنْ جَاءَ قَبْلَ هَمْزَةِ",
+   "ajuz": "مُتَّصِلاً؛ إِنْ جُمِعَا بِكِلْمَةِ",
+   "page": 78,
+   "url": "https://shamela.ws/book/581/78",
+   "rules": [
+    "muttasil"
+   ],
+   "gloss": "Obligatory: madd before a hamza joined in the same word.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 72,
+   "section": "في المدات",
+   "sadr": "وَجَائِزٌ: إِذَا أَتَى مُنْفَصِلَا",
+   "ajuz": "أَوْ عَرَضَ السُّكُونُ وَقْفاً مُسْجَلَا",
+   "page": 78,
+   "url": "https://shamela.ws/book/581/78",
+   "rules": [
+    "munfasil",
+    "arid"
+   ],
+   "gloss": "Permitted: madd separated from the hamza, or a sukun made by stopping.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 73,
+   "section": "في الوقوف",
+   "sadr": "وَبَعْدَ تَجْوِيدِكَ لِلْحُرُوفِ",
+   "ajuz": "لَا بُدَّ مِنْ مَعْرِفَةِ الوُقُوفِ",
+   "page": 79,
+   "url": "https://shamela.ws/book/581/79",
+   "rules": [
+    "waqf-signs",
+    "ibtida"
+   ],
+   "gloss": "After the letters, you must know where to stop...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 74,
+   "section": "في الوقوف",
+   "sadr": "وَالِابْتِدَاءِ، وَهْيَ تُقْسَمُ إِذَنْ",
+   "ajuz": "ثَلَاثَةً: تَامٌ، وَكَافٍ، وَحَسَنْ",
+   "page": 79,
+   "url": "https://shamela.ws/book/581/79",
+   "rules": [
+    "waqf-signs",
+    "ibtida"
+   ],
+   "gloss": "...and where to start; stops are of three kinds: tamm, kafi, hasan.",
+   "variants": [
+    {
+     "word": "تُقْسَمُ",
+     "other_reading": "تنقسم",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 75,
+   "section": "في الوقوف",
+   "sadr": "وَهْيَ لِمَا تَمَّ؛ فَإِنْ لَمْ يُوجَدِ",
+   "ajuz": "تَعَلُّقٌ، أَوْ كَانَ مَعْنىً؛ فَابْتَدِي",
+   "page": 80,
+   "url": "https://shamela.ws/book/581/80",
+   "rules": [
+    "waqf-signs",
+    "ibtida"
+   ],
+   "gloss": "They come where the meaning is complete; with no link to what follows, or only a meaning link, start after it.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 76,
+   "section": "في الوقوف",
+   "sadr": "فَالتَّامُ، فَالكَافِي، وَلَفْظاً: فَامْنَعَنْ",
+   "ajuz": "إِلَّا رُؤُوسَ الآيِ جَوِّزْ، فَالحَسَنْ",
+   "page": 80,
+   "url": "https://shamela.ws/book/581/80",
+   "rules": [
+    "waqf-signs",
+    "ibtida"
+   ],
+   "gloss": "Tamm, then kafi; with a link in wording do not restart, except at verse ends; that is hasan.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 77,
+   "section": "في الوقوف",
+   "sadr": "وَغَيْرُ مَا تَمَّ قَبِيحٌ، وَلَهُ",
+   "ajuz": "الوَقْفُ مُضْطَرّاً؛ وَيَبْدَا قَبْلَهُ",
+   "page": 80,
+   "url": "https://shamela.ws/book/581/80",
+   "rules": [
+    "waqf-signs",
+    "ibtida"
+   ],
+   "gloss": "Stopping where the meaning is incomplete is qabih; if forced, stop and restart from before.",
+   "variants": [
+    {
+     "word": "الوَقْفُ",
+     "other_reading": "يوقف",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 78,
+   "section": "في الوقوف",
+   "sadr": "وَلَيْسَ فِي القُرْآنِ مِنْ وَقْفٍ وَجَبْ",
+   "ajuz": "وَلَا حَرَامٌ؛ غَيْرُ مَا لَهُ سَبَبْ",
+   "page": 81,
+   "url": "https://shamela.ws/book/581/81",
+   "rules": [
+    "waqf-signs"
+   ],
+   "gloss": "No stop in the Quran is obligatory and none forbidden, except for a reason.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 79,
+   "section": "في المقطوع والموصول",
+   "sadr": "وَاعْرِفْ لِمَقْطُوعٍ وَمَوْصُولٍ وَ «تَا»",
+   "ajuz": "فِي المُصْحَفِ الإِمَامِ فِيمَا قَدْ أَتَى",
+   "page": 82,
+   "url": "https://shamela.ws/book/581/82",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "Learn the cut and joined words, and the ta, as written in the Imam mushaf.",
+   "variants": [
+    {
+     "word": "المُصْحَفِ",
+     "other_reading": "مُصْحَفِ",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 80,
+   "section": "في المقطوع والموصول",
+   "sadr": "فَاقْطَعْ بِعَشْرِ كَلِمَاتٍ: «أَنْ لَا»",
+   "ajuz": "مَعْ «مَلْجَأً» وَ «لَا إِلَهَ إِلَّا»",
+   "page": 82,
+   "url": "https://shamela.ws/book/581/82",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "Write أن لا cut in ten places, with ملجأ and لا إله إلا...",
+   "variants": [
+    {
+     "word": "مَلْجَأً",
+     "other_reading": "مَلْجَإٍ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 81,
+   "section": "في المقطوع والموصول",
+   "sadr": "وَ «تَعْبُدُوا» يَاسِينَ، ثَانِي هُودَ «لَا",
+   "ajuz": "يُشْرِكْنَ، تُشْرِكْ، يَدْخُلَنْ، تَعْلُوا عَلَى",
+   "page": 83,
+   "url": "https://shamela.ws/book/581/83",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...تعبدوا in Ya-Sin, the second in Hud, يشركن، تشرك، يدخلن، تعلوا على...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 82,
+   "section": "في المقطوع والموصول",
+   "sadr": "أَنْ لَا يَقُولُوا، لَا أَقُولَ»، «إِنْ مَا»",
+   "ajuz": "بِالرَّعْدِ، وَالمَفْتُوحَ صِلْ، وَ «عَنْ مَا",
+   "page": 83,
+   "url": "https://shamela.ws/book/581/83",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...أن لا يقولوا، لا أقول; إن ما in al-Ra'd cut, the open one joined; عن ما...",
+   "variants": [
+    {
+     "word": "أَقُولَ",
+     "other_reading": "إله",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    },
+    {
+     "word": "وَالمَفْتُوحَ",
+     "other_reading": "كالمفتوح",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 83,
+   "section": "في المقطوع والموصول",
+   "sadr": "نُهُوا» اقْطَعُوا؛ «مِنْ مَا» بِرُومٍ وَالنِّسَا",
+   "ajuz": "خُلْفُ المُنَافِقِينَ، «أَمْ مَنْ»: «أَسَّسَا»",
+   "page": 83,
+   "url": "https://shamela.ws/book/581/83",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...نهوا cut; من ما in al-Rum and al-Nisa, differing in al-Munafiqun; أم من أسس...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 84,
+   "section": "في المقطوع والموصول",
+   "sadr": "فُصِّلَتِ، النِّسَا، وَذِبْحٍ، «حَيْثُ مَا»",
+   "ajuz": "وَ «أَنْ لَمِ» المَفْتُوحَ، كَسْرَ «إِنَّ مَا»",
+   "page": 84,
+   "url": "https://shamela.ws/book/581/84",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...in Fussilat, al-Nisa, al-Saffat; حيث ما; أن لم with fatha; إن ما with kasra...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 85,
+   "section": "في المقطوع والموصول",
+   "sadr": "لَانْعَامَ، وَالمَفْتُوحَ «يَدْعُونَ» مَعَا",
+   "ajuz": "وَخُلْفُ الَانْفَالِ، وَنَحْلٍ وَقَعَا",
+   "page": 84,
+   "url": "https://shamela.ws/book/581/84",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...in al-An'am; the open أن ما يدعون in two places; differing in al-Anfal and al-Nahl.",
+   "variants": [
+    {
+     "word": "لَانْعَامَ",
+     "other_reading": "اَلانْعَامِ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 86,
+   "section": "في المقطوع والموصول",
+   "sadr": "وَ «كُلِّ مَا سَأَلْتُمُوهُ»، وَاخْتُلِفْ",
+   "ajuz": "«رُدُّوا» كَذَا «قُلْ بِئْسَمَا»، وَالوَصْلَ صِفْ",
+   "page": 85,
+   "url": "https://shamela.ws/book/581/85",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "كل ما سألتموه cut; differing in ردوا and قل بئسما; describe joining...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 87,
+   "section": "في المقطوع والموصول",
+   "sadr": "«خَلَفْتُمُونِي» وَ «اشْتَرَوْا»، «فِي مَا» اقْطَعَا",
+   "ajuz": "«أُوحِي، أَفَضْتُمُ، اشْتَهَتْ، يَبْلُو» مَعَا",
+   "page": 85,
+   "url": "https://shamela.ws/book/581/85",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...in خلفتموني and اشتروا; cut في ما in أوحي، أفضتم، اشتهت، يبلو...",
+   "variants": [
+    {
+     "word": "يَبْلُو",
+     "other_reading": "يَبْلُوا",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 88,
+   "section": "في المقطوع والموصول",
+   "sadr": "ثَانِي «فَعَلْنَ» وَقَعَتْ، رُومٌ، كِلَا",
+   "ajuz": "تَنْزِيلُ، ظُلَّةٍ، وَغَيْرَهَا: صِلَا",
+   "page": 85,
+   "url": "https://shamela.ws/book/581/85",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...the second in fa'alna, al-Waqi'ah, al-Rum, the two Tanzil, al-Zulla; join elsewhere.",
+   "variants": [
+    {
+     "word": "ظُلَّةٍ",
+     "other_reading": "شعراء",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 89,
+   "section": "في المقطوع والموصول",
+   "sadr": "«فَأَيْنَمَا» كَالنَّحْلِ: صِلْ، وَمُخْتَلِفْ",
+   "ajuz": "فِي: الشُّعَرَا، الأَحْزَابِ، وَالنِّسَا؛ وُصِفْ",
+   "page": 86,
+   "url": "https://shamela.ws/book/581/86",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "Join فأينما as in al-Nahl; it differs in al-Shu'ara, al-Ahzab, al-Nisa.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 90,
+   "section": "في المقطوع والموصول",
+   "sadr": "وَصِلْ: «فَإِلَّمْ» هُودَ «أَلَّنْ نَجْعَلَا»",
+   "ajuz": "«نَجْمَعَ» «كَيْلَا تَحْزَنُوا، تَأْسَوْا عَلَى",
+   "page": 86,
+   "url": "https://shamela.ws/book/581/86",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "Join فإلم in Hud, ألن نجعل، نجمع، كيلا تحزنوا، تأسوا على...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 91,
+   "section": "في المقطوع والموصول",
+   "sadr": "حَجٌّ، عَلَيْكَ حَرَجٌ»، وَقَطْعُهُمْ",
+   "ajuz": "«عَنْ مَنْ يَشَاءُ، مَنْ تَوَلَّى» «يَوْمَ هُمْ»",
+   "page": 86,
+   "url": "https://shamela.ws/book/581/86",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...الحج، عليك حرج; they cut عن من يشاء، من تولى، يوم هم...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 92,
+   "section": "في المقطوع والموصول",
+   "sadr": "«وَمَالِ هَذَا، وَالَّذِينَ، هَؤُلَا»",
+   "ajuz": "«تَحِينَ» فِي الإِمَامِ صِلْ؛ وَوُهِّلَا",
+   "page": 87,
+   "url": "https://shamela.ws/book/581/87",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...مال هذا، الذين، هؤلاء; تحين is joined in the Imam mushaf, though that is questioned.",
+   "variants": [
+    {
+     "word": "صِلْ",
+     "other_reading": "وصلا",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 93,
+   "section": "في المقطوع والموصول",
+   "sadr": "وَ «وَزَنُوهُمُ، وَكَالُوهُمْ»: صِلِ",
+   "ajuz": "كَذَا مِنَ «الْ» وَ «هَا» وَ «يَا»؛ لَا تَفْصِلِ",
+   "page": 87,
+   "url": "https://shamela.ws/book/581/87",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "Join وزنوهم، كالوهم, and the al-, ha and ya prefixes; do not separate them.",
+   "variants": [
+    {
+     "word": "وَوَزَنُوهُمُ وَكَالُوهُمْ",
+     "other_reading": "ووزنزهم كالوهم",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    },
+    {
+     "word": "الْ",
+     "other_reading": "أل ويا",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    },
+    {
+     "word": "وَيَا",
+     "other_reading": "",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 94,
+   "section": "في التاءات",
+   "sadr": "وَ «رَحْمَتُ»: الزُّخْرُفِ بِالتَّا زَبَرَهْ",
+   "ajuz": "لَاعْرَافِ، رُومٍ، هُودَ، كَافَ، البَقَرَهْ",
+   "page": 88,
+   "url": "https://shamela.ws/book/581/88",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "رحمت is written with open ta in al-Zukhruf, al-A'raf, al-Rum, Hud, Kaf, al-Baqara.",
+   "variants": [
+    {
+     "word": "وَرَحْمَتُ",
+     "other_reading": "ورحمتا",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    },
+    {
+     "word": "لَاعْرَافِ",
+     "other_reading": "الاَعْرَافِ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 95,
+   "section": "في التاءات",
+   "sadr": "«نِعْمَتُـ» ـهَا: ثَلَاثُ نَحْلٍ، إِبْرَهَمْ",
+   "ajuz": "مَعاً أَخِيرَاتٌ، عُقُودُ الثَّانِ «هَمْ»",
+   "page": 89,
+   "url": "https://shamela.ws/book/581/89",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "نعمت with open ta: three in al-Nahl, two in Ibrahim, the second in al-Ma'ida...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 96,
+   "section": "في التاءات",
+   "sadr": "لُقْمَانُ، ثُمَّ فَاطِرٌ، كَالطُّورِ",
+   "ajuz": "عِمْرَانَ، «لَعْنَتٌ»: بِهَا، وَالنُّورِ",
+   "page": 89,
+   "url": "https://shamela.ws/book/581/89",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...Luqman, Fatir, al-Tur, Al Imran; لعنت in it and in al-Nur.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 97,
+   "section": "في التاءات",
+   "sadr": "وَ «امْرَأَتٌ»: يُوسُفَ، عِمْرَانَ، القَصَصْ",
+   "ajuz": "تَحْرِيمُ، «مَعْصِيَتْ»: بِقَدْ سَمِعْ يُخَصْ",
+   "page": 90,
+   "url": "https://shamela.ws/book/581/90",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "امرأت in Yusuf, Al Imran, al-Qasas, al-Tahrim; معصيت only in Qad Sami'a.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 98,
+   "section": "في التاءات",
+   "sadr": "«شَجَرَتُ»: الدُّخَانِ، «سُنَّتْ»: فَاطِرِ",
+   "ajuz": "كُلّاً، وَالَانْفَالِ، وَأُخْرَى غَافِرِ",
+   "page": 91,
+   "url": "https://shamela.ws/book/581/91",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "شجرت in al-Dukhan; سنت in all of Fatir, al-Anfal, and the last in Ghafir.",
+   "variants": [
+    {
+     "word": "وَأُخْرَى",
+     "other_reading": "وَحَرْفَ",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 99,
+   "section": "في التاءات",
+   "sadr": "«قُرَّتُ عَيْنٍ»، «جَنَّتٌ»: فِي وَقَعَتْ",
+   "ajuz": "«فِطْرَتْ، بَقِيَّتْ، وَابْنَتٌ»، وَ «كَلِمَتْ»",
+   "page": 91,
+   "url": "https://shamela.ws/book/581/91",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "قرت عين; جنت in al-Waqi'ah; فطرت، بقيت، ابنت; كلمت...",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 100,
+   "section": "في التاءات",
+   "sadr": "أَوْسَطَ الَاعْرَافِ، وَكُلُّ مَا اخْتُلِفْ",
+   "ajuz": "جَمْعاً وَفَرْداً فِيهِ: بِالتَّاءِ عُرِفْ",
+   "page": 92,
+   "url": "https://shamela.ws/book/581/92",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "...the middle one in al-A'raf; any word read both singular and plural is written with ta.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 101,
+   "section": "في همزات الوصل",
+   "sadr": "وَابْدَأْ بِهَمْزِ الوَصْلِ مِنْ فِعْلٍ بِضَمْ",
+   "ajuz": "إِنْ كَانَ ثَالِثٌ مِنَ الفِعْلِ يُضَمْ",
+   "page": 93,
+   "url": "https://shamela.ws/book/581/93",
+   "rules": [
+    "ibtida"
+   ],
+   "gloss": "Start a verb's hamzat al-wasl with damma if its third letter has damma.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 102,
+   "section": "في همزات الوصل",
+   "sadr": "وَاكْسِرْهُ حَالَ الكَسْرِ وَالفَتْحِ، وَفِي",
+   "ajuz": "لَاسْمَاءِ - غَيْرِ اللَّامِ - كَسْرُهَا وَفِيّْ",
+   "page": 93,
+   "url": "https://shamela.ws/book/581/93",
+   "rules": [
+    "ibtida"
+   ],
+   "gloss": "Use kasra when the third letter has kasra or fatha; in nouns other than al- use kasra, and in...",
+   "variants": [
+    {
+     "word": "وَفِي لَاسْمَاءِ",
+     "other_reading": "وَفِى الاَسْمَاءِ",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 103,
+   "section": "في همزات الوصل",
+   "sadr": "ابْنٍ، مَعَ ابْنَةِ، امْرِئٍ، وَاثْنَيْنِ",
+   "ajuz": "وَامْرَأَةٍ، وَاسْمٍ، مَعَ اثْنَتَيْنِ",
+   "page": 93,
+   "url": "https://shamela.ws/book/581/93",
+   "rules": [
+    "ibtida"
+   ],
+   "gloss": "...ابن، ابنة، امرئ، اثنين، امرأة، اسم، اثنتين.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 104,
+   "section": "في الوقف على أواخر الكلم",
+   "sadr": "وَحَاذِرِ الوَقْفَ بِكُلِّ الحَرَكَهْ",
+   "ajuz": "إِلَّا إِذَا رُمْتَ فَبَعْضُ الحَرَكَهْ",
+   "page": 94,
+   "url": "https://shamela.ws/book/581/94",
+   "rules": [
+    "waqf-how"
+   ],
+   "gloss": "Do not stop with a full vowel, except with rawm, which gives part of it...",
+   "variants": [
+    {
+     "word": "الحَرَكَهْ",
+     "other_reading": "حَرَكَهْ",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 105,
+   "section": "في الوقف على أواخر الكلم",
+   "sadr": "إِلَّا بِفَتْحٍ أَوْ بِنَصْبٍ، وَأَشِمْ",
+   "ajuz": "إِشَارَةً بِالضَّمِّ: فِي رَفْعٍ وَضَمْ",
+   "page": 94,
+   "url": "https://shamela.ws/book/581/94",
+   "rules": [
+    "waqf-how",
+    "ishmam"
+   ],
+   "gloss": "...never on fatha or nasb; use ishmam, pointing to damma, on raf' and damm.",
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 106,
+   "section": "خاتمة",
+   "sadr": "وَقَدْ تَقَضَّى نَظْمِيَ «المُقَدِّمَهْ»",
+   "ajuz": "مِنِّي لِقَارِئِ القُرَانِ تَقْدِمَهْ",
+   "page": 95,
+   "url": "https://shamela.ws/book/581/95",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "My poem, the Muqaddimah, is finished, a gift to the reciter of the Quran.",
+   "variants": [
+    {
+     "word": "القُرَانِ تَقْدِمَهْ",
+     "other_reading": "القُرْآنِ تقدمة",
+     "kind": "orthographic",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); also recorded in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  },
+  {
+   "text": "jazariyya",
+   "n": 107,
+   "section": "خاتمة",
+   "sadr": "وَالحَمْدُ لِلَّهِ لَهَا خِتَامُ",
+   "ajuz": "ثُمَّ الصَّلَاةُ بَعْدُ وَالسَّلَامُ",
+   "page": 95,
+   "url": "https://shamela.ws/book/581/95",
+   "rules": [
+    "intro"
+   ],
+   "gloss": "Praise to Allah as its end, then blessings and peace.",
+   "variants": [
+    {
+     "word": "لَهَا",
+     "other_reading": "له",
+     "kind": "lexical",
+     "source": "Shamela 12093 (المقدمة الجزرية، ط المغني 1422/2001); not in al-Qasim's footnotes"
+    }
+   ],
+   "verified": "two-copies"
+  }
+ ]
+}
