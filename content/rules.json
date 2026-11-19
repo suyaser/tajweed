@@ -5298,5 +5298,1682 @@
    "status": "verified",
    "notes": ""
   }
+ },
+ {
+  "id": "basics",
+  "cat": "found",
+  "phase": 1,
+  "ar": "الحركات والسكون والشدة والتنوين",
+  "en": "The marks on the letters",
+  "color": "clear",
+  "definition": "Every letter carries a mark that tells you how to say it: a short vowel (فتحة َ، ضمة ُ، كسرة ِ), no vowel (سكون ْ), a doubled letter (شدة ّ) or a final ن sound (تنوين ً ٌ ٍ). Lengths in tajweed are counted in حركات: one حركة is the time of one short vowel.",
+  "list": [
+   [
+    "فتحة َ",
+    "an open a: مَ"
+   ],
+   [
+    "ضمة ُ",
+    "a rounded u: دُ"
+   ],
+   [
+    "كسرة ِ",
+    "an i, lips spread: بِ"
+   ],
+   [
+    "سكون ْ",
+    "the letter with no vowel, closed: قُلْ"
+   ],
+   [
+    "شدة ّ",
+    "the letter twice, the first with سكون: رَبِّ = رَبْ + بِ"
+   ],
+   [
+    "تنوين ً ٌ ٍ",
+    "a ن with سكون said (not written) at the end of a noun: أَحَدٌ = أَحَدُنْ"
+   ],
+   [
+    "حرف مد",
+    "ا after فتحة، و after ضمة، ي after كسرة: held 2 حركات (مَٰلِكِ، يَقُولُ، ٱلرَّحِيمِ)"
+   ]
+  ],
+  "tip": "Count a حركة by closing or opening one finger at your normal reading speed. Keep the same speed for every count in one recitation.",
+  "examples": [
+   {
+    "verse": "114:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "مَلِكِ",
+    "focus": "مَ",
+    "stop": false,
+    "note": "فتحة on the م"
+   },
+   {
+    "verse": "1:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلْحَمْدُ",
+    "focus": "دُ",
+    "stop": false,
+    "note": "ضمة on the د"
+   },
+   {
+    "verse": "1:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "بِسْمِ",
+    "focus": "بِ",
+    "stop": false,
+    "note": "كسرة on the ب"
+   },
+   {
+    "verse": "114:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قُلْ",
+    "focus": "لْ",
+    "stop": false,
+    "note": "سكون on the ل"
+   },
+   {
+    "verse": "114:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "بِرَبِّ",
+    "focus": "بِّ",
+    "stop": false,
+    "note": "شدة: the ب is said twice"
+   },
+   {
+    "verse": "112:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أَحَدٌ",
+    "focus": "دٌ",
+    "stop": false,
+    "note": "تنوين ضم: أَحَدُنْ when joined"
+   },
+   {
+    "verse": "1:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "مَٰلِكِ",
+    "focus": "مَٰ",
+    "stop": false,
+    "note": "A small alif: مد of 2 حركات"
+   }
+  ],
+  "facts": [
+   {
+    "q": "What does a سكون (ْ) on a letter mean?",
+    "options": [
+     "Say it twice, the first time quietly",
+     "Say it with no vowel",
+     "Lengthen it for two counts",
+     "Do not say it at all"
+    ],
+    "answer": 1,
+    "why": "The letter is said closed, with no vowel after it."
+   },
+   {
+    "q": "What does a شدة (ّ) mean?",
+    "options": [
+     "The letter is said twice, the first with سكون",
+     "The letter is silent and only written",
+     "The letter is heavy, with a full mouth",
+     "The letter is lengthened by two counts"
+    ],
+    "answer": 0,
+    "why": "رَبِّ is رَبْ + بِ."
+   },
+   {
+    "q": "What is the تنوين in أَحَدٌ?",
+    "options": [
+     "A long u held for four counts",
+     "A doubled د, said twice",
+     "A ن with سكون said at the end",
+     "A short stop before the next word"
+    ],
+    "answer": 2,
+    "why": "تنوين is a ن sound that is said but not written."
+   },
+   {
+    "q": "How long is one حركة?",
+    "options": [
+     "Exactly one second, by the clock",
+     "As long as it takes to say a whole ayah",
+     "The time of one short vowel",
+     "Two beats of a fast heartbeat"
+    ],
+    "answer": 2,
+    "why": "Lengths in tajweed are counted in حركات; the speed follows your reading speed."
+   },
+   {
+    "q": "How long is the ا in مَٰلِكِ (a natural مد)?",
+    "options": [
+     "1 حركة",
+     "2 حركات",
+     "4 حركات",
+     "6 حركات"
+    ],
+    "answer": 1,
+    "why": "A حرف مد with no همزة or سكون after it is 2 حركات."
+   },
+   {
+    "q": "Which letter is a حرف مد in يَقُولُ?",
+    "options": [
+     "ي at the start of the word",
+     "ق with its ضمة",
+     "و after a ضمة",
+     "ل with its ضمة at the end"
+    ],
+    "answer": 2,
+    "why": "و with سكون after a ضمة is a حرف مد."
+   }
+  ],
+  "sources": [
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقدار الحركة",
+    "locator": "https://shamela.ws/book/7311/119"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، مقدار الحركة",
+    "locator": "https://shamela.ws/book/38104/158"
+   },
+   {
+    "title": "العميد في علم التجويد (محمود علي بسة)، مقدار الحركة",
+    "locator": "https://shamela.ws/book/12754/77"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": "Basic reading marks, agreed. The finger measure for a حركة is in غاية المريد; الميزان calls it a later teaching aid and العميد prefers the time of one letter at your own speed. The card treats it as an aid only."
+  }
+ },
+ {
+  "id": "istiadha",
+  "cat": "waqf",
+  "phase": 1,
+  "ar": "الاستعاذة والبسملة",
+  "en": "Starting a recitation",
+  "color": "clear",
+  "definition": "Before you recite, say the استعاذة (أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ). At the start of every surah except التوبة (براءة), say the بسملة too. Between them and the surah you may stop or join, in four ways.",
+  "list": [
+   [
+    "At the start of a surah: 4 ways, all allowed",
+    "Stop after each (قطع الجميع) · join all three (وصل الجميع) · stop after the استعاذة, join the بسملة to the surah · join the استعاذة to the بسملة, stop, then the surah"
+   ],
+   [
+    "Between two surahs: 3 ways allowed",
+    "Stop after each · join all · stop at the surah's end, then join the بسملة to the next surah"
+   ],
+   [
+    "Between two surahs: 1 way not allowed",
+    "Joining the end of a surah to the بسملة and then stopping: it sounds as if the بسملة belonged to the surah before"
+   ],
+   [
+    "Starting التوبة",
+    "استعاذة only, no بسملة"
+   ],
+   [
+    "From الأنفال into التوبة",
+    "No بسملة: stop, pause (سكت), or join"
+   ],
+   [
+    "Starting in the middle of a surah",
+    "استعاذة, and the بسملة is your choice"
+   ]
+  ],
+  "tip": "Learn one way first, usually stopping after each part (قطع الجميع), and use it every time until it is natural.",
+  "examples": [
+   {
+    "verse": "16:98",
+    "word_from": 1,
+    "word_to": 8,
+    "text": "فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
+    "focus": "فَٱسْتَعِذْ",
+    "stop": false,
+    "note": "The command to seek refuge before reciting."
+   },
+   {
+    "verse": "1:1",
+    "word_from": 1,
+    "word_to": 4,
+    "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    "focus": "بِسْمِ",
+    "stop": false,
+    "note": "The بسملة, counted as the first ayah of الفاتحة."
+   },
+   {
+    "verse": "27:30",
+    "word_from": 5,
+    "word_to": 8,
+    "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    "focus": "بِسْمِ",
+    "stop": false,
+    "note": "The بسملة inside a surah: part of the ayah, read like any other words."
+   },
+   {
+    "verse": "9:1",
+    "word_from": 1,
+    "word_to": 3,
+    "text": "بَرَآءَةٌ مِّنَ ٱللَّهِ",
+    "focus": "بَرَآءَةٌ",
+    "stop": false,
+    "note": "التوبة starts with no بسملة."
+   }
+  ],
+  "facts": [
+   {
+    "q": "What is the usual wording of the استعاذة?",
+    "options": [
+     "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+     "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
+     "سُبْحَانَ ٱللَّهِ",
+     "ٱللَّهُ أَكْبَرُ"
+    ],
+    "answer": 1,
+    "why": "It follows 16:98 «فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ»."
+   },
+   {
+    "q": "How many ways are allowed to start a surah with the استعاذة and the بسملة?",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "answer": 3,
+    "why": "Stop after each, join all, or join one pair and stop at the other."
+   },
+   {
+    "q": "Between two surahs, which way is NOT allowed?",
+    "options": [
+     "Stop after the surah, after the بسملة, then start",
+     "Join everything",
+     "Join the surah's end to the بسملة, then stop",
+     "Stop after the surah, then join the بسملة to the next"
+    ],
+    "answer": 2,
+    "why": "It makes the بسملة sound like part of the surah before."
+   },
+   {
+    "q": "Which surah does not start with the بسملة?",
+    "options": [
+     "الفاتحة",
+     "التوبة",
+     "النمل",
+     "الناس"
+    ],
+    "answer": 1,
+    "why": "التوبة (براءة) is written with no بسملة, and none is read at its start."
+   },
+   {
+    "q": "You start reading in the middle of a surah. The بسملة is…",
+    "options": [
+     "Forbidden",
+     "Required",
+     "Your choice",
+     "Said only at a sajdah"
+    ],
+    "answer": 2,
+    "why": "The استعاذة is said; the بسملة may be said or left."
+   },
+   {
+    "q": "Going straight from الأنفال into التوبة, what can you do?",
+    "options": [
+     "Say the بسملة, as at every surah start",
+     "Stop, pause (سكت) or join, no بسملة",
+     "Only join, never stop",
+     "Only stop, then say the بسملة"
+    ],
+    "answer": 1,
+    "why": "All three are read for حفص; the بسملة is never said there."
+   },
+   {
+    "q": "Where is the بسملة part of an ayah in the middle of a surah?",
+    "options": [
+     "البقرة, in its first ayah",
+     "النمل (27:30)",
+     "يس, after the opening letters",
+     "الملك, in its first ayah"
+    ],
+    "answer": 1,
+    "why": "«إِنَّهُۥ مِن سُلَيْمَٰنَ وَإِنَّهُۥ بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ»."
+   }
+  ],
+  "sources": [
+   {
+    "title": "متن الشاطبية (حرز الأماني)، باب الاستعاذة وباب البسملة",
+    "locator": "البيت 95–107، https://shamela.ws/book/7754/14"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، أحكام الاستعاذة والبسملة",
+    "locator": "https://shamela.ws/book/38104/32 (الأوجه 35–36، براءة 37، بين السورتين 42–43)"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الاستعاذة والبسملة",
+    "locator": "https://shamela.ws/book/7311/59 (الأوجه 61، بين السورتين 63–64)"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، الاستعاذة والبسملة",
+    "locator": "https://shamela.ws/book/22869/502، /513–516"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "The four ways and the three-plus-one between surahs are agreed. Whether the استعاذة is سنة (most scholars) or واجب, and whether to say it aloud or quietly, depend on the setting (alone, in a class, in prayer); the teacher should say which to use. Some teachers also allow other wordings of the استعاذة. Starting in the middle of براءة: الميزان reports one view forbidding the بسملة and one allowing it."
+  }
+ },
+ {
+  "id": "tafkhim",
+  "cat": "found",
+  "phase": 4,
+  "ar": "التفخيم والترقيق",
+  "en": "Heavy and light letters",
+  "color": "heavy",
+  "definition": "Seven letters are always heavy (مفخم): خ ص ض غ ط ق ظ, gathered in «خُصَّ ضَغْطٍ قِظْ». The back of the tongue rises, the mouth fills and the sound is full. All other letters are light (مرقق), except ر and the ل of اللَّه, which change by rule, and the ا, which follows the letter before it.",
+  "letters": "خ ص ض غ ط ق ظ",
+  "list": [
+   [
+    "1 · with فتحة and an ا after it (strongest)",
+    "قَا in ٱلْقَارِعَةُ"
+   ],
+   [
+    "2 · with فتحة",
+    "خَ in خَلَقَ"
+   ],
+   [
+    "3 · with ضمة",
+    "صُ in صُدُورِ"
+   ],
+   [
+    "4 · with سكون",
+    "صْ in وَٱلْعَصْرِ"
+   ],
+   [
+    "5 · with كسرة (weakest, still heavy)",
+    "قِ in ٱلْمُسْتَقِيمَ"
+   ],
+   [
+    "The ا follows the letter before it",
+    "heavy in قَا، light in مَا"
+   ],
+   [
+    "ر (basic)",
+    "heavy with فتحة or ضمة (رَبِّ), light with كسرة (رِجَالٌ); the full ر rules come later"
+   ]
+  ],
+  "tip": "Keep the vowel true: a heavy letter with كسرة is still an i (قِ), not a heavy e; and do not let the heaviness spill onto the light letter next to it (ٱلْمُسْتَقِيمَ: only the ق is heavy).",
+  "examples": [
+   {
+    "verse": "101:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلْقَارِعَةُ",
+    "focus": "قَا",
+    "stop": true,
+    "note": "Level 1: فتحة and an ا after it"
+   },
+   {
+    "verse": "113:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "خَلَقَ",
+    "focus": "خَ",
+    "stop": true,
+    "note": "Level 2: فتحة"
+   },
+   {
+    "verse": "114:5",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "صُدُورِ",
+    "focus": "صُ",
+    "stop": false,
+    "note": "Level 3: ضمة"
+   },
+   {
+    "verse": "103:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْعَصْرِ",
+    "focus": "صْ",
+    "stop": true,
+    "note": "Level 4: سكون"
+   },
+   {
+    "verse": "1:6",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْمُسْتَقِيمَ",
+    "focus": "قِ",
+    "stop": true,
+    "note": "Level 5: كسرة, still heavy"
+   },
+   {
+    "verse": "1:7",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "غَيْرِ",
+    "focus": "غَ",
+    "stop": false,
+    "note": "غ with فتحة"
+   },
+   {
+    "verse": "105:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "طَيْرًا",
+    "focus": "طَ",
+    "stop": false,
+    "note": "ط, one of the four مطبقة letters (ص ض ط ظ), the heaviest"
+   },
+   {
+    "verse": "114:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "بِرَبِّ",
+    "focus": "رَ",
+    "stop": false,
+    "note": "ر with فتحة: heavy (basic rule)"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Which letters are always heavy?",
+    "options": [
+     "خ ص ض غ ط ق ظ",
+     "ق ط ب ج د",
+     "ر ل ن م",
+     "ء ه ع ح"
+    ],
+    "answer": 0,
+    "why": "حروف الاستعلاء, gathered in «خُصَّ ضَغْطٍ قِظْ»."
+   },
+   {
+    "q": "Which is the heaviest form of a heavy letter?",
+    "options": [
+     "With كسرة, as in قِ",
+     "With سكون, as in صْ",
+     "With فتحة and an ا",
+     "With ضمة, as in صُ"
+    ],
+    "answer": 2,
+    "why": "قَا in ٱلْقَارِعَةُ: فتحة, then an ا that follows it."
+   },
+   {
+    "q": "Is the ق in ٱلْمُسْتَقِيمَ heavy?",
+    "options": [
+     "No, the كسرة makes it light",
+     "Yes, at its lowest level",
+     "Only when stopping",
+     "Only in حفص"
+    ],
+    "answer": 1,
+    "why": "A heavy letter stays heavy with كسرة; it is the weakest level."
+   },
+   {
+    "q": "How is the ا in قَالَ said?",
+    "options": [
+     "Light, like every ا in the Quran",
+     "Heavy: it follows the ق",
+     "With a غنة from the nose",
+     "Short, with no length at all"
+    ],
+    "answer": 1,
+    "why": "The ا has no weight of its own; it follows the letter before it."
+   },
+   {
+    "q": "How is the ا in مَالِكِ said?",
+    "options": [
+     "Heavy, like every ا in the Quran",
+     "Light: it follows the م",
+     "Silent, it is only written",
+     "With a كسرة, like the ل"
+    ],
+    "answer": 1,
+    "why": "It follows the light م."
+   },
+   {
+    "q": "Which four letters are the strongest heavy letters (الإطباق)?",
+    "options": [
+     "ص ض ط ظ",
+     "خ غ ق ر",
+     "ق ط ب ج",
+     "ء ه ع ح"
+    ],
+    "answer": 0,
+    "why": "With these the tongue presses up against the palate."
+   },
+   {
+    "q": "ر with فتحة, as in رَبِّ, is…",
+    "options": [
+     "Light",
+     "Heavy",
+     "Silent",
+     "Merged"
+    ],
+    "answer": 1,
+    "why": "ر is heavy with فتحة or ضمة and light with كسرة. The full ر rules come in a later lesson."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، حروف الاستعلاء والتفخيم",
+    "locator": "البيت 22، 45، https://shamela.ws/book/581/68"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مراتب التفخيم",
+    "locator": "https://shamela.ws/book/7311/204–205"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، التفخيم والترقيق، والألف تتبع ما قبلها",
+    "locator": "https://shamela.ws/book/38104/87–93"
+   },
+   {
+    "title": "العميد في علم التجويد (محمود علي بسة)، مراتب التفخيم",
+    "locator": "https://shamela.ws/book/12754/119–122"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "The seven letters and \"the ا follows the letter before it\" are agreed. The levels differ: some books count five (as here, after ابن الجزري and المتولي), others three (by vowel only, سكون taking the vowel before it). Which scheme to drill is for the teacher."
+  }
+ },
+ {
+  "id": "sakinayn",
+  "cat": "merge",
+  "phase": 5,
+  "ar": "التقاء الساكنين",
+  "en": "Two sukuns meeting",
+  "color": "silent",
+  "definition": "Two letters with سكون cannot be said one after the other. When a word ending in a سكون meets the سكون after a همزة الوصل, either the first letter drops (if it is a حرف مد) or it takes a vowel (if it is not).",
+  "list": [
+   [
+    "The first is a حرف مد: it drops in speech",
+    "فِى ٱلْعُقَدِ → فِلْعُقَدِ · وَقَالَا ٱلْحَمْدُ → وَقَالَلْحَمْدُ"
+   ],
+   [
+    "The first is another ساكن: usually كسرة",
+    "قُلِ ٱللَّهُمَّ · لَمْ يَكُنِ ٱلَّذِينَ"
+   ],
+   [
+    "ميم الجمع: ضمة",
+    "هُمُ ٱلْمُفْلِحُونَ"
+   ],
+   [
+    "مِنْ before ال: فتحة",
+    "مِنَ ٱلْجِنَّةِ"
+   ],
+   [
+    "تنوين: its ن takes a كسرة",
+    "نُوحٌ ٱبْنَهُۥ → نُوحُنِ ٱبْنَهُ"
+   ],
+   [
+    "At a stop, two sukuns are allowed",
+    "ٱلْعَٰلَمِينْ: this is المد العارض"
+   ]
+  ],
+  "tip": "The مد letter is still written, so the eye wants to lengthen it. In فِى ٱلْأَرْضِ say a short فِ straight into the ل.",
+  "examples": [
+   {
+    "verse": "113:4",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "فِى ٱلْعُقَدِ",
+    "focus": "فِى ٱلْ",
+    "stop": false,
+    "note": "The ى drops: فِلْعُقَدِ"
+   },
+   {
+    "verse": "27:15",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "وَقَالَا ٱلْحَمْدُ",
+    "focus": "قَالَا ٱلْ",
+    "stop": false,
+    "note": "The ا of the dual drops: وَقَالَلْحَمْدُ"
+   },
+   {
+    "verse": "1:7",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "وَلَا ٱلضَّآلِّينَ",
+    "focus": "وَلَا ٱل",
+    "stop": false,
+    "note": "The ا drops before the شدة of ٱلضَّآلِّينَ"
+   },
+   {
+    "verse": "3:26",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "قُلِ ٱللَّهُمَّ",
+    "focus": "قُلِ",
+    "stop": false,
+    "note": "The ل takes a كسرة"
+   },
+   {
+    "verse": "98:1",
+    "word_from": 1,
+    "word_to": 3,
+    "text": "لَمْ يَكُنِ ٱلَّذِينَ",
+    "focus": "يَكُنِ",
+    "stop": false,
+    "note": "The ن takes a كسرة"
+   },
+   {
+    "verse": "2:5",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "هُمُ ٱلْمُفْلِحُونَ",
+    "focus": "هُمُ",
+    "stop": false,
+    "note": "ميم الجمع takes a ضمة"
+   },
+   {
+    "verse": "114:6",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "مِنَ ٱلْجِنَّةِ",
+    "focus": "مِنَ",
+    "stop": false,
+    "note": "مِنْ takes a فتحة before ال"
+   },
+   {
+    "verse": "11:42",
+    "word_from": 8,
+    "word_to": 9,
+    "text": "نُوحٌ ٱبْنَهُۥ",
+    "focus": "نُوحٌ",
+    "stop": false,
+    "note": "The تنوين takes a كسرة: نُوحُنِ ٱبْنَهُ"
+   }
+  ],
+  "facts": [
+   {
+    "q": "How do you read فِى ٱلْأَرْضِ joined?",
+    "options": [
+     "فِيلْأَرْضِ, with a long ي",
+     "فِلْأَرْضِ, the ي dropped",
+     "فِي أَلْأَرْضِ",
+     "فِيِ ٱلْأَرْضِ"
+    ],
+    "answer": 1,
+    "why": "The حرف مد drops in speech because a ساكن follows."
+   },
+   {
+    "q": "Why does قُلْ become قُلِ in قُلِ ٱللَّهُمَّ?",
+    "options": [
+     "To show respect for the name اللَّه",
+     "Two sukuns met",
+     "It is a different word with a كسرة",
+     "Because of the شدة on the ل after it"
+    ],
+    "answer": 1,
+    "why": "كسرة is the default vowel for removing التقاء الساكنين."
+   },
+   {
+    "q": "Which vowel does ميم الجمع take before ال (هُمُ ٱلْمُفْلِحُونَ)?",
+    "options": [
+     "كسرة",
+     "فتحة",
+     "ضمة",
+     "سكون"
+    ],
+    "answer": 2,
+    "why": "It goes back to its original ضمة."
+   },
+   {
+    "q": "Which vowel does مِنْ take before ال?",
+    "options": [
+     "فتحة",
+     "كسرة",
+     "ضمة",
+     "None"
+    ],
+    "answer": 0,
+    "why": "مِنَ ٱلْجِنَّةِ: فتحة, for lightness."
+   },
+   {
+    "q": "Is the ا of وَقَالَا said in وَقَالَا ٱلْحَمْدُ?",
+    "options": [
+     "Yes, two counts as usual",
+     "Yes, four counts before the ل",
+     "No, it drops when joined",
+     "Only in a slow reading (تحقيق)"
+    ],
+    "answer": 2,
+    "why": "It is said only when you stop on وَقَالَا."
+   },
+   {
+    "q": "Two sukuns meet at a stop, as in نَسْتَعِينْ. Is that allowed?",
+    "options": [
+     "No, a vowel must be added",
+     "Yes, at a stop",
+     "Only in the reading of حفص",
+     "Only when a شدة comes before it"
+    ],
+    "answer": 1,
+    "why": "At a stop the meeting is allowed; the حرف مد before it becomes المد العارض."
+   }
+  ],
+  "sources": [
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، التقاء الساكنين",
+    "locator": "https://shamela.ws/book/38104/150–155"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، التقاء الساكنين",
+    "locator": "https://shamela.ws/book/7311/243–247"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": "Rules for dropping the حرف مد and the vowel given to a ساكن are agreed (grammar and tajweed books)."
+  }
+ },
+ {
+  "id": "silent-letters",
+  "cat": "hafs",
+  "phase": 5,
+  "ar": "حروف تكتب ولا تقرأ",
+  "en": "Letters written but not read",
+  "color": "silent",
+  "definition": "Some letters in the muṣḥaf are part of the spelling but are not said. A small round zero (۟) on a letter means it is never said. A small upright oval (۠) on an alif means it is said only when you stop on that word.",
+  "list": [
+   [
+    "۟ never said",
+    "ءَامَنُوا۟ (the ا after واو الجماعة) · أُو۟لَٰٓئِكَ (the و) · مِا۟ئَةَ (the ا) · لَأَا۟ذْبَحَنَّهُۥ · بِأَيْي۟دٍ"
+   ],
+   [
+    "۠ said only at a stop",
+    "أَنَا۠ · لَّٰكِنَّا۠ (18:38) · ٱلظُّنُونَا۠ · ٱلرَّسُولَا۠ · ٱلسَّبِيلَا۠ (الأحزاب) · قَوَارِيرَا۠ (76:15)"
+   ],
+   [
+    "سَلَٰسِلَا۟ (76:4)",
+    "Joined: no ا. At a stop: سَلَٰسِلَا or سَلَٰسِلْ, both from حفص"
+   ],
+   [
+    "قَوَارِيرَا۟ (76:16)",
+    "Never with ا, joined or stopping (قَوَارِيرْ)"
+   ]
+  ],
+  "tip": "أَنَا before a همزة (أَنَا۠ أُحْىِۦ) stays short when joined: the ا is not said, so there is no مد منفصل.",
+  "examples": [
+   {
+    "verse": "103:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ءَامَنُوا۟",
+    "focus": "نُوا۟",
+    "stop": false,
+    "note": "The ا after واو الجماعة is never said"
+   },
+   {
+    "verse": "2:5",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "أُو۟لَٰٓئِكَ",
+    "focus": "أُو۟",
+    "stop": false,
+    "note": "The و is not said: أُلَٰٓئِكَ"
+   },
+   {
+    "verse": "2:259",
+    "word_from": 19,
+    "word_to": 19,
+    "text": "مِا۟ئَةَ",
+    "focus": "مِا۟",
+    "stop": false,
+    "note": "مِا۟ئَةَ is read مِئَةَ"
+   },
+   {
+    "verse": "27:21",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "لَأَا۟ذْبَحَنَّهُۥٓ",
+    "focus": "أَا۟",
+    "stop": false,
+    "note": "لَأَا۟ذْبَحَنَّهُۥ is read لَأَذْبَحَنَّهُۥ"
+   },
+   {
+    "verse": "51:47",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "بِأَيْي۟دٍ",
+    "focus": "يْي۟",
+    "stop": false,
+    "note": "بِأَيْي۟دٍ is read بِأَيْدٍ"
+   },
+   {
+    "verse": "109:4",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "أَنَا۠ عَابِدٌ",
+    "focus": "أَنَا۠",
+    "stop": false,
+    "note": "Joined: أَنَ عَابِدٌ; stopping on it: أَنَا"
+   },
+   {
+    "verse": "18:38",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "لَّٰكِنَّا۠ هُوَ",
+    "focus": "لَّٰكِنَّا۠",
+    "stop": false,
+    "note": "Joined: لَٰكِنَّ هُوَ; stopping: لَٰكِنَّا"
+   },
+   {
+    "verse": "33:10",
+    "word_from": 16,
+    "word_to": 16,
+    "text": "ٱلظُّنُونَا۠",
+    "focus": "نَا۠",
+    "stop": true,
+    "note": "At the ayah end the ا is said"
+   },
+   {
+    "verse": "76:4",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "سَلَٰسِلَا۟",
+    "focus": "لَا۟",
+    "stop": true,
+    "note": "Stopping: with the ا or without it, both from حفص"
+   },
+   {
+    "verse": "76:15",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "قَوَارِيرَا۠",
+    "focus": "رَا۠",
+    "stop": true,
+    "note": "The first قَوَارِيرَا: the ا is said at the stop"
+   }
+  ],
+  "facts": [
+   {
+    "q": "What does the small round zero (۟) on a letter mean?",
+    "options": [
+     "Say it at a stop only",
+     "Never say it",
+     "Lengthen it",
+     "Say it with سكون"
+    ],
+    "answer": 1,
+    "why": "It marks a letter that is written but never said."
+   },
+   {
+    "q": "What does the small upright oval (۠) on an alif mean?",
+    "options": [
+     "Never said, joined or stopping",
+     "Said when joined only, not at a stop",
+     "Said only at a stop",
+     "Said with a held غنة"
+    ],
+    "answer": 2,
+    "why": "أَنَا۠ is أَنَ when joined and أَنَا at a stop."
+   },
+   {
+    "q": "How is أَنَا۠ عَابِدٌ read when joined?",
+    "options": [
+     "أَنَا عَابِدٌ, 2 counts",
+     "أَنَ عَابِدٌ",
+     "أَنَاا عَابِدٌ, 4 counts",
+     "أَنْ عَابِدٌ"
+    ],
+    "answer": 1,
+    "why": "The ا of أَنَا is said only at a stop."
+   },
+   {
+    "q": "Is the ا after واو الجماعة (ءَامَنُوا۟) said?",
+    "options": [
+     "Yes",
+     "No",
+     "Only at a stop",
+     "Only before a همزة"
+    ],
+    "answer": 1,
+    "why": "It is a spelling convention; the word ends in the و."
+   },
+   {
+    "q": "How does حفص stop on سَلَٰسِلَا۟ (76:4)?",
+    "options": [
+     "Only with the ا, as written",
+     "Only without the ا",
+     "With the ا or without it",
+     "It may not be stopped on at all"
+    ],
+    "answer": 2,
+    "why": "Both ways are read from حفص; joined, there is no ا."
+   },
+   {
+    "q": "How is أُو۟لَٰٓئِكَ read?",
+    "options": [
+     "أُو لَٰٓئِكَ, with a long و",
+     "أُلَٰٓئِكَ, the و not said",
+     "أَوْلَٰٓئِكَ",
+     "أُولَائِكَ with a stop"
+    ],
+    "answer": 1,
+    "why": "The و is written but not said."
+   }
+  ],
+  "sources": [
+   {
+    "title": "العميد في علم التجويد (محمود علي بسة)، الألف الثابتة وقفًا المحذوفة وصلًا",
+    "locator": "https://shamela.ws/book/12754/155–156"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، ما يثبت وقفًا ويحذف وصلًا، وما لا يقرأ (مائة، بأييد، أولئك)",
+    "locator": "https://shamela.ws/book/22869/473–475، /498"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الحروف التي تحذف وصلًا",
+    "locator": "https://shamela.ws/book/7311/252–254"
+   },
+   {
+    "title": "مصحف المدينة (نص Tanzil)، علامتا ۟ و۠",
+    "locator": "علامات الضبط في الخاتمة؛ الكلمات في الأمثلة"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": "Read against the marks of مصحف المدينة (Tanzil text) and the sources. سَلَٰسِلَا at a stop: both ways from حفص; العميد rates dropping the ا as stronger, the teacher may prefer one. The ا after واو الجماعة and لَأَا۟ذْبَحَنَّهُۥ rest on the muṣḥaf marks (no tajweed book passage found)."
+  }
+ },
+ {
+  "id": "aqwa-maddayn",
+  "cat": "madd",
+  "phase": 4,
+  "ar": "أقوى المدين",
+  "en": "When two causes of مد meet",
+  "color": "madd6",
+  "definition": "Sometimes one حرف مد has two reasons to be long, for example a همزة before it (بدل) and a سكون after it (لازم). Then the stronger cause wins and the weaker one is dropped. From strongest to weakest: لازم، متصل، عارض، منفصل، بدل.",
+  "list": [
+   [
+    "Order of strength",
+    "لازم (6) › متصل (4–5) › عارض (2، 4، 6) › منفصل (4–5) › بدل (2)"
+   ],
+   [
+    "بدل + لازم → لازم",
+    "وَلَآ ءَآمِّينَ: 6"
+   ],
+   [
+    "بدل + متصل → متصل",
+    "رِئَآءَ: 4 or 5"
+   ],
+   [
+    "بدل + عارض (stopping) → عارض",
+    "مُسْتَهْزِءُونْ: 2، 4 or 6"
+   ],
+   [
+    "بدل + منفصل → منفصل",
+    "وَجَآءُوٓ أَبَاهُمْ: 4 or 5 joined (2 if you stop on وَجَآءُو)"
+   ]
+  ],
+  "tip": "Ask what comes after the حرف مد first (a سكون or a همزة); the همزة before it (بدل) only decides the length when nothing comes after.",
+  "examples": [
+   {
+    "verse": "5:2",
+    "word_from": 15,
+    "word_to": 16,
+    "text": "وَلَآ ءَآمِّينَ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "بدل and لازم: read 6"
+   },
+   {
+    "verse": "4:38",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "رِئَآءَ",
+    "focus": "ئَآءَ",
+    "stop": false,
+    "note": "بدل and متصل: read 4 or 5"
+   },
+   {
+    "verse": "2:14",
+    "word_from": 16,
+    "word_to": 16,
+    "text": "مُسْتَهْزِءُونَ",
+    "focus": "زِءُو",
+    "stop": true,
+    "note": "بدل and عارض at the stop: 2, 4 or 6"
+   },
+   {
+    "verse": "12:16",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَجَآءُوٓ أَبَاهُمْ",
+    "focus": "ءُوٓ أَ",
+    "stop": false,
+    "note": "بدل and منفصل: 4 or 5 joined"
+   },
+   {
+    "verse": "11:70",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "رَءَآ أَيْدِيَهُمْ",
+    "focus": "رَءَآ أَ",
+    "stop": false,
+    "note": "بدل and منفصل: 4 or 5 joined"
+   },
+   {
+    "verse": "3:14",
+    "word_from": 24,
+    "word_to": 24,
+    "text": "ٱلْمَـَٔابِ",
+    "focus": "مَـَٔا",
+    "stop": true,
+    "note": "بدل and عارض at the stop"
+   },
+   {
+    "verse": "6:143",
+    "word_from": 10,
+    "word_to": 10,
+    "text": "ءَآلذَّكَرَيْنِ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "بدل and لازم (its first way): 6"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Which مد is the strongest?",
+    "options": [
+     "البدل",
+     "المنفصل",
+     "اللازم",
+     "العارض"
+    ],
+    "answer": 2,
+    "why": "Order: لازم، متصل، عارض، منفصل، بدل."
+   },
+   {
+    "q": "Which مد is the weakest?",
+    "options": [
+     "البدل",
+     "المتصل",
+     "العارض",
+     "اللازم"
+    ],
+    "answer": 0,
+    "why": "البدل is 2 counts in حفص and gives way to any other cause."
+   },
+   {
+    "q": "وَلَآ ءَآمِّينَ: the ا after the همزة is long by…",
+    "options": [
+     "البدل, 2",
+     "اللازم, 6",
+     "المنفصل, 4",
+     "العارض, 2–6"
+    ],
+    "answer": 1,
+    "why": "A همزة before it (بدل) and a شدة after it (لازم): the لازم wins."
+   },
+   {
+    "q": "You stop on مُسْتَهْزِءُونَ. The و is…",
+    "options": [
+     "2 only, from البدل",
+     "2, 4 or 6 (عارض)",
+     "6 only, from اللازم",
+     "4 or 5, from المتصل"
+    ],
+    "answer": 1,
+    "why": "The stop gives a سكون after it, so العارض wins over البدل."
+   },
+   {
+    "q": "Order the causes from strongest:",
+    "options": [
+     "متصل، لازم، بدل، عارض، منفصل",
+     "لازم، متصل، عارض، منفصل، بدل",
+     "بدل، منفصل، عارض، متصل، لازم",
+     "لازم، عارض، متصل، بدل، منفصل"
+    ],
+    "answer": 1,
+    "why": "لازم › متصل › عارض › منفصل › بدل."
+   },
+   {
+    "q": "رِئَآءَ ٱلنَّاسِ: the ا is…",
+    "options": [
+     "2, from البدل",
+     "4 or 5 (متصل)",
+     "6, from اللازم",
+     "2, 4 or 6, from العارض"
+    ],
+    "answer": 1,
+    "why": "A همزة after it in the same word: المتصل wins over البدل."
+   }
+  ],
+  "sources": [
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، أقوى المدود وقاعدة السببين",
+    "locator": "https://shamela.ws/book/7311/144–145"
+   },
+   {
+    "title": "هداية القاري إلى تجويد كلام الباري (المرصفي)، اجتماع سببين",
+    "locator": "https://shamela.ws/book/22869/310–313"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، العمل بأقوى السببين",
+    "locator": "https://shamela.ws/book/22642/359"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": "The order and the rule are in the sources. With بدل + عارض some teachers limit the stop to the lengths they use for العارض elsewhere (التسوية); keep one length."
+  }
+ },
+ {
+  "id": "dad-zha",
+  "cat": "found",
+  "phase": 2,
+  "ar": "الضاد والظاء",
+  "en": "Telling ض from ظ",
+  "color": "heavy",
+  "definition": "ض comes from the side of the tongue against the upper back teeth, and its sound stretches along the side of the tongue (الاستطالة). ظ comes from the tip of the tongue against the edges of the upper front teeth, with the tongue tip showing a little. Both are heavy, both are مطبقة; the place of the sound is what tells them apart.",
+  "letters": "ض ظ",
+  "list": [
+   [
+    "ض",
+    "side of the tongue (one side or both) against the upper molars; the sound stretches from the back to the front of the side (استطالة)"
+   ],
+   [
+    "ظ",
+    "tip of the tongue against the edges of the upper front teeth (like ذ and ث, but heavy)"
+   ],
+   [
+    "Common mistakes (النشر)",
+    "ض said as ظ, mixed with ذ, as a heavy ل, or with a hint of ز; and ظ said as a heavy ز"
+   ],
+   [
+    "When they meet",
+    "keep both clear: أَنقَضَ ظَهْرَكَ، يَعَضُّ ٱلظَّالِمُ"
+   ]
+  ],
+  "tip": "For ظ, let the tongue tip touch the upper teeth; for ض keep the tip back and press the side of the tongue, and let the sound run along it.",
+  "examples": [
+   {
+    "verse": "94:3",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "أَنقَضَ ظَهْرَكَ",
+    "focus": "ضَ ظَ",
+    "stop": false,
+    "note": "ض then ظ: both clear (الجزرية)"
+   },
+   {
+    "verse": "25:27",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "يَعَضُّ ٱلظَّالِمُ",
+    "focus": "ضُّ ٱلظَّ",
+    "stop": false,
+    "note": "ض then ظ"
+   },
+   {
+    "verse": "93:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلضُّحَىٰ",
+    "focus": "ضُّ",
+    "stop": true,
+    "note": "ض with ضمة"
+   },
+   {
+    "verse": "1:7",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ٱلضَّآلِّينَ",
+    "focus": "ضَّ",
+    "stop": true,
+    "note": "ض with شدة"
+   },
+   {
+    "verse": "81:24",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "بِضَنِينٍ",
+    "focus": "ضَ",
+    "stop": true,
+    "note": "بِضَنِينٍ with ض in حفص (meaning: not stingy)"
+   },
+   {
+    "verse": "4:40",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "لَا يَظْلِمُ",
+    "focus": "ظْ",
+    "stop": false,
+    "note": "ظ with سكون"
+   },
+   {
+    "verse": "92:14",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "تَلَظَّىٰ",
+    "focus": "ظَّ",
+    "stop": true,
+    "note": "ظ with شدة"
+   },
+   {
+    "verse": "17:20",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "مَحْظُورًا",
+    "focus": "ظُ",
+    "stop": true,
+    "note": "مَحْظُورًا, one of the ظ words in الجزرية"
+   },
+   {
+    "verse": "2:173",
+    "word_from": 14,
+    "word_to": 14,
+    "text": "ٱضْطُرَّ",
+    "focus": "ضْ",
+    "stop": false,
+    "note": "ض with سكون before ط"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Where is ض made?",
+    "options": [
+     "Tip of the tongue and the upper front teeth",
+     "Side of the tongue and upper molars",
+     "Both lips pressed together",
+     "Deep in the throat, near the chest"
+    ],
+    "answer": 1,
+    "why": "The side (حافة) of the tongue against the upper back teeth."
+   },
+   {
+    "q": "Where is ظ made?",
+    "options": [
+     "Side of the tongue and the upper molars",
+     "Tongue tip and upper front teeth",
+     "Back of the tongue and the soft palate",
+     "Middle of the tongue and the hard palate"
+    ],
+    "answer": 1,
+    "why": "With ذ and ث, from the tip of the tongue and the edges of the upper front teeth."
+   },
+   {
+    "q": "Which quality belongs only to ض?",
+    "options": [
+     "الاستطالة",
+     "القلقلة",
+     "الصفير",
+     "الغنة"
+    ],
+    "answer": 0,
+    "why": "The sound stretches along the side of the tongue."
+   },
+   {
+    "q": "Which is a mistake Ibn al-Jazari warns against?",
+    "options": [
+     "Saying ض as ظ",
+     "Giving ض الاستطالة",
+     "Making ض heavy",
+     "Saying ظ with the tongue tip"
+    ],
+    "answer": 0,
+    "why": "In النشر he lists ض said as ظ, mixed with ذ, or as a heavy ل."
+   },
+   {
+    "q": "In أَنقَضَ ظَهْرَكَ, the ض and ظ…",
+    "options": [
+     "Merge into one doubled letter",
+     "Are both said clearly",
+     "Both become ظ, the easier letter",
+     "Both become ض, the first letter"
+    ],
+    "answer": 1,
+    "why": "Ibn al-Jazari: «وَإِنْ تَلَاقَيَا: البَيَانُ لَازِمُ»."
+   },
+   {
+    "q": "Both ض and ظ are…",
+    "options": [
+     "Light letters with a thin sound",
+     "Heavy and مطبقة",
+     "Nasal letters with a غنة",
+     "قلقلة letters that bounce"
+    ],
+    "answer": 1,
+    "why": "Both are from خص ضغط قظ and from the four مطبقة letters."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، مخرج الضاد والظاء، الاستطالة، كلمات الظاء",
+    "locator": "البيت 13–14، 17، 26، 52–61، https://shamela.ws/book/581/70"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، الفرق بين الضاد والظاء",
+    "locator": "https://shamela.ws/book/7311/200–201"
+   },
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، أخطاء الضاد",
+    "locator": "https://shamela.ws/book/22642/227"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "The places of articulation are agreed. The exact sound of ض is a known modern disagreement (the common sound vs. a sound close to ظ argued from old descriptions); learn it from the teacher by ear."
+  }
+ },
+ {
+  "id": "rawm-ishmam",
+  "cat": "waqf",
+  "phase": 5,
+  "ar": "الوقف بالروم والإشمام",
+  "en": "Hinting the last vowel at a stop",
+  "color": "clear",
+  "definition": "When you stop, the last letter usually gets a plain سكون. Two optional ways let the listener know its vowel: الروم, saying about a third of the vowel quietly, and الإشمام, rounding the lips right after the سكون with no sound.",
+  "list": [
+   [
+    "ضمة (and تنوين ضم)",
+    "سكون, روم or إشمام: نَسْتَعِينُ، أَحَدٌ"
+   ],
+   [
+    "كسرة (and تنوين كسر)",
+    "سكون or روم: ٱلرَّحِيمِ، ٱلنَّاسِ"
+   ],
+   [
+    "فتحة (and تنوين فتح)",
+    "سكون only: ٱلْعَٰلَمِينَ"
+   ],
+   [
+    "Never",
+    "تاء مربوطة stopped as هاء (ٱلْحُطَمَةُ → ٱلْحُطَمَهْ), ميم الجمع (عَلَيْهِمْ), a vowel added only to join (قُمِ ٱلَّيْلَ → قُمْ)"
+   ],
+   [
+    "هاء الضمير",
+    "after ضمة/و or كسرة/ي many leave الروم and الإشمام (فِيهِ، أَمْرُهُۥ); others allow them"
+   ]
+  ],
+  "tip": "With الروم the letter is not fully stopped: a مد before it stays 2 counts, and a قلقلة letter does not bounce.",
+  "examples": [
+   {
+    "verse": "1:5",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "نَسْتَعِينُ",
+    "focus": "نُ",
+    "stop": true,
+    "note": "ضمة: سكون, روم or إشمام"
+   },
+   {
+    "verse": "112:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أَحَدٌ",
+    "focus": "دٌ",
+    "stop": true,
+    "note": "تنوين ضم: سكون, روم or إشمام"
+   },
+   {
+    "verse": "1:3",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلرَّحِيمِ",
+    "focus": "مِ",
+    "stop": true,
+    "note": "كسرة: سكون or روم"
+   },
+   {
+    "verse": "114:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلنَّاسِ",
+    "focus": "سِ",
+    "stop": true,
+    "note": "كسرة: سكون or روم"
+   },
+   {
+    "verse": "1:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْعَٰلَمِينَ",
+    "focus": "نَ",
+    "stop": true,
+    "note": "فتحة: سكون only"
+   },
+   {
+    "verse": "104:5",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْحُطَمَةُ",
+    "focus": "مَةُ",
+    "stop": true,
+    "note": "تاء مربوطة: stopped as هاء, سكون only"
+   },
+   {
+    "verse": "73:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قُمِ",
+    "focus": "قُمِ",
+    "stop": true,
+    "note": "The كسرة was added only to join: قُمْ, سكون only"
+   }
+  ],
+  "facts": [
+   {
+    "q": "What is الروم?",
+    "options": [
+     "Rounding the lips after the سكون, with no sound",
+     "A third of the vowel, quietly",
+     "Lengthening the last vowel to two counts",
+     "Adding a soft هاء after the last letter"
+    ],
+    "answer": 1,
+    "why": "It is heard by someone near you."
+   },
+   {
+    "q": "What is الإشمام?",
+    "options": [
+     "Rounding the lips, with no sound",
+     "Saying the full vowel, but quietly",
+     "A nasal sound from the nose",
+     "A quiet فتحة on the last letter"
+    ],
+    "answer": 0,
+    "why": "It is seen, not heard."
+   },
+   {
+    "q": "Which vowels take الروم?",
+    "options": [
+     "فتحة only",
+     "ضمة and كسرة",
+     "All three",
+     "None"
+    ],
+    "answer": 1,
+    "why": "Not فتحة."
+   },
+   {
+    "q": "Which vowel takes الإشمام?",
+    "options": [
+     "كسرة",
+     "فتحة",
+     "ضمة only",
+     "All"
+    ],
+    "answer": 2,
+    "why": "Rounding the lips shows a ضمة only."
+   },
+   {
+    "q": "Stopping on ٱلْحُطَمَةُ, can you use الروم?",
+    "options": [
+     "Yes, like any other ضمة",
+     "No: it becomes a هاء ساكنة",
+     "Only الإشمام, not الروم",
+     "Only in a slow reading (تحقيق)"
+    ],
+    "answer": 1,
+    "why": "The stopped هاء has no vowel to hint at."
+   },
+   {
+    "q": "Stopping on قُمِ (قُمِ ٱلَّيْلَ), can you use الروم?",
+    "options": [
+     "Yes, like any other كسرة",
+     "No: that كسرة is only for joining",
+     "Only الإشمام, not الروم",
+     "It is required at every stop"
+    ],
+    "answer": 1,
+    "why": "A vowel added for التقاء الساكنين is not hinted at."
+   },
+   {
+    "q": "With الروم, a مد before the last letter is…",
+    "options": [
+     "2 counts, as when joined",
+     "6 counts, as in a full stop",
+     "Dropped, the مد is not said",
+     "4 counts only, never 2 or 6"
+    ],
+    "answer": 0,
+    "why": "الروم is like joining, so the عارض length does not apply."
+   }
+  ],
+  "sources": [
+   {
+    "title": "المقدمة الجزرية (ابن الجزري، ت. عبد المحسن القاسم)، الوقف بالروم والإشمام",
+    "locator": "البيت 104–105، https://shamela.ws/book/581/94"
+   },
+   {
+    "title": "متن الشاطبية (حرز الأماني)، باب الوقف على أواخر الكلم",
+    "locator": "البيت 365–375، https://shamela.ws/book/7754/36"
+   },
+   {
+    "title": "الوافي في شرح الشاطبية (القاضي)، الروم والإشمام وهاء الضمير",
+    "locator": "https://shamela.ws/book/38075/173–177"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الروم والإشمام",
+    "locator": "https://shamela.ws/book/38104/208–209"
+   }
+  ],
+  "review": {
+   "status": "needs-teacher",
+   "notes": "Allowed and forbidden cases are agreed. The amount of الروم and the lip shape of الإشمام are performance, learnt by ear and sight from a teacher. هاء الضمير: the Shatibiyya reports both views; ask which the teacher follows."
+  }
+ },
+ {
+  "id": "maratib",
+  "cat": "found",
+  "phase": 6,
+  "ar": "مراتب القراءة",
+  "en": "The three reading speeds",
+  "color": "clear",
+  "definition": "The Quran may be read at three speeds, all with every rule kept: التحقيق (slow, for learning and teaching), التدوير (medium) and الحدر (quick). الترتيل is the quality of a careful, measured reading; many count it as a speed close to التحقيق, others as the manner that covers all three.",
+  "list": [
+   [
+    "التحقيق",
+    "slowest: every letter and length given in full; for learning and teaching"
+   ],
+   [
+    "التدوير",
+    "between the two: the usual speed for many readers"
+   ],
+   [
+    "الحدر",
+    "quick, but with no rule dropped: مد lengths, غنة and clear letters stay"
+   ],
+   [
+    "الترتيل",
+    "calm and measured, with attention to meaning (73:4 «وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا»)"
+   ]
+  ],
+  "tip": "Keep your chosen مد lengths the same at every speed; only the pace changes, not the rules.",
+  "facts": [
+   {
+    "q": "Which speed is used for learning and teaching?",
+    "options": [
+     "الحدر",
+     "التدوير",
+     "التحقيق",
+     "None"
+    ],
+    "answer": 2,
+    "why": "The slowest reading, with every letter given in full."
+   },
+   {
+    "q": "What is الحدر?",
+    "options": [
+     "A quick reading that keeps every rule",
+     "A quick reading that drops the long مد",
+     "Reading silently, with the eyes only",
+     "A slow reading with long pauses"
+    ],
+    "answer": 0,
+    "why": "Speed never excuses dropping a rule."
+   },
+   {
+    "q": "التدوير is…",
+    "options": [
+     "Faster than الحدر, for revision",
+     "Between التحقيق and الحدر",
+     "Slower than التحقيق, for teaching",
+     "Only used in the night prayer"
+    ],
+    "answer": 1,
+    "why": "The middle speed."
+   },
+   {
+    "q": "Which ayah commands الترتيل?",
+    "options": [
+     "1:1",
+     "73:4",
+     "112:1",
+     "2:255"
+    ],
+    "answer": 1,
+    "why": "«وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا»."
+   },
+   {
+    "q": "In الحدر, the غنة of a نّ is…",
+    "options": [
+     "Dropped",
+     "Kept, 2 counts",
+     "Made 6 counts",
+     "Said as a ن with سكون"
+    ],
+    "answer": 1,
+    "why": "The rules stay; only the speed changes."
+   },
+   {
+    "q": "According to Ibn al-Jazari (النشر), is التحقيق a kind of الترتيل?",
+    "options": [
+     "No, they are opposite speeds",
+     "Yes: every تحقيق is ترتيل",
+     "Only when reading in prayer",
+     "Only in the reading of حفص"
+    ],
+    "answer": 1,
+    "why": "«كل تحقيق ترتيل وليس كل ترتيل تحقيقا»."
+   }
+  ],
+  "sources": [
+   {
+    "title": "النشر في القراءات العشر (ابن الجزري)، التحقيق والحدر والتدوير والترتيل",
+    "locator": "https://shamela.ws/book/22642/213–217"
+   },
+   {
+    "title": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، مراتب القراءة",
+    "locator": "https://shamela.ws/book/38104/30–31"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مراتب القراءة",
+    "locator": "https://shamela.ws/book/7311/20–21"
+   }
+  ],
+  "review": {
+   "status": "verified",
+   "notes": "All three speeds are agreed. The terms differ: الميزان gives three levels with الترتيل covering all, غاية المريد puts الترتيل as a level with التحقيق as a fourth in some views, العميد counts four. The card gives the النشر view."
+  }
  }
 ]
