@@ -1,7 +1,7 @@
 // #/today: the wird as a finite, ordered list (spec F1, design §5.2).
 import { useMemo, useState, type ReactNode } from 'react'
 import type { DayLog, PartMark } from '../core/types'
-import { markDayPart, storagePersisted, suggestPassages, useData } from '../core/store'
+import { markDayPart, storagePersisted, suggestPassages, toggleTask, useData } from '../core/store'
 import { buildQueue } from '../core/scheduler'
 import { diffDays, today } from '../core/day'
 import { drillFor, getLesson, lessons, phases } from '../content'
@@ -9,6 +9,7 @@ import { href } from '../app/router'
 import { Button, Card, CorrectionTag, Nudge, Ornament, OrnHeading, ProgressDots, Sheet, StarBadge, T } from '../components'
 import { currentPassage, mem, rangeParam, rangeRef, setMem, teacherNear, verseRef, week } from './study/helpers'
 import './study.css'
+import './path.css'
 
 type PartId = keyof DayLog['parts']
 
@@ -57,6 +58,10 @@ export default function Today() {
   const msPhase = data.phases.find(p => p.status === 'milestone')
   const dueManzil = q.manzil.length + q.overflowCount
   const activeLeft = data.phases.some(p => p.status === 'active')
+  // phase tasks: the next two unticked ones of the current phase, ticked here or on the plan
+  const curProg = data.phases.find(p => p.status === 'active' || p.status === 'milestone')
+  const curPhase = phases.find(p => p.id === curProg?.id)
+  const tasksLeft = curPhase ? curPhase.tasks.map((t, i) => ({ t, i })).filter(x => !curProg!.tasksDone.includes(x.i)) : []
 
   // التلاوة (learning review M2): one ayah for each lesson of the last 7 days, newest first (the سبقي, recited),
   // rotating through its examples day by day; the letter drill for مخارج / صفات lessons; then due open corrections.
@@ -125,6 +130,22 @@ export default function Today() {
           {w.count === 0 && data.settings.onboardedOn === day ? 'Your week starts today.' : `${w.count} ${w.count === 1 ? 'day' : 'days'} studied this week · This month: ${w.month}`}
         </p>
       </Card>
+
+      {curPhase && curPhase.tasks.length > 0 && (
+        <Card eyebrow={<><span lang="ar">{curPhase.nameAr}</span> · Phase {curPhase.id} tasks</>}>
+          {tasksLeft.length ? (
+            <div className="p-tasks">
+              {tasksLeft.slice(0, 2).map(({ t, i }) => (
+                <label key={i} className="p-check">
+                  <input type="checkbox" checked={false} onChange={() => toggleTask(curPhase.id, i)} />
+                  <span className="t-sm"><T>{t}</T></span>
+                </label>
+              ))}
+            </div>
+          ) : <p className="t-sm">All tasks of this phase are ticked.</p>}
+          <p className="t-sm num"><a href={href('plan')}>{curPhase.tasks.length - tasksLeft.length} of {curPhase.tasks.length} done · All tasks ›</a></p>
+        </Card>
+      )}
 
       {near && (
         <Card eyebrow={<><span lang="ar">الشيخ</span> · Teacher {near.when}</>}>
