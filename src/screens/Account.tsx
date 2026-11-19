@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button, Card, OrnHeading } from '../components'
 import { authError, clearAuthError, redirectUrl, supabase } from '../sync/supabase'
-import { deleteServerData, sendEmailLink, signInWithGoogle, signOut, syncNow, useSync, type SyncState } from '../sync/sync'
+import { chooseAccountData, deleteAccount, sendEmailLink, signInWithGoogle, signOut, syncNow, useSync, type SyncState } from '../sync/sync'
 import { syncLabel } from '../sync/SignInNudge'
 import './path.css'
 import '../sync/sync.css'
@@ -23,6 +23,7 @@ export default function Account() {
         </p>
       )}
       {notice && <p role="status">{notice}</p>}
+      {!s.user && s.error && <p role="status">{s.error}</p>}
       {s.user ? <SignedIn s={s} onDeleted={setNotice} /> : <SignIn />}
     </div>
   )
@@ -38,6 +39,7 @@ function SignedIn({ s, onDeleted }: { s: SyncState; onDeleted: (msg: string) => 
         <Card>
           <p>Signed in as <span className="acc-email">{s.user!.email ?? 'your account'}</span></p>
           <p role="status">{syncLabel(s)}</p>
+          {s.status === 'choose' && <AccountSwitch />}
           {s.status === 'error' && <p className="t-sm p-error">{s.error}. Your progress is safe on this device.</p>}
           <p className="t-sm muted">Your progress and settings are backed up and kept the same on every device where you sign in. Recordings stay on each device.</p>
           <div className="p-actions">
@@ -50,17 +52,17 @@ function SignedIn({ s, onDeleted }: { s: SyncState; onDeleted: (msg: string) => 
         <OrnHeading>Delete my data</OrnHeading>
         <Card>
           {!confirm ? (
-            <Button variant="danger" onClick={() => setConfirm(true)}>Delete my data from the server</Button>
+            <Button variant="danger" onClick={() => setConfirm(true)}>Delete my account</Button>
           ) : (
-            <div className="p-confirm" role="alertdialog" aria-label="Delete your data from the server?">
+            <div className="p-confirm" role="alertdialog" aria-label="Delete your account?">
               <p>
-                This deletes your backed-up progress, your teacher links, your circles and memberships, and your study days from the server, then
-                signs you out. Your progress on this device stays.
+                This deletes your account (your sign-in), your backed-up progress, your teacher links, your circles and memberships, and your study
+                days from the server, then signs you out. Other signed-in devices are signed out when they next sync. Your progress on this device stays.
               </p>
               <div className="p-actions">
                 <Button variant="danger" disabled={busy} onClick={async () => {
                   setBusy(true)
-                  try { await deleteServerData(); onDeleted('Deleted from the server. You are signed out; your progress is still on this device.'); return }
+                  try { await deleteAccount(); onDeleted('Your account is deleted. You are signed out; your progress is still on this device.'); return }
                   catch (e) { setMsg({ ok: false, text: `Not deleted: ${(e as Error).message}` }) }
                   setBusy(false); setConfirm(false)
                 }}>Delete</Button>
@@ -69,10 +71,29 @@ function SignedIn({ s, onDeleted }: { s: SyncState; onDeleted: (msg: string) => 
             </div>
           )}
           {msg && <p role={msg.ok ? 'status' : 'alert'} className={msg.ok ? '' : 'p-error'}>{msg.text}</p>}
-          <p className="t-sm muted">The sign-in account itself (your email address) can be removed on request: write to the app's maintainer.</p>
         </Card>
       </>
     )
+}
+
+/** Another account synced on this device before (a shared device): never mix two people's progress without asking. */
+function AccountSwitch() {
+  const [busy, setBusy] = useState(false)
+  const pick = (c: 'replace' | 'merge') => { setBusy(true); void chooseAccountData(c).finally(() => setBusy(false)) }
+  return (
+    <div className="p-confirm" role="alertdialog" aria-label="This device has someone else's progress">
+      <p>
+        The progress on this device was backed up to a <b>different account</b>. Backup is paused until you choose. Nothing has been
+        changed yet.
+      </p>
+      <div className="p-stack">
+        <Button disabled={busy} onClick={() => pick('replace')}>Use this account's data (replace this device's)</Button>
+        <Button variant="secondary" disabled={busy} onClick={() => pick('merge')}>Merge this device's progress into this account</Button>
+        <Button variant="ghost" disabled={busy} onClick={() => void signOut()}>Cancel (sign out)</Button>
+      </div>
+      <p className="t-sm muted">Replace: this device shows this account's progress; the other account's copy on the server is not touched.</p>
+    </div>
+  )
 }
 
 function SignIn() {
@@ -112,7 +133,8 @@ function SignIn() {
         <Button variant="secondary" onClick={() => signInWithGoogle(redirectUrl()).catch((x) => setErr((x as Error).message))}>Continue with Google</Button>
         {err && <p role="alert" className="p-error">{err}</p>}
         <p className="t-sm muted">
-          When you sign in, what is on this device is merged with what is already backed up: nothing is lost. Recordings never leave this device.
+          When you sign in, what is on this device is merged with what is already backed up: nothing is lost. If this device has no
+          progress yet, it takes the account's progress and settings. Recordings never leave this device.
         </p>
       </Card>
     </>

@@ -81,12 +81,11 @@ function CreateForm() {
         <form className="p-stack" onSubmit={async (e) => {
           e.preventDefault()
           setBusy(true); setErr('')
-          const { data, error } = await supabase!.from('circles').insert({ name: name.trim() }).select('id').single()
-          const add = data && (await supabase!.from('circle_members').insert({ circle_id: data.id, display_name: me.trim() }))
+          const { data, error } = await supabase!.rpc('create_circle', { p_name: name.trim(), p_display_name: me.trim() })
           setBusy(false)
-          if (error || add?.error) return setErr((error ?? add?.error)!.message)
+          if (error) return setErr(error.message)
           saveName(me.trim())
-          navigate(`circle/${data!.id}`)
+          navigate(`circle/${data}`)
         }}>
           <label className="p-field">
             <span>Circle name</span>
@@ -116,6 +115,7 @@ function JoinForm({ initialCode = '' }: { initialCode?: string }) {
           const { data, error } = await supabase!.rpc('join_circle', { p_code: code.trim(), p_name: me.trim() })
           setBusy(false)
           if (error) return setErr(error.message)
+          if (!data) return setErr('That code did not work. Check it with whoever invited you and try again.')
           saveName(me.trim())
           navigate(`circle/${data}`)
         }}>
@@ -142,9 +142,10 @@ function lastWeek(): { days: string[]; labels: string[] } {
 
 function CircleView({ id, userId }: { id: string; userId: string }) {
   const [circle, setCircle] = useState<CircleRow | null | undefined>(undefined)
-  const [week, setWeek] = useState<{ display_name: string; is_me: boolean; days: string[] }[] | null>(null)
+  const [week, setWeek] = useState<{ user_id: string; display_name: string; is_me: boolean; days: string[] }[] | null>(null)
   const [err, setErr] = useState('')
   const [confirm, setConfirm] = useState<'leave' | 'delete' | null>(null)
+  const [removing, setRemoving] = useState<{ user_id: string; display_name: string } | null>(null)
 
   const load = useCallback(async () => {
     const [c, w] = await Promise.all([
@@ -162,6 +163,13 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
 
   const { days, labels } = lastWeek()
   const owner = circle.owner === userId
+  const rpc = async (fn: string, args: Record<string, unknown>) => {
+    setErr('')
+    const { error } = await supabase!.rpc(fn, args)
+    if (error) setErr(error.message)
+    else await load()
+    return !error
+  }
   const leave = async () => {
     const r = owner
       ? await supabase!.from('circles').delete().eq('id', id)
@@ -183,6 +191,9 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
                 <li key={i}>
                   <span>{m.display_name}{m.is_me && <small className="muted"> (you)</small>}</span>
                   <ProgressDots days={marks} today={6} labels={labels} />
+                  {owner && !m.is_me && (
+                    <button type="button" className="p-linkbtn" onClick={() => setRemoving(m)}>Remove {m.display_name}</button>
+                  )}
                 </li>
               )
             })}
@@ -191,12 +202,26 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
         <p className="t-sm muted">A filled dot is a day that member studied. Days run {labels[0]} to {labels[6]} (today).</p>
       </Card>
 
+      {removing && (
+        <Card level="e2">
+          <p>Remove {removing.display_name} from this circle? They can join again only with the code, so change the code too if you do not want that.</p>
+          <div className="p-actions">
+            <Button variant="danger" onClick={async () => { if (await rpc('remove_member', { p_circle: id, p_user: removing.user_id })) setRemoving(null) }}>Remove</Button>
+            <Button variant="ghost" onClick={() => setRemoving(null)}>Cancel</Button>
+          </div>
+        </Card>
+      )}
+
       <OrnHeading>Invite</OrnHeading>
       <Card>
         <p>Code: <span className="acc-code">{circle.invite_code}</span></p>
         <CopyField text={inviteLink(circle.invite_code)} label="Invite link" />
         <p className="t-sm muted">Anyone with the code or link who signs in can join (up to 20 members).</p>
+        {owner && <Button variant="secondary" onClick={() => void rpc('rotate_invite', { p_circle: id })}>Change the code</Button>}
+        {owner && <p className="t-sm muted">Changing the code stops the old code and link from working. Members stay in the circle.</p>}
       </Card>
+
+      {owner && <RenameForm id={id} name={circle.name} onDone={load} />}
 
       {confirm ? (
         <Card level="e2">
@@ -211,5 +236,34 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
       )}
       {err && <p role="alert" className="p-error">{err}</p>}
     </div>
+  )
+}
+
+function RenameForm({ id, name, onDone }: { id: string; name: string; onDone: () => Promise<void> }) {
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState(name)
+  const [err, setErr] = useState('')
+  if (!open) return <Button variant="ghost" onClick={() => { setValue(name); setOpen(true) }}>Rename circle</Button>
+  return (
+    <Card>
+      <form className="p-stack" onSubmit={async (e) => {
+        e.preventDefault()
+        setErr('')
+        const { error } = await supabase!.from('circles').update({ name: value.trim() }).eq('id', id)
+        if (error) return setErr(error.message)
+        setOpen(false)
+        await onDone()
+      }}>
+        <label className="p-field">
+          <span>Circle name</span>
+          <input type="text" dir="auto" maxLength={60} required value={value} onChange={(e) => setValue(e.target.value)} />
+        </label>
+        <div className="p-actions">
+          <Button type="submit" disabled={!value.trim()}>Save</Button>
+          <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+        </div>
+        {err && <p role="alert" className="p-error">{err}</p>}
+      </form>
+    </Card>
   )
 }

@@ -3,7 +3,9 @@
 //    updatedAt ?? at ?? on wins (soft deletes carry deletedAt + a newer updatedAt, so they win too)
 //  - objects with a timestamp (settings): the newer one wins whole
 //  - objects without one (a DayLog, a phase): field by field, so marks from two devices on one day both survive
-//  - numbers: the larger (schemaVersion, listenSeconds); other values: local's, unless local has none
+//  - numbers: the larger (schemaVersion, listenSeconds); other values: local's, unless local has none.
+//    listenSeconds keeps the max, not the sum: merge runs again on every sync, so summing would add the same
+//    minutes once per round trip; the max can only under-count time studied on two devices the same day.
 // The caller still runs the result through the store's validation (importJson).
 
 type J = any
@@ -69,4 +71,36 @@ export function mergeData(local: J, remote: J): J {
   const ua = [local.updatedAt, remote.updatedAt].filter((s): s is string => typeof s === 'string').sort()
   if (ua.length) out.updatedAt = ua[ua.length - 1]
   return out
+}
+
+/* ---------------- first sync of an account on this device ---------------- */
+
+/** Anything worth keeping beyond settings: a lesson, an answer, a finale, a correction or a session. */
+export const hasProgress = (d: J): boolean =>
+  isObj(d) && ['introductions', 'attempts', 'finales', 'corrections', 'sessions'].some(k => Array.isArray(d[k]) && d[k].length > 0)
+
+/**
+ * What to do when `userId` syncs and this device last synced `lastAccount` (null: never).
+ *  - 'merge': the usual merge (same account as last time, or nothing on the server yet and no one else's data here)
+ *  - 'take-remote': this device holds no progress, so the account's copy is used as is (its settings too)
+ *  - 'merge-account-settings': first sync with progress on both sides: merge rows, keep the account's settings
+ *    (this device's settings are only its own onboarding; a newer stamp must not override the account's)
+ *  - 'ask': another account synced here before and this device has progress: never mix two people's data silently
+ */
+export type FirstSync = 'merge' | 'take-remote' | 'merge-account-settings' | 'ask'
+export function firstSync(local: J, remote: J, lastAccount: string | null, userId: string): FirstSync {
+  if (lastAccount === userId) return 'merge'
+  if (!hasProgress(local)) return isObj(remote) ? 'take-remote' : 'merge'
+  if (lastAccount) return 'ask'
+  return isObj(remote) ? 'merge-account-settings' : 'merge'
+}
+
+/** The document a first sync produces (before validation). 'ask' is resolved by the learner into 'take-remote' or 'merge-account-settings'. */
+export function firstSyncDoc(plan: Exclude<FirstSync, 'ask'>, local: J, remote: J): J {
+  if (plan === 'take-remote') return isObj(remote) ? remote : local
+  const m = mergeData(local, remote)
+  // An account copy that was never onboarded (a reset elsewhere) does not replace settings this device has set up.
+  if (plan === 'merge-account-settings' && isObj(remote?.settings) && (remote.settings.onboardedOn || !local?.settings?.onboardedOn))
+    m.settings = remote.settings
+  return m
 }

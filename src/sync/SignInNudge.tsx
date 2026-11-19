@@ -29,6 +29,7 @@ export function syncLabel(s: SyncState): string {
   if (s.status === 'syncing') return s.lastSyncedAt ? 'Backed up · syncing…' : 'Backing up…'
   if (s.status === 'offline') return s.lastSyncedAt ? `Offline · last synced ${ago(s.lastSyncedAt)}` : 'Offline · will back up when online'
   if (s.status === 'error') return 'Backup paused · could not sync'
+  if (s.status === 'choose') return 'Backup paused · choose what to do with this device’s progress'
   return s.lastSyncedAt ? `Backed up · synced ${ago(s.lastSyncedAt)}` : 'Backed up'
 }
 
@@ -63,7 +64,7 @@ export function SignInNudge() {
 export function BackupBadge({ detail = false }: { detail?: boolean }) {
   const s = useSync()
   if (!supabase) return null
-  const ok = !!s.user && s.status !== 'error'
+  const ok = !!s.user && s.status !== 'error' && s.status !== 'choose'
   return (
     <a className="backup-badge" data-ok={ok} href="#/account">
       <span aria-hidden="true">{ok ? '●' : '○'}</span> {detail ? syncLabel(s) : ok ? 'Backed up' : 'Not backed up'}

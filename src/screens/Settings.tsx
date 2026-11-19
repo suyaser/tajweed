@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import type { Settings as SettingsT } from '../core/types'
-import { STORAGE_KEY, exportJson, importJson, resetAll, storagePersisted, updateSettings, useData } from '../core/store'
+import { STORAGE_KEY, exportJson, storagePersisted, updateSettings, useData } from '../core/store'
 import { today } from '../core/day'
 import { makeWirdIcs } from '../core/ics'
 import { RECITERS } from '../quran'
@@ -12,7 +12,7 @@ const WEEK_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frid
 import { download } from './path/ui'
 import './path.css'
 import { supabase } from '../sync/supabase'
-import { useSync } from '../sync/sync'
+import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
 import { BackupBadge, syncLabel } from '../sync/SignInNudge'
 import { CopyField } from '../sync/CopyField'
 
@@ -188,6 +188,7 @@ function TeacherLink({ userId }: { userId: string }) {
 }
 
 function Data({ lastExportOn }: { lastExportOn: string | null }) {
+  const { user } = useSync()
   const [rec, setRec] = useState<{ n: number; bytes: number } | null>(null)
   const [persisted, setPersisted] = useState<boolean | null>(storagePersisted())
   const [pending, setPending] = useState<{ name: string; text: string; summary: string } | null>(null)
@@ -232,12 +233,18 @@ function Data({ lastExportOn }: { lastExportOn: string | null }) {
           <p>
             Restore from <b>{pending.name}</b>? It replaces everything on this device with {pending.summary}. This can't be undone.
           </p>
+          {user && (
+            <p>
+              You are signed in, so it also <b>replaces the copy in your account</b> ({user.email ?? 'your account'}). Your other devices take it
+              when they next sync, and add back any progress they hold that the backup does not have.
+            </p>
+          )}
           <div className="p-actions">
             <Button variant="secondary" onClick={() => download(`tajweed-path-${today()}.json`, exportJson(), 'application/json')}>Back up current data first</Button>
             <Button variant="danger" onClick={() => {
               try {
-                importJson(pending.text)
-                setMsg({ ok: true, text: 'Restored. Everything on this device now comes from the backup.' })
+                restoreBackup(pending.text)
+                setMsg({ ok: true, text: user ? 'Restored. This device and your account now hold the backup.' : 'Restored. Everything on this device now comes from the backup.' })
               } catch (e) {
                 setMsg({ ok: false, text: `Not restored: ${(e as Error).message} Nothing was changed.` })
               }
@@ -271,6 +278,7 @@ function Data({ lastExportOn }: { lastExportOn: string | null }) {
 }
 
 function Reset() {
+  const { user } = useSync()
   const [open, setOpen] = useState(false)
   const [word, setWord] = useState('')
   if (!open) return <Button variant="danger" block onClick={() => setOpen(true)}>Reset everything</Button>
@@ -280,10 +288,14 @@ function Reset() {
         e.preventDefault()
         if (word.trim().toLowerCase() !== 'reset') return
         await removeAll().catch(() => {})
-        resetAll()
+        await resetThisDevice()
       }}>
         <label className="p-field">
-          <span>This deletes all your progress, sessions and recordings on this device. Type <b>reset</b> to confirm.</span>
+          <span>
+            This deletes all your progress, sessions and recordings on this device.
+            {user && ' You are signed in: this device signs out first, so the copy in your account is kept as it is (to delete that too, use Delete my account on the Account page).'}
+            {' '}Type <b>reset</b> to confirm.
+          </span>
           <input type="text" value={word} onChange={(e) => setWord(e.target.value)} autoComplete="off" autoCapitalize="none" spellCheck={false} />
         </label>
         <div className="p-actions">

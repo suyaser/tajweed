@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { canonical, mergeData, sameDoc } from './merge'
+import { canonical, firstSync, firstSyncDoc, mergeData, sameDoc } from './merge'
 import { defaultData, migrate } from '../core/store'
 import type { Attempt, Correction, UserData } from '../core/types'
 
@@ -117,5 +117,30 @@ describe('mergeData', () => {
   it('sameDoc ignores key order (jsonb reorders keys) and the top-level updatedAt', () => {
     expect(sameDoc({ a: 1, b: { c: 1, d: 2 }, updatedAt: 'x' }, { b: { d: 2, c: 1 }, a: 1, updatedAt: 'y' })).toBe(true)
     expect(sameDoc({ a: 1 }, { a: 2 })).toBe(false)
+  })
+})
+
+describe('firstSync', () => {
+  const busy = () => { const d = base(); d.attempts = [attempt('a1', 1)]; return d }
+  it('decides by the last synced account and local progress', () => {
+    expect(firstSync(busy(), base(), 'u1', 'u1')).toBe('merge')
+    expect(firstSync(base(), base(), null, 'u1')).toBe('take-remote')
+    expect(firstSync(base(), base(), 'u2', 'u1')).toBe('take-remote')
+    expect(firstSync(base(), null, null, 'u1')).toBe('merge')
+    expect(firstSync(busy(), base(), null, 'u1')).toBe('merge-account-settings')
+    expect(firstSync(busy(), null, null, 'u1')).toBe('merge')
+    expect(firstSync(busy(), base(), 'u2', 'u1')).toBe('ask')
+    expect(firstSync(busy(), null, 'u2', 'u1')).toBe('ask')
+  })
+  it('merge-account-settings keeps the account settings even when this device stamped its own later', () => {
+    const local = busy(), remote = base()
+    local.settings = { ...local.settings, wirdTime: '09:00', updatedAt: T(9) }
+    remote.settings = { ...remote.settings, wirdTime: '04:45', updatedAt: T(1) }
+    const m = firstSyncDoc('merge-account-settings', local, remote)
+    expect(m.settings.wirdTime).toBe('04:45')
+    expect(m.attempts).toHaveLength(1)
+    expect(sameDoc(mergeData(m, remote), m)).toBe(true) // and later normal merges keep it
+    remote.settings = { ...remote.settings, onboardedOn: null } // an account copy never onboarded does not win
+    expect(firstSyncDoc('merge-account-settings', local, remote).settings.wirdTime).toBe('09:00')
   })
 })
