@@ -8,6 +8,7 @@ import { Button, Card, RuleChip, Sheet, StarBadge, T } from '../components'
 import { dayLabel, listenHref, passedMilestones } from './path/helpers'
 import { AddToNextSession, PathTabs } from './path/ui'
 import './path.css'
+import { Hint } from './study/Hint'
 
 const STATUS: Record<PhaseProgress['status'], string> = {
   locked: '🔒 locked', active: '● active', milestone: '◆ ready for the milestone', passed: '✓ passed', skipped: '↷ skipped',
@@ -19,6 +20,7 @@ export default function Plan() {
   return (
     <div className="p-stack">
       <PathTabs value="plan" />
+      <Hint id="plan">Your six phases. Open a phase to see its lessons, its tasks to tick, and the milestone passages to recite to your teacher.</Hint>
       <ol className="p-timeline">
         {contentPhases.map((ph) => (
           <PhaseRow key={ph.id} ph={ph} pr={d.phases.find((p) => p.id === ph.id)} d={d} />

@@ -11,9 +11,10 @@ import { download } from '../app/download'
 import { Band, Button, Card, CountBeats, T, VerseBlock } from '../components'
 import { verseRef } from './study/helpers'
 import { useVerse } from './study/verse'
+import { Basics } from './guide/content'
 import './study.css'
 
-const N = 5
+const N = 6
 const DAYS: [number, string, string][] = [[6, 'Sa', 'Saturday'], [0, 'Su', 'Sunday'], [1, 'Mo', 'Monday'], [2, 'Tu', 'Tuesday'], [3, 'We', 'Wednesday'], [4, 'Th', 'Thursday'], [5, 'Fr', 'Friday']]
 const RECITER_NOTE: Record<string, string> = {
   'husary-muallim': 'Pauses for you to repeat. Recommended to start.',
@@ -76,6 +77,14 @@ export default function Onboarding() {
       {step === 1 && (
         <section className="s-study">
           <Stars step={1} onSkip={next} />
+          <Head ar="كيف يعمل" en="How your path works">Four things to know. You can read this again any time from Help.</Head>
+          <Basics />
+          <Button block onClick={next}>Got it</Button>
+        </section>
+      )}
+      {step === 2 && (
+        <section className="s-study">
+          <Stars step={2} onSkip={next} />
           <Head ar="من أين تبدأ" en="Where you're starting">
             Have you finished the intro course (six episodes, by المهندس علاء حامد)?
           </Head>
@@ -87,16 +96,16 @@ export default function Onboarding() {
           <Button block onClick={next}>Next</Button>
         </section>
       )}
-      {step === 2 && <ReciterStep value={draft.reciterId!} onChange={id => set({ reciterId: id })} onNext={next} />}
-      {step === 3 && (
+      {step === 3 && <ReciterStep value={draft.reciterId!} onChange={id => set({ reciterId: id })} onNext={next} />}
+      {step === 4 && (
         <MunfasilStep
           value={draft.munfasilLength!} onChange={n => { set({ munfasilLength: n }); setAskMunfasil(false) }}
           onNotSure={() => { set({ munfasilLength: 4 }); setAskMunfasil(true); next() }} onNext={next}
         />
       )}
-      {step === 4 && (
+      {step === 5 && (
         <section className="s-study">
-          <Stars step={4} onSkip={finish} />
+          <Stars step={5} onSkip={finish} />
           <Head ar="الورد اليومي" en="When will you study?" />
           <label className="s-field">
             <span>Wird time</span>
@@ -199,7 +208,7 @@ function ReciterStep({ value, onChange, onNext }: { value: string; onChange: (id
   const shown = useMemo(() => sample?.find(v => v.verseKey === state.verseKey), [sample, state.verseKey])
   return (
     <section className="s-study">
-      <Stars step={2} onSkip={onNext} />
+      <Stars step={3} onSkip={onNext} />
       <Head ar="القارئ القدوة" en="Your model reciter">You'll repeat after one voice until it becomes your own.</Head>
       <div className="s-ob-reciters" role="radiogroup" aria-label="Model reciter">
         {RECITERS.map(r => (
@@ -231,7 +240,7 @@ function MunfasilStep({ value, onChange, onNotSure, onNext }: { value: 4 | 5; on
   const vs = useVerse('108:1')
   return (
     <section className="s-study">
-      <Stars step={3} onSkip={onNext} />
+      <Stars step={4} onSkip={onNext} />
       <Head ar="المد المنفصل" en="How long is your المد المنفصل?" />
       {vs.verse && <VerseBlock text={vs.verse.text} focus={[1, 1]} reference={verseRef('108:1')} size="read" tajweed={false} />}
       <div className="opts">

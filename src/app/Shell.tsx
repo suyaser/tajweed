@@ -2,6 +2,7 @@ import { useEffect, useRef, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
+import { Icon } from './icons'
 
 type Tab = 'today' | 'rules' | 'teacher' | 'path'
 type Kind = 'tab' | 'pushed' | 'focus' | 'bare'
@@ -29,6 +30,7 @@ const META: Record<RouteName, { kind: Kind; tab?: Tab; ar: string; en: string; p
   plan: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path', gear: true },
   progress: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path', gear: true },
   settings: { kind: 'pushed', ar: 'الإعدادات', en: 'Settings', parent: 'today' },
+  guide: { kind: 'pushed', ar: 'كيف يعمل', en: 'How it works', parent: 'today' },
   mushaf: { kind: 'pushed', tab: 'rules', ar: 'المصحف', en: 'Ayah analyser', parent: 'rules' },
   mutun: { kind: 'pushed', tab: 'rules', ar: 'المتون', en: 'Mutun', parent: 'rules' },
   drill: { kind: 'focus', tab: 'today', ar: 'تمييز', en: 'Contrast drill', parent: 'review' },
@@ -94,7 +96,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
   return (
     <div className="shell" data-kind={kind}>
       <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}>Skip to content</a>
-      {hasNav && <Rail active={meta.tab} settings={route.name === 'settings'} />}
+      {hasNav && <Rail active={meta.tab} settings={route.name === 'settings'} guide={route.name === 'guide'} />}
       <div className="shell-col">
         {kind === 'focus' && (
           <header className="focusbar gutter">
@@ -106,7 +108,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
           </header>
         )}
         {hasNav && (
-          <header className={`topbar lattice gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
+          <header className={`topbar gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
             {kind === 'pushed' && (
               <a className="back" href={href(parent)}>
                 <span aria-hidden="true">‹</span> Back
@@ -117,11 +119,18 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
               <span className="topbar-en">{meta.en}</span>
               {route.name === 'today' && <Dates />}
             </div>
-            {meta.gear && (
-              <a className="gear" href={href('settings')} aria-label="Settings">
-                <span aria-hidden="true">⚙</span>
-              </a>
-            )}
+            <div className="topbar-actions">
+              {route.name !== 'guide' && (
+                <a className="gear" href={href('guide')}>
+                  <Icon name="help" className="gear-ico" /><small>Help</small>
+                </a>
+              )}
+              {meta.gear && (
+                <a className="gear" href={href('settings')}>
+                  <Icon name="settings" className="gear-ico" /><small>Settings</small>
+                </a>
+              )}
+            </div>
           </header>
         )}
         <main key={route.path} id="main" ref={mainRef} tabIndex={-1} className={`shell-main gutter${kind === 'bare' ? ' shell-bare' : ''}`}>
@@ -139,7 +148,7 @@ function TabBar({ active }: { active?: Tab }) {
     <nav className="tabbar" aria-label="Main">
       {TABS.map((t) => (
         <a key={t.id} href={href(t.to)} aria-current={t.id === active ? 'page' : undefined}>
-          <span className="tab-star" aria-hidden="true">✦</span>
+          <span className="tab-pill"><Icon name={t.id} className="tab-ico" /></span>
           <b lang="ar">{t.ar}</b>
           <small>{t.en}</small>
         </a>
@@ -148,7 +157,7 @@ function TabBar({ active }: { active?: Tab }) {
   )
 }
 
-function Rail({ active, settings }: { active?: Tab; settings?: boolean }) {
+function Rail({ active, settings, guide }: { active?: Tab; settings?: boolean; guide?: boolean }) {
   return (
     <nav className="rail lattice" aria-label="Main">
       <a className="rail-brand" href={href('today')}>
@@ -157,12 +166,18 @@ function Rail({ active, settings }: { active?: Tab; settings?: boolean }) {
       </a>
       {TABS.map((t) => (
         <a key={t.id} href={href(t.to)} aria-current={t.id === active ? 'page' : undefined}>
+          <Icon name={t.id} className="tab-ico" />
           <b lang="ar">{t.ar}</b>
           <small>{t.en}</small>
         </a>
       ))}
-      <a className="rail-gear" href={href('settings')} aria-label="Settings" aria-current={settings ? 'page' : undefined}>
-        <span aria-hidden="true">⚙</span>
+      <a className="rail-gear rail-help" href={href('guide')} aria-current={guide ? 'page' : undefined}>
+        <Icon name="help" className="gear-ico" />
+        <b lang="ar">كيف يعمل</b><small>Help</small>
+      </a>
+      <a className="rail-gear" href={href('settings')} aria-current={settings ? 'page' : undefined}>
+        <Icon name="settings" className="gear-ico" />
+        <b lang="ar">الإعدادات</b><small>Settings</small>
       </a>
     </nav>
   )

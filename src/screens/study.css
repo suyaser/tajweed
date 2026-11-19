@@ -78,8 +78,8 @@
 .s-ob .s-study > .btn-block { position: sticky; bottom: calc(var(--s3) + env(safe-area-inset-bottom, 0px)); z-index: 2; box-shadow: 0 0 0 6px var(--bg); }
 .s-ob-band { display: grid; justify-items: center; text-align: center; gap: var(--s2); padding: var(--s6) var(--s4); border-radius: var(--r-card); }
 .s-ob-band .k-h1 { color: var(--gold-display); }
-.s-ob-brand { font-family: var(--f-disp); letter-spacing: 0.2em; color: var(--on-green); }
-.s-ob-band .verse { color: var(--gold-display); background: rgb(0 0 0 / 0.18); border: 1px solid #d8b45c; outline: 1px solid #d8b45c; outline-offset: 4px; border-radius: 28px; padding: var(--s1) var(--s6); margin: var(--s2) var(--s1) var(--s1); }
+.s-ob-brand { font-family: var(--f-disp); letter-spacing: 0.2em; color: var(--muted); }
+.s-ob-band .verse { color: var(--ink); background: var(--surface); border: 1px solid var(--gold); border-radius: 28px; padding: var(--s1) var(--s6); margin: var(--s2) var(--s1) var(--s1); }
 .s-ob-band .verse .verse-text, .s-ob-band .verse .ref { color: inherit; text-align: center; }
 .s-ob-band .verse .br { color: inherit; }
 .s-ob-band .verse figcaption { justify-content: center; opacity: 0.85; }
@@ -126,6 +126,13 @@
 .s-lsteps ol::before { content: ""; position: absolute; top: 16px; inset-inline: 24px; border-top: 1px dotted var(--gold); }
 .s-lsteps li { position: relative; display: grid; justify-items: center; gap: 2px; min-width: 52px; }
 .s-lsteps li [lang="ar"] { font: var(--a-sm); line-height: 1.5; margin-top: var(--s1); }
-.s-lsteps li small { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.s-lsteps li small { font-size: 11px; letter-spacing: 0.06em; color: var(--muted); }
 .s-lsteps li[aria-current] [lang="ar"] { color: var(--gold-ink); font-weight: 700; }
 .s-lsteps .star { background: var(--bg); }
+
+/* how it works (#/guide, onboarding) */
+.g-basics { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s3); }
+.g-basic { display: flex; gap: var(--s3); align-items: flex-start; }
+.g-n { flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); color: var(--gold-ink); box-shadow: inset 0 0 0 1.5px var(--gold); font-weight: 700; }
+.g-page, .g-full { display: grid; gap: var(--s4); }
+.today-hint { margin-top: var(--s1); }

@@ -15,6 +15,7 @@ import {
 } from '../components'
 import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
 import './library.css'
+import { Hint } from './study/Hint'
 
 const LOOPS = [1, 3, 5, 10]
 const MIC_KEY = 'tajweed-path:mic-explained'
@@ -198,6 +199,8 @@ export default function Listen({ params }: ScreenProps) {
   const quranCom = `https://quran.com/${s1}/${s1 === s2 ? (a1 === a2 ? a1 : `${a1}-${a2}`) : a1}`
 
   return (
+    <>
+    <Hint id="listen">Play to hear the reciter, repeat in the pause after each ayah. Tap a word to hear it alone. Record yourself, then play “reciter, then me”.</Hint>
     <div className="listen">
       <header className="listen-head">
         <h2 className="a-lg" lang="ar" dir="rtl">{label}</h2>
@@ -338,5 +341,6 @@ export default function Listen({ params }: ScreenProps) {
         </div>
       </Sheet>
     </div>
+    </>
   )
 }

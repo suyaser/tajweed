@@ -16,6 +16,7 @@ export const ROUTES = {
   plan: 'plan',
   progress: 'progress',
   settings: 'settings',
+  guide: 'guide',
   // R2, reserved
   mushaf: 'mushaf/:surah',
   mutun: 'mutun/:matnId',

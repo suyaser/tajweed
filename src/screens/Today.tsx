@@ -13,8 +13,8 @@ import './path.css'
 
 type PartId = keyof DayLog['parts']
 
-function Part({ n, id, ar, en, min, mark, done, children, action }: {
-  n: number; id: PartId; ar: string; en: string; min: number; mark: PartMark; done: boolean; children?: ReactNode; action?: ReactNode
+function Part({ n, id, ar, en, min, mark, done, children, action, tip }: {
+  n: number; id: PartId; ar: string; en: string; min: number; mark: PartMark; done: boolean; children?: ReactNode; action?: ReactNode; tip?: string
 }) {
   return (
     <li className="s-part" data-done={done || undefined}>
@@ -25,6 +25,7 @@ function Part({ n, id, ar, en, min, mark, done, children, action }: {
           {done && <span className="s-part-check"> ✓ <span className="sr-only">done</span></span>}
         </p>
         <p className="t-sm muted">{en}{mark === 'manual' && ' · Marked by hand'}</p>
+        {tip && !done && <p className="t-sm today-hint"><span aria-hidden="true">💡 </span><T>{tip}</T></p>}
         {children}
         <div className="s-part-actions">
           {action}
@@ -93,6 +94,9 @@ export default function Today() {
   const reviewDone = !!parts.review || due === 0
 
   const allDone = !!parts.listen && sabaqDone && !!parts.recite && reviewDone
+  // after the wird: read-only preview of the next lesson (introducing it early would break the weekly pace)
+  const introducedIds = new Set(data.introductions.map(i => i.lessonId))
+  const nextLesson = phases.find(p => p.id === curProg?.id)?.lessonIds.map(getLesson).find(l => l && !introducedIds.has(l.id))
 
   // teacher
   const near = teacherNear(data.settings.teacherDays, data.sessions, day)
@@ -111,6 +115,9 @@ export default function Today() {
         : null
 
   const listenHref = href('listen', rangeParam(passage.from, passage.to))
+  // first-run guidance: what each step is for, until hidden
+  const tips = !dismissed['hint:today']
+  const tip = (t: string) => (tips ? t : undefined)
 
   return (
     <div className="today">
@@ -118,8 +125,12 @@ export default function Today() {
         <section className="s-study s-summary" aria-label="Done for today">
           <Ornament />
           <p className="t-lg"><T>Your wird is done. تقبّل الله منك</T></p>
-          {q.overflowCount > 0 && <Button variant="secondary" href={href('review') + '?more=10'}>10 more reviews</Button>}
-          <a href={listenHref}>Listen again</a>
+          <p className="t-sm">Tomorrow's wird opens after 03:00. Spacing rules out over days, with sleep in between, is what makes them stick. Want more today?</p>
+          <div className="s-part-actions">
+            {q.overflowCount > 0 && <Button variant="secondary" href={href('review') + '?more=10'}>10 more reviews</Button>}
+            <Button variant="secondary" href={listenHref}>Listen and record again</Button>
+            {nextLesson && <Button variant="ghost" href={href('rule', nextLesson.id)}><T>{`Preview the next rule: ${nextLesson.nameAr}`}</T></Button>}
+          </div>
         </section>
       )}
 
@@ -171,6 +182,11 @@ export default function Today() {
 
       <section aria-labelledby="wird-h" className="today-main">
         <div id="wird-h"><OrnHeading><span lang="ar">الورد</span> · Your wird, ~40′</OrnHeading></div>
+        {tips && !allDone && (
+          <Nudge action={<Button variant="ghost" href={href('guide')}>How it works</Button>} onDismiss={() => dismiss('hint:today')}>
+            Do the four steps in order, about 40 minutes. Each ticks itself when you finish it, or tap “Mark done”. ✕ hides these tips.
+          </Nudge>
+        )}
         {allDone ? (
           <ul className="s-done-lines">
             {[['الاستماع والترديد', 'Listen and repeat'], ['السبق', 'New lesson'], ['التلاوة والتسجيل', 'Recite and record'], ['المراجعة', 'Review']].map(([ar, en]) => (
@@ -180,12 +196,14 @@ export default function Today() {
         ) : (
           <ol className="s-parts">
             <Part n={1} id="listen" ar="الاستماع والترديد" en="Listen and repeat" min={10} mark={parts.listen} done={!!parts.listen}
+              tip={tip('Play the passage and repeat each ayah in the pause after it. Copy the reciter exactly.')}
               action={<Button href={listenHref} variant={parts.listen ? 'secondary' : 'primary'}>{parts.listen ? 'Again' : 'Listen'}</Button>}>
               <p lang="ar" className="a-body">{rangeRef(passage.from, passage.to)}</p>
               {offline && <p className="t-sm muted">Audio needs a connection. Recite from your muṣḥaf and tick it by hand.</p>}
             </Part>
 
             <Part n={2} id="sabaq" ar="السبق" en="New lesson" min={10} mark={parts.sabaq} done={!!parts.sabaq}
+              tip={tip('One new rule: guess first, read the card, answer a few checks, then say the examples aloud.')}
               action={!parts.sabaq && !skipped && q.sabaq ? (
                 <>
                   <Button href={href('learn', q.sabaq)}>{resume ? 'Continue lesson' : 'Start lesson'}</Button>
@@ -208,6 +226,7 @@ export default function Today() {
             </Part>
 
             <Part n={3} id="recite" ar="التلاوة والتسجيل" en="Recite and record" min={15} mark={parts.recite} done={!!parts.recite}
+              tip={tip('Recite each ayah below on your own and record it, then play “reciter, then me” to compare.')}
               action={targets.length ? undefined : <Button href={listenHref} variant={parts.recite ? 'secondary' : 'primary'}>Recite</Button>}>
               {targets.length ? (
                 <ul className="s-targets">
@@ -222,6 +241,7 @@ export default function Today() {
             </Part>
 
             <Part n={4} id="review" ar="المراجعة" en="Review" min={5} mark={parts.review} done={!!parts.review}
+              tip={tip('Quick questions on rules you learned before, so you don’t forget them (سبقي · منزل).')}
               action={due > 0 ? <Button href={href('review')}>{reviewedToday ? 'Continue' : 'Review'}</Button> : undefined}>
               {due > 0 ? (
                 <>

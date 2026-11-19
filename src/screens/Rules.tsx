@@ -10,6 +10,7 @@ import {
 import { lessonStatus, type LessonStatus } from './library/shared'
 import { normalize } from './library/range'
 import './library.css'
+import { Hint } from './study/Hint'
 
 const ASK: Record<string, string> = { nun: 'The next letter is…', meem: 'The next letter is…', lam: 'The letter after ال is…' }
 const GLYPH = { 'not-started': '☆', learning: '◐', known: '●', strong: '★' } as const
@@ -40,6 +41,8 @@ export default function Rules(_: ScreenProps) {
   const byTopic = topics.map((t) => ({ t, ls: shown.filter((l) => l.topicId === t.id), all: lessons.filter((l) => l.topicId === t.id) }))
 
   return (
+    <>
+    <Hint id="rules">Every rule card, the mind map and confusing pairs. Open any card any time, even before its lesson. Colours match the coloured muṣḥaf.</Hint>
     <div className="lib wide">
       <nav className="lib-topics" aria-label="Topics">
         {byTopic.map(({ t, all }) => (
@@ -98,6 +101,7 @@ export default function Rules(_: ScreenProps) {
       </nav>
       </div>
     </div>
+    </>
   )
 }
 
