@@ -13,7 +13,7 @@ declare const process: { env: Record<string, string | undefined> }
 
 interface Range { from: string; to: string }
 interface Unit { id: string; n: number; surahs: string; lessons: string[]; finale: (Range & { label: string }) | null; mutun: { matn: string; from: number; to: number; note: string }[] }
-interface Course { units: Unit[]; lessons: Record<string, { closing: Range | null; contrastWith: string | null; notice: string | null }> }
+interface Course { units: Unit[]; lessons: Record<string, { closing: Range | null; closingOverride?: Range; contrastWith: string | null; notice: string | null }> }
 
 const course = stored as unknown as Course
 const order = course.units.flatMap(u => u.lessons)
@@ -22,6 +22,11 @@ const meta: { surahs: { n: number; nameAr: string; ayahs: number }[] } = JSON.pa
 const nameOf = (s: number) => meta.surahs[s - 1].nameAr
 const AR = (n: number) => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[+d])
 const unitSurahs = (u: Unit) => new Set(u.surahs.split('، ').map(n => meta.surahs.find(s => s.nameAr === n)?.n).filter(Boolean) as number[])
+
+const UNGATED = new Set(['dad-zha'])
+// What cpfair marks in every ayah that has it (checked over all 6236): همزة الوصل after the first letter, نّ مّ after
+// the first letter, a قلقلة letter with سكون, ۟, and ۢ or ٓ before the end.
+const CPFAIR_TEXT = /(?<=.)\u0671|(?<=.)[نم]\u0651|[قطبجد]\u0652|\u06DF|\u06E2(?=.)|\u0653(?=.)/
 
 interface Ayah { s: number; a: number; max: number; counts: Map<string, number> }
 
@@ -37,7 +42,13 @@ function loadAyahs(): Ayah[][] {
       const found = lessonsInAyah(v).filter(id => idx.has(id))
       for (const id of [...counts.keys()]) if (!found.includes(id)) counts.delete(id)
       for (const id of found) if (!counts.has(id)) counts.set(id, 1) // shown across words only (e.g. إظهار)
-      return { s: n, a: i + 1, max: Math.max(-1, ...found.map(id => idx.get(id)!)), counts }
+      // ض/ظ are in almost every passage from الفاتحة on, like ر: they don't gate a passage, only show `dad-zha`.
+      const gate = found.filter(id => !UNGATED.has(id))
+      // An ayah with no cpfair spans is a data gap if its text has something cpfair marks everywhere else; its rules
+      // can't be checked, so it is never in a passage. (The 63 such ayahs in 2026-11 have none: they are genuinely
+      // uncoloured, e.g. 93:3 مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ, and the text detection covers the rest.)
+      const gap = !v.tajweed.length && CPFAIR_TEXT.test(v.text)
+      return { s: n, a: i + 1, max: gap ? Infinity : Math.max(-1, ...gate.map(id => idx.get(id)!)), counts }
     })
   })
 }
@@ -52,7 +63,7 @@ function candidates(all: Ayah[][], finaleSurahs: Set<number>): Cand[] {
       let max = -1
       for (let j = i; j < n && j - i < 12; j++) {
         max = Math.max(max, ayahs[j].max)
-        if (j > i || n === 1) out.push({ s, from: i + 1, to: j + 1, whole: i === 0 && j === n - 1, max, ayahs: ayahs.slice(i, j + 1) })
+        out.push({ s, from: i + 1, to: j + 1, whole: i === 0 && j === n - 1, max, ayahs: ayahs.slice(i, j + 1) })
       }
     }
     if (n > 12 && finaleSurahs.has(s)) out.push({ s, from: 1, to: n, whole: true, max: Math.max(...ayahs.map(a => a.max)), ayahs })
@@ -87,7 +98,7 @@ function best(cs: Cand[], unit: Set<number>, ids: string[], mode: 'closing' | 'p
 
 const range = (c: Cand | undefined): Range | null => (c ? { from: `${c.s}:${c.from}`, to: `${c.s}:${c.to}` } : null)
 
-function build(): { closings: Record<string, Range | null>; finales: Record<string, Unit['finale']>; shows: Record<string, boolean> } {
+function build(): { closings: Record<string, Range | null>; finales: Record<string, Unit['finale']>; shows: Record<string, boolean>; all: Ayah[][] } {
   const all = loadAyahs()
   const detectable = new Set(all.flat().flatMap(a => [...a.counts.keys()]))
   const cands = candidates(all, new Set(course.units.flatMap(u => [...unitSurahs(u)])))
@@ -96,10 +107,16 @@ function build(): { closings: Record<string, Range | null>; finales: Record<stri
     const us = unitSurahs(u)
     for (const id of u.lessons) {
       const k = idx.get(id)!
+      const fixed = course.lessons[id].closingOverride
+      if (fixed) { closings[id] = fixed; shows[id] = true; continue } // hand-picked: checked below
+      // One ayah only when no longer passage shows the lesson (a surah of one ayah has none longer).
       const covered = cands.filter(c => c.max <= k && c.to - c.from < 12)
+      const multi = covered.filter(c => c.to > c.from || c.whole)
       const showing = detectable.has(id) ? covered.filter(c => count(c, [id]) > 0) : []
+      const showingMulti = showing.filter(c => multi.includes(c))
       shows[id] = showing.length > 0
-      closings[id] = range(showing.length ? best(showing, us, [id]) : best(covered, us, [id], 'place'))
+      closings[id] = range(showingMulti.length ? best(showingMulti, us, [id]) : showing.length ? best(showing, us, [id])
+        : best(multi, us, [id], 'place'))
     }
   }
   const finales: Record<string, Unit['finale']> = {}
@@ -107,12 +124,12 @@ function build(): { closings: Record<string, Range | null>; finales: Record<stri
   for (const u of course.units) {
     k += u.lessons.length
     const us = unitSurahs(u)
-    const covered = cands.filter(c => c.max <= k)
+    const covered = cands.filter(c => c.max <= k && (c.to > c.from || c.whole))
     const pool = covered.filter(c => c.whole && us.has(c.s))
     const c = pool.length ? best(pool, us, u.lessons, 'finale') : best(covered.filter(c => c.to - c.from < 12), us, u.lessons, 'place')
     finales[u.id] = c ? { ...range(c)!, label: c.whole ? nameOf(c.s) : `${nameOf(c.s)} ${AR(c.from)}–${AR(c.to)}` } : null
   }
-  return { closings, finales, shows }
+  return { closings, finales, shows, all }
 }
 
 describe.skipIf(!existsSync('public/data/surah/001.json'))('course.json closing passages and finales', () => {
@@ -130,6 +147,18 @@ describe.skipIf(!existsSync('public/data/surah/001.json'))('course.json closing 
       expect(Object.fromEntries(course.units.map(u => [u.id, u.finale]))).toEqual(finales)
     }
     expect(finales.u7).toEqual({ from: '1:1', to: '1:7', label: 'الفاتحة' })
+  })
+
+  it('takes a hand-picked closingOverride only when every ayah in it uses learned rules', () => {
+    const { all } = build()
+    for (const id of order) {
+      const o = course.lessons[id].closingOverride
+      if (!o) continue
+      expect(course.lessons[id].closing, id).toEqual(o)
+      const [[s, a], [s2, b]] = [o.from, o.to].map(k => k.split(':').map(Number))
+      expect(s2, id).toBe(s)
+      for (let n = a; n <= b; n++) expect(all[s - 1][n - 1].max, `${id} ${s}:${n}`).toBeLessThanOrEqual(idx.get(id)!)
+    }
   })
 })
 

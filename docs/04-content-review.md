@@ -153,14 +153,14 @@ node scripts/check-content.mjs /tmp/quran-uthmani.txt
 
 ## v2 content (2026-11-20)
 
-Scope: the 9 lessons added for the v2 course (`docs/09-v2-spec.md` §2, §7), the course data in `content/course.json`, and the new text detection in `src/content/rulemap.ts`. Same standard as above: every example is checked by `scripts/check-content.mjs` (58 lessons, 329 examples), and `review.status` means the same thing.
+Scope: the 9 lessons added for the v2 course (`docs/09-v2-spec.md` §2, §7), the course data in `content/course.json`, and the new text detection in `src/content/rulemap.ts`. Same standard as above: every example is checked by `scripts/check-content.mjs` (58 lessons, 328 examples), and `review.status` means the same thing.
 
 ### New lessons
 
 | id | lesson | cat · phase | examples | facts | review |
 |---|---|---|---|---|---|
 | basics | الحركات والسكون والشدة والتنوين | found · 1 | 7 | 6 | verified |
-| istiadha | الاستعاذة والبسملة | waqf · 1 | 4 | 7 | needs-teacher |
+| istiadha | الاستعاذة والبسملة | waqf · 1 | 3 | 7 | needs-teacher |
 | tafkhim | التفخيم والترقيق (خص ضغط قظ، the ا، basic ر) | found · 4 | 8 | 7 | needs-teacher |
 | sakinayn | التقاء الساكنين | merge · 5 | 8 | 6 | verified |
 | silent-letters | حروف تكتب ولا تقرأ (۟ and ۠) | hafs · 5 | 10 | 6 | verified |
@@ -200,7 +200,11 @@ Other notes:
 
 ### Detection added (rulemap.ts)
 
-From the text, on top of the cpfair spans: the ل of اللَّه (heavy or light from the vowel before it, in the word or the word before), any of خ ص ض غ ط ق ظ (`tafkhim`), ض/ظ (`dad-zha`), a word ending in a حرف مد، تنوين، ميم الجمع or a known particle before همزة الوصل (`sakinayn`), ۟/۠ (`silent-letters`), ۥ/ۦ before a word with no همزة (`silah-s`), the same letter then a شدة across words except م and ن (`mithlayn`), همزة + حرف مد (`badal`), بدل meeting لازم/متصل/منفصل or the stopped عارض (`aqwa-maddayn`), and the marks of الإمالة، الإشمام، التسهيل. Not detected: ر (ra-h, ra-l; too frequent to gate early closings, and `tafkhim` covers its basic form), the stop-based waqf lessons, istiadha, basics, aqwa between separate words, مخارج and صفات.
+From the text, on top of the cpfair spans: the ل of اللَّه (heavy or light from the vowel before it, in the word or the word before), any of خ ص ض غ ط ق ظ (`tafkhim`), ض/ظ (`dad-zha`), a word ending in a حرف مد، تنوين، ميم الجمع، تاء التأنيث or a known particle before همزة الوصل (`sakinayn`), ۟/۠ (`silent-letters`), هُۥ/هِۦ before a word with no همزة (`silah-s`; the ه is required, so يُحْىِۦ is not one), the same letter then a شدة across words except م and ن (`mithlayn`), همزة + حرف مد (`badal`), بدل meeting لازم/متصل/منفصل or the stopped عارض (`aqwa-maddayn`), and the marks of الإمالة، الإشمام، التسهيل. Not detected: ر (ra-h, ra-l; too frequent to gate early closings, and `tafkhim` covers its basic form), the stop-based waqf lessons, istiadha, basics, aqwa between separate words, مخارج and صفات.
+
+A rule across two words (`sakinayn`, `silah-s`, `mithlayn`) is marked on the first word, the one whose ending changes (فِى in فِى ٱلْعُقَدِ, يَكُنِ in لَمْ يَكُنِ ٱلَّذِينَ), so the Find step can ask for it. Known gap: an imperative that takes a كسرة before همزة الوصل (سَبِّحِ ٱسْمَ) is not detected.
+
+The Find step reads an ayah with a stop at its end, as the reciters do. So the مد before the last letter is `arid`, not `tabii` (ٱلدِّينِ in 1:4); the `tabii` card now says so, and `find.test.ts` checks it.
 
 ### Course order changes
 
@@ -208,11 +212,32 @@ Made in `content/course.json`, because the closing passages could not otherwise 
 1. Unit 1: `tafkhim` moved before `ibtida`, `lam-q` and `lam-s`. A heavy letter is in almost every ayah; with it later, `ibtida` and `lam-q` had no closing that shows them.
 2. `sakinayn` moved from unit 3 to the end of unit 2. الناس (مِنَ ٱلْجِنَّةِ) and الفلق (فِى ٱلْعُقَدِ) need it, so unit 2 could not end on a whole surah of its own.
 3. `mutajanisayn` moved from unit 3 to unit 4 (after `m-ikhfa`). Every passage that shows it also has a الإظهار الشفوي, a unit-4 rule.
+4. `aqwa-maddayn` moved from the end of unit 5 to the end of unit 6, after `lazim-k` and `lazim-h`: its strongest case is بدل + لازم.
 
 Unit 3's own surahs still can't be its finale: المسد and النصر need الصلة الصغرى (unit 5), الكافرون needs الإظهار الشفوي and the ا of أَنَا۠ (unit 4). Its finale is الكافرون ١–٢.
 
-`closing` and `finale` are computed by `src/content/course.build.test.ts` (`UPDATE_COURSE=1` to regenerate). Lessons that the data can't show get a fully covered passage in their unit's surahs where possible. `basics`, `istiadha`, `tabii` and `arid` have no closing: no two ayahs use only those rules.
+`closing` and `finale` are computed by `src/content/course.build.test.ts` (`UPDATE_COURSE=1` to regenerate). Rules for the build (tajweed review, 2026-11-20):
+- A closing is one ayah only when no longer passage shows the lesson: `tabii` 79:15, `arid` 1:5, `lam-jl` 1:1.
+- `dad-zha` does not gate a passage (ض and ظ are everywhere from الفاتحة on, like ر); it only has to show in its own closing. Unit 4's finale is now الفيل.
+- An ayah with no cpfair spans would be left out if its text had anything cpfair marks in every other ayah (همزة الوصل after the first letter, نّ مّ, a قلقلة letter with سكون, ۟, ۢ or ٓ before the end; all 6236 ayahs checked). None of the 63 such ayahs has any, so they are genuinely uncoloured (93:3 مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ; cpfair colours only 686 of 2244 ىٰ and never an ayah-initial ٱ), and they stay in. The guard catches a future data gap.
+- Where the data can't show a lesson, `closingOverride` in course.json hand-picks the passage; the test checks every ayah in it uses only learned rules. Used for: `ra-l` 100:2–3 (both ر light), `waqf-signs` 30:4–5 (ۗ ۚ ۖ), `waqf-how` 104:5–6 (both stops on ة → هـ), `rawm-ishmam` 112:1–4 (stops on ضمة), `sakt` 75:26–27 (مَنْ ۜ رَاقٍ), and in الملك for the letters the default 67:1–2 lacks: `makharij-wasat` 67:8–9 (ج ش ي ض), `makharij-taraf` 67:4–5, `sifat-istila` 67:19–20 (ص ض ط), `sifat-safir` 67:2–3 (ص ز س).
+- `basics` and `istiadha` have no closing: every ayah has at least a مد طبيعي, which they come before, and the بسملة (1:1) has ال، the ل of اللَّه and a heavy ر. Their Recite step says the examples instead.
+
+### Notices and contrasts (v2 review)
+- The Notice step plays the first example of each lesson against the first of `contrastWith`, and Hear plays the first three; every notice names only words from those three. First examples reordered so a pair differs in the rule asked: `tabii` مَٰلِكِ vs `basics` مَلِكِ; `mithlayn` هَل لَّكَ vs `izhar` أَنْعَمْتَ; `silent-letters` أَنَا۠ عَابِدٌ (short, joined) vs `munfasil` إِنَّآ أَعْطَيْنَٰكَ; `sakt` مَنْ رَاقٍ vs `idgh-n`.
+- Contrasts where both sides showed the rule were changed: `tafkhim` and `ra-h` now against `basics` (no heavy letter, no ر); `lam-jh` against `lam-q` (a light ل); `lam-q`, `rawm-ishmam` and `ishmam` none.
+- Nothing is promised that the bundled reciters (Husary, Husary muʿallim, Minshawi) don't do: they stop with a plain سكون, so الروم is described, not played, and الإشمام is seen, not heard ("watch a teacher's lips"); lengths that are a choice (العارض، اللين) are given as "may".
+- `istiadha`: 16:98 is the command; the formula أَعُوذُ بِٱللَّهِ… is not an ayah, and the notice says so. The duplicate بسملة (27:30) is gone; 9:1 is labelled as the surah without a بسملة.
+
+### Other fixes (v2 review)
+- `rawm-ishmam`: with الروم only المد العارض goes back to 2; a متصل stays 4–5 and a لازم 6 (هداية القاري؛ الوافي). Tip and question fixed.
+- `aqwa-maddayn`: ءَآلذَّكَرَيْنِ (6:143) is مد الفرق, not بدل + لازم; replaced by بُرَءَٰٓؤُا۟ (60:4, بدل + متصل).
+- `dad-zha`: "ظ said as a heavy ز" dropped; not in the source read.
+- `tafkhim`: the غنة of الإخفاء and الإقلاب follows the next letter, heavy before ص ض ط ظ ق.
+- `sakinayn`: limited to two words joined; 1:7's note says the ا drops before the ساكن ل of ال.
+- `maratib`: a حركة is timed by the pace, the number of counts stays.
+- مخارج and صفات lessons get no examples: an example adds "identify" questions, which have no single answer for a letter's place. Their drill and closing do the work.
 
 ### Mutun placement
 
-Each تحفة and الجزرية line is in exactly one unit, the first one where its topic is complete (checked by the test). Introductions go with unit 1; the closing lines go with the last unit of that matn (تحفة: unit 8, after المتقاربين; الجزرية: unit 9). The مخارج/صفات lines go to unit 9 and the وقف/رسم lines to unit 8, except: الجزرية 44–45 (لام الجلالة, the heavy letters) in unit 1, 52–61 (ض and ظ) in unit 6 with `dad-zha`, and 101–103 (همزة الوصل) in unit 1 with `ibtida`.
+Each تحفة and الجزرية line is in exactly one unit, the first one where its topic is complete (checked by the test). Introductions go with unit 1; the closing lines go with the last unit of that matn (تحفة: unit 8, after المتقاربين; الجزرية: unit 9). The مخارج/صفات lines go to unit 9 and the وقف/رسم lines to unit 8, except: الجزرية 34–36 (keeping the light letters light), 44–45 (لام الجلالة, the heavy letters) and 62 (the غنة, with تحفة 17) in unit 1, 52–61 (ض and ظ) in unit 6 with `dad-zha`, and 101–103 (همزة الوصل) in unit 1 with `ibtida`.

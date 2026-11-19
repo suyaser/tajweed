@@ -3175,7 +3175,7 @@
   "ar": "المد الطبيعي",
   "en": "Natural lengthening",
   "color": "madd2",
-  "definition": "A حرف مد with no همزة or سكون after it: ا after فتحة, وْ after ضمة, يْ after كسرة. Every other مد is built on this one.",
+  "definition": "A حرف مد with no همزة or سكون after it: ا after فتحة, وْ after ضمة, يْ after كسرة. Every other مد is built on this one. At a stop, a حرف مد just before the last letter is no longer natural: it becomes المد العارض (the next lesson), as in ٱلدِّينِ at the end of 1:4.",
   "group": "المد الطبيعي وما يلحق به",
   "letters": "ا و ي",
   "counts": {
@@ -3185,6 +3185,14 @@
   },
   "tip": "Two even counts. Cutting it short is a clear error (لحن جلي) because it changes the word.",
   "examples": [
+   {
+    "verse": "1:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "مَٰلِكِ",
+    "focus": "مَٰ",
+    "stop": false
+   },
    {
     "verse": "2:30",
     "word_from": 2,
@@ -3207,14 +3215,6 @@
     "word_to": 2,
     "text": "قِيلَ",
     "focus": "قِي",
-    "stop": false
-   },
-   {
-    "verse": "1:4",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "مَٰلِكِ",
-    "focus": "مَٰ",
     "stop": false
    },
    {
@@ -4369,6 +4369,14 @@
   ],
   "examples": [
    {
+    "verse": "79:18",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هَل لَّكَ",
+    "focus": "ل لَّ",
+    "stop": false
+   },
+   {
     "verse": "2:60",
     "word_from": 6,
     "word_to": 7,
@@ -4390,14 +4398,6 @@
     "word_to": 8,
     "text": "رَبِحَت تِّجَٰرَتُهُمْ",
     "focus": "ت تِّ",
-    "stop": false
-   },
-   {
-    "verse": "79:18",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "هَل لَّكَ",
-    "focus": "ل لَّ",
     "stop": false
    },
    {
@@ -5041,6 +5041,14 @@
   "exhaustive": true,
   "examples": [
    {
+    "verse": "75:27",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَنْ رَاقٍ",
+    "focus": "مَنْ",
+    "stop": false
+   },
+   {
     "verse": "18:1",
     "word_from": 11,
     "word_to": 11,
@@ -5055,14 +5063,6 @@
     "word_to": 7,
     "text": "مَّرْقَدِنَا هَٰذَا",
     "focus": "مَّرْقَدِنَا",
-    "stop": false
-   },
-   {
-    "verse": "75:27",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "مَنْ رَاقٍ",
-    "focus": "مَنْ",
     "stop": false
    },
    {
@@ -5349,24 +5349,6 @@
     "note": "فتحة on the م"
    },
    {
-    "verse": "1:2",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "ٱلْحَمْدُ",
-    "focus": "دُ",
-    "stop": false,
-    "note": "ضمة on the د"
-   },
-   {
-    "verse": "1:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "بِسْمِ",
-    "focus": "بِ",
-    "stop": false,
-    "note": "كسرة on the ب"
-   },
-   {
     "verse": "114:1",
     "word_from": 1,
     "word_to": 1,
@@ -5383,6 +5365,24 @@
     "focus": "بِّ",
     "stop": false,
     "note": "شدة: the ب is said twice"
+   },
+   {
+    "verse": "1:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلْحَمْدُ",
+    "focus": "دُ",
+    "stop": false,
+    "note": "ضمة on the د"
+   },
+   {
+    "verse": "1:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "بِسْمِ",
+    "focus": "بِ",
+    "stop": false,
+    "note": "كسرة on the ب"
    },
    {
     "verse": "112:1",
@@ -5533,7 +5533,7 @@
     "text": "فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
     "focus": "فَٱسْتَعِذْ",
     "stop": false,
-    "note": "The command to seek refuge before reciting."
+    "note": "This ayah commands the استعاذة. The words said before reciting are أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ, which are not an ayah themselves."
    },
    {
     "verse": "1:1",
@@ -5545,22 +5545,13 @@
     "note": "The بسملة, counted as the first ayah of الفاتحة."
    },
    {
-    "verse": "27:30",
-    "word_from": 5,
-    "word_to": 8,
-    "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-    "focus": "بِسْمِ",
-    "stop": false,
-    "note": "The بسملة inside a surah: part of the ayah, read like any other words."
-   },
-   {
     "verse": "9:1",
     "word_from": 1,
     "word_to": 3,
     "text": "بَرَآءَةٌ مِّنَ ٱللَّهِ",
     "focus": "بَرَآءَةٌ",
     "stop": false,
-    "note": "التوبة starts with no بسملة."
+    "note": "Not a بسملة: the one surah without one. Start it with the استعاذة only."
    }
   ],
   "facts": [
@@ -5702,6 +5693,10 @@
    [
     "ر (basic)",
     "heavy with فتحة or ضمة (رَبِّ), light with كسرة (رِجَالٌ); the full ر rules come later"
+   ],
+   [
+    "The غنة of الإخفاء and الإقلاب",
+    "follows the letter after it: heavy before ص ض ط ظ ق (مَن طَغَىٰ، يَنقَلِبُ), light before the others"
    ]
   ],
   "tip": "Keep the vowel true: a heavy letter with كسرة is still an i (قِ), not a heavy e; and do not let the heaviness spill onto the light letter next to it (ٱلْمُسْتَقِيمَ: only the ق is heavy).",
@@ -5888,7 +5883,7 @@
   "ar": "التقاء الساكنين",
   "en": "Two sukuns meeting",
   "color": "silent",
-  "definition": "Two letters with سكون cannot be said one after the other. When a word ending in a سكون meets the سكون after a همزة الوصل, either the first letter drops (if it is a حرف مد) or it takes a vowel (if it is not).",
+  "definition": "Two letters with سكون cannot be said one after the other. This lesson is about two words joined: the first ends in a ساكن (a حرف مد, another ساكن letter, ميم الجمع or a تنوين) and the second starts with همزة الوصل, which is not said when joined, so a ساكن meets the first. A حرف مد then drops in speech; any other ساكن takes a vowel.",
   "list": [
    [
     "The first is a حرف مد: it drops in speech",
@@ -5942,7 +5937,7 @@
     "text": "وَلَا ٱلضَّآلِّينَ",
     "focus": "وَلَا ٱل",
     "stop": false,
-    "note": "The ا drops before the شدة of ٱلضَّآلِّينَ"
+    "note": "The ا drops before the ساكن ل of ال (merged into the ض): وَلَضَّآلِّينَ"
    },
    {
     "verse": "3:26",
@@ -6102,6 +6097,15 @@
   "tip": "أَنَا before a همزة (أَنَا۠ أُحْىِۦ) stays short when joined: the ا is not said, so there is no مد منفصل.",
   "examples": [
    {
+    "verse": "109:4",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "أَنَا۠ عَابِدٌ",
+    "focus": "أَنَا۠",
+    "stop": false,
+    "note": "Joined: أَنَ عَابِدٌ; stopping on it: أَنَا"
+   },
+   {
     "verse": "103:3",
     "word_from": 3,
     "word_to": 3,
@@ -6145,15 +6149,6 @@
     "focus": "يْي۟",
     "stop": false,
     "note": "بِأَيْي۟دٍ is read بِأَيْدٍ"
-   },
-   {
-    "verse": "109:4",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "أَنَا۠ عَابِدٌ",
-    "focus": "أَنَا۠",
-    "stop": false,
-    "note": "Joined: أَنَ عَابِدٌ; stopping on it: أَنَا"
    },
    {
     "verse": "18:38",
@@ -6370,13 +6365,13 @@
     "note": "بدل and عارض at the stop"
    },
    {
-    "verse": "6:143",
-    "word_from": 10,
-    "word_to": 10,
-    "text": "ءَآلذَّكَرَيْنِ",
-    "focus": "ءَآ",
+    "verse": "60:4",
+    "word_from": 14,
+    "word_to": 14,
+    "text": "بُرَءَٰٓؤُا۟",
+    "focus": "ءَٰٓؤُ",
     "stop": false,
-    "note": "بدل and لازم (its first way): 6"
+    "note": "بدل and متصل: read 4 or 5"
    }
   ],
   "facts": [
@@ -6463,7 +6458,7 @@
   ],
   "review": {
    "status": "verified",
-   "notes": "The order and the rule are in the sources. With بدل + عارض some teachers limit the stop to the lengths they use for العارض elsewhere (التسوية); keep one length."
+   "notes": "The order and the rule are in the sources. With بدل + عارض some teachers limit the stop to the lengths they use for العارض elsewhere (التسوية); keep one length. ءَآلذَّكَرَيْنِ (6:143) and ءَآلْـَٔـٰنَ are مد الفرق (همزة الوصل after the question همزة, 6 or تسهيل), not بدل + لازم, so they are not used here."
   }
  },
  {
@@ -6486,7 +6481,7 @@
    ],
    [
     "Common mistakes (النشر)",
-    "ض said as ظ, mixed with ذ, as a heavy ل, or with a hint of ز; and ظ said as a heavy ز"
+    "ض said as ظ, mixed with ذ, as a heavy ل, or with a hint of ز"
    ],
    [
     "When they meet",
@@ -6694,7 +6689,7 @@
     "after ضمة/و or كسرة/ي many leave الروم and الإشمام (فِيهِ، أَمْرُهُۥ); others allow them"
    ]
   ],
-  "tip": "With الروم the letter is not fully stopped: a مد before it stays 2 counts, and a قلقلة letter does not bounce.",
+  "tip": "With الروم the letter is not fully stopped: a مد عارض before it is read 2 counts only (ٱلرَّحِيمِ), while a متصل stays 4 or 5 (ٱلسَّمَآءِ) and a لازم 6. A قلقلة letter does not bounce.",
   "examples": [
    {
     "verse": "1:5",
@@ -6828,7 +6823,7 @@
     "why": "A vowel added for التقاء الساكنين is not hinted at."
    },
    {
-    "q": "With الروم, a مد before the last letter is…",
+    "q": "With الروم on ٱلرَّحِيمِ, the مد عارض before the last letter is…",
     "options": [
      "2 counts, as when joined",
      "6 counts, as in a full stop",
@@ -6836,7 +6831,7 @@
      "4 counts only, never 2 or 6"
     ],
     "answer": 0,
-    "why": "الروم is like joining, so the عارض length does not apply."
+    "why": "الروم is like joining, so only the short way (2) of المد العارض is read. A متصل (ٱلسَّمَآءِ) stays 4 or 5 and a لازم 6 (هداية القاري، الوافي)."
    }
   ],
   "sources": [
@@ -6859,7 +6854,7 @@
   ],
   "review": {
    "status": "needs-teacher",
-   "notes": "Allowed and forbidden cases are agreed. The amount of الروم and the lip shape of الإشمام are performance, learnt by ear and sight from a teacher. هاء الضمير: the Shatibiyya reports both views; ask which the teacher follows."
+   "notes": "Allowed and forbidden cases are agreed. The amount of الروم and the lip shape of الإشمام are performance, learnt by ear and sight from a teacher. هاء الضمير: the Shatibiyya reports both views; ask which the teacher follows. With الروم only المد العارض shortens to 2; a متصل stays 4–5 and a لازم 6 (هداية القاري 22869; الوافي 38075/173–177)."
   }
  },
  {
@@ -6888,7 +6883,7 @@
     "calm and measured, with attention to meaning (73:4 «وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا»)"
    ]
   ],
-  "tip": "Keep your chosen مد lengths the same at every speed; only the pace changes, not the rules.",
+  "tip": "Keep one choice of each مد length through a recitation, at any speed. A حركة is timed by your pace, so a count is shorter in الحدر, but the number of counts stays the same.",
   "facts": [
    {
     "q": "Which speed is used for learning and teaching?",
