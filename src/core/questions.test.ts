@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import type { Example, Lesson } from './types'
-import { distractors, makeQuestion, reasonFor, seeded } from './questions'
+import { checkQuestions, distractors, makeQuestion, reasonFor, seeded } from './questions'
 import { lessons as real } from '../content'
 
 const ex = (lessonId: string, n: number): Example => ({
   id: `${lessonId}#${n}`, lessonId, verseKey: '1:1', wordFrom: 1, wordTo: 1, text: 'x', focus: 'x', stopping: n === 2,
 })
 const L = (id: string, topicId: string, confusableWith: string[] = [], over: Partial<Lesson> = {}): Lesson => ({
-  id, topicId, phaseId: 3, order: 0, nameAr: id, nameEn: id, colour: 'clear', summary: `${id} summary`,
+  id, topicId, order: 0, nameAr: id, nameEn: id, colour: 'clear', summary: `${id} summary`,
   examples: [1, 2, 3].map(n => ex(id, n)), facts: [], questionKinds: ['identify'], confusableWith, sources: [],
   review: { status: 'verified' }, ...over,
 })
@@ -19,6 +19,30 @@ const lessons = [
   L('makharij', 'found', [], { examples: [], questionKinds: ['fact'], facts: [1, 2].map(n => ({ id: `makharij?${n}`, lessonId: 'makharij', prompt: `q${n}`, options: ['a', 'b', 'c', 'd'], answer: 1, explanation: 'why' })) }),
 ]
 const ctx = (introduced: string[], seed = 1) => ({ lessons, introduced, munfasilLength: 4 as const, rng: seeded(seed) })
+
+describe('checkQuestions (Learn Check step, UX M2)', () => {
+  const opts = (qs: ReturnType<typeof checkQuestions>) => qs.flatMap(q => (q.kind === 'identify' ? q.options.map(o => o.id) : []))
+  it('uses only learned lessons (plus this one) as identify options', () => {
+    const qs = checkQuestions(lessons[0], lessons, ['idgh-g', 'izhar', 'iqlab'], 4, seeded(1))
+    expect(qs.length).toBeGreaterThanOrEqual(2)
+    expect(new Set(opts(qs))).toEqual(new Set(['ikhfa', 'idgh-g', 'izhar', 'iqlab']))
+  })
+  it('falls back to length or fact questions with fewer than 2 learned distractors, or asks nothing', () => {
+    expect(checkQuestions(lessons[0], lessons, ['idgh-g'], 4, seeded(1))).toEqual([])
+    const m = lessons.find(l => l.id === 'munfasil')!
+    expect(checkQuestions(m, lessons, [], 4, seeded(1)).map(q => q.kind)).toEqual(['length']) // fixture examples share their text: deduped
+    const f = lessons.find(l => l.id === 'makharij')!
+    expect(checkQuestions(f, lessons, [], 4, seeded(1)).map(q => q.exampleId).sort()).toEqual(['makharij?1', 'makharij?2'])
+  })
+  it('never asks the same question twice; the real basics lesson asks facts', () => {
+    const same = L('same', 'nun', [], { examples: [1, 2, 3].map(n => ({ ...ex('same', n), text: 'y', focus: 'y' })) })
+    expect(checkQuestions(same, [...lessons, same], ['ikhfa', 'izhar', 'iqlab'], 4, seeded(2)).filter(q => q.lessonId === 'same')).toHaveLength(1)
+    const basics = real.find(l => l.id === 'basics')!
+    const qs = checkQuestions(basics, real, [], 4, seeded(1))
+    expect(qs.map(q => q.kind)).toEqual(['fact', 'fact'])
+    expect(qs[0].exampleId).not.toBe(qs[1].exampleId)
+  })
+})
 
 describe('identify', () => {
   it('picks partners, then same topic, then any; only introduced', () => {

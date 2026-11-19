@@ -1,5 +1,5 @@
 import { Children, type ReactNode } from 'react'
-import { arRefs, isArabicLine, splitBidi } from './bidi'
+import { arRefs, carryMarks, isArabicLine, splitBidi } from './bidi'
 
 /** One explicit Arabic island inside Latin text. */
 export function Bdi({ children }: { children: ReactNode }) {
@@ -14,7 +14,7 @@ export function T({ children }: { children: ReactNode }) {
     <>
       {Children.map(children, (c) =>
         typeof c === 'string'
-          ? splitBidi(arRefs(c)).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text))
+          ? splitBidi(carryMarks(arRefs(c))).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text))
           : c,
       )}
     </>
@@ -34,6 +34,6 @@ export function ArLabel({ ar, en, size = 'sm' }: { ar: string; en?: string; size
 /** A content line: an all-Arabic line (an example like ٱدْعُ ← اُدْعُ) is its own RTL block so it reads one way (M3);
  *  mixed lines go through <T>. */
 export function Line({ text }: { text: string }) {
-  const t = arRefs(text)
-  return isArabicLine(t) ? <span className="ar-line" lang="ar" dir="rtl">{t}</span> : <T>{t}</T>
+  const t = carryMarks(arRefs(text))
+  return isArabicLine(t) ? <span className="ar-line" lang="ar" dir="rtl">{t}</span> : <span><T>{t}</T></span> // one element: safe in grid/flex parents (UX B1)
 }

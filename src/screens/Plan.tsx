@@ -36,7 +36,7 @@ export default function Plan() {
                 </summary>
                 <div className="p-phase-body">
                   <UnitLessons u={u} p={p} />
-                  <a className="p-link" href={href('unit', u.id)}>Open the unit ›</a>
+                  <a className="p-link" href={href('unit', u.id)} aria-label={`Open unit ${u.n}, ${u.nameEn}`}>Open the unit ›</a>
                 </div>
               </details>
             </li>

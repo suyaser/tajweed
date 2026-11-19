@@ -44,6 +44,7 @@
   border-bottom: 1px solid var(--line);
 }
 .focusbar-title { font: var(--a-lg); text-align: center; }
+.focusbar-title small { font-family: var(--f-body); white-space: nowrap; }
 .focusbar-status { color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* bottom tab bar (≤ 1023px) */

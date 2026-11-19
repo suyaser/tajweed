@@ -33,6 +33,8 @@ export default function Today() {
   const unit = next.kind === 'done' ? units[units.length - 1] : next.unit
   const unitDone = unit.lessonIds.filter(id => progress.done.has(id)).length
   const finaleUnit = q.finaleUnit ? getUnit(q.finaleUnit) : undefined
+  // v1 learners: lessons v2 added to units they had passed (engineering M4); optional, never blocking
+  const catchUp = courseOrder.filter(progress.catchUp)
 
   // review
   const due = q.sabqi.length + q.manzil.length
@@ -85,19 +87,22 @@ export default function Today() {
             <>
               <p className="t-sm muted">Unit {finaleUnit.n} finale</p>
               <p className="a-h3" lang="ar">{finaleUnit.finale?.label ?? finaleUnit.nameAr}</p>
-              <p><T>{`Every lesson of ${finaleUnit.nameAr} is done. Recite the whole passage to open the next unit.`}</T></p>
+              <p><T>{`Every lesson of ${finaleUnit.nameAr} is done. Recite ${finaleUnit.finale?.label ?? 'the passage'} from start to end to open the next unit.`}</T></p>
               <Button block href={href('unit', finaleUnit.id) + '?finale=1'}>Recite the finale</Button>
             </>
           ) : q.sabaqReason === 'pace' ? (
             <>
               <p className="t-lg"><T>{`Learned today: ${learnedToday.join('، ')}.`}</T></p>
-              <p>Two new lessons a day is the pace that sticks. {nextLesson && <T>{`Tomorrow: ${nextLesson.nameAr}.`}</T>} Today, review and practise.</p>
+              <p>
+                Two new lessons a day is the pace that sticks. {nextLesson && <T>{`Tomorrow: ${nextLesson.nameAr}.`}</T>}{' '}
+                {due > 0 ? 'Today, do your review below.' : practice.length ? 'Today, recite your recent passages below.' : 'Come back tomorrow.'}
+              </p>
             </>
           ) : q.sabaqReason === 'backlog' ? (
             <>
               <p className="t-lg">Review first.</p>
               <p>{dueManzil} reviews are due. New lessons resume when fewer than 15 are overdue.</p>
-              <Button block href={href('review')}>Review</Button>
+              <Button block href={href('review') + '?go=1'}>Review</Button>
             </>
           ) : (
             <>
@@ -111,14 +116,21 @@ export default function Today() {
         <Card eyebrow={<><span lang="ar">المراجعة</span> · Review</>}>
           {due > 0 ? (
             <>
-              <p className="num"><T>{`سبقي ${q.sabqi.length} · منزل ${q.manzil.length}`}</T>{reviewedToday > 0 && ` · ${due} left`}</p>
+              <p className="num"><T>{`This week (سبقي) ${q.sabqi.length} · Older (منزل) ${q.manzil.length}`}</T>{reviewedToday > 0 && ` · ${due} left`}</p>
               {jali > 0 && <p className="t-sm">⚑ {jali} <CorrectionTag severity="jali" /> {jali === 1 ? 'correction' : 'corrections'} due</p>}
-              <div className="s-part-actions"><Button href={href('review')}>{reviewedToday ? 'Continue review' : 'Review'}</Button></div>
+              <div className="s-part-actions"><Button href={href('review') + '?go=1'}>{reviewedToday ? 'Continue review' : 'Review'}</Button></div>
             </>
           ) : (
             <p className="t-sm">{data.items.length ? 'Nothing due today.' : 'Nothing to review yet. Your first lesson starts it.'}</p>
           )}
         </Card>
+
+        {catchUp.length > 0 && (
+          <Card eyebrow="New in this version">
+            <p className="t-sm">{catchUp.length} new {catchUp.length === 1 ? "lesson" : "lessons"} in units you have finished. Take them when you like; they don't hold up the course.</p>
+            <Button variant="secondary" href={href('learn', catchUp[0])}><T>{`Start ${getLesson(catchUp[0])?.nameAr ?? ''}`}</T></Button>
+          </Card>
+        )}
 
         {practice.length > 0 && (
           <Card eyebrow={<><span lang="ar">التلاوة</span> · Practice</>}>
@@ -143,7 +155,7 @@ export default function Today() {
             {unit.lessonIds.length ? `${unitDone} of ${unit.lessonIds.length} lessons done` : 'One passage, every rule so far'}
             {unit.finale && (progress.finaleDone(unit) ? ' · finale recited' : ' · then the finale')}
           </p>
-          <p className="t-sm"><a href={href('unit', unit.id)}>Open the unit ›</a> · <a href={href('plan')}>Course map ›</a></p>
+          <p className="t-sm s-links"><a href={href('unit', unit.id)} aria-label={`Open unit ${unit.n}, ${unit.nameEn}`}>Open the unit ›</a> <a href={href('plan')}>Course map ›</a></p>
         </Card>
 
         <Card eyebrow="This week">

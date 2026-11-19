@@ -24,11 +24,23 @@ describe('courseProgress', () => {
     expect([q.unlocked('a'), q.unlocked('c'), q.unlocked('d')]).toEqual([true, true, false])
     expect(U.map(q.open)).toEqual([true, true, false, false])
   })
-  it('skips done lessons of a later open unit only after the earlier ones (migrated data)', () => {
-    // v1 learner: u1 lesson b missing (new in v2), u3 done with its finale migrated
-    const p = courseProgress({ introductions: intro('c', 'd'), finales: migratedFinales(intro('c', 'd'), U) }, U)
-    expect(p.next).toMatchObject({ kind: 'lesson', id: 'a' })
-    expect(migratedFinales(intro('c', 'd'), U)).toEqual([{ unitId: 'u3', on: '2026-11-01' }]) // not u2: no lessons
+  it('treats new lessons of a passed (migrated) unit as catch-up, not the frontier', () => {
+    // v1 learner: u1 lesson b is new in v2; u0 and u1 are migrated as passed, so u2 (finale only) is next and a, b stay open
+    const fin = [{ unitId: 'u0', on: '' }, { unitId: 'u1', on: '' }]
+    const p = courseProgress({ introductions: intro('c'), finales: fin }, U)
+    expect(p.next).toMatchObject({ kind: 'finale', unit: { id: 'u2' } })
+    expect([p.unlocked('a'), p.unlocked('b'), p.catchUp('b'), p.unlocked('d')]).toEqual([true, true, true, false])
+  })
+})
+
+describe('migratedFinales', () => {
+  // real ids: v1 lessons, plus basics and istiadha (new in v2)
+  const R = [unit('u0', ['basics'], false), unit('u1', ['istiadha', 'tabii', 'arid']), unit('u2', []), unit('u3', ['izhar']), unit('u4', ['ikhfa'])]
+  it('passes a unit when its v1 lessons are done; units with no v1 lessons follow the next one', () => {
+    expect(migratedFinales(intro('tabii'), R)).toEqual([])
+    expect(migratedFinales(intro('tabii', 'arid'), R).map(f => f.unitId)).toEqual(['u0', 'u1'])
+    expect(migratedFinales(intro('tabii', 'arid', 'izhar'), R).map(f => f.unitId)).toEqual(['u0', 'u1', 'u2', 'u3'])
+    expect(migratedFinales(intro('ikhfa'), R).map(f => f.unitId)).toEqual(['u4'])
   })
 })
 

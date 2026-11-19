@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { Attempt, Correction, Introduction, ReviewItem, Unit, UserData } from './types'
 import { addDays, diffDays, today, weekDays } from './day'
-import { applyAttempt, buildQueue, levelOf, rebuildItems } from './scheduler'
+import { applyAttempt, buildQueue, lessonGate, levelOf, rebuildItems } from './scheduler'
 import { seeded } from './questions'
 
 const D0 = '2026-01-01'
@@ -165,7 +165,7 @@ const item = (refId: string, over: Partial<ReviewItem>): ReviewItem => ({
 })
 const userData = (over: Partial<UserData>): UserData => ({
   schemaVersion: 1, settings: {} as UserData['settings'], introductions: [], items: [], attempts: [], sessions: [], corrections: [],
-  phases: [], days: [], finales: [], ...over,
+  days: [], finales: [], ...over,
 })
 
 describe('buildQueue', () => {
@@ -209,6 +209,19 @@ describe('buildQueue', () => {
     expect(buildQueue(userData({ introductions: all, finales: [{ unitId: 'u1', on: T }] }), U, T).sabaq).toBe('p4')
     const done = { introductions: [...all, intro('p4', 1)], finales: [{ unitId: 'u1', on: T }, { unitId: 'u2', on: T }] }
     expect(buildQueue(userData(done), U, T).sabaqReason).toBe('done')
+  })
+  it('lessonGate: locked, 2 a day, backlog > 15; replays always open', () => {
+    const backlog = Array.from({ length: 16 }, (_, i) => item(`m${i}`, { dueOn: T }))
+    const base = { introductions: [intro('p1', 0)], finales: [] as UserData['finales'], items: [] as ReviewItem[] }
+    expect(lessonGate(base, U, 'p2', T)).toBe(null)
+    expect(lessonGate(base, U, 'p3', T)).toBe('locked')
+    expect(lessonGate(base, U, 'p1', T)).toBe(null) // done: replay
+    expect(lessonGate({ ...base, introductions: [intro('p1', 30)] }, U, 'p2', T)).toBe(null) // 1 today
+    expect(lessonGate({ ...base, introductions: [intro('p0', 30), intro('p1', 30)] }, U, 'p2', T)).toBe('pace')
+    expect(lessonGate({ ...base, items: backlog }, U, 'p2', T)).toBe('backlog')
+    expect(lessonGate({ ...base, items: backlog.slice(1) }, U, 'p2', T)).toBe(null) // 15 is fine
+    expect(lessonGate({ ...base, items: backlog.map(i => ({ ...i, state: 'sabqi' as const })) }, U, 'p2', T)).toBe(null) // sabqi isn't backlog
+    expect(lessonGate({ ...base, introductions: [intro('p0', 30), intro('p1', 30)], items: backlog }, U, 'p1', T)).toBe(null)
   })
   it('welcomes back after ≥ 7 days away', () => {
     const items = Array.from({ length: 34 }, (_, i) => item(`m${i}`, { dueOn: d(20) }))

@@ -68,7 +68,8 @@ export default function Review({ params }: ScreenProps) {
   })
   const [idx, setIdx] = useState(saved?.idx ?? 0)
   const [results, setResults] = useState<Result[]>(saved?.results ?? [])
-  const [offer, setOffer] = useState(() => !saved && !!run.q.sabaq && !extra && mem().skipSabaq !== run.day)
+  // Today's Review button (?go=1) goes straight to the review
+  const [offer, setOffer] = useState(() => !params.go && !saved && !!run.q.sabaq && !extra && mem().skipSabaq !== run.day)
   const { entries, day } = run
   useEffect(() => { saveRun({ day, extra, entries, idx, results }) }, [day, extra, entries, idx, results])
   const entry = entries[idx] as Entry | undefined
@@ -100,7 +101,7 @@ export default function Review({ params }: ScreenProps) {
     const l = getLesson(run.q.sabaq)
     return (
       <div className="s-study">
-        <Card level="e2" eyebrow="Today's new lesson · السبق">
+        <Card level="e2" eyebrow={<>Today's new lesson · <span lang="ar">السبق</span></>}>
           <p className="a-h3" lang="ar">{l?.nameAr}</p>
           <p className="muted">{l?.nameEn}</p>
           <Button block href={href('learn', run.q.sabaq)}>Start lesson</Button>
@@ -181,8 +182,8 @@ export default function Review({ params }: ScreenProps) {
     : entry.relearn
       ? 'Once more, a different example'
       : it.state === 'sabqi'
-        ? <T>سبقي</T>
-        : <T>{it.lastReviewedOn ? `منزل · last seen ${diffDays(day, it.lastReviewedOn)} days ago` : 'منزل'}</T>
+        ? <T>سبقي · this week</T>
+        : <T>{it.lastReviewedOn ? `منزل · older · last seen ${diffDays(day, it.lastReviewedOn)} days ago` : 'منزل · older'}</T>
 
   return (
     <>

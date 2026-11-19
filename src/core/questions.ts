@@ -86,7 +86,7 @@ export function reasonFor(lesson: Lesson, ex: Example): string {
   }
   if (lesson.counts) {
     const { min, max, note } = lesson.counts
-    return `${name}: ${min === max ? min : `${min}–${max}`} counts. ${note ?? lesson.summary}`
+    return note?.includes('counts') ? `${name}: ${note}.` : `${name}: ${min === max ? min : `${min}–${max}`} counts. ${note ?? lesson.summary}` // no "2 counts. 2 counts"
   }
   return lesson.summary
 }
@@ -149,8 +149,8 @@ export function makeQuestion(
     const answer = options.find(o => o.id === lengthId(lesson.counts!))!
     const why = example.note ?? lesson.counts.note ?? lesson.summary
     const explanation = munfasil
-      ? `It's ${n} counts, the length you chose for المنفصل; المتصل is read the same. ${n === 4 ? 5 : 4} is also correct for حفص من طريق الشاطبية; keep one length throughout.${lesson.id === 'muttasil' ? ' 6 is also allowed when you stop on a final همزة.' : ''} ${why}`
-      : `It's ${answer.labelEn} counts: ${why}`
+      ? `It's ${n} counts, the length you chose for المنفصل; المتصل is read the same. ${n === 4 ? 5 : 4} is also correct for حفص من طريق الشاطبية; keep one length throughout.${lesson.id === 'muttasil' ? ' 6 is also allowed when you stop on a final همزة.' : ''}${example.note ? ` ${example.note}` : ''}`
+      : /^\d/.test(why) ? `It's ${why}.` : `It's ${answer.labelEn} counts: ${why}`
     return { ...base, kind, prompt: 'How many counts on the underlined مد?', options, answerId: answer.id, explanation }
   }
 
@@ -159,4 +159,34 @@ export function makeQuestion(
     ...base, kind: 'identify', prompt: ctx.vs ? 'Which of the two is the underlined part?' : 'Which rule is the underlined part?',
     options, answerId: lesson.id, explanation: reasonFor(lesson, example),
   }
+}
+
+/**
+ * A lesson's Check step (v2 spec §3.6): up to 2 questions on different examples, plus a discrimination question
+ * (learning review B1): an example of an older confusable or same-topic rule with this rule among the options.
+ * Identify options come only from lessons already learned plus this one (UX M2); with fewer than 2 such distractors
+ * the lesson's length or fact questions are asked instead. Never the same question twice.
+ */
+export function checkQuestions(lesson: Lesson, all: Lesson[], introduced: string[], munfasilLength: 4 | 5, rng: () => number = Math.random): Question[] {
+  const known = new Set([...introduced, lesson.id])
+  const ctx: QuestionCtx = { lessons: all.filter(l => known.has(l.id)), introduced, munfasilLength, rng }
+  const fair = (q: Question | null): q is Question => !!q && (q.kind !== 'identify' || q.options.length >= 3)
+  const qs: Question[] = []
+  const seen = new Set<string>()
+  const add = (q: Question | null) => {
+    if (!fair(q)) return
+    const key = `${q.kind}|${q.answerId}|${q.prompt}|${q.example ? `${q.example.text}|${q.example.focus}` : q.exampleId}`
+    if (!seen.has(key)) { seen.add(key); qs.push(q) }
+  }
+  const kind = lesson.questionKinds.find(k => k !== 'identify' || fair(makeQuestion({ refId: lesson.id }, { ...ctx, kind: k })))
+  if (kind)
+    for (let tries = 0; tries < 4 && qs.length < 2; tries++)
+      add(makeQuestion({ refId: lesson.id, lastExampleId: qs.at(-1)?.exampleId ?? null }, { ...ctx, kind, excludeExampleIds: qs.map(q => q.exampleId) }))
+  const older = (ids: string[]) => ids.find(id => introduced.includes(id) && all.find(l => l.id === id)?.questionKinds.includes('identify'))
+  const partner = kind === 'identify'
+    ? older(lesson.confusableWith) ?? older(all.filter(l => l.topicId === lesson.topicId && l.id !== lesson.id).map(l => l.id))
+    : undefined
+  const contrast = partner ? makeQuestion({ refId: partner }, { ...ctx, kind: 'identify', include: lesson.id }) : null
+  if (contrast?.options.some(o => o.id === lesson.id)) add(contrast)
+  return qs
 }

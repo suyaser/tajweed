@@ -98,5 +98,6 @@
 /* v2 course map and unit page */
 .p-pill[data-st="next"] { color: var(--link); border-color: var(--link); font-weight: 600; }
 .p-pill[data-st="done"] { color: var(--gold-ink); border-color: var(--gold); }
+.p-pill[data-st="catch-up"] { color: var(--link); border-style: dashed; }
 .u-mutun summary { min-height: var(--target); cursor: pointer; }
 .u-mutun details[open] summary { color: var(--muted); }

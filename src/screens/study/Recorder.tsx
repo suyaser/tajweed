@@ -77,7 +77,11 @@ export function PassageRecite({ from, to, audio, doneLabel, onDone }: {
       {error && <p className="muted">{error}</p>}
       {ayahs && <Passage ayahs={ayahs} size="read" tajweed />}
       <div className="s-part-actions">
-        {!audio.offline && <Button variant="secondary" onClick={() => verses && audio.passage(verses)} disabled={!verses}>▶ Listen</Button>}
+        {!audio.offline && (
+          <Button variant="secondary" aria-pressed={audio.busy} onClick={() => (audio.busy ? audio.stop() : verses && audio.passage(verses))} disabled={!verses}>
+            {audio.busy ? '❚❚ Stop' : '▶ Listen'}
+          </Button>
+        )}
         <a className="btn btn-ghost" href={listenHref(from, to)}>Open in the player ›</a>
       </div>
       <Recorder from={from} to={to} audio={audio} model={r => { if (verses) { audio.player.load(verses, audio.reciter); playModelThenMe(audio.player, r) } }} />

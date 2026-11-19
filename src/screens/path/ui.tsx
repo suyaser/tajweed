@@ -127,23 +127,25 @@ export function startClass(sessionId?: string) {
 }
 
 type Progress = ReturnType<typeof courseProgress>
-type St = 'done' | 'next' | 'locked'
+type St = 'done' | 'next' | 'catch-up' | 'locked'
+const ACTION: Record<St, string> = { done: 'done, replay it', next: 'next, start it', 'catch-up': 'new in this version, open', locked: 'locked' }
 
 function Row({ link, ar, en, st }: { link: string; ar: string; en: string; st: St }) {
   return (
     <li>
-      <a className="p-item p-item-link" href={link}>
+      <a className="p-item p-item-link" href={link} aria-label={`${en}, ${ar}: ${ACTION[st]}`}>
         <span className="p-item-main">
           <span className="a-sm" lang="ar">{ar}</span>
           <span className="t-sm muted">{en}</span>
         </span>
-        <span className="p-pill" data-st={st}>{st === 'done' ? '✓ done' : st}</span>
+        <span className="p-pill" data-st={st} aria-hidden="true">{st === 'done' ? '✓ done' : st}</span>
       </a>
     </li>
   )
 }
 
-/** A unit's lessons (done / next / locked) and its finale: the course map and the unit page. Locked lessons open their card. */
+/** A unit's lessons (done / next / catch-up / locked) and its finale: the course map and the unit page. A locked lesson's
+ *  page says what comes first and offers its card. */
 export function UnitLessons({ u, p }: { u: Unit; p: Progress }) {
   const nextId = p.next.kind === 'lesson' ? p.next.id : null
   const finale: St = p.finaleDone(u) ? 'done' : p.next.kind === 'finale' && p.next.unit === u ? 'next' : 'locked'
@@ -151,10 +153,10 @@ export function UnitLessons({ u, p }: { u: Unit; p: Progress }) {
     <ul className="p-list">
       {u.lessonIds.map((id) => {
         const l = getLesson(id)!
-        const st: St = p.done.has(id) ? 'done' : id === nextId ? 'next' : 'locked'
-        return <Row key={id} link={st === 'locked' ? href('rules', id) : href('learn', id)} ar={l.nameAr} en={l.nameEn} st={st} />
+        const st: St = p.done.has(id) ? 'done' : id === nextId ? 'next' : p.catchUp(id) ? 'catch-up' : 'locked'
+        return <Row key={id} link={href('learn', id)} ar={l.nameAr} en={l.nameEn} st={st} />
       })}
-      {u.finale && <Row link={href('unit', u.id) + '?finale=1'} ar={u.finale.label} en="Unit finale: recite the whole passage" st={finale} />}
+      {u.finale && <Row link={href('unit', u.id) + '?finale=1'} ar={u.finale.label} en="Unit finale: recite the passage" st={finale} />}
     </ul>
   )
 }

@@ -35,3 +35,6 @@ export function splitBidi(s: string): BidiPart[] {
 
 /** Arabic-Indic digits for ayah numbers, star badges, references (B4). */
 export const arDigits = (n: number | string) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[+d])
+
+/** A vowel mark with no letter under it (فتحة َ, a شدة (ّ)) sits on a tatweel so it shows and isolates as Arabic. */
+export const carryMarks = (s: string) => s.replace(/(^|[\s(«"'])([ً-ْٰ])/g, '$1ـ$2')
