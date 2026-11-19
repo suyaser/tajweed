@@ -4,3 +4,5 @@ dist
 *.local
 .cache
 tsconfig.tsbuildinfo
+supabase/.temp
+supabase/.branches
