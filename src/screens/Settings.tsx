@@ -11,6 +11,10 @@ import { WEEKDAYS, daysAgo, formatBytes } from './path/helpers'
 const WEEK_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 import { download } from './path/ui'
 import './path.css'
+import { supabase } from '../sync/supabase'
+import { useSync } from '../sync/sync'
+import { BackupBadge, syncLabel } from '../sync/SignInNudge'
+import { CopyField } from '../sync/CopyField'
 
 function Row({ label, hint, children }: { label: ReactNode; hint?: ReactNode; children: ReactNode }) {
   return (
@@ -32,6 +36,8 @@ export default function Settings() {
 
   return (
     <div className="p-stack">
+      {supabase && <AccountSection />}
+
       <OrnHeading>Your wird</OrnHeading>
       <Card>
         <Row label="Wird time">
@@ -117,11 +123,67 @@ export default function Settings() {
       <Card>
         <a className="p-item p-item-link" href="#/resources"><span className="p-item-main">Credits and sources</span><span className="chev" aria-hidden="true">›</span></a>
         <p className="t-sm muted">
-          Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device only; there is no account and no server.
+          Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device. If you sign in, your progress (not your recordings) is also backed up to your account.
         </p>
       </Card>
       <Reset />
     </div>
+  )
+}
+
+function AccountSection() {
+  const sync = useSync()
+  return (
+    <>
+      <OrnHeading>Account and backup</OrnHeading>
+      <Card>
+        <BackupBadge />
+        <p className="t-sm">{sync.user ? `${syncLabel(sync)}. Signed in as ${sync.user.email ?? 'your account'}.` : 'Your progress is saved only on this device. Sign in to keep it safe and use it on any device.'}</p>
+        <a className="p-item p-item-link" href="#/account"><span className="p-item-main">{sync.user ? 'Account' : 'Sign in'}</span><span className="chev" aria-hidden="true">›</span></a>
+        <a className="p-item p-item-link" href="#/circle"><span className="p-item-main">Circles<small className="muted">Study with friends: see who studied each day this week</small></span><span className="chev" aria-hidden="true">›</span></a>
+      </Card>
+      {sync.user && <TeacherLink userId={sync.user.id} />}
+    </>
+  )
+}
+
+/** One active read-only link at a time: create, copy, turn off. */
+function TeacherLink({ userId }: { userId: string }) {
+  const [token, setToken] = useState<string | null | undefined>(undefined)
+  const [err, setErr] = useState('')
+  useEffect(() => {
+    supabase!.from('share_links').select('token').eq('user_id', userId).is('revoked_at', null).order('created_at', { ascending: false }).limit(1)
+      .then(({ data, error }) => { if (error) setErr(error.message); setToken(data?.[0]?.token ?? null) })
+  }, [userId])
+  const create = async () => {
+    setErr('')
+    const { data, error } = await supabase!.from('share_links').insert({ user_id: userId }).select('token').single()
+    if (error) setErr(error.message)
+    else setToken(data.token)
+  }
+  const revoke = async () => {
+    setErr('')
+    const { error } = await supabase!.from('share_links').update({ revoked_at: new Date().toISOString() }).eq('user_id', userId).is('revoked_at', null)
+    if (error) setErr(error.message)
+    else setToken(null)
+  }
+  return (
+    <>
+      <OrnHeading>Teacher link</OrnHeading>
+      <Card>
+        <p className="t-sm">
+          A private link your teacher can open without an account. It shows your lessons, open corrections and study days for the last 30 days,
+          read-only. Your recordings and notes are not shared.
+        </p>
+        {token === undefined ? <p className="muted t-sm">Loading…</p> : token ? (
+          <>
+            <CopyField text={`${location.origin}${location.pathname}#/shared/${token}`} label="Teacher link" />
+            <Button variant="ghost" onClick={revoke}>Turn off this link</Button>
+          </>
+        ) : <Button variant="secondary" onClick={create}>Create a teacher link</Button>}
+        {err && <p role="alert" className="p-error">{err}</p>}
+      </Card>
+    </>
   )
 }
 

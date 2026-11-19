@@ -5,6 +5,10 @@ import { navigate, useRoute, type RouteName } from './router'
 import { Shell } from './Shell'
 import { Recovery, SaveErrorBanner } from './Recovery'
 import { getLoadError, useData } from '../core/store'
+import { startSync } from '../sync/sync'
+
+// Optional account (spec §6): finish a returning sign-in link (?code=…) and start background sync. No-op without Supabase env.
+void startSync()
 
 /** Screen contract: src/screens/<Name>.tsx default-exports a component taking the route params. */
 export type ScreenProps = { params: Record<string, string> }
@@ -31,7 +35,7 @@ export interface AppProps {
 
 export function App({ onboarded = true, theme = 'system', textSize = 'm', tajweedPatterns = false }: AppProps) {
   const route = useRoute()
-  const redirect = !onboarded && route.name !== 'onboarding' && route.name !== 'devComponents'
+  const redirect = !onboarded && route.name !== 'onboarding' && route.name !== 'devComponents' && route.name !== 'shared' // a teacher opens #/shared/… with no app data
   useEffect(() => {
     if (redirect) navigate('onboarding', { replace: true })
   }, [redirect])

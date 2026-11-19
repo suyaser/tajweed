@@ -17,6 +17,10 @@ export const ROUTES = {
   progress: 'progress',
   settings: 'settings',
   guide: 'guide',
+  account: 'account',
+  shared: 'shared/:token',
+  circle: 'circle',
+  circleView: 'circle/:id',
   // R2, reserved
   mushaf: 'mushaf/:surah',
   mutun: 'mutun/:matnId',
