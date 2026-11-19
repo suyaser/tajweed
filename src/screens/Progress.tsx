@@ -9,12 +9,14 @@ import { Bdi, Card, CorrectionBadge, LevelBadge, ProgressDots, T } from '../comp
 import { accuracy, dayLabel, live, studiedDays, weeks } from './path/helpers'
 import { PathTabs } from './path/ui'
 import './path.css'
+import { BackupBadge } from '../sync/SignInNudge'
 
 export default function Progress() {
   const d = useData()
   return (
     <div className="p-stack">
       <PathTabs value="progress" />
+      <BackupBadge detail />
       <div className="p-two">
         <Recitation d={d} />
         <Recognition d={d} />

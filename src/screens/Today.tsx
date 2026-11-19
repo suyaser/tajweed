@@ -11,9 +11,12 @@ import { Button, Card, CorrectionTag, Nudge, ProgressDots, Sheet, StarBadge, T }
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
 import './study.css'
 import './path.css'
+import { SignInNudge } from '../sync/SignInNudge'
+import { useSync } from '../sync/sync'
 
 export default function Today() {
   const data = useData()
+  const { user } = useSync()
   const day = today()
   const q = useMemo(() => buildQueue(data, units, day), [data, day])
   const progress = useMemo(() => courseProgress(data, units), [data])
@@ -172,6 +175,7 @@ export default function Today() {
       </aside>
 
       <div className="today-nudges">
+        <SignInNudge />
         {nudge === 'install' && (
           <Nudge
             action={<button type="button" className="btn btn-ghost" onClick={() => setHowOpen(true)}>How</button>}
@@ -180,7 +184,7 @@ export default function Today() {
             Install to home screen so your data is kept. Safari can clear sites you haven't opened for a week.
           </Nudge>
         )}
-        {nudge === 'backup' && (
+        {nudge === 'backup' && !user && (
           <Nudge action={<Button variant="ghost" href={href('settings')}>Back up now</Button>} onDismiss={() => dismiss('backup')}>
             {backupAge == null ? 'No backup yet.' : `Last backup: ${backupAge} days ago.`}
           </Nudge>
