@@ -1,0 +1,473 @@
+{
+ "units": [
+  {
+   "id": "u0",
+   "n": 0,
+   "nameAr": "البداية",
+   "nameEn": "Getting started",
+   "surahs": "—",
+   "intro": "How a lesson works, the marks on the letters, and counting a beat.",
+   "lessons": [
+    "basics"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u1",
+   "n": 1,
+   "nameAr": "سورة الناس",
+   "nameEn": "Surat An-Nas",
+   "surahs": "الناس",
+   "intro": "Starting a recitation, lengthening, ال and همزة الوصل, heavy and light letters, the ل of اللَّه, and the held غنة.",
+   "lessons": [
+    "istiadha",
+    "tabii",
+    "arid",
+    "iwad",
+    "lam-q",
+    "lam-s",
+    "ibtida",
+    "tafkhim",
+    "lam-jh",
+    "lam-jl",
+    "ghunnah"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u2",
+   "n": 2,
+   "nameAr": "الناس · الفلق · الإخلاص",
+   "nameEn": "An-Nas, Al-Falaq, Al-Ikhlas",
+   "surahs": "الناس، الفلق، الإخلاص",
+   "intro": "The four rules of نون ساكنة and تنوين, then the echo of القلقلة.",
+   "lessons": [
+    "izhar",
+    "idgh-g",
+    "idgh-n",
+    "iqlab",
+    "ikhfa",
+    "qal-s",
+    "qal-k"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u3",
+   "n": 3,
+   "nameAr": "المسد · النصر · الكافرون",
+   "nameEn": "Al-Masad, An-Nasr, Al-Kafirun",
+   "surahs": "المسد، النصر، الكافرون",
+   "intro": "مد before a همزة, letters that merge, and two sukuns meeting.",
+   "lessons": [
+    "muttasil",
+    "munfasil",
+    "mithlayn",
+    "mutajanisayn",
+    "sakinayn"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u4",
+   "n": 4,
+   "nameAr": "الكوثر ← الفيل",
+   "nameEn": "Al-Kawthar to Al-Fil",
+   "surahs": "الكوثر، الماعون، قريش، الفيل",
+   "intro": "The three rules of ميم ساكنة, and letters written but not read.",
+   "lessons": [
+    "m-izhar",
+    "m-idgham",
+    "m-ikhfa",
+    "silent-letters"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u5",
+   "n": 5,
+   "nameAr": "الهمزة ← البينة",
+   "nameEn": "Al-Humazah to Al-Bayyinah",
+   "surahs": "الهمزة، العصر، التكاثر، القارعة، العاديات، الزلزلة، البينة",
+   "intro": "The pronoun's مد, البدل and اللين, the full ر rules, and which مد wins.",
+   "lessons": [
+    "silah-s",
+    "silah-k",
+    "badal",
+    "lin",
+    "ra-h",
+    "ra-l",
+    "aqwa-maddayn"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u6",
+   "n": 6,
+   "nameAr": "القدر ← الضحى",
+   "nameEn": "Al-Qadr to Ad-Duha",
+   "surahs": "القدر، العلق، التين، الشرح، الضحى",
+   "intro": "The ض and ظ, and the six-count مد, including the opening letters.",
+   "lessons": [
+    "dad-zha",
+    "lazim-k",
+    "lazim-h"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u7",
+   "n": 7,
+   "nameAr": "الفاتحة",
+   "nameEn": "Al-Fatiha",
+   "surahs": "الفاتحة",
+   "intro": "Every rule so far, together: الفاتحة letter by letter.",
+   "lessons": [],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u8",
+   "n": 8,
+   "nameAr": "ما بعد جزء عمّ",
+   "nameEn": "Beyond Juz ʿAmma",
+   "surahs": "سور من القرآن كله",
+   "intro": "Close letters merging, where and how to stop and start, and the special words of حفص.",
+   "lessons": [
+    "mutaqaribayn",
+    "waqf-signs",
+    "waqf-how",
+    "rawm-ishmam",
+    "sakt",
+    "imalah",
+    "ishmam",
+    "tashil"
+   ],
+   "finale": null,
+   "mutun": []
+  },
+  {
+   "id": "u9",
+   "n": 9,
+   "nameAr": "الإتقان",
+   "nameEn": "Mastery",
+   "surahs": "الملك",
+   "intro": "Where each letter is made and its qualities, in full, and the three reading speeds.",
+   "lessons": [
+    "makharij-jawf",
+    "makharij-halq",
+    "makharij-aqsa",
+    "makharij-wasat",
+    "makharij-taraf",
+    "makharij-shafatan",
+    "sifat-hams",
+    "sifat-shidda",
+    "sifat-istila",
+    "sifat-safir",
+    "sifat-inhiraf",
+    "maratib"
+   ],
+   "finale": null,
+   "mutun": []
+  }
+ ],
+ "lessons": {
+  "basics": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "istiadha": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "tabii": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "arid": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "iwad": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lam-q": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lam-s": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "ibtida": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "tafkhim": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lam-jh": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lam-jl": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "ghunnah": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "izhar": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "idgh-g": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "idgh-n": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "iqlab": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "ikhfa": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "qal-s": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "qal-k": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "muttasil": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "munfasil": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "mithlayn": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "mutajanisayn": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sakinayn": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "m-izhar": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "m-idgham": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "m-ikhfa": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "silent-letters": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "silah-s": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "silah-k": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "badal": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lin": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "ra-h": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "ra-l": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "aqwa-maddayn": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "dad-zha": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lazim-k": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "lazim-h": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "mutaqaribayn": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "waqf-signs": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "waqf-how": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "rawm-ishmam": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sakt": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "imalah": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "ishmam": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "tashil": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "makharij-jawf": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "makharij-halq": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "makharij-aqsa": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "makharij-wasat": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "makharij-taraf": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "makharij-shafatan": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sifat-hams": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sifat-shidda": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sifat-istila": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sifat-safir": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "sifat-inhiraf": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  },
+  "maratib": {
+   "closing": null,
+   "contrastWith": null,
+   "notice": null
+  }
+ }
+}

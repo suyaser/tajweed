@@ -21,3 +21,15 @@ The learner approved R1 and asked me to decide and keep going. Each decision her
 | 15 | Ayah references render as `الفاتحة ١–٧` / `البقرة ٥` (no `·` between name and number) | In Amiri the middle dot reads as Arabic zero (`الكوثر · ١` looked like `الكوثر ١٠`) | Yes, `src/components` |
 | 16 | Static splash in `index.html` (green band, Kufi title) until the app loads | No blank white flash on slow phones | Yes |
 | 17 | Style B "Sand and ink" (learner chose it from a side-by-side of three looks): sand/ink palette with deep teal, Figtree + IBM Plex Sans Arabic for the interface, Noto Naskh Arabic headings, Amiri Quran unchanged for the Quran, no lattice or gold frames, outlined step numbers, drawn icons, 48px targets; tajweed colours unchanged | Learner asked for a modern Islamic feel; a design agent compared Quran.com, Muslim Pro, Pillars and others | Tokens in `src/styles/tokens.css` |
+
+## v2 (overnight build, 2026-11-20 → 21). The learner asked me to build v2, the backend and push; these are for review.
+
+| # | Decision | Why | Easy to change? |
+|---|---|---|---|
+| 18 | v2 is a course: 58 lessons in units 0–9 (spec `09-v2-spec.md`), units follow the YouTube course's surah order, each lesson closes on a real passage containing only learned rules | Agreed in conversation | — |
+| 19 | 9 new lessons: basics, الاستعاذة والبسملة, التفخيم والترقيق (heavy letters), التقاء الساكنين, letters written but not read, أقوى المدين, الض والظ, الروم والإشمام في الوقف, مراتب القراءة | Gaps found when mapping v1 to units | Yes, `content/` |
+| 20 | لام لفظ الجلالة moved to unit 1 (not 5) | الله appears in almost every passage (and the basmala); closing passages could not be found otherwise | Yes, `content/course.json` |
+| 21 | Heavy letters (`tafkhim`) in unit 1 cover ر at a basic level; the full ر rules stay in unit 5 | ر is in nearly every ayah | Yes |
+| 22 | Pace: at most 2 new lessons a day, sequential unlock, new lessons pause when >15 reviews are overdue; the weekly cap and phases are retired | A course needs momentum; spacing still comes from review and the daily cap | One constant |
+| 23 | A unit's finale (self-checked recitation of a whole surah or passage) opens the next unit | Practical milestone without needing a teacher | Yes |
+| 24 | Lesson steps: Hear → Notice → Learn → Say → Find → Check → Recite; the v1 "guess first" pretest is replaced by Hear and Notice | Practical first | Yes |
