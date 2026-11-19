@@ -5,6 +5,7 @@ import { addDays, diffDays, today as dayOf } from './day'
 export const LADDER = [1, 3, 7, 14, 30, 60, 120] // step → days
 export const DAILY_CAP = 20
 export const BACKLOG_LIMIT = 15
+export const NEW_PER_WEEK = 4 // decision 12: at most 4 new lessons in any 7 days
 const SABQI_DAYS = 7
 
 export const itemIdOf = (kind: ReviewItem['kind'], refId: string) => `${kind}:${refId}`
@@ -48,9 +49,9 @@ function applyOne(items: Items, a: Attempt) {
     if (diffDays(a.on, it.introducedOn) < SABQI_DAYS) {
       it.dueOn = addDays(a.on, 1)
     } else {
-      // graduation: this answer is the last sabqi answer
+      // graduation: this answer is the last sabqi answer; a pass starts at the 3-day step (decision 13)
       const pass = correct >= 4 && a.correct
-      Object.assign(it, { state: 'manzil', step: pass ? 2 : 0, dueOn: addDays(a.on, pass ? 7 : 1) })
+      Object.assign(it, { state: 'manzil', step: pass ? 1 : 0, dueOn: addDays(a.on, LADDER[pass ? 1 : 0]) })
     }
     return
   }
@@ -118,7 +119,7 @@ export function applyAttempt(items: ReviewItem[], attempt: Attempt): ReviewItem[
 
 /* ---------------- Daily queue (§6.5–6.6) ---------------- */
 
-export type SabaqReason = 'introduced-today' | 'no-active-phase' | 'milestone' | 'backlog'
+export type SabaqReason = 'introduced-today' | 'pace' | 'no-active-phase' | 'milestone' | 'backlog'
 
 export interface Queue {
   sabaq: string | null
@@ -158,6 +159,7 @@ export function buildQueue(data: UserData, lessons: Lesson[], phases: Phase[], t
   const phase = active && phases.find(p => p.id === active.id)
   const left = phase ? phase.lessonIds.filter(id => !introduced.has(id)) : []
   if (data.introductions.some(i => i.on === today)) q.sabaqReason = 'introduced-today'
+  else if (data.introductions.filter(i => diffDays(today, i.on) < 7).length >= NEW_PER_WEEK) q.sabaqReason = 'pace'
   else if (!phase) q.sabaqReason = data.phases.some(p => p.status === 'milestone') ? 'milestone' : 'no-active-phase'
   else if (!left.length) q.sabaqReason = 'milestone'
   else if (due.length > BACKLOG_LIMIT) q.sabaqReason = 'backlog'
@@ -187,15 +189,17 @@ export function buildQueue(data: UserData, lessons: Lesson[], phases: Phase[], t
 
 export type Level = 'not-started' | 'learning' | 'known' | 'strong'
 
-export function levelOf(item: ReviewItem | undefined, attempts: Attempt[], corrections: Correction[], today: Day): Level {
+/** Decision 13: strong = the 30-day step and the last 3 answers correct, each on a different example. */
+export function levelOf(item: ReviewItem | undefined, attempts: Attempt[], _corrections: Correction[], _today: Day): Level {
   if (!item) return 'not-started'
   if (item.state === 'sabqi' || item.step <= 1) return 'learning'
-  if (item.step === 2) return 'known'
-  const recent = (d: Day) => diffDays(today, d) < 30
-  const lapsed =
-    attempts.some(a => a.kind === item.kind && a.refId === item.refId && a.countsForSchedule && !a.correct && recent(a.on)) ||
-    corrections.some(c => !c.deletedAt && c.lessonIds.includes(item.refId) && recent(correctionDay(c)))
-  return lapsed ? 'known' : 'strong'
+  if (item.step < 4) return 'known'
+  const last3 = attempts
+    .filter(a => a.kind === item.kind && a.refId === item.refId && a.countsForSchedule && a.source !== 'teacher')
+    .sort((x, y) => (x.at < y.at ? -1 : x.at > y.at ? 1 : 0))
+    .slice(-3)
+  const strong = last3.length === 3 && last3.every(a => a.correct) && new Set(last3.map(a => a.exampleId)).size === 3
+  return strong ? 'strong' : 'known'
 }
 
 /** "teacher correction open" badge (§6.7). */

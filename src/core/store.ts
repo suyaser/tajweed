@@ -168,6 +168,11 @@ export function markDayPart(part: keyof DayLog['parts'], mark: PartMark = 'manua
   commit({ ...data, days: withDay(data, day, l => ({ ...l, parts: { ...l.parts, [part]: mark } })) })
 }
 
+/** A saved recording marks the recite part done (spec F1), unless it is already marked. */
+export function noteRecording(day = today()) {
+  commit({ ...data, days: withDay(data, day, l => ({ ...l, parts: { ...l.parts, recite: l.parts.recite ?? 'auto' } })) })
+}
+
 /** Adds listening time; marks the listen part done at 3 minutes. */
 export function addListenSeconds(seconds: number, day = today()) {
   commit({
@@ -179,7 +184,9 @@ export function addListenSeconds(seconds: number, day = today()) {
   })
 }
 
+/** Opens the next locked phase, unless a later phase is already open (it may open at half the milestone). */
 const activateNext = (phases: PhaseProgress[], after: number, on: string) => {
+  if (phases.some(p => p.id > after && (p.status === 'active' || p.status === 'milestone'))) return phases
   const next = phases.filter(p => p.id > after && p.status === 'locked').sort((a, b) => a.id - b.id)[0]
   return phases.map(p => (p === next ? { ...p, status: 'active' as const, activatedOn: on } : p))
 }
@@ -192,9 +199,10 @@ export function introduceLesson(lessonId: string) {
   const done = new Set(introductions.map(i => i.lessonId))
   const phaseId = getLesson(lessonId)?.phaseId
   const all = contentPhases.find(p => p.id === phaseId)?.lessonIds.every(id => done.has(id))
-  const phases = data.phases.map(p =>
+  const moved = data.phases.map(p =>
     p.id === phaseId && all && p.status === 'active' ? { ...p, status: 'milestone' as const, milestoneOn: on } : p,
   )
+  const phases = settlePhases({ ...data, phases: moved }) // half the milestone may already be passed
   commit({
     ...data, introductions, phases,
     items: rebuildItems(introductions, data.attempts, data.corrections, on),
@@ -238,18 +246,20 @@ export function planSession(input: Partial<Omit<Session, 'id' | 'createdAt' | 'u
 }
 export const startSession = planSession
 
-/** Phases whose every milestone passage has passed become `passed`; the next phase becomes active. */
+/**
+ * Phases whose every milestone passage has passed become `passed`. The next phase opens then, or as soon as half of
+ * a phase's milestone passages have passed (decision 12); the rest stay on every session plan.
+ */
 function settlePhases(d: UserData): PhaseProgress[] {
   const on = today()
   let phases = d.phases
   for (const cp of contentPhases) {
     const p = phases.find(x => x.id === cp.id)
     if (!p || p.status === 'passed' || p.status === 'locked' || !cp.milestone.length) continue
-    const ok = cp.milestone.every(m => d.sessions.some(s => !s.deletedAt && s.milestoneResults.some(r => r.phaseId === cp.id && r.passageId === m.id && r.result === 'passed')))
-    if (!ok) continue
-    const wasSkipped = p.status === 'skipped' // the next phase is already active
-    phases = phases.map(x => (x.id === cp.id ? { ...x, status: 'passed' as const, passedOn: on } : x))
-    if (!wasSkipped) phases = activateNext(phases, cp.id, on)
+    const passed = cp.milestone.filter(m => d.sessions.some(s => !s.deletedAt && s.milestoneResults.some(r => r.phaseId === cp.id && r.passageId === m.id && r.result === 'passed'))).length
+    const all = passed === cp.milestone.length
+    if (all) phases = phases.map(x => (x.id === cp.id ? { ...x, status: 'passed' as const, passedOn: on } : x))
+    if ((all || (p.status === 'milestone' && passed * 2 >= cp.milestone.length))) phases = activateNext(phases, cp.id, on)
   }
   return phases
 }

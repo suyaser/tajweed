@@ -1,23 +1,31 @@
 // #/review: run today's queue (spec F3, design §5.4–5.5).
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { ScreenProps } from '../app/App'
 import type { ReviewItem, UserData } from '../core/types'
 import { getSnapshot, markDayPart, recordAttempt, useData } from '../core/store'
 import { buildQueue } from '../core/scheduler'
-import { makeQuestion } from '../core/questions'
+import { makeQuestion, seeded, shuffle } from '../core/questions'
 import { diffDays, today } from '../core/day'
-import { getLesson, lessons, phases } from '../content'
+import { getLesson, lessons, pairs, phases } from '../content'
 import { href } from '../app/router'
 import { Button, Card, EmptyState, T } from '../components'
-import { mem, spread } from './study/helpers'
+import { confusableHint, mem, spread } from './study/helpers'
 import { useStudyAudio } from './study/verse'
 import { QuestionView } from './study/QuestionView'
 import { CorrectionStep } from './study/CorrectionStep'
 import { Summary, type Result } from './study/Summary'
 import './study.css'
 
-interface Entry { item: ReviewItem; relearn?: string } // relearn = example id to avoid
+/** relearn = example id to avoid; contrast = after a confusion, a two-option question between the two rules (learning M6). */
+interface Entry { item: ReviewItem; relearn?: string; contrast?: { ask: string; vs: string } }
 
+const isJali = (i: ReviewItem) => i.kind === 'correction' && i.severity === 'jali'
+const topicOf = (i: ReviewItem) => (i.kind === 'correction' ? 'correction' : getLesson(i.refId)?.topicId ?? i.refId)
+
+/**
+ * Today's run: جلي corrections first, the rest shuffled (seeded by the day, so the order never names the answer,
+ * learning review B1), then spread so no two corrections and no two of one topic sit back to back (M6).
+ */
 function start(d: UserData, extra: number) {
   const day = today()
   const q = buildQueue(d, lessons, phases, day, extra)
@@ -25,30 +33,56 @@ function start(d: UserData, extra: number) {
     i.kind === 'lesson' ? !!getLesson(i.refId)?.questionKinds.length
       : i.kind === 'correction' && d.corrections.some(c => c.id === i.refId && c.status === 'open' && !c.deletedAt)
   // ponytail: matn/contrast items (R2) and lessons without questions are left due, not asked.
-  const entries: Entry[] = spread([...q.sabqi, ...q.manzil].filter(askable), i => i.kind === 'correction').map(item => ({ item }))
+  const all = shuffle([...q.sabqi, ...q.manzil].filter(askable), seeded(Number(day.replace(/-/g, '')) + extra))
+  const entries: Entry[] = spread([...all.filter(isJali), ...all.filter(i => !isJali(i))], topicOf).map(item => ({ item }))
   return { q, entries, day }
 }
+
+/* The run in progress survives leaving the screen (UX review M10): kept per tab, for today only. */
+const RUN_KEY = 'tajweed-path:review-run'
+interface SavedRun { day: string; extra: number; entries: Entry[]; idx: number; results: Result[] }
+function loadRun(day: string): SavedRun | null {
+  try {
+    const r = JSON.parse(sessionStorage.getItem(RUN_KEY) ?? 'null') as SavedRun | null
+    return r?.day === day ? r : null
+  } catch { return null }
+}
+function saveRun(r: SavedRun) {
+  try { sessionStorage.setItem(RUN_KEY, JSON.stringify(r)) } catch { /* storage blocked: the run restarts */ }
+}
+
+/** The example or fact asked last for this lesson, from any source (Learn checks too), so it is not asked again next. */
+const lastAsked = (d: UserData, refId: string) => d.attempts.filter(a => a.kind === 'lesson' && a.refId === refId && a.exampleId).pop()?.exampleId
 
 const DAY_NAME = (d: string) => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' })
 
 export default function Review({ params }: ScreenProps) {
   const data = useData()
   const audio = useStudyAudio()
-  const [extra, setExtra] = useState(() => Number(params.more) || 0)
-  const [run, setRun] = useState(() => start(getSnapshot(), extra))
-  const [idx, setIdx] = useState(0)
-  const [results, setResults] = useState<Result[]>([])
-  const [offer, setOffer] = useState(() => !!run.q.sabaq && !extra && mem().skipSabaq !== run.day)
+  const [saved] = useState(() => (params.more ? null : loadRun(today())))
+  const [extra, setExtra] = useState(() => saved?.extra ?? (Number(params.more) || 0))
+  const [run, setRun] = useState(() => {
+    const r = start(getSnapshot(), extra)
+    return saved ? { ...r, entries: saved.entries } : r
+  })
+  const [idx, setIdx] = useState(saved?.idx ?? 0)
+  const [results, setResults] = useState<Result[]>(saved?.results ?? [])
+  const [offer, setOffer] = useState(() => !saved && !!run.q.sabaq && !extra && mem().skipSabaq !== run.day)
   const { entries, day } = run
+  useEffect(() => { saveRun({ day, extra, entries, idx, results }) }, [day, extra, entries, idx, results])
   const entry = entries[idx] as Entry | undefined
   const introduced = useMemo(() => data.introductions.map(i => i.lessonId), [data.introductions])
 
   const question = useMemo(() => {
     if (!entry || entry.item.kind !== 'lesson') return null
-    const avoid = entry.relearn
+    const refId = entry.contrast?.ask ?? entry.item.refId
+    const avoid = entry.relearn ?? lastAsked(getSnapshot(), refId)
     return makeQuestion(
-      { refId: entry.item.refId, lastExampleId: avoid ?? entry.item.lastExampleId, reps: entry.item.reps },
-      { lessons, introduced, munfasilLength: data.settings.munfasilLength, excludeExampleIds: avoid ? [avoid] : [] },
+      { refId, lastExampleId: avoid ?? entry.item.lastExampleId, reps: entry.item.reps },
+      {
+        lessons, introduced, munfasilLength: data.settings.munfasilLength, excludeExampleIds: entry.relearn ? [entry.relearn] : [],
+        vs: entry.contrast?.vs,
+      },
     )
     // a new question only when the entry changes
   }, [entry])
@@ -135,26 +169,37 @@ export default function Review({ params }: ScreenProps) {
   if (!question) return <EmptyState title="This item has no question yet." action={<Button onClick={next}>Skip</Button>} />
 
   const it = entry.item
-  const eyebrow = entry.relearn
-    ? 'Once more, a different example'
-    : it.state === 'sabqi'
-      ? <T>{`سبقي · day ${Math.max(1, diffDays(day, it.introducedOn))}`}</T>
-      : <T>{it.lastReviewedOn ? `منزل · last seen ${diffDays(day, it.lastReviewedOn)} days ago` : 'منزل'}</T>
+  const again = !!(entry.relearn || entry.contrast)
+  const hint = entry.contrast && confusableHint(pairs, entry.contrast.ask, entry.contrast.vs)
+  const eyebrow = entry.contrast
+    ? 'Tell the two apart'
+    : entry.relearn
+      ? 'Once more, a different example'
+      : it.state === 'sabqi'
+        ? <T>سبقي</T>
+        : <T>{it.lastReviewedOn ? `منزل · last seen ${diffDays(day, it.lastReviewedOn)} days ago` : 'منزل'}</T>
 
   return (
     <>
       {progress}
       <QuestionView
-        key={idx} q={question} mode={entry.relearn ? 'relearn' : 'review'} eyebrow={eyebrow} note={halfway} audio={audio}
+        key={idx} q={question} mode={again ? 'relearn' : 'review'} eyebrow={eyebrow} audio={audio}
+        note={<>{halfway}{hint && <Card className="s-note"><p><T>{hint}</T></p></Card>}</>}
         onNext={next}
         onAnswer={(chosen, correct) => {
           recordAttempt({
-            kind: 'lesson', refId: it.refId, source: entry.relearn ? 'relearn' : 'review', questionKind: question.kind,
-            exampleId: question.exampleId, chosen, correct, countsForSchedule: !entry.relearn,
+            kind: 'lesson', refId: question.lessonId, source: again ? 'relearn' : 'review', questionKind: question.kind,
+            exampleId: question.exampleId, chosen, correct, countsForSchedule: !again,
           })
-          if (entry.relearn) return
+          if (again) return
           setResults(r => [...r, { itemId: it.id, kind: 'lesson', refId: it.refId, correct }])
-          if (!correct) setRun(r => ({ ...r, entries: [...r.entries, { item: it, relearn: question.exampleId }] }))
+          if (correct) return
+          // confused with its partner: ask both ways between the two; otherwise once more on a different example
+          const paired = question.kind === 'identify' && confusableHint(pairs, it.refId, chosen) !== undefined
+          const more: Entry[] = paired
+            ? [{ item: it, contrast: { ask: it.refId, vs: chosen } }, { item: it, contrast: { ask: chosen, vs: it.refId } }]
+            : [{ item: it, relearn: question.exampleId }]
+          setRun(r => ({ ...r, entries: [...r.entries, ...more] }))
         }}
       />
     </>

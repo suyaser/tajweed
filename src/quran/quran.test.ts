@@ -65,6 +65,7 @@ describe('getRange', () => {
 
 it('names and digits', () => {
   expect(surahName(1)).toBe('الفاتحة')
+  expect([14, 34, 76, 78, 82, 84].map(surahName)).toEqual(['إبراهيم', 'سبأ', 'الإنسان', 'النبأ', 'الانفطار', 'الانشقاق'])
   expect(toArabicDigits(2025)).toBe('٢٠٢٥')
 })
 
@@ -79,7 +80,18 @@ it('built data: 6236 ayat, spans inside their ayah, timing word indices inside t
       for (const t of v.tajweed) expect(t.start >= 0 && t.start < t.end && t.end <= len, `${v.verseKey} ${t.rule}`).toBe(true)
       for (const segs of Object.values(v.timings ?? {}))
         for (const [w0, w1] of segs) expect(w0 >= 1 && w0 <= w1 && w1 <= v.words.length, v.verseKey).toBe(true)
+      for (const m of v.marks ?? []) expect(m.after >= 1 && m.after <= v.words.length && /^[\u06D6-\u06DC\u06E9]$/u.test(m.mark), v.verseKey).toBe(true)
     }
   }
   expect(ayat).toBe(6236)
+  // [word after which, mark]; words compared by index (editors reorder Tanzil's shadda + fatha)
+  const at = (k: string) => { const [s, a] = k.split(':'); const v = files[`/public/data/surah/${s.padStart(3, '0')}.json`][+a - 1]; return (v.marks ?? []).map((m) => [m.after, m.mark]) }
+  // the four obligatory سكتات of حفص (عِوَجَا، مَّرْقَدِنَا، مَنْ، بَلْ), and the paired stop of 2:2 (رَيْبَ، فِيهِ)
+  expect(at('18:1')).toEqual([[11, 'ۜ']])
+  expect(at('36:52')).toEqual([[6, 'ۜ'], [6, 'ۗ']])
+  expect(at('75:27')).toEqual([[2, 'ۜ']])
+  expect(at('83:14')).toEqual([[1, 'ۖ'], [2, 'ۜ']])
+  expect(at('2:2')).toEqual([[4, 'ۛ'], [5, 'ۛ']])
+  // the basmala shown before ayah 1 is Tanzil's 1:1, verbatim
+  expect(files['/public/data/surah/001.json'][0].text).toBe(BASMALA_PREFIX.trim())
 })

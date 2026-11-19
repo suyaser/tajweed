@@ -16,7 +16,7 @@ async function recentPassages(): Promise<Planned[]> {
   const last = live(d.sessions).filter((s) => s.status === 'done').map((s) => s.on).sort().pop() ?? ''
   let recs: Planned[] = []
   try {
-    recs = (await listAll()).filter((r) => r.createdAt.slice(0, 10) >= last).map((r) => ({ from: r.from, to: r.to, reason: 'recent' as const }))
+    recs = (await listAll()).filter((r) => r.createdAt.slice(0, 10) >= last && !r.from.startsWith('drill:')).map((r) => ({ from: r.from, to: r.to, reason: 'recent' as const }))
   } catch { /* IndexedDB unavailable */ }
   const lessons: Planned[] = d.introductions
     .filter((i) => i.on >= last)

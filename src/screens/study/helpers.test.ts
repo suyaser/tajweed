@@ -34,11 +34,15 @@ describe('study helpers', () => {
 
   it('marks the week Saturday first', () => {
     // 2026-11-19 is a Thursday: Sat 14 … Fri 20
-    const w = week([log('2026-11-14', true), log('2026-11-16', false), log('2026-11-19', true), log('2026-11-02', true)], '2026-11-19')
+    const days = [log('2026-11-14', true), log('2026-11-16', false), log('2026-11-19', true), log('2026-11-02', true)]
+    const w = week({ days, attempts: [], introductions: [] }, '2026-11-19')
     expect(w.marks).toEqual(['studied', 'not', 'not', 'not', 'not', 'studied', 'future'])
     expect(w.todayIndex).toBe(5)
     expect(w.count).toBe(2)
     expect(w.month).toBe(3)
+    // a recite-only day (a saved recording) counts, as on Progress (learning review M2)
+    const recited: DayLog = { ...log('2026-11-17', false), parts: { listen: null, sabaq: null, recite: 'auto', review: null } }
+    expect(week({ days: [...days, recited], attempts: [], introductions: [] }, '2026-11-19').count).toBe(3)
   })
 
   it('finds a near teacher day or planned session', () => {
@@ -50,9 +54,10 @@ describe('study helpers', () => {
   })
 
   it('spreads long items apart when possible', () => {
-    const isC = (x: string) => x.startsWith('c')
-    expect(spread(['c1', 'c2', 'l1', 'l2'], isC)).toEqual(['c1', 'l1', 'c2', 'l2'])
-    expect(spread(['c1', 'c2', 'c3'], isC)).toEqual(['c1', 'c2', 'c3'])
-    expect(spread(['l1', 'c1', 'l2'], isC)).toEqual(['l1', 'c1', 'l2'])
+    const key = (x: string) => x[0]
+    expect(spread(['c1', 'c2', 'l1', 'l2'], key)).toEqual(['c1', 'l1', 'c2', 'l2'])
+    expect(spread(['c1', 'c2', 'c3'], key)).toEqual(['c1', 'c2', 'c3'])
+    expect(spread(['l1', 'c1', 'l2'], key)).toEqual(['l1', 'c1', 'l2'])
+    expect(spread(['n1', 'n2', 'n3', 'm1', 'm2', 'q1'], key)).toEqual(['n1', 'm1', 'n2', 'm2', 'n3', 'q1']) // topics interleaved
   })
 })

@@ -66,13 +66,13 @@
    {
     "q": "You start at ٱمْشُوا۟ (38:6). The همزة الوصل takes…",
     "options": [
-     "ضمة",
-     "فتحة",
-     "سكون",
-     "كسرة, because the ضمة on ش is not original"
+     "ضمة, as on the ش",
+     "فتحة, as with ال",
+     "سكون, as written",
+     "كسرة"
     ],
     "answer": 3,
-    "why": "Its root form is ٱمْشِيُوا; the ضمة was added, so the همزة takes كسرة."
+    "why": "The ضمة on ش is not original. Its root form is ٱمْشِيُوا; the ضمة was added, so the همزة takes كسرة."
    },
    {
     "q": "You start at ٱبْنَ. The همزة الوصل takes…",
@@ -99,10 +99,10 @@
    {
     "q": "Where should you start again after a stop?",
     "options": [
-     "From a word where the meaning is sound and complete",
-     "Always from the very next word",
-     "Always from the start of the ayah",
-     "Anywhere"
+     "Where the meaning is sound",
+     "Always from the next word",
+     "Always from the ayah's start",
+     "From any word you like"
     ],
     "answer": 0,
     "why": "A bad start can change the meaning."
@@ -148,9 +148,9 @@
     "q": "Which letters come from الجوف?",
     "options": [
      "ب، م، و",
-     "ا، وْ، يْ when they are حروف مد",
-     "ء and هـ",
-     "ق and ك"
+     "ا، وْ، يْ as حروف مد",
+     "ء and هـ, the throat",
+     "ق and ك, the tongue"
     ],
     "answer": 1,
     "why": "الجوف is the مخرج of the three حروف المد only."
@@ -182,22 +182,22 @@
     "options": [
      "They come from the nose",
      "They are always short",
-     "They end with the breath and have no fixed point to stop on",
+     "Their sound ends with the breath",
      "They are always heavy"
     ],
     "answer": 2,
-    "why": "Their sound runs out with the air of the mouth and throat."
+    "why": "They have no fixed point to stop on. Their sound runs out with the air of the mouth and throat."
    },
    {
     "q": "In بَيْتِ, where does the ي come from?",
     "options": [
      "الشفتان",
-     "وسط اللسان, because it is لين, not مد",
+     "وسط اللسان",
      "الجوف",
      "الحلق"
     ],
     "answer": 1,
-    "why": "Only حروف المد come from الجوف; a لين ي comes from the place of the ي."
+    "why": "It is لين, not مد. Only حروف المد come from الجوف; a لين ي comes from the place of the ي."
    },
    {
     "q": "How many مخارج are there in the view most teachers follow (ابن الجزري)?",
@@ -293,7 +293,7 @@
     "q": "ح and هـ differ in that…",
     "options": [
      "ح is from أدنى الحلق",
-     "ح is from وسط الحلق and هـ from أقصى الحلق",
+     "ح: وسط الحلق; هـ: أقصى الحلق",
      "both are from أقصى الحلق",
      "both are from وسط الحلق"
     ],
@@ -360,12 +360,12 @@
     "q": "Where does ق come from?",
     "options": [
      "The tip of the tongue",
-     "The back of the tongue, near the throat, with the palate above it",
+     "The back of the tongue",
      "The middle of the tongue",
      "The deepest point of the throat"
     ],
     "answer": 1,
-    "why": "ق is the first مخرج of the tongue, at its back."
+    "why": "Near the throat, with the palate above it. ق is the first مخرج of the tongue, at its back."
    },
    {
     "q": "Compared with ق, ك comes from…",
@@ -392,19 +392,19 @@
    {
     "q": "Besides the مخرج, what makes ق sound different from ك?",
     "options": [
-     "ك has قلقلة",
-     "Nothing else",
-     "ق is heavy (مستعلٍ), voiced (مجهور) and has قلقلة; ك is light and مهموس",
+     "ك has قلقلة and ق does not",
+     "Nothing else; only the مخرج",
+     "ق is heavy and has قلقلة",
      "ك is heavy and ق is light"
     ],
     "answer": 2,
-    "why": "ق: جهر، شدة، استعلاء، قلقلة. ك: همس، شدة، استفال."
+    "why": "ق is مستعلٍ and مجهور; ك is light and مهموس. ق: جهر، شدة، استعلاء، قلقلة. ك: همس، شدة، استفال."
    },
    {
     "q": "How many مخارج are on أقصى اللسان?",
     "options": [
      "None",
-     "2: one for ق and one for ك",
+     "2",
      "1 for both",
      "3"
     ],
@@ -461,22 +461,22 @@
     "options": [
      "the tip of the tongue",
      "the throat",
-     "the middle of the tongue, with the palate above it",
+     "the middle of the tongue",
      "the back of the tongue"
     ],
     "answer": 2,
-    "why": "They share one مخرج: وسط اللسان."
+    "why": "With the palate above it. They share one مخرج: وسط اللسان."
    },
    {
     "q": "Which ي comes from وسط اللسان?",
     "options": [
-     "No ي",
-     "A ي with a vowel or a لين ي, as in يَوْمٍ and بَيْتِ",
+     "No ي at all",
+     "A voweled or لين ي",
      "The ي in قِيلَ",
      "Every ي"
     ],
     "answer": 1,
-    "why": "A ي that is a حرف مد comes from الجوف."
+    "why": "As in يَوْمٍ and بَيْتِ. A ي that is a حرف مد comes from الجوف."
    },
    {
     "q": "ض comes from…",
@@ -505,22 +505,22 @@
     "options": [
      "the back of the tongue",
      "the lips",
-     "the front edge of the tongue, up to its tip, against the gums of the upper teeth",
+     "the front edge of the tongue",
      "the middle of the tongue"
     ],
     "answer": 2,
-    "why": "ل uses the edge of the tongue from near the front to the tip."
+    "why": "Up to its tip, against the gums of the upper teeth. ل uses the edge of the tongue from near the front to the tip."
    },
    {
     "q": "ض and ظ differ in their مخرج: …",
     "options": [
-     "both are from the edge of the tongue",
-     "ض is from the edge of the tongue with the molars; ظ is from the tip with the edges of the upper front teeth",
+     "both: the edge of the tongue",
+     "ض: the edge; ظ: the tip",
      "they share one مخرج",
-     "both are from the tip of the tongue"
+     "both: the tip of the tongue"
     ],
     "answer": 1,
-    "why": "Mixing them changes the word, so learn each one's place."
+    "why": "ض is from the edge of the tongue with the molars; ظ is from the tip with the edges of the upper front teeth. Mixing them changes the word, so learn each one's place."
    }
   ],
   "sources": [
@@ -561,9 +561,9 @@
     "q": "ط د ت come from…",
     "options": [
      "the tip near the lower front teeth",
-     "the lips",
-     "the tip of the tongue against the roots of the upper front teeth",
-     "the tip against the edges of the upper front teeth"
+     "the lips, both together",
+     "the tip against the upper teeth's roots",
+     "the tip against the upper teeth's edges"
     ],
     "answer": 2,
     "why": "They share one مخرج; they differ in their صفات."
@@ -572,9 +572,9 @@
     "q": "ظ ذ ث come from…",
     "options": [
      "the middle of the tongue",
-     "the tip of the tongue against the edges of the upper front teeth",
-     "the roots of the upper front teeth",
-     "the lower front teeth"
+     "the tip against the upper teeth's edges",
+     "the tip against the upper teeth's roots",
+     "the tip near the lower front teeth"
     ],
     "answer": 1,
     "why": "The tip just touches the edges of the upper front teeth."
@@ -582,35 +582,35 @@
    {
     "q": "ص س ز come from…",
     "options": [
-     "the tip of the tongue near the lower front teeth, leaving a narrow gap",
-     "the roots of the upper front teeth",
-     "the edges of the upper front teeth",
-     "the throat"
+     "the tip near the lower front teeth",
+     "the tip against the upper teeth's roots",
+     "the tip against the upper teeth's edges",
+     "the middle of the tongue"
     ],
     "answer": 0,
-    "why": "The narrow gap gives their whistle (الصفير)."
+    "why": "With a narrow gap. The narrow gap gives their whistle (الصفير)."
    },
    {
     "q": "ر compared with ن:",
     "options": [
-     "they are the same point",
+     "they are exactly the same point",
      "ر comes from the lips",
      "ن comes from the throat",
-     "ر is a little further onto the top of the tongue"
+     "ر is a little further back"
     ],
     "answer": 3,
-    "why": "They are neighbours at the tip of the tongue."
+    "why": "ر is a little further onto the top of the tongue. They are neighbours at the tip of the tongue."
    },
    {
     "q": "ذ and ز differ in their مخرج: …",
     "options": [
      "ذ is from the throat",
      "ز is from the lips",
-     "ذ: the tip with the edges of the upper teeth; ز: the tip near the lower front teeth",
+     "ذ: upper teeth; ز: lower teeth",
      "they share one مخرج"
     ],
     "answer": 2,
-    "why": "Learners often say ز for ذ; keep the tip on the upper teeth."
+    "why": "ذ: the tip with the edges of the upper teeth; ز: the tip near the lower front teeth. Learners often say ز for ذ; keep the tip on the upper teeth."
    },
    {
     "q": "Which group are called النطعية?",
@@ -661,12 +661,12 @@
     "q": "ف comes from…",
     "options": [
      "the throat",
-     "the inside of the lower lip with the edges of the upper front teeth",
-     "both lips",
+     "lower lip and upper teeth",
+     "both lips together",
      "the tip of the tongue"
     ],
     "answer": 1,
-    "why": "ف is the only letter from this مخرج."
+    "why": "The inside of the lower lip with the edges of the upper front teeth. ف is the only letter from this مخرج."
    },
    {
     "q": "ب م و (not a حرف مد) come from…",
@@ -685,10 +685,10 @@
      "all three close the lips",
      "all three leave the lips open",
      "و closes the lips more than ب",
-     "ب and م close the lips; و rounds them without closing"
+     "و rounds the lips, not closing"
     ],
     "answer": 3,
-    "why": "The و is made with rounded, open lips."
+    "why": "ب and م close the lips. The و is made with rounded, open lips."
    },
    {
     "q": "الخيشوم is the مخرج of…",
@@ -705,7 +705,7 @@
     "q": "How many مخارج do the lips have?",
     "options": [
      "4",
-     "2: one for ف and one for و ب م",
+     "2",
      "1",
      "3"
     ],
@@ -729,10 +729,10 @@
      "They are throat letters",
      "They are heavy letters",
      "They have قلقلة",
-     "They are close to the ميم, so it can slip into them"
+     "The ميم can slip into them"
     ],
     "answer": 3,
-    "why": "تحفة الأطفال: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي»."
+    "why": "They are close to the ميم. تحفة الأطفال: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي»."
    }
   ],
   "sources": [
@@ -819,10 +819,10 @@
    {
     "q": "س and ز come from the same مخرج. What separates them?",
     "options": [
-     "ز is heavy",
-     "Nothing",
-     "س is مهموس and ز is مجهور",
-     "س has قلقلة"
+     "ز is heavy and س is light",
+     "Nothing; they are the same",
+     "س is مهموس, ز is مجهور",
+     "س has قلقلة and ز does not"
     ],
     "answer": 2,
     "why": "They differ only in الهمس and الجهر."
@@ -894,12 +894,12 @@
     "q": "What happens to the sound in الشدة?",
     "options": [
      "It flows partly",
-     "The breath flows",
-     "It is held back completely when the letter has سكون",
+     "The breath flows with it",
+     "It is held back completely",
      "It flows completely"
     ],
     "answer": 2,
-    "why": "Example: أَجْ، أَدْ."
+    "why": "With a سكون. Example: أَجْ، أَدْ."
    },
    {
     "q": "Which of these letters is رخو?",
@@ -1017,13 +1017,13 @@
    {
     "q": "What is الاستعلاء?",
     "options": [
-     "The sound stops",
-     "The back of the tongue rises toward the palate, so the letter is heavy",
-     "The tongue lies low",
-     "The breath flows"
+     "The sound stops completely",
+     "The back of the tongue rises",
+     "The tongue lies low in the mouth",
+     "The breath flows with it"
     ],
     "answer": 1,
-    "why": "Its opposite, الاستفال, keeps the tongue low and the letter light."
+    "why": "Toward the palate, so the letter is heavy. Its opposite, الاستفال, keeps the tongue low and the letter light."
    },
    {
     "q": "Which letter is مستفل (light)?",
@@ -1114,12 +1114,12 @@
     "q": "When does القلقلة sound?",
     "options": [
      "Never in حفص",
-     "When the letter has a سكون, in the middle of a word or at a stop",
+     "When the letter has a سكون",
      "When it has a فتحة",
-     "Only when it has a شدة in the middle of a word"
+     "Only when it has a شدة"
     ],
     "answer": 1,
-    "why": "A voweled قلقلة letter does not bounce."
+    "why": "In the middle of a word or at a stop. A voweled قلقلة letter does not bounce."
    },
    {
     "q": "What are the letters of اللين?",
@@ -1146,13 +1146,13 @@
    {
     "q": "Why do the قلقلة letters bounce?",
     "options": [
-     "They are مهموس",
+     "They are مهموس letters",
      "They come from the throat",
-     "They are شديد and مجهور, so with a سكون neither sound nor breath flows until the bounce",
-     "They are heavy"
+     "They are شديد and مجهور",
+     "They are heavy letters"
     ],
     "answer": 2,
-    "why": "The bounce lets a fully closed letter be heard."
+    "why": "With a سكون neither sound nor breath flows until the bounce. The bounce lets a fully closed letter be heard."
    },
    {
     "q": "Which of these has صفير?",
@@ -1209,13 +1209,13 @@
    {
     "q": "What should you do with التكرير of the ر?",
     "options": [
-     "Keep it to one tap, so the ر is not rolled",
+     "Keep it to one tap",
      "Roll the ر clearly",
      "Add a vowel after it",
-     "Make it heavy"
+     "Make it heavy every time"
     ],
     "answer": 0,
-    "why": "التكرير is learned in order to avoid overdoing it, especially on a رّ."
+    "why": "So the ر is not rolled. التكرير is learned in order to avoid overdoing it, especially on a رّ."
    },
    {
     "q": "التفشي belongs to…",
@@ -1264,10 +1264,10 @@
    {
     "q": "What is الانحراف?",
     "options": [
-     "The breath flows",
+     "The breath flows with it",
      "The tongue covers the palate",
-     "The sound bounces",
-     "The sound leans after leaving its مخرج toward another مخرج"
+     "The sound bounces at the end",
+     "The sound leans to another مخرج"
     ],
     "answer": 3,
     "why": "In ل and ر."
@@ -4774,8 +4774,8 @@
     "q": "What does ج mean?",
     "options": [
      "Stopping and joining are equal",
-     "You must stop",
-     "Don't stop",
+     "You must stop here",
+     "Don't stop here",
      "Joining is better"
     ],
     "answer": 0,
@@ -4785,9 +4785,9 @@
     "q": "What does صلى mean?",
     "options": [
      "Stopping is better",
-     "You must stop",
-     "Don't stop",
-     "You may stop, but joining is better"
+     "You must stop here",
+     "Don't stop here",
+     "Joining is better"
     ],
     "answer": 3,
     "why": "الوصل أولى."
@@ -4795,9 +4795,9 @@
    {
     "q": "What does قلى mean?",
     "options": [
-     "Don't stop",
-     "You must stop",
-     "You may join, but stopping is better",
+     "Don't stop here",
+     "You must stop here",
+     "Stopping is better",
      "Joining is better"
     ],
     "answer": 2,
@@ -4817,10 +4817,10 @@
    {
     "q": "You stopped at a لا in the middle of an ayah to breathe. What now?",
     "options": [
-     "Go back and start again from a place where the meaning is sound",
+     "Start again where the meaning is sound",
      "Carry on from the next word",
-     "Start the next ayah",
-     "Nothing; it is fine"
+     "Start from the next ayah",
+     "Nothing; carry on as you are"
     ],
     "answer": 0,
     "why": "Starting after a forbidden stop can spoil the meaning."
@@ -4943,12 +4943,12 @@
     "q": "What is الإشمام at a stop?",
     "options": [
      "Saying part of the vowel quietly",
-     "Adding a هاء",
+     "Adding a هاء after the letter",
      "Lengthening the last letter",
-     "Rounding the lips as for a ضمة right after the سكون, with no sound"
+     "Rounding the lips, with no sound"
     ],
     "answer": 3,
-    "why": "It is seen, not heard."
+    "why": "As for a ضمة, right after the سكون. It is seen, not heard."
    },
    {
     "q": "On which vowel can الإشمام be used?",

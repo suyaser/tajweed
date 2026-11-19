@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Recording, Reciter, Verse } from '../core/types'
-import { Player, segAt, type Seg } from './player'
+import { needsBasmala, Player, segAt, type Seg } from './player'
 import { ayahUrl } from './urls'
 import { MIMES, pickMime, Recorder } from './recorder'
 
@@ -30,7 +30,7 @@ const verse = (a: number): Verse => ({ verseKey: `93:${a}`, text: '', words: [],
 function setup(n = 2) {
   const el = new FakeAudio()
   const p = new Player(() => el as unknown as HTMLAudioElement)
-  p.load(Array.from({ length: n }, (_, i) => verse(i + 1)), reciter)
+  p.load(Array.from({ length: n }, (_, i) => verse(i + 1)), reciter, { skipBasmala: true })
   return { el, p }
 }
 
@@ -136,6 +136,54 @@ describe('player', () => {
     expect(p.state.status).toBe('idle')
     expect(el.pause).toHaveBeenCalled()
   })
+
+  it('playWords plays from the first word start to the last word end; untimed → whole ayah', async () => {
+    const { el, p } = setup()
+    const v: Verse = { ...verse(1), timings: { husary: [[1, 1, 0, 400], [2, 2, 1000, 1500], [3, 3, 1600, 2200]] } }
+    p.load([v], reciter)
+    p.playWords(v, 2, 3)
+    expect(p.state.word).toEqual([1, 3])
+    expect(p.state.basmala).toBe(false) // a slice never gets the basmala
+    expect(el.src).toContain('093001.mp3')
+    el.emit('loadedmetadata')
+    expect(el.currentTime).toBeCloseTo(0.92)
+    await vi.advanceTimersByTimeAsync(0)
+    el.currentTime = 2.0; el.emit('timeupdate')
+    expect(p.state.status).toBe('playing')
+    el.currentTime = 2.33; el.emit('timeupdate')
+    expect(p.state.status).toBe('idle')
+    p.playWords(v, 3, 4) // word 4 untimed
+    expect(p.state.word).toBeNull()
+    expect(el.currentTime).toBe(0)
+    await vi.advanceTimersByTimeAsync(0)
+    el.emit('ended')
+    expect(p.state.status).toBe('idle')
+  })
+
+  it('plays the basmala (001001) before ayah 1, unlit, then the ayah; skipBasmala turns it off', async () => {
+    const el = new FakeAudio()
+    const p = new Player(() => el as unknown as HTMLAudioElement)
+    const v: Verse = { ...verse(1), timings: { husary: [[1, 1, 0, 400]] } }
+    p.load([v, verse(2)], reciter)
+    p.play()
+    await vi.advanceTimersByTimeAsync(0)
+    expect(el.src).toContain('/Husary_64kbps/001001.mp3')
+    expect(p.state).toMatchObject({ basmala: true, verseKey: '93:1', status: 'playing' })
+    el.currentTime = 0.2; el.emit('timeupdate')
+    expect(p.state.word).toBeNull()
+    el.emit('ended')
+    expect(el.src).toContain('093001.mp3')
+    expect(p.state).toMatchObject({ basmala: false, index: 0 })
+    el.emit('ended')
+    expect(el.src).toContain('093002.mp3')
+    p.load([v], reciter, { skipBasmala: true })
+    p.play()
+    expect(el.src).toContain('093001.mp3')
+  })
+})
+
+it('needsBasmala: ayah 1 of every surah but 1 and 9', () => {
+  expect(['1:1', '9:1', '2:2', '2:1', '114:1'].map(needsBasmala)).toEqual([false, false, false, true, true])
 })
 
 describe('pickMime', () => {

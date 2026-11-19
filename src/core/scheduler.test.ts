@@ -43,9 +43,9 @@ describe('sabqi', () => {
     }
   })
 
-  it('graduates to step 2 with ≥4 correct and the last correct', () => {
+  it('graduates to step 1 (3 days) with ≥4 correct and the last correct (decision 13)', () => {
     const atts = [1, 2, 3].map(n => att('x', n, true)).concat(att('x', 7, true))
-    expect(one(rebuildItems([intro('x')], atts, [], d(7)), 'x')).toMatchObject({ state: 'manzil', step: 2, dueOn: d(14) })
+    expect(one(rebuildItems([intro('x')], atts, [], d(7)), 'x')).toMatchObject({ state: 'manzil', step: 1, dueOn: d(10) })
   })
 
   it('graduates to step 0 when the last is wrong or fewer than 4 correct', () => {
@@ -57,34 +57,34 @@ describe('sabqi', () => {
 })
 
 describe('manzil ladder', () => {
-  const grad = [1, 2, 3, 4].map(n => att('x', n, true)).concat(att('x', 7, true)) // step 2, due d14
+  const grad = [1, 2, 3, 4].map(n => att('x', n, true)).concat(att('x', 7, true)) // step 1, due d10
   it('climbs 7 → 14 → 30 → 60 → 120 and caps at 120', () => {
     const atts = [...grad]
-    let day = 14
-    for (const [step, gap] of [[3, 14], [4, 30], [5, 60], [6, 120], [6, 120]]) {
+    let day = 10
+    for (const [step, gap] of [[2, 7], [3, 14], [4, 30], [5, 60], [6, 120], [6, 120]]) {
       atts.push(att('x', day, true))
       expect(one(rebuildItems([intro('x')], atts, [], d(day)), 'x')).toMatchObject({ step, dueOn: d(day + gap) })
       day += gap
     }
   })
   it('wrong → step 0, tomorrow, lapse', () => {
-    const it = one(rebuildItems([intro('x')], [...grad, att('x', 14, false)], [], d(14)), 'x')
-    expect(it).toMatchObject({ step: 0, dueOn: d(15), lapses: 1 })
+    const it = one(rebuildItems([intro('x')], [...grad, att('x', 10, false)], [], d(10)), 'x')
+    expect(it).toMatchObject({ step: 0, dueOn: d(11), lapses: 1 })
   })
   it('early correct changes nothing; early wrong resets', () => {
-    const base = one(rebuildItems([intro('x')], grad, [], d(10)), 'x')
-    const early = one(rebuildItems([intro('x')], [...grad, att('x', 10, true, { source: 'early' })], [], d(10)), 'x')
+    const base = one(rebuildItems([intro('x')], grad, [], d(9)), 'x')
+    const early = one(rebuildItems([intro('x')], [...grad, att('x', 9, true, { source: 'early' })], [], d(9)), 'x')
     expect([early.step, early.dueOn]).toEqual([base.step, base.dueOn])
-    const wrong = one(rebuildItems([intro('x')], [...grad, att('x', 10, false, { source: 'early' })], [], d(10)), 'x')
-    expect(wrong).toMatchObject({ step: 0, dueOn: d(11) })
+    const wrong = one(rebuildItems([intro('x')], [...grad, att('x', 9, false, { source: 'early' })], [], d(9)), 'x')
+    expect(wrong).toMatchObject({ step: 0, dueOn: d(10) })
   })
   it('late review counts from the answer day', () => {
     const it = one(rebuildItems([intro('x')], [...grad, att('x', 40, true)], [], d(40)), 'x')
-    expect(it).toMatchObject({ step: 3, dueOn: d(54) })
+    expect(it).toMatchObject({ step: 2, dueOn: d(47) })
   })
   it('ignores attempts that do not count (pretest, relearn)', () => {
-    const it = one(rebuildItems([intro('x')], [...grad, att('x', 14, false, { source: 'relearn', countsForSchedule: false })], [], d(14)), 'x')
-    expect(it.step).toBe(2)
+    const it = one(rebuildItems([intro('x')], [...grad, att('x', 10, false, { source: 'relearn', countsForSchedule: false })], [], d(10)), 'x')
+    expect(it.step).toBe(1)
   })
 })
 
@@ -208,6 +208,13 @@ describe('buildQueue', () => {
     const all = ['p1', 'p2', 'p3'].map(id => intro(id, 0))
     expect(buildQueue(userData({ introductions: all }), L, P, T).sabaqReason).toBe('milestone')
   })
+  it('introduces at most 4 lessons in any 7 days (decision 12)', () => {
+    const L6 = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'].map(id => lessonStub(id, 1))
+    const P6: Phase[] = [{ ...P[0], lessonIds: L6.map(l => l.id) }]
+    const four = [26, 27, 28, 29].map((n, i) => intro(`p${i + 1}`, n))
+    expect(buildQueue(userData({ introductions: four }), L6, P6, T)).toMatchObject({ sabaq: null, sabaqReason: 'pace' })
+    expect(buildQueue(userData({ introductions: four }), L6, P6, d(33)).sabaq).toBe('p5') // the first one is 7 days old
+  })
   it('offers a corrected-before-taught lesson first', () => {
     const q = buildQueue(userData({ corrections: [corr('c', 29, ['p3'])] }), L, P, T)
     expect(q).toMatchObject({ sabaq: 'p3', sabaqCorrected: true })
@@ -222,13 +229,19 @@ describe('buildQueue', () => {
 
 describe('levelOf', () => {
   const T = d(100)
-  it('follows §6.7', () => {
+  const ok = (n: number, ex: string) => att('x', n, true, { exampleId: ex })
+  it('follows decision 13: strong = step ≥ 4 and the last 3 correct on 3 different examples', () => {
     expect(levelOf(undefined, [], [], T)).toBe('not-started')
     expect(levelOf(item('x', { state: 'sabqi', step: 0 }), [], [], T)).toBe('learning')
     expect(levelOf(item('x', { step: 1 }), [], [], T)).toBe('learning')
     expect(levelOf(item('x', { step: 2 }), [], [], T)).toBe('known')
-    expect(levelOf(item('x', { step: 3 }), [], [], T)).toBe('strong')
-    expect(levelOf(item('x', { step: 4 }), [att('x', 80, false)], [], T)).toBe('known')
-    expect(levelOf(item('x', { step: 4 }), [att('x', 60, false)], [], T)).toBe('strong')
+    const three = [ok(50, 'x#1'), ok(70, 'x#2'), ok(90, 'x#3')]
+    expect(levelOf(item('x', { step: 3 }), three, [], T)).toBe('known') // 14 days is not enough
+    expect(levelOf(item('x', { step: 4 }), three, [], T)).toBe('strong')
+    expect(levelOf(item('x', { step: 4 }), [...three, att('x', 95, false)], [], T)).toBe('known')
+    expect(levelOf(item('x', { step: 4 }), [ok(50, 'x#1'), ok(70, 'x#1'), ok(90, 'x#3')], [], T)).toBe('known') // same example twice
+    expect(levelOf(item('x', { step: 4 }), three.slice(1), [], T)).toBe('known')
+    // relearn, pretest and teacher answers do not count
+    expect(levelOf(item('x', { step: 4 }), [...three, att('x', 95, false, { source: 'relearn', countsForSchedule: false })], [], T)).toBe('strong')
   })
 })

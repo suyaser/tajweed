@@ -1,5 +1,6 @@
 // Small pure helpers for the study-loop screens (Today, Learn, Review).
-import type { ConfusablePair, Day, DayLog, Phase, Session, UserData, VerseKey } from '../../core/types'
+import type { ConfusablePair, Day, Phase, Session, UserData, VerseKey } from '../../core/types'
+import { studiedDays } from '../path/helpers'
 import type { DayMark } from '../../components'
 import { addDays, diffDays, weekDays } from '../../core/day'
 import { ayahCount, surahName, toArabicDigits } from '../../quran'
@@ -38,14 +39,12 @@ export function dueLabel(due: Day, today: Day) {
   return new Date(due + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
 }
 
-/** A day counts as studied when the review or سبق part is done (spec F1). */
-export const studied = (l?: DayLog) => !!(l?.parts.sabaq || l?.parts.review)
-
-export function week(days: DayLog[], today: Day) {
-  const byId = new Map(days.map(d => [d.id, d]))
+/** Today's week dots: the same "studied" rule as Progress (any wird part, listening, a recording, an answer). */
+export function week(d: Pick<UserData, 'days' | 'attempts' | 'introductions'>, today: Day) {
+  const studied = studiedDays(d)
   const ds = weekDays(today)
-  const marks: DayMark[] = ds.map(d => (d > today ? 'future' : studied(byId.get(d)) ? 'studied' : 'not'))
-  const month = days.filter(d => d.id.slice(0, 7) === today.slice(0, 7) && studied(d)).length
+  const marks: DayMark[] = ds.map(x => (x > today ? 'future' : studied.has(x) ? 'studied' : 'not'))
+  const month = [...studied].filter(x => x.slice(0, 7) === today.slice(0, 7) && x <= today).length
   return { marks, todayIndex: ds.indexOf(today), count: marks.filter(m => m === 'studied').length, month }
 }
 
@@ -58,13 +57,13 @@ export function teacherNear(teacherDays: number[], sessions: Session[], today: D
   return null
 }
 
-/** Never two items of the kind `isLong` back to back when another item can sit between them (design §8.1). */
-export function spread<T>(xs: T[], isLong: (x: T) => boolean): T[] {
+/** Never two items with the same key back to back when another item can sit between them (design §8.1, interleaving). */
+export function spread<T>(xs: T[], keyOf: (x: T) => string): T[] {
   const rest = [...xs]
   const out: T[] = []
   while (rest.length) {
-    const prevLong = out.length > 0 && isLong(out[out.length - 1])
-    const i = prevLong ? Math.max(0, rest.findIndex(x => !isLong(x))) : 0
+    const prev = out.length ? keyOf(out[out.length - 1]) : undefined
+    const i = Math.max(0, rest.findIndex(x => keyOf(x) !== prev))
     out.push(rest.splice(i, 1)[0])
   }
   return out

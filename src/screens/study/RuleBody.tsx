@@ -27,7 +27,7 @@ export function RuleBody({ lesson, audio }: { lesson: Lesson; audio: StudyAudio 
   return (
     <Card stripe={lesson.colour} as="article" className="s-rule-body">
       <header>
-        <h2 className="a-h3" lang="ar" style={{ color: `var(--t-${lesson.colour})` }}>{lesson.nameAr}</h2>
+        <h2 className="a-h3" lang="ar" style={lesson.colour && { color: `var(--t-${lesson.colour})` }}>{lesson.nameAr}</h2>
         <p className="muted">{lesson.nameEn}</p>
       </header>
       {lesson.review.status !== 'verified' && (

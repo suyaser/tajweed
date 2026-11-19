@@ -1,7 +1,7 @@
 export { splitBidi, arDigits } from './bidi'
 export { T, Bdi, ArLabel } from './Text'
-export { VerseBlock, Passage, WordToken, toWords } from './Verse'
-export type { TajweedSegment, WordMark, VerseBlockProps, PassageAyah, PassageProps } from './Verse'
+export { VerseBlock, Passage, SurahOpening, WordToken, toWords } from './Verse'
+export type { TajweedSegment, WordMark, PauseMark, VerseBlockProps, PassageAyah, PassageProps } from './Verse'
 export {
   COLOURS, COLOUR_KEYS, LevelBadge, RuleChip, RuleRow, Legend, LetterTiles, CountBeats, StarBadge,
   Ornament, OrnHeading, Band, CorrectionTag, CorrectionBadge, ProgressDots,

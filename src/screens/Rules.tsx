@@ -156,7 +156,7 @@ function MindMap({ status, onTopic }: { status: Map<string, LessonStatus>; onTop
                     const s = status.get(l.id)!
                     return (
                       <li key={l.id} className="ll">
-                        <a className="t-leaf" href={href('rules', l.id)} style={{ '--rc': `var(--t-${l.colour})` } as CSSProperties}>
+                        <a className="t-leaf" href={href('rules', l.id)} style={{ '--rc': l.colour ? `var(--t-${l.colour})` : 'var(--gold)' } as CSSProperties}>
                           <b>{l.nameAr}</b>
                           <span className="level-glyph" aria-hidden="true">{GLYPH[s.level]}</span>
                           <span className="sr-only" lang="en">{s.level.replace('-', ' ')}{s.correction ? ', correction open' : ''}</span>

@@ -257,6 +257,12 @@ mark.q {
 
 .passage .ayah { border-radius: 8px; transition: background-color var(--m-base); }
 .passage .ayah[data-current] { background: color-mix(in srgb, var(--gold-soft) 45%, transparent); }
+/* pause / sakt / sajdah marks (Verse.marks) after their word; surah title + basmala at ayah 1 */
+.verse .pause { color: var(--gold-ink); font-size: 0.8em; }
+.surah-open { display: block; text-align: center; margin-block: var(--s2) var(--s1); }
+.surah-name { display: block; font: var(--k-h2); font-size: 1.1rem; line-height: 1.6; color: var(--gold-ink); border-block: 1px solid var(--gold-soft); padding-block: 2px; }
+.basmala { display: block; color: var(--ink); }
+
 .ayah-end { font-family: var(--f-quran); color: var(--gold); font-size: 0.85em; background: none; border: 0; padding: 0 2px; min-width: var(--target); min-height: var(--target); line-height: 1; }
 
 /* ================= tajweed colours ================= */

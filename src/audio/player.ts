@@ -24,6 +24,7 @@ export interface PlayerState {
   hasTimings: boolean
   error: string | null
   clip: boolean // playing a recording (playSrc), not the reciter
+  basmala: boolean // playing the reciter's 001001 before ayah 1 of the current surah: no word lamp
 }
 
 const PAD_BEFORE = 0.08 // s; quran-align error is < 73ms on average
@@ -60,7 +61,14 @@ const raf = (f: () => void) =>
 
 const initial: PlayerState = {
   status: 'idle', index: 0, verseKey: null, word: null, loop: 1, loops: 1, gap: 'off',
-  gapLeft: 0, gapTotal: 0, rate: 1, hasTimings: false, error: null, clip: false,
+  gapLeft: 0, gapTotal: 0, rate: 1, hasTimings: false, error: null, clip: false, basmala: false,
+}
+
+/** Ayah 1 of every surah but الفاتحة (its ayah 1 is the basmala) and التوبة (none) is preceded by the basmala.
+ *  everyayah's per-ayah files start at the ayah itself (checked: SSS001 lengths and quran-align start times). */
+export function needsBasmala(verseKey: string) {
+  const [s, a] = verseKey.split(':').map(Number)
+  return a === 1 && s !== 1 && s !== 9
 }
 
 export class Player {
@@ -74,6 +82,7 @@ export class Player {
   private sliceEnd: number | null = null // word slice / single-ayah play: stop here (s)
   private resumeAdvances = false // paused during a gap
   private ticking = false
+  private skipBasmala = false
 
   constructor(private createAudio: () => HTMLAudioElement = () => new Audio()) {}
 
@@ -81,10 +90,12 @@ export class Player {
   getState = () => this.state
   private set(p: Partial<PlayerState>) { this.state = { ...this.state, ...p }; this.listeners.forEach(f => f()) }
 
-  load(verses: Verse[], reciter: Reciter) {
+  /** `skipBasmala`: don't play 001001 before ayah 1 of a surah (e.g. an ayah heard on its own as an example). */
+  load(verses: Verse[], reciter: Reciter, opts: { skipBasmala?: boolean } = {}) {
     this.stop()
     this.verses = verses
     this.reciter = reciter
+    this.skipBasmala = !!opts.skipBasmala
     this.set({
       verseKey: verses[0]?.verseKey ?? null,
       hasTimings: reciter.hasTimings && verses.some(v => !!v.timings?.[reciter.id]?.length),
@@ -115,7 +126,7 @@ export class Player {
     this.el?.pause()
     this.sliceEnd = null
     this.resumeAdvances = false
-    this.set({ status: 'idle', index: 0, verseKey: this.verses[0]?.verseKey ?? null, word: null, loop: 1, error: null, clip: false })
+    this.set({ status: 'idle', index: 0, verseKey: this.verses[0]?.verseKey ?? null, word: null, loop: 1, error: null, clip: false, basmala: false })
     this.settle(false)
   }
 
@@ -141,18 +152,24 @@ export class Player {
   setLoops(loops: number) { this.set({ loops }) }
   setGap(gap: Gap) { this.set({ gap }) }
 
-  /** Play one word as a slice of its ayah file. Untimed word: plays the whole ayah once. Call from a gesture. */
-  playWord(verse: Verse, wordIdx: number) {
+  /** Play one word (0-based) as a slice of its ayah file. Untimed word: plays the whole ayah once. Call from a gesture. */
+  playWord(verse: Verse, wordIdx: number) { this.playWords(verse, wordIdx + 1, wordIdx + 1) }
+
+  /** Play words fromWord..toWord (1-based inclusive, as in examples) as one slice of the ayah file, lit as a whole.
+   *  Either end untimed: plays the whole ayah once. Never preceded by the basmala. Call from a gesture. */
+  playWords(verse: Verse, fromWord: number, toWord: number) {
     if (!this.reciter) return
     let i = this.verses.findIndex(v => v.verseKey === verse.verseKey)
-    if (i < 0) { this.load([verse], this.reciter); i = 0 }
-    const seg = segForWord(segsOf(verse, this.reciter.id), wordIdx)
+    if (i < 0) { this.load([verse], this.reciter, { skipBasmala: this.skipBasmala }); i = 0 }
+    const segs = segsOf(verse, this.reciter.id)
+    const a = segForWord(segs, fromWord - 1), b = segForWord(segs, toWord - 1)
+    const timed = a && b && a[2] <= b[3]
     this.clearGap()
     this.resumeAdvances = false
     this.set({ index: i, verseKey: verse.verseKey })
-    this.start(seg ? Math.max(0, seg[2] / 1000 - PAD_BEFORE) : 0)
-    this.sliceEnd = seg ? seg[3] / 1000 + PAD_AFTER : Infinity
-    if (seg) this.set({ word: [seg[0], seg[1]] })
+    this.start(timed ? Math.max(0, a[2] / 1000 - PAD_BEFORE) : 0, false)
+    this.sliceEnd = timed ? b[3] / 1000 + PAD_AFTER : Infinity
+    if (timed) this.set({ word: [a[0], b[1]] })
   }
 
   /** Play any src (a recording's object URL) on the same, already-unlocked element. Resolves true when it ends. */
@@ -161,7 +178,7 @@ export class Player {
     const a = this.audio()
     a.src = src
     a.playbackRate = a.defaultPlaybackRate = 1
-    this.set({ status: 'loading', clip: true, word: null })
+    this.set({ status: 'loading', clip: true, word: null, basmala: false })
     a.play().catch(e => this.rejected(e))
     return this.whenDone()
   }
@@ -193,24 +210,27 @@ export class Player {
     return a
   }
 
-  private start(offset = 0) {
+  /** Start the current ayah at `offset` s; first the basmala when it opens a surah (unless a slice or skipBasmala). */
+  private start(offset = 0, withBasmala = true) {
     const v = this.verses[this.state.index]
     if (!v || !this.reciter) return
     const a = this.audio()
-    const url = ayahUrl(this.reciter.folder, v.verseKey)
+    const basmala = withBasmala && !this.skipBasmala && needsBasmala(v.verseKey)
+    const url = ayahUrl(this.reciter.folder, basmala ? '1:1' : v.verseKey)
     this.sliceEnd = null
     if (a.src !== url) {
       a.src = url
       if (offset) a.addEventListener('loadedmetadata', () => { if (a.src === url) a.currentTime = offset }, { once: true })
     } else a.currentTime = offset
     a.playbackRate = a.defaultPlaybackRate = this.state.rate
-    this.set({ status: 'loading', verseKey: v.verseKey, word: null, error: null, gapLeft: 0, clip: false })
+    this.set({ status: 'loading', verseKey: v.verseKey, word: null, error: null, gapLeft: 0, clip: false, basmala })
     a.play().catch(e => this.rejected(e))
     const nxt = this.verses[this.state.index + 1]
     // Fill the service-worker cache with whole (200) responses for this ayah and the next (~100 KB each):
     // the <audio> element's own Range requests get 206s, which are not cached.
     if (typeof fetch === 'function')
-      for (const k of nxt ? [v.verseKey, nxt.verseKey] : [v.verseKey]) fetch(ayahUrl(this.reciter.folder, k)).catch(() => {})
+      for (const k of new Set([v.verseKey, nxt?.verseKey, !this.skipBasmala && nxt && needsBasmala(nxt.verseKey) && '1:1']))
+        if (k) fetch(ayahUrl(this.reciter.folder, k)).catch(() => {})
   }
 
   private rejected(e: unknown) {
@@ -225,7 +245,7 @@ export class Player {
     this.sliceEnd = null
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false
     this.set({
-      status: offline ? 'offline' : 'error', word: null, clip: false,
+      status: offline ? 'offline' : 'error', word: null, clip: false, basmala: false,
       error: offline ? 'Audio needs a connection.' : "Couldn't load the recitation.",
     })
     this.settle(false)
@@ -233,6 +253,7 @@ export class Player {
 
   private ended() {
     if (this.state.clip) { this.set({ status: 'idle', clip: false }); return this.settle(true) }
+    if (this.state.basmala) return this.start(0, false)
     if (this.sliceEnd !== null) { this.sliceEnd = null; return this.set({ status: 'idle', word: null }) }
     const { gap, rate } = this.state
     const dur = this.el?.duration ?? 0
@@ -284,7 +305,7 @@ export class Player {
 
   private sync() {
     const a = this.el
-    if (!a || this.state.clip) return
+    if (!a || this.state.clip || this.state.basmala) return
     if (this.sliceEnd !== null) {
       if (a.currentTime >= this.sliceEnd) { a.pause(); this.sliceEnd = null; this.set({ status: 'idle', word: null }) }
       return

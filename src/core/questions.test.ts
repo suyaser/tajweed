@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { Example, Lesson } from './types'
-import { distractors, makeQuestion, seeded } from './questions'
+import { distractors, makeQuestion, reasonFor, seeded } from './questions'
+import { lessons as real } from '../content'
 
 const ex = (lessonId: string, n: number): Example => ({
   id: `${lessonId}#${n}`, lessonId, verseKey: '1:1', wordFrom: 1, wordTo: 1, text: 'x', focus: 'x', stopping: n === 2,
@@ -72,5 +73,89 @@ describe('fact', () => {
   it('asks authored questions, not the last one', () => {
     const q = makeQuestion({ refId: 'makharij', lastExampleId: 'makharij?1' }, ctx([]))!
     expect(q).toMatchObject({ kind: 'fact', exampleId: 'makharij?2', answerId: '1', prompt: 'q2' })
+  })
+})
+
+describe('options never include a rule the underlined words also show (tajweed review B1)', () => {
+  it('drops example.also from the distractors', () => {
+    const withAlso = lessons.map(l => (l.id === 'ikhfa' ? { ...l, examples: l.examples.map(e => ({ ...e, also: ['iqlab', 'izhar'] })) } : l))
+    for (let s = 1; s < 30; s++) {
+      const q = makeQuestion({ refId: 'ikhfa' }, { ...ctx(lessons.map(l => l.id), s), lessons: withAlso })!
+      expect(q.options.map(o => o.id)).not.toContain('iqlab')
+      expect(q.options.map(o => o.id)).not.toContain('izhar')
+    }
+  })
+  it.each([
+    ['qal-k', 'ٱلْفَلَقِ', 'lam-q'],
+    ['lam-q', 'ٱلْفَلَقِ', 'qal-k'],
+    ['ra-l', 'قَدِيرٌ', 'arid'],
+    ['ra-h', 'تَرْمِيهِم', 'm-ikhfa'],
+    ['ra-h', 'ٱرْجِعِىٓ', 'munfasil'],
+    ['ra-l', 'رِجَالٌ', 'idgh-n'],
+  ])('%s %s never offers %s', (lessonId, text, never) => {
+    const ex = real.find(l => l.id === lessonId)!.examples.find(e => e.text === text)!
+    const all = real.map(l => l.id)
+    for (let s = 1; s < 60; s++) {
+      for (const pretest of [false, true]) {
+        const q = makeQuestion({ refId: lessonId }, {
+          lessons: real, introduced: all, munfasilLength: 4, rng: seeded(s), kind: 'identify', pretest,
+          excludeExampleIds: real.find(l => l.id === lessonId)!.examples.filter(e => e.id !== ex.id).map(e => e.id),
+        })!
+        expect(q.exampleId).toBe(ex.id)
+        expect(q.options.map(o => o.id)).not.toContain(never)
+      }
+    }
+  })
+})
+
+describe('learning review fixes', () => {
+  it('include and vs shape the options', () => {
+    const q = makeQuestion({ refId: 'izhar' }, { ...ctx(['izhar', 'm-izhar', 'lam-q', 'idgh-n']), include: 'iqlab' })!
+    expect(q.options.map(o => o.id)).toContain('iqlab')
+    const c = makeQuestion({ refId: 'ikhfa' }, { ...ctx(['ikhfa', 'iqlab']), vs: 'iqlab', kind: 'length' })!
+    expect(c.kind).toBe('identify')
+    expect(c.options.map(o => o.id).sort()).toEqual(['ikhfa', 'iqlab'])
+  })
+  it('shuffles fact options but keeps the answer mapped', () => {
+    const orders = new Set<string>()
+    for (let s = 1; s < 20; s++) {
+      const q = makeQuestion({ refId: 'makharij' }, ctx([], s))!
+      expect(q.options.find(o => o.id === q.answerId)!.labelAr).toBe(q.fact!.options[q.fact!.answer])
+      orders.add(q.options.map(o => o.id).join())
+    }
+    expect(orders.size).toBeGreaterThan(1)
+  })
+  it('muttasil shows the chosen length, like munfasil', () => {
+    const muttasil = real.find(l => l.id === 'muttasil')!
+    const q = makeQuestion({ refId: 'muttasil' }, { lessons: real, introduced: [], munfasilLength: 5, kind: 'length' })!
+    expect(muttasil.counts).toBeDefined()
+    expect(q.options.find(o => o.id === q.answerId)!.labelEn).toBe('5')
+  })
+  it('asks no length for several opening letters at once', () => {
+    const lh = real.find(l => l.id === 'lazim-h')!
+    for (const ex of lh.examples) {
+      const q = makeQuestion({ refId: 'lazim-h' }, {
+        lessons: real, introduced: [], munfasilLength: 4, kind: 'length', excludeExampleIds: lh.examples.filter(e => e !== ex).map(e => e.id),
+      })!
+      expect(q.kind).toBe(Array.from(ex.focus).filter(c => /[ء-ي]/.test(c)).length === 1 ? 'length' : 'identify')
+    }
+  })
+  it('explains with the deciding letter when there is no note', () => {
+    const ikhfa = real.find(l => l.id === 'ikhfa')!
+    expect(reasonFor(ikhfa, ikhfa.examples.find(e => e.text === 'مِن قَبْلِكَ')!)).toBe(`نْ then ق → ${ikhfa.nameAr}.`)
+    expect(reasonFor(ikhfa, ikhfa.examples.find(e => e.text === 'عَذَابٌ شَدِيدٌ')!)).toMatch(/^تنوين then ش/)
+    const lamS = real.find(l => l.id === 'lam-s')!
+    expect(reasonFor(lamS, lamS.examples[0])).toContain('sun letter')
+    const noted = real.flatMap(l => l.examples).find(e => e.note)!
+    expect(reasonFor(real.find(l => l.id === noted.lessonId)!, noted)).toBe(noted.note)
+  })
+  it('the right fact option is not systematically the longest (UX review M11)', () => {
+    const facts = real.flatMap(l => l.facts)
+    const longest = facts.filter(f => {
+      const n = f.options.map(o => o.length)
+      return n[f.answer] === Math.max(...n) && n.filter(x => x === n[f.answer]).length === 1
+    })
+    expect(longest.length / facts.length).toBeLessThan(0.35) // chance is 0.25
+    for (const f of facts) expect(f.options[f.answer]).not.toMatch(/\bbecause\b/)
   })
 })

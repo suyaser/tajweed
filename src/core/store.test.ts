@@ -46,6 +46,22 @@ describe('store', () => {
     expect(S.getSnapshot().phases.slice(1, 3).map(p => p.status)).toEqual(['skipped', 'active'])
   })
 
+  it('opens the next phase once half the milestone passed; the rest stay planned (decision 12)', () => {
+    S.completeOnboarding({})
+    for (const id of [1, 2, 3]) S.setPhaseStatus(id, 'passed')
+    S.setPhaseStatus(4, 'milestone')
+    expect(S.getSnapshot().phases.map(p => p.status)).toEqual(['passed', 'passed', 'passed', 'milestone', 'locked', 'locked'])
+    const ms = phases[3].milestone
+    const pass = (ids: typeof ms) => S.updateSession(S.planSession().id, { status: 'done', milestoneResults: ids.map(m => ({ phaseId: 4, passageId: m.id, result: 'passed' as const })) })
+    pass(ms.slice(0, 2))
+    expect(S.getSnapshot().phases[4].status).toBe('locked')
+    pass(ms.slice(2, 3))
+    expect(S.getSnapshot().phases.slice(3).map(p => p.status)).toEqual(['milestone', 'active', 'locked'])
+    expect(S.suggestPassages().filter(p => p.reason === 'milestone')).toHaveLength(3)
+    pass(ms.slice(3))
+    expect(S.getSnapshot().phases.slice(3).map(p => p.status)).toEqual(['passed', 'active', 'locked'])
+  })
+
   it('round-trips export/import and rebuilds items', () => {
     S.completeOnboarding({})
     S.introduceLesson(lessons[0].id)

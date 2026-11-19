@@ -50,16 +50,16 @@ export default function Rule({ params }: ScreenProps) {
     const v = verses[e.verseKey]
     if (!v) return
     if (busy && started === e.id) return player.stop()
-    player.load([v], reciter) // synchronous inside the tap (iOS)
+    player.load([v], reciter, { skipBasmala: true }) // synchronous inside the tap (iOS)
     player.play()
     setStarted(e.id)
   }
 
   return (
-    <article className="rule-card card card-e1 card-stripe" style={{ '--rc': `var(--t-${lesson.colour})` } as CSSProperties}>
+    <article className="rule-card card card-e1 card-stripe" style={{ '--rc': lesson.colour ? `var(--t-${lesson.colour})` : 'var(--gold-ink)' } as CSSProperties}>
       <header className="rule-head">
         <h2 className="a-h3" lang="ar" dir="rtl" style={{ color: 'var(--rc)' }}>{lesson.nameAr}</h2>
-        <RuleChip nameAr={COLOURS[lesson.colour].ar} colour={lesson.colour} />
+        {lesson.colour && <RuleChip nameAr={COLOURS[lesson.colour].ar} colour={lesson.colour} />}
       </header>
       <p className="muted">{lesson.nameEn}</p>
       <p>
@@ -115,6 +115,8 @@ export default function Rule({ params }: ScreenProps) {
                 <VerseBlock
                   text={v?.text ?? e.text}
                   focus={v ? [e.wordFrom, e.wordTo] : undefined}
+                  focusText={e.focus}
+                  pauses={v?.marks}
                   current={lit}
                   stopping={e.stopping}
                   onWord={v ? (n) => { setStarted(null); player.playWord(v, n - 1) } : undefined}

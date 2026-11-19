@@ -17,7 +17,7 @@ describe('path helpers', () => {
     expect(refLabel('93:1', '93:5')).toBe('الضحى · ١–٥')
     expect(refLabel('1:1', '1:7')).toBe('الفاتحة')
     expect(refLabel('112:1', '114:6')).toBe('الإخلاص – الناس')
-    expect(refLabel('78:3', '80:42')).toBe('النبإ · ٣ – عبس · ٤٢')
+    expect(refLabel('78:3', '80:42')).toBe('النبأ · ٣ – عبس · ٤٢')
     expect(listenHref('93:1', '93:5')).toBe('#/listen/93:1-93:5')
     expect(listenHref('93:5')).toBe('#/listen/93:5')
   })

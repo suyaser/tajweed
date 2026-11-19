@@ -3,6 +3,7 @@ import type { Attempt, Correction, Day, Introduction, Phase, PhaseProgress, Sess
 import { addDays, weekDays } from '../../core/day'
 import { ayahCount, surahName, toArabicDigits } from '../../quran'
 import type { DayMark } from '../../components'
+import { RULE_LESSONS, wordSpan } from '../../content/rulemap'
 
 export type Planned = Session['plannedPassages'][number]
 
@@ -90,20 +91,7 @@ export function milestoneFor(p: Pick<Planned, 'from' | 'to'>, content: Phase[], 
   return hits[0] ? { phaseId: hits[0].phase.id, passageId: hits[0].m.id, label: hits[0].m.label } : undefined
 }
 
-/** cpfair / our rule names → lesson ids (content/rules.json). */
-const RULE_LESSON: Record<string, string> = {
-  ghunnah: 'ghunnah', ikhfa: 'ikhfa', ikhfa_shafawi: 'm-ikhfa', iqlab: 'iqlab', idghaam_ghunnah: 'idgh-g',
-  idghaam_shafawi: 'm-idgham', idghaam_no_ghunnah: 'idgh-n', idghaam_mutajanisayn: 'mutajanisayn',
-  idghaam_mutaqaribayn: 'mutaqaribayn', lam_shamsiyyah: 'lam-s', hamzat_wasl: 'ibtida', madd_2: 'tabii',
-  madd_muttasil: 'muttasil', madd_munfasil: 'munfasil', madd_246: 'arid', madd_6: 'lazim-k', qalqalah: 'qal-s',
-}
-
-/** Code-point [start, end) of 1-based word `n` in verse.text. */
-export function wordSpan(v: Pick<Verse, 'words'>, n: number): [number, number] {
-  let start = 0
-  for (let i = 0; i < n - 1; i++) start += Array.from(v.words[i] ?? '').length + 1
-  return [start, start + Array.from(v.words[n - 1] ?? '').length]
-}
+export { wordSpan }
 
 /**
  * Rule suggestions for a corrected word: lessons from the tajweed spans on that word (or the whole ayah when no
@@ -114,7 +102,7 @@ export function likelyLessons(v: Pick<Verse, 'words' | 'tajweed'> | undefined, w
   const add = (id?: string) => { if (id && known(id) && !out.includes(id)) out.push(id) }
   if (v) {
     const [a, b] = word ? wordSpan(v, word) : [0, Infinity]
-    for (const s of v.tajweed) if (s.start < b && s.end > a) add(RULE_LESSON[s.rule] ?? s.rule)
+    for (const s of v.tajweed) if (s.start < b && s.end > a) add(RULE_LESSONS[s.rule]?.[0] ?? s.rule)
   }
   for (const i of [...introductions].sort((x, y) => (x.at < y.at ? 1 : -1))) add(i.lessonId)
   return out.slice(0, max)

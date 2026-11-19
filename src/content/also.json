@@ -1,0 +1,619 @@
+{
+ "izhar#1": [
+  "m-izhar"
+ ],
+ "izhar#3": [
+  "iqlab"
+ ],
+ "izhar#4": [
+  "arid"
+ ],
+ "izhar#7": [
+  "arid"
+ ],
+ "izhar#8": [
+  "ibtida"
+ ],
+ "izhar#9": [
+  "ikhfa"
+ ],
+ "izhar#10": [
+  "muttasil"
+ ],
+ "idgh-g#1": [
+  "tabii"
+ ],
+ "idgh-g#2": [
+  "idgh-n"
+ ],
+ "idgh-g#3": [
+  "arid"
+ ],
+ "idgh-g#5": [
+  "qal-s"
+ ],
+ "idgh-g#6": [
+  "tabii"
+ ],
+ "idgh-g#9": [
+  "qal-s",
+  "tabii"
+ ],
+ "idgh-n#1": [
+  "arid"
+ ],
+ "idgh-n#2": [
+  "idgh-g"
+ ],
+ "idgh-n#3": [
+  "arid"
+ ],
+ "idgh-n#4": [
+  "idgh-g"
+ ],
+ "idgh-n#5": [
+  "arid"
+ ],
+ "idgh-n#6": [
+  "arid",
+  "tabii"
+ ],
+ "idgh-n#8": [
+  "idgh-g"
+ ],
+ "idgh-n#9": [
+  "idgh-g"
+ ],
+ "iqlab#2": [
+  "m-ikhfa"
+ ],
+ "iqlab#3": [
+  "arid"
+ ],
+ "iqlab#7": [
+  "ghunnah"
+ ],
+ "iqlab#8": [
+  "ghunnah"
+ ],
+ "iqlab#9": [
+  "ibtida"
+ ],
+ "ikhfa#1": [
+  "arid"
+ ],
+ "ikhfa#2": [
+  "qal-s"
+ ],
+ "ikhfa#3": [
+  "idgh-g"
+ ],
+ "ikhfa#4": [
+  "idgh-g"
+ ],
+ "ikhfa#5": [
+  "idgh-g"
+ ],
+ "ikhfa#7": [
+  "muttasil"
+ ],
+ "ikhfa#8": [
+  "arid"
+ ],
+ "m-ikhfa#1": [
+  "idgh-g",
+  "ra-h"
+ ],
+ "m-ikhfa#2": [
+  "ibtida",
+  "idgh-g"
+ ],
+ "m-ikhfa#3": [
+  "ibtida",
+  "lam-s"
+ ],
+ "m-ikhfa#4": [
+  "arid",
+  "qal-s"
+ ],
+ "m-ikhfa#8": [
+  "iqlab"
+ ],
+ "m-idgham#1": [
+  "ikhfa"
+ ],
+ "m-idgham#3": [
+  "arid",
+  "ghunnah",
+  "qal-s"
+ ],
+ "m-idgham#5": [
+  "arid",
+  "idgh-g",
+  "muttasil",
+  "qal-k",
+  "qal-s"
+ ],
+ "m-idgham#6": [
+  "ikhfa"
+ ],
+ "m-idgham#8": [
+  "ikhfa",
+  "qal-s"
+ ],
+ "m-izhar#5": [
+  "qal-s"
+ ],
+ "m-izhar#7": [
+  "idgh-n",
+  "izhar",
+  "tabii"
+ ],
+ "m-izhar#9": [
+  "ghunnah"
+ ],
+ "ghunnah#3": [
+  "ibtida",
+  "lam-q"
+ ],
+ "ghunnah#5": [
+  "ibtida",
+  "lam-s"
+ ],
+ "ghunnah#6": [
+  "arid",
+  "ibtida",
+  "lam-q"
+ ],
+ "lam-q#1": [
+  "m-izhar"
+ ],
+ "lam-q#2": [
+  "ibtida"
+ ],
+ "lam-q#3": [
+  "arid",
+  "ibtida"
+ ],
+ "lam-q#4": [
+  "ibtida",
+  "qal-k",
+  "qal-s"
+ ],
+ "lam-q#5": [
+  "ibtida",
+  "qal-s"
+ ],
+ "lam-q#6": [
+  "arid",
+  "ibtida"
+ ],
+ "lam-q#8": [
+  "ibtida"
+ ],
+ "lam-s#1": [
+  "tabii"
+ ],
+ "lam-s#2": [
+  "ibtida",
+  "m-izhar"
+ ],
+ "lam-s#3": [
+  "arid",
+  "ghunnah",
+  "ibtida"
+ ],
+ "lam-s#4": [
+  "ibtida",
+  "tabii"
+ ],
+ "lam-s#5": [
+  "ibtida",
+  "m-izhar"
+ ],
+ "lam-s#6": [
+  "ibtida",
+  "qal-s"
+ ],
+ "lam-s#7": [
+  "ibtida"
+ ],
+ "lam-s#8": [
+  "ibtida"
+ ],
+ "lam-s#9": [
+  "ibtida"
+ ],
+ "lam-jh#1": [
+  "ibtida"
+ ],
+ "lam-jh#2": [
+  "ibtida",
+  "ra-h"
+ ],
+ "lam-jh#3": [
+  "ibtida"
+ ],
+ "lam-jh#5": [
+  "ibtida"
+ ],
+ "lam-jh#6": [
+  "ghunnah",
+  "ibtida",
+  "m-ikhfa"
+ ],
+ "lam-jh#7": [
+  "ibtida",
+  "idgh-n"
+ ],
+ "lam-jh#8": [
+  "ibtida"
+ ],
+ "lam-jl#1": [
+  "ibtida"
+ ],
+ "lam-jl#3": [
+  "ghunnah",
+  "ibtida",
+  "lam-s"
+ ],
+ "lam-jl#4": [
+  "ibtida"
+ ],
+ "lam-jl#5": [
+  "ibtida"
+ ],
+ "lam-jl#6": [
+  "idgh-n"
+ ],
+ "ra-h#3": [
+  "munfasil"
+ ],
+ "ra-h#5": [
+  "ibtida",
+  "lam-q"
+ ],
+ "ra-h#6": [
+  "lam-jh"
+ ],
+ "ra-h#7": [
+  "m-ikhfa"
+ ],
+ "ra-h#8": [
+  "ibtida",
+  "lam-q",
+  "qal-s"
+ ],
+ "ra-h#10": [
+  "arid",
+  "ibtida",
+  "lam-q",
+  "qal-s"
+ ],
+ "ra-l#1": [
+  "idgh-n"
+ ],
+ "ra-l#3": [
+  "arid",
+  "ikhfa"
+ ],
+ "ra-l#4": [
+  "ikhfa"
+ ],
+ "ra-l#5": [
+  "ibtida",
+  "lam-q"
+ ],
+ "ra-l#6": [
+  "ibtida"
+ ],
+ "ra-l#7": [
+  "qal-s"
+ ],
+ "ra-l#8": [
+  "arid",
+  "idgh-n"
+ ],
+ "qal-s#2": [
+  "idgh-g"
+ ],
+ "qal-s#4": [
+  "ikhfa"
+ ],
+ "qal-s#5": [
+  "ibtida",
+  "lam-q"
+ ],
+ "qal-k#1": [
+  "ibtida",
+  "lam-q"
+ ],
+ "qal-k#3": [
+  "arid",
+  "m-idgham"
+ ],
+ "qal-k#5": [
+  "idgh-g"
+ ],
+ "qal-k#6": [
+  "arid",
+  "ibtida",
+  "lam-q"
+ ],
+ "qal-k#7": [
+  "ibtida",
+  "lam-s"
+ ],
+ "qal-k#8": [
+  "ibtida",
+  "lam-s"
+ ],
+ "tabii#2": [
+  "idgh-g"
+ ],
+ "tabii#5": [
+  "qal-s"
+ ],
+ "tabii#6": [
+  "ibtida",
+  "ikhfa",
+  "lam-q"
+ ],
+ "tabii#7": [
+  "ibtida",
+  "lam-q"
+ ],
+ "iwad#3": [
+  "tabii"
+ ],
+ "iwad#5": [
+  "qal-s"
+ ],
+ "iwad#6": [
+  "qal-s"
+ ],
+ "silah-s#1": [
+  "ghunnah",
+  "tabii"
+ ],
+ "silah-s#2": [
+  "idgh-n",
+  "tabii"
+ ],
+ "silah-s#3": [
+  "ghunnah",
+  "tabii"
+ ],
+ "silah-s#4": [
+  "ghunnah",
+  "tabii"
+ ],
+ "silah-s#5": [
+  "m-izhar",
+  "tabii"
+ ],
+ "silah-s#6": [
+  "tabii"
+ ],
+ "silah-s#7": [
+  "ghunnah",
+  "tabii"
+ ],
+ "badal#2": [
+  "idgh-g",
+  "tabii"
+ ],
+ "badal#4": [
+  "ibtida",
+  "lam-q"
+ ],
+ "badal#5": [
+  "idgh-g",
+  "m-idgham"
+ ],
+ "badal#8": [
+  "ibtida",
+  "lam-q"
+ ],
+ "muttasil#2": [
+  "ibtida",
+  "lam-s"
+ ],
+ "muttasil#4": [
+  "arid"
+ ],
+ "muttasil#5": [
+  "ikhfa"
+ ],
+ "muttasil#6": [
+  "ibtida",
+  "lam-q"
+ ],
+ "muttasil#8": [
+  "ibtida",
+  "lam-s"
+ ],
+ "munfasil#1": [
+  "ghunnah",
+  "tabii"
+ ],
+ "munfasil#2": [
+  "ikhfa"
+ ],
+ "munfasil#5": [
+  "ghunnah",
+  "ikhfa",
+  "tabii"
+ ],
+ "munfasil#7": [
+  "ghunnah",
+  "ikhfa"
+ ],
+ "munfasil#8": [
+  "qal-s",
+  "tabii"
+ ],
+ "silah-k#2": [
+  "ikhfa"
+ ],
+ "silah-k#4": [
+  "qal-s"
+ ],
+ "silah-k#5": [
+  "qal-s"
+ ],
+ "silah-k#6": [
+  "qal-s"
+ ],
+ "arid#1": [
+  "ibtida",
+  "lam-q",
+  "tabii"
+ ],
+ "arid#3": [
+  "ibtida",
+  "lam-s"
+ ],
+ "arid#4": [
+  "ibtida",
+  "lam-s"
+ ],
+ "arid#5": [
+  "ibtida",
+  "lam-s"
+ ],
+ "arid#6": [
+  "ghunnah",
+  "ibtida",
+  "lam-s"
+ ],
+ "arid#7": [
+  "ibtida",
+  "lam-q",
+  "tabii"
+ ],
+ "arid#8": [
+  "ibtida",
+  "lam-q"
+ ],
+ "lin#2": [
+  "ibtida",
+  "lam-q"
+ ],
+ "lin#4": [
+  "ibtida",
+  "lam-s"
+ ],
+ "lin#6": [
+  "idgh-g"
+ ],
+ "lin#7": [
+  "ghunnah",
+  "ibtida",
+  "lam-s",
+  "qal-s"
+ ],
+ "lazim-k#1": [
+  "arid",
+  "ibtida",
+  "lam-s"
+ ],
+ "lazim-k#2": [
+  "lam-q"
+ ],
+ "lazim-k#3": [
+  "tabii",
+  "tashil"
+ ],
+ "lazim-k#4": [
+  "ghunnah",
+  "ibtida",
+  "lam-s"
+ ],
+ "lazim-k#5": [
+  "ibtida",
+  "lam-s"
+ ],
+ "lazim-k#6": [
+  "arid"
+ ],
+ "lazim-k#7": [
+  "ikhfa"
+ ],
+ "mithlayn#1": [
+  "ibtida"
+ ],
+ "mithlayn#3": [
+  "tabii"
+ ],
+ "mithlayn#6": [
+  "qal-s",
+  "tabii"
+ ],
+ "mutajanisayn#2": [
+  "idgh-g",
+  "muttasil"
+ ],
+ "mutajanisayn#3": [
+  "munfasil"
+ ],
+ "mutajanisayn#4": [
+  "ghunnah",
+  "ibtida"
+ ],
+ "mutajanisayn#5": [
+  "iqlab"
+ ],
+ "mutajanisayn#8": [
+  "tabii"
+ ],
+ "mutaqaribayn#2": [
+  "m-idgham"
+ ],
+ "mutaqaribayn#7": [
+  "munfasil"
+ ],
+ "sakt#2": [
+  "idgh-g",
+  "tabii"
+ ],
+ "sakt#3": [
+  "arid",
+  "qal-s"
+ ],
+ "sakt#6": [
+  "arid"
+ ],
+ "imalah#1": [
+  "qal-s",
+  "tabii"
+ ],
+ "ishmam#1": [
+  "ghunnah"
+ ],
+ "tashil#1": [
+  "idgh-g"
+ ],
+ "tashil#2": [
+  "lam-s",
+  "lazim-k"
+ ],
+ "tashil#3": [
+  "lam-s",
+  "lazim-k"
+ ],
+ "tashil#4": [
+  "lazim-k",
+  "tabii"
+ ],
+ "tashil#5": [
+  "lazim-k",
+  "tabii"
+ ],
+ "tashil#6": [
+  "lazim-k"
+ ],
+ "tashil#7": [
+  "lazim-k"
+ ]
+}

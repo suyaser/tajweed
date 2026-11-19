@@ -68,7 +68,7 @@ export function RuleChip({ nameAr, colour, level, selected, onClick, href }: Rul
 export interface RuleRowProps {
   nameAr: string
   nameEn: string
-  colour: ColourKey
+  colour?: ColourKey
   level?: Level
   correctionOpen?: boolean
   href: string

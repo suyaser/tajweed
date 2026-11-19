@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ScreenProps } from '../app/App'
 import { href } from '../app/router'
-import { addListenSeconds, planSession, suggestPassages, updateSession, useData, uuid } from '../core/store'
+import { addListenSeconds, noteRecording, planSession, suggestPassages, updateSession, useData, uuid } from '../core/store'
 import { today } from '../core/day'
 import type { ColourKey, Recording, Verse } from '../core/types'
 import { getRange, RECITERS, ruleColour, tajweedSpans } from '../quran'
@@ -96,6 +96,7 @@ export default function Listen({ params }: ScreenProps) {
       const r: Recording = { id: uuid(), from, to, createdAt: new Date().toISOString(), durationMs: take.durationMs, mime: take.mime, blob: take.blob }
       try {
         await save(r)
+        noteRecording()
         setSaved(take.durationMs)
       } catch {
         setSaveError("Couldn't save the recording. Your device may be out of space.")
@@ -178,7 +179,7 @@ export default function Listen({ params }: ScreenProps) {
 
   // Memoised: the player re-renders this screen several times a second (M7).
   const ayahs = useMemo<PassageAyah[]>(() => (verses ?? []).map((v) => ({
-    key: v.verseKey, n: +v.verseKey.split(':')[1], text: v.text, ...(colours ? { segments: tajweedSpans(v) } : {}),
+    key: v.verseKey, n: +v.verseKey.split(':')[1], text: v.text, pauses: v.marks, ...(colours ? { segments: tajweedSpans(v) } : {}),
   })), [verses, colours])
   const shownColours = useMemo(() => colours && verses
     ? [...new Set(verses.flatMap((v) => v.tajweed.map((s) => ruleColour(s.rule)).filter((c): c is ColourKey => !!c)))]

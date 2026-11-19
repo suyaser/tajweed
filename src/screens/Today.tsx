@@ -4,7 +4,7 @@ import type { DayLog, PartMark } from '../core/types'
 import { markDayPart, storagePersisted, suggestPassages, useData } from '../core/store'
 import { buildQueue } from '../core/scheduler'
 import { diffDays, today } from '../core/day'
-import { getLesson, lessons, phases } from '../content'
+import { drillFor, getLesson, lessons, phases } from '../content'
 import { href } from '../app/router'
 import { Button, Card, CorrectionTag, Nudge, Ornament, OrnHeading, ProgressDots, Sheet, StarBadge, T } from '../components'
 import { currentPassage, mem, rangeParam, rangeRef, setMem, teacherNear, verseRef, week } from './study/helpers'
@@ -48,7 +48,7 @@ export default function Today() {
   const lessonId = q.sabaq ?? introducedToday
   const lesson = lessonId ? getLesson(lessonId) : undefined
   const passage = currentPassage(data, phases, lesson?.examples[0]?.verseKey)
-  const w = week(data.days, day)
+  const w = week(data, day)
 
   // سبق
   const skipped = m.skipSabaq === day
@@ -58,15 +58,28 @@ export default function Today() {
   const dueManzil = q.manzil.length + q.overflowCount
   const activeLeft = data.phases.some(p => p.status === 'active')
 
-  // التلاوة: today's lesson example + due open corrections, at most 3
+  // التلاوة (learning review M2): one ayah for each lesson of the last 7 days, newest first (the سبقي, recited),
+  // rotating through its examples day by day; the letter drill for مخارج / صفات lessons; then due open corrections.
   const corrDue = data.items
     .filter(i => i.kind === 'correction' && i.state === 'manzil' && i.dueOn <= day)
     .map(i => data.corrections.find(c => c.id === i.refId && c.status === 'open' && !c.deletedAt))
     .filter(c => !!c)
+  const recent = data.introductions.filter(i => diffDays(day, i.on) < 7).sort((a, b) => (a.at < b.at ? 1 : -1))
+  const newest = recent[0] ?? [...data.introductions].sort((a, b) => (a.at < b.at ? 1 : -1))[0]
+  const targetOf = (lessonId: string, tag: ReactNode) => {
+    const l = getLesson(lessonId)
+    if (!l) return []
+    const ex = l.examples[Math.floor(Date.parse(day) / 864e5) % Math.max(1, l.examples.length)]
+    if (ex) return [{ key: ex.verseKey, label: verseRef(ex.verseKey), href: href('listen', rangeParam(ex.verseKey)), tag }]
+    if (drillFor(l).length) return [{ key: `drill:${l.id}`, label: drillFor(l).slice(0, 3).join('، ') + '…', href: href('learn', l.id) + '?apply=1', tag }]
+    return []
+  }
+  const ruleTag = (id: string) => <span className="t-sm muted"><T>{`(${getLesson(id)?.nameAr ?? ''})`}</T></span>
   const targets = [
-    ...(lesson?.examples[0] ? [{ key: lesson.examples[0].verseKey, tag: <span className="t-sm muted">(new rule)</span> }] : []),
-    ...corrDue.map(c => ({ key: c!.verseKey, tag: <CorrectionTag severity={c!.severity} /> })),
-  ].slice(0, 3)
+    ...recent.flatMap(i => targetOf(i.lessonId, i.on === day ? <span className="t-sm muted">(new rule)</span> : ruleTag(i.lessonId))),
+    ...corrDue.map(c => ({ key: c!.verseKey, label: verseRef(c!.verseKey), href: href('listen', rangeParam(c!.verseKey)), tag: <CorrectionTag severity={c!.severity} /> })),
+  ].filter((t, i, xs) => xs.findIndex(x => x.key === t.key) === i).slice(0, 5)
+  const repeatNewest = newest ? targetOf(newest.lessonId, null)[0] : undefined
 
   // المراجعة
   const due = q.sabqi.length + q.manzil.length
@@ -162,7 +175,7 @@ export default function Today() {
                   <p className="t-sm"><T>{`New lesson: ${lesson?.nameAr ?? ''}`}</T></p>
                 </>
               ) : (
-                <SabaqReason reason={q.sabaqReason} backlog={dueManzil} activeLeft={activeLeft} passage={rangeRef(passage.from, passage.to)} listenHref={listenHref}
+                <SabaqReason reason={q.sabaqReason} newest={repeatNewest && newest && { name: getLesson(newest.lessonId)?.nameAr ?? '', href: repeatNewest.href }} backlog={dueManzil} activeLeft={activeLeft} passage={rangeRef(passage.from, passage.to)} listenHref={listenHref}
                   stale={!!msPhase?.milestoneOn && diffDays(day, msPhase.milestoneOn) >= 14} />
               )}
             </Part>
@@ -171,7 +184,7 @@ export default function Today() {
               {targets.length ? (
                 <ul className="s-targets">
                   {targets.map(t => (
-                    <li key={t.key}><a href={href('listen', rangeParam(t.key))}><span lang="ar">{verseRef(t.key)}</span> {t.tag} <span aria-hidden="true">›</span></a></li>
+                    <li key={t.key}><a href={t.href}><span lang="ar">{t.label}</span> {t.tag} <span aria-hidden="true">›</span></a></li>
                   ))}
                 </ul>
               ) : (
@@ -222,10 +235,18 @@ export default function Today() {
   )
 }
 
-function SabaqReason({ reason, backlog, activeLeft, passage, listenHref, stale }: {
-  reason?: string; backlog: number; activeLeft: boolean; passage: string; listenHref: string; stale: boolean
+function SabaqReason({ reason, newest, backlog, activeLeft, passage, listenHref, stale }: {
+  reason?: string; newest?: { name: string; href: string }; backlog: number; activeLeft: boolean; passage: string; listenHref: string; stale: boolean
 }) {
   if (reason === 'introduced-today') return <p className="t-sm">Already learned one today. One a day keeps it sticking.</p>
+  // decision 12: at most 4 new lessons a week; the free سبق slot repeats the newest rule aloud (learning review M4)
+  if (reason === 'pace')
+    return (
+      <>
+        <p className="t-sm">Four new rules this week. Today, repeat your newest rule aloud{newest ? <>: <T>{newest.name}</T></> : null}.</p>
+        {newest && <Button variant="secondary" href={newest.href}>Repeat it aloud</Button>}
+      </>
+    )
   if (reason === 'backlog') return <p className="t-sm">Review backlog first: {backlog} due. New lessons resume when it's under 15.</p>
   if (reason === 'milestone')
     return (

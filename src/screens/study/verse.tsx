@@ -29,12 +29,11 @@ export function useStudyAudio() {
   const { settings } = useData()
   const reciter = RECITERS.find(r => r.id === settings.reciterId) ?? RECITERS[0]
   const { state, player } = usePlayer()
-  const ayah = (v: Verse) => { player.load([v], reciter); player.play() }
-  // ponytail: Player has no multi-word slice; a one-word example plays that word, longer ones the whole ayah.
+  const ayah = (v: Verse) => { player.load([v], reciter, { skipBasmala: true }); player.play() }
+  /** Just the example's words (tajweed review M5): never the whole ayah when timings exist. */
   const example = (v: Verse, ex: Example) => {
-    if (ex.wordFrom !== ex.wordTo) return ayah(v)
-    player.load([v], reciter)
-    player.playWord(v, ex.wordFrom - 1)
+    player.load([v], reciter, { skipBasmala: true })
+    player.playWords(v, ex.wordFrom, ex.wordTo)
   }
   const offline = state.status === 'offline' || (typeof navigator !== 'undefined' && navigator.onLine === false)
   return { state, player, reciter, ayah, example, offline, busy: state.status === 'playing' || state.status === 'loading', stop: () => player.stop() }
@@ -65,15 +64,17 @@ export function ExampleVerse({ ex, vs, coloured = false, spanOnly = false, size 
   const reference = verseRef(ex.verseKey)
   if (!v) {
     const n = ex.text.split(' ').length
-    return <VerseBlock text={ex.text} focus={spanOnly ? undefined : [1, n]} size={size} reference={reference} stopping={ex.stopping} actions={actions} tajweed={false} />
+    return <VerseBlock text={ex.text} focus={spanOnly ? undefined : [1, n]} focusText={ex.focus} size={size} reference={reference} stopping={ex.stopping} actions={actions} tajweed={false} />
   }
   const words = wordSegments(v) as TajweedSegment[][]
-  if (spanOnly)
-    return <VerseBlock segments={flat(words.slice(ex.wordFrom - 1, ex.wordTo))} size={size} tajweed={coloured} actions={actions} />
+  if (spanOnly) {
+    const pauses = v.marks?.filter(m => m.after >= ex.wordFrom && m.after <= ex.wordTo).map(m => ({ ...m, after: m.after - ex.wordFrom + 1 }))
+    return <VerseBlock segments={flat(words.slice(ex.wordFrom - 1, ex.wordTo))} pauses={pauses} size={size} tajweed={coloured} actions={actions} />
+  }
   return (
     <VerseBlock
-      segments={flat(words)} focus={[ex.wordFrom, ex.wordTo]} tajweed={coloured} size={size}
-      reference={reference} stopping={ex.stopping} actions={actions}
+      segments={flat(words)} focus={[ex.wordFrom, ex.wordTo]} focusText={ex.focus} pauses={v.marks} verseKey={v.verseKey}
+      tajweed={coloured} size={size} reference={reference} stopping={ex.stopping} actions={actions}
     />
   )
 }

@@ -4,6 +4,9 @@ import type { ColourKey, ConfusablePair, Lesson, MatnLine, Phase, QuestionKind, 
 import rawRules from '../../content/rules.json'
 import rawPairs from '../../content/pairs.json'
 import rawMutun from '../../content/mutun.json'
+import also from './also.json'
+
+const ALSO = also as Record<string, string[] | undefined>
 
 interface RawRule {
   id: string; cat: string; phase: number; ar: string; en: string; color: string; definition: string
@@ -28,6 +31,8 @@ const CATS: [id: string, nameAr: string, nameEn: string, intro: string][] = [
   ['waqf', 'الوقف والابتداء', 'Stopping & starting', 'Where to stop, how to stop, and how to start again.'],
   ['hafs', 'كلمات خاصة برواية حفص', 'Special words in Hafs', 'A few words in رواية حفص have their own way of reading.'],
 ]
+// Topics that are not a muṣḥaf colour rule: their lessons get no colour (UX review M4).
+const NO_COLOUR = new Set(['found', 'waqf', 'hafs'])
 export const topics: Topic[] = CATS.map(([id, nameAr, nameEn, intro], order) => ({ id, nameAr, nameEn, intro, order }))
 
 export const pairs: ConfusablePair[] = (rawPairs as { id?: string; a: string; b: string; hint?: string; difference?: string }[]).map(p => ({
@@ -44,6 +49,7 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const examples = (r.examples ?? []).map((e, i) => ({
     id: `${r.id}#${i + 1}`, lessonId: r.id, verseKey: e.verse, wordFrom: e.word_from, wordTo: e.word_to,
     text: e.text, focus: e.focus, stopping: !!e.stop, ...(e.note ? { note: e.note } : {}),
+    also: ALSO[`${r.id}#${i + 1}`],
   }))
   const facts = (r.facts ?? []).map((f, i) => ({
     id: `${r.id}?${i + 1}`, lessonId: r.id, prompt: f.q, options: f.options,
@@ -54,7 +60,7 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   if (r.counts && r.cat === 'madd') questionKinds.push('length')
   if (facts.length) questionKinds.push('fact')
   return {
-    id: r.id, topicId: r.cat, phaseId: r.phase, order, nameAr: r.ar, nameEn: r.en, colour: r.color as ColourKey,
+    id: r.id, topicId: r.cat, phaseId: r.phase, order, nameAr: r.ar, nameEn: r.en, colour: NO_COLOUR.has(r.cat) ? undefined : (r.color as ColourKey),
     summary: r.definition, letters: r.letters, counts: r.counts, conditions: r.conditions, tip: r.tip,
     list: r.list as [string, string][] | undefined, examples, facts, questionKinds,
     confusableWith: pairs.flatMap(p => (p.a === r.id ? [p.b] : p.b === r.id ? [p.a] : [])),
@@ -62,6 +68,17 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
     review: { status: r.review?.status === 'verified' ? 'verified' : 'needs-teacher', notes: r.review?.notes },
   }
 })
+
+/**
+ * The say-aloud drill for a مخارج / صفات lesson (learning review M3): each of its letters with سكون after a همزة,
+ * أَبْ، أَتْ، …; the حروف المد after a ب. Empty for other lessons.
+ */
+export function drillFor(lesson: Lesson): string[] {
+  if (lesson.topicId !== 'found' || !lesson.letters) return []
+  if (lesson.id === 'makharij-jawf') return ['بَا', 'بُو', 'بِي']
+  const letters = lesson.letters.split(/[\s·:،()]+/).map(t => t.replace(/[\u0640\u064B-\u0652]/g, '')).filter(t => /^[\u0621-\u064A]$/.test(t))
+  return [...new Set(letters)].map(l => `أَ${l === 'ء' ? 'أ' : l}ْ`)
+}
 
 const byId = new Map(lessons.map(l => [l.id, l]))
 export const getLesson = (id: string): Lesson | undefined => byId.get(id)
@@ -88,7 +105,7 @@ export const phases: Phase[] = [
     doneWhen: 'Each letter sounds right on its own and inside words.',
     tasks: [
       'Learn the 5 areas and 17 points',
-      'Drill each letter as أَبْ، أَتْ، أَثْ… and record it',
+      'Drill each letter as أَبْ، أَتْ، أَثْ… and record it (each lesson’s “say it aloud” step); recite the drill to your teacher',
       'Drill the confusing pairs: ح ه · ع ء · ص س · ط ت · ق ك · ذ ز ظ · ث س · ض د',
       'Learn الصفات with opposites, then the single qualities',
       'Ask your teacher to check every letter once',

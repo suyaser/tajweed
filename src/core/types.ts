@@ -24,6 +24,7 @@ export interface Example {
   focus: string // substring of text that shows the rule
   stopping: boolean
   note?: string
+  also?: string[] // other lesson ids whose rule also shows in these words: never a wrong option (src/content/also.json)
 }
 
 export interface FactQuestion { id: string; lessonId: string; prompt: string; options: string[]; answer: number; explanation: string }
@@ -35,7 +36,7 @@ export interface Lesson {
   order: number
   nameAr: string
   nameEn: string
-  colour: ColourKey
+  colour?: ColourKey // none for lessons with no muṣḥaf colour (مخارج، صفات، وقف، …)
   summary: string // the definition
   letters?: string // space-separated letters for tiles
   counts?: { min: number; max: number; note?: string }
@@ -86,6 +87,8 @@ export interface Verse {
   words: string[] // text split on spaces
   tajweed: { rule: string; start: number; end: number; src: 'cpfair' | 'ours' }[] // code-point offsets into text
   timings?: Record<string, [wordFrom: number, wordTo: number, startMs: number, endMs: number][]> // by reciter id
+  /** Pause (waqf/sakt) and sajdah marks: ۖ ۗ ۘ ۙ ۚ ۛ ۜ ۩, each after 1-based word `after`; not part of `text`. */
+  marks?: { after: number; mark: string }[]
 }
 
 /* ---------------- User data (local, sync-ready) ---------------- */
