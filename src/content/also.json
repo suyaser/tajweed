@@ -3,21 +3,26 @@
   "m-izhar"
  ],
  "izhar#2": [
-  "badal"
+  "badal",
+  "tabii"
  ],
  "izhar#3": [
-  "iqlab"
+  "iqlab",
+  "tabii"
  ],
  "izhar#4": [
   "arid",
+  "tabii",
   "tafkhim"
  ],
  "izhar#5": [
+  "tabii",
   "tafkhim"
  ],
  "izhar#7": [
   "arid",
   "dad-zha",
+  "tabii",
   "tafkhim"
  ],
  "izhar#8": [
@@ -25,10 +30,12 @@
  ],
  "izhar#9": [
   "ikhfa",
+  "tabii",
   "tafkhim"
  ],
  "izhar#10": [
   "muttasil",
+  "tabii",
   "tafkhim"
  ],
  "idgh-g#1": [
@@ -39,7 +46,11 @@
   "idgh-n"
  ],
  "idgh-g#3": [
-  "arid"
+  "arid",
+  "tabii"
+ ],
+ "idgh-g#4": [
+  "tabii"
  ],
  "idgh-g#5": [
   "qal-s",
@@ -52,12 +63,16 @@
  "idgh-g#7": [
   "tafkhim"
  ],
+ "idgh-g#8": [
+  "tabii"
+ ],
  "idgh-g#9": [
   "qal-s",
   "tabii"
  ],
  "idgh-n#1": [
   "arid",
+  "tabii",
   "tafkhim"
  ],
  "idgh-n#2": [
@@ -65,6 +80,7 @@
  ],
  "idgh-n#3": [
   "arid",
+  "tabii",
   "tafkhim"
  ],
  "idgh-n#4": [
@@ -72,6 +88,7 @@
  ],
  "idgh-n#5": [
   "arid",
+  "tabii",
   "tafkhim"
  ],
  "idgh-n#6": [
@@ -87,6 +104,7 @@
  ],
  "idgh-n#9": [
   "idgh-g",
+  "tabii",
   "tafkhim"
  ],
  "iqlab#2": [
@@ -94,7 +112,14 @@
  ],
  "iqlab#3": [
   "arid",
+  "tabii",
   "tafkhim"
+ ],
+ "iqlab#4": [
+  "tabii"
+ ],
+ "iqlab#5": [
+  "tabii"
  ],
  "iqlab#6": [
   "tafkhim"
@@ -110,6 +135,7 @@
  ],
  "ikhfa#1": [
   "arid",
+  "tabii",
   "tafkhim"
  ],
  "ikhfa#2": [
@@ -117,30 +143,36 @@
   "tafkhim"
  ],
  "ikhfa#3": [
-  "idgh-g"
+  "idgh-g",
+  "tabii"
  ],
  "ikhfa#4": [
-  "idgh-g"
+  "idgh-g",
+  "tabii"
  ],
  "ikhfa#5": [
   "idgh-g",
+  "tabii",
   "tafkhim"
  ],
  "ikhfa#6": [
+  "tabii",
   "tafkhim"
  ],
  "ikhfa#7": [
   "muttasil"
  ],
  "ikhfa#8": [
-  "arid"
+  "arid",
+  "tabii"
  ],
  "ikhfa#9": [
   "tafkhim"
  ],
  "m-ikhfa#1": [
   "idgh-g",
-  "ra-h"
+  "ra-h",
+  "tabii"
  ],
  "m-ikhfa#2": [
   "ibtida",
@@ -150,12 +182,17 @@
  ],
  "m-ikhfa#3": [
   "ibtida",
-  "lam-s"
+  "lam-s",
+  "tabii"
  ],
  "m-ikhfa#4": [
   "arid",
   "qal-s",
+  "tabii",
   "tafkhim"
+ ],
+ "m-ikhfa#5": [
+  "tabii"
  ],
  "m-ikhfa#6": [
   "tafkhim"
@@ -166,12 +203,17 @@
  "m-idgham#1": [
   "ikhfa"
  ],
+ "m-idgham#2": [
+  "tabii"
+ ],
  "m-idgham#3": [
   "arid",
   "ghunnah",
-  "qal-s"
+  "qal-s",
+  "tabii"
  ],
  "m-idgham#4": [
+  "tabii",
   "tafkhim"
  ],
  "m-idgham#5": [
@@ -180,6 +222,7 @@
   "muttasil",
   "qal-k",
   "qal-s",
+  "tabii",
   "tafkhim"
  ],
  "m-idgham#6": [
@@ -194,7 +237,14 @@
   "tafkhim"
  ],
  "m-izhar#1": [
-  "sakinayn"
+  "sakinayn",
+  "tabii"
+ ],
+ "m-izhar#2": [
+  "tabii"
+ ],
+ "m-izhar#4": [
+  "tabii"
  ],
  "m-izhar#5": [
   "qal-s"
@@ -207,10 +257,14 @@
   "izhar",
   "tabii"
  ],
+ "m-izhar#8": [
+  "tabii"
+ ],
  "m-izhar#9": [
   "ghunnah",
   "sakinayn",
   "silent-letters",
+  "tabii",
   "tafkhim"
  ],
  "ghunnah#3": [
@@ -226,6 +280,7 @@
   "arid",
   "ibtida",
   "lam-q",
+  "tabii",
   "tafkhim"
  ],
  "lam-q#1": [
@@ -239,6 +294,7 @@
  "lam-q#3": [
   "arid",
   "ibtida",
+  "tabii",
   "tafkhim"
  ],
  "lam-q#4": [
@@ -254,9 +310,11 @@
  ],
  "lam-q#6": [
   "arid",
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "lam-q#7": [
+  "tabii",
   "tafkhim"
  ],
  "lam-q#8": [
@@ -273,7 +331,8 @@
  "lam-s#3": [
   "arid",
   "ghunnah",
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "lam-s#4": [
   "ibtida",
@@ -287,21 +346,25 @@
  "lam-s#6": [
   "ibtida",
   "qal-s",
+  "tabii",
   "tafkhim"
  ],
  "lam-s#7": [
   "dad-zha",
   "ibtida",
+  "tabii",
   "tafkhim"
  ],
  "lam-s#8": [
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "lam-s#9": [
   "ibtida"
  ],
  "lam-jh#1": [
   "ibtida",
+  "tabii",
   "tafkhim"
  ],
  "lam-jh#2": [
@@ -313,7 +376,8 @@
   "ibtida"
  ],
  "lam-jh#5": [
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "lam-jh#6": [
   "ghunnah",
@@ -327,7 +391,8 @@
   "tafkhim"
  ],
  "lam-jh#8": [
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "lam-jl#1": [
   "basics",
@@ -342,7 +407,8 @@
   "tafkhim"
  ],
  "lam-jl#4": [
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "lam-jl#5": [
   "ibtida"
@@ -354,6 +420,7 @@
   "munfasil"
  ],
  "ra-h#4": [
+  "tabii",
   "tafkhim"
  ],
  "ra-h#5": [
@@ -365,7 +432,8 @@
   "tafkhim"
  ],
  "ra-h#7": [
-  "m-ikhfa"
+  "m-ikhfa",
+  "tabii"
  ],
  "ra-h#8": [
   "ibtida",
@@ -380,10 +448,12 @@
   "ibtida",
   "lam-q",
   "qal-s",
+  "tabii",
   "tafkhim"
  ],
  "ra-l#1": [
-  "idgh-n"
+  "idgh-n",
+  "tabii"
  ],
  "ra-l#3": [
   "arid",
@@ -410,12 +480,15 @@
   "tafkhim"
  ],
  "qal-s#1": [
+  "tabii",
   "tafkhim"
  ],
  "qal-s#2": [
-  "idgh-g"
+  "idgh-g",
+  "tabii"
  ],
  "qal-s#3": [
+  "tabii",
   "tafkhim"
  ],
  "qal-s#4": [
@@ -495,7 +568,16 @@
  "tabii#8": [
   "tafkhim"
  ],
+ "iwad#1": [
+  "tabii"
+ ],
+ "iwad#2": [
+  "tabii"
+ ],
  "iwad#3": [
+  "tabii"
+ ],
+ "iwad#4": [
   "tabii"
  ],
  "iwad#5": [
@@ -506,6 +588,9 @@
  "iwad#6": [
   "qal-s",
   "tafkhim"
+ ],
+ "iwad#7": [
+  "tabii"
  ],
  "silah-s#1": [
   "ghunnah",
@@ -537,7 +622,8 @@
   "tabii"
  ],
  "badal#1": [
-  "silent-letters"
+  "silent-letters",
+  "tabii"
  ],
  "badal#2": [
   "idgh-g",
@@ -545,22 +631,30 @@
  ],
  "badal#3": [
   "sakinayn",
-  "silent-letters"
+  "silent-letters",
+  "tabii"
  ],
  "badal#4": [
   "ibtida",
-  "lam-q"
+  "lam-q",
+  "tabii"
  ],
  "badal#5": [
   "idgh-g",
-  "m-idgham"
+  "m-idgham",
+  "tabii"
  ],
  "badal#6": [
-  "silent-letters"
+  "silent-letters",
+  "tabii"
+ ],
+ "badal#7": [
+  "tabii"
  ],
  "badal#8": [
   "ibtida",
   "lam-q",
+  "tabii",
   "tafkhim"
  ],
  "muttasil#2": [
@@ -568,7 +662,8 @@
   "lam-s"
  ],
  "muttasil#4": [
-  "arid"
+  "arid",
+  "tabii"
  ],
  "muttasil#5": [
   "ikhfa"
@@ -590,9 +685,11 @@
   "ikhfa"
  ],
  "munfasil#3": [
-  "sakinayn"
+  "sakinayn",
+  "tabii"
  ],
  "munfasil#4": [
+  "tabii",
   "tafkhim"
  ],
  "munfasil#5": [
@@ -609,20 +706,30 @@
   "tabii"
  ],
  "silah-k#1": [
+  "tabii",
   "tafkhim"
  ],
  "silah-k#2": [
-  "ikhfa"
+  "ikhfa",
+  "tabii"
+ ],
+ "silah-k#3": [
+  "tabii"
  ],
  "silah-k#4": [
-  "qal-s"
+  "qal-s",
+  "tabii"
  ],
  "silah-k#5": [
   "qal-s",
+  "tabii",
   "tafkhim"
  ],
  "silah-k#6": [
   "qal-s"
+ ],
+ "silah-k#7": [
+  "tabii"
  ],
  "arid#1": [
   "ibtida",
@@ -690,6 +797,7 @@
   "ibtida",
   "lam-s",
   "sakinayn",
+  "tabii",
   "tafkhim"
  ],
  "lazim-k#2": [
@@ -716,6 +824,7 @@
  "lazim-k#6": [
   "arid",
   "dad-zha",
+  "tabii",
   "tafkhim"
  ],
  "lazim-k#7": [
@@ -725,6 +834,7 @@
  ],
  "lazim-k#8": [
   "dad-zha",
+  "tabii",
   "tafkhim"
  ],
  "lazim-h#2": [
@@ -748,18 +858,26 @@
  "mithlayn#2": [
   "dad-zha",
   "ibtida",
+  "tabii",
   "tafkhim"
  ],
  "mithlayn#3": [
   "silent-letters",
+  "tabii",
   "tafkhim"
  ],
  "mithlayn#4": [
   "tabii"
  ],
+ "mithlayn#5": [
+  "tabii"
+ ],
  "mithlayn#6": [
   "qal-s",
   "silah-s",
+  "tabii"
+ ],
+ "mithlayn#7": [
   "tabii"
  ],
  "mutajanisayn#1": [
@@ -768,6 +886,7 @@
  "mutajanisayn#2": [
   "idgh-g",
   "muttasil",
+  "tabii",
   "tafkhim"
  ],
  "mutajanisayn#3": [
@@ -778,7 +897,8 @@
  ],
  "mutajanisayn#4": [
   "ghunnah",
-  "ibtida"
+  "ibtida",
+  "tabii"
  ],
  "mutajanisayn#5": [
   "iqlab",
@@ -786,7 +906,11 @@
  ],
  "mutajanisayn#6": [
   "sakinayn",
+  "tabii",
   "tafkhim"
+ ],
+ "mutajanisayn#7": [
+  "tabii"
  ],
  "mutajanisayn#8": [
   "tabii"
@@ -820,26 +944,39 @@
  "sakt#1": [
   "arid",
   "qal-s",
+  "tabii",
   "tafkhim"
+ ],
+ "sakt#2": [
+  "tabii"
  ],
  "sakt#3": [
   "idgh-g",
   "tabii",
   "tafkhim"
  ],
+ "sakt#4": [
+  "tabii"
+ ],
+ "sakt#5": [
+  "tabii"
+ ],
  "sakt#6": [
-  "arid"
+  "arid",
+  "tabii"
  ],
  "imalah#1": [
   "qal-s",
   "tabii"
  ],
  "ishmam#1": [
-  "ghunnah"
+  "ghunnah",
+  "tabii"
  ],
  "tashil#1": [
   "badal",
-  "idgh-g"
+  "idgh-g",
+  "tabii"
  ],
  "tashil#2": [
   "aqwa-maddayn",
@@ -921,10 +1058,14 @@
   "muttasil"
  ],
  "tafkhim#1": [
-  "lam-q"
+  "lam-q",
+  "tabii"
  ],
  "tafkhim#2": [
   "qal-k"
+ ],
+ "tafkhim#3": [
+  "tabii"
  ],
  "tafkhim#4": [
   "ibtida",
@@ -952,6 +1093,7 @@
   "idgh-g",
   "lam-q",
   "m-izhar",
+  "tabii",
   "tafkhim"
  ],
  "sakinayn#3": [
@@ -961,6 +1103,7 @@
   "lam-s",
   "lazim-k",
   "m-izhar",
+  "tabii",
   "tafkhim"
  ],
  "sakinayn#4": [
@@ -972,12 +1115,14 @@
  ],
  "sakinayn#5": [
   "ibtida",
-  "m-izhar"
+  "m-izhar",
+  "tabii"
  ],
  "sakinayn#6": [
   "arid",
   "ibtida",
-  "lam-q"
+  "lam-q",
+  "tabii"
  ],
  "sakinayn#7": [
   "ghunnah",
@@ -991,17 +1136,21 @@
   "tabii"
  ],
  "silent-letters#1": [
-  "idgh-g"
+  "idgh-g",
+  "tabii"
  ],
  "silent-letters#2": [
-  "badal"
+  "badal",
+  "tabii"
  ],
  "silent-letters#3": [
-  "muttasil"
+  "muttasil",
+  "tabii"
  ],
  "silent-letters#5": [
   "ghunnah",
-  "silah-k"
+  "silah-k",
+  "tabii"
  ],
  "silent-letters#6": [
   "idgh-g"
@@ -1014,18 +1163,21 @@
   "dad-zha",
   "ibtida",
   "lam-s",
+  "tabii",
   "tafkhim"
  ],
  "silent-letters#9": [
   "tabii"
  ],
  "silent-letters#10": [
+  "tabii",
   "tafkhim"
  ],
  "aqwa-maddayn#1": [
   "ghunnah",
   "lazim-k",
-  "munfasil"
+  "munfasil",
+  "tabii"
  ],
  "aqwa-maddayn#2": [
   "muttasil"
@@ -1036,7 +1188,8 @@
  ],
  "aqwa-maddayn#4": [
   "munfasil",
-  "muttasil"
+  "muttasil",
+  "tabii"
  ],
  "aqwa-maddayn#5": [
   "munfasil"
@@ -1059,6 +1212,7 @@
  "dad-zha#2": [
   "ibtida",
   "lam-s",
+  "tabii",
   "tafkhim"
  ],
  "dad-zha#3": [
@@ -1079,6 +1233,7 @@
   "tafkhim"
  ],
  "dad-zha#6": [
+  "tabii",
   "tafkhim"
  ],
  "dad-zha#7": [
@@ -1087,6 +1242,7 @@
  ],
  "dad-zha#8": [
   "iwad",
+  "tabii",
   "tafkhim"
  ],
  "dad-zha#9": [

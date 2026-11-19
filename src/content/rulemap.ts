@@ -54,6 +54,8 @@ function allahLam(word: string, prev: string | undefined): string | undefined {
  * depend on stopping. `prev` / `next` are the words around the text, if any (`next` only counts when joined). A rule
  * across two words (التقاء الساكنين، الصلة، المثلين) shows on the first word, the one whose ending changes. Errs towards more.
  */
+const NATURAL = /\u064E\u0627(?!\u0653)|\u0670(?!\u0653)|\u064F\u0648(?![\u064B-\u0653\u06E1])|\u0650\u064A(?![\u064B-\u0653\u06E1])/
+
 function textLessons(ex: Pick<Example, 'text' | 'stopping'>, prev?: string, next?: string): string[] {
   const out: string[] = []
   const t = ex.text
@@ -63,6 +65,10 @@ function textLessons(ex: Pick<Example, 'text' | 'stopping'>, prev?: string, next
     const nx = i < words.length - 1 ? words[i + 1] : ex.stopping ? undefined : next
     const lam = allahLam(w, p)
     if (lam) out.push(lam)
+    // المد الطبيعي from the text (the markup mostly marks only the small alif). At a stop the مد before the last
+    // letter is عارض, so the last two letters of a stopped-on word are left out. ٓ marks a longer مد (its own lessons).
+    const body = !nx && ex.stopping ? units(w).slice(0, -2).map(([l, m]) => l + m).join('') : w
+    if (NATURAL.test(body)) out.push('tabii')
     if (!nx) continue
     if (nx.startsWith('ٱ') && (/([اىو][\u06DF\u0670]?|[\u064B-\u064D][اى]?|[هكت][\u064F\u0650]مُ)$/.test(w) || MOVED.test(w)))
       out.push('sakinayn')
@@ -111,13 +117,13 @@ function spanLesson(rule: string, span: string, stoppedOn: boolean): string | un
  * Lesson ids, other than the example's own, whose rule also shows in the example's words: from the verse's tajweed
  * spans on those words, from the text itself, and any lesson that lists the same words (`others`).
  */
-export function alsoLessons(ex: Example, verse: Pick<Verse, 'text' | 'tajweed' | 'words'> | undefined, others: Example[]): string[] {
+export function alsoLessons(ex: Example, verse: Pick<Verse, 'text' | 'tajweed' | 'words'> | undefined, others: Example[], startOnly = false): string[] {
   const ids = new Set<string>(textLessons(ex, verse?.words[ex.wordFrom - 2], verse?.words[ex.wordTo]))
   if (verse) {
     const [a, b] = [wordSpan(verse, ex.wordFrom)[0], wordSpan(verse, ex.wordTo)[1]]
     const cps = Array.from(verse.text)
     for (const s of verse.tajweed) {
-      if (s.start >= b || s.end <= a) continue
+      if (s.start >= b || s.end <= a || (startOnly && s.start < a)) continue // startOnly: a span that crosses into the next word belongs to its first word
       const span = cps.slice(s.start, s.end + 1).join('') // + the mark after: a span can stop before its سكون
       const atEnd = !cps.slice(s.end, b).some(isLetter)
       ids.add(spanLesson(s.rule, span, ex.stopping && atEnd) ?? '')
@@ -141,5 +147,5 @@ export const lessonsInAyah = (v: Pick<Verse, 'verseKey' | 'text' | 'tajweed' | '
 
 /** 1-based word numbers in the ayah that show `lessonId` (v2 Find step). Empty when the data can't detect it. */
 export function findTargets(v: Pick<Verse, 'verseKey' | 'text' | 'tajweed' | 'words'>, lessonId: string): number[] {
-  return v.words.map((_, i) => i + 1).filter(n => alsoLessons(wordEx(v, n, n), v, []).includes(lessonId))
+  return v.words.map((_, i) => i + 1).filter(n => alsoLessons(wordEx(v, n, n), v, [], true).includes(lessonId))
 }

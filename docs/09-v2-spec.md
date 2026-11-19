@@ -11,18 +11,20 @@ Agreed with the learner on 2026-11-20 (see the conversation summary in `07-decis
 ## 2. Course map (content/course.json)
 58 lessons in units 0–9 (49 from v1 + 9 new: `basics`, `istiadha`, `tafkhim`, `sakinayn`, `silent-letters`, `aqwa-maddayn`, `dad-zha`, `rawm-ishmam`, `maratib`).
 
-| Unit | Surahs | Lessons |
+Current order (generated from `content/course.json`; it changed during the build, see decision log rows 25 and 40):
+
+| Unit | Lessons | Finale |
 |---|---|---|
-| 0 البداية | — | basics |
-| 1 | الناس | istiadha, tabii, arid, iwad, lam-q, lam-s, ibtida, tafkhim, lam-jh, lam-jl, ghunnah |
-| 2 | الناس، الفلق، الإخلاص | izhar, idgh-g, idgh-n, iqlab, ikhfa, qal-s, qal-k |
-| 3 | المسد، النصر، الكافرون | muttasil, munfasil, mithlayn, mutajanisayn, sakinayn |
-| 4 | الكوثر ← الفيل | m-izhar, m-idgham, m-ikhfa, silent-letters |
-| 5 | الهمزة ← البينة | silah-s, silah-k, badal, lin, ra-h, ra-l, aqwa-maddayn |
-| 6 | القدر ← الضحى | dad-zha, lazim-k, lazim-h |
-| 7 | الفاتحة | capstone (no new lesson) |
-| 8 | beyond جزء عمّ | mutaqaribayn, waqf-signs, waqf-how, rawm-ishmam, sakt, imalah, ishmam, tashil |
-| 9 | الإتقان | 6 مخارج lessons, 5 صفات lessons, maratib |
+| 0 البداية | basics | — |
+| 1 سورة الناس | istiadha, tabii, arid, iwad, tafkhim, ibtida, lam-q, lam-s, lam-jh, lam-jl, ghunnah | الناس ١–٣ |
+| 2 الناس · الفلق · الإخلاص | izhar, idgh-g, idgh-n, iqlab, ikhfa, qal-s, qal-k, sakinayn | الفلق |
+| 3 المسد · النصر · الكافرون | muttasil, munfasil, mithlayn | الكافرون ١–٢ |
+| 4 الكوثر ← الفيل | m-izhar, m-idgham, m-ikhfa, mutajanisayn, silent-letters | الفيل |
+| 5 الهمزة ← البينة | silah-s, silah-k, badal, lin, ra-h, ra-l | العاديات |
+| 6 القدر ← الضحى | dad-zha, lazim-k, lazim-h, aqwa-maddayn | الضحى |
+| 7 الفاتحة | capstone (no new lesson) | الفاتحة |
+| 8 ما بعد جزء عمّ | mutaqaribayn, waqf-signs, waqf-how, rawm-ishmam, sakt, imalah, ishmam, tashil | المؤمنون ٩٣–٩٧ |
+| 9 الإتقان | makharij-jawf, makharij-halq, makharij-aqsa, makharij-wasat, makharij-taraf, makharij-shafatan, sifat-hams, sifat-shidda, sifat-istila, sifat-safir, sifat-inhiraf, maratib | الملك |
 
 Schema:
 ```jsonc

@@ -26,3 +26,11 @@ test('at the stop the مد before the last letter is العارض, not الطب�
   expect(findTargets(ayah('1:4'), 'tabii')).toEqual([1]) // مَٰلِكِ; not ٱلدِّينِ at the stop
   expect(findTargets(ayah('1:4'), 'arid')).toEqual([3])
 })
+
+test('natural madd is found from the text, and a cross-word rule only on its first word', () => {
+  const v = surah(79)[14] // هَلْ أَتَىٰكَ حَدِيثُ مُوسَىٰٓ
+  expect(findTargets(v, 'tabii')).toEqual(expect.arrayContaining([3]))
+  const b4 = JSON.parse(readFileSync('public/data/surah/002.json', 'utf8'))[3] // … مِن قَبْلِكَ …
+  const t = findTargets(b4, 'ikhfa')
+  expect(t.map(n => b4.words[n - 1])).not.toContain('قَبْلِكَ')
+})

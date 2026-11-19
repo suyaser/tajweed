@@ -53,3 +53,6 @@ The learner approved R1 and asked me to decide and keep going. Each decision her
 | 42 | الإشمام and الروم notices say "watch a teacher's lips" (not heard in the bundled reciters); with الروم only المد العارض returns to 2 | Tajweed review | — |
 | 43 | Onboarding: intro-course question removed (5 steps), ends in lesson 1; "Not sure yet" for المنفصل only adds a teacher-session reminder if teacher days are set | UX review | Yes |
 | 44 | New lessons hide the rule's name until the Learn step | Practical first: hear and notice before naming | Yes |
+| 45 | Unit 1's finale is الناس ١–٣ (ayah 4 has الإخفاء, a unit 2 rule); all of الناس becomes the closing of the الإخفاء lesson in unit 2 | Only-learned-rules promise | Yes |
+| 46 | Review round 2 (browser, production build): المد الطبيعي is now detected from the text for the Find step (the colour data mostly marks only the small alif); a rule that crosses two words counts only on its first word in Find; Settings sideways scroll fixed | Round 2 found these | — |
+| 47 | Left as minor follow-ups: the rule page's "List" box is cramped at phone width; when audio fails, the Hear/Notice prompt can give the answer away and shows no "couldn't load" message; standalone vowel marks in mixed lines are small | Low impact | — |
