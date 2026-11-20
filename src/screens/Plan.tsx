@@ -53,7 +53,7 @@ export default function Plan() {
   const unitsDone = units.filter((u) => statusOf(u, p) === 'passed').length
 
   return (
-    <div className="wide flex flex-col gap-space-lg">
+    <div className="flex flex-col gap-space-lg">
       <PathTabs value="plan" />
       <Hint id="plan">{t('The course, unit by unit. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.')}</Hint>
       <header className="flex flex-col gap-space-sm">

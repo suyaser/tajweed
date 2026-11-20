@@ -80,7 +80,7 @@ export default function Rule({ params }: ScreenProps) {
                 <li key={l.id}>
                   <a href={href('rules', l.id)} aria-current={l.id === lesson.id ? 'page' : undefined}
                     className={cn('flex min-h-11 items-center gap-space-sm rounded-control px-space-sm no-underline transition-colors',
-                      l.id === lesson.id ? 'bg-primary text-on-primary' : 'text-on-surface hover:bg-surface-container')}>
+                      l.id === lesson.id ? 'bg-primary-fill text-on-primary' : 'text-on-surface hover:bg-surface-container')}>
                     <ColourDot colour={l.colour} />
                     <span lang="ar" className="font-arabic text-[15px]">{l.nameAr}</span>
                   </a>
@@ -241,7 +241,7 @@ export default function Rule({ params }: ScreenProps) {
             </details>
           )}
 
-          <footer className="flex flex-col gap-space-sm rounded-card bg-primary p-space-md text-on-primary sm:flex-row sm:items-center sm:p-space-lg">
+          <footer className="flex flex-col gap-space-sm rounded-card bg-primary-fill p-space-md text-on-primary sm:flex-row sm:items-center sm:p-space-lg">
             <Icon name={s.introduced ? 'event_repeat' : 'school'} className="hidden sm:block" />
             {s.introduced ? (
               <p className="flex-1 text-body-lg">{s.dueOn ? t('In your review. Next due {day}.', { day: fmtDay(s.dueOn) }) : t('In your review.')}</p>

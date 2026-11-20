@@ -93,7 +93,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
     const el = document.documentElement
     if (theme === 'system') delete el.dataset.theme
     else el.dataset.theme = theme
-    el.dataset.uiScale = textSize // whole-UI zoom (base.css); replaces the Quran-only data-text-size
+    el.dataset.uiScale = textSize // whole-UI zoom (app.css); replaces the Quran-only data-text-size
     el.classList.toggle('tj-patterns', tajweedPatterns)
   }, [theme, textSize, tajweedPatterns])
 
@@ -109,7 +109,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
   return (
     <div data-kind={kind} className="min-h-[calc(100dvh/var(--zoom))] bg-background text-on-surface">
       <a href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}
-        className="sr-only z-50 rounded-control bg-primary px-space-md py-space-sm text-on-primary focus:not-sr-only focus:fixed focus:top-2 focus:start-2">
+        className="sr-only z-50 rounded-control bg-primary-fill px-space-md py-space-sm text-on-primary focus:not-sr-only focus:fixed focus:top-2 focus:start-2">
         {t('Skip to content')}
       </a>
       {hasNav && <Rail active={meta.tab} current={route.name} />}
@@ -238,7 +238,7 @@ function TabBar({ active }: { active?: Tab }) {
 
 const railItem = 'flex min-h-12 items-center gap-space-sm rounded-control px-space-md no-underline transition-colors'
 const railIdle = 'text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
-const railOn = 'bg-primary text-on-primary font-semibold'
+const railOn = 'bg-primary-fill text-on-primary font-semibold'
 
 function RailLink({ to, icon, en, ar, on, small }: { to: string; icon: string; en: string; ar: string; on: boolean; small?: boolean }) {
   return (

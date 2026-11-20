@@ -20,7 +20,7 @@ export function Icon({ name, size = 24, fill = false, rtlFlip = false, className
     <span
       aria-hidden
       data-slot="icon"
-      className={cn('material-symbols-outlined', rtlFlip && 'rtl:-scale-x-100', className)}
+      className={cn('ms-icon', rtlFlip && 'rtl:-scale-x-100', className)}
       style={{ fontSize: size, width: size, height: size, ...(fill && { '--icon-fill': 1 }), ...style } as CSSProperties}
     >
       {name}

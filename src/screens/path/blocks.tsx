@@ -93,7 +93,7 @@ export function WeekDots({ days, today: ti, compact }: { days: DayMark[]; today?
             <span aria-hidden className={cn(
               'grid place-items-center rounded-full',
               compact ? 'size-6' : 'size-8',
-              d === 'studied' ? 'bg-primary text-on-primary' : d === 'before' ? 'border border-dashed border-outline-variant' : 'bg-surface-container',
+              d === 'studied' ? 'bg-primary-fill text-on-primary' : d === 'before' ? 'border border-dashed border-outline-variant' : 'bg-surface-container',
               isToday && 'ring-2 ring-gold ring-offset-2 ring-offset-surface-container-lowest',
             )}>
               {d === 'studied' ? <Icon name="check" size={compact ? 14 : 16} /> : d === 'not' && <span className="size-1 rounded-full bg-outline" />}
@@ -143,7 +143,7 @@ export function UnitNode({ n, status, size = 'md' }: { n: number; status: UnitSt
     <span aria-hidden className={cn(
       'grid shrink-0 place-items-center rounded-full font-semibold',
       lg ? 'size-14 text-body-lg' : 'size-10 text-body-md',
-      status === 'passed' && 'bg-primary text-on-primary',
+      status === 'passed' && 'bg-primary-fill text-on-primary',
       status === 'active' && 'bg-surface-container-lowest text-primary ring-2 ring-gold',
       status === 'locked' && 'bg-surface-container text-outline',
     )}>
@@ -173,7 +173,7 @@ function Row({ link, ar, en, st, finale }: { link: string; ar: string; en: strin
           'grid size-8 shrink-0 place-items-center rounded-full',
           finale ? 'bg-secondary-container text-on-secondary-container'
             : st === 'done' ? 'bg-primary-container text-on-primary-container'
-              : st === 'next' ? 'bg-primary text-on-primary'
+              : st === 'next' ? 'bg-primary-fill text-on-primary'
                 : st === 'catch-up' ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-container text-outline',
         )}>
           <Icon name={finale ? 'star' : ROW_ICON[st]} size={18} fill={finale && st === 'done'} />

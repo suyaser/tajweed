@@ -44,8 +44,8 @@ export function LessonHeader({ lesson, action }: { lesson: Lesson; action?: Reac
 export type StepState = 'current' | 'done' | 'visited' | 'new' | 'skipped' | 'pending'
 
 const NODE: Record<StepState, string> = {
-  current: 'bg-primary text-on-primary ring-2 ring-primary ring-offset-2 ring-offset-surface-container-lowest',
-  done: 'bg-primary text-on-primary',
+  current: 'bg-primary-fill text-on-primary ring-2 ring-primary ring-offset-2 ring-offset-surface-container-lowest',
+  done: 'bg-primary-fill text-on-primary',
   visited: 'border border-dashed border-gold bg-surface-container-lowest text-secondary',
   new: 'bg-surface-container-high text-outline',
   pending: 'bg-surface-container-high text-outline',
@@ -79,7 +79,7 @@ export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState;
           const node = (
             <>
               <span className={cn('relative grid size-8 place-items-center rounded-full transition-colors', NODE[s])}>
-                {s === 'skipped' ? <span className="text-label">–</span>
+                {s === 'skipped' ? <Icon name="remove" size={16} />
                   : <Icon name={s === 'done' ? 'check' : STEP_ICONS[id]} size={s === 'current' ? 18 : 16} fill={s === 'current'} />}
                 {s === 'visited' && <span className="absolute -bottom-1.5 size-1 rounded-full bg-gold" />}
               </span>

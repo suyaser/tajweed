@@ -187,6 +187,8 @@ export function stepperNav(sp: ReturnType<typeof useStepper>, audio: StudyAudio)
     onPrev: sp.at > 0 ? () => go(sp.at - 1) : undefined,
     onNext: sp.at < sp.reached ? () => go(sp.at + 1) : undefined,
     onPick: go,
+    reached: sp.reached,
+    played: sp.played,
   }
 }
 
@@ -204,7 +206,7 @@ export function ExampleCard({ ex, eyebrow, audio, played, onPlayed, hidden = fal
   const noAudio = audio.offline || vs.failed || audio.state.status === 'error'
   const hide = hidden && !noAudio
   return (
-    <KitExampleCard index={nav?.index ?? 0} total={nav?.total ?? 1} eyebrow={eyebrow} onPrev={nav?.onPrev} onNext={nav?.onNext} onPick={nav?.onPick} className={className}
+    <KitExampleCard index={nav?.index ?? 0} total={nav?.total ?? 1} eyebrow={eyebrow} onPrev={nav?.onPrev} onNext={nav?.onNext} onPick={nav?.onPick} reached={nav?.reached} played={nav?.played} className={className}
       reference={!hide && <span lang="ar">{verseRef(ex.verseKey)}</span>}
       controls={(audioRow || (!hide && vs.verse) || children) && (
         <>

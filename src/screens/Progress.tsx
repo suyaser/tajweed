@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils'
 export default function Progress() {
   const d = useData()
   return (
-    <div className="wide flex flex-col gap-space-lg">
+    <div className="flex flex-col gap-space-lg">
       <PathTabs value="progress" />
       <BackupBadge detail />
       <div className="grid items-start gap-space-lg lg:grid-cols-2">

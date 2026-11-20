@@ -1,13 +1,13 @@
 // Shared pieces for the Teacher and Path screens.
 import { useEffect, useState } from 'react'
-import type { Session, Verse, VerseKey } from '../../core/types'
-import { getSnapshot, planSession, suggestPassages, updateSession } from '../../core/store'
+import type { Verse, VerseKey } from '../../core/types'
+import { getSnapshot, planSession, updateSession } from '../../core/store'
 import { today } from '../../core/day'
 import { ayahCount, getRange, surahName, tajweedSpans, toArabicDigits } from '../../quran'
-import { Button, CorrectionTag, type PassageAyah } from '../../components'
+import { Button, Field, fieldCls, type PassageAyah } from '../../components'
 import { navigate } from '../../app/router'
-import { isAr, t } from '../../i18n'
-import { mergePassages, nextTeacherDay, upcomingSession, type Planned } from './helpers'
+import { t } from '../../i18n'
+import type { Planned } from './helpers'
 
 /** Verses of a range, with tajweed segments for <Passage>. `error` when offline and not cached. */
 export function useVerses(from?: VerseKey, to?: VerseKey) {
@@ -29,40 +29,11 @@ export function useVerses(from?: VerseKey, to?: VerseKey) {
   return { verses: cur.verses, ayahs, error: cur.error, loading: !!key && !cur.verses && !cur.error }
 }
 
-export const REASON: Record<Planned['reason'], { glyph: string; label: string }> = {
-  milestone: { glyph: '◆', label: t('Unit finale') },
-  correction: { glyph: isAr ? '↻' : '↺', label: t('Re-check') },
-  recent: { glyph: '○', label: t('Since last time') },
-  ask: { glyph: '+', label: t('Added by you') },
-}
-
-export function ReasonChip({ p }: { p: Planned }) {
-  const open = p.reason === 'correction' ? getSnapshot().corrections.find((c) => !c.deletedAt && c.status === 'open' && c.verseKey === p.from) : undefined
-  return (
-    <span className="p-reason">
-      <span aria-hidden="true">{REASON[p.reason].glyph}</span> {REASON[p.reason].label}
-      {open && <CorrectionTag severity={open.severity} />}
-    </span>
-  )
-}
-
-/** Adds a passage to the next planned session, creating one on the next teacher day if needed. Returns it. */
-// ponytail: belongs in core/store (Listen's "Ask your teacher" needs the same); move it there.
-export function addToNextSession(p: Planned): Session {
-  const d = getSnapshot()
-  const on = today()
-  const s = upcomingSession(d.sessions, on)
-  if (s) {
-    updateSession(s.id, { plannedPassages: mergePassages(s.plannedPassages, [p]) })
-    return getSnapshot().sessions.find((x) => x.id === s.id)!
-  }
-  return planSession({ on: nextTeacherDay(d.settings.teacherDays, on) ?? on, plannedPassages: mergePassages(suggestPassages(), [p]) })
-}
-
-export function AddToNextSession({ p }: { p: Planned }) {
-  const [done, setDone] = useState<string | null>(null)
-  if (done) return <a className="p-link t-sm" href={`#/teacher/${done}`}>{t('Added to your next session ›')}</a>
-  return <Button variant="ghost" onClick={() => setDone(addToNextSession(p).id)}>{t('Add to next session')}</Button>
+export const REASON: Record<Planned['reason'], { label: string }> = {
+  milestone: { label: t('Unit finale') },
+  correction: { label: t('Re-check') },
+  recent: { label: t('Since last time') },
+  ask: { label: t('Added by you') },
 }
 
 /** Surah picker + ayah range. */
@@ -78,26 +49,23 @@ export function AddPassage({ onAdd, reason = 'ask' }: { onAdd: (p: Planned) => v
   const from = Math.min(Math.max(1, a1 || 1), max)
   const to = Math.min(Math.max(from, a2 || from), max)
   return (
-    <div className="p-add">
-      <label className="p-field">
-        <span>{t('Surah')}</span>
-        <select value={surah} onChange={(e) => { setSurah(+e.target.value); setA1(1); setA2(1) }}>
+    <div className="flex flex-col gap-space-sm">
+      <Field label={t('Surah')}>
+        <select className={fieldCls()} value={surah} onChange={(e) => { setSurah(+e.target.value); setA1(1); setA2(1) }}>
           {Array.from({ length: 114 }, (_, i) => (
             <option key={i} value={i + 1} lang="ar">{`${surahName(i + 1)} (${toArabicDigits(i + 1)})`}</option>
           ))}
         </select>
-      </label>
-      <div className="p-row">
-        <label className="p-field">
-          <span>{t('From ayah')}</span>
-          <input type="number" inputMode="numeric" min={1} max={max} value={a1} onChange={(e) => setA1(+e.target.value)} />
-        </label>
-        <label className="p-field">
-          <span>{t('To ayah')}</span>
-          <input type="number" inputMode="numeric" min={1} max={max} value={a2} onChange={(e) => setA2(+e.target.value)} />
-        </label>
+      </Field>
+      <div className="grid grid-cols-2 gap-space-sm">
+        <Field label={t('From ayah')}>
+          <input className={fieldCls()} type="number" inputMode="numeric" min={1} max={max} value={a1} onChange={(e) => setA1(+e.target.value)} />
+        </Field>
+        <Field label={t('To ayah')}>
+          <input className={fieldCls()} type="number" inputMode="numeric" min={1} max={max} value={a2} onChange={(e) => setA2(+e.target.value)} />
+        </Field>
       </div>
-      <Button variant="secondary" onClick={() => onAdd({ from: `${surah}:${from}`, to: `${surah}:${to}`, reason })}>{t('Add this passage')}</Button>
+      <Button variant="secondary" className="self-start" onClick={() => onAdd({ from: `${surah}:${from}`, to: `${surah}:${to}`, reason })}>{t('Add this passage')}</Button>
     </div>
   )
 }

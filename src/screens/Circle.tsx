@@ -197,7 +197,7 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
                         <li key={d} className="flex flex-col items-center gap-1">
                           <span className={cn('text-caption', j === 6 ? 'font-bold text-primary' : 'text-on-surface-variant')} aria-hidden="true">{labels[j]}</span>
                           <span aria-hidden="true" className={cn('grid size-8 place-items-center rounded-full',
-                            on ? 'bg-primary text-on-primary' : 'bg-surface-container', j === 6 && !on && 'ring-2 ring-gold')}>
+                            on ? 'bg-primary-fill text-on-primary' : 'bg-surface-container', j === 6 && !on && 'ring-2 ring-gold')}>
                             {on && <Icon name="check" size={18} />}
                           </span>
                           <span className="sr-only">{`${labels[j]}: ${on ? t('studied') : t('not studied')}`}</span>

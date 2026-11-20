@@ -162,7 +162,7 @@ export default function Review({ params }: ScreenProps) {
     <div className="flex flex-col gap-space-xs">
       <span className="text-label text-on-surface-variant">{t('{n} of {m}', { n, m: base })}{againLeft > 0 && t(' · {n} to look at again', { n: againLeft })}</span>
       <div className="h-1.5 overflow-hidden rounded-full bg-surface-container-high" aria-hidden="true">
-        <div className="h-full rounded-full bg-primary transition-[width]" style={{ width: `${(n / Math.max(1, base)) * 100}%` }} />
+        <div className="h-full rounded-full bg-primary-fill transition-[width]" style={{ width: `${(n / Math.max(1, base)) * 100}%` }} />
       </div>
     </div>
   )

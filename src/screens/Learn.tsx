@@ -542,7 +542,7 @@ function SayAll({ lesson, audio, onReady }: { lesson: Lesson; audio: StudyAudio;
   if (!ex) return drillFor(lesson).length ? <Drill lesson={lesson} audio={audio} /> : null
   const goto = (i: number) => { audio.stop(); sp.go(i) }
   // every example is open here (no order to enforce): forward too
-  const nav = { ...stepperNav(sp, audio), onNext: sp.last ? undefined : () => goto(sp.at + 1), onPick: goto }
+  const nav = { ...stepperNav(sp, audio), onNext: sp.last ? undefined : () => goto(sp.at + 1), onPick: goto, reached: exs.length - 1 }
   return (
     <ExampleCard key={ex.id} ex={ex} audio={audio} nav={nav} played={sp.played(sp.at)} onPlayed={() => { sp.markPlayed(sp.at); onReady() }}>
       <Recorder key={ex.id} from={`say:${ex.id}`} audio={audio} onStatus={onReady}

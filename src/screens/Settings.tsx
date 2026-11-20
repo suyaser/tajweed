@@ -108,7 +108,7 @@ export default function Settings({ params }: ScreenProps) {
                 <button key={i} type="button" aria-label={t(WEEK_LONG[i])} aria-pressed={on}
                   onClick={() => set({ teacherDays: on ? s.teacherDays.filter((x) => x !== i) : [...s.teacherDays, i].sort() })}
                   className={cn('h-11 min-w-0 cursor-pointer rounded-control border text-label font-semibold transition-colors',
-                    on ? 'border-primary bg-primary text-on-primary' : 'border-outline-variant text-on-surface-variant hover:bg-surface-container')}>
+                    on ? 'border-primary bg-primary-fill text-on-primary' : 'border-outline-variant text-on-surface-variant hover:bg-surface-container')}>
                   {isAr ? AR_DAYS[i] : WEEKDAYS[i].slice(0, 3)}
                 </button>
               )
@@ -173,7 +173,7 @@ function Reciters({ value, onChange }: { value: string; onChange: (id: string) =
               </label>
               <button type="button" onClick={() => sample(r)} aria-label={playing === r.id ? t('Stop sample') : t('Play a sample of {name}', { name: r.nameAr })}
                 className={cn('flex h-10 shrink-0 cursor-pointer items-center gap-1 rounded-full px-3 text-label font-semibold transition-colors',
-                  playing === r.id ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface hover:bg-surface-container-high')}>
+                  playing === r.id ? 'bg-primary-fill text-on-primary' : 'bg-surface-container text-on-surface hover:bg-surface-container-high')}>
                 <Icon name={playing === r.id ? 'stop' : 'play_arrow'} size={20} fill />
                 <span aria-hidden="true">{t('Sample')}</span>
               </button>

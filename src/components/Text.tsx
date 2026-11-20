@@ -28,16 +28,6 @@ export function T({ children }: { children: ReactNode }) {
   )
 }
 
-/** Arabic-forward label: Arabic name first, small English gloss beneath (design §2.1). */
-export function ArLabel({ ar, en, size = 'sm' }: { ar: string; en?: string; size?: 'sm' | 'lg' | 'h2' }) {
-  return (
-    <span className="inline-flex flex-col">
-      <span lang="ar" dir="rtl" className={size === 'sm' ? 'text-arabic-label' : size === 'lg' ? 'text-arabic-body font-semibold' : 'text-arabic-headline'}>{ar}</span>
-      {en && !isAr && <small className="text-caption text-on-surface-variant">{en}</small>}
-    </span>
-  )
-}
-
 /** A content line: an all-Arabic line (an example like ٱدْعُ ← اُدْعُ) is its own RTL block so it reads one way (M3);
  *  mixed lines go through <T>. */
 export function Line({ text }: { text: string }) {

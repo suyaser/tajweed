@@ -26,7 +26,7 @@ function Steps({ step }: { step: number }) {
   return (
     <p className="flex items-center justify-center gap-space-sm text-label text-on-surface-variant">
       <span aria-hidden className="flex gap-1">
-        {Array.from({ length: N }, (_, i) => <span key={i} className={cn('h-1.5 rounded-full', i === step ? 'w-4 bg-primary' : i < step ? 'w-1.5 bg-primary' : 'w-1.5 bg-surface-container-highest')} />)}
+        {Array.from({ length: N }, (_, i) => <span key={i} className={cn('h-1.5 rounded-full', i === step ? 'w-4 bg-primary-fill' : i < step ? 'w-1.5 bg-primary-fill' : 'w-1.5 bg-surface-container-highest')} />)}
       </span>
       <span>{t('Step {n} of {m}', { n: step + 1, m: N })} · <Tx>{STEP_NAMES[step]}</Tx></span>
     </p>

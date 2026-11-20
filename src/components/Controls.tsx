@@ -28,30 +28,6 @@ export function Button({ variant = 'primary', block, href, className, size, chil
 
 export type OptionState = 'idle' | 'correct' | 'wrong' | 'revealed' | 'picked'
 
-const OPT: Record<OptionState, string> = {
-  idle: 'border-outline-variant hover:bg-surface-container',
-  picked: 'border-gold bg-secondary-container/40',
-  correct: 'border-2 border-primary bg-primary-container/50',
-  revealed: 'border-2 border-dashed border-primary',
-  wrong: 'border-2 border-error',
-}
-
-/** Quiz answer: borders + glyph + word, never a red/green fill (design §5.5). */
-export function OptionButton({ ar, en, state = 'idle', children, className, ...rest }: { ar?: string; en?: string; state?: OptionState } & ButtonHTMLAttributes<HTMLButtonElement>) {
-  const glyph = state === 'wrong' ? 'undo' : state === 'idle' || state === 'picked' ? null : 'check'
-  return (
-    <button type="button" data-state={state} {...rest}
-      className={cn('relative flex min-h-14 w-full cursor-pointer flex-col items-center justify-center gap-0.5 rounded-control border bg-surface-container-lowest px-space-md py-space-sm text-center text-on-surface transition-colors disabled:cursor-default', OPT[state], className)}>
-      {glyph && <Icon name={glyph} size={18} className={cn('absolute top-2 start-2', state === 'wrong' ? 'text-error' : 'text-primary')} />}
-      {ar && <b lang="ar" className="font-naskh text-[22px] leading-[1.5] font-semibold">{ar}</b>}
-      {children}
-      {en && <small className="text-caption text-on-surface-variant">{en}</small>}
-      {state === 'picked' && <small className="text-caption text-secondary">{t('Your guess')}</small>}
-      {state !== 'idle' && state !== 'picked' && <span className="sr-only">{state === 'wrong' ? t(', not quite') : t(', correct')}</span>}
-    </button>
-  )
-}
-
 /** Two to four mutually exclusive options (kit SegmentedControl). */
 export function SegmentedControl<V extends string>(p: { options: { value: V; label: ReactNode }[]; value: V; onChange: (v: V) => void; label: string; className?: string }) {
   return <KitSegmented {...p} />
@@ -279,7 +255,7 @@ export function AudioTransport(p: AudioTransportProps) {
             <button key={i} type="button" aria-current={i === p.ayahIndex || undefined} aria-label={t('Ayah {n}', { n: i + 1 })}
               onClick={() => p.onSeekAyah?.(i)} disabled={!p.onSeekAyah}
               className="group flex h-6 min-w-2 flex-1 cursor-pointer items-center disabled:cursor-default">
-              <i className={cn('block h-1 w-full rounded-full transition-colors', i <= (p.ayahIndex ?? -1) ? 'bg-primary' : 'bg-surface-container-highest', i === p.ayahIndex && 'h-1.5')} />
+              <i className={cn('block h-1 w-full rounded-full transition-colors', i <= (p.ayahIndex ?? -1) ? 'bg-primary-fill' : 'bg-surface-container-highest', i === p.ayahIndex && 'h-1.5')} />
             </button>
           ))}
         </div>
@@ -297,7 +273,7 @@ export function AudioTransport(p: AudioTransportProps) {
           <Icon name="skip_previous" />{t('Next')}
         </button>
         <button type="button" onClick={p.onPlayPause} disabled={!!p.unavailable} aria-label={`${p.playing ? t('Pause') : t('Play')} ${p.label}`}
-          className={cn('grid size-16 cursor-pointer place-items-center rounded-full bg-primary text-on-primary shadow-card transition-transform hover:bg-primary-hover active:scale-95 disabled:cursor-default disabled:opacity-50', p.loading && 'animate-pulse')}>
+          className={cn('grid size-16 cursor-pointer place-items-center rounded-full bg-primary-fill text-on-primary shadow-card transition-transform hover:bg-primary-hover active:scale-95 disabled:cursor-default disabled:opacity-50', p.loading && 'animate-pulse')}>
           <Icon name={p.playing ? 'pause' : 'play_arrow'} size={32} fill />
         </button>
         <button type="button" className={tbtn} onClick={p.onPrev} aria-label={t('Previous ayah')}>

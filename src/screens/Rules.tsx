@@ -170,7 +170,7 @@ function MindMap({ status, onTopic }: { status: Map<string, LessonStatus>; onTop
     <div className="flex flex-col gap-space-md">
       <p className="text-body-md text-on-surface-variant">{!isAr && <span>Read it from right to left, as in a muṣḥaf. </span>}{t('Tap a topic to open its section, or a rule to open its card.')}</p>
       <div dir="rtl" lang="ar" className="flex flex-col items-start gap-space-md">
-        <div aria-hidden="true" className="flex items-center gap-space-sm rounded-full bg-primary px-space-lg py-space-sm text-on-primary">
+        <div aria-hidden="true" className="flex items-center gap-space-sm rounded-full bg-primary-fill px-space-lg py-space-sm text-on-primary">
           <Icon name="auto_awesome" size={20} />
           <span className="font-naskh text-[22px] font-bold">التجويد</span>
           {!isAr && <small lang="en" className="text-caption tracking-widest opacity-80">TAJWEED</small>}

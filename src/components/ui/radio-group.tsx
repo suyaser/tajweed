@@ -32,7 +32,7 @@ function RadioGroupItem({
         data-slot="radio-group-indicator"
         className="flex items-center justify-center"
       >
-        <span className="size-2.5 rounded-full bg-primary" />
+        <span className="size-2.5 rounded-full bg-primary-fill" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

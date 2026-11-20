@@ -23,8 +23,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Skeleton } from '@/components/ui/skeleton'
 import {
   AudioControls, BottomBar, Callout, Chip, CountBeats, EmptyState, ExampleCard, LetterTile, Page, PageHeader,
-  SectionCard, SegmentedControl, StatusChip, StepBar, UnitPath, STEP_ICONS, type StepKey, type StepState,
+  SectionCard, SegmentedControl, StatusChip, UnitPath, STEP_ICONS,
 } from '@/components/kit'
+import { StepNav, type StepState } from '../screens/study/LessonShell'
+import type { StepId } from '../screens/study/lessonSteps'
 
 // Dev only (#/dev/components): every ui + kit component. The page embeds four frames (EN/AR × light/dark);
 // each frame is #/dev/components?frame=1&lang=…&theme=… rendered without the shell.
@@ -66,10 +68,7 @@ function Sec({ title, children }: { title: string; children: ReactNode }) {
 }
 const Row = ({ children }: { children: ReactNode }) => <div className="flex flex-wrap items-center gap-space-sm">{children}</div>
 
-const STEPS: { key: StepKey; state: StepState }[] = [
-  { key: 'hear', state: 'done' }, { key: 'notice', state: 'skipped' }, { key: 'learn', state: 'current' },
-  { key: 'say', state: 'visited' }, { key: 'find', state: 'not-visited' }, { key: 'check', state: 'not-visited' }, { key: 'recite', state: 'not-visited' },
-]
+const STEPS: Record<StepId, StepState> = { hear: 'done', notice: 'skipped', learn: 'current', say: 'visited', find: 'new', check: 'new', recite: 'new' }
 
 function Frame() {
   const theme = parseHash(location.hash).params.theme
@@ -82,7 +81,7 @@ function Frame() {
   const [slow, setSlow] = useState(true)
   const [loop, setLoop] = useState(false)
   const [letter, setLetter] = useState<string | null>('ن')
-  const [step, setStep] = useState<StepKey>('learn')
+  const [step, setStep] = useState<StepId>('learn')
 
   return (
     <div className="min-h-dvh bg-background text-on-surface">
@@ -90,8 +89,8 @@ function Frame() {
         <PageHeader en="Rules" ar="الأحكام" eyebrow="Lesson 14 of 58 · Unit 2" subtitle="Every rule card, any time."
           actions={<Button variant="ghost" size="icon" aria-label="Settings"><Icon name="settings" /></Button>} />
 
-        <Sec title="kit · StepBar (current / done / visited / not visited / skipped)">
-          <StepBar steps={STEPS.map((s) => ({ ...s, state: s.key === step ? 'current' : s.state === 'current' ? 'visited' : s.state }))} onStep={setStep} />
+        <Sec title="StepNav (current / done / visited / not started / skipped)">
+          <StepNav stateOf={(id) => (id === step ? 'current' : STEPS[id] === 'current' ? 'visited' : STEPS[id])} onGo={setStep} />
         </Sec>
 
         <Sec title="kit · ExampleCard + AudioControls">

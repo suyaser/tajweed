@@ -1,19 +1,13 @@
 /* The one CSS entry (docs/13-design-system.md). Tailwind v4 + Sand & Ink tokens (docs/reference/stitch/DESIGN.md).
-   Layer order: Tailwind preflight (base) < legacy CSS (old screens, until migrated) < components < utilities,
-   so legacy element rules never beat a utility. */
+   Layer order: Tailwind preflight (base) < tajweed colours (legacy) < components < utilities. */
 @layer theme, base, legacy, components, utilities;
 
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Legacy CSS: delete each file once its screens are migrated. */
+/* The muṣḥaf tajweed palette (--t-*) and its word classes (Verse, Legend). */
 @import "./tokens.css" layer(legacy);
-@import "./base.css" layer(legacy);
 @import "./components.css" layer(legacy);
-@import "../screens/path.css" layer(legacy);
-@import "../screens/library.css" layer(legacy);
-@import "../screens/study.css" layer(legacy);
-@import "../sync/sync.css" layer(legacy);
 
 /* Dark: explicit [data-theme="dark"], or the system preference unless [data-theme="light"]. */
 @custom-variant dark {
@@ -44,7 +38,8 @@
   --color-inverse-on-surface: #f6f0ea;
   --color-scrim: rgb(20 18 15 / 0.5);
 
-  --color-primary: #115e57;                 /* deep teal */
+  --color-primary: #115e57;                 /* teal TEXT, icons, borders, focus (text-primary); ≥4.5:1 both themes */
+  --color-primary-fill: #115e57;            /* teal FILL behind on-primary (bg-primary-fill) */
   --color-primary-hover: #0d4d47;
   --color-on-primary: #ffffff;
   --color-primary-container: #e2eeec;
@@ -120,11 +115,41 @@
   :root { --ui-face: "Inter", "Noto Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif; }
   :lang(ar) { --ui-face: "Noto Sans Arabic", "Inter", "Geeza Pro", sans-serif; }
 
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    min-height: 100dvh; background: var(--color-background); color: var(--color-on-surface);
+    font: 400 16px/28px var(--ui-face); -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { line-height: 1.25; text-wrap: balance; }
+  a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
+  button { cursor: pointer; }
+  :where(button, [role="button"], a, input, select, textarea, label) { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  [lang="ar"] { font-family: var(--font-arabic); }
 
-  /* keyboard focus (DESIGN.md): offset outline, never a blur ring */
-  :focus-visible { outline: 1.5px solid var(--color-primary); outline-offset: 2px; }
+  /* the status bar strip takes the page colour (safe area) */
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--color-background);
+  }
 
-  .material-symbols-outlined {
+  /* Text size setting (settings.textSize): zooms the whole UI. --zoom undoes it for viewport units. */
+  :root { --zoom: 1; }
+  :root[data-ui-scale="l"] { zoom: 1.125; --zoom: 1.125; }
+  :root[data-ui-scale="xl"] { zoom: 1.25; --zoom: 1.25; }
+
+  /* keyboard focus (DESIGN.md): offset outline, never a blur ring. primary is the light teal in dark. */
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  :focus:not(:focus-visible) { outline: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0ms !important; animation-iteration-count: 1 !important;
+      transition-duration: 0ms !important; scroll-behavior: auto !important;
+    }
+  }
+  @media (forced-colors: active) { :focus-visible { outline: 2px solid Highlight; } }
+
+  /* Icon (ui/icon.tsx). Its own class, in the base layer, so utilities (hidden, sizes, align) win over it. */
+  .ms-icon {
     font-family: "Material Symbols Outlined";
     font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none;
     display: inline-block; white-space: nowrap; direction: ltr; flex-shrink: 0; user-select: none;
@@ -151,7 +176,8 @@
   --color-inverse-surface: #efe9df;
   --color-inverse-on-surface: #1c1b19;
   --color-scrim: rgb(0 0 0 / 0.6);
-  --color-primary: #23756a;
+  --color-primary: #5fd3c2;
+  --color-primary-fill: #23756a;
   --color-primary-hover: #2a8579;
   --color-on-primary: #ffffff;
   --color-primary-container: #273834;

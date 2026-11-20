@@ -373,7 +373,7 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
                 : t('Unit finale: {label} not yet.', { label: u?.finale?.label ?? r.passageId })}</T></p>
               {r.result === 'passed' && u && (
                 <p className="flex items-center gap-space-sm rounded-control bg-secondary-container px-space-md py-space-sm text-on-secondary-container">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-primary text-on-primary"><Icon name="star" size={18} fill /></span>
+                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-primary-fill text-on-primary"><Icon name="star" size={18} fill /></span>
                   <T>{t('Unit {n} · {name} complete.', { n: u.n, name: u.nameAr })}</T>
                 </p>
               )}

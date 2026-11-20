@@ -122,7 +122,7 @@ export default function Today() {
       <span>{digits(d.gregorian)}</span>{d.hijri && <span lang="ar" className="text-secondary"> · {d.hijri}</span>}
       {d.late && <span className="block text-caption">{d.late}</span>}
     </>} />
-    <div className="wide grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
+    <div className="grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
       <section aria-label={t('Continue')} className="flex min-w-0 flex-col gap-space-lg">
         <Panel as="div" className="gap-space-lg shadow-card">
           {/* unit + path */}
@@ -201,7 +201,7 @@ export default function Today() {
             </>
           ) : (
             <Inset className="items-center text-center">
-              <span className="grid size-14 place-items-center rounded-full bg-primary text-on-primary"><Icon name="star" size={28} fill /></span>
+              <span className="grid size-14 place-items-center rounded-full bg-primary-fill text-on-primary"><Icon name="star" size={28} fill /></span>
               <p className="text-body-lg font-medium text-on-surface"><Tx>{t('The course is done. تقبّل الله منك')}</Tx></p>
               <p className="text-body-md text-on-surface-variant">{t('Keep your review going, and keep reciting to a teacher.')}</p>
             </Inset>

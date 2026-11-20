@@ -260,7 +260,7 @@ export function VerseBlock({
     <figure className={`verse verse-${size} m-0 grid min-w-0 gap-1 py-2`} lang="ar" dir="rtl" data-isolate={isolate ?? undefined} aria-describedby={hasCaption ? capId : undefined}>
       {ayah === 1 && <SurahOpening surah={surah} />}
       <p className={cn(TEXT, SIZE[size], chips && CHIPS)} onKeyDown={onWord ? roving : undefined}>
-        <span className="br" aria-hidden="true">﴿</span>{'\u00A0'}{body}<span className="nowrap whitespace-nowrap">{'\u00A0'}<span className="br" aria-hidden="true">﴾</span></span>
+        <span className="br" aria-hidden="true">﴿</span>{'\u00A0'}{body}<span className="whitespace-nowrap">{'\u00A0'}<span className="br" aria-hidden="true">﴾</span></span>
       </p>
       {hasCaption && (
         <figcaption id={capId} className={cn('flex flex-wrap items-center gap-3 text-caption text-on-surface-variant', size === 'focus' && 'justify-center')}>
@@ -332,7 +332,7 @@ const AyahRun = memo(function AyahRun({ a, tajweed, isolate, marks, isCurrent, w
     <span className="ayah rounded-lg transition-colors data-[current]:bg-secondary-container/45" data-current={isCurrent || undefined}>
       {join(toks.slice(0, -1))}{toks.length > 1 && ' '}
       {/* the last word and its marker wrap together: ﴿٥﴾ never sits alone on a line (m17) */}
-      <span className="nowrap whitespace-nowrap">
+      <span className="whitespace-nowrap">
         {toks[toks.length - 1]}{'\u00A0'}
         {onAyah ? (
           <button type="button" className={AYAH_END} onClick={() => onAyah(a.key)} lang={isAr ? undefined : 'en'} aria-label={t('Ayah {n}', { n: a.n })}

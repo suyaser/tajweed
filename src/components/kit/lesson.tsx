@@ -4,78 +4,27 @@ import { digits, t } from '@/i18n'
 import { Icon } from '@/components/ui/icon'
 import { Chip } from './controls'
 
-/* ---------------- StepBar ---------------- */
-
+/** Lesson step → icon (the step bar itself is LessonShell's StepNav). */
 export const STEP_ICONS = {
   hear: 'headphones', notice: 'visibility', learn: 'menu_book', say: 'record_voice_over', find: 'search', check: 'fact_check', recite: 'verified',
 } as const
 export type StepKey = keyof typeof STEP_ICONS
-const STEP_LABELS: Record<StepKey, string> = { hear: 'Hear', notice: 'Notice', learn: 'Learn', say: 'Say', find: 'Find', check: 'Check', recite: 'Recite' }
-export type StepState = 'current' | 'done' | 'visited' | 'not-visited' | 'skipped'
-
-const NODE: Record<StepState, string> = {
-  current: 'bg-primary text-on-primary ring-2 ring-primary ring-offset-2 ring-offset-surface-container-lowest',
-  done: 'bg-primary text-on-primary',
-  visited: 'border border-gold bg-surface-container-lowest text-secondary',
-  'not-visited': 'bg-surface-container-high text-outline',
-  skipped: 'border border-dashed border-outline bg-transparent text-outline',
-}
-const STATE_LABEL: Record<StepState, string> = { current: 'current', done: 'done', visited: 'visited', 'not-visited': 'not started', skipped: 'skipped' }
-
-/**
- * The 7 lesson steps as a row of 48px icon buttons on a hairline rail. `onStep` makes them navigable.
- * Done shows a check, current is filled with a ring, skipped is dashed.
- */
-export function StepBar({ steps, onStep, className }: {
-  steps: { key: StepKey; state: StepState; disabled?: boolean }[]; onStep?: (key: StepKey) => void; className?: string
-}) {
-  return (
-    <nav aria-label={t('Lesson steps')} className={cn('rounded-card bg-surface-container-lowest px-space-xs py-space-sm', className)}>
-      <ol className="relative flex items-start justify-between">
-        <span aria-hidden className="absolute inset-x-6 top-6 h-[1.5px] bg-surface-container-highest" />
-        {steps.map(({ key, state, disabled }) => {
-          const label = t(STEP_LABELS[key])
-          const node = (
-            <>
-              <span className={cn('grid size-8 place-items-center rounded-full transition-colors', NODE[state])}>
-                <Icon name={state === 'done' ? 'check' : STEP_ICONS[key]} size={state === 'current' ? 18 : 16} fill={state === 'current'} />
-              </span>
-              <span className={cn('text-caption', state === 'current' ? 'font-bold text-primary' : state === 'not-visited' || state === 'skipped' ? 'text-outline' : 'text-on-surface-variant')}>
-                {label}
-              </span>
-            </>
-          )
-          const cls = 'relative z-10 flex min-h-12 min-w-11 flex-col items-center gap-1 rounded-control pt-2'
-          return (
-            <li key={key} className="flex flex-1 justify-center">
-              {onStep ? (
-                <button type="button" disabled={disabled} onClick={() => onStep(key)} aria-current={state === 'current' ? 'step' : undefined}
-                  aria-label={`${label}, ${t(STATE_LABEL[state])}`} className={cn(cls, 'cursor-pointer disabled:cursor-default')}>
-                  {node}
-                </button>
-              ) : (
-                <span className={cls} aria-current={state === 'current' ? 'step' : undefined}>{node}<span className="sr-only">, {t(STATE_LABEL[state])}</span></span>
-              )}
-            </li>
-          )
-        })}
-      </ol>
-    </nav>
-  )
-}
-
 /* ---------------- ExampleCard ---------------- */
 
-/** Pager dots: the current one is a wide pill. Buttons when `onPick` is given. */
-export function PagerDots({ index, total, onPick }: { index: number; total: number; onPick?: (i: number) => void }) {
+/** Pager dots: the current one is a wide pill, played ones teal. Buttons (44px) when `onPick` is given; examples past
+ *  `reached` are disabled (the stepper only goes back, docs/10 §4.1). */
+export function PagerDots({ index, total, onPick, reached = total - 1, played }: {
+  index: number; total: number; onPick?: (i: number) => void; reached?: number; played?: (i: number) => boolean
+}) {
   return (
-    <div className="flex items-center gap-1.5">
+    <div className="flex items-center">
       {Array.from({ length: total }, (_, i) => {
-        const dot = <span className={cn('block h-1.5 rounded-full transition-all', i === index ? 'w-4 bg-primary' : 'w-1.5 bg-surface-container-highest')} />
+        const dot = <span className={cn('block h-1.5 rounded-full transition-all', i === index ? 'w-4 bg-primary-fill' : played?.(i) ? 'w-1.5 bg-primary' : 'w-1.5 bg-surface-container-highest')} />
         return onPick ? (
-          <button key={i} type="button" onClick={() => onPick(i)} aria-label={t('Example {n}', { n: i + 1 })} aria-current={i === index || undefined}
-            className="grid h-8 min-w-4 cursor-pointer place-items-center">{dot}</button>
-        ) : <span key={i}>{dot}</span>
+          <button key={i} type="button" onClick={() => onPick(i)} disabled={i > reached} aria-current={i === index ? 'step' : undefined}
+            aria-label={t('Example {n} of {m}', { n: i + 1, m: total }) + (played?.(i) ? t(', played') : '')}
+            className={cn('grid h-11 cursor-pointer place-items-center disabled:cursor-default disabled:opacity-40', total > 5 ? 'w-8' : 'w-11')}>{dot}</button>
+        ) : <span key={i} className="grid h-6 w-3 place-items-center">{dot}</span>
       })}
     </div>
   )
@@ -85,11 +34,13 @@ export function PagerDots({ index, total, onPick }: { index: number; total: numb
  * One example (word or ayah) in a lesson step: eyebrow "Example 1 of 3", reference chip, big content,
  * a controls row, and prev / dots / next. Content and controls are slots.
  */
-export function ExampleCard({ index, total, eyebrow, reference, children, controls, onPrev, onNext, onPick, className }: {
+export function ExampleCard({ index, total, eyebrow, reference, children, controls, onPrev, onNext, onPick, reached, played, className }: {
   index: number; total: number; reference?: ReactNode; children: ReactNode; controls?: ReactNode
   /** Replaces the "Example 1 of 3" eyebrow (e.g. "Sound A"). */
   eyebrow?: ReactNode
   onPrev?: () => void; onNext?: () => void; onPick?: (i: number) => void; className?: string
+  /** Last example reached (later dots are disabled) and which are played, for the pager dots. */
+  reached?: number; played?: (i: number) => boolean
 }) {
   const nav = 'grid size-12 cursor-pointer place-items-center rounded-full transition-colors hover:bg-surface-container disabled:cursor-default disabled:opacity-30'
   return (
@@ -108,7 +59,7 @@ export function ExampleCard({ index, total, eyebrow, reference, children, contro
           <button type="button" className={cn(nav, 'text-outline')} onClick={onPrev} disabled={!onPrev || index === 0} aria-label={t('Previous example')}>
             <Icon name="chevron_left" rtlFlip />
           </button>
-          <PagerDots index={index} total={total} onPick={onPick} />
+          <PagerDots index={index} total={total} onPick={onPick} reached={reached} played={played} />
           <button type="button" className={cn(nav, 'text-primary')} onClick={onNext} disabled={!onNext || index === total - 1} aria-label={t('Next example')}>
             <Icon name="chevron_right" rtlFlip />
           </button>
@@ -131,7 +82,7 @@ export function AudioControls({ playing, onPlay, played, slow, onSlow, loop, onL
         {played && <Chip tone="primary" icon="check_circle">{t('Played')}</Chip>}
       </span>
       <button type="button" onClick={onPlay} disabled={disabled} aria-label={t(playing ? 'Pause' : 'Play')}
-        className="grid size-14 cursor-pointer place-items-center rounded-full bg-primary text-on-primary shadow-card transition-transform hover:bg-primary-hover active:scale-95 disabled:cursor-default disabled:opacity-50">
+        className="grid size-14 cursor-pointer place-items-center rounded-full bg-primary-fill text-on-primary shadow-card transition-transform hover:bg-primary-hover active:scale-95 disabled:cursor-default disabled:opacity-50">
         <Icon name={playing ? 'pause' : 'play_arrow'} size={28} fill />
       </button>
       <span className="flex items-center gap-1.5 justify-self-end">
@@ -177,7 +128,7 @@ export function CountBeats({ min, max = min, active, className }: { min: number;
         return (
           <span key={n} className={cn(
             'grid size-8 place-items-center rounded-full text-label font-semibold transition-colors',
-            n === active ? 'bg-primary text-on-primary' : n <= min ? 'bg-primary-container text-on-primary-container' : 'border border-dashed border-outline text-on-surface-variant',
+            n === active ? 'bg-primary-fill text-on-primary' : n <= min ? 'bg-primary-container text-on-primary-container' : 'border border-dashed border-outline text-on-surface-variant',
           )}>{digits(n)}</span>
         )
       })}
@@ -196,7 +147,7 @@ export function UnitPath({ lessons, finale = 'todo', className }: {
 }) {
   const dot = (state: LessonDotState) => cn(
     'grid size-7 shrink-0 place-items-center rounded-full text-caption font-medium',
-    state === 'done' && 'bg-primary text-on-primary',
+    state === 'done' && 'bg-primary-fill text-on-primary',
     state === 'current' && 'bg-surface-container-lowest shadow-[0_0_0_2px_var(--color-gold)]',
     state === 'todo' && 'bg-surface-container text-outline',
   )
