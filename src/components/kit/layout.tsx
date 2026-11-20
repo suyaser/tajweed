@@ -1,7 +1,35 @@
-import type { ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { digits, isAr } from '@/i18n'
 import { Icon } from '@/components/ui/icon'
+
+/** Separator between items on one line (dates, eyebrows, counts): a small gold dot, never a "·" glyph, which reads
+ *  as the Arabic zero ٠ next to Arabic-Indic digits. Screen readers hear a comma. For plain strings use SEP (i18n). */
+export function Sep({ className }: { className?: string }) {
+  return <><span className="sr-only">, </span><span aria-hidden className={cn('mx-1.5 inline-block size-1 shrink-0 rounded-full bg-gold align-middle', className)} /></>
+}
+
+/** A white card on the sand canvas. `title` (translated) with its Arabic beside it in the English UI. */
+export function Panel({ title, ar, icon, aside, children, className, as: Tag = 'section', ...rest }: {
+  title?: ReactNode; ar?: string; icon?: string; aside?: ReactNode; children?: ReactNode; className?: string
+  as?: 'section' | 'div' | 'article'
+} & Omit<HTMLAttributes<HTMLElement>, 'title'>) {
+  return (
+    <Tag {...rest} className={cn('flex min-w-0 flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg', className)}>
+      {(title || aside) && (
+        <header className="flex items-center justify-between gap-space-sm">
+          <h2 className="flex min-w-0 flex-wrap items-center gap-x-space-sm gap-y-0.5">
+            {icon && <Icon name={icon} size={20} className="text-primary" />}
+            {title && <span className="text-body-lg font-semibold text-on-surface">{title}</span>}
+            {!isAr && ar && <span lang="ar" dir="rtl" className="text-arabic-label text-on-surface-variant">{ar}</span>}
+          </h2>
+          {aside && <span className="shrink-0 text-label text-on-surface-variant">{aside}</span>}
+        </header>
+      )}
+      {children}
+    </Tag>
+  )
+}
 
 /** Screen body: centred column, gutters (safe-area aware), vertical rhythm between children. */
 export function Page({ children, width = 'default', className }: { children: ReactNode; width?: 'default' | 'narrow' | 'wide'; className?: string }) {

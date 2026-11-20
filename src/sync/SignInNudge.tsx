@@ -69,7 +69,7 @@ export function BackupBadge({ detail = false }: { detail?: boolean }) {
   const ok = !!s.user && s.status !== 'error' && s.status !== 'choose'
   return (
     <a data-ok={ok} href="#/account"
-      className={cn('inline-flex min-h-7 items-center gap-1.5 rounded-control px-3 text-label font-medium no-underline',
+      className={cn('inline-flex min-h-7 w-fit items-center gap-1.5 self-start rounded-control px-3 text-label font-medium no-underline',
         ok ? 'bg-success-container text-on-success-container' : 'bg-secondary-container text-on-secondary-container')}>
       <Icon name={ok ? 'cloud_done' : 'cloud_off'} size={16} />
       {detail ? syncLabel(s) : ok ? t('Backed up') : t('Not backed up')}

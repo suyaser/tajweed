@@ -1,9 +1,9 @@
 // The lesson shell (docs/10 §3): header, step bar, instruction, done line, sticky bottom bar.
-import { useEffect, useState, type KeyboardEvent, type ReactNode } from 'react'
+import { Fragment, useEffect, useState, type KeyboardEvent, type ReactNode } from 'react'
 import type { Lesson } from '../../core/types'
 import { courseOrder, unitOf } from '../../content/course'
 import { digits, isAr, t } from '../../i18n'
-import { BottomBar as KitBottomBar, STEP_ICONS } from '@/components/kit'
+import { BottomBar as KitBottomBar, Sep, STEP_ICONS } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
 import { STEP_IDS, type StepId } from './lessonSteps'
@@ -25,14 +25,14 @@ export function LessonHeader({ lesson, action }: { lesson: Lesson; action?: Reac
       <div className="flex min-h-12 w-full items-center justify-between gap-space-sm">
         {n > 0 && (
           <p className="text-label font-semibold tracking-widest text-secondary uppercase rtl:tracking-normal">
-            {t('Lesson {n} of {m}', { n, m: courseOrder.length })}{unit && <> · {t('Unit {n}', { n: unit.n })}</>}
+            {t('Lesson {n} of {m}', { n, m: courseOrder.length })}{unit && <><Sep />{t('Unit {n}', { n: unit.n })}</>}
           </p>
         )}
         {action}
       </div>
       <h1 className="text-arabic-headline text-on-surface" lang="ar">{lesson.nameAr}</h1>
       {!isAr && <p className="text-body-lg text-on-surface-variant">{lesson.nameEn}</p>}
-      {where && <p className="text-arabic-label text-on-surface-variant" lang="ar">{where}</p>}
+      {where && <p className="text-arabic-label text-on-surface-variant" lang="ar" dir="rtl">{where.split('، ').map((w, i) => <Fragment key={i}>{i > 0 && '، '}<bdi>{w}</bdi></Fragment>)}</p>}
       <span aria-hidden className="mt-1 flex w-32 items-center gap-2 opacity-75">
         <span className="h-px flex-1 bg-gold" /><Icon name="star" size={14} className="text-gold" /><span className="h-px flex-1 bg-gold" />
       </span>

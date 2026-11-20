@@ -8,7 +8,7 @@ import { courseOrder, units } from '../content/course'
 import { href } from '../app/router'
 import { Hint, PathTabs, UnitLessons, UnitNode, type UnitStatus } from './path/blocks'
 import { isAr, t } from '../i18n'
-import { Chip, StatusChip } from '@/components/kit'
+import { Chip, PageHeader, StatusChip } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Progress } from '@/components/ui/progress'
@@ -37,7 +37,7 @@ function UnitDetail({ u, p, className }: { u: Unit; p: P; className?: string }) 
       <UnitLessons u={u} p={p} />
       <Button asChild variant="tertiary" className="self-start px-0 no-underline">
         <a href={href('unit', u.id)} aria-label={t('Open unit {n}, {name}', { n: u.n, name: isAr ? u.nameAr : u.nameEn })}>
-          {t('Open the unit ›')}
+          {t('Open the unit')}<Icon name="chevron_right" size={20} rtlFlip />
         </a>
       </Button>
     </div>
@@ -54,6 +54,7 @@ export default function Plan() {
 
   return (
     <div className="flex flex-col gap-space-lg">
+      <PageHeader en="Path" ar="المسار" />
       <PathTabs value="plan" />
       <Hint id="plan">{t('The course, unit by unit. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.')}</Hint>
       <header className="flex flex-col gap-space-sm">
@@ -92,7 +93,7 @@ export default function Plan() {
                     {status === 'active' && u.lessonIds.length > 0 && <Progress value={(100 * n) / u.lessonIds.length} className="mt-1.5" aria-hidden />}
                   </span>
                   {status === 'passed' ? <StatusChip status="done">{t('done')}</StatusChip>
-                    : status === 'locked' ? <Chip icon="lock" className="max-sm:hidden">{t('locked')}</Chip>
+                    : status === 'locked' ? <span className="sr-only">{t('locked')}</span>
                       : <Chip tone="gold">{u.lessonIds.length ? t('{n} of {m}', { n, m: u.lessonIds.length }) : t('finale')}</Chip>}
                   <span className="lg:hidden"><Icon name="expand_more" size={20} className={cn('text-outline transition-transform', open && 'rotate-180')} /></span>
                 </button>

@@ -12,7 +12,7 @@ import { WEEKDAYS, daysAgo, formatBytes } from './path/helpers'
 import { download } from './path/ui'
 import { getSupabase, hasBackend } from '../sync/supabase'
 import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
-import { syncLabel } from '../sync/SignInNudge'
+import { BackupBadge, syncLabel } from '../sync/SignInNudge'
 import { CopyField } from '../sync/CopyField'
 import { isAr, lang, setLang, t } from '../i18n'
 import { cn } from '@/lib/utils'
@@ -38,10 +38,11 @@ export default function Settings({ params }: ScreenProps) {
   const [munfasilChanged, setMunfasilChanged] = useState(false)
 
   return (
-    <Page width="narrow">
+    <Page>
       {hasBackend && (
         <Group en="Account and backup" ar="الحساب والنسخ الاحتياطي">
-          <Row icon={sync.user ? 'cloud_done' : 'cloud_off'} href="#/account"
+          <div className="px-space-md py-space-sm"><BackupBadge /></div>
+          <Row icon={!sync.user ? 'cloud_off' : sync.status === 'error' || sync.status === 'choose' ? 'sync_problem' : sync.status === 'offline' ? 'cloud_off' : sync.status === 'syncing' ? 'sync' : 'cloud_done'} href="#/account"
             label={sync.user ? t('Account') : t('Sign in')}
             hint={sync.user
               ? t('{status}. Signed in as {email}.', { status: syncLabel(sync), email: sync.user.email ?? t('your account') })
@@ -166,9 +167,9 @@ function Reciters({ value, onChange }: { value: string; onChange: (id: string) =
           return (
             <div key={r.id} className={cn('flex items-center gap-space-sm rounded-control border ps-space-md pe-space-xs transition-colors',
               on ? 'border-primary/40 bg-primary-container/50' : 'border-transparent hover:bg-surface-container-low')}>
-              <RadioGroupItem id={`reciter-${r.id}`} value={r.id} />
+              <RadioGroupItem id={`reciter-${r.id}`} value={r.id} className="relative after:absolute after:-inset-3 after:content-['']" />
               <label htmlFor={`reciter-${r.id}`} className="flex min-h-14 min-w-0 flex-1 cursor-pointer flex-col justify-center py-space-xs">
-                <span lang="ar" className="font-arabic text-[16px] leading-snug font-medium">{r.nameAr}</span>
+                <span lang="ar" className="text-arabic-body leading-snug font-medium">{r.nameAr}</span>
                 {!isAr && <small className="text-caption text-on-surface-variant">{r.nameEn}</small>}
               </label>
               <button type="button" onClick={() => sample(r)} aria-label={playing === r.id ? t('Stop sample') : t('Play a sample of {name}', { name: r.nameAr })}

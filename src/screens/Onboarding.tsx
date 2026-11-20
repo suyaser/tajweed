@@ -9,7 +9,7 @@ import { verseRef } from './study/helpers'
 import { useVerse } from './study/verse'
 import { Basics } from './guide/content'
 import { courseOrder } from '../content/course'
-import { Callout, Chip } from '@/components/kit'
+import { Callout, Chip, Sep } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -28,7 +28,7 @@ function Steps({ step }: { step: number }) {
       <span aria-hidden className="flex gap-1">
         {Array.from({ length: N }, (_, i) => <span key={i} className={cn('h-1.5 rounded-full', i === step ? 'w-4 bg-primary-fill' : i < step ? 'w-1.5 bg-primary-fill' : 'w-1.5 bg-surface-container-highest')} />)}
       </span>
-      <span>{t('Step {n} of {m}', { n: step + 1, m: N })} · <Tx>{STEP_NAMES[step]}</Tx></span>
+      <span>{t('Step {n} of {m}', { n: step + 1, m: N })}<Sep /><Tx>{STEP_NAMES[step]}</Tx></span>
     </p>
   )
 }
@@ -98,7 +98,7 @@ function Welcome({ onNext }: { onNext: () => void }) {
         <h1 className="text-center text-headline-md text-on-surface">{t('A tajweed course on real Quran words, one lesson at a time.')}</h1>
         <ul className="flex flex-col gap-space-sm">
           {([
-            ['headphones', t('Short lessons: hear it, say it, then learn the rule')],
+            ['headphones', t('Lessons are short (about 15 minutes): hear it, say it, then learn the rule')],
             ['menu_book', t('Each lesson ends on a real passage you recite')],
             ['history_edu', t('Brings rules back before you forget them')],
             ['record_voice_over', t("Keeps your teacher's corrections, if you have one")],
@@ -116,7 +116,7 @@ function Welcome({ onNext }: { onNext: () => void }) {
 
       <div className="flex flex-col items-center gap-space-xs">
         <Button size="lg" className="w-full" onClick={onNext}>
-          {isAr ? 'ابدأ' : <>Begin · <span lang="ar">ابدأ</span></>}<Icon name="arrow_forward" size={20} rtlFlip />
+          {isAr ? 'ابدأ' : <>Begin<Sep /><span lang="ar">ابدأ</span></>}<Icon name="arrow_forward" size={20} rtlFlip />
         </Button>
         <Button variant="ghost" onClick={() => file.current?.click()}><Icon name="history" size={20} />{t('I have a backup file')}</Button>
         <input ref={file} type="file" accept="application/json,.json" hidden onChange={e => onFile(e.target.files?.[0])} />
@@ -146,9 +146,10 @@ function LangChoice() {
   return (
     <div role="group" aria-label="Language · اللغة" className="flex flex-col gap-space-sm">
       <p className="flex items-center gap-1.5 text-label text-on-surface-variant" aria-hidden>
-        <Icon name="translate" size={16} /><span lang="en">Language</span> · <span lang="ar">اللغة</span>
+        <Icon name="translate" size={16} /><span lang="en">Language</span><Sep /><span lang="ar">اللغة</span>
       </p>
-      <div className="flex gap-space-sm">
+      {/* the current interface language first */}
+      <div className={cn('flex gap-space-sm', lang === 'en' && 'flex-row-reverse justify-end')}>
         <Choice on={lang === 'ar'} onClick={() => choose('ar')}><span lang="ar" className="font-arabic text-body-lg font-semibold">العربية</span></Choice>
         <Choice on={lang === 'en'} onClick={() => choose('en')}><span lang="en" className="font-ui text-body-lg font-semibold">English</span></Choice>
       </div>

@@ -6,7 +6,7 @@ import { useRecorder } from '../../audio/useRecorder'
 import { list, save } from '../../audio/recordings'
 import { playMe, playModelThenMe } from '../../audio/compare'
 import { Passage } from '../../components'
-import { Callout, Chip } from '@/components/kit'
+import { Callout, Chip, Panel } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -103,7 +103,7 @@ export function CompareControl({ r, reciter, model }: { r: Takes; reciter?: () =
   )
 }
 
-const Private = () => <p className="text-caption text-on-surface-variant"><Icon name="lock" size={14} className="me-1 align-[-2px]" />{t('Recordings stay on this device.')}</p>
+const Private = () => <p className="flex items-center gap-1.5 text-caption text-on-surface-variant"><Icon name="lock" size={14} />{t('Recordings stay on this device.')}</p>
 
 /**
  * Record and compare in one block (drill, Recite fallback). With `model` (reciter, then me) and `reciter` (the
@@ -125,14 +125,14 @@ export function Recorder({ from, to = from, audio, model, reciter, onStatus }: {
 /** A numbered sub-card (Say and Recite rows): number, title, optional status at the end. */
 export function RowCard({ n, title, status, children }: { n: number; title: string; status?: ReactNode; children: ReactNode }) {
   return (
-    <section className="flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+    <Panel>
       <h3 className="flex items-center gap-space-sm">
         <span className="grid size-7 shrink-0 place-items-center rounded-full bg-surface-container text-label font-bold text-primary">{digits(n)}</span>
         <span className="min-w-0 flex-1 text-headline-md text-on-surface">{title}</span>
         {status}
       </h3>
       {children}
-    </section>
+    </Panel>
   )
 }
 

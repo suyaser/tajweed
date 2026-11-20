@@ -6,12 +6,12 @@ import { LADDER, hasOpenCorrection, levelOf, type Level } from '../core/schedule
 import { getLesson, lessons, topics } from '../content'
 import { courseOrder, getUnit, units } from '../content/course'
 import { courseProgress } from '../core/course'
-import { digits, isAr, t } from '../i18n'
+import { digits, isAr, SEP, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { accuracy, dayLabel, live, studiedDays, weeks } from './path/helpers'
 import { LevelChip, Panel, PathTabs, WeekDots } from './path/blocks'
 import { BackupBadge } from '../sync/SignInNudge'
-import { Chip } from '@/components/kit'
+import { Chip, PageHeader, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
 
@@ -19,6 +19,7 @@ export default function Progress() {
   const d = useData()
   return (
     <div className="flex flex-col gap-space-lg">
+      <PageHeader en="Path" ar="المسار" />
       <PathTabs value="progress" />
       <BackupBadge detail />
       <div className="grid items-start gap-space-lg lg:grid-cols-2">
@@ -93,7 +94,7 @@ function Recitation({ d }: { d: UserData }) {
                         {Array.from({ length: j }, (_, i) => <i key={'j' + i} className="size-3 rounded-[3px] bg-error" />)}
                         {Array.from({ length: k }, (_, i) => <i key={'k' + i} className="size-3 rounded-[3px] border-[1.5px] border-outline" />)}
                       </span>
-                      <span className="text-label text-on-surface"><Tx>{`${digits(j)} جلي · ${digits(k)} خفي`}</Tx></span>
+                      <span className="text-label text-on-surface"><Tx>{`${digits(j)} جلي${SEP}${digits(k)} خفي`}</Tx></span>
                     </li>
                   )
                 })}
@@ -156,7 +157,7 @@ function Recognition({ d }: { d: UserData }) {
                 if (!tr.length) return null
                 return (
                   <section key={tp.id} className="flex flex-col gap-1">
-                    <h3 className="px-space-sm pt-space-xs text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case"><Tx>{isAr ? tp.nameAr : `${tp.nameAr} · ${tp.nameEn}`}</Tx></h3>
+                    <h3 className="px-space-sm pt-space-xs text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{isAr ? tp.nameAr : <><bdi lang="ar">{tp.nameAr}</bdi><Sep />{tp.nameEn}</>}</h3>
                     <ul className="flex flex-col">
                       {tr.map(({ l, it, level, last5, n5, open }) => (
                         <li key={l.id}>
@@ -165,7 +166,7 @@ function Recognition({ d }: { d: UserData }) {
                               <span lang="ar" className="font-arabic text-body-lg">{l.nameAr}</span>
                               <span className="text-label text-on-surface-variant">
                                 {it
-                                  ? `${tn('every {n} day', 'every {n} days', LADDER[it.step])} · ${lapses(it.lapses)} · ${t('last {n}: {m} right', { n: n5, m: last5 })} · ${t('next {day}', { day: dayLabel(it.dueOn) })}`
+                                  ? [tn('every {n} day', 'every {n} days', LADDER[it.step]), lapses(it.lapses), t('last {n}: {m} right', { n: n5, m: last5 }), t('next {day}', { day: dayLabel(it.dueOn) })].join(SEP)
                                   : t('not started')}
                               </span>
                             </span>
@@ -200,14 +201,15 @@ function Consistency({ d }: { d: UserData }) {
         {tn('This week: {n} day studied.', 'This week: {n} days studied.', thisWeek.count)}
         {w.total > 1 && t(' Studied 5 or more days in {n} of the last {weeks}.', { n: w.full, weeks: weeksN(w.total) })}
       </p>
-      <ol className="grid gap-x-space-lg gap-y-space-sm sm:grid-cols-2 lg:grid-cols-3" aria-label={t('Days studied per week, oldest first')}>
-        {(shown.length ? shown : [thisWeek]).map((x) => (
+      <WeekDots days={thisWeek.marks} today={thisWeek.marks.includes('future') ? thisWeek.marks.indexOf('future') - 1 : 6} />
+      {shown.length > 1 && <ol className="grid gap-x-space-lg gap-y-space-sm sm:grid-cols-2 lg:grid-cols-3" aria-label={t('Days studied per week, oldest first')}>
+        {shown.slice(0, -1).map((x) => (
           <li key={x.start} className="flex flex-wrap items-center gap-x-space-sm gap-y-1">
             <span className="w-[7.5em] text-label text-on-surface-variant">{dayLabel(x.start)}</span>
             <WeekDots days={x.marks} compact />
           </li>
         ))}
-      </ol>
+      </ol>}
     </Panel>
   )
 }
@@ -244,7 +246,7 @@ function Goals({ d }: { d: UserData }) {
       <dl className="grid gap-space-sm border-t border-outline-variant p-space-md sm:grid-cols-2 sm:p-space-lg">
         {goals.map(([id, name, value]) => (
           <div key={id} className="flex flex-col gap-0.5 rounded-control bg-surface-container-low p-space-md">
-            <dt className="text-label text-on-surface-variant"><b className="text-secondary">{isAr ? digits(id.slice(1)) : id}</b> · {name}</dt>
+            <dt className="text-label text-on-surface-variant"><b className="text-secondary">{isAr ? digits(id.slice(1)) : id}</b><Sep />{name}</dt>
             <dd className="text-body-md text-on-surface"><Tx>{value}</Tx></dd>
           </div>
         ))}

@@ -1,11 +1,11 @@
-import { useEffect, useRef, useSyncExternalStore, type ReactNode } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
 import { getLesson } from '../content'
 import { onShownStep, shownStep } from '../screens/study/lessonSteps'
 import { stepName } from '../screens/study/LessonShell'
-import { isAr, locale, setLang, t } from '../i18n'
+import { isAr, locale, SEP, setLang, t } from '../i18n'
 import { cn } from '@/lib/utils'
 import { Icon } from '@/components/ui/icon'
 
@@ -192,15 +192,40 @@ function LangButton({ className, children }: { className: string; children?: Rea
   )
 }
 
-/** The focus bar title; in a lesson, the lesson's name and the current step, so it stays visible while scrolling. */
+/** The page's own <h1> is on screen (false once it scrolls under the bar, or when there is none). */
+function useHeadingVisible(key: string) {
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    let io: IntersectionObserver | undefined
+    // the screen renders its header after the shell: look on the next frame
+    const id = requestAnimationFrame(() => {
+      const h = document.querySelector('main h1')
+      if (!h || typeof IntersectionObserver === 'undefined') return setVisible(false)
+      io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { rootMargin: '-64px 0px 0px 0px' })
+      io.observe(h)
+    })
+    return () => { cancelAnimationFrame(id); io?.disconnect() }
+  }, [key])
+  return visible
+}
+
+/** The focus bar title. In a lesson: the step, and the lesson's name once the page header (which shows it) has
+ *  scrolled away, so the title is never on screen twice. */
 function FocusTitle({ route, ar, en }: { route: Route; ar: string; en: string }) {
   const step = useSyncExternalStore(onShownStep, shownStep)
   const lesson = route.name === 'learn' ? getLesson(route.params.lessonId) : undefined
+  const headerShown = useHeadingVisible(route.path)
+  if (lesson && headerShown)
+    return (
+      <span className="flex min-w-0 flex-1 flex-col items-center text-center">
+        <span className="max-w-full truncate text-body-md font-semibold text-on-surface">{step ? stepName(step) : isAr ? ar : en}</span>
+      </span>
+    )
   const title = lesson ? lesson.nameAr : ar
-  const sub = lesson ? [!isAr && lesson.nameEn, step && stepName(step)].filter(Boolean).join(' · ') : !isAr ? en : ''
+  const sub = lesson ? [!isAr && lesson.nameEn, step && stepName(step)].filter(Boolean).join(SEP) : !isAr ? en : ''
   return (
     <span className="flex min-w-0 flex-1 flex-col items-center text-center">
-      <span lang="ar" className="max-w-full font-naskh text-[18px] leading-snug font-semibold text-on-surface">{title}</span>
+      <span lang="ar" className="max-w-full truncate font-naskh text-body-lg leading-snug font-semibold text-on-surface">{title}</span>
       {sub && <small className="max-w-full truncate text-caption text-on-surface-variant">{sub}</small>}
     </span>
   )
@@ -222,10 +247,10 @@ function TabBar({ active }: { active?: Tab }) {
                   <Icon name={tab.icon} size={22} fill={on} />
                 </span>
                 {isAr
-                  ? <b lang="ar" className={cn('text-[14px] leading-tight', on ? 'font-bold' : 'font-medium')}>{tab.ar}</b>
+                  ? <b lang="ar" className={cn('text-arabic-label leading-tight', on ? 'font-bold' : 'font-medium')}>{tab.ar}</b>
                   : <>
                       <b className={cn('text-label leading-none', on ? 'font-bold' : 'font-medium')}>{tab.en}</b>
-                      <small lang="ar" className="font-arabic text-[11px] leading-tight opacity-80">{tab.ar}</small>
+                      <small lang="ar" className="text-arabic-label leading-tight opacity-80">{tab.ar}</small>
                     </>}
               </a>
             </li>
@@ -248,7 +273,7 @@ function RailLink({ to, icon, en, ar, on, small }: { to: string; icon: string; e
         ? <span lang="ar" className="text-body-md">{ar}</span>
         : <>
             <span className="text-body-md">{en}</span>
-            <span lang="ar" dir="rtl" className={cn('ms-auto font-arabic text-[13px]', on ? 'text-on-primary/80' : 'opacity-80')}>{ar}</span>
+            <span lang="ar" dir="rtl" className={cn('ms-auto text-arabic-label', on ? 'text-on-primary/80' : 'opacity-80')}>{ar}</span>
           </>}
     </a>
   )

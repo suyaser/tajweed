@@ -7,7 +7,7 @@ import { diffDays, today } from '../core/day'
 import { getLesson } from '../content'
 import { courseLesson, courseOrder, getUnit, units } from '../content/course'
 import { href } from '../app/router'
-import { isAr, t } from '../i18n'
+import { isAr, SEP, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
 import { SignInNudge } from '../sync/SignInNudge'
@@ -15,7 +15,7 @@ import { useSync } from '../sync/sync'
 import { getSteps, type StepId } from './study/lessonSteps'
 import { ROUTINE_KEY } from './Onboarding'
 import { Note, Panel, SeverityChip, WeekDots } from './path/blocks'
-import { STEP_ICONS, UnitPath } from '@/components/kit'
+import { Sep, STEP_ICONS, UnitPath } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { PageHeader } from '@/components/kit'
@@ -119,7 +119,7 @@ export default function Today() {
   return (
     <>
     <PageHeader en="Today" ar="اليوم" subtitle={<>
-      <span>{digits(d.gregorian)}</span>{d.hijri && <span lang="ar" className="text-secondary"> · {d.hijri}</span>}
+      <span>{digits(d.gregorian)}</span>{d.hijri && <><Sep /><span lang="ar" className="text-secondary">{d.hijri}</span></>}
       {d.late && <span className="block text-caption">{d.late}</span>}
     </>} />
     <div className="grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
@@ -130,7 +130,7 @@ export default function Today() {
             <div className="flex flex-col gap-space-sm">
               <div className="flex flex-wrap items-baseline justify-between gap-x-space-md gap-y-1">
                 <p className="text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case">
-                  {t('Unit {n}', { n: unit.n })}{!isAr && <> · {unit.nameEn}</>}
+                  {t('Unit {n}', { n: unit.n })}{!isAr && <><Sep />{unit.nameEn}</>}
                 </p>
                 <p lang="ar" className="text-arabic-label text-secondary">{unit.nameAr}</p>
               </div>
@@ -143,7 +143,7 @@ export default function Today() {
               {q.sabaq && nextLesson && (
                 <p className="text-body-md text-on-surface-variant">
                   {t('Lesson {n} of {m}', { n: courseOrder.indexOf(nextLesson.id) + 1, m: courseOrder.length })}
-                  <span aria-hidden className="mx-1.5 text-outline">·</span>
+                  <Sep />
                   <span className="font-medium text-on-surface">{t('{n} of {m} lessons done', { n: unitDone, m: unit.lessonIds.length })}</span>
                 </p>
               )}
@@ -207,11 +207,51 @@ export default function Today() {
             </Inset>
           )}
           <p className="-my-space-sm flex flex-wrap justify-center gap-x-space-md">
-            <LinkButton variant="tertiary" to={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit ›')}</LinkButton>
-            <LinkButton variant="tertiary" to={href('plan')}>{t('Course map ›')}</LinkButton>
+            <LinkButton variant="tertiary" to={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit')}<Icon name="chevron_right" size={20} rtlFlip /></LinkButton>
+            <LinkButton variant="tertiary" to={href('plan')}>{t('Course map')}<Icon name="chevron_right" size={20} rtlFlip /></LinkButton>
           </p>
         </Panel>
 
+        {routine && data.introductions.length > 0 && (
+          <Panel title={t('Set up your routine')} icon="tune">
+            <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
+            <ul className="-mx-space-sm flex flex-col">
+              <LinkRow to={href('settings') + '?s=recitation'}>{t('Model reciter')}</LinkRow>
+              <LinkRow to={href('settings') + '?s=wird'}>{t('Daily study time (wird)')}</LinkRow>
+              <LinkRow to={href('settings') + '?s=wird'}>{t('Teacher day')}</LinkRow>
+            </ul>
+            <Button variant="ghost" onClick={hideRoutine} className="-ms-space-md self-start px-space-md">{t('Done, hide this')}</Button>
+          </Panel>
+        )}
+
+        {catchUp.length > 0 && (
+          <Panel title={t('New in this version')} icon="new_releases">
+            <p className="-mt-space-sm text-body-md text-on-surface-variant">{tn("{n} new lesson in units you have finished. Take them when you like; they don't hold up the course.", "{n} new lessons in units you have finished. Take them when you like; they don't hold up the course.", catchUp.length)}</p>
+            <LinkButton variant="secondary" to={href('learn', catchUp[0])} className="self-start"><Tx>{t('Start {x}', { x: getLesson(catchUp[0])?.nameAr ?? '' })}</Tx></LinkButton>
+          </Panel>
+        )}
+
+        <div className="flex min-w-0 flex-col gap-space-sm empty:hidden">
+          {tips && (
+            <Note icon="lightbulb" action={<LinkButton variant="tertiary" to={href('guide')}>{t('How it works')}</LinkButton>} onDismiss={() => dismiss('hint:today')}>
+              {t('One lesson at a time, in seven short steps. Then do your review.')}
+            </Note>
+          )}
+          <SignInNudge />
+          {nudge === 'install' && (
+            <Note icon="install_mobile" action={<Button variant="tertiary" onClick={() => setHowOpen(true)}>{t('How')}</Button>} onDismiss={() => dismiss('install')}>
+              {t("Install to home screen so your data is kept. Safari can clear sites you haven't opened for a week.")}
+            </Note>
+          )}
+          {nudge === 'backup' && !user && (
+            <Note icon="backup" action={<LinkButton variant="tertiary" to={href('settings')}>{t('Back up now')}</LinkButton>} onDismiss={() => dismiss('backup')}>
+              {backupAge == null ? t('No backup yet.') : tn('Last backup: {n} days ago.', 'Last backup: {n} days ago.', backupAge)}
+            </Note>
+          )}
+        </div>
+      </section>
+
+      <aside className="flex min-w-0 flex-col gap-space-lg">
         <Panel as="div" className="flex-row flex-wrap items-center gap-space-md">
           <span className="grid size-12 shrink-0 place-items-center rounded-full bg-surface-container-low text-primary"><Icon name="history_edu" /></span>
           <div className="flex min-w-0 flex-1 basis-48 flex-col gap-0.5">
@@ -233,25 +273,6 @@ export default function Today() {
           {due > 0 && <LinkButton variant="secondary" to={href('review') + '?go=1'} className="max-sm:w-full">{reviewedToday ? t('Continue review') : t('Review')}</LinkButton>}
         </Panel>
 
-        {routine && data.introductions.length > 0 && (
-          <Panel title={t('Set up your routine')} icon="tune">
-            <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
-            <ul className="-mx-space-sm flex flex-col">
-              <LinkRow to={href('settings') + '?s=recitation'}>{t('Model reciter')}</LinkRow>
-              <LinkRow to={href('settings') + '?s=wird'}>{t('Daily study time (wird)')}</LinkRow>
-              <LinkRow to={href('settings') + '?s=wird'}>{t('Teacher day')}</LinkRow>
-            </ul>
-            <Button variant="ghost" onClick={hideRoutine} className="self-start">{t('Done, hide this')}</Button>
-          </Panel>
-        )}
-
-        {catchUp.length > 0 && (
-          <Panel title={t('New in this version')} icon="new_releases">
-            <p className="-mt-space-sm text-body-md text-on-surface-variant">{tn("{n} new lesson in units you have finished. Take them when you like; they don't hold up the course.", "{n} new lessons in units you have finished. Take them when you like; they don't hold up the course.", catchUp.length)}</p>
-            <LinkButton variant="secondary" to={href('learn', catchUp[0])} className="self-start"><Tx>{t('Start {x}', { x: getLesson(catchUp[0])?.nameAr ?? '' })}</Tx></LinkButton>
-          </Panel>
-        )}
-
         {practice.length > 0 && (
           <Panel title={isAr ? 'التلاوة' : 'Practice'} ar="التلاوة" icon="record_voice_over">
             <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Recite your recent passages again: listen, recite, record, compare.')}</p>
@@ -267,22 +288,20 @@ export default function Today() {
             </ul>
           </Panel>
         )}
-      </section>
 
-      <aside className="flex min-w-0 flex-col gap-space-lg">
         <Panel title={t('This week')} icon="calendar_month">
           <WeekDots days={w.marks} today={w.todayIndex} />
           <p className="text-body-md text-on-surface-variant">
-            {w.count === 0 && data.settings.onboardedOn === day ? t('Your week starts today.') : `${tn('{n} day studied this week', '{n} days studied this week', w.count)} · ${t('This month: {n}', { n: w.month })}`}
+            {w.count === 0 && data.settings.onboardedOn === day ? t('Your week starts today.') : `${tn('{n} day studied this week', '{n} days studied this week', w.count)}${SEP}${t('This month: {n}', { n: w.month })}`}
           </p>
         </Panel>
 
         {near && (
-          <Panel title={isAr ? `الشيخ · ${near.when === 'today' ? t('today') : t('tomorrow')}` : `Teacher ${near.when}`} ar="الشيخ" icon="record_voice_over">
+          <Panel title={isAr ? `الشيخ${SEP}${near.when === 'today' ? t('today') : t('tomorrow')}` : `Teacher ${near.when}`} ar="الشيخ" icon="record_voice_over">
             <p className="-mt-space-sm text-body-md text-on-surface">
               {data.settings.teacherName ? <Tx>{t('With {x}', { x: data.settings.teacherName })}</Tx> : t('Your session')}
-              {plan[0] && <> · <Tx>{t('recite {x}', { x: rangeRef(plan[0].from, plan[0].to) })}</Tx></>}
-              {openCorr > 0 && ` · ${tn('{n} correction to re-check', '{n} corrections to re-check', openCorr)}`}
+              {plan[0] && <><Sep /><Tx>{t('recite {x}', { x: rangeRef(plan[0].from, plan[0].to) })}</Tx></>}
+              {openCorr > 0 && <><Sep />{tn('{n} correction to re-check', '{n} corrections to re-check', openCorr)}</>}
             </p>
             <LinkButton variant="secondary" to={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>
               {near.session ? t('Open the plan') : t('Plan this session')}<Fwd />
@@ -299,25 +318,6 @@ export default function Today() {
           </Note>
         )}
       </aside>
-
-      <div className="flex min-w-0 flex-col gap-space-sm lg:col-span-2">
-        {tips && (
-          <Note icon="lightbulb" action={<LinkButton variant="tertiary" to={href('guide')}>{t('How it works')}</LinkButton>} onDismiss={() => dismiss('hint:today')}>
-            {t('One lesson at a time, about 15 minutes, in seven short steps. Then do your review.')}
-          </Note>
-        )}
-        <SignInNudge />
-        {nudge === 'install' && (
-          <Note icon="install_mobile" action={<Button variant="tertiary" onClick={() => setHowOpen(true)}>{t('How')}</Button>} onDismiss={() => dismiss('install')}>
-            {t("Install to home screen so your data is kept. Safari can clear sites you haven't opened for a week.")}
-          </Note>
-        )}
-        {nudge === 'backup' && !user && (
-          <Note icon="backup" action={<LinkButton variant="tertiary" to={href('settings')}>{t('Back up now')}</LinkButton>} onDismiss={() => dismiss('backup')}>
-            {backupAge == null ? t('No backup yet.') : tn('Last backup: {n} days ago.', 'Last backup: {n} days ago.', backupAge)}
-          </Note>
-        )}
-      </div>
 
       <Sheet open={howOpen} onOpenChange={setHowOpen}>
         <SheetContent aria-describedby={undefined}>

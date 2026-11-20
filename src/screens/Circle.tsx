@@ -20,17 +20,17 @@ const inviteLink = (code: string) => `${location.origin}${location.pathname}#/ci
 
 export default function Circle({ params }: { params: Record<string, string> }) {
   const { user } = useSync()
-  if (!hasBackend) return <Page width="narrow"><EmptyState icon="groups" title={t('Circles are not available in this version of the app.')} /></Page>
+  if (!hasBackend) return <Page><EmptyState icon="groups" title={t('Circles are not available in this version of the app.')} /></Page>
   if (!user)
     return (
-      <Page width="narrow">
+      <Page>
         <EmptyState icon="groups" title={t('Study together in a circle')} action={<Button href="#/account">{t('Sign in')}</Button>}>
           {t('A circle is a small private group (up to 20) that sees who studied which day this week. Sign in to create or join one.')}
           {params.join ? ' ' + t('After signing in, open the invite link again to join.') : ''}
         </EmptyState>
       </Page>
     )
-  return <Page width="narrow">{params.id ? <CircleView id={params.id} userId={user.id} /> : <Circles join={params.join} />}</Page>
+  return <Page>{params.id ? <CircleView id={params.id} userId={user.id} /> : <Circles join={params.join} />}</Page>
 }
 
 function Circles({ join }: { join?: string }) {

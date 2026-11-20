@@ -36,7 +36,7 @@ export function PagerDots({ index, total, onPick, reached = total - 1, played }:
  */
 export function ExampleCard({ index, total, eyebrow, reference, children, controls, onPrev, onNext, onPick, reached, played, className }: {
   index: number; total: number; reference?: ReactNode; children: ReactNode; controls?: ReactNode
-  /** Replaces the "Example 1 of 3" eyebrow (e.g. "Sound A"). */
+  /** Replaces the "Example 1 of 3" eyebrow (e.g. "Sound A"); false: none (the card sits under its own heading). */
   eyebrow?: ReactNode
   onPrev?: () => void; onNext?: () => void; onPick?: (i: number) => void; className?: string
   /** Last example reached (later dots are disabled) and which are played, for the pager dots. */
@@ -46,10 +46,12 @@ export function ExampleCard({ index, total, eyebrow, reference, children, contro
   return (
     <article className={cn('flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg', className)}>
       <header className="flex items-center justify-between gap-space-sm">
-        <span className="flex items-center gap-1.5 text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
-          <span aria-hidden className="size-1.5 rounded-full bg-gold" />
-          {eyebrow ?? t('Example {n} of {total}', { n: index + 1, total })}
-        </span>
+        {eyebrow !== false && (
+          <span className="flex items-center gap-1.5 text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
+            <span aria-hidden className="size-1.5 rounded-full bg-gold" />
+            {eyebrow ?? t('Example {n} of {total}', { n: index + 1, total })}
+          </span>
+        )}
         {reference && <Chip icon="bookmark">{reference}</Chip>}
       </header>
       <div className="flex min-h-24 flex-col items-center justify-center py-space-sm text-center">{children}</div>
@@ -86,7 +88,7 @@ export function AudioControls({ playing, onPlay, played, slow, onSlow, loop, onL
         <Icon name={playing ? 'pause' : 'play_arrow'} size={28} fill />
       </button>
       <span className="flex items-center gap-1.5 justify-self-end">
-        {onSlow && <Chip icon="speed" pressed={!!slow} onClick={onSlow} label={t("Slower")}><bdi dir="ltr">0.75×</bdi></Chip>}
+        {onSlow && <Chip icon="speed" pressed={!!slow} onClick={onSlow}>{t('Slower')}</Chip>}
         {onLoop && <Chip icon="repeat" pressed={!!loop} onClick={onLoop} label={t('Loop')} />}
       </span>
     </div>
@@ -151,24 +153,23 @@ export function UnitPath({ lessons, finale = 'todo', className }: {
     state === 'current' && 'bg-surface-container-lowest shadow-[0_0_0_2px_var(--color-gold)]',
     state === 'todo' && 'bg-surface-container text-outline',
   )
+  const star = finale && (
+    <span className={cn(dot(finale), finale === 'todo' ? 'bg-secondary-container text-secondary' : '')}>
+      <Icon name="star" size={16} fill={finale === 'done'} />
+      <span className="sr-only">{t('Unit finale')}</span>
+    </span>
+  )
   return (
     <ol className={cn('flex flex-wrap items-center gap-1.5', className)}>
       {lessons.map((l, i) => {
         const inner = l.state === 'done' ? <Icon name="check" size={16} /> : l.state === 'current' ? <span className="size-2.5 rounded-full bg-gold" /> : digits(i + 1)
-        return (
-          <li key={i}>
-            {l.href
-              ? <a href={l.href} aria-label={l.label} aria-current={l.state === 'current' ? 'step' : undefined} className="grid size-11 place-items-center rounded-full no-underline"><span className={dot(l.state)}>{inner}</span></a>
-              : <span title={l.label} className={dot(l.state)}>{inner}<span className="sr-only">{l.label}</span></span>}
-          </li>
-        )
+        const node = l.href
+          ? <a href={l.href} aria-label={l.label} aria-current={l.state === 'current' ? 'step' : undefined} className="grid size-11 place-items-center rounded-full no-underline"><span className={dot(l.state)}>{inner}</span></a>
+          : <span title={l.label} className={dot(l.state)}>{inner}<span className="sr-only">{l.label}</span></span>
+        // the finale star shares the last lesson's item, so it never wraps onto a line alone
+        return <li key={i} className="flex items-center gap-1.5">{node}{i === lessons.length - 1 && star}</li>
       })}
-      {finale && <li>
-        <span className={cn(dot(finale),finale === 'todo' ? 'bg-secondary-container text-secondary' : '')}>
-          <Icon name="star" size={16} fill={finale === 'done'} />
-          <span className="sr-only">{t('Unit finale')}</span>
-        </span>
-      </li>}
+      {!lessons.length && star && <li>{star}</li>}
     </ol>
   )
 }

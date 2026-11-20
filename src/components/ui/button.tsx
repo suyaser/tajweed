@@ -17,7 +17,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-12 px-6",
-        sm: "h-10 px-4",
+        sm: "h-11 px-4", // 44px: still a touch target
         lg: "h-[52px] px-6 text-body-lg",
         icon: "size-12 rounded-full",
       },

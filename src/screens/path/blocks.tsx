@@ -8,7 +8,8 @@ import { getLesson } from '../../content'
 import { href, navigate } from '../../app/router'
 import { today } from '../../core/day'
 import { digits, isAr, t } from '../../i18n'
-import { Chip, SegmentedControl, StatusChip } from '@/components/kit'
+import { Chip, SegmentedControl, Sep, StatusChip } from '@/components/kit'
+export { Panel } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -23,28 +24,6 @@ export function PathTabs({ value }: { value: 'plan' | 'progress' }) {
       options={[{ value: 'plan', label: t('Plan'), icon: 'route' }, { value: 'progress', label: t('Progress'), icon: 'insights' }]}
       className="w-full sm:w-auto sm:self-start"
     />
-  )
-}
-
-/** A white card on the sand canvas. `title` (translated) with its Arabic beside it in the English UI. */
-export function Panel({ title, ar, icon, aside, children, className, as: Tag = 'section', ...rest }: {
-  title?: ReactNode; ar?: string; icon?: string; aside?: ReactNode; children?: ReactNode; className?: string
-  as?: 'section' | 'div' | 'article'; id?: string; 'aria-label'?: string
-}) {
-  return (
-    <Tag {...rest} className={cn('flex min-w-0 flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg', className)}>
-      {(title || aside) && (
-        <header className="flex items-center justify-between gap-space-sm">
-          <h2 className="flex min-w-0 flex-wrap items-center gap-x-space-sm gap-y-0.5">
-            {icon && <Icon name={icon} size={20} className="text-primary" />}
-            {title && <span className="text-body-lg font-semibold text-on-surface">{title}</span>}
-            {!isAr && ar && <span lang="ar" dir="rtl" className="text-arabic-label text-on-surface-variant">{ar}</span>}
-          </h2>
-          {aside && <span className="shrink-0 text-label text-on-surface-variant">{aside}</span>}
-        </header>
-      )}
-      {children}
-    </Tag>
   )
 }
 
@@ -118,7 +97,7 @@ export function LevelChip({ level, detail }: { level: Level; detail?: string }) 
   const l = LEVEL[level]
   return (
     <Chip tone={l.tone} icon={l.icon} fill={level === 'strong' || level === 'known'}>
-      {l.label}{detail && <span className="opacity-80">· {detail}</span>}
+      {l.label}{detail && <><Sep className="mx-0.5" /><span className="opacity-80">{detail}</span></>}
     </Chip>
   )
 }

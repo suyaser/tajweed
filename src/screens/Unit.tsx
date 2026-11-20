@@ -14,7 +14,7 @@ import { Panel, UnitLessons, UnitNode } from './path/blocks'
 import { dayLabel } from './path/helpers'
 import { PassageRecite } from './study/Recorder'
 import { useStudyAudio } from './study/verse'
-import { Callout, EmptyState } from '@/components/kit'
+import { Callout, EmptyState, Sep } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 
@@ -35,7 +35,7 @@ export default function Unit({ params }: ScreenProps) {
       <header className="flex items-center gap-space-md">
         <UnitNode n={u.n} size="lg" status={p.lessonsDone(u) && p.finaleDone(u) ? 'passed' : p.open(u) ? 'active' : 'locked'} />
         <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{isAr ? t('Unit {n}', { n: u.n }) : <>Unit {u.n} · {u.nameEn}</>}</p>
+          <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{isAr ? t('Unit {n}', { n: u.n }) : <>Unit {u.n}<Sep />{u.nameEn}</>}</p>
           <h1 lang="ar" className="text-arabic-headline text-primary">{u.nameAr}</h1>
         </div>
       </header>

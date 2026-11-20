@@ -11,7 +11,7 @@ import { ColourDot, LevelChip, LevelMark, Letters } from './library/ui'
 import { Hint } from './study/Hint'
 import { digits, isAr, t } from '../i18n'
 import { cn } from '@/lib/utils'
-import { Chip, CountBeats, Page, PageHeader } from '@/components/kit'
+import { Chip, CountBeats, Page, PageHeader, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 
 const ASK: Record<string, string> = { nun: t('The next letter is…'), meem: t('The next letter is…'), lam: t('The letter after ال is…') }
@@ -69,8 +69,9 @@ export default function Rules(_: ScreenProps) {
         </div>
       </div>
 
-      <div className="grid items-start gap-space-lg lg:grid-cols-[240px_1fr]">
-        <nav aria-label={t('Topics')} className="-mx-gutter overflow-x-auto px-gutter md:-mx-gutter-md md:px-gutter-md lg:sticky lg:top-space-lg lg:mx-0 lg:px-0">
+      {/* the map shows every topic itself: no topic list beside it, so its columns get the width */}
+      <div className={cn('grid items-start gap-space-lg', view !== 'map' && 'lg:grid-cols-[240px_1fr]')}>
+        <nav aria-label={t('Topics')} hidden={view === 'map'} className="-mx-gutter overflow-x-auto px-gutter md:-mx-gutter-md md:px-gutter-md lg:sticky lg:top-space-lg lg:mx-0 lg:px-0">
           <ul className="flex gap-space-sm lg:flex-col lg:gap-space-xs lg:rounded-card lg:border lg:border-outline-variant lg:bg-surface-container-lowest lg:p-space-sm">
             {byTopic.map(({ tp, all }) => {
               const known = all.filter((l) => isKnown(status.get(l.id)!)).length
@@ -78,7 +79,7 @@ export default function Rules(_: ScreenProps) {
                 <li key={tp.id} className="shrink-0">
                   <button type="button" onClick={() => { setQ(''); setView('list'); goToTopic(tp.id) }}
                     className="flex min-h-12 w-full cursor-pointer items-center gap-space-sm rounded-control border border-outline-variant bg-surface-container-lowest px-space-md text-start transition-colors hover:bg-surface-container lg:border-transparent lg:bg-transparent">
-                    <b lang="ar" className="font-arabic text-[15px] font-semibold whitespace-nowrap lg:whitespace-normal">{tp.nameAr}</b>
+                    <b lang="ar" className="text-arabic-body font-semibold whitespace-nowrap lg:whitespace-normal">{tp.nameAr}</b>
                     <small className="ms-auto text-caption whitespace-nowrap text-on-surface-variant">{t('{known}/{all} known', { known, all: all.length })}</small>
                   </button>
                 </li>
@@ -86,7 +87,7 @@ export default function Rules(_: ScreenProps) {
             })}
             <li className="shrink-0 lg:mt-space-xs lg:border-t lg:border-outline-variant lg:pt-space-xs">
               <a href={href('resources')} className="flex min-h-12 items-center gap-space-sm rounded-control border border-outline-variant px-space-md whitespace-nowrap text-primary no-underline hover:bg-surface-container lg:border-transparent">
-                <Icon name="library_books" size={20} /><span lang="ar" className="font-arabic text-[15px]">المصادر</span>
+                <Icon name="library_books" size={20} /><span lang="ar" className="text-arabic-body">المصادر</span>
                 {!isAr && <small className="text-caption text-on-surface-variant">{t('Resources and credits')}</small>}
               </a>
             </li>
@@ -117,7 +118,7 @@ export default function Rules(_: ScreenProps) {
                         <a href={href('rules', l.id)} className="flex min-h-16 items-center gap-space-md px-space-md py-space-sm text-on-surface no-underline transition-colors hover:bg-surface-container-low">
                           <ColourDot colour={l.colour} />
                           <span className="flex min-w-0 flex-1 flex-col">
-                            <span lang="ar" className="font-naskh text-[19px] leading-snug font-semibold">{l.nameAr}</span>
+                            <span lang="ar" className="font-naskh text-body-lg leading-snug font-semibold">{l.nameAr}</span>
                             {!isAr && <span className="text-body-md text-on-surface-variant">{l.nameEn}</span>}
                           </span>
                           {s.correction && <Chip tone="error" icon="flag" fill>{t('correction open')}</Chip>}
@@ -155,7 +156,7 @@ function Chooser({ topicId, ls }: { topicId: string; ls: Lesson[] }) {
           <li key={l.id} className="flex flex-wrap items-center justify-between gap-space-sm rounded-control bg-surface-container-lowest p-space-sm">
             {ASK[topicId] ? <Letters letters={l.letters!} /> : <CountBeats min={l.counts!.min} max={l.counts!.max} />}
             <a href={href('rules', l.id)} className="inline-flex min-h-11 items-center gap-1.5 rounded-control px-space-sm no-underline hover:bg-surface-container">
-              <ColourDot colour={l.colour} /><span lang="ar" className="font-arabic text-[15px] font-semibold text-on-surface">{l.nameAr}</span>
+              <ColourDot colour={l.colour} /><span lang="ar" className="text-arabic-body font-semibold text-on-surface">{l.nameAr}</span>
             </a>
           </li>
         ))}
@@ -184,10 +185,10 @@ function MindMap({ status, onTopic }: { status: Map<string, LessonStatus>; onTop
               <li key={tp.id} className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-sm">
                 <button type="button" onClick={() => onTopic(tp.id)}
                   className="flex min-h-12 cursor-pointer flex-col items-start rounded-control bg-surface-container px-space-md py-space-xs text-start hover:bg-surface-container-high">
-                  <b className="font-naskh text-[18px] leading-snug">{tp.nameAr}</b>
+                  <b className="font-naskh text-body-lg leading-snug">{tp.nameAr}</b>
                   {isAr
                     ? <small className="text-caption text-on-surface-variant">{t('{known}/{all} known', { known, all: ls.length })}</small>
-                    : <small dir="ltr" lang="en" className="text-caption text-on-surface-variant">{tp.nameEn} · {known}/{ls.length} known</small>}
+                    : <small dir="ltr" lang="en" className="text-caption text-on-surface-variant">{tp.nameEn}<Sep />{known}/{ls.length} known</small>}
                 </button>
                 <ul className="flex flex-col border-s border-outline-variant ms-space-sm">
                   {ls.map((l) => {
@@ -196,7 +197,7 @@ function MindMap({ status, onTopic }: { status: Map<string, LessonStatus>; onTop
                       <li key={l.id}>
                         <a href={href('rules', l.id)} className={cn('flex min-h-11 items-center gap-space-sm rounded-e-control ps-space-sm pe-space-xs no-underline hover:bg-surface-container-low')}>
                           <ColourDot colour={l.colour} />
-                          <b className="flex-1 font-arabic text-[15px] font-medium text-on-surface">{l.nameAr}</b>
+                          <b className="flex-1 text-arabic-body font-medium text-on-surface">{l.nameAr}</b>
                           {s.correction && <span aria-hidden="true" className="size-2 rounded-full bg-error" />}
                           <LevelMark level={s.level} />
                           <span className="sr-only" lang={isAr ? 'ar' : 'en'}>{t(s.level.replace('-', ' '))}{s.correction ? t(', correction open') : ''}</span>

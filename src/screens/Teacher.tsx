@@ -8,7 +8,7 @@ import { startClass } from './path/ui'
 import { Hint } from './study/Hint'
 import { Item, SeverityTag, refCls } from './library/teacher'
 import { t } from '../i18n'
-import { Page, PageHeader } from '@/components/kit'
+import { Page, PageHeader, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 
 export default function Teacher() {
@@ -22,7 +22,7 @@ export default function Teacher() {
   const teacher = next?.teacherName || d.settings.teacherName
 
   return (
-    <Page>
+    <Page width="wide">
       <PageHeader en="Teacher" ar="الشيخ" />
       <Hint id="teacher">{t('Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.')}</Hint>
 
@@ -35,7 +35,7 @@ export default function Teacher() {
             </h2>
             {next ? (
               <p className="text-body-lg">
-                {teacher ? <bdi lang="ar" className="font-arabic font-semibold">{teacher}</bdi> : t('Your teacher')} ·{' '}
+                {teacher ? <bdi lang="ar" className="font-arabic font-semibold">{teacher}</bdi> : t('Your teacher')}<Sep />
                 {next.plannedPassages.length === 1 ? t('1 passage') : t('{n} passages', { n: next.plannedPassages.length })}
               </p>
             ) : (
@@ -73,7 +73,7 @@ export default function Teacher() {
                   <a href={listenHref(c.verseKey)} className={refCls} lang="ar">{corrLabel(c)}</a>
                   <span className="text-body-md text-on-surface-variant">
                     <T>{c.lessonIds.map((l) => getLesson(l)?.nameAr ?? l).join('، ') || t('No rule tagged')}</T>
-                    {c.note ? <> · <bdi dir="auto">{c.note}</bdi></> : null} · {t('since {day}', { day: dayLabel(c.on ?? c.createdAt.slice(0, 10)) })}
+                    {c.note ? <><Sep /><bdi dir="auto">{c.note}</bdi></> : null}<Sep />{t('since {day}', { day: dayLabel(c.on ?? c.createdAt.slice(0, 10)) })}
                   </span>
                 </Item>
               ))}

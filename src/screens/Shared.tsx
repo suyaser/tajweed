@@ -1,12 +1,12 @@
 // Read-only teacher view of a learner's progress (#/shared/:token). No account, no onboarding, no nav.
 import { useEffect, useState } from 'react'
 import { EmptyState, Group, Skeleton } from '../components'
-import { Chip, Page, PageHeader } from '@/components/kit'
+import { Chip, Page, PageHeader, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { getLesson } from '../content'
 import course from '../../content/course.json'
 import { getSupabase, hasBackend } from '../sync/supabase'
-import { digits, isAr, locale, t } from '../i18n'
+import { digits, isAr, locale, SEP, t } from '../i18n'
 
 interface Summary {
   teacherName: string | null
@@ -34,13 +34,14 @@ export default function Shared({ params }: { params: Record<string, string> }) {
     )
   }, [params.token])
 
-  if (err) return <Page width="narrow"><EmptyState icon="cloud_off" title={t('Could not load this progress: {reason}. Check your connection and try again.', { reason: err })} /></Page>
-  if (data === undefined) return <Page width="narrow"><Skeleton lines={6} label={t('Loading progress…')} /></Page>
-  if (data === null) return <Page width="narrow"><EmptyState icon="link_off" title={t('This link is not valid any more. The learner may have turned it off; ask them for a new one.')} /></Page>
+  const brand = <PageHeader en="Shared progress" ar="التقدّم المشارَك" eyebrow={<span lang="ar">مسار التجويد</span>} />
+  if (err) return <Page>{brand}<EmptyState icon="cloud_off" title={t('Could not load this progress: {reason}. Check your connection and try again.', { reason: err })} /></Page>
+  if (data === undefined) return <Page>{brand}<Skeleton lines={6} label={t('Loading progress…')} /></Page>
+  if (data === null) return <Page>{brand}<EmptyState icon="link_off" title={t('This link is not valid any more. The learner may have turned it off; ask them for a new one.')} /></Page>
 
   const item = 'flex items-start justify-between gap-space-md px-space-md py-space-sm'
   return (
-    <Page width="narrow">
+    <Page>
       <PageHeader en="Shared progress" ar="التقدّم المشارَك" eyebrow={<span lang="ar">مسار التجويد</span>}
         subtitle={<>
           {t('A read-only summary a learner shared')}{data.teacherName ? <> {t('with')} <bdi>{data.teacherName}</bdi></> : null}{t('. It shows lessons, open corrections and study days; nothing here can be changed.')}
@@ -63,9 +64,9 @@ export default function Shared({ params }: { params: Record<string, string> }) {
               return (
                 <li key={l.lessonId} className={item}>
                   <span className="flex min-w-0 flex-col">
-                    {lesson ? <><span lang="ar" className="font-arabic text-[16px] font-medium">{lesson.nameAr}</span>{!isAr && <small className="text-caption text-on-surface-variant">{lesson.nameEn}</small>}</> : l.lessonId}
+                    {lesson ? <><span lang="ar" className="text-arabic-body font-medium">{lesson.nameAr}</span>{!isAr && <small className="text-caption text-on-surface-variant">{lesson.nameEn}</small>}</> : l.lessonId}
                   </span>
-                  <small className="shrink-0 text-label text-on-surface-variant">{fmt(l.on)}{l.step != null ? ` · ${t('level {n}', { n: l.step })}` : ''}</small>
+                  <small className="shrink-0 text-label text-on-surface-variant">{fmt(l.on)}{l.step != null ? `${SEP}${t('level {n}', { n: l.step })}` : ''}</small>
                 </li>
               )
             })}
@@ -95,10 +96,10 @@ export default function Shared({ params }: { params: Record<string, string> }) {
             {data.corrections.map((c, i) => (
               <li key={i} className={item}>
                 <span className="flex min-w-0 flex-col">
-                  <span><b>{digits(c.verseKey)}</b>{c.word && <> · <span lang="ar" className="font-arabic text-[16px]">{c.word}</span></>}</span>
+                  <span><b>{digits(c.verseKey)}</b>{c.word && <><Sep /><span lang="ar" className="font-arabic text-body-lg">{c.word}</span></>}</span>
                   {c.note && <small dir="auto" className="text-body-md text-on-surface-variant">{c.note}</small>}
                 </span>
-                <small className="shrink-0 text-label text-on-surface-variant">{c.severity === 'jali' ? t('clear mistake') : c.severity === 'khafi' ? t('subtle mistake') : ''}{c.on ? ` · ${fmt(c.on)}` : ''}</small>
+                <small className="shrink-0 text-label text-on-surface-variant">{c.severity === 'jali' ? t('clear mistake') : c.severity === 'khafi' ? t('subtle mistake') : ''}{c.on ? `${SEP}${fmt(c.on)}` : ''}</small>
               </li>
             ))}
           </ul>

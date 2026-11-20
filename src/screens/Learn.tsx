@@ -1,6 +1,6 @@
 // #/learn/:lessonId: a v2 lesson (spec 09 §3, docs/10-lesson-ux.md): Hear → Notice → Learn → Say → Find → Check →
 // Recite, in one shell (header, step bar, instruction, one primary). Step state is per lesson (lessonSteps.ts).
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { ScreenProps } from '../app/App'
 import type { Example, Lesson, Verse } from '../core/types'
 import { introduceLesson, recordAttempt, useData } from '../core/store'
@@ -14,13 +14,13 @@ import { findTargets } from '../content/rulemap'
 import { getVerse, wordSegments } from '../quran'
 import { href } from '../app/router'
 import { VerseBlock, type TajweedSegment, type WordMark } from '../components'
-import { Callout, Chip, EmptyState, STEP_ICONS } from '@/components/kit'
+import { Callout, Chip, EmptyState, Panel, STEP_ICONS } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
-import { isAr, t } from '../i18n'
+import { isAr, SEP, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { rangeRef, verseRef } from './study/helpers'
 import { ExampleAudio, ExampleCard, flat, PlayButton, stepperNav, useStepper, useVerse, useStudyAudio, type StudyAudio } from './study/verse'
@@ -83,7 +83,6 @@ async function pickFindAyah(lesson: Lesson, closing?: string): Promise<FindPick 
 /** Steps with the rule card one tap away (review S1): worked example at hand, but never during Check (retrieval). */
 const RULE_SHEET: StepId[] = ['say', 'find', 'recite']
 const COLUMN = 'mx-auto flex w-full max-w-[640px] min-w-0 flex-col gap-space-lg pt-space-sm'
-const CARD = 'flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg'
 const Next = ({ children }: { children: ReactNode }) => <>{children}<Icon name="arrow_forward" size={20} rtlFlip /></>
 
 export default function Learn({ params }: ScreenProps) {
@@ -185,7 +184,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
           title={gate === 'backlog' ? t('Review first.')
             : gate === 'pace' ? t('Come back tomorrow for this lesson.')
               : firstId ? <Tx>{t('Finish {x} first.', { x: firstName })}</Tx>
-                : unit ? (isAr ? t('This lesson opens later, in unit {n} · {name}.', { n: unit.n, name: unit.nameAr }) : <>This lesson opens later, in unit {unit.n} · <span lang="ar">{unit.nameAr}</span>.</>) : t('This lesson is not in the course yet.')}
+                : unit ? (isAr ? t('This lesson opens later, in unit {n} · {name}.', { n: unit.n, name: unit.nameAr }) : <>This lesson opens later, in unit {unit.n}: <bdi lang="ar">{unit.nameAr}</bdi>.</>) : t('This lesson is not in the course yet.')}
           action={
             <div className="flex flex-col items-stretch gap-space-sm">
               {reviewFirst && <Button asChild><a href={href('review') + '?go=1'}>{t('Review')}</a></Button>}
@@ -208,7 +207,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <div className={COLUMN}>
         <LessonHeader lesson={lesson} />
-        <section className={cn(CARD, 'items-center text-center')}>
+        <Panel className="items-center text-center">
           <span className="grid size-16 place-items-center rounded-full bg-secondary-container text-on-secondary-container"><Icon name="star" size={32} fill /></span>
           <h2 className="text-headline-md text-on-surface" tabIndex={-1}>
             <Tx>{firstTime ? t('{x} is done. It comes back in your review tomorrow.', { x: lesson.nameAr }) : t('{x}: practised again.', { x: lesson.nameAr })}</Tx>
@@ -217,7 +216,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
             {course.closing && <Chip icon="verified"><Tx>{t('Recited {x}', { x: rangeRef(course.closing.from, course.closing.to) })}</Tx></Chip>}
             {score.m > 0 && <Chip icon="fact_check" tone="primary">{t('Checks: {n} of {m}', score)}</Chip>}
           </div>
-        </section>
+        </Panel>
         <div className="flex flex-col gap-space-sm">
           {nextId && <Button size="lg" asChild><a href={href('learn', nextId)}><Next><Tx>{t('Next lesson: {x}', { x: getLesson(nextId)?.nameAr ?? '' })}</Tx></Next></a></Button>}
           <Button size={nextId ? 'default' : 'lg'} variant={nextId ? 'secondary' : 'primary'} asChild><a href={href('today')}>{t('Back to today')}</a></Button>
@@ -267,7 +266,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
       {step === 'learn' && <LearnStep key="learn" {...p} ex={sets.learn} />}
       {step === 'say' && <Say key="say" {...p} exs={sets.say} notice={notice} />}
       {step === 'find' && (findPick ? <Find key="find" {...p} found={findPick} /> : (
-        <div role="status" className={CARD}><span className="sr-only">{t('Loading the ayah…')}</span>{[0, 1].map(i => <Skeleton key={i} className="h-10 w-full" />)}</div>
+        <Panel as="div" role="status"><span className="sr-only">{t('Loading the ayah…')}</span>{[0, 1].map(i => <Skeleton key={i} className="h-10 w-full" />)}</Panel>
       ))}
       {step === 'check' && (
         <Check key="check" {...p} qs={qs} onScore={r => setSt(s => scoreCheck(s, r, day))} />
@@ -394,8 +393,10 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
       </>
     )
   const allRated = Object.keys(rated).length >= exs.length
+  const recorded = useRef(new Set<number>()) // one attempt per word: a double tap (or a change of mind) never logs twice
   const rate = (same: boolean) => {
-    recordAttempt({ kind: 'lesson', refId: lesson.id, source: 'selfrate', exampleId: ex.id, chosen: same ? 'same' : 'not-yet', correct: same, countsForSchedule: false })
+    if (!recorded.current.has(sp.at)) recordAttempt({ kind: 'lesson', refId: lesson.id, source: 'selfrate', exampleId: ex.id, chosen: same ? 'same' : 'not-yet', correct: same, countsForSchedule: false })
+    recorded.current.add(sp.at)
     audio.stop()
     const r = { ...rated, [sp.at]: same }
     setRated(r)
@@ -423,7 +424,7 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
       <ExampleCard key={ex.id} ex={ex} audio={audio} audioRow={false} nav={stepperNav(sp, audio)} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
       <SayRows key={`rows:${ex.id}`} ex={ex} audio={audio} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
       {notice}
-      <section className={CARD} aria-labelledby="say-rate">
+      <Panel aria-labelledby="say-rate">
         <h3 id="say-rate" className="text-headline-md text-on-surface">{t('Did it sound the same?')}</h3>
         <div className="grid grid-cols-2 gap-space-sm" role="group" aria-label={t('Rate yourself')}>
           <Button variant="secondary" disabled={!ok} aria-pressed={mine === false} onClick={() => rate(false)}
@@ -436,7 +437,7 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
           </Button>
         </div>
         {!ok && <p className="text-body-md text-on-surface-variant">{t('Play the reciter first, then rate yourself.')}</p>}
-      </section>
+      </Panel>
       <BottomBar hint={!canGo && t('Rate each word to continue.')}>
         <Button size="lg" disabled={!canGo} onClick={onNext}><Next>{nextLabel}</Next></Button>
       </BottomBar>
@@ -461,7 +462,7 @@ function Find({ found, audio, nextLabel, onNext, onDone }: StepProps & { found: 
   const toggle = (n: number) => !checked && setPicked(p => (p.includes(n) ? p.filter(x => x !== n) : [...p, n]))
   return (
     <>
-      <section className={CARD}>
+      <Panel>
         <div className="flex flex-wrap items-center justify-between gap-space-sm">
           <Chip icon="bookmark"><span lang="ar">{verseRef(v.verseKey)}</span></Chip>
           <PlayButton audio={audio} label={verseRef(v.verseKey)} text={t('Play the ayah')} onClick={() => audio.ayah(v)} />
@@ -469,9 +470,9 @@ function Find({ found, audio, nextLabel, onNext, onDone }: StepProps & { found: 
         <VerseBlock segments={flat(wordSegments(v) as TajweedSegment[][])} pauses={v.marks} verseKey={v.verseKey}
           size="focus" tajweed={false} marks={marks} onWord={n => toggle(n)} chips />
         <p className="text-caption text-on-surface-variant">{t('Checked against tajweed data, which can miss a rule that depends on stopping.')}</p>
-      </section>
+      </Panel>
       <p role="status" className="flex items-center justify-center gap-space-xs text-center text-body-lg font-medium text-on-surface empty:hidden">
-        {checked && (!missed && !extra ? t('All found.') : [missed && t('{n} missed (dashed)', { n: missed }), extra && t('{n} without it (✕)', { n: extra })].filter(Boolean).join(' · '))}
+        {checked && (!missed && !extra ? t('All found.') : [missed && t('{n} missed', { n: missed }), extra && t('{n} not this one', { n: extra })].filter(Boolean).join(SEP))}
       </p>
       {checked && neutral.some(n => picked.includes(n)) && (
         <Callout variant="note"><Tx>{t('The last word is not counted either way: stopping on it makes its مد an عارض للسكون, which you learn next.')}</Tx></Callout>

@@ -12,6 +12,7 @@ const DYNAMIC = [
   'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'playing', 'marked', 'found', 'missed', 'not this rule',
   'pause mark: continuing is better', 'pause mark: stopping is better', 'pause mark: stop', 'pause mark: do not stop',
   'pause mark: stopping allowed', 'pause mark: stop at one of the pair', 'pause mark: sakt', 'prostration mark', 'pause mark',
+  'Found', 'Missed', 'Not this one',
 ]
 
 const LIT = /\bt\(\s*(['"])((?:\\.|(?!\1).)*)\1/g

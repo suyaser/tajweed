@@ -53,7 +53,7 @@ export default function TeacherNew({ params }: ScreenProps) {
   }
 
   return (
-    <Page width="narrow">
+    <Page>
       <form className="flex flex-col gap-space-lg" onSubmit={(e) => { e.preventDefault(); save() }}>
         {existing && !params.id && <Msg className="text-on-surface-variant">{t('You already have a plan for {day}; changes go into it.', { day: dayLabel(existing.on) })}</Msg>}
         <div className="grid gap-space-md sm:grid-cols-2">

@@ -183,7 +183,7 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
   if (ex0)
     sections.push(
       <SectionCard key="ex" n={++n} {...bi('Example')}>
-        <ExampleCard ex={ex0} eyebrow={t('Example')} className="mt-space-xs rounded-control border-0 bg-surface-container-low" audio={audio} played={played} onPlayed={() => setPlayed(true)} />
+        <ExampleCard ex={ex0} eyebrow={false} className="mt-space-xs rounded-control border-0 bg-surface-container-low" audio={audio} played={played} onPlayed={() => setPlayed(true)} />
       </SectionCard>,
     )
 

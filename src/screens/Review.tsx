@@ -9,7 +9,7 @@ import { diffDays, today } from '../core/day'
 import { getLesson, lessons, pairs } from '../content'
 import { units } from '../content/course'
 import { href } from '../app/router'
-import { Callout, EmptyState } from '@/components/kit'
+import { Callout, EmptyState, Sep } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { isAr, locale, t } from '../i18n'
@@ -108,7 +108,7 @@ export default function Review({ params }: ScreenProps) {
       <div className={COLUMN}>
         <section className="flex flex-col items-center gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-lg text-center">
           <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
-            {isAr ? 'السبق: درس اليوم الجديد' : <>Today's new lesson · <span lang="ar" className="text-arabic-label">السبق</span></>}
+            {isAr ? 'السبق: درس اليوم الجديد' : <>Today's new lesson<Sep /><span lang="ar" className="text-arabic-label">السبق</span></>}
           </p>
           <span className="grid size-14 place-items-center rounded-full bg-primary-container text-on-primary-container"><Icon name="menu_book" size={28} /></span>
           <h2 className="text-arabic-headline text-on-surface" lang="ar">{l?.nameAr}</h2>

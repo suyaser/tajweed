@@ -13,7 +13,7 @@ import { playMe, playModelThenMe, type ComparePhase } from '../audio/compare'
 import {
   Actions, AudioTransport, Button, EmptyState, Legend, Msg, Nudge, Passage, RecordButton, Sheet, Skeleton, T, ToggleChip, fieldCls, type PassageAyah,
 } from '../components'
-import { Page } from '@/components/kit'
+import { Page, Panel, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
 import { Hint } from './study/Hint'
@@ -291,7 +291,7 @@ export default function Listen({ params }: ScreenProps) {
           )}
         </div>
 
-        <section aria-label={t('Record yourself')} className="flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+        <Panel aria-label={t('Record yourself')}>
           <RecordButton
             state={recOff ? 'off' : recording ? 'recording' : saved != null ? 'saved' : 'idle'}
             seconds={recording && rec.state.startedAt ? (now - rec.state.startedAt) / 1000 : (saved ?? 0) / 1000}
@@ -322,11 +322,11 @@ export default function Listen({ params }: ScreenProps) {
               <ul className="flex flex-col divide-y divide-outline-variant px-space-md">
                 {recs.map((r) => (
                   <li key={r.id} className="flex flex-wrap items-center justify-between gap-x-space-sm gap-y-1 py-space-xs">
-                    <span className="text-body-md tabular-nums">{fmtWhen(r.createdAt)} · {mmss(r.durationMs)}</span>
+                    <span className="text-body-md tabular-nums">{fmtWhen(r.createdAt)}<Sep />{mmss(r.durationMs)}</span>
                     <span className="flex flex-wrap items-center">
                       <Button variant="ghost" size="sm" onClick={() => me(r)} disabled={recording} aria-label={t('Play me, {when}', { when: fmtWhen(r.createdAt) })}><Icon name="play_arrow" size={18} fill />{t('Me')}</Button>
                       <Button variant="ghost" size="sm" onClick={() => modelThenMe(r)} disabled={!verses || recording} aria-label={t('Model, then me, {when}', { when: fmtWhen(r.createdAt) })}>{t('Model, then me')}</Button>
-                      <Button variant="ghost" size="sm" className="w-10 px-0 hover:text-error" onClick={() => remove(r.id).then(refresh)} aria-label={t('Delete recording {when}', { when: fmtWhen(r.createdAt) })}>
+                      <Button variant="ghost" size="sm" className="w-11 px-0 hover:text-error" onClick={() => remove(r.id).then(refresh)} aria-label={t('Delete recording {when}', { when: fmtWhen(r.createdAt) })}>
                         <Icon name="delete" size={20} /><span className="sr-only">{t('Delete')}</span>
                       </Button>
                     </span>
@@ -341,7 +341,7 @@ export default function Listen({ params }: ScreenProps) {
             <Button variant="tertiary" className="px-0" onClick={askTeacher}><Icon name="record_voice_over" size={20} />{t('Not sure? Ask your teacher')}</Button>
             {asked && <span role="status">{asked} <a href={href('teacher')} className="font-medium text-primary">{t('See sessions')}</a></span>}
           </p>
-        </section>
+        </Panel>
 
         <div className="flex flex-col gap-space-sm text-body-md">
           <a href={quranCom} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center gap-1 font-medium text-primary"><T>{t('Open on Quran.com')}</T><Icon name="open_in_new" size={18} /></a>

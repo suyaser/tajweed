@@ -7,7 +7,7 @@ import { useRecorder } from '../../audio/useRecorder'
 import { playModelThenMe } from '../../audio/compare'
 import { save } from '../../audio/recordings'
 import { CorrectionTag, VerseBlock } from '../../components'
-import { Callout } from '@/components/kit'
+import { Callout, Panel } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -54,14 +54,14 @@ export function CorrectionStep({ c, audio, onRate, onNext }: {
       <p className="flex flex-wrap items-center gap-space-sm text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
         {t('Teacher correction')} <CorrectionTag severity={c.severity} gloss />
       </p>
-      <section className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+      <Panel className="gap-space-sm">
         {vs.verse ? (
           <VerseBlock text={vs.verse.text} size="focus" reference={verseRef(c.verseKey)} marks={c.wordPosition ? { [c.wordPosition]: 'ring' } : undefined} />
         ) : vs.failed ? <p className="text-body-md text-on-surface-variant">{t('The text needs a connection. Recite from your muṣḥaf.')}</p>
           : <div role="status" className="flex flex-col gap-3 py-space-md">{[0, 1].map(i => <Skeleton key={i} className="h-8 w-full" />)}</div>}
         {c.note && <Callout variant="note" title={t("Your teacher's note: ")}><Tx>{c.note}</Tx></Callout>}
         {lessons.length > 0 && <p className="text-body-md text-on-surface-variant"><Tx>{t('Rule: {x}', { x: lessons.map(l => l!.nameAr).join(' · ') })}</Tx></p>}
-      </section>
+      </Panel>
       <RowCard n={1} title={t('Listen')}>
         {audio.offline
           ? <p className="text-body-md text-on-surface-variant">{t('Audio needs a connection, so skip listening today.')}</p>
@@ -75,14 +75,14 @@ export function CorrectionStep({ c, audio, onRate, onNext }: {
           <Icon name="compare_arrows" size={20} />{t('Model, then me')}
         </Button>
       </RowCard>
-      <section className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+      <Panel className="gap-space-sm">
         <h3 className="text-headline-md text-on-surface">{t('Did you apply the fix?')}</h3>
         <div className="grid grid-cols-2 gap-space-sm">
           <Button variant={rated === true ? 'primary' : 'secondary'} className="h-auto min-h-12 whitespace-normal" disabled={!canRate || rated != null} onClick={() => rate(true)}>{t('Applied the fix')}</Button>
           <Button variant={rated === false ? 'primary' : 'secondary'} className="h-auto min-h-12 whitespace-normal" disabled={!canRate || rated != null} onClick={() => rate(false)}>{t('Not yet')}</Button>
         </div>
         <p className="text-center text-body-md text-on-surface-variant">{t('Your own rating')}{canRate ? '' : t(' · record first')}</p>
-      </section>
+      </Panel>
       <div aria-live="polite" className="flex flex-col gap-space-md">
         {rated != null && (
           <>

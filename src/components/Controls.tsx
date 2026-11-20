@@ -4,8 +4,8 @@ import type { ColourKey } from '../core/types'
 import { cn } from '@/lib/utils'
 import { Button as UIButton } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
-import { Sheet as UISheet, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet'
-import { Chip, EmptyState as KitEmpty, SegmentedControl as KitSegmented } from '@/components/kit'
+import { Sheet as UISheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
+import { Chip, EmptyState as KitEmpty, SegmentedControl as KitSegmented, Sep } from '@/components/kit'
 import { digits, isAr, t } from '../i18n'
 
 /* ---------- buttons ---------- */
@@ -33,7 +33,7 @@ export function SegmentedControl<V extends string>(p: { options: { value: V; lab
   return <KitSegmented {...p} />
 }
 
-/** Labelled toggle chip with a text value (Loop ×3, Speed 0.75×, Gap on). */
+/** Labelled toggle chip with a text value (Loop ×3, Gap on). */
 export function ToggleChip({ label, value, pressed, onClick, icon }: { label: string; value: string; pressed?: boolean; onClick: () => void; icon?: string }) {
   return <Chip icon={icon} pressed={!!pressed} onClick={onClick}>{label} <b className="font-semibold">{value}</b></Chip>
 }
@@ -119,10 +119,9 @@ export function Nudge({ children, action, onDismiss }: { children: ReactNode; ac
 export function Sheet({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: ReactNode; children: ReactNode }) {
   return (
     <UISheet open={open} onOpenChange={(o) => !o && onClose()}>
-      <SheetContent dir={isAr ? 'rtl' : 'ltr'} className="gap-space-md overflow-y-auto p-space-lg pt-space-md">
+      <SheetContent dir={isAr ? 'rtl' : 'ltr'} aria-describedby={undefined} className="gap-space-md overflow-y-auto p-space-lg pt-space-md">
         <div aria-hidden="true" className="mx-auto h-1 w-10 shrink-0 rounded-full bg-surface-container-highest" />
         <SheetTitle className="pe-12">{title}</SheetTitle>
-        <SheetDescription className="sr-only">{title}</SheetDescription>
         <div className="flex flex-col gap-space-md text-body-md">{children}</div>
       </SheetContent>
     </UISheet>
@@ -244,8 +243,8 @@ export interface AudioTransportProps {
 
 const tbtn = 'flex h-12 min-w-12 cursor-pointer items-center justify-center gap-1 rounded-full px-space-sm text-label font-semibold text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface'
 
-/** Docked player transport (design §5.7, §6, §7.5). Next ayah sits on the LEFT (RTL text) in both UI languages
- *  (the row is pinned LTR); play is never mirrored. */
+/** Docked player transport (design §5.7, §6, §7.5). The ayahs run right to left (Arabic text) in both UI languages, so
+ *  the row is pinned LTR: ← Next on the left, Prev → on the right (the ← / → keys do the same); play is never mirrored. */
 export function AudioTransport(p: AudioTransportProps) {
   return (
     <div className="flex flex-col gap-space-md" role="group" aria-label={t('Recitation player')}>
@@ -263,26 +262,26 @@ export function AudioTransport(p: AudioTransportProps) {
       <p className="min-h-6 text-center text-body-md text-on-surface-variant" aria-live="polite">
         {p.unavailable ??
           (p.yourTurn != null ? (
-            <b className="font-semibold text-secondary">{t('Your turn')} · <span lang="ar">ردّد</span> · {t('{n}s', { n: Math.ceil(p.yourTurn) })}</b>
+            <b className="font-semibold text-secondary">{t('Your turn')}{!isAr && <><Sep /><span lang="ar">ردّد</span></>}<Sep />{t('{n}s', { n: Math.ceil(p.yourTurn) })}</b>
           ) : (
-            <>{p.speaker && <><bdi lang="ar">{p.speaker}</bdi> · </>}<bdi lang="ar" className="text-on-surface">{p.label}</bdi></>
+            <>{p.speaker && <><bdi lang="ar">{p.speaker}</bdi><Sep /></>}<bdi lang="ar" className="text-on-surface">{p.label}</bdi></>
           ))}
       </p>
       <div className="flex items-center justify-center gap-space-lg" dir="ltr">
         <button type="button" className={tbtn} onClick={p.onNext} aria-label={t('Next ayah')}>
-          <Icon name="skip_previous" />{t('Next')}
+          <Icon name="arrow_back" />{t('Next')}
         </button>
         <button type="button" onClick={p.onPlayPause} disabled={!!p.unavailable} aria-label={`${p.playing ? t('Pause') : t('Play')} ${p.label}`}
           className={cn('grid size-16 cursor-pointer place-items-center rounded-full bg-primary-fill text-on-primary shadow-card transition-transform hover:bg-primary-hover active:scale-95 disabled:cursor-default disabled:opacity-50', p.loading && 'animate-pulse')}>
           <Icon name={p.playing ? 'pause' : 'play_arrow'} size={32} fill />
         </button>
         <button type="button" className={tbtn} onClick={p.onPrev} aria-label={t('Previous ayah')}>
-          {t('Prev')}<Icon name="skip_next" />
+          {t('Prev')}<Icon name="arrow_forward" />
         </button>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-x-space-sm gap-y-space-md">
         <ToggleChip icon="repeat" label={t('Loop')} value={digits(`×${p.loop}`)} pressed={p.loop > 1} onClick={p.onLoop} />
-        <ToggleChip icon="speed" label={t('Speed')} value={digits(`${p.rate}×`)} pressed={p.rate !== 1} onClick={p.onRate} />
+        <Chip icon="speed" pressed={p.rate !== 1} onClick={p.onRate}>{t('Slower')}</Chip>
         <ToggleChip icon="hourglass_empty" label={t('Gap')} value={p.gap ? t('on') : t('off')} pressed={p.gap} onClick={p.onGap} />
         {p.chips}
       </div>

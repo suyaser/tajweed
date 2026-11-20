@@ -5,6 +5,8 @@ import { BASMALA_PREFIX } from '../quran/data'
 import { arDigits } from './bidi'
 import { isAr, t } from '../i18n'
 import { cn } from '@/lib/utils'
+import { Icon } from '@/components/ui/icon'
+import { Sep } from '@/components/kit'
 
 // Tailwind styling (docs/13), set once on the text block: words (.w), the focus highlight (mark.focus) and pause marks
 // keep their plain class names (other screens and tests hook on them).
@@ -17,16 +19,27 @@ const TEXT = cn(
   '[&_.w[data-mark=ring]]:bg-focus-bg [&_.w[data-mark=ring]]:shadow-[0_0_0_2px_var(--color-focus-ink)]',
   '[&_.w[data-mark=found]]:bg-success-container [&_.w[data-mark=found]]:shadow-[0_0_0_2px_var(--color-success)]',
   '[&_.w[data-mark=missed]]:outline-2 [&_.w[data-mark=missed]]:outline-offset-1 [&_.w[data-mark=missed]]:outline-dashed [&_.w[data-mark=missed]]:outline-gold',
-  '[&_.w[data-mark=wrong]]:outline-2 [&_.w[data-mark=wrong]]:outline-offset-1 [&_.w[data-mark=wrong]]:outline-dotted [&_.w[data-mark=wrong]]:outline-outline [&_.w[data-mark=wrong]]:line-through',
-  // find results carry a small label above the word (✓ / missed / ✕)
-  '[&_.w[data-label]]:relative [&_.w[data-label]]:before:absolute [&_.w[data-label]]:before:inset-x-0 [&_.w[data-label]]:before:-top-[0.9em] [&_.w[data-label]]:before:text-center',
-  '[&_.w[data-label]]:before:font-ui [&_.w[data-label]]:before:text-[12px] [&_.w[data-label]]:before:leading-none [&_.w[data-label]]:before:font-bold [&_.w[data-label]]:before:whitespace-nowrap [&_.w[data-label]]:before:text-on-surface [&_.w[data-label]]:before:content-[attr(data-label)]',
+  '[&_.w[data-mark=wrong]]:outline-2 [&_.w[data-mark=wrong]]:outline-offset-1 [&_.w[data-mark=wrong]]:outline-dotted [&_.w[data-mark=wrong]]:outline-outline',
   '[&_mark.focus]:rounded-md [&_mark.focus]:bg-focus-bg [&_mark.focus]:px-0.5 [&_mark.focus]:text-focus-ink [&_mark.focus]:[-webkit-text-stroke:0.025em_currentColor]',
   '[&_.pause]:text-[0.8em] [&_.pause]:text-secondary [&_.br]:text-[0.85em] [&_.br]:text-gold',
 )
 /** Find: each tappable word a chip on its own tinted tile. */
 const CHIPS = '[&_.br]:hidden [&_.w[role=button]]:mx-0.5 [&_.w[role=button]]:my-1.5 [&_.w[role=button]]:inline-block [&_.w[role=button]]:bg-surface-container-low [&_.w[role=button]]:px-2 [&_.w[role=button]]:leading-[1.9] [&_.w[role=button]]:hover:bg-surface-container'
-const LABEL: Partial<Record<WordMark, string>> = { found: '✓', missed: 'missed', wrong: '✕' }
+/** Find results: a labelled badge under the word (in the flow, so nothing is clipped; never over the Quran text). */
+const BADGE: Partial<Record<WordMark, { icon: string; label: string; cls: string }>> = {
+  found: { icon: 'check', label: 'Found', cls: 'bg-success-container text-on-success-container' },
+  missed: { icon: 'error', label: 'Missed', cls: 'bg-secondary-container text-on-secondary-container' },
+  wrong: { icon: 'close', label: 'Not this one', cls: 'bg-surface-container-high text-on-surface-variant' },
+}
+function Badge({ mark }: { mark: WordMark }) {
+  const b = BADGE[mark]!
+  return (
+    <span aria-hidden lang={isAr ? 'ar' : 'en'} dir={isAr ? 'rtl' : 'ltr'}
+      className={cn('mx-auto mt-0.5 mb-1 flex w-fit items-center gap-0.5 rounded-full ps-1 pe-2 text-label leading-6 font-semibold whitespace-nowrap', b.cls)}>
+      <Icon name={b.icon} size={14} />{t(b.label)}
+    </span>
+  )
+}
 const SIZE = {
   inline: 'text-[24px] leading-[2.1] sm:text-[26px]',
   read: 'text-[30px] leading-[2.2] sm:text-[36px]',
@@ -109,20 +122,19 @@ export function WordToken({ parts, mark, tajweed = true, isolate, onTap, tabbabl
       <Fragment key={i}>{t}</Fragment>
     )
   })
-  const label = mark && LABEL[mark] && t(LABEL[mark]!)
-  if (!onTap) return <span className="w" data-mark={mark} data-label={label || undefined}>{inner}</span>
+  const badge = mark && BADGE[mark] && <Badge mark={mark} />
+  if (!onTap) return <span className="w" data-mark={mark}>{inner}{badge}</span>
   return (
     <span
       className="w"
       data-w=""
       data-mark={mark}
-      data-label={label || undefined}
       role="button"
       tabIndex={tabbable ? 0 : -1}
       aria-label={mark ? `${word}${t(', ')}${t(MARK_LABEL[mark])}` : word}
       onClick={onTap}
     >
-      {inner}
+      {inner}{badge}
     </span>
   )
 }
@@ -264,7 +276,7 @@ export function VerseBlock({
       </p>
       {hasCaption && (
         <figcaption id={capId} className={cn('flex flex-wrap items-center gap-3 text-caption text-on-surface-variant', size === 'focus' && 'justify-center')}>
-          {stopping && <em className="stop rounded border border-current px-1.5 text-[11px] font-bold tracking-wide text-on-surface not-italic">◼ وقف{!isAr && <> · <span lang="en" className="font-ui">stopping here</span></>}</em>}
+          {stopping && <em className="stop rounded border border-current px-1.5 text-label font-bold text-on-surface not-italic">◼ وقف{!isAr && <><Sep /><span lang="en" className="font-ui">stopping here</span></>}</em>}
           {reference && <span className="ref text-arabic-label text-on-surface-variant">{reference}</span>}
           {actions}
         </figcaption>

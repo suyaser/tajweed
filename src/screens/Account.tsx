@@ -14,10 +14,10 @@ export default function Account() {
   const [notice, setNotice] = useState('')
   useEffect(() => { const id = setInterval(() => tick((n) => n + 1), 30000); return () => clearInterval(id) }, []) // keeps "2 min ago" fresh
 
-  if (!hasBackend) return <Page width="narrow"><Group en="Account and backup" ar="الحساب والنسخ الاحتياطي"><p className="p-space-md">{t('Sign-in is not available in this version of the app. Your progress stays on this device; use Back up in Settings.')}</p></Group></Page>
+  if (!hasBackend) return <Page><Group en="Account and backup" ar="الحساب والنسخ الاحتياطي"><p className="p-space-md">{t('Sign-in is not available in this version of the app. Your progress stays on this device; use Back up in Settings.')}</p></Group></Page>
 
   return (
-    <Page width="narrow">
+    <Page>
       {authError && (
         <div role="alert" className="flex flex-wrap items-center gap-space-sm rounded-card bg-error-container p-space-md text-on-error-container">
           <span className="flex-1">{t('Sign-in did not finish:')} {authError}</span>

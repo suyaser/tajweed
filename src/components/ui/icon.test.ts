@@ -13,8 +13,8 @@ export function iconNames(src: string): string[] {
   const out: string[] = []
   const quoted = (s: string) => [...s.replace(/[!=]==\s*['"][^'"]*['"]/g, '').matchAll(/['"]([a-z][a-z0-9_]+)['"]/g)].map((m) => m[1])
   for (const m of src.matchAll(/<Icon\b[^>]*?\bname=(?:"([^"]+)"|\{((?:[^{}]|\{[^{}]*\})*)\})/g)) out.push(...(m[1] ? [m[1]] : quoted(m[2])))
-  for (const m of src.matchAll(/\bicon\??(?:=|:\s*)(?:"([^"]+)"|'([^']+)'|\{((?:[^{}]|\{[^{}]*\})*)\})/g)) out.push(...(m[1] || m[2] ? [m[1] || m[2]] : quoted(m[3])))
-  for (const m of src.matchAll(/[A-Z_]*ICONS?\b[^=\n]*=\s*\{([^}]*)\}/g)) out.push(...quoted(m[1]))
+  for (const m of src.matchAll(/\bicon\??\s*(?:=|:)\s*(?:"([^"]+)"|'([^']+)'|\{((?:[^{}]|\{[^{}]*\})*)\})/g)) out.push(...(m[1] || m[2] ? [m[1] || m[2]] : quoted(m[3])))
+  for (const m of src.matchAll(/[A-Z_]*ICONS?\b[^=\n]*=\s*[{[]([^}\]]*)[}\]]/g)) out.push(...quoted(m[1]))
   return out.filter((n) => /^[a-z][a-z0-9_]*$/.test(n))
 }
 

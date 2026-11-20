@@ -14,8 +14,7 @@ const CHIP = {
 export type ChipTone = keyof typeof CHIP
 
 /**
- * 28px pill: metadata (reference, makhraj), or a toggle when `onClick` is given (`pressed` → aria-pressed).
- * A clickable chip keeps a 48px hit area via an invisible outset.
+ * 28px pill: metadata (reference, makhraj), or a 44px toggle when `onClick` is given (`pressed` → aria-pressed).
  */
 export function Chip({ tone = 'neutral', icon, fill, pressed, onClick, children, className, label }: {
   tone?: ChipTone; icon?: string; fill?: boolean; pressed?: boolean; onClick?: () => void; children?: ReactNode; className?: string
@@ -32,7 +31,7 @@ export function Chip({ tone = 'neutral', icon, fill, pressed, onClick, children,
   if (!onClick) return <span className={cls}>{body}</span>
   return (
     <button type="button" aria-pressed={pressed} aria-label={label} onClick={onClick}
-      className={cn(cls, 'cursor-pointer transition-colors after:absolute after:-inset-x-1 after:-inset-y-2.5 after:content-[""] hover:brightness-95')}>
+      className={cn(cls, 'h-11 min-w-11 cursor-pointer px-3.5 transition-colors hover:brightness-95', !children && 'w-11 px-0', pressed === false && 'border-outline-variant bg-surface-container-lowest')}>
       {body}
     </button>
   )

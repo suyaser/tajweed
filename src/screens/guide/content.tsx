@@ -9,7 +9,7 @@ import { Tx } from '../study/i18n'
 // Language is fixed per page load, so module-level t() is safe.
 export const BASICS: { ar: string; en: string; body: string }[] = [
   { ar: 'المسار', en: t('The course'), body: t('Ten units that follow real surahs, from الناس back to الضحى, then الفاتحة and beyond. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.') },
-  { ar: 'الدرس', en: t('A lesson'), body: t('Seven short steps, about 15 minutes: hear real words, notice the sound, learn the rule, say it, find it in an ayah, check yourself, then recite a passage. At most two new lessons a day.') },
+  { ar: 'الدرس', en: t('A lesson'), body: t('Seven short steps: hear real words, notice the sound, learn the rule, say it, find it in an ayah, check yourself, then recite a passage. At most two new lessons a day.') },
   { ar: 'المراجعة', en: t('Review'), body: t('Every rule you learn is asked daily for a week, then after 3, 7, 14, 30, 60 and 120 days. Answer right and it waits longer; answer wrong and it comes back sooner.') },
   { ar: 'الشيخ', en: t('A teacher (optional)'), body: t('The app never grades your recitation. If you have a teacher, plan what to recite, log corrections in class, and they come back in your review until fixed.') },
 ]
@@ -58,7 +58,7 @@ export function FullGuide() {
           <li>{t('After a unit\'s last lesson comes its finale: a passage you recite. “I recited it” opens the next unit.')}</li>
           <li>{t('Some units list lines of تحفة الأطفال or الجزرية to memorise. They are optional.')}</li>
         </ul>
-        <p><a className="inline-flex min-h-12 items-center font-semibold text-primary no-underline" href={href('plan')}>{t('Open the course map ›')}</a></p>
+        <p><a className="inline-flex min-h-12 items-center font-semibold text-primary no-underline" href={href('plan')}>{t('Open the course map')}<Icon name="chevron_right" size={20} rtlFlip /></a></p>
       </Sec>
 
       <Sec ar="الدرس" en={t('The seven lesson steps')} icon="menu_book">

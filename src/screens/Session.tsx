@@ -11,14 +11,14 @@ import { AddPassage, startClass, useVerses } from './path/ui'
 import { Item, ReasonTag, SeverityTag, refCls } from './library/teacher'
 import { t } from '../i18n'
 import { cn } from '@/lib/utils'
-import { Chip, Page } from '@/components/kit'
+import { Chip, Page, Panel, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 
 export default function Session({ params }: ScreenProps) {
   const d = useData()
   const s = d.sessions.find((x) => x.id === params.id && !x.deletedAt)
   if (!s)
-    return <Page width="narrow"><EmptyState icon="event_busy" title={t('This session is not on this device.')} action={<Button href="#/teacher">{t('Back to sessions')}</Button>} /></Page>
+    return <Page><EmptyState icon="event_busy" title={t('This session is not on this device.')} action={<Button href="#/teacher">{t('Back to sessions')}</Button>} /></Page>
   return params.sheet ? <InClass d={d} s={s} index={+(params.p ?? 0)} /> : s.status === 'done' ? <Summary d={d} s={s} /> : <PlanView d={d} s={s} />
 }
 
@@ -33,7 +33,7 @@ function Heading({ s, status }: { s: SessionT; status: string }) {
         <span className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{status}</span>
         <h2 className="text-headline-md">
           {dayLabel(s.on)}
-          {s.teacherName && <> · <bdi lang="ar" className="font-arabic">{s.teacherName}</bdi></>}
+          {s.teacherName && <><Sep /><bdi lang="ar" className="font-arabic">{s.teacherName}</bdi></>}
         </h2>
       </div>
     </header>
@@ -165,7 +165,7 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
       </div>
 
       {p && (
-        <section aria-label={t('Passage')} className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+        <Panel aria-label={t('Passage')} className="gap-space-sm">
           <h2 className="font-naskh text-[24px] leading-[1.6] font-bold" lang="ar">{refLabel(p.from, p.to)}</h2>
           {loading && <Skeleton verse lines={3} label={t('Loading the text…')} />}
           {error && <p className="text-on-surface-variant">{error} {t('You can still log a correction on the whole ayah after reconnecting.')}</p>}
@@ -179,12 +179,12 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
             />
           )}
           <p className="flex items-center gap-space-xs text-body-md text-on-surface-variant"><Icon name="touch_app" size={18} />{t('Tap the word your teacher corrected, or an ayah number for the whole ayah.')}</p>
-        </section>
+        </Panel>
       )}
 
       {saved && (
         <p role="status" className="flex flex-wrap items-center gap-space-sm rounded-card bg-primary-container px-space-md py-space-xs text-on-primary-container">
-          <Icon name="check_circle" size={20} fill />{t('Saved')} · <span className="font-naskh text-[18px]" lang="ar">{corrLabel(saved)}</span> <SeverityTag severity={saved.severity} />
+          <Icon name="check_circle" size={20} fill />{t('Saved')}<Sep /><span className="font-naskh text-body-lg" lang="ar">{corrLabel(saved)}</span> <SeverityTag severity={saved.severity} />
           <Button variant="tertiary" className="ms-auto" onClick={() => { undoCorrection(saved.id); setSaved(null) }}><Icon name="undo" size={20} />{t('Undo')}</Button>
         </p>
       )}
@@ -247,7 +247,7 @@ function Recheck({ c, sessionId, d }: { c: Correction; sessionId: string; d: Use
     <li className="flex flex-col gap-space-sm p-space-md">
       <span className="flex flex-col gap-0.5">
         <span className="flex flex-wrap items-center gap-space-sm"><span className={refCls} lang="ar">{corrLabel(c)}</span> <SeverityTag severity={c.severity} /></span>
-        <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
+        <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <><Sep /><bdi dir="auto">{c.note}</bdi></>}</span>
       </span>
       {c.status === 'resolved' ? (
         <span className="flex items-center gap-1 text-body-md text-primary"><Icon name="check_circle" size={18} fill />{t('Correct now · closed')}</span>
@@ -297,7 +297,7 @@ function CorrectionSheet({ target, verse, d, onClose, onSave }: {
     <Sheet
       open={!!target}
       onClose={onClose}
-      title={target ? <span lang="ar" className="font-naskh">{target.text ? `${target.text} · ` : 'الآية كاملة · '}{refLabel(target.key)}</span> : ''}
+      title={target ? <span lang="ar" className="font-naskh">{target.text ? `${target.text}، ` : 'الآية كاملة، '}{refLabel(target.key)}</span> : ''}
     >
       <div className="grid grid-cols-2 gap-space-sm" role="group" aria-label={t('Severity')}>
         {(['jali', 'khafi'] as const).map((sv) => (
@@ -387,7 +387,7 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
             {mine.map((c) => (
               <Item key={c.id} end={<SeverityTag severity={c.severity} />}>
                 <a className={refCls} lang="ar" href={listenHref(c.verseKey)}>{corrLabel(c)}</a>
-                <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
+                <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <><Sep /><bdi dir="auto">{c.note}</bdi></>}</span>
               </Item>
             ))}
           </ul>

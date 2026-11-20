@@ -13,7 +13,7 @@ import { rangeParam, refLabel } from './library/range'
 import { ColourDot, LevelChip, Letters } from './library/ui'
 import { isAr, t } from '../i18n'
 import { cn } from '@/lib/utils'
-import { Callout, Chip, CountBeats, Page, SectionCard } from '@/components/kit'
+import { Callout, Chip, CountBeats, Page, SectionCard, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 
 export default function Rule({ params }: ScreenProps) {
@@ -71,10 +71,7 @@ export default function Rule({ params }: ScreenProps) {
       <div className="grid items-start gap-space-lg lg:grid-cols-[240px_1fr]">
         {topic && (
           <nav aria-label={t('Topics')} className="hidden rounded-card border border-outline-variant bg-surface-container-lowest p-space-sm lg:sticky lg:top-space-lg lg:block">
-            <a href={href('rules')} className="flex min-h-11 items-center gap-1 rounded-control px-space-sm text-label font-semibold text-primary no-underline hover:bg-surface-container">
-              <Icon name="arrow_back" rtlFlip size={18} />{t('All rules')}
-            </a>
-            <p lang="ar" className="px-space-sm pt-space-sm pb-space-xs font-naskh text-[16px] font-bold text-secondary">{topic.nameAr}</p>
+            <p lang="ar" className="px-space-sm pt-space-xs pb-space-xs font-naskh text-body-lg font-bold text-secondary">{topic.nameAr}</p>
             <ul className="flex flex-col gap-0.5">
               {siblings.map((l) => (
                 <li key={l.id}>
@@ -82,7 +79,7 @@ export default function Rule({ params }: ScreenProps) {
                     className={cn('flex min-h-11 items-center gap-space-sm rounded-control px-space-sm no-underline transition-colors',
                       l.id === lesson.id ? 'bg-primary-fill text-on-primary' : 'text-on-surface hover:bg-surface-container')}>
                     <ColourDot colour={l.colour} />
-                    <span lang="ar" className="font-arabic text-[15px]">{l.nameAr}</span>
+                    <span lang="ar" className="text-arabic-label">{l.nameAr}</span>
                   </a>
                 </li>
               ))}
@@ -93,7 +90,7 @@ export default function Rule({ params }: ScreenProps) {
         <article className="flex min-w-0 flex-col gap-space-lg">
           <header className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
             <div className="flex flex-wrap items-center gap-space-xs">
-              {topic && <Chip tone="gold">{topic.nameAr}{!isAr && <span className="font-normal opacity-80"> · {topic.nameEn}</span>}</Chip>}
+              {topic && <Chip tone="gold">{topic.nameAr}{!isAr && <><Sep /><span className="font-normal opacity-80">{topic.nameEn}</span></>}</Chip>}
               {lesson.colour && <Chip tone="outline"><ColourDot colour={lesson.colour} /><span lang="ar">{COLOURS[lesson.colour].ar}</span></Chip>}
             </div>
             <h2 lang="ar" className="font-naskh text-[30px] leading-[1.5] font-bold text-on-surface sm:text-[36px]">{lesson.nameAr}</h2>
@@ -208,7 +205,7 @@ export default function Rule({ params }: ScreenProps) {
                       const o = getLesson(id)
                       return o ? (
                         <a key={id} href={href('rules', id)} className="inline-flex min-h-11 items-center gap-1.5 rounded-control border border-outline-variant bg-surface-container-lowest px-space-md no-underline hover:bg-surface-container-low">
-                          <ColourDot colour={o.colour} /><span lang="ar" className="font-arabic text-[15px] font-semibold text-on-surface">{o.nameAr}</span>
+                          <ColourDot colour={o.colour} /><span lang="ar" className="text-arabic-body font-semibold text-on-surface">{o.nameAr}</span>
                         </a>
                       ) : null
                     })}
@@ -235,7 +232,7 @@ export default function Rule({ params }: ScreenProps) {
               </summary>
               <ul className="flex flex-col gap-space-xs px-space-md pb-space-md">
                 {lesson.sources.map((src, i) => (
-                  <li key={i} className="text-body-md"><T>{src.title}</T>{src.locator && <span className="text-on-surface-variant"> · <Locator text={src.locator} /></span>}</li>
+                  <li key={i} className="text-body-md"><T>{src.title}</T>{src.locator && <span className="text-on-surface-variant"><Sep /><Locator text={src.locator} /></span>}</li>
                 ))}
               </ul>
             </details>

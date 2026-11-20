@@ -5,7 +5,7 @@ import type { Question, Option } from '../../core/questions'
 import { getLesson, pairs } from '../../content'
 import { href } from '../../app/router'
 import type { OptionState } from '../../components'
-import { Callout, CountBeats, LetterTile } from '@/components/kit'
+import { Callout, CountBeats, LetterTile, Panel } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
@@ -102,7 +102,7 @@ export function QuestionView({ q, mode, eyebrow, note, audio, onAnswer, onNext, 
     <div className="flex min-w-0 flex-col gap-space-md">
       {eyebrow && <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{eyebrow}</p>}
       {note}
-      <section className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+      <Panel className="gap-space-sm">
         <p className="text-body-lg font-medium text-on-surface"><Tx>{q.prompt}</Tx></p>
         {q.example && (
           <ExampleVerse
@@ -110,7 +110,7 @@ export function QuestionView({ q, mode, eyebrow, note, audio, onAnswer, onNext, 
             actions={<PlayButton audio={audio} label={t('the ayah')} onClick={vs.verse && (() => audio.ayah(vs.verse!))} />}
           />
         )}
-      </section>
+      </Panel>
       {q.example && <p className="text-center text-body-md text-on-surface-variant">{t('Read it aloud, then choose.')}</p>}
       <div className="grid grid-cols-2 gap-space-sm" role="group" aria-label={t('Answers')}>
         {q.options.map((o, i) => (
