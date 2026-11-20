@@ -2,6 +2,7 @@ import { useSyncExternalStore } from 'react'
 import type { Day, UserData } from '../../core/types'
 import { itemIdOf, levelOf, hasOpenCorrection, type Level } from '../../core/scheduler'
 import { today } from '../../core/day'
+import { locale } from '../../i18n'
 
 const sub = (cb: () => void) => {
   window.addEventListener('online', cb)
@@ -24,4 +25,4 @@ export function lessonStatus(d: UserData, lessonId: string, on = today()): Lesso
 
 /** '2026-11-20' → 'Fri 20 Nov' (UTC, so the study day never shifts). */
 export const fmtDay = (d: Day) =>
-  new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(d + 'T00:00:00Z'))
+  new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(d + 'T00:00:00Z'))

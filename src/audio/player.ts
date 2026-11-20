@@ -1,5 +1,6 @@
 import type { Reciter, Verse } from '../core/types'
 import { ayahUrl } from './urls'
+import { t } from '../i18n'
 
 /**
  * One segment as used inside the player (converted from the 1-based inclusive bundled data by segsOf):
@@ -246,7 +247,7 @@ export class Player {
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false
     this.set({
       status: offline ? 'offline' : 'error', word: null, clip: false, basmala: false,
-      error: offline ? 'Audio needs a connection.' : "Couldn't load the recitation.",
+      error: offline ? t('Audio needs a connection.') : t("Couldn't load the recitation."),
     })
     this.settle(false)
   }

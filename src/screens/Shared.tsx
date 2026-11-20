@@ -6,6 +6,7 @@ import course from '../../content/course.json'
 import { supabase } from '../sync/supabase'
 import './path.css'
 import '../sync/sync.css'
+import { digits, isAr, locale, t } from '../i18n'
 
 interface Summary {
   teacherName: string | null
@@ -17,7 +18,7 @@ interface Summary {
 
 const units = new Map((course as { units: { id: string; n: number; nameEn: string; nameAr: string }[] }).units.map((u) => [u.id, u]))
 const fmt = (d: string) => {
-  try { return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(d + 'T12:00:00Z')) } catch { return d }
+  try { return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(d + 'T12:00:00Z')) } catch { return d }
 }
 
 export default function Shared({ params }: { params: Record<string, string> }) {
@@ -25,7 +26,7 @@ export default function Shared({ params }: { params: Record<string, string> }) {
   const [err, setErr] = useState('')
 
   useEffect(() => {
-    if (!supabase) { setErr('This version of the app cannot open shared progress.'); return }
+    if (!supabase) { setErr(t('This version of the app cannot open shared progress.')); return }
     if (!/^[0-9a-f-]{36}$/i.test(params.token ?? '')) { setData(null); return }
     supabase.rpc('shared_progress', { p_token: params.token }).then(
       ({ data, error }) => (error ? setErr(error.message) : setData((data as Summary | null) ?? null)),
@@ -33,63 +34,63 @@ export default function Shared({ params }: { params: Record<string, string> }) {
     )
   }, [params.token])
 
-  if (err) return <Card><p role="alert">Could not load this progress: {err}. Check your connection and try again.</p></Card>
-  if (data === undefined) return <Skeleton lines={6} label="Loading progress…" />
-  if (data === null) return <Card><p>This link is not valid any more. The learner may have turned it off; ask them for a new one.</p></Card>
+  if (err) return <Card><p role="alert">{t('Could not load this progress: {reason}. Check your connection and try again.', { reason: err })}</p></Card>
+  if (data === undefined) return <Skeleton lines={6} label={t('Loading progress…')} />
+  if (data === null) return <Card><p>{t('This link is not valid any more. The learner may have turned it off; ask them for a new one.')}</p></Card>
 
   return (
     <div className="p-stack">
-      <OrnHeading>Shared progress</OrnHeading>
+      <OrnHeading>{t('Shared progress')}</OrnHeading>
       <p className="muted t-sm">
-        A read-only summary a learner shared{data.teacherName ? <> with <bdi>{data.teacherName}</bdi></> : null}. It shows lessons, open corrections and
-        study days; nothing here can be changed.
+        {t('A read-only summary a learner shared')}{data.teacherName ? <> {t('with')} <bdi>{data.teacherName}</bdi></> : null}{t('. It shows lessons, open corrections and study days; nothing here can be changed.')}
       </p>
 
-      <Card eyebrow={`Studied ${data.days.length} of the last 30 days`}>
-        {data.days.length ? <p className="t-sm">{data.days.slice(-14).map(fmt).join(' · ')}</p> : <p className="muted">No study days in the last 30 days.</p>}
+      <Card eyebrow={t('Studied {n} of the last 30 days', { n: data.days.length })}>
+        {data.days.length ? <p className="t-sm">{data.days.slice(-14).map(fmt).join(' · ')}</p> : <p className="muted">{t('No study days in the last 30 days.')}</p>}
       </Card>
 
-      <Card eyebrow={`Lessons done (${data.lessons.length})`}>
+      <Card eyebrow={t('Lessons done ({n})', { n: data.lessons.length })}>
         {data.lessons.length ? (
           <ul className="shared-list">
             {data.lessons.map((l) => {
               const lesson = getLesson(l.lessonId)
               return (
                 <li key={l.lessonId}>
-                  <span>{lesson ? <><span lang="ar" className="a-sm">{lesson.nameAr}</span> <small className="muted">{lesson.nameEn}</small></> : l.lessonId}</span>
-                  <small className="muted">{fmt(l.on)}{l.step != null ? ` · level ${l.step}` : ''}</small>
+                  <span>{lesson ? <><span lang="ar" className="a-sm">{lesson.nameAr}</span>{!isAr && <> <small className="muted">{lesson.nameEn}</small></>}</> : l.lessonId}</span>
+                  <small className="muted">{fmt(l.on)}{l.step != null ? ` · ${t('level {n}', { n: l.step })}` : ''}</small>
                 </li>
               )
             })}
           </ul>
-        ) : <p className="muted">No lessons yet.</p>}
+        ) : <p className="muted">{t('No lessons yet.')}</p>}
       </Card>
 
       {data.finales.length > 0 && (
-        <Card eyebrow="Unit finales recited">
+        <Card eyebrow={t('Unit finales recited')}>
           <ul className="shared-list">
             {data.finales.map((f) => {
               const u = units.get(f.unitId)
-              return <li key={f.unitId}><span>{u ? `Unit ${u.n}: ${u.nameEn}` : f.unitId}</span><small className="muted">{fmt(f.on)}</small></li>
+              return <li key={f.unitId}><span>{u ? (isAr ? t('Unit {n}: {name}', { n: u.n, name: u.nameAr }) : `Unit ${u.n}: ${u.nameEn}`) : f.unitId}</span><small className="muted">{fmt(f.on)}</small></li>
             })}
           </ul>
         </Card>
       )}
 
-      <Card eyebrow={`Open corrections (${data.corrections.length})`}>
+      <Card eyebrow={t('Open corrections ({n})', { n: data.corrections.length })}>
         {data.corrections.length ? (
           <ul className="shared-list">
             {data.corrections.map((c, i) => (
               <li key={i}>
                 <span>
-                  <b>{c.verseKey}</b>{c.word && <> · <span lang="ar" className="a-sm">{c.word}</span></>}
+                  <b>{digits(c.verseKey)}</b>{c.word && <> · <span lang="ar" className="a-sm">{c.word}</span></>}
                   {c.note && <><br /><small dir="auto">{c.note}</small></>}
                 </span>
-                <small className="muted">{c.severity === 'jali' ? 'clear mistake' : c.severity === 'khafi' ? 'subtle mistake' : ''}{c.on ? ` · ${fmt(c.on)}` : ''}</small>
+                <small className="muted">{c.severity === 'jali' ? t('clear mistake') : c.severity === 'khafi' ? t('subtle mistake') : ''}{c.on ? ` · ${fmt(c.on)}` : ''}</small>
               </li>
             ))}
           </ul>
-        ) : <p className="muted">No open corrections.</p>}
+        ) : <p className="muted">{t('No open corrections.')}</p>}
+
       </Card>
     </div>
   )

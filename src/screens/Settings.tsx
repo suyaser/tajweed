@@ -5,16 +5,19 @@ import { today } from '../core/day'
 import { makeWirdIcs } from '../core/ics'
 import { RECITERS } from '../quran'
 import { listAll, removeAll } from '../audio/recordings'
-import { Button, Card, OrnHeading, SegmentedControl, VerseBlock } from '../components'
+import { Button, Card, OrnHeading, SegmentedControl, T, VerseBlock } from '../components'
 import { WEEKDAYS, daysAgo, formatBytes } from './path/helpers'
 
 const WEEK_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+// Arabic day chips: short forms that fit a chip (Sunday first, like WEEKDAYS)
+const AR_DAYS = ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت']
 import { download } from './path/ui'
 import './path.css'
 import { supabase } from '../sync/supabase'
 import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
 import { BackupBadge, syncLabel } from '../sync/SignInNudge'
 import { CopyField } from '../sync/CopyField'
+import { isAr, lang, setLang, t } from '../i18n'
 
 function Row({ label, hint, children }: { label: ReactNode; hint?: ReactNode; children: ReactNode }) {
   return (
@@ -38,92 +41,100 @@ export default function Settings() {
     <div className="p-stack">
       {supabase && <AccountSection />}
 
-      <OrnHeading>Your wird</OrnHeading>
+      <OrnHeading>{t('Language · اللغة')}</OrnHeading>
       <Card>
-        <Row label="Wird time">
-          <input type="time" value={s.wirdTime} onChange={(e) => e.target.value && set({ wirdTime: e.target.value })} aria-label="Wird time" />
+        <Row label={t('App language')} hint={t('The app reloads in the language you pick.')}>
+          <SegmentedControl label={t('Language · اللغة')} value={lang} onChange={(v) => v !== lang && setLang(v)}
+            options={[{ value: 'en', label: <span lang="en">English</span> }, { value: 'ar', label: <span lang="ar">العربية</span> }]} />
         </Row>
-        <Row label="Add to calendar" hint="A daily event at your wird time, plus your teacher day. Open the file to add it.">
-          <Button variant="secondary" onClick={() => download('tajweed-wird.ics', makeWirdIcs(s, location.href), 'text/calendar')}>Download .ics</Button>
+      </Card>
+
+      <OrnHeading>{t('Your wird')}</OrnHeading>
+      <Card>
+        <Row label={t('Wird time')}>
+          <input type="time" value={s.wirdTime} onChange={(e) => e.target.value && set({ wirdTime: e.target.value })} aria-label={t('Wird time')} />
         </Row>
-        <Row label="Teacher day(s)">
-          <div className="p-days" role="group" aria-label="Teacher days">
+        <Row label={t('Add to calendar')} hint={t('A daily event at your wird time, plus your teacher day. Open the file to add it.')}>
+          <Button variant="secondary" onClick={() => download('tajweed-wird.ics', makeWirdIcs(s, location.href), 'text/calendar')}>{t('Download .ics')}</Button>
+        </Row>
+        <Row label={t('Teacher day(s)')}>
+          <div className="p-days" role="group" aria-label={t('Teacher days')}>
             {[6, 0, 1, 2, 3, 4, 5].map((i) => [i, WEEKDAYS[i]] as const).map(([i, w]) => (
               <button
                 key={w}
                 type="button"
                 className="s-daychip"
-                aria-label={WEEK_LONG[i]}
+                aria-label={t(WEEK_LONG[i])}
                 aria-pressed={s.teacherDays.includes(i)}
                 onClick={() => set({ teacherDays: s.teacherDays.includes(i) ? s.teacherDays.filter((x) => x !== i) : [...s.teacherDays, i].sort() })}
               >
-                {w.slice(0, 2)}
+                {isAr ? AR_DAYS[i] : w.slice(0, 2)}
               </button>
             ))}
           </div>
         </Row>
-        <Row label="Teacher's name">
+        <Row label={t("Teacher's name")}>
           <input
-            type="text" dir="auto" lang="ar" value={name} placeholder="الشيخ…" aria-label="Teacher's name"
+            type="text" dir="auto" lang="ar" value={name} placeholder="الشيخ…" aria-label={t("Teacher's name")}
             onChange={(e) => setName(e.target.value)} onBlur={() => set({ teacherName: name.trim() || undefined })}
           />
         </Row>
       </Card>
 
-      <OrnHeading>Recitation</OrnHeading>
+      <OrnHeading>{t('Recitation')}</OrnHeading>
       <Card>
         <fieldset className="p-radios">
-          <legend>Model reciter</legend>
+          <legend>{t('Model reciter')}</legend>
           {RECITERS.map((r) => (
             <label key={r.id} className="p-check">
               <input type="radio" name="reciter" checked={s.reciterId === r.id} onChange={() => set({ reciterId: r.id })} />
-              <span><span lang="ar" className="a-sm">{r.nameAr}</span><br /><small className="muted">{r.nameEn}</small></span>
+              <span><span lang="ar" className="a-sm">{r.nameAr}</span>{!isAr && <><br /><small className="muted">{r.nameEn}</small></>}</span>
             </label>
           ))}
         </fieldset>
         <Row
-          label={<><span lang="ar" className="a-sm">المد المنفصل</span> length</>}
-          hint="Used in explanations and in length questions. Pick the length your teacher uses and keep it."
+          label={isAr ? <span className="a-sm">مقدار المد المنفصل</span> : <><span lang="ar" className="a-sm">المد المنفصل</span> length</>}
+          hint={t('Used in explanations and in length questions. Pick the length your teacher uses and keep it.')}
         >
           <SegmentedControl
-            label="Munfasil length"
+            label={t('Munfasil length')}
             value={String(s.munfasilLength) as '4' | '5'}
             onChange={(v) => { set({ munfasilLength: +v as 4 | 5 }); setMunfasilChanged(true) }}
-            options={[{ value: '4', label: '4 counts' }, { value: '5', label: '5 counts' }]}
+            options={[{ value: '4', label: t('{n} counts', { n: 4 }) }, { value: '5', label: t('{n} counts', { n: 5 }) }]}
           />
         </Row>
         {munfasilChanged && (
           <p className="t-sm" role="status">
-            From now on, questions expect {s.munfasilLength} counts. Keep it the same every time; tell your teacher you changed it.
+            {t('From now on, questions expect {n} counts. Keep it the same every time; tell your teacher you changed it.', { n: s.munfasilLength })}
           </p>
         )}
       </Card>
 
-      <OrnHeading>Reading</OrnHeading>
+      <OrnHeading>{t('Reading')}</OrnHeading>
       <Card>
-        <Row label="Quran text size">
-          <SegmentedControl label="Quran text size" value={s.textSize} onChange={(v) => set({ textSize: v })}
-            options={[{ value: 'm', label: 'M' }, { value: 'l', label: 'L' }, { value: 'xl', label: 'XL' }]} />
+        <Row label={t('Quran text size')}>
+          <SegmentedControl label={t('Quran text size')} value={s.textSize} onChange={(v) => set({ textSize: v })}
+            options={[{ value: 'm', label: t('M') }, { value: 'l', label: t('L') }, { value: 'xl', label: t('XL') }]} />
         </Row>
         <div className="p-preview"><VerseBlock text="قُلْ هُوَ ٱللَّهُ أَحَدٌ" reference="الإخلاص ١" size="read" /></div>
-        <Row label="Theme">
-          <SegmentedControl label="Theme" value={s.theme} onChange={(v) => set({ theme: v })}
-            options={[{ value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'system', label: 'System' }]} />
+        <Row label={t('Theme')}>
+          <SegmentedControl label={t('Theme')} value={s.theme} onChange={(v) => set({ theme: v })}
+            options={[{ value: 'light', label: t('Light') }, { value: 'dark', label: t('Dark') }, { value: 'system', label: t('System') }]} />
         </Row>
         <label className="p-check">
           <input type="checkbox" checked={s.tajweedPatterns} onChange={(e) => set({ tajweedPatterns: e.target.checked })} />
-          <span>Tajweed patterns<br /><small className="muted">Adds a pattern under each tajweed colour, so the rule does not rely on colour alone.</small></span>
+          <span>{t('Tajweed patterns')}<br /><small className="muted">{t('Adds a pattern under each tajweed colour, so the rule does not rely on colour alone.')}</small></span>
         </label>
       </Card>
 
-      <OrnHeading>Your data</OrnHeading>
+      <OrnHeading>{t('Your data')}</OrnHeading>
       <Data lastExportOn={s.lastExportOn} />
 
-      <OrnHeading>About</OrnHeading>
+      <OrnHeading>{t('About')}</OrnHeading>
       <Card>
-        <a className="p-item p-item-link" href="#/resources"><span className="p-item-main">Credits and sources</span><span className="chev" aria-hidden="true">›</span></a>
+        <a className="p-item p-item-link" href="#/resources"><span className="p-item-main">{t('Credits and sources')}</span><span className="chev" aria-hidden="true">›</span></a>
         <p className="t-sm muted">
-          Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device. If you sign in, your progress (not your recordings) is also backed up to your account.
+          <T>{t('Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device. If you sign in, your progress (not your recordings) is also backed up to your account.')}</T>
         </p>
       </Card>
       <Reset />
@@ -135,12 +146,12 @@ function AccountSection() {
   const sync = useSync()
   return (
     <>
-      <OrnHeading>Account and backup</OrnHeading>
+      <OrnHeading>{t('Account and backup')}</OrnHeading>
       <Card>
         <BackupBadge />
-        <p className="t-sm">{sync.user ? `${syncLabel(sync)}. Signed in as ${sync.user.email ?? 'your account'}.` : 'Your progress is saved only on this device. Sign in to keep it safe and use it on any device.'}</p>
-        <a className="p-item p-item-link" href="#/account"><span className="p-item-main">{sync.user ? 'Account' : 'Sign in'}</span><span className="chev" aria-hidden="true">›</span></a>
-        <a className="p-item p-item-link" href="#/circle"><span className="p-item-main">Circles<small className="muted">Study with friends: see who studied each day this week</small></span><span className="chev" aria-hidden="true">›</span></a>
+        <p className="t-sm">{sync.user ? t('{status}. Signed in as {email}.', { status: syncLabel(sync), email: sync.user.email ?? t('your account') }) : t('Your progress is saved only on this device. Sign in to keep it safe and use it on any device.')}</p>
+        <a className="p-item p-item-link" href="#/account"><span className="p-item-main">{sync.user ? t('Account') : t('Sign in')}</span><span className="chev" aria-hidden="true">›</span></a>
+        <a className="p-item p-item-link" href="#/circle"><span className="p-item-main">{t('Circles')}<small className="muted">{t('Study with friends: see who studied each day this week')}</small></span><span className="chev" aria-hidden="true">›</span></a>
       </Card>
       {sync.user && <TeacherLink userId={sync.user.id} />}
     </>
@@ -169,18 +180,17 @@ function TeacherLink({ userId }: { userId: string }) {
   }
   return (
     <>
-      <OrnHeading>Teacher link</OrnHeading>
+      <OrnHeading>{t('Teacher link')}</OrnHeading>
       <Card>
         <p className="t-sm">
-          A private link your teacher can open without an account. It shows your lessons, open corrections and study days for the last 30 days,
-          read-only. Your recordings and notes are not shared.
+          {t('A private link your teacher can open without an account. It shows your lessons, open corrections and study days for the last 30 days, read-only. Your recordings and notes are not shared.')}
         </p>
-        {token === undefined ? <p className="muted t-sm">Loading…</p> : token ? (
+        {token === undefined ? <p className="muted t-sm">{t('Loading…')}</p> : token ? (
           <>
-            <CopyField text={`${location.origin}${location.pathname}#/shared/${token}`} label="Teacher link" />
-            <Button variant="ghost" onClick={revoke}>Turn off this link</Button>
+            <CopyField text={`${location.origin}${location.pathname}#/shared/${token}`} label={t('Teacher link')} />
+            <Button variant="ghost" onClick={revoke}>{t('Turn off this link')}</Button>
           </>
-        ) : <Button variant="secondary" onClick={create}>Create a teacher link</Button>}
+        ) : <Button variant="secondary" onClick={create}>{t('Create a teacher link')}</Button>}
         {err && <p role="alert" className="p-error">{err}</p>}
       </Card>
     </>
@@ -211,96 +221,111 @@ function Data({ lastExportOn }: { lastExportOn: string | null }) {
     try {
       const raw = JSON.parse(text)
       const n = (k: string) => (Array.isArray(raw?.[k]) ? raw[k].length : 0)
-      setPending({ name: f.name, text, summary: `${n('attempts')} answers, ${n('sessions')} sessions, ${n('corrections')} corrections, settings` })
+      setPending({ name: f.name, text, summary: t('{a} answers, {s} sessions, {c} corrections, settings', { a: n('attempts'), s: n('sessions'), c: n('corrections') }) })
     } catch {
-      setMsg({ ok: false, text: 'This file is not valid JSON.' })
+      setMsg({ ok: false, text: t('This file is not valid JSON.') })
     }
   }
 
   return (
     <Card>
-      <p>{lastExportOn ? `Last backup: ${daysAgo(lastExportOn, today())}.` : 'No backup yet.'}</p>
-      <Button onClick={() => download(`tajweed-path-${today()}.json`, exportJson(), 'application/json')}>Back up now</Button>
-      <p className="t-sm muted">The backup holds all your progress, sessions and settings. Recordings are not included.</p>
+      <p>{lastExportOn ? t('Last backup: {when}.', { when: daysAgo(lastExportOn, today()) }) : t('No backup yet.')}</p>
+      <Button onClick={() => download(`tajweed-path-${today()}.json`, exportJson(), 'application/json')}>{t('Back up now')}</Button>
+      <p className="t-sm muted">{t('The backup holds all your progress, sessions and settings. Recordings are not included.')}</p>
 
       <label className="p-field">
-        <span>Restore from a backup</span>
+        <span>{t('Restore from a backup')}</span>
         <input className="sr-only p-file" type="file" accept="application/json,.json" onChange={(e) => { pick(e.target.files?.[0]); e.target.value = '' }} />
-        <span className="btn btn-secondary p-file-btn" aria-hidden="true">Choose a backup file…</span>
+        <span className="btn btn-secondary p-file-btn" aria-hidden="true">{t('Choose a backup file…')}</span>
       </label>
       {pending && (
-        <div className="p-confirm" role="alertdialog" aria-label="Restore from this backup?">
-          <p>
-            Restore from <b>{pending.name}</b>? It replaces everything on this device with {pending.summary}. This can't be undone.
-          </p>
-          {user && (
+        <div className="p-confirm" role="alertdialog" aria-label={t('Restore from this backup?')}>
+          {isAr ? (
+            <p>
+              هل تستعيد من <b><bdi>{pending.name}</bdi></b>؟ سيُستبدل كل ما على هذا الجهاز بما في النسخة: {pending.summary}. لا يمكن التراجع عن ذلك.
+            </p>
+          ) : (
+            <p>
+              Restore from <b>{pending.name}</b>? It replaces everything on this device with {pending.summary}. This can't be undone.
+            </p>
+          )}
+          {user && (isAr ? (
+            <p>
+              أنت مسجّل الدخول، لذا <b>ستُستبدل النسخة المحفوظة في حسابك</b> أيضًا (<bdi>{user.email ?? 'حسابك'}</bdi>). وتأخذها أجهزتك الأخرى عند
+              مزامنتها التالية، وتضيف إليها أي تقدّم لديها غير موجود في النسخة.
+            </p>
+          ) : (
             <p>
               You are signed in, so it also <b>replaces the copy in your account</b> ({user.email ?? 'your account'}). Your other devices take it
               when they next sync, and add back any progress they hold that the backup does not have.
             </p>
-          )}
+          ))}
           <div className="p-actions">
-            <Button variant="secondary" onClick={() => download(`tajweed-path-${today()}.json`, exportJson(), 'application/json')}>Back up current data first</Button>
+            <Button variant="secondary" onClick={() => download(`tajweed-path-${today()}.json`, exportJson(), 'application/json')}>{t('Back up current data first')}</Button>
             <Button variant="danger" onClick={() => {
               try {
                 restoreBackup(pending.text)
-                setMsg({ ok: true, text: user ? 'Restored. This device and your account now hold the backup.' : 'Restored. Everything on this device now comes from the backup.' })
+                setMsg({ ok: true, text: user ? t('Restored. This device and your account now hold the backup.') : t('Restored. Everything on this device now comes from the backup.') })
               } catch (e) {
-                setMsg({ ok: false, text: `Not restored: ${(e as Error).message} Nothing was changed.` })
+                setMsg({ ok: false, text: t('Not restored: {reason} Nothing was changed.', { reason: (e as Error).message }) })
               }
               setPending(null)
-            }}>Replace</Button>
-            <Button variant="ghost" onClick={() => setPending(null)}>Cancel</Button>
+            }}>{t('Replace')}</Button>
+            <Button variant="ghost" onClick={() => setPending(null)}>{t('Cancel')}</Button>
           </div>
         </div>
       )}
       {msg && <p role={msg.ok ? 'status' : 'alert'} className={msg.ok ? '' : 'p-error'}>{msg.text}</p>}
 
       <p className="t-sm">
-        Storage used: progress {formatBytes(local)}
-        {rec && (rec.n ? `, recordings ${formatBytes(rec.bytes)} (${rec.n})` : ', no recordings saved')}.{' '}
+        {t('Storage used: progress {size}', { size: formatBytes(local) })}
+        {rec && (rec.n ? t(', recordings {size} ({n})', { size: formatBytes(rec.bytes), n: rec.n }) : t(', no recordings saved'))}.{' '}
         {persisted === true
-          ? 'The browser has agreed to keep this data.'
+          ? t('The browser has agreed to keep this data.')
           : persisted === false
-            ? 'The browser may clear this data if the app is not used for a while; install it to your home screen and back up often.'
+            ? t('The browser may clear this data if the app is not used for a while; install it to your home screen and back up often.')
             : ''}
       </p>
       {rec && rec.n > 0 && (confirmDel ? (
         <div className="p-actions">
-          <Button variant="danger" onClick={() => removeAll().then(refresh, refresh).finally(() => setConfirmDel(false))}>Delete {rec.n} recordings</Button>
-          <Button variant="ghost" onClick={() => setConfirmDel(false)}>Cancel</Button>
+          <Button variant="danger" onClick={() => removeAll().then(refresh, refresh).finally(() => setConfirmDel(false))}>{t('Delete {n} recordings', { n: rec.n })}</Button>
+          <Button variant="ghost" onClick={() => setConfirmDel(false)}>{t('Cancel')}</Button>
         </div>
       ) : (
-        <Button variant="ghost" onClick={() => setConfirmDel(true)}>Delete all recordings</Button>
+        <Button variant="ghost" onClick={() => setConfirmDel(true)}>{t('Delete all recordings')}</Button>
       ))}
     </Card>
   )
 }
 
+/** The confirm word: "reset", or its Arabic in the Arabic UI. */
+const RESET_WORDS = ['reset', t('reset')]
+
 function Reset() {
+
   const { user } = useSync()
   const [open, setOpen] = useState(false)
   const [word, setWord] = useState('')
-  if (!open) return <Button variant="danger" block onClick={() => setOpen(true)}>Reset everything</Button>
+  if (!open) return <Button variant="danger" block onClick={() => setOpen(true)}>{t('Reset everything')}</Button>
   return (
-    <Card level="e2" eyebrow="Reset everything">
+    <Card level="e2" eyebrow={t('Reset everything')}>
       <form className="p-stack" onSubmit={async (e) => {
         e.preventDefault()
-        if (word.trim().toLowerCase() !== 'reset') return
+        if (!RESET_WORDS.includes(word.trim().toLowerCase())) return
         await removeAll().catch(() => {})
         await resetThisDevice()
       }}>
         <label className="p-field">
           <span>
-            This deletes all your progress, sessions and recordings on this device.
-            {user && ' You are signed in: this device signs out first, so the copy in your account is kept as it is (to delete that too, use Delete my account on the Account page).'}
-            {' '}Type <b>reset</b> to confirm.
+            {t('This deletes all your progress, sessions and recordings on this device.')}
+            {user && ' ' + t('You are signed in: this device signs out first, so the copy in your account is kept as it is (to delete that too, use Delete my account on the Account page).')}
+            {' '}{t('Type')} <b>{t('reset')}</b> {t('to confirm.')}
           </span>
           <input type="text" value={word} onChange={(e) => setWord(e.target.value)} autoComplete="off" autoCapitalize="none" spellCheck={false} />
         </label>
         <div className="p-actions">
-          <Button type="submit" variant="danger" disabled={word.trim().toLowerCase() !== 'reset'}>Delete everything</Button>
-          <Button variant="ghost" onClick={() => { setOpen(false); setWord('') }}>Cancel</Button>
+          <Button type="submit" variant="danger" disabled={!RESET_WORDS.includes(word.trim().toLowerCase())}>{t('Delete everything')}</Button>
+          <Button variant="ghost" onClick={() => { setOpen(false); setWord('') }}>{t('Cancel')}</Button>
         </div>
       </form>
     </Card>

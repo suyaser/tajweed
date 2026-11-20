@@ -1,3 +1,4 @@
+import { t } from '../i18n'
 export const MIMES = ['audio/webm;codecs=opus', 'audio/mp4', 'audio/aac']
 export const MAX_MS = 3 * 60_000
 
@@ -34,7 +35,7 @@ export class Recorder {
     } catch (e) {
       const name = (e as DOMException).name
       if (name === 'NotAllowedError' || name === 'SecurityError') this.set({ status: 'denied' })
-      else this.set({ status: 'error', error: name === 'NotFoundError' ? 'No microphone found.' : String((e as Error).message ?? e) })
+      else this.set({ status: 'error', error: name === 'NotFoundError' ? t('No microphone found.') : String((e as Error).message ?? e) })
       return null
     }
     const release = () => stream.getTracks().forEach(t => t.stop())
@@ -61,7 +62,7 @@ export class Recorder {
         const blob = new Blob(chunks, { type })
         done(blob.size ? { blob, durationMs: Date.now() - t0, mime: type } : null, { status: 'idle' })
       }
-      mr.onerror = () => done(null, { status: 'error', error: 'Recording failed.' })
+      mr.onerror = () => done(null, { status: 'error', error: t('Recording failed.') })
       this.mr = mr
       mr.start()
       this.set({ status: 'recording', startedAt: t0 })

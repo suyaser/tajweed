@@ -13,6 +13,7 @@ import {
 import { fmtDay, lessonStatus, useOnline } from './library/shared'
 import { rangeParam, refLabel } from './library/range'
 import './library.css'
+import { isAr, t } from '../i18n'
 
 export default function Rule({ params }: ScreenProps) {
   const lesson = getLesson(params.lessonId)
@@ -40,7 +41,7 @@ export default function Rule({ params }: ScreenProps) {
   }, [lesson])
 
   if (!lesson) {
-    return <EmptyState title="This rule isn't in the library." action={<Button variant="secondary" href={href('rules')}>All rules</Button>}>Check the link, or browse the library.</EmptyState>
+    return <EmptyState title={t("This rule isn't in the library.")} action={<Button variant="secondary" href={href('rules')}>{t('All rules')}</Button>}>{t('Check the link, or browse the library.')}</EmptyState>
   }
 
   const s = lessonStatus(data, lesson.id)
@@ -62,24 +63,24 @@ export default function Rule({ params }: ScreenProps) {
         <h2 className="a-h3" lang="ar" dir="rtl">{lesson.nameAr}</h2>
         {lesson.colour && <RuleChip nameAr={COLOURS[lesson.colour].ar} colour={lesson.colour} />}
       </header>
-      <p className="muted">{lesson.nameEn}</p>
+      {!isAr && <p className="muted">{lesson.nameEn}</p>}
       <p>
-        <LevelBadge level={s.level} detail={s.dueOn ? `next review ${fmtDay(s.dueOn)}` : undefined} />
+        <LevelBadge level={s.level} detail={s.dueOn ? t('next review {day}', { day: fmtDay(s.dueOn) }) : undefined} />
       </p>
       {corrections.map((c) => (
         <p key={c.id}>
           <a href={href('listen', c.verseKey)}>
-            <CorrectionBadge>Teacher correction open: <bdi lang="ar" className="a">{refLabel(c.verseKey)}</bdi></CorrectionBadge>
+            <CorrectionBadge>{t('Teacher correction open:')} <bdi lang="ar" className="a">{refLabel(c.verseKey)}</bdi></CorrectionBadge>
           </a>
           {c.note && <span className="t-sm muted"> <T>{c.note}</T></span>}
         </p>
       ))}
 
       {lesson.review.status === 'verified' ? (
-        <p className="rule-review t-sm"><span aria-hidden="true">✓</span> Checked against the sources by a teacher.{lesson.review.notes ? <> <T>{lesson.review.notes}</T></> : null}</p>
+        <p className="rule-review t-sm"><span aria-hidden="true">✓</span> {t('Checked against the sources by a teacher.')}{lesson.review.notes ? <> <T>{lesson.review.notes}</T></> : null}</p>
       ) : (
         <div className="rule-draft" role="note">
-          <b>Draft.</b> Not yet checked by a teacher. Read it with your teacher before relying on it.
+          <b>{t('Draft.')}</b> {t('Not yet checked by a teacher. Read it with your teacher before relying on it.')}
           {lesson.review.notes && <p className="t-sm"><T>{lesson.review.notes}</T></p>}
         </div>
       )}
@@ -89,24 +90,24 @@ export default function Rule({ params }: ScreenProps) {
 
       {(lesson.letters || lesson.counts || lesson.conditions?.length || lesson.list?.length) && (
         <dl className="rule-facts">
-          {lesson.letters && <><dt>Letters</dt><dd><LetterTiles letters={lesson.letters} colour={lesson.colour} /></dd></>}
+          {lesson.letters && <><dt>{t('Letters')}</dt><dd><LetterTiles letters={lesson.letters} colour={lesson.colour} /></dd></>}
           {lesson.counts && (
-            <><dt>Length</dt><dd>
+            <><dt>{t('Length')}</dt><dd>
               <CountBeats min={lesson.counts.min} max={lesson.counts.max} colour={lesson.colour} />{' '}
-              {lesson.counts.min === lesson.counts.max ? `${lesson.counts.min} counts` : `${lesson.counts.min}–${lesson.counts.max} counts`}
+              {lesson.counts.min === lesson.counts.max ? t('{n} counts', { n: lesson.counts.min }) : t('{min}–{max} counts', { min: lesson.counts.min, max: lesson.counts.max })}
               {lesson.counts.note && <span className="t-sm muted"> · <T>{lesson.counts.note}</T></span>}
             </dd></>
           )}
-          {lesson.conditions?.length ? <><dt>When</dt><dd><ul>{lesson.conditions.map((c, i) => <li key={i}><T>{c}</T></li>)}</ul></dd></> : null}
+          {lesson.conditions?.length ? <><dt>{t('When')}</dt><dd><ul>{lesson.conditions.map((c, i) => <li key={i}><T>{c}</T></li>)}</ul></dd></> : null}
           {lesson.list?.length ? (
-            <><dt>List</dt><dd><ul>{lesson.list.map(([a, b], i) => <li key={i} className="rule-pair"><span><T>{a}</T></span>{b && <Line text={b} />}</li>)}</ul></dd></>
+            <><dt>{t('List')}</dt><dd><ul>{lesson.list.map(([a, b], i) => <li key={i} className="rule-pair"><span><T>{a}</T></span>{b && <Line text={b} />}</li>)}</ul></dd></>
           ) : null}
         </dl>
       )}
 
       {lesson.examples.length > 0 && (
-        <section className="rule-ex" aria-label="Examples">
-          <h3 className="eyebrow"><T>Examples · أمثلة</T></h3>
+        <section className="rule-ex" aria-label={t('Examples')}>
+          <h3 className="eyebrow">{isAr ? 'أمثلة' : <T>Examples · أمثلة</T>}</h3>
           {lesson.examples.map((e) => {
             const v = verses[e.verseKey]
             const lit = state.verseKey === e.verseKey && state.word ? state.word[0] + 1 : undefined
@@ -123,15 +124,15 @@ export default function Rule({ params }: ScreenProps) {
                   onWord={v ? (n) => { setStarted(null); player.playWord(v, n - 1) } : undefined}
                   reference={refLabel(e.verseKey)}
                   actions={
-                    <span className="rule-ex-actions" lang="en" dir="ltr">
+                    <span className="rule-ex-actions" lang={isAr ? 'ar' : 'en'} dir={isAr ? 'rtl' : 'ltr'}>
                       <button
                         type="button" className="icon-btn" onClick={() => play(e)} disabled={!v || !online}
-                        aria-label={online ? `${playingThis ? 'Stop' : 'Play'} ${refLabel(e.verseKey)}` : 'Play: needs a connection'}
+                        aria-label={online ? `${playingThis ? t('Stop') : t('Play')} ${refLabel(e.verseKey)}` : t('Play: needs a connection')}
                       >
-                        <span aria-hidden="true">{playingThis ? '■' : '▶'}</span>{!online && <small> needs a connection</small>}
+                        <span aria-hidden="true">{playingThis ? '■' : '▶'}</span>{!online && <small> {t('needs a connection')}</small>}
                       </button>
-                      <a className="icon-btn" href={href('listen', rangeParam({ from: e.verseKey, to: e.verseKey }))} aria-label={`Open ${refLabel(e.verseKey)} in the player`}>
-                        Player <span aria-hidden="true">›</span>
+                      <a className="icon-btn" href={href('listen', rangeParam({ from: e.verseKey, to: e.verseKey }))} aria-label={t('Open {ref} in the player', { ref: refLabel(e.verseKey) })}>
+                        {t('Player')} <span aria-hidden="true">›</span>
                       </a>
                     </span>
                   }
@@ -141,7 +142,7 @@ export default function Rule({ params }: ScreenProps) {
             )
           })}
           {(state.status === 'error' || state.status === 'offline') && <p className="t-sm" role="status">{state.error}</p>}
-          <p className="t-sm muted">Tap a word to hear it alone.</p>
+          <p className="t-sm muted">{t('Tap a word to hear it alone.')}</p>
         </section>
       )}
 
@@ -149,7 +150,7 @@ export default function Rule({ params }: ScreenProps) {
 
       {lesson.confusableWith.length > 0 && (
         <div className="rule-mix">
-          <p className="t-sm">Easy to mix up with:</p>
+          <p className="t-sm">{t('Easy to mix up with:')}</p>
           <div className="lib-chips">
             {lesson.confusableWith.map((id) => {
               const o = getLesson(id)
@@ -162,14 +163,14 @@ export default function Rule({ params }: ScreenProps) {
       {matn.length > 0 && (
         <p className="t-sm">
           {matn.map((m, i) => (
-            <span key={m.k}>{i ? ' · ' : ''}<a href={href('mutun', m.k)}>R2: <bdi lang="ar" className="a">{m.name} {m.range}</bdi></a></span>
+            <span key={m.k}>{i ? ' · ' : ''}<a href={href('mutun', m.k)}>{t('R2:')} <bdi lang="ar" className="a">{m.name} {m.range}</bdi></a></span>
           ))}
         </p>
       )}
 
       {lesson.sources.length > 0 && (
         <details className="rule-sources">
-          <summary>Sources ({lesson.sources.length})</summary>
+          <summary>{t('Sources ({n})', { n: lesson.sources.length })}</summary>
           <ul>
             {lesson.sources.map((src, i) => (
               <li key={i} className="t-sm"><T>{src.title}</T>{src.locator && <span className="muted"> · <Locator text={src.locator} /></span>}</li>
@@ -180,11 +181,12 @@ export default function Rule({ params }: ScreenProps) {
 
       <footer className="rule-foot">
         {s.introduced ? (
-          <p className="muted">{s.dueOn ? `In your review. Next due ${fmtDay(s.dueOn)}.` : 'In your review.'}</p>
+          <p className="muted">{s.dueOn ? t('In your review. Next due {day}.', { day: fmtDay(s.dueOn) }) : t('In your review.')}</p>
         ) : (
           <>
-            <Button block href={href('learn', lesson.id)}>Learn this</Button>
-            <p className="t-sm muted"><T>{`Reading a card doesn't add it to your review. Learning it does. You'll meet it in unit ${unitOf(lesson.id)?.n ?? '–'} of the course.`}</T></p>
+            <Button block href={href('learn', lesson.id)}>{t('Learn this')}</Button>
+            <p className="t-sm muted"><T>{t("Reading a card doesn't add it to your review. Learning it does. You'll meet it in unit {n} of the course.", { n: unitOf(lesson.id)?.n ?? '–' })}</T></p>
+
           </>
         )}
       </footer>

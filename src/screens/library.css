@@ -82,7 +82,7 @@
 .rule-example + .rule-example { border-top: 1px dashed var(--line); padding-top: var(--s3); }
 .rule-ex-actions { display: inline-flex; gap: var(--s1); margin-inline-start: auto; }
 .rule-ex-actions a { text-decoration: none; font-size: 22px; }
-.rule-tip { background: var(--bg); border-inline-start: 3px solid var(--gold); padding: var(--s2) var(--s3); border-radius: 0 var(--r-ctl) var(--r-ctl) 0; }
+.rule-tip { background: var(--bg); border-inline-start: 3px solid var(--gold); padding: var(--s2) var(--s3); border-radius: 0; border-start-end-radius: var(--r-ctl); border-end-end-radius: var(--r-ctl); }
 .rule-tip b { color: var(--gold-ink); }
 .rule-mix { display: grid; gap: var(--s2); }
 .rule-foot { display: grid; gap: var(--s2); }
@@ -155,7 +155,7 @@
   }
   .lib-topics button {
     justify-items: start; text-align: start; border: 0; border-inline-start: 3px solid transparent;
-    border-radius: 0 var(--r-ctl) var(--r-ctl) 0; background: none; padding: var(--s1) var(--s3);
+    border-radius: 0; border-start-end-radius: var(--r-ctl); border-end-end-radius: var(--r-ctl); background: none; padding: var(--s1) var(--s3);
   }
   .lib-topics button:hover { background: var(--soft); border-inline-start-color: var(--gold); }
 }

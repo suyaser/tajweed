@@ -21,6 +21,13 @@ a { color: var(--link); text-underline-offset: 3px; }
 
 /* Arabic UI: the whole page reads in the Arabic interface face */
 :root[lang="ar"] body { font-family: var(--f-ar); }
+/* every type token (font: var(--t-sm) …) falls through to the Arabic face; Latin keeps Figtree glyph by glyph */
+:root[lang="ar"] {
+  --f-body: "Figtree", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-disp: "Figtree", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+}
+/* Arabic UI: an Arabic island is just text, no size bump */
+:root[lang="ar"] bdi.a { font-size: inherit; line-height: inherit; }
 
 /* B2: Arabic inside Latin lines */
 [lang="ar"] { font-family: var(--f-ar); }

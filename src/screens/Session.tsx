@@ -9,12 +9,13 @@ import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, Skel
 import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, refLabel, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip, startClass, useVerses } from './path/ui'
 import './path.css'
+import { t } from '../i18n'
 
 export default function Session({ params }: ScreenProps) {
   const d = useData()
   const s = d.sessions.find((x) => x.id === params.id && !x.deletedAt)
   if (!s)
-    return <EmptyState title="This session is not on this device." action={<Button href="#/teacher">Back to sessions</Button>} />
+    return <EmptyState title={t('This session is not on this device.')} action={<Button href="#/teacher">{t('Back to sessions')}</Button>} />
   return params.sheet ? <InClass d={d} s={s} index={+(params.p ?? 0)} /> : s.status === 'done' ? <Summary d={d} s={s} /> : <PlanView d={d} s={s} />
 }
 
@@ -28,7 +29,7 @@ function PlanView({ d, s }: { d: UserData; s: SessionT }) {
         {dayLabel(s.on)}
         {s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
       </p>
-      <Card eyebrow="To recite">
+      <Card eyebrow={t('To recite')}>
         {s.plannedPassages.length ? (
           <ol className="p-list">
             {s.plannedPassages.map((p) => (
@@ -37,23 +38,23 @@ function PlanView({ d, s }: { d: UserData; s: SessionT }) {
                   <ReasonChip p={p} />
                   <a className="a-lg" lang="ar" href={listenHref(p.from, p.to)}>{refLabel(p.from, p.to)}</a>
                 </span>
-                <a className="p-link t-sm" href={listenHref(p.from, p.to)}>Listen ›</a>
+                <a className="p-link t-sm" href={listenHref(p.from, p.to)}>{t('Listen')} ›</a>
               </li>
             ))}
           </ol>
         ) : (
-          <p className="muted">No passages yet.</p>
+          <p className="muted">{t('No passages yet.')}</p>
         )}
       </Card>
-      {s.notes && <p><span className="eyebrow">Note to self</span><br /><bdi dir="auto">{s.notes}</bdi></p>}
+      {s.notes && <p><span className="eyebrow">{t('Note to self')}</span><br /><bdi dir="auto">{s.notes}</bdi></p>}
       <OpenCorrections d={d} />
-      <Button block onClick={() => startClass(s.id)}>Start class</Button>
+      <Button block onClick={() => startClass(s.id)}>{t('Start class')}</Button>
       <div className="p-actions">
-        <Button variant="secondary" href={`#/teacher/new?id=${s.id}`}>Edit plan</Button>
+        <Button variant="secondary" href={`#/teacher/new?id=${s.id}`}>{t('Edit plan')}</Button>
         {confirmDelete ? (
-          <Button variant="danger" onClick={() => { updateSession(s.id, { deletedAt: new Date().toISOString() }); navigate('teacher') }}>Yes, delete this plan</Button>
+          <Button variant="danger" onClick={() => { updateSession(s.id, { deletedAt: new Date().toISOString() }); navigate('teacher') }}>{t('Yes, delete this plan')}</Button>
         ) : (
-          <Button variant="ghost" onClick={() => setConfirmDelete(true)}>Delete plan</Button>
+          <Button variant="ghost" onClick={() => setConfirmDelete(true)}>{t('Delete plan')}</Button>
         )}
       </div>
     </div>
@@ -64,13 +65,13 @@ function OpenCorrections({ d }: { d: UserData }) {
   const open = live(d.corrections).filter((c) => c.status === 'open')
   if (!open.length) return null
   return (
-    <Card eyebrow={`Ask to re-check · ${open.length} open`}>
+    <Card eyebrow={t('Ask to re-check · {n} open', { n: open.length })}>
       <ul className="p-list">
         {open.map((c) => (
           <li key={c.id} className="p-item">
             <span className="p-item-main">
               <span className="a-lg" lang="ar">{corrLabel(c)}</span>
-              <span className="t-sm muted"><T>{ruleNames(c) || 'No rule tagged'}</T></span>
+              <span className="t-sm muted"><T>{ruleNames(c) || t('No rule tagged')}</T></span>
             </span>
             <CorrectionTag severity={c.severity} />
           </li>
@@ -132,17 +133,17 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
     <div className="p-stack p-class">
       <div className="p-classbar">
         <p className="t-sm">
-          In class{s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
-          {p && <> · Passage {i + 1} of {passages.length} · <ReasonChip p={p} /></>}
+          {t('In class')}{s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
+          {p && <> · {t('Passage {i} of {n}', { i: i + 1, n: passages.length })} · <ReasonChip p={p} /></>}
         </p>
-        <Button onClick={() => { updateSession(s.id, { status: 'done' }); navigate(`teacher/${s.id}`) }}>Done</Button>
+        <Button onClick={() => { updateSession(s.id, { status: 'done' }); navigate(`teacher/${s.id}`) }}>{t('Done')}</Button>
       </div>
 
       {p && (
-        <section aria-label="Passage">
+        <section aria-label={t('Passage')}>
           <h2 className="a-h3" lang="ar">{refLabel(p.from, p.to)}</h2>
-          {loading && <Skeleton verse lines={3} label="Loading the text…" />}
-          {error && <p className="muted">{error} You can still log a correction on the whole ayah after reconnecting.</p>}
+          {loading && <Skeleton verse lines={3} label={t('Loading the text…')} />}
+          {error && <p className="muted">{error} {t('You can still log a correction on the whole ayah after reconnecting.')}</p>}
           {ayahs && (
             <Passage
               ayahs={ayahs}
@@ -152,29 +153,29 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
               onAyah={(key) => { setSaved(null); setTarget({ key }) }}
             />
           )}
-          <p className="t-sm muted">Tap the word your teacher corrected, or an ayah number for the whole ayah.</p>
+          <p className="t-sm muted">{t('Tap the word your teacher corrected, or an ayah number for the whole ayah.')}</p>
         </section>
       )}
 
       {saved && (
         <p className="p-saved" role="status">
-          Saved · <span className="a-lg" lang="ar">{corrLabel(saved)}</span> · <CorrectionTag severity={saved.severity} />
-          <button type="button" className="p-linkbtn" onClick={() => { undoCorrection(saved.id); setSaved(null) }}>Undo</button>
+          {t('Saved')} · <span className="a-lg" lang="ar">{corrLabel(saved)}</span> · <CorrectionTag severity={saved.severity} />
+          <button type="button" className="p-linkbtn" onClick={() => { undoCorrection(saved.id); setSaved(null) }}>{t('Undo')}</button>
         </p>
       )}
 
       {ms && (
-        <Card eyebrow="Unit finale">
-          <p><T>{`Did your teacher pass ${ms.label}?`}</T></p>
-          <div className="p-actions" role="group" aria-label="Finale result">
-            <Button variant={result === 'passed' ? 'primary' : 'secondary'} aria-pressed={result === 'passed'} onClick={() => setResult('passed')}>Passed</Button>
-            <Button variant={result === 'not_yet' ? 'primary' : 'secondary'} aria-pressed={result === 'not_yet'} onClick={() => setResult('not_yet')}>Not yet</Button>
+        <Card eyebrow={t('Unit finale')}>
+          <p><T>{t('Did your teacher pass {label}?', { label: ms.label })}</T></p>
+          <div className="p-actions" role="group" aria-label={t('Finale result')}>
+            <Button variant={result === 'passed' ? 'primary' : 'secondary'} aria-pressed={result === 'passed'} onClick={() => setResult('passed')}>{t('Passed')}</Button>
+            <Button variant={result === 'not_yet' ? 'primary' : 'secondary'} aria-pressed={result === 'not_yet'} onClick={() => setResult('not_yet')}>{t('Not yet')}</Button>
           </div>
         </Card>
       )}
 
       {openHere.length > 0 && (
-        <Card eyebrow="Open corrections here">
+        <Card eyebrow={t('Open corrections here')}>
           <ul className="p-list">
             {openHere.map((c) => <Recheck key={c.id} c={c} sessionId={s.id} d={d} />)}
           </ul>
@@ -182,12 +183,12 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
       )}
 
       <div className="p-pager">
-        <Button variant="ghost" disabled={i === 0} onClick={() => go(i - 1)}>‹ Previous passage</Button>
-        <Button variant="ghost" disabled={i >= passages.length - 1} onClick={() => go(i + 1)}>Next passage ›</Button>
+        <Button variant="ghost" disabled={i === 0} onClick={() => go(i - 1)}>‹ {t('Previous passage')}</Button>
+        <Button variant="ghost" disabled={i >= passages.length - 1} onClick={() => go(i + 1)}>{t('Next passage')} ›</Button>
       </div>
 
       {adding ? (
-        <Card eyebrow="Add a passage">
+        <Card eyebrow={t('Add a passage')}>
           <AddPassage onAdd={(np) => {
             const next = mergePassages(passages, [np])
             updateSession(s.id, { plannedPassages: next })
@@ -196,7 +197,7 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
           }} />
         </Card>
       ) : (
-        <Button variant="ghost" onClick={() => setAdding(true)}>+ Add a passage</Button>
+        <Button variant="ghost" onClick={() => setAdding(true)}>+ {t('Add a passage')}</Button>
       )}
 
       <Notes s={s} />
@@ -221,16 +222,16 @@ function Recheck({ c, sessionId, d }: { c: Correction; sessionId: string; d: Use
     <li className="p-item p-item-col">
       <span className="p-item-main">
         <span><span className="a-lg" lang="ar">{corrLabel(c)}</span> <CorrectionTag severity={c.severity} /></span>
-        <span className="t-sm muted"><T>{ruleNames(c) || 'No rule tagged'}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
+        <span className="t-sm muted"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
       </span>
       {c.status === 'resolved' ? (
-        <span className="t-sm">✓ Correct now · closed</span>
+        <span className="t-sm">✓ {t('Correct now · closed')}</span>
       ) : stillWrong ? (
-        <span className="t-sm">↺ Still wrong · back in review tomorrow</span>
+        <span className="t-sm">↺ {t('Still wrong · back in review tomorrow')}</span>
       ) : (
         <span className="p-actions">
-          <Button variant="secondary" onClick={() => resolveCorrection(c.id, 'correct', sessionId)}>✓ Correct now</Button>
-          <Button variant="ghost" onClick={() => resolveCorrection(c.id, 'still_wrong', sessionId)}>↺ Still wrong</Button>
+          <Button variant="secondary" onClick={() => resolveCorrection(c.id, 'correct', sessionId)}>✓ {t('Correct now')}</Button>
+          <Button variant="ghost" onClick={() => resolveCorrection(c.id, 'still_wrong', sessionId)}>↺ {t('Still wrong')}</Button>
         </span>
       )}
     </li>
@@ -241,7 +242,7 @@ function Notes({ s }: { s: SessionT }) {
   const [v, setV] = useState(s.notes ?? '')
   return (
     <label className="p-field">
-      <span>Notes</span>
+      <span>{t('Notes')}</span>
       <textarea dir="auto" rows={2} value={v} onChange={(e) => setV(e.target.value)} onBlur={() => v !== (s.notes ?? '') && updateSession(s.id, { notes: v.trim() || undefined })} />
     </label>
   )
@@ -274,43 +275,43 @@ function CorrectionSheet({ target, verse, d, onClose, onSave }: {
       onClose={onClose}
       title={target ? <span lang="ar">{target.text ? `${target.text} · ` : 'الآية كاملة · '}{refLabel(target.key)}</span> : ''}
     >
-      <div className="p-sev" role="group" aria-label="Severity">
+      <div className="p-sev" role="group" aria-label={t('Severity')}>
         {(['jali', 'khafi'] as const).map((sv) => (
           <button key={sv} type="button" className="opt s-pick p-sevbtn" aria-pressed={severity === sv} onClick={() => setSeverity(sv)}>
             <b lang="ar">{sv === 'jali' ? 'جلي' : 'خفي'}</b>
-            <small>{sv === 'jali' ? 'clear error: a letter or vowel' : 'fine detail of a rule'}</small>
+            <small>{sv === 'jali' ? t('clear error: a letter or vowel') : t('fine detail of a rule')}</small>
           </button>
         ))}
       </div>
       {severity && (
         <>
-          <p className="eyebrow">Rule (optional, up to 2)</p>
+          <p className="eyebrow">{t('Rule (optional, up to 2)')}</p>
           <div className="p-chips">
             {chips.map((id) => {
               const l = getLesson(id)!
               return <RuleChip key={id} nameAr={l.nameAr} colour={l.colour} selected={picked.includes(id)} onClick={() => toggle(id)} />
             })}
-            <button type="button" className="rchip" aria-pressed={!picked.length} onClick={() => setPicked([])}>Other / not a rule</button>
-            {q === null && <button type="button" className="rchip" onClick={() => setQ('')} aria-label="Search rules">🔍 Search</button>}
+            <button type="button" className="rchip" aria-pressed={!picked.length} onClick={() => setPicked([])}>{t('Other / not a rule')}</button>
+            {q === null && <button type="button" className="rchip" onClick={() => setQ('')} aria-label={t('Search rules')}>🔍 {t('Search')}</button>}
           </div>
           {q !== null && (
             <label className="p-field">
-              <span>Search rules</span>
-              <input type="search" dir="auto" value={q} onChange={(e) => setQ(e.target.value)} autoFocus placeholder="إخفاء, madd…" />
+              <span>{t('Search rules')}</span>
+              <input type="search" dir="auto" value={q} onChange={(e) => setQ(e.target.value)} autoFocus placeholder={t('إخفاء, madd…')} />
             </label>
           )}
           {note === null ? (
-            <Button variant="ghost" onClick={() => setNote('')}>+ Note</Button>
+            <Button variant="ghost" onClick={() => setNote('')}>+ {t('Note')}</Button>
           ) : (
             <label className="p-field">
-              <span>Note</span>
+              <span>{t('Note')}</span>
               <input type="text" dir="auto" value={note} onChange={(e) => setNote(e.target.value)} autoFocus />
             </label>
           )}
         </>
       )}
-      <Button block disabled={!severity} onClick={() => severity && onSave({ severity, lessonIds: picked, note: note?.trim() || undefined })}>Save</Button>
-      {!severity && <p className="t-sm muted p-sev-why"><T>Choose جلي or خفي to save.</T></p>}
+      <Button block disabled={!severity} onClick={() => severity && onSave({ severity, lessonIds: picked, note: note?.trim() || undefined })}>{t('Save')}</Button>
+      {!severity && <p className="t-sm muted p-sev-why"><T>{t('Choose جلي or خفي to save.')}</T></p>}
     </Sheet>
   )
 }
@@ -332,23 +333,27 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
         {dayLabel(s.on)}
         {s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
       </p>
-      <Card level="e2" eyebrow="Session saved">
+      <Card level="e2" eyebrow={t('Session saved')}>
         <p>
-          {mine.length ? `${mine.length} ${mine.length === 1 ? 'correction' : 'corrections'} added to review.` : 'No new corrections this time.'}
-          {resolved.length > 0 && ` ${resolved.length} closed: your teacher says ${resolved.length === 1 ? 'it is' : 'they are'} correct now.`}
+          {mine.length ? (mine.length === 1 ? t('1 correction added to review.') : t('{n} corrections added to review.', { n: mine.length })) : t('No new corrections this time.')}
+          {resolved.length > 0 && ' ' + (resolved.length === 1 ? t('1 closed: your teacher says it is correct now.') : t('{n} closed: your teacher says they are correct now.', { n: resolved.length }))}
         </p>
-        {back.length > 0 && <p><T>{`${back.join(' and ')} come${back.length === 1 ? 's' : ''} back in review tomorrow.`}</T></p>}
-        {early.length > 0 && <p><T>{`${early.join(' and ')}: not learned yet. ${early.length === 1 ? 'It comes' : 'They come'} into review once you reach ${early.length === 1 ? 'its lesson' : 'their lessons'} in the course.`}</T></p>}
-        {untagged > 0 && <p className="muted">{untagged} {untagged === 1 ? 'correction has' : 'corrections have'} no rule. They still come back in review.</p>}
+        {back.length > 0 && <p><T>{back.length === 1 ? t('{names} comes back in review tomorrow.', { names: back[0] }) : t('{names} come back in review tomorrow.', { names: back.join(t(' and ')) })}</T></p>}
+        {early.length > 0 && <p><T>{early.length === 1
+          ? t('{names}: not learned yet. It comes into review once you reach its lesson in the course.', { names: early[0] })
+          : t('{names}: not learned yet. They come into review once you reach their lessons in the course.', { names: early.join(t(' and ')) })}</T></p>}
+        {untagged > 0 && <p className="muted">{untagged === 1 ? t('1 correction has no rule. They still come back in review.') : t('{n} corrections have no rule. They still come back in review.', { n: untagged })}</p>}
         {s.milestoneResults.map((r) => {
           const u = getUnit(r.passageId)
           return (
             <div key={r.passageId}>
-              <p><T>{`Unit finale: ${u?.finale?.label ?? r.passageId} ${r.result === 'passed' ? 'passed' : 'not yet'}.`}</T></p>
+              <p><T>{r.result === 'passed'
+                ? t('Unit finale: {label} passed.', { label: u?.finale?.label ?? r.passageId })
+                : t('Unit finale: {label} not yet.', { label: u?.finale?.label ?? r.passageId })}</T></p>
               {r.result === 'passed' && u && (
                 <p className="p-row-inline">
                   <StarBadge n={u.n} size={32} state="done" />
-                  <T>{`Unit ${u.n} · ${u.nameAr} complete.`}</T>
+                  <T>{t('Unit {n} · {name} complete.', { n: u.n, name: u.nameAr })}</T>
                 </p>
               )}
             </div>
@@ -356,13 +361,13 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
         })}
       </Card>
       {mine.length > 0 && (
-        <Card eyebrow="Corrections this session">
+        <Card eyebrow={t('Corrections this session')}>
           <ul className="p-list">
             {mine.map((c) => (
               <li key={c.id} className="p-item">
                 <span className="p-item-main">
                   <a className="a-lg" lang="ar" href={listenHref(c.verseKey)}>{corrLabel(c)}</a>
-                  <span className="t-sm muted"><T>{ruleNames(c) || 'No rule tagged'}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
+                  <span className="t-sm muted"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
                 </span>
                 <CorrectionTag severity={c.severity} />
               </li>
@@ -370,10 +375,11 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
           </ul>
         </Card>
       )}
-      {s.notes && <p><span className="eyebrow">Notes</span><br /><bdi dir="auto">{s.notes}</bdi></p>}
+      {s.notes && <p><span className="eyebrow">{t('Notes')}</span><br /><bdi dir="auto">{s.notes}</bdi></p>}
       <div className="p-actions">
-        <Button variant="secondary" href={`#/teacher/${s.id}?sheet=1`}>Reopen class</Button>
-        <Button href="#/teacher">Back</Button>
+        <Button variant="secondary" href={`#/teacher/${s.id}?sheet=1`}>{t('Reopen class')}</Button>
+        <Button href="#/teacher">{t('Back')}</Button>
+
       </div>
     </div>
   )

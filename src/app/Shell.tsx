@@ -3,7 +3,7 @@ import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
 import { Icon } from './icons'
-import { isAr, setLang } from '../i18n'
+import { isAr, locale, setLang, t } from '../i18n'
 
 /** Switches the UI language (reloads). Shows the language you'd switch TO. */
 function LangSwitch({ className }: { className: string }) {
@@ -67,12 +67,12 @@ export function shellKind(r: Route): Kind {
 function dates() {
   const now = new Date()
   const day = new Date(studyDay(now) + 'T12:00:00Z')
-  const g = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(day)
+  const g = new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(day)
   let h = ''
   try {
     h = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(day).replace(/\s?هـ$/, '')
   } catch { /* no Hijri calendar in this browser */ }
-  const late = now.getHours() < 3 ? `Still ${new Intl.DateTimeFormat('en-GB', { weekday: 'long', timeZone: 'UTC' }).format(day)}'s wird until 03:00` : ''
+  const late = now.getHours() < 3 ? t("Still {day}'s wird until 03:00", { day: new Intl.DateTimeFormat(locale, { weekday: 'long', timeZone: 'UTC' }).format(day) }) : ''
   return { gregorian: g, hijri: h, late }
 }
 
@@ -112,15 +112,15 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
 
   return (
     <div className="shell" data-kind={kind}>
-      <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}>Skip to content</a>
+      <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}>{t('Skip to content')}</a>
       {hasNav && <Rail active={meta.tab} settings={route.name === 'settings'} guide={route.name === 'guide'} />}
       <div className="shell-col">
         {kind === 'focus' && (
           <header className="focusbar gutter">
             <button type="button" className="icon-btn close" onClick={() => navigate(parent)}>
-              <span aria-hidden="true">✕</span> Close
+              <span aria-hidden="true">✕</span> {t('Close')}
             </button>
-            <span className="focusbar-title"><span lang="ar">{meta.ar}</span> <small className="t-sm muted">{meta.en}</small></span>
+            <span className="focusbar-title"><span lang="ar">{meta.ar}</span>{!isAr && <> <small className="t-sm muted">{meta.en}</small></>}</span>
             <span className="focusbar-status t-sm">{focusStatus}</span>
           </header>
         )}
@@ -128,24 +128,24 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
           <header className={`topbar gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
             {kind === 'pushed' && (
               <a className="back" href={href(parent)}>
-                <span aria-hidden="true">‹</span> Back
+                <span aria-hidden="true">‹</span> {t('Back')}
               </a>
             )}
             <div className="topbar-title">
               <h1 className="kufi" lang="ar">{meta.ar}</h1>
-              <span className="topbar-en">{meta.en}</span>
+              {!isAr && <span className="topbar-en">{meta.en}</span>}
               {route.name === 'today' && <Dates />}
             </div>
             <div className="topbar-actions">
               <LangSwitch className="gear" />
               {route.name !== 'guide' && (
                 <a className="gear" href={href('guide')}>
-                  <Icon name="help" className="gear-ico" /><small>Help</small>
+                  <Icon name="help" className="gear-ico" /><small>{t('Help')}</small>
                 </a>
               )}
               {meta.gear && (
                 <a className="gear" href={href('settings')}>
-                  <Icon name="settings" className="gear-ico" /><small>Settings</small>
+                  <Icon name="settings" className="gear-ico" /><small>{t('Settings')}</small>
                 </a>
               )}
             </div>
@@ -163,12 +163,12 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
 
 function TabBar({ active }: { active?: Tab }) {
   return (
-    <nav className="tabbar" aria-label="Main">
-      {TABS.map((t) => (
-        <a key={t.id} href={href(t.to)} aria-current={t.id === active ? 'page' : undefined}>
-          <span className="tab-pill"><Icon name={t.id} className="tab-ico" /></span>
-          <b lang="ar">{t.ar}</b>
-          <small>{t.en}</small>
+    <nav className="tabbar" aria-label={t('Main')}>
+      {TABS.map((tab) => (
+        <a key={tab.id} href={href(tab.to)} aria-current={tab.id === active ? 'page' : undefined}>
+          <span className="tab-pill"><Icon name={tab.id} className="tab-ico" /></span>
+          <b lang="ar">{tab.ar}</b>
+          {!isAr && <small>{tab.en}</small>}
         </a>
       ))}
     </nav>
@@ -177,26 +177,27 @@ function TabBar({ active }: { active?: Tab }) {
 
 function Rail({ active, settings, guide }: { active?: Tab; settings?: boolean; guide?: boolean }) {
   return (
-    <nav className="rail lattice" aria-label="Main">
+    <nav className="rail lattice" aria-label={t('Main')}>
       <a className="rail-brand" href={href('today')}>
         <span className="rail-orn" aria-hidden="true">۞</span>
         <span className="kufi" lang="ar">مسار التجويد</span>
       </a>
-      {TABS.map((t) => (
-        <a key={t.id} href={href(t.to)} aria-current={t.id === active ? 'page' : undefined}>
-          <Icon name={t.id} className="tab-ico" />
-          <b lang="ar">{t.ar}</b>
-          <small>{t.en}</small>
+      {TABS.map((tab) => (
+        <a key={tab.id} href={href(tab.to)} aria-current={tab.id === active ? 'page' : undefined}>
+          <Icon name={tab.id} className="tab-ico" />
+          <b lang="ar">{tab.ar}</b>
+          {!isAr && <small>{tab.en}</small>}
         </a>
       ))}
       <LangSwitch className="rail-gear rail-help" />
       <a className="rail-gear" href={href('guide')} aria-current={guide ? 'page' : undefined}>
         <Icon name="help" className="gear-ico" />
-        <b lang="ar">كيف يعمل</b><small>Help</small>
+        <b lang="ar">كيف يعمل</b>{!isAr && <small>Help</small>}
       </a>
       <a className="rail-gear" href={href('settings')} aria-current={settings ? 'page' : undefined}>
         <Icon name="settings" className="gear-ico" />
-        <b lang="ar">الإعدادات</b><small>Settings</small>
+        <b lang="ar">الإعدادات</b>{!isAr && <small>Settings</small>}
+
       </a>
     </nav>
   )

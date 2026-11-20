@@ -16,13 +16,14 @@ import {
 import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
 import './library.css'
 import { Hint } from './study/Hint'
+import { digits, locale, t } from '../i18n'
 
 const LOOPS = [1, 3, 5, 10]
 const MIC_KEY = 'tajweed-path:mic-explained'
-const mmss = (ms: number) => { const s = Math.round(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` }
+const mmss = (ms: number) => { const s = Math.round(ms / 1000); return digits(`${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`) }
 const micExplained = () => { try { return localStorage.getItem(MIC_KEY) === '1' } catch { return false } }
-const fmtWhen = (iso: string) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(iso))
-const typing = (t: EventTarget | null) => t instanceof HTMLElement && (t.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))
+const fmtWhen = (iso: string) => new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(iso))
+const typing = (el: EventTarget | null) => el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName))
 
 export default function Listen({ params }: ScreenProps) {
   const parsed = parseRange(params.range)
@@ -60,10 +61,10 @@ export default function Listen({ params }: ScreenProps) {
   // listening time → today's log (flushed every 15 s and on leave)
   useEffect(() => {
     let acc = 0
-    const t = setInterval(() => {
+    const timer = setInterval(() => {
       if (player.state.status === 'playing' && !player.state.clip && ++acc >= 15) { addListenSeconds(acc); acc = 0 }
     }, 1000)
-    return () => { clearInterval(t); if (acc) addListenSeconds(acc) }
+    return () => { clearInterval(timer); if (acc) addListenSeconds(acc) }
   }, [player])
   const listenDone = !!data.days.find((d) => d.id === today())?.parts.listen
 
@@ -79,8 +80,8 @@ export default function Listen({ params }: ScreenProps) {
   useEffect(() => { refresh() }, [from, to]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!recording) return
-    const t = setInterval(() => setNow(Date.now()), 250)
-    return () => clearInterval(t)
+    const timer = setInterval(() => setNow(Date.now()), 250)
+    return () => clearInterval(timer)
   }, [recording])
 
   const [asked, setAsked] = useState<string | null>(null)
@@ -100,7 +101,7 @@ export default function Listen({ params }: ScreenProps) {
         noteRecording()
         setSaved(take.durationMs)
       } catch {
-        setSaveError("Couldn't save the recording. Your device may be out of space.")
+        setSaveError(t("Couldn't save the recording. Your device may be out of space."))
       }
       refresh()
     })
@@ -144,10 +145,10 @@ export default function Listen({ params }: ScreenProps) {
   const askTeacher = () => {
     const next = data.sessions.filter((s) => !s.deletedAt && s.status === 'planned').sort((a, b) => a.on.localeCompare(b.on))[0]
     const passage = { from, to, reason: 'ask' as const }
-    if (next?.plannedPassages.some((p) => p.from === from && p.to === to)) return setAsked('Already in your next session plan.')
+    if (next?.plannedPassages.some((p) => p.from === from && p.to === to)) return setAsked(t('Already in your next session plan.'))
     if (next) updateSession(next.id, { plannedPassages: [...next.plannedPassages, passage] })
     else planSession({ plannedPassages: [...suggestPassages(), passage] })
-    setAsked('Added to your next session plan.')
+    setAsked(t('Added to your next session plan.'))
   }
 
   // keyboard (design §5.7); never while typing, never over a focused control's own Space/Enter
@@ -185,45 +186,45 @@ export default function Listen({ params }: ScreenProps) {
   const shownColours = useMemo(() => colours && verses
     ? [...new Set(verses.flatMap((v) => v.tajweed.map((s) => ruleColour(s.rule)).filter((c): c is ColourKey => !!c)))]
     : [], [verses, colours])
-  const speaker = phase === 'me' || state.clip ? 'You' : reciter.nameAr
+  const speaker = phase === 'me' || state.clip ? t('You') : reciter.nameAr
   const unavailable =
-    state.status === 'offline' ? 'Audio needs a connection. The text is here; recording still works.'
-    : state.status === 'error' ? "Couldn't load the recitation." : undefined
+    state.status === 'offline' ? t('Audio needs a connection. The text is here; recording still works.')
+    : state.status === 'error' ? t("Couldn't load the recitation.") : undefined
   const marks = useMemo(() => (dotted && busy ? { [dotted]: 'lamp-dotted' as const } : undefined), [dotted, busy])
   const lit = state.word && !state.clip && state.verseKey ? { key: state.verseKey, word: state.word[0] + 1 } : undefined
   const recOff =
-    rec.state.status === 'denied' ? "Recording is off. You can turn the microphone on in your browser's site settings."
-    : rec.state.status === 'unsupported' ? "This browser can't record. Try Safari or Chrome." : undefined
+    rec.state.status === 'denied' ? t("Recording is off. You can turn the microphone on in your browser's site settings.")
+    : rec.state.status === 'unsupported' ? t("This browser can't record. Try Safari or Chrome.") : undefined
   const [s1, a1] = from.split(':')
   const [s2, a2] = to.split(':')
   const quranCom = `https://quran.com/${s1}/${s1 === s2 ? (a1 === a2 ? a1 : `${a1}-${a2}`) : a1}`
 
   return (
     <>
-    <Hint id="listen">Play to hear the reciter, repeat in the pause after each ayah. Tap a word to hear it alone. Record yourself, then play “reciter, then me”.</Hint>
+    <Hint id="listen">{t('Play to hear the reciter, repeat in the pause after each ayah. Tap a word to hear it alone. Record yourself, then play “reciter, then me”.')}</Hint>
     <div className="listen">
       <header className="listen-head">
         <h2 className="a-lg" lang="ar" dir="rtl">{label}</h2>
         <label className="listen-reciter t-sm">
-          <span>Reciter</span>
+          <span>{t('Reciter')}</span>
           <select value={reciter.id} onChange={(e) => { cancelCompare(); setReciterId(e.target.value) }} dir="auto">
             {RECITERS.map((r) => <option key={r.id} value={r.id} lang="ar">{r.nameAr}</option>)}
           </select>
         </label>
-        <ToggleChip label="Colours" value={colours ? 'on' : 'off'} pressed={colours} onClick={() => { setColours(!colours); setIsolate(null) }} />
-        {listenDone && <p className="t-sm listen-done" role="status"><span aria-hidden="true">✓</span> Listening counted for today</p>}
+        <ToggleChip label={t('Colours')} value={colours ? t('on') : t('off')} pressed={colours} onClick={() => { setColours(!colours); setIsolate(null) }} />
+        {listenDone && <p className="t-sm listen-done" role="status"><span aria-hidden="true">✓</span> {t('Listening counted for today')}</p>}
       </header>
 
-      {params.range && !parsed && <Nudge><T>{`That passage link isn't valid, so here is ${label}.`}</T></Nudge>}
-      {range.to !== wanted.to && <Nudge><T>{`That passage is long, so here are its first ${MAX_AYAT} ayat: ${label}.`}</T></Nudge>}
+      {params.range && !parsed && <Nudge><T>{t("That passage link isn't valid, so here is {label}.", { label })}</T></Nudge>}
+      {range.to !== wanted.to && <Nudge><T>{t('That passage is long, so here are its first {n} ayat: {label}.', { n: MAX_AYAT, label })}</T></Nudge>}
 
       <div className="listen-text">
         {textError ? (
-          <EmptyState title="Couldn't load the text." action={<Button variant="secondary" onClick={() => setAttempt((n) => n + 1)}>Try again</Button>}>
-            Check your connection. Text you have opened before works offline.
+          <EmptyState title={t("Couldn't load the text.")} action={<Button variant="secondary" onClick={() => setAttempt((n) => n + 1)}>{t('Try again')}</Button>}>
+            {t('Check your connection. Text you have opened before works offline.')}
           </EmptyState>
         ) : !verses ? (
-          <Skeleton verse lines={4} label={`Loading ${label}…`} />
+          <Skeleton verse lines={4} label={t('Loading {label}…', { label })} />
         ) : (
           <>
             <Passage
@@ -243,10 +244,10 @@ export default function Listen({ params }: ScreenProps) {
             {colours && (
               <div className="t-sm">
                 <Legend colours={shownColours} isolate={isolate} onIsolate={setIsolate} />
-                <p className="muted"><T>Colours come from the quran-tajweed markup. It does not mark every rule (for example الراء and الإظهار), so a word without colour may still carry a rule.</T></p>
+                <p className="muted"><T>{t('Colours come from the quran-tajweed markup. It does not mark every rule (for example الراء and الإظهار), so a word without colour may still carry a rule.')}</T></p>
               </div>
             )}
-            <p className="t-sm muted">Tap a word to hear it alone. Tap an ayah number to jump to it.</p>
+            <p className="t-sm muted">{t('Tap a word to hear it alone. Tap an ayah number to jump to it.')}</p>
           </>
         )}
       </div>
@@ -256,7 +257,7 @@ export default function Listen({ params }: ScreenProps) {
           <AudioTransport
             playing={busy || !!phase}
             loading={state.status === 'loading'}
-            unavailable={!verses ? 'Loading…' : unavailable}
+            unavailable={!verses ? t('Loading…') : unavailable}
             label={refLabel(state.verseKey ?? from)}
             speaker={phase === 'silence' ? undefined : speaker}
             loop={state.loops}
@@ -273,71 +274,72 @@ export default function Listen({ params }: ScreenProps) {
             onGap={toggleGap}
             onSeekAyah={(i) => { cancelCompare(); player.seek(i) }}
           />
-          {state.status === 'gap' && <Button variant="ghost" onClick={() => player.skipGap()}>Skip the pause</Button>}
-          {(state.status === 'error' || state.status === 'offline') && <Button variant="secondary" onClick={() => player.play()}>Try again</Button>}
+          {state.status === 'gap' && <Button variant="ghost" onClick={() => player.skipGap()}>{t('Skip the pause')}</Button>}
+          {(state.status === 'error' || state.status === 'offline') && <Button variant="secondary" onClick={() => player.play()}>{t('Try again')}</Button>}
         </div>
 
-        <section className="listen-rec card card-e1" aria-label="Record yourself">
+        <section className="listen-rec card card-e1" aria-label={t('Record yourself')}>
           <RecordButton
             state={recOff ? 'off' : recording ? 'recording' : saved != null ? 'saved' : 'idle'}
             seconds={recording && rec.state.startedAt ? (now - rec.state.startedAt) / 1000 : (saved ?? 0) / 1000}
             onClick={onRecord}
             offReason={recOff}
           />
-          {rec.state.status === 'error' && <p className="t-sm" role="alert">{rec.state.error ?? 'Recording failed.'} Try again.</p>}
+          {rec.state.status === 'error' && <p className="t-sm" role="alert">{rec.state.error ?? t('Recording failed.')} {t('Try again.')}</p>}
           {saveError && <p className="t-sm" role="alert">{saveError}</p>}
           {recs[0] && (
             <div className="listen-compare">
-              <Button variant={saved != null ? 'primary' : 'secondary'} onClick={() => modelThenMe(recs[0])} disabled={!verses || recording}>Model, then me</Button>
-              <Button variant="ghost" onClick={() => me(recs[0])} disabled={recording}>Me</Button>
+              <Button variant={saved != null ? 'primary' : 'secondary'} onClick={() => modelThenMe(recs[0])} disabled={!verses || recording}>{t('Model, then me')}</Button>
+              <Button variant="ghost" onClick={() => me(recs[0])} disabled={recording}>{t('Me')}</Button>
             </div>
           )}
           {phase && (
             <p className="t-sm" aria-live="polite">
-              {phase === 'model' ? <>Now: <bdi lang="ar" className="a">{reciter.nameAr}</bdi></> : phase === 'silence' ? 'Now: your turn is next…' : 'Now: You'}
+              {phase === 'model' ? <>{t('Now:')} <bdi lang="ar" className="a">{reciter.nameAr}</bdi></> : phase === 'silence' ? t('Now: your turn is next…') : t('Now: You')}
             </p>
           )}
 
           {recs.length > 0 && (
             <details className="listen-recs">
-              <summary>Recordings · {recs.length} · latest {mmss(recs[0].durationMs)}</summary>
+              <summary>{t('Recordings · {n} · latest {time}', { n: recs.length, time: mmss(recs[0].durationMs) })}</summary>
               <ul>
                 {recs.map((r) => (
                   <li key={r.id}>
                     <span className="num">{fmtWhen(r.createdAt)} · {mmss(r.durationMs)}</span>
                     <span className="listen-rec-actions">
-                      <Button variant="ghost" onClick={() => me(r)} disabled={recording} aria-label={`Play me, ${fmtWhen(r.createdAt)}`}>▶ Me</Button>
-                      <Button variant="ghost" onClick={() => modelThenMe(r)} disabled={!verses || recording} aria-label={`Model, then me, ${fmtWhen(r.createdAt)}`}>Model, then me</Button>
-                      <Button variant="ghost" onClick={() => remove(r.id).then(refresh)} aria-label={`Delete recording ${fmtWhen(r.createdAt)}`}>
-                        <span aria-hidden="true">🗑</span><span className="sr-only">Delete</span>
+                      <Button variant="ghost" onClick={() => me(r)} disabled={recording} aria-label={t('Play me, {when}', { when: fmtWhen(r.createdAt) })}>▶ {t('Me')}</Button>
+                      <Button variant="ghost" onClick={() => modelThenMe(r)} disabled={!verses || recording} aria-label={t('Model, then me, {when}', { when: fmtWhen(r.createdAt) })}>{t('Model, then me')}</Button>
+                      <Button variant="ghost" onClick={() => remove(r.id).then(refresh)} aria-label={t('Delete recording {when}', { when: fmtWhen(r.createdAt) })}>
+                        <span aria-hidden="true">🗑</span><span className="sr-only">{t('Delete')}</span>
                       </Button>
                     </span>
                   </li>
                 ))}
               </ul>
-              <p className="t-sm muted">Keeps your last {KEEP} for this passage. They stay on this device.</p>
+              <p className="t-sm muted">{t('Keeps your last {n} for this passage. They stay on this device.', { n: KEEP })}</p>
             </details>
           )}
 
           <p className="t-sm">
-            <button type="button" className="linklike" onClick={askTeacher}>Not sure? Ask your teacher</button>
-            {asked && <span role="status"> · {asked} <a href={href('teacher')}>See sessions</a></span>}
+            <button type="button" className="linklike" onClick={askTeacher}>{t('Not sure? Ask your teacher')}</button>
+            {asked && <span role="status"> · {asked} <a href={href('teacher')}>{t('See sessions')}</a></span>}
           </p>
         </section>
 
-        <p className="t-sm"><a href={quranCom} target="_blank" rel="noopener">Open on Quran.com ↗</a></p>
-        <p className="t-sm muted listen-keys" aria-hidden="true">Keys: Space play · R record · M model, then me · L loop · G gap · S speed · ← next · → previous</p>
+        <p className="t-sm"><a href={quranCom} target="_blank" rel="noopener"><T>{t('Open on Quran.com')}</T> ↗</a></p>
+        <p className="t-sm muted listen-keys" aria-hidden="true"><T>{t('Keys: Space play · R record · M model, then me · L loop · G gap · S speed · ← next · → previous')}</T></p>
       </aside>
 
-      <Sheet open={askMic} onClose={() => setAskMic(false)} title="Record yourself">
-        <p>Your recordings stay on this device. They are never uploaded. Allow the microphone to record yourself.</p>
+      <Sheet open={askMic} onClose={() => setAskMic(false)} title={t('Record yourself')}>
+        <p>{t('Your recordings stay on this device. They are never uploaded. Allow the microphone to record yourself.')}</p>
         <div className="listen-compare">
           <Button onClick={() => {
             try { localStorage.setItem(MIC_KEY, '1') } catch { /* asks again next time */ }
             setAskMic(false)
             startRecording()
-          }}>Allow microphone</Button>
-          <Button variant="ghost" onClick={() => setAskMic(false)}>Not now</Button>
+          }}>{t('Allow microphone')}</Button>
+          <Button variant="ghost" onClick={() => setAskMic(false)}>{t('Not now')}</Button>
+
         </div>
       </Sheet>
     </div>

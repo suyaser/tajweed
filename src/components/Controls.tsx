@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from 'react'
 import type { ColourKey } from '../core/types'
 import { Ornament } from './Marks'
+import { digits, t } from '../i18n'
 
 /* ---------- buttons ---------- */
 type Variant = 'primary' | 'secondary' | 'ghost' | 'danger'
@@ -29,8 +30,8 @@ export function OptionButton({ ar, en, state = 'idle', children, ...rest }: { ar
       {ar && <b lang="ar">{ar}</b>}
       {children}
       {en && <small>{en}</small>}
-      {state === 'picked' && <small className="opt-picked">Your guess</small>}
-      {state !== 'idle' && state !== 'picked' && <span className="sr-only">{state === 'wrong' ? ', not quite' : ', correct'}</span>}
+      {state === 'picked' && <small className="opt-picked">{t('Your guess')}</small>}
+      {state !== 'idle' && state !== 'picked' && <span className="sr-only">{state === 'wrong' ? t(', not quite') : t(', correct')}</span>}
     </button>
   )
 }
@@ -81,7 +82,7 @@ export function Card({ level = 'e1', stripe, eyebrow, children, className = '', 
 }
 
 /** Placeholder lines while text loads, so a screen never flashes blank (verse-shaped: right-aligned, tall lines). */
-export function Skeleton({ lines = 3, label = 'Loading…', verse = false }: { lines?: number; label?: string; verse?: boolean }) {
+export function Skeleton({ lines = 3, label = t('Loading…'), verse = false }: { lines?: number; label?: string; verse?: boolean }) {
   return (
     <div className={`skel${verse ? ' skel-verse' : ''}`} role="status" aria-busy="true">
       <span className="sr-only">{label}</span>
@@ -108,7 +109,7 @@ export function Nudge({ children, action, onDismiss }: { children: ReactNode; ac
       <p>{children}</p>
       {action}
       {onDismiss && (
-        <button type="button" className="icon-btn" onClick={onDismiss} aria-label="Dismiss">✕</button>
+        <button type="button" className="icon-btn" onClick={onDismiss} aria-label={t('Dismiss')}>✕</button>
       )}
     </div>
   )
@@ -137,7 +138,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
         <div className="sheet-handle" aria-hidden="true" />
         <div className="sheet-head">
           <h2 id={titleId} className="t-h3">{title}</h2>
-          <button type="button" className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
+          <button type="button" className="icon-btn" onClick={onClose} aria-label={t('Close')}>✕</button>
         </div>
         {children}
       </div>
@@ -146,7 +147,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
 }
 
 /* ---------- audio ---------- */
-const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`
+const mmss = (s: number) => digits(`${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`)
 
 export interface AudioTransportProps {
   playing: boolean
@@ -174,10 +175,11 @@ export interface AudioTransportProps {
   onSeekAyah?: (index: number) => void
 }
 
-/** Docked player transport (design §5.7, §6, §7.5). Next ayah sits on the LEFT (RTL text); play is never mirrored. */
+/** Docked player transport (design §5.7, §6, §7.5). Next ayah sits on the LEFT (RTL text) in both UI languages
+ *  (the row is pinned LTR); play is never mirrored. */
 export function AudioTransport(p: AudioTransportProps) {
   return (
-    <div className="transport" role="group" aria-label="Recitation player">
+    <div className="transport" role="group" aria-label={t('Recitation player')}>
       {p.ayahCount ? (
         <div className="scrub" dir="rtl">
           {Array.from({ length: p.ayahCount }, (_, i) => (
@@ -186,7 +188,7 @@ export function AudioTransport(p: AudioTransportProps) {
               type="button"
               data-on={i <= (p.ayahIndex ?? -1) || undefined}
               aria-current={i === p.ayahIndex || undefined}
-              aria-label={`Ayah ${i + 1}`}
+              aria-label={t('Ayah {n}', { n: i + 1 })}
               onClick={() => p.onSeekAyah?.(i)}
               disabled={!p.onSeekAyah}
             >
@@ -198,7 +200,7 @@ export function AudioTransport(p: AudioTransportProps) {
       <p className="transport-status t-sm" aria-live="polite">
         {p.unavailable ??
           (p.yourTurn != null ? (
-            <b className="your-turn">Your turn · <span lang="ar">ردّد</span> · {Math.ceil(p.yourTurn)}s</b>
+            <b className="your-turn">{t('Your turn')} · <span lang="ar">ردّد</span> · {t('{n}s', { n: Math.ceil(p.yourTurn) })}</b>
           ) : (
             <>
               {p.speaker && <><bdi lang="ar">{p.speaker}</bdi> · </>}<bdi lang="ar">{p.label}</bdi>
@@ -206,13 +208,13 @@ export function AudioTransport(p: AudioTransportProps) {
           ))}
       </p>
       <div className="transport-chips">
-        <ToggleChip label="Loop" value={`×${p.loop}`} pressed={p.loop > 1} onClick={p.onLoop} />
-        <ToggleChip label="Speed" value={`${p.rate}×`} pressed={p.rate !== 1} onClick={p.onRate} />
-        <ToggleChip label="Gap" value={p.gap ? 'on' : 'off'} pressed={p.gap} onClick={p.onGap} />
+        <ToggleChip label={t('Loop')} value={digits(`×${p.loop}`)} pressed={p.loop > 1} onClick={p.onLoop} />
+        <ToggleChip label={t('Speed')} value={digits(`${p.rate}×`)} pressed={p.rate !== 1} onClick={p.onRate} />
+        <ToggleChip label={t('Gap')} value={p.gap ? t('on') : t('off')} pressed={p.gap} onClick={p.onGap} />
       </div>
-      <div className="transport-main">
-        <button type="button" className="tbtn" onClick={p.onNext} aria-label="Next ayah">
-          <span aria-hidden="true">‹</span> Next
+      <div className="transport-main" dir="ltr">
+        <button type="button" className="tbtn" onClick={p.onNext} aria-label={t('Next ayah')}>
+          <span aria-hidden="true">‹</span> {t('Next')}
         </button>
         <button
           type="button"
@@ -220,12 +222,12 @@ export function AudioTransport(p: AudioTransportProps) {
           data-loading={p.loading || undefined}
           onClick={p.onPlayPause}
           disabled={!!p.unavailable}
-          aria-label={`${p.playing ? 'Pause' : 'Play'} ${p.label}`}
+          aria-label={`${p.playing ? t('Pause') : t('Play')} ${p.label}`}
         >
           <span aria-hidden="true">{p.playing ? '❚❚' : '▶'}</span>
         </button>
-        <button type="button" className="tbtn" onClick={p.onPrev} aria-label="Previous ayah">
-          Prev <span aria-hidden="true">›</span>
+        <button type="button" className="tbtn" onClick={p.onPrev} aria-label={t('Previous ayah')}>
+          {t('Prev')} <span aria-hidden="true">›</span>
         </button>
       </div>
     </div>
@@ -236,15 +238,16 @@ export type RecordState = 'idle' | 'recording' | 'saved' | 'off'
 
 /** 56px record circle with a text label, never icon-only (design §6). */
 export function RecordButton({ state, seconds = 0, onClick, offReason }: { state: RecordState; seconds?: number; onClick: () => void; offReason?: string }) {
-  if (state === 'off') return <p className="t-sm muted">{offReason ?? 'Recording is off.'}</p>
+  if (state === 'off') return <p className="t-sm muted">{offReason ?? t('Recording is off.')}</p>
   const rec = state === 'recording'
   return (
     <div className="record">
-      <button type="button" className="rec-btn" data-state={state} onClick={onClick} aria-label={rec ? 'Stop recording' : 'Record'}>
+      <button type="button" className="rec-btn" data-state={state} onClick={onClick} aria-label={rec ? t('Stop recording') : t('Record')}>
         <span aria-hidden="true" className={rec ? 'rec-stop' : 'rec-dot'} />
       </button>
       <span className="rec-label" aria-live="polite">
-        {rec ? `Recording ${mmss(seconds)}` : state === 'saved' ? `Saved · ${mmss(seconds)}` : 'Record'}
+        {rec ? t('Recording {time}', { time: mmss(seconds) }) : state === 'saved' ? t('Saved · {time}', { time: mmss(seconds) }) : t('Record')}
+
       </span>
     </div>
   )

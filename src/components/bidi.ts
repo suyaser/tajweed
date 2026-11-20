@@ -36,5 +36,24 @@ export function splitBidi(s: string): BidiPart[] {
 /** Arabic-Indic digits for ayah numbers, star badges, references (B4). */
 export const arDigits = (n: number | string) => String(n).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[+d])
 
+// Arabic UI: the mirror case. A Latin run (an English word or phrase, a name, a URL, "CC BY 4.0") inside Arabic text
+// is one LTR island, so its words and punctuation keep their order.
+const LW = `[A-Za-z](?:[A-Za-z0-9'’.\\-@_/]*[A-Za-z0-9])?`
+const LATIN = new RegExp(`${LW}(?:[\\s,:&+]+(?:${LW}|\\d+(?:\\.\\d+)?))*`, 'g')
+
+export interface LatinPart { text: string; latin: boolean }
+
+export function splitLatin(s: string): LatinPart[] {
+  const out: LatinPart[] = []
+  let last = 0
+  for (const m of s.matchAll(LATIN)) {
+    if (m.index! > last) out.push({ text: s.slice(last, m.index), latin: false })
+    out.push({ text: m[0], latin: true })
+    last = m.index! + m[0].length
+  }
+  if (last < s.length) out.push({ text: s.slice(last), latin: false })
+  return out
+}
+
 /** A vowel mark with no letter under it (فتحة َ, a شدة (ّ)) sits on a tatweel so it shows and isolates as Arabic. */
 export const carryMarks = (s: string) => s.replace(/(^|[\s(«"'])([ً-ْٰ])/g, '$1ـ$2')

@@ -1,25 +1,27 @@
 import { useEffect, useState } from 'react'
-import { Button, Card, OrnHeading } from '../components'
+import { Button, Card, OrnHeading, T } from '../components'
+
 import { authError, clearAuthError, redirectUrl, supabase } from '../sync/supabase'
 import { chooseAccountData, deleteAccount, sendEmailLink, signInWithGoogle, signOut, syncNow, useSync, type SyncState } from '../sync/sync'
 import { syncLabel } from '../sync/SignInNudge'
 import './path.css'
 import '../sync/sync.css'
+import { t } from '../i18n'
 
 export default function Account() {
   const s = useSync()
   const [, tick] = useState(0)
   const [notice, setNotice] = useState('')
-  useEffect(() => { const t = setInterval(() => tick((n) => n + 1), 30000); return () => clearInterval(t) }, []) // keeps "2 min ago" fresh
+  useEffect(() => { const id = setInterval(() => tick((n) => n + 1), 30000); return () => clearInterval(id) }, []) // keeps "2 min ago" fresh
 
-  if (!supabase) return <Card><p>Sign-in is not available in this version of the app. Your progress stays on this device; use Back up in Settings.</p></Card>
+  if (!supabase) return <Card><p>{t('Sign-in is not available in this version of the app. Your progress stays on this device; use Back up in Settings.')}</p></Card>
 
   return (
     <div className="p-stack">
       {authError && (
         <p role="alert" className="p-error">
-          Sign-in did not finish: {authError}{' '}
-          <button type="button" className="p-linkbtn" onClick={() => { clearAuthError(); tick((n) => n + 1) }}>Dismiss</button>
+          {t('Sign-in did not finish:')} {authError}{' '}
+          <button type="button" className="p-linkbtn" onClick={() => { clearAuthError(); tick((n) => n + 1) }}>{t('Dismiss')}</button>
         </p>
       )}
       {notice && <p role="status">{notice}</p>}
@@ -35,38 +37,37 @@ function SignedIn({ s, onDeleted }: { s: SyncState; onDeleted: (msg: string) => 
     const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
     return (
       <>
-        <OrnHeading>Account and backup</OrnHeading>
+        <OrnHeading>{t('Account and backup')}</OrnHeading>
         <Card>
-          <p>Signed in as <span className="acc-email">{s.user!.email ?? 'your account'}</span></p>
+          <p>{t('Signed in as')} <bdi className="acc-email">{s.user!.email ?? t('your account')}</bdi></p>
           <p role="status">{syncLabel(s)}</p>
           {s.status === 'choose' && <AccountSwitch />}
-          {s.status === 'error' && <p className="t-sm p-error">{s.error}. Your progress is safe on this device.</p>}
-          <p className="t-sm muted">Your progress and settings are backed up and kept the same on every device where you sign in. Recordings stay on each device.</p>
+          {s.status === 'error' && <p className="t-sm p-error">{s.error}{t('. Your progress is safe on this device.')}</p>}
+          <p className="t-sm muted">{t('Your progress and settings are backed up and kept the same on every device where you sign in. Recordings stay on each device.')}</p>
           <div className="p-actions">
-            <Button variant="secondary" onClick={() => void syncNow()} disabled={s.status === 'syncing'}>Sync now</Button>
-            <Button variant="ghost" onClick={() => void signOut()}>Sign out</Button>
+            <Button variant="secondary" onClick={() => void syncNow()} disabled={s.status === 'syncing'}>{t('Sync now')}</Button>
+            <Button variant="ghost" onClick={() => void signOut()}>{t('Sign out')}</Button>
           </div>
-          <p className="t-sm muted">Signing out keeps everything on this device.</p>
+          <p className="t-sm muted">{t('Signing out keeps everything on this device.')}</p>
         </Card>
 
-        <OrnHeading>Delete my data</OrnHeading>
+        <OrnHeading>{t('Delete my data')}</OrnHeading>
         <Card>
           {!confirm ? (
-            <Button variant="danger" onClick={() => setConfirm(true)}>Delete my account</Button>
+            <Button variant="danger" onClick={() => setConfirm(true)}>{t('Delete my account')}</Button>
           ) : (
-            <div className="p-confirm" role="alertdialog" aria-label="Delete your account?">
+            <div className="p-confirm" role="alertdialog" aria-label={t('Delete your account?')}>
               <p>
-                This deletes your account (your sign-in), your backed-up progress, your teacher links, your circles and memberships, and your study
-                days from the server, then signs you out. Other signed-in devices are signed out when they next sync. Your progress on this device stays.
+                {t('This deletes your account (your sign-in), your backed-up progress, your teacher links, your circles and memberships, and your study days from the server, then signs you out. Other signed-in devices are signed out when they next sync. Your progress on this device stays.')}
               </p>
               <div className="p-actions">
                 <Button variant="danger" disabled={busy} onClick={async () => {
                   setBusy(true)
-                  try { await deleteAccount(); onDeleted('Your account is deleted. You are signed out; your progress is still on this device.'); return }
-                  catch (e) { setMsg({ ok: false, text: `Not deleted: ${(e as Error).message}` }) }
+                  try { await deleteAccount(); onDeleted(t('Your account is deleted. You are signed out; your progress is still on this device.')); return }
+                  catch (e) { setMsg({ ok: false, text: t('Not deleted: {reason}', { reason: (e as Error).message }) }) }
                   setBusy(false); setConfirm(false)
-                }}>Delete</Button>
-                <Button variant="ghost" onClick={() => setConfirm(false)}>Cancel</Button>
+                }}>{t('Delete')}</Button>
+                <Button variant="ghost" onClick={() => setConfirm(false)}>{t('Cancel')}</Button>
               </div>
             </div>
           )}
@@ -81,17 +82,16 @@ function AccountSwitch() {
   const [busy, setBusy] = useState(false)
   const pick = (c: 'replace' | 'merge') => { setBusy(true); void chooseAccountData(c).finally(() => setBusy(false)) }
   return (
-    <div className="p-confirm" role="alertdialog" aria-label="This device has someone else's progress">
+    <div className="p-confirm" role="alertdialog" aria-label={t("This device has someone else's progress")}>
       <p>
-        The progress on this device was backed up to a <b>different account</b>. Backup is paused until you choose. Nothing has been
-        changed yet.
+        {t('The progress on this device was backed up to a')} <b>{t('different account')}</b>{t('. Backup is paused until you choose. Nothing has been changed yet.')}
       </p>
       <div className="p-stack">
-        <Button disabled={busy} onClick={() => pick('replace')}>Use this account's data (replace this device's)</Button>
-        <Button variant="secondary" disabled={busy} onClick={() => pick('merge')}>Merge this device's progress into this account</Button>
-        <Button variant="ghost" disabled={busy} onClick={() => void signOut()}>Cancel (sign out)</Button>
+        <Button disabled={busy} onClick={() => pick('replace')}>{t("Use this account's data (replace this device's)")}</Button>
+        <Button variant="secondary" disabled={busy} onClick={() => pick('merge')}>{t("Merge this device's progress into this account")}</Button>
+        <Button variant="ghost" disabled={busy} onClick={() => void signOut()}>{t('Cancel (sign out)')}</Button>
       </div>
-      <p className="t-sm muted">Replace: this device shows this account's progress; the other account's copy on the server is not touched.</p>
+      <p className="t-sm muted">{t("Replace: this device shows this account's progress; the other account's copy on the server is not touched.")}</p>
     </div>
   )
 }
@@ -112,29 +112,28 @@ function SignIn() {
 
   return (
     <>
-      <OrnHeading>Account and backup</OrnHeading>
+      <OrnHeading>{t('Account and backup')}</OrnHeading>
       <Card>
-        <p>Your progress is saved only on this device. Sign in to keep it safe and use it on any device. Signing in is optional; the app works fully without it.</p>
+        <p>{t('Your progress is saved only on this device. Sign in to keep it safe and use it on any device. Signing in is optional; the app works fully without it.')}</p>
         {sent ? (
           <div role="status" className="p-stack">
-            <p><b>Check your email.</b> We sent a sign-in link to <span className="acc-email">{sent}</span>. Open it on this device, in this browser.</p>
-            <button type="button" className="p-linkbtn" onClick={() => setSent(null)}>Use a different email</button>
+            <p><b>{t('Check your email.')}</b> {t('We sent a sign-in link to')} <bdi className="acc-email">{sent}</bdi>{t('. Open it on this device, in this browser.')}</p>
+            <button type="button" className="p-linkbtn" onClick={() => setSent(null)}>{t('Use a different email')}</button>
           </div>
         ) : (
           <form className="p-stack" onSubmit={send}>
             <label className="p-field">
-              <span>Email</span>
-              <input type="email" required autoComplete="email" inputMode="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <span>{t('Email')}</span>
+              <input type="email" dir="ltr" required autoComplete="email" inputMode="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
-            <Button type="submit" disabled={busy || !email.trim()}>{busy ? 'Sending…' : 'Send link'}</Button>
+            <Button type="submit" disabled={busy || !email.trim()}>{busy ? t('Sending…') : t('Send link')}</Button>
           </form>
         )}
-        <p className="acc-or">or</p>
-        <Button variant="secondary" onClick={() => signInWithGoogle(redirectUrl()).catch((x) => setErr((x as Error).message))}>Continue with Google</Button>
+        <p className="acc-or">{t('or')}</p>
+        <Button variant="secondary" onClick={() => signInWithGoogle(redirectUrl()).catch((x) => setErr((x as Error).message))}><T>{t('Continue with Google')}</T></Button>
         {err && <p role="alert" className="p-error">{err}</p>}
         <p className="t-sm muted">
-          When you sign in, what is on this device is merged with what is already backed up: nothing is lost. If this device has no
-          progress yet, it takes the account's progress and settings. Recordings never leave this device.
+          {t("When you sign in, what is on this device is merged with what is already backed up: nothing is lost. If this device has no progress yet, it takes the account's progress and settings. Recordings never leave this device.")}
         </p>
       </Card>
     </>
