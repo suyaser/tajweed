@@ -5,6 +5,9 @@ import rawRules from '../../content/rules.json'
 import rawPairs from '../../content/pairs.json'
 import rawMutun from '../../content/mutun.json'
 import also from './also.json'
+// Arabic overlay (content/ar.json), keyed by id; merged only when the UI is Arabic, English fields are the fallback.
+import rawAr from '../../content/ar.json'
+import { isAr, pick } from '../i18n'
 
 const ALSO = also as Record<string, string[] | undefined>
 
@@ -17,6 +20,19 @@ interface RawRule {
   sources?: (string | { title: string; locator?: string })[]
   review?: { status: string; notes?: string }
 }
+
+export interface ArContent {
+  topics: Record<string, { name?: string; intro?: string } | undefined>
+  lessons: Record<string, {
+    nameEn?: string; definition?: string; conditions?: string[]; tip?: string; countsNote?: string; list?: string[][]
+    exampleNotes?: Record<string, string>; facts?: { q: string; options: string[]; why: string }[]
+  } | undefined>
+  units: Record<string, { name?: string; intro?: string; mutun?: string[] } | undefined>
+  course: Record<string, { notice?: string } | undefined>
+  pairs: Record<string, string | undefined>
+  mutun: Record<string, string | undefined>
+}
+export const AR_CONTENT = rawAr as ArContent
 
 const CATS: [id: string, nameAr: string, nameEn: string, intro: string][] = [
   ['found', 'المخارج والصفات', 'Foundations', 'Before any rule: each letter from its place (المخرج) with its qualities (الصفات).'],
@@ -33,36 +49,42 @@ const CATS: [id: string, nameAr: string, nameEn: string, intro: string][] = [
 ]
 // Topics that are not a muṣḥaf colour rule: their lessons get no colour (UX review M4).
 const NO_COLOUR = new Set(['found', 'waqf', 'hafs'])
-export const topics: Topic[] = CATS.map(([id, nameAr, nameEn, intro], order) => ({ id, nameAr, nameEn, intro, order }))
+export const topics: Topic[] = CATS.map(([id, nameAr, nameEn, intro], order) => ({
+  id, nameAr, nameEn: pick(nameEn, AR_CONTENT.topics[id]?.name), intro: pick(intro, AR_CONTENT.topics[id]?.intro), order,
+}))
 
 export const pairs: ConfusablePair[] = (rawPairs as { id?: string; a: string; b: string; hint?: string; difference?: string }[]).map(p => ({
-  id: p.id ?? `${p.a}~${p.b}`, a: p.a, b: p.b, hint: p.hint ?? p.difference ?? '',
+  id: p.id ?? `${p.a}~${p.b}`, a: p.a, b: p.b, hint: pick(p.hint ?? p.difference ?? '', AR_CONTENT.pairs[p.id ?? `${p.a}~${p.b}`]),
 }))
 
 export const mutun: MatnLine[] = rawMutun.lines.map(l => ({
   id: `${l.text}-${l.n}`, matn: l.text as MatnLine['matn'], n: l.n, sadr: l.sadr, ajz: l.ajuz,
-  page: l.page == null ? undefined : String(l.page), url: l.url, lessonIds: l.rules, gloss: l.gloss,
+  page: l.page == null ? undefined : String(l.page), url: l.url, lessonIds: l.rules, gloss: pick(l.gloss, AR_CONTENT.mutun[`${l.text}-${l.n}`]),
   verified: l.verified as MatnLine['verified'],
 }))
 
 export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
+  const a = isAr ? AR_CONTENT.lessons[r.id] : undefined
   const examples = (r.examples ?? []).map((e, i) => ({
     id: `${r.id}#${i + 1}`, lessonId: r.id, verseKey: e.verse, wordFrom: e.word_from, wordTo: e.word_to,
-    text: e.text, focus: e.focus, stopping: !!e.stop, ...(e.note ? { note: e.note } : {}),
+    text: e.text, focus: e.focus, stopping: !!e.stop, ...(e.note ? { note: pick(e.note, a?.exampleNotes?.[i + 1]) } : {}),
     also: ALSO[`${r.id}#${i + 1}`],
   }))
   const facts = (r.facts ?? []).map((f, i) => ({
-    id: `${r.id}?${i + 1}`, lessonId: r.id, prompt: f.q, options: f.options,
-    answer: typeof f.answer === 'number' ? f.answer : f.options.indexOf(f.answer), explanation: f.why,
+    id: `${r.id}?${i + 1}`, lessonId: r.id, prompt: pick(f.q, a?.facts?.[i]?.q),
+    options: a?.facts?.[i]?.options.length === f.options.length ? a.facts[i].options : f.options,
+    answer: typeof f.answer === 'number' ? f.answer : f.options.indexOf(f.answer), explanation: pick(f.why, a?.facts?.[i]?.why),
   }))
   const questionKinds: QuestionKind[] = []
   if (examples.length) questionKinds.push('identify')
   if (r.counts && r.cat === 'madd') questionKinds.push('length')
   if (facts.length) questionKinds.push('fact')
   return {
-    id: r.id, topicId: r.cat, order, nameAr: r.ar, nameEn: r.en, colour: NO_COLOUR.has(r.cat) ? undefined : (r.color as ColourKey),
-    summary: r.definition, letters: r.letters, counts: r.counts, conditions: r.conditions, tip: r.tip,
-    list: r.list as [string, string][] | undefined, examples, facts, questionKinds,
+    id: r.id, topicId: r.cat, order, nameAr: r.ar, nameEn: pick(r.en, a?.nameEn), colour: NO_COLOUR.has(r.cat) ? undefined : (r.color as ColourKey),
+    summary: pick(r.definition, a?.definition), letters: r.letters,
+    counts: r.counts?.note && a?.countsNote ? { ...r.counts, note: a.countsNote } : r.counts,
+    conditions: pick(r.conditions, a?.conditions), tip: pick(r.tip, a?.tip),
+    list: pick(r.list, a?.list) as [string, string][] | undefined, examples, facts, questionKinds,
     confusableWith: pairs.flatMap(p => (p.a === r.id ? [p.b] : p.b === r.id ? [p.a] : [])),
     sources: (r.sources ?? []).map(s => (typeof s === 'string' ? { title: s, locator: '' } : { title: s.title, locator: s.locator ?? '' })),
     review: { status: r.review?.status === 'verified' ? 'verified' : 'needs-teacher', notes: r.review?.notes },
