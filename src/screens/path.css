@@ -73,7 +73,8 @@
 .p-details > summary { min-height: var(--target); display: flex; align-items: center; cursor: pointer; font-weight: 600; color: var(--link); }
 .p-details section { margin-top: var(--s3); }
 .p-weeks { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.p-weeks li { display: grid; grid-template-columns: 7.5em 1fr; align-items: center; gap: var(--s3); }
+.p-weeks li { display: grid; grid-template-columns: minmax(0, 7.5em) minmax(0, 1fr); align-items: center; gap: var(--s3); }
+.p-weeks li > * { min-width: 0; overflow-wrap: anywhere; }
 .p-goals { margin: 0; display: grid; gap: var(--s3); }
 .p-goals dd { margin: 0; }
 @media (min-width: 1024px) { .p-goals { grid-template-columns: repeat(3, 1fr); } }
