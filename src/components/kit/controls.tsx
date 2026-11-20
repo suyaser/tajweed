@@ -51,16 +51,20 @@ export function StatusChip({ status, children, className }: { status: keyof type
   return <Chip tone={s.tone} icon={s.icon} fill={status === 'done'} className={className}>{children}</Chip>
 }
 
-/** Two to four mutually exclusive views (List / Map). Radix ToggleGroup: arrow keys, RTL aware. */
-export function SegmentedControl<V extends string>({ value, onChange, options, label, className }: {
+/** Two to four mutually exclusive views (List / Map). Radix ToggleGroup: arrow keys, RTL aware. `size="sm"`: the
+ *  compact 40px control for settings rows (36px segments with an outset hit area to 48px). */
+export function SegmentedControl<V extends string>({ value, onChange, options, label, className, size = 'default' }: {
   value: V; onChange: (v: V) => void; options: { value: V; label: ReactNode; icon?: string }[]; label: string; className?: string
+  size?: 'default' | 'sm'
 }) {
+  const sm = size === 'sm'
   return (
     <ToggleGroup type="single" value={value} onValueChange={(v) => v && onChange(v as V)} aria-label={label} spacing={1}
-      className={cn('h-12 rounded-control bg-surface-container p-1', className)}>
+      className={cn('rounded-control bg-surface-container', sm ? 'h-10 p-0.5' : 'h-12 p-1', className)}>
       {options.map((o) => (
         <ToggleGroupItem key={o.value} value={o.value}
-          className="h-10 min-w-20 flex-1 rounded-[10px] px-space-md data-[state=on]:bg-surface-container-lowest data-[state=on]:font-semibold data-[state=on]:text-on-surface data-[state=on]:shadow-card">
+          className={cn('flex-1 data-[state=on]:bg-surface-container-lowest data-[state=on]:font-semibold data-[state=on]:text-on-surface data-[state=on]:shadow-card',
+            sm ? "relative h-9 min-w-0 rounded-[12px] px-3 text-label after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-['']" : 'h-10 min-w-20 rounded-[10px] px-space-md')}>
           {o.icon && <Icon name={o.icon} size={18} />}{o.label}
         </ToggleGroupItem>
       ))}

@@ -29,7 +29,7 @@ export function Button({ variant = 'primary', block, href, className, size, chil
 export type OptionState = 'idle' | 'correct' | 'wrong' | 'revealed' | 'picked'
 
 /** Two to four mutually exclusive options (kit SegmentedControl). */
-export function SegmentedControl<V extends string>(p: { options: { value: V; label: ReactNode }[]; value: V; onChange: (v: V) => void; label: string; className?: string }) {
+export function SegmentedControl<V extends string>(p: { options: { value: V; label: ReactNode }[]; value: V; onChange: (v: V) => void; label: string; className?: string; size?: 'default' | 'sm' }) {
   return <KitSegmented {...p} />
 }
 
@@ -133,7 +133,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
 /** A titled group: EN label at the start with its Arabic at the end (AR UI: Arabic only), then a card of rows. */
 export function Group({ en, ar, id, children, className }: { en: string; ar?: string; id?: string; children: ReactNode; className?: string }) {
   return (
-    <section id={id} aria-label={isAr ? ar ?? en : en} className={cn('flex scroll-mt-20 flex-col gap-space-sm', className)}>
+    <section id={id} aria-label={isAr ? ar ?? en : en} className={cn('flex scroll-mt-20 flex-col gap-space-xs', className)}>
       <h2 className="flex items-baseline justify-between gap-space-sm px-space-xs">
         <span className="text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case">{isAr ? ar ?? en : en}</span>
         {!isAr && ar && <span lang="ar" dir="rtl" className="text-arabic-label text-secondary">{ar}</span>}
@@ -152,18 +152,19 @@ export function Row({ icon, label, hint, children, href, className, stack }: {
   stack?: boolean
 }) {
   const head = (
-    <div className={cn('flex min-w-0 flex-1 items-start gap-space-md', !stack && 'basis-60')}>
-      {icon && <span className="grid size-10 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name={icon} size={22} /></span>}
-      <div className="flex min-w-0 flex-1 flex-col gap-0.5 self-center">
-        <span className="text-body-lg font-medium text-on-surface">{label}</span>
-        {hint && <span className="text-body-md text-on-surface-variant">{hint}</span>}
+    <div className={cn('flex min-w-0 flex-1 items-start gap-3', !stack && (hint ? 'basis-60' : 'basis-32'))}>
+      {icon && <span className="grid size-9 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name={icon} size={20} /></span>}
+      <div className="flex min-w-0 flex-1 flex-col self-center">
+        <span className="text-body-md font-semibold text-on-surface">{label}</span>
+        {hint && <span className="text-label font-normal text-on-surface-variant">{hint}</span>}
       </div>
     </div>
   )
-  const box = 'flex gap-x-space-md gap-y-space-sm p-space-md'
+  // compact grouped-list row (Stitch settings): 12px block padding, 36px icon tile, 14px label, 12px hint
+  const box = 'flex gap-x-3 gap-y-space-sm px-space-md py-3'
   if (href)
     return (
-      <a href={href} className={cn(box, 'min-h-16 items-center text-on-surface no-underline transition-colors hover:bg-surface-container-low', className)}>
+      <a href={href} className={cn(box, 'min-h-14 items-center text-on-surface no-underline transition-colors hover:bg-surface-container-low', className)}>
         {head}{children}
         <Icon name="chevron_right" rtlFlip className="text-outline" />
       </a>
@@ -171,7 +172,7 @@ export function Row({ icon, label, hint, children, href, className, stack }: {
   return (
     <div className={cn(box, stack ? 'flex-col' : 'flex-wrap items-center', className)}>
       {head}
-      {children && <div className={cn('flex flex-wrap items-center gap-space-sm', stack ? (icon ? 'sm:ps-14' : '') : 'ms-auto')}>{children}</div>}
+      {children && <div className={cn('flex flex-wrap items-center gap-space-sm', stack ? (icon ? 'sm:ps-12' : '') : 'ms-auto')}>{children}</div>}
     </div>
   )
 }

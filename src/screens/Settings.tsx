@@ -59,25 +59,25 @@ export default function Settings({ params }: ScreenProps) {
 
       <Group en="Language and display" ar="اللغة والعرض">
         <Row icon="translate" label={t('App language')} hint={t('The app reloads in the language you pick.')}>
-          <SegmentedControl label={t('Language · اللغة')} value={lang} onChange={(v) => v !== lang && setLang(v)}
+          <SegmentedControl size="sm" label={t('Language · اللغة')} value={lang} onChange={(v) => v !== lang && setLang(v)}
             options={[{ value: 'ar', label: <span lang="ar">العربية</span> }, { value: 'en', label: <span lang="en">English</span> }]} />
         </Row>
         <Row stack icon="format_size" label={t('Text size')} hint={t('Makes all text and buttons bigger, including the Quran text.')}>
           <div className="flex w-full flex-col gap-space-sm">
-            <SegmentedControl label={t('Text size')} value={s.textSize} onChange={(v) => set({ textSize: v })} className="w-full"
+            <SegmentedControl size="sm" label={t('Text size')} value={s.textSize} onChange={(v) => set({ textSize: v })} className="w-full"
               options={[{ value: 'm', label: t('Normal') }, { value: 'l', label: t('Large') }, { value: 'xl', label: t('Larger') }]} />
-            <div className="rounded-control bg-surface-container-low px-space-md"><VerseBlock text="قُلْ هُوَ ٱللَّهُ أَحَدٌ" reference="الإخلاص ١" size="read" /></div>
+            <div className="rounded-control bg-surface-container-low px-space-sm"><VerseBlock text="قُلْ هُوَ ٱللَّهُ أَحَدٌ" reference="الإخلاص ١" size="read" /></div>
           </div>
         </Row>
         <Row icon="contrast" label={t('Theme')}>
-          <SegmentedControl label={t('Theme')} value={s.theme} onChange={(v) => set({ theme: v })}
+          <SegmentedControl size="sm" label={t('Theme')} value={s.theme} onChange={(v) => set({ theme: v })}
             options={[{ value: 'light', label: t('Light') }, { value: 'dark', label: t('Dark') }, { value: 'system', label: t('System') }]} />
         </Row>
-        <label className="flex cursor-pointer items-center gap-space-md p-space-md">
-          <span className="grid size-10 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name="texture" size={22} /></span>
-          <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-            <span className="text-body-lg font-medium">{t('Tajweed patterns')}</span>
-            <span className="text-body-md text-on-surface-variant">{t('Adds a pattern under each tajweed colour, so the rule does not rely on colour alone.')}</span>
+        <label className="flex cursor-pointer items-center gap-3 px-space-md py-3">
+          <span className="grid size-9 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name="texture" size={20} /></span>
+          <span className="flex min-w-0 flex-1 flex-col">
+            <span className="text-body-md font-semibold">{t('Tajweed patterns')}</span>
+            <span className="text-label font-normal text-on-surface-variant">{t('Adds a pattern under each tajweed colour, so the rule does not rely on colour alone.')}</span>
           </span>
           <Switch checked={s.tajweedPatterns} onCheckedChange={(v) => set({ tajweedPatterns: v })} />
         </label>
@@ -85,11 +85,11 @@ export default function Settings({ params }: ScreenProps) {
 
       <Group id="set-recitation" en="Recitation" ar="التلاوة">
         <Reciters value={s.reciterId} onChange={(id) => set({ reciterId: id })} />
-        <Row stack icon="straighten"
+        <Row icon="straighten"
           label={isAr ? 'مقدار المد المنفصل' : <><span lang="ar" className="font-arabic">المد المنفصل</span> length</>}
           hint={t('Used in explanations and in length questions. Pick the length your teacher uses and keep it.')}
         >
-          <SegmentedControl label={t('Munfasil length')} value={String(s.munfasilLength) as '4' | '5'} className="w-full sm:w-auto"
+          <SegmentedControl size="sm" label={t('Munfasil length')} value={String(s.munfasilLength) as '4' | '5'}
             onChange={(v) => { set({ munfasilLength: +v as 4 | 5 }); setMunfasilChanged(true) }}
             options={[{ value: '4', label: t('{n} counts', { n: 4 }) }, { value: '5', label: t('{n} counts', { n: 5 }) }]} />
           {munfasilChanged && (
@@ -100,21 +100,21 @@ export default function Settings({ params }: ScreenProps) {
 
       <Group id="set-wird" en="Study time and teacher" ar="الورد والشيخ">
         <Row icon="schedule" label={t('Wird time')}>
-          <input type="time" className={fieldCls('w-36')} value={s.wirdTime} onChange={(e) => e.target.value && set({ wirdTime: e.target.value })} aria-label={t('Wird time')} />
+          <input type="time" className={fieldCls('h-11 w-36')} value={s.wirdTime} onChange={(e) => e.target.value && set({ wirdTime: e.target.value })} aria-label={t('Wird time')} />
         </Row>
         <Row icon="event" label={t('Add to calendar')} hint={t('A daily event at your wird time, plus your teacher day. Open the file to add it.')}>
-          <Button variant="secondary" onClick={() => download('tajweed-wird.ics', makeWirdIcs(s, location.href), 'text/calendar')}>
+          <Button variant="secondary" size="sm" onClick={() => download('tajweed-wird.ics', makeWirdIcs(s, location.href), 'text/calendar')}>
             <Icon name="download" size={20} />{t('Download .ics')}
           </Button>
         </Row>
         <Row stack icon="calendar_month" label={t('Teacher day(s)')}>
-          <div className="grid w-full grid-cols-4 gap-space-xs sm:grid-cols-7" role="group" aria-label={t('Teacher days')}>
+          <div className={cn('grid w-full gap-space-xs', isAr ? 'grid-cols-4 sm:grid-cols-7' : 'grid-cols-7')} role="group" aria-label={t('Teacher days')}>
             {[6, 0, 1, 2, 3, 4, 5].map((i) => {
               const on = s.teacherDays.includes(i)
               return (
                 <button key={i} type="button" aria-label={t(WEEK_LONG[i])} aria-pressed={on}
                   onClick={() => set({ teacherDays: on ? s.teacherDays.filter((x) => x !== i) : [...s.teacherDays, i].sort() })}
-                  className={cn('h-11 min-w-0 cursor-pointer rounded-control border text-label font-semibold transition-colors',
+                  className={cn('h-11 min-w-0 cursor-pointer rounded-control border px-0 text-label font-semibold transition-colors',
                     on ? 'border-primary bg-primary-fill text-on-primary' : 'border-outline-variant text-on-surface-variant hover:bg-surface-container')}>
                   {isAr ? AR_DAYS[i] : WEEKDAYS[i].slice(0, 3)}
                 </button>
@@ -138,7 +138,7 @@ export default function Settings({ params }: ScreenProps) {
 
       <Group en="About" ar="عن التطبيق">
         <Row icon="library_books" href="#/resources" label={t('Credits and sources')} />
-        <p className="p-space-md text-body-md text-on-surface-variant">
+        <p className="px-space-md py-3 text-label font-normal text-on-surface-variant">
           <T>{t('Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device. If you sign in, your progress (not your recordings) is also backed up to your account.')}</T>
         </p>
       </Group>
@@ -165,16 +165,16 @@ function Reciters({ value, onChange }: { value: string; onChange: (id: string) =
     setPlaying(r.id)
   }
   return (
-    <div className="flex flex-col gap-space-sm p-space-md">
+    <div className="flex flex-col gap-space-xs px-space-md py-3">
       <span id="reciter-label" className="text-label font-semibold text-on-surface-variant">{t('Model reciter')}</span>
-      <RadioGroup value={value} onValueChange={onChange} aria-labelledby="reciter-label" className="gap-space-xs">
+      <RadioGroup value={value} onValueChange={onChange} aria-labelledby="reciter-label" className="gap-0.5">
         {RECITERS.map((r) => {
           const on = value === r.id
           return (
             <div key={r.id} className={cn('flex items-center gap-space-sm rounded-control border ps-space-md pe-space-xs transition-colors',
               on ? 'border-primary/40 bg-primary-container/50' : 'border-transparent hover:bg-surface-container-low')}>
               <RadioGroupItem id={`reciter-${r.id}`} value={r.id} className="relative after:absolute after:-inset-3 after:content-['']" />
-              <label htmlFor={`reciter-${r.id}`} className="flex min-h-14 min-w-0 flex-1 cursor-pointer flex-col justify-center py-space-xs">
+              <label htmlFor={`reciter-${r.id}`} className="flex min-h-12 min-w-0 flex-1 cursor-pointer flex-col justify-center py-1">
                 <span lang="ar" className="text-arabic-body leading-snug font-medium">{r.nameAr}</span>
                 {!isAr && <small className="text-caption text-on-surface-variant">{r.nameEn}</small>}
               </label>
@@ -342,12 +342,12 @@ function Reset() {
   const [word, setWord] = useState('')
   const ok = RESET_WORDS.includes(word.trim().toLowerCase())
   return (
-    <section aria-label={t('Reset everything')} className="flex flex-col gap-space-sm rounded-card border border-error/30 bg-error-container/30 p-space-md">
-      <div className="flex flex-wrap items-center gap-space-md">
-        <span className="grid size-10 shrink-0 place-items-center rounded-control bg-error-container text-on-error-container"><Icon name="restart_alt" size={22} /></span>
+    <section aria-label={t('Reset everything')} className="flex flex-col gap-space-sm rounded-card border border-error/30 bg-error-container/30 px-space-md py-3">
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="grid size-9 shrink-0 place-items-center rounded-control bg-error-container text-on-error-container"><Icon name="restart_alt" size={20} /></span>
         <div className="flex min-w-0 flex-1 basis-48 flex-col">
-          <span className="text-body-lg font-semibold text-error">{t('Reset everything')}</span>
-          <span className="text-body-md text-on-surface-variant">{t('This deletes all your progress, sessions and recordings on this device.')}</span>
+          <span className="text-body-md font-semibold text-error">{t('Reset everything')}</span>
+          <span className="text-label font-normal text-on-surface-variant">{t('This deletes all your progress, sessions and recordings on this device.')}</span>
         </div>
         {!open && <Button variant="danger" onClick={() => setOpen(true)}>{t('Reset everything')}</Button>}
       </div>
