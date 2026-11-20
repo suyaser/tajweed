@@ -1,12 +1,12 @@
 // The rule card as numbered sections (docs/10 §4.4): Learn step and the lesson's Rule sheet. No tajweed colours.
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import type { Example, Lesson } from '../../core/types'
-import { getLesson } from '../../content'
+import type { Example, Lesson, MatnLine } from '../../core/types'
+import { getLesson, mutun } from '../../content'
 import { href } from '../../app/router'
-import { Line, T } from '../../components'
+import { arDigits, Line, T } from '../../components'
 import { updateSettings, useData } from '../../core/store'
 import { countsText } from '../../core/questions'
-import { digits, t } from '../../i18n'
+import { digits, isAr, t } from '../../i18n'
 import { Callout, CountBeats, LetterTile, SectionCard } from '@/components/kit'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
@@ -57,7 +57,7 @@ function Letters({ letters }: { letters: string }) {
 
 /** Section title in both languages (SectionCard shows the Arabic at the end in the English UI). */
 const SECTION_AR: Record<string, string> = {
-  'What happens': 'ما الذي يحدث', 'Which letters': 'الحروف', 'At a glance': 'باختصار', 'How long': 'المقدار', 'When it applies': 'متى يكون', Example: 'مثال',
+  'What happens': 'ما الذي يحدث', 'In the matn': 'من المتن', 'Which letters': 'الحروف', 'At a glance': 'باختصار', 'How long': 'المقدار', 'When it applies': 'متى يكون', Example: 'مثال',
 }
 const bi = (en: string) => ({ en: t(en), ar: SECTION_AR[en] })
 
@@ -102,6 +102,33 @@ function MunfasilChoice() {
   )
 }
 
+/** Emphasis in the explanation (Stitch lesson_learn): the Arabic terms inside an English sentence in teal, semibold. */
+const EMPH = '[&_bdi:lang(ar)]:font-semibold [&_bdi:lang(ar)]:text-primary'
+
+const MATN_NAME = { tuhfa: 'تحفة الأطفال', jazariyya: 'المقدمة الجزرية' } as const
+
+/** The lines of the matn written for this rule alone (content/mutun.json), the way the rule is memorised. */
+function Matn({ lines }: { lines: MatnLine[] }) {
+  const shown = lines.slice(0, 3)
+  return (
+    <SectionCard {...bi('In the matn')}>
+      <div className="flex flex-col gap-space-sm rounded-control bg-surface-container-low p-space-md text-center">
+        {shown.map(m => (
+          <figure key={m.id} className="flex flex-col gap-0.5">
+            <blockquote lang="ar" dir="rtl" className="font-naskh text-[19px] leading-[1.9] text-on-surface">
+              {m.sadr} <span aria-hidden className="text-gold">۞</span> {m.ajz}
+            </blockquote>
+            {!isAr && m.gloss && <figcaption className="text-label font-normal text-on-surface-variant"><Tx>{m.gloss}</Tx></figcaption>}
+          </figure>
+        ))}
+      </div>
+      <a href={href('mutun', shown[0].matn)} lang="ar" className="mt-space-sm inline-flex min-h-11 items-center gap-1 text-arabic-label text-primary no-underline hover:underline">
+        <Icon name="history_edu" size={18} />{MATN_NAME[shown[0].matn]} {arDigits(shown[0].n)}{shown.length > 1 && `–${arDigits(shown[shown.length - 1].n)}`}
+      </a>
+    </SectionCard>
+  )
+}
+
 const SUB = 'mb-space-xs text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case'
 
 /** `onRead` fires once the Remember section has been on screen (Learn's "done"). */
@@ -123,22 +150,29 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
     return () => io.disconnect()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Sections (docs/13 "Learn"): the explanation in the main column, the letters, the matn and the worked example
+  // beside it from lg. Each keeps its reading order (`order`), so on phones it is one column as before.
   let n = 0
-  const sections: ReactNode[] = []
-  sections.push(<SectionCard key="what" n={++n} {...bi('What happens')}><p className="text-body-lg"><Tx>{what}</Tx></p></SectionCard>)
+  const main: ReactNode[] = []
+  const side: ReactNode[] = []
+  let order = 0
+  const put = (to: ReactNode[], key: string, node: ReactNode) => to.push(<div key={key} style={{ order: order++ }} className="min-w-0">{node}</div>)
+  put(main, 'what', <SectionCard n={++n} {...bi('What happens')} className={EMPH}><p className="text-body-lg leading-relaxed"><Tx>{what}</Tx></p></SectionCard>)
   if (lesson.letters) {
     const c = letterCount(lesson.letters)
-    sections.push(
-      <SectionCard key="letters" n={++n} {...bi('Which letters')}>
+    put(side, 'letters',
+      <SectionCard n={++n} {...bi('Which letters')}>
         <Letters letters={lesson.letters} />
-        {c > 1 && <p className="mt-space-sm text-body-md text-on-surface-variant">{tn('{n} letter', '{n} letters', c)}</p>}
+        {c > 1 && <p className="mt-space-sm text-label text-on-surface-variant">{tn('{n} letter', '{n} letters', c)}</p>}
       </SectionCard>,
     )
   }
+  const matn = mutun.filter(m => m.lessonIds.length === 1 && m.lessonIds[0] === lesson.id)
+  if (matn.length) put(side, 'matn', <Matn lines={matn} />)
   if (lesson.list?.length)
     // the table is the lesson's key content where it has one (the marks in lesson 1, the cases of ر): a section, not More
-    sections.push(
-      <SectionCard key="list" n={++n} {...bi('At a glance')}>
+    put(main, 'list',
+      <SectionCard n={++n} {...bi('At a glance')} className={EMPH}>
         <table className="w-full border-collapse text-body-md">
           <tbody>
             {lesson.list.map(([a, b], i) => (
@@ -152,8 +186,8 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
       </SectionCard>,
     )
   if (counts)
-    sections.push(
-      <SectionCard key="long" n={++n} {...bi('How long')}>
+    put(main, 'long',
+      <SectionCard n={++n} {...bi('How long')} className={EMPH}>
         <div className="flex flex-wrap items-center justify-between gap-space-sm rounded-control bg-surface-container-low p-space-md">
           <span className="text-headline-md text-on-surface">{countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}</span>
           <CountBeats min={counts.min} max={counts.max} className="flex-wrap" />
@@ -163,13 +197,13 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
       </SectionCard>,
     )
   if (conds.length)
-    sections.push(
-      <SectionCard key="when" n={++n} {...bi('When it applies')}>
+    put(main, 'when',
+      <SectionCard n={++n} {...bi('When it applies')} className={EMPH}>
         <ol className="flex flex-col gap-space-sm">
           {(allConds ? conds : conds.slice(0, SHOW)).map((c, i) => (
-            <li key={i} className="flex gap-space-sm rounded-control bg-surface-container-low p-space-sm">
+            <li key={i} className="flex gap-space-sm rounded-control bg-surface-container-low p-space-sm ps-space-md">
               <span className="grid size-6 shrink-0 place-items-center rounded-full bg-surface-container-lowest text-label font-semibold text-primary">{digits(i + 1)}</span>
-              <span className="min-w-0"><Tx>{c}</Tx></span>
+              <span className="min-w-0 leading-relaxed"><Tx>{c}</Tx></span>
             </li>
           ))}
         </ol>
@@ -180,9 +214,10 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
         )}
       </SectionCard>,
     )
+  // the worked example sits beside the text when nothing else does; with letters or matn beside, it follows the text
   if (ex0)
-    sections.push(
-      <SectionCard key="ex" n={++n} {...bi('Example')}>
+    put(side.length ? main : side, 'ex',
+      <SectionCard n={++n} {...bi('Example')}>
         <ExampleCard ex={ex0} eyebrow={false} className="mt-space-xs rounded-control border-0 bg-surface-container-low" audio={audio} played={played} onPlayed={() => setPlayed(true)} />
       </SectionCard>,
     )
@@ -193,9 +228,14 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
       {lesson.review.status !== 'verified' && (
         <Badge variant="secondary" className="self-start"><Icon name="info" size={16} />{t('Draft · check with your teacher')}</Badge>
       )}
-      {sections}
-      <div ref={remember}>
-        {lesson.tip && <Callout variant="tip" title={t('Remember')}><Tx>{lesson.tip}</Tx></Callout>}
+      <div className={cn('flex min-w-0 flex-col gap-space-md', side.length > 0 && 'lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-space-lg')}>
+        <div className="contents lg:flex lg:min-w-0 lg:flex-col lg:gap-space-md">
+          {main}
+          <div ref={remember} style={{ order: order }} className={cn('min-w-0', EMPH)}>
+            {lesson.tip && <Callout variant="tip" title={t('Remember')}><Tx>{lesson.tip}</Tx></Callout>}
+          </div>
+        </div>
+        {side.length > 0 && <div className="contents lg:flex lg:min-w-0 lg:flex-col lg:gap-space-md">{side}</div>}
       </div>
       {hasMore && (
         <Accordion type="single" collapsible className="rounded-card border border-outline-variant bg-surface-container-lowest px-space-md">
