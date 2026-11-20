@@ -2,11 +2,14 @@ import { useState } from 'react'
 import { useData } from '../core/store'
 import { today } from '../core/day'
 import { getLesson } from '../content'
-import { Button, Card, CorrectionTag, EmptyState, OrnHeading, SegmentedControl, T } from '../components'
+import { Actions, Button, EmptyState, Group, SegmentedControl, T } from '../components'
 import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, upcomingSession } from './path/helpers'
 import { startClass } from './path/ui'
 import { Hint } from './study/Hint'
-import { t, FWD } from '../i18n'
+import { Item, SeverityTag, refCls } from './library/teacher'
+import { t } from '../i18n'
+import { Page, PageHeader } from '@/components/kit'
+import { Icon } from '@/components/ui/icon'
 
 export default function Teacher() {
   const d = useData()
@@ -16,93 +19,106 @@ export default function Teacher() {
   const teacherDay = nextTeacherDay(d.settings.teacherDays, on)
   const sessions = live(d.sessions).filter((s) => s !== next).sort((a, b) => (a.on < b.on ? 1 : -1))
   const open = live(d.corrections).filter((c) => c.status === 'open').sort((a, b) => (a.severity === b.severity ? (a.createdAt < b.createdAt ? 1 : -1) : a.severity === 'jali' ? -1 : 1))
+  const teacher = next?.teacherName || d.settings.teacherName
 
   return (
-    <div className="p-stack">
+    <Page>
+      <PageHeader en="Teacher" ar="الشيخ" />
       <Hint id="teacher">{t('Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.')}</Hint>
-      <Card level="e2" eyebrow={next ? t('Next session · {day}', { day: dayLabel(next.on) }) : teacherDay ? t('Next teacher day · {day}', { day: dayLabel(teacherDay) }) : t('Next session')}>
+
+      <section aria-labelledby="next-session" className="flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md shadow-card sm:p-space-lg">
+        <div className="flex items-start gap-space-md">
+          <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary-container text-on-primary-container"><Icon name="record_voice_over" /></span>
+          <div className="flex min-w-0 flex-col gap-0.5">
+            <h2 id="next-session" className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
+              {next ? t('Next session · {day}', { day: dayLabel(next.on) }) : teacherDay ? t('Next teacher day · {day}', { day: dayLabel(teacherDay) }) : t('Next session')}
+            </h2>
+            {next ? (
+              <p className="text-body-lg">
+                {teacher ? <bdi lang="ar" className="font-arabic font-semibold">{teacher}</bdi> : t('Your teacher')} ·{' '}
+                {next.plannedPassages.length === 1 ? t('1 passage') : t('{n} passages', { n: next.plannedPassages.length })}
+              </p>
+            ) : (
+              <p className="text-body-md text-on-surface-variant">{t('No plan yet. The app suggests what to recite: your unit finale, open corrections and what you practised.')}</p>
+            )}
+          </div>
+        </div>
         {next ? (
-          <>
-            <p>
-              {next.teacherName || d.settings.teacherName ? <bdi lang="ar" className="a">{next.teacherName || d.settings.teacherName}</bdi> : t('Your teacher')} ·{' '}
-              {next.plannedPassages.length === 1 ? t('1 passage') : t('{n} passages', { n: next.plannedPassages.length })}
-            </p>
-            <div className="p-actions">
-              <Button variant="secondary" href={`#/teacher/${next.id}`}>{t('Open plan')}</Button>
-              <Button onClick={() => startClass(next.id)}>{t('Start class')}</Button>
-            </div>
-          </>
+          <Actions>
+            <Button onClick={() => startClass(next.id)}><Icon name="play_arrow" size={20} fill />{t('Start class')}</Button>
+            <Button variant="secondary" href={`#/teacher/${next.id}`}>{t('Open plan')}</Button>
+          </Actions>
         ) : (
-          <>
-            <p className="muted">{t('No plan yet. The app suggests what to recite: your unit finale, open corrections and what you practised.')}</p>
-            <div className="p-actions">
-              <Button href="#/teacher/new">{t('Plan a session')}</Button>
-              <Button variant="secondary" onClick={() => startClass()}>{t('Start class now')}</Button>
-            </div>
-          </>
+          <Actions>
+            <Button href="#/teacher/new"><Icon name="edit_calendar" size={20} />{t('Plan a session')}</Button>
+            <Button variant="secondary" onClick={() => startClass()}>{t('Start class now')}</Button>
+          </Actions>
         )}
-      </Card>
+      </section>
 
       <SegmentedControl
         label={t('Show')}
         value={filter}
         onChange={setFilter}
+        className="w-full sm:w-auto sm:self-start"
         options={[{ value: 'all', label: t('All') }, { value: 'open', label: t('Open corrections {n}', { n: open.length }) }]}
       />
 
       {filter === 'open' ? (
         open.length ? (
-          <ul className="p-list" aria-label={t('Open corrections')}>
-            {open.map((c) => (
-              <li key={c.id} className="p-item">
-                <div className="p-item-main">
-                  <a href={listenHref(c.verseKey)} className="a-lg" lang="ar">{corrLabel(c)}</a>
-                  <span className="t-sm muted">
+          <Group en="Open corrections" ar="التصحيحات المفتوحة">
+            <ul className="flex flex-col divide-y divide-outline-variant" aria-label={t('Open corrections')}>
+              {open.map((c) => (
+                <Item key={c.id} end={<SeverityTag severity={c.severity} />}>
+                  <a href={listenHref(c.verseKey)} className={refCls} lang="ar">{corrLabel(c)}</a>
+                  <span className="text-body-md text-on-surface-variant">
                     <T>{c.lessonIds.map((l) => getLesson(l)?.nameAr ?? l).join('، ') || t('No rule tagged')}</T>
                     {c.note ? <> · <bdi dir="auto">{c.note}</bdi></> : null} · {t('since {day}', { day: dayLabel(c.on ?? c.createdAt.slice(0, 10)) })}
                   </span>
-                </div>
-                <CorrectionTag severity={c.severity} />
-              </li>
-            ))}
-          </ul>
+                </Item>
+              ))}
+            </ul>
+          </Group>
         ) : (
-          <EmptyState title={t('No open corrections.')}>{t('When your teacher corrects something, it stays here until they say it is fixed.')}</EmptyState>
+          <EmptyState icon="task_alt" title={t('No open corrections.')}>{t('When your teacher corrects something, it stays here until they say it is fixed.')}</EmptyState>
         )
       ) : (
         <>
-          <OrnHeading>{t('History')}</OrnHeading>
           {sessions.length ? (
-            <ul className="p-list" aria-label={t('Sessions')}>
-              {sessions.map((s) => {
-                const n = severityCounts(d.corrections, s.id)
-                return (
-                  <li key={s.id}>
-                    <a className="p-item p-item-link" href={`#/teacher/${s.id}`}>
-                      <span className="p-item-main">
-                        <b>{dayLabel(s.on)}</b>
-                        <span className="t-sm muted">
-                          {s.status === 'planned' ? t('Planned, not finished') : s.teacherName ? <bdi lang="ar" className="a">{s.teacherName}</bdi> : t('Session')}
+            <Group en="History" ar="السجل">
+              <ul className="flex flex-col divide-y divide-outline-variant" aria-label={t('Sessions')}>
+                {sessions.map((s) => {
+                  const n = severityCounts(d.corrections, s.id)
+                  return (
+                    <li key={s.id}>
+                      <a className="flex min-h-16 items-center gap-space-md p-space-md text-on-surface no-underline transition-colors hover:bg-surface-container-low" href={`#/teacher/${s.id}`}>
+                        <span className="grid size-10 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant">
+                          <Icon name={s.status === 'planned' ? 'pending_actions' : 'event_available'} size={22} />
                         </span>
-                      </span>
-                      <span className="p-tags">
-                        {n.jali > 0 && <CorrectionTag severity="jali" count={n.jali} />}
-                        {n.khafi > 0 && <CorrectionTag severity="khafi" count={n.khafi} />}
-                        {!n.jali && !n.khafi && s.status === 'done' && <span className="t-sm muted">{t('no corrections')}</span>}
-                      </span>
-                      <span className="chev" aria-hidden="true">{FWD}</span>
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
+                        <span className="flex min-w-0 flex-1 flex-col">
+                          <b className="text-body-lg font-medium">{dayLabel(s.on)}</b>
+                          <span className="text-body-md text-on-surface-variant">
+                            {s.status === 'planned' ? t('Planned, not finished') : s.teacherName ? <bdi lang="ar" className="font-arabic">{s.teacherName}</bdi> : t('Session')}
+                          </span>
+                        </span>
+                        <span className="flex flex-wrap justify-end gap-1">
+                          {n.jali > 0 && <SeverityTag severity="jali" count={n.jali} />}
+                          {n.khafi > 0 && <SeverityTag severity="khafi" count={n.khafi} />}
+                          {!n.jali && !n.khafi && s.status === 'done' && <span className="text-label text-on-surface-variant">{t('no corrections')}</span>}
+                        </span>
+                        <Icon name="chevron_right" rtlFlip className="text-outline" />
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </Group>
           ) : next ? null : (
-            <p className="muted">{t('No past sessions yet. They appear here after your first class.')}</p>
+            <EmptyState icon="history" title={t('No past sessions yet. They appear here after your first class.')} />
           )}
-          {sessions.length > 0 && <Button variant="secondary" block href="#/teacher/new">+ {t('Plan a session')}</Button>}
-
+          {sessions.length > 0 && <Button variant="secondary" block href="#/teacher/new"><Icon name="add" size={20} />{t('Plan a session')}</Button>}
         </>
       )}
-    </div>
+    </Page>
   )
 }

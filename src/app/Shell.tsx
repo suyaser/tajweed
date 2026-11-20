@@ -2,37 +2,27 @@ import { useEffect, useRef, useSyncExternalStore, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
-import { Icon } from './icons'
 import { getLesson } from '../content'
 import { onShownStep, shownStep } from '../screens/study/lessonSteps'
 import { stepName } from '../screens/study/LessonShell'
-import { isAr, locale, setLang, t, BACK } from '../i18n'
-
-/** Switches the UI language (reloads). Shows the language you'd switch TO. */
-function LangSwitch({ className }: { className: string }) {
-  return (
-    <button type="button" className={className} onClick={() => setLang(isAr ? 'en' : 'ar')} lang={isAr ? 'en' : 'ar'}
-      aria-label={isAr ? 'English' : 'العربية'}>
-      <span className="lang-ico" aria-hidden="true">{isAr ? 'EN' : 'ع'}</span><small>{isAr ? 'English' : 'العربية'}</small>
-    </button>
-  )
-}
-
+import { isAr, locale, setLang, t } from '../i18n'
+import { cn } from '@/lib/utils'
+import { Icon } from '@/components/ui/icon'
 
 type Tab = 'today' | 'rules' | 'teacher' | 'path'
 type Kind = 'tab' | 'pushed' | 'focus' | 'bare'
 
-const TABS: { id: Tab; ar: string; en: string; to: string }[] = [
-  { id: 'today', ar: 'اليوم', en: 'Today', to: 'today' },
-  { id: 'rules', ar: 'الأحكام', en: 'Rules', to: 'rules' },
-  { id: 'teacher', ar: 'الشيخ', en: 'Teacher', to: 'teacher' },
-  { id: 'path', ar: 'المسار', en: 'Path', to: 'plan' },
+const TABS: { id: Tab; ar: string; en: string; to: string; icon: string }[] = [
+  { id: 'today', ar: 'اليوم', en: 'Today', to: 'today', icon: 'calendar_today' },
+  { id: 'rules', ar: 'الأحكام', en: 'Rules', to: 'rules', icon: 'menu_book' },
+  { id: 'teacher', ar: 'الشيخ', en: 'Teacher', to: 'teacher', icon: 'record_voice_over' },
+  { id: 'path', ar: 'المسار', en: 'Path', to: 'plan', icon: 'route' },
 ]
 
 // Design §4.4: shell kind, owning tab, title, and where ✕ / ‹ go.
-const META: Record<RouteName, { kind: Kind; tab?: Tab; ar: string; en: string; parent?: string; gear?: true }> = {
+const META: Record<RouteName, { kind: Kind; tab?: Tab; ar: string; en: string; parent?: string }> = {
   onboarding: { kind: 'bare', ar: 'مسار التجويد', en: 'Tajweed Path' },
-  today: { kind: 'tab', tab: 'today', ar: 'اليوم', en: 'Today', gear: true },
+  today: { kind: 'tab', tab: 'today', ar: 'اليوم', en: 'Today' },
   learn: { kind: 'focus', tab: 'today', ar: 'السبق', en: 'New lesson', parent: 'today' },
   review: { kind: 'focus', tab: 'today', ar: 'المراجعة', en: 'Review', parent: 'today' },
   listen: { kind: 'focus', tab: 'today', ar: 'التلقي', en: 'Listen', parent: 'today' },
@@ -42,8 +32,8 @@ const META: Record<RouteName, { kind: Kind; tab?: Tab; ar: string; en: string; p
   teacher: { kind: 'tab', tab: 'teacher', ar: 'الشيخ', en: 'Teacher' },
   teacherNew: { kind: 'pushed', tab: 'teacher', ar: 'جلسة جديدة', en: 'Plan a session', parent: 'teacher' },
   session: { kind: 'pushed', tab: 'teacher', ar: 'الجلسة', en: 'Session', parent: 'teacher' },
-  plan: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path', gear: true },
-  progress: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path', gear: true },
+  plan: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path' },
+  progress: { kind: 'tab', tab: 'path', ar: 'المسار', en: 'Path' },
   unit: { kind: 'pushed', tab: 'path', ar: 'الوحدة', en: 'Unit', parent: 'plan' },
   settings: { kind: 'pushed', ar: 'الإعدادات', en: 'Settings', parent: 'today' },
   guide: { kind: 'pushed', ar: 'كيف يعمل', en: 'How it works', parent: 'today' },
@@ -66,8 +56,8 @@ export function shellKind(r: Route): Kind {
   return m.kind
 }
 
-/** The header shows the study day (03:00 boundary, core/day), not the calendar date, so it agrees with the plan (M13). */
-function dates() {
+/** The study day (03:00 boundary, core/day), not the calendar date, so it agrees with the plan (M13). For Today's header. */
+export function dates() {
   const now = new Date()
   const day = new Date(studyDay(now) + 'T12:00:00Z')
   const g = new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(day)
@@ -90,6 +80,9 @@ export interface ShellProps {
   focusStatus?: ReactNode
   children: ReactNode
 }
+
+const iconBtn = 'grid size-12 shrink-0 cursor-pointer place-items-center rounded-full text-on-surface-variant no-underline transition-colors hover:bg-surface-container hover:text-on-surface'
+const bar = 'sticky top-0 z-30 flex h-16 items-center gap-space-xs bg-surface/85 pt-[env(safe-area-inset-top)] backdrop-blur-xl ps-[max(var(--spacing-space-sm),env(safe-area-inset-left))] pe-[max(var(--spacing-space-sm),env(safe-area-inset-right))] box-content'
 
 export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, miniPlayer, focusStatus, children }: ShellProps) {
   const meta = META[route.name]
@@ -114,53 +107,88 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
   const hasNav = kind === 'tab' || kind === 'pushed'
 
   return (
-    <div className="shell" data-kind={kind}>
-      <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}>{t('Skip to content')}</a>
-      {hasNav && <Rail active={meta.tab} settings={route.name === 'settings'} guide={route.name === 'guide'} />}
-      <div className="shell-col">
+    <div data-kind={kind} className="min-h-[calc(100dvh/var(--zoom))] bg-background text-on-surface">
+      <a href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus() }}
+        className="sr-only z-50 rounded-control bg-primary px-space-md py-space-sm text-on-primary focus:not-sr-only focus:fixed focus:top-2 focus:start-2">
+        {t('Skip to content')}
+      </a>
+      {hasNav && <Rail active={meta.tab} current={route.name} />}
+      <div className={cn('flex min-h-[calc(100dvh/var(--zoom))] min-w-0 flex-col', hasNav && 'lg:ps-60')}>
         {kind === 'focus' && (
-          <header className="focusbar gutter">
-            <button type="button" className="icon-btn close" onClick={() => navigate(parent)}>
-              <span aria-hidden="true">✕</span> {t('Close')}
+          <header className={cn(bar, 'border-b border-outline-variant')}>
+            <button type="button" className={cn(iconBtn, 'w-auto gap-1 px-space-sm')} onClick={() => navigate(parent)}>
+              <Icon name="close" /><span className="text-label font-semibold">{t('Close')}</span>
             </button>
             <FocusTitle route={route} ar={meta.ar} en={meta.en} />
-            <span className="focusbar-status t-sm">{focusStatus}</span>
+            <span className="min-w-12 text-end text-label text-on-surface-variant tabular-nums">{focusStatus}</span>
           </header>
         )}
-        {hasNav && (
-          <header className={`topbar gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
-            {kind === 'pushed' && (
-              <a className="back" href={href(parent)}>
-                <span aria-hidden="true">{BACK}</span> {t('Back')}
-              </a>
-            )}
-            <div className="topbar-title">
-              <h1 className="kufi" lang="ar">{meta.ar}</h1>
-              {!isAr && <span className="topbar-en">{meta.en}</span>}
-              {route.name === 'today' && <Dates />}
-            </div>
-            <div className="topbar-actions">
-              <LangSwitch className="gear" />
-              {route.name !== 'guide' && (
-                <a className="gear" href={href('guide')}>
-                  <Icon name="help" className="gear-ico" /><small>{t('Help')}</small>
-                </a>
-              )}
-              {meta.gear && (
-                <a className="gear" href={href('settings')}>
-                  <Icon name="settings" className="gear-ico" /><small>{t('Settings')}</small>
-                </a>
-              )}
-            </div>
+        {kind === 'tab' && <TabBarTop />}
+        {kind === 'pushed' && (
+          <header className={cn(bar, 'lg:ps-space-lg')}>
+            <a className={iconBtn} href={href(parent)} aria-label={t('Back')}>
+              <Icon name="arrow_back" rtlFlip />
+            </a>
+            <h1 className="flex min-w-0 flex-1 items-baseline gap-x-space-sm truncate">
+              {isAr
+                ? <span className="truncate text-headline-md">{meta.ar}</span>
+                : <><span className="truncate text-headline-md">{meta.en}</span><span lang="ar" dir="rtl" className="hidden text-arabic-label text-secondary sm:inline">{meta.ar}</span></>}
+            </h1>
+            <TopActions current={route.name} />
           </header>
         )}
-        <main key={route.path} id="main" ref={mainRef} tabIndex={-1} className={`shell-main gutter${kind === 'bare' ? ' shell-bare' : ''}`}>
+        <main key={route.path} id="main" ref={mainRef} tabIndex={-1}
+          className={cn('w-full flex-1 overflow-x-clip outline-none motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300',
+            hasNav && 'pb-[calc(6rem+env(safe-area-inset-bottom))] lg:pb-space-xl')}>
           {children}
         </main>
-        {hasNav && miniPlayer && <div className="miniplayer">{miniPlayer}</div>}
+        {hasNav && miniPlayer && (
+          <div className="fixed inset-x-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-20 border-t border-outline-variant bg-surface-container-lowest shadow-bar lg:bottom-0 lg:start-60">
+            {miniPlayer}
+          </div>
+        )}
         {hasNav && <TabBar active={meta.tab} />}
       </div>
     </div>
+  )
+}
+
+/** Phone header on tab screens: Help · language | brand | Settings. Hidden from lg (the rail has them). */
+function TabBarTop() {
+  return (
+    <header className={cn(bar, 'justify-between lg:hidden')}>
+      <div className="flex flex-1 items-center">
+        <a className={iconBtn} href={href('guide')} aria-label={t('Help')}><Icon name="help" /></a>
+        <LangButton className={cn(iconBtn, 'w-auto px-space-sm')} />
+      </div>
+      <a href={href('today')} className="flex flex-col items-center text-center no-underline">
+        <span lang="ar" className="font-naskh text-[22px] leading-tight font-bold text-primary">مسار التجويد</span>
+        {!isAr && <span className="text-caption tracking-wider text-on-surface-variant uppercase">Tajweed Path</span>}
+      </a>
+      <div className="flex flex-1 items-center justify-end">
+        <a className={iconBtn} href={href('settings')} aria-label={t('Settings')}><Icon name="settings" /></a>
+      </div>
+    </header>
+  )
+}
+
+/** Help and Settings on pushed screens (phones). */
+function TopActions({ current }: { current: RouteName }) {
+  return (
+    <div className="flex items-center lg:hidden">
+      {current !== 'guide' && <a className={iconBtn} href={href('guide')} aria-label={t('Help')}><Icon name="help" /></a>}
+      {current !== 'settings' && <a className={iconBtn} href={href('settings')} aria-label={t('Settings')}><Icon name="settings" /></a>}
+    </div>
+  )
+}
+
+/** Switches the UI language (reloads). Shows the language you'd switch TO. */
+function LangButton({ className, children }: { className: string; children?: ReactNode }) {
+  return (
+    <button type="button" className={className} onClick={() => setLang(isAr ? 'en' : 'ar')} lang={isAr ? 'en' : 'ar'}
+      aria-label={children ? undefined : isAr ? 'English' : 'العربية'}>
+      {children ?? <span aria-hidden="true" className="text-label font-semibold">{isAr ? 'EN' : 'ع'}</span>}
+    </button>
   )
 }
 
@@ -168,64 +196,92 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
 function FocusTitle({ route, ar, en }: { route: Route; ar: string; en: string }) {
   const step = useSyncExternalStore(onShownStep, shownStep)
   const lesson = route.name === 'learn' ? getLesson(route.params.lessonId) : undefined
-  if (!lesson) return <span className="focusbar-title"><span lang="ar">{ar}</span>{!isAr && <> <small className="t-sm muted">{en}</small></>}</span>
-  const sub = [!isAr && lesson.nameEn, step && stepName(step)].filter(Boolean).join(' · ')
+  const title = lesson ? lesson.nameAr : ar
+  const sub = lesson ? [!isAr && lesson.nameEn, step && stepName(step)].filter(Boolean).join(' · ') : !isAr ? en : ''
   return (
-    <span className="focusbar-title focusbar-lesson">
-      <span lang="ar">{lesson.nameAr}</span>
-      {sub && <small className="t-sm muted">{sub}</small>}
+    <span className="flex min-w-0 flex-1 flex-col items-center text-center">
+      <span lang="ar" className="max-w-full font-naskh text-[18px] leading-snug font-semibold text-on-surface">{title}</span>
+      {sub && <small className="max-w-full truncate text-caption text-on-surface-variant">{sub}</small>}
     </span>
   )
 }
 
 function TabBar({ active }: { active?: Tab }) {
   return (
-    <nav className="tabbar" aria-label={t('Main')}>
-      {TABS.map((tab) => (
-        <a key={tab.id} href={href(tab.to)} aria-current={tab.id === active ? 'page' : undefined}>
-          <span className="tab-pill"><Icon name={tab.id} className="tab-ico" /></span>
-          <b lang="ar">{tab.ar}</b>
-          {!isAr && <small>{tab.en}</small>}
-        </a>
-      ))}
+    <nav aria-label={t('Main')}
+      className="fixed inset-x-0 bottom-0 z-30 bg-surface/90 pb-[env(safe-area-inset-bottom)] shadow-bar backdrop-blur-xl lg:hidden">
+      <ul className="mx-auto flex h-[4.5rem] max-w-[480px] items-stretch justify-around px-space-sm">
+        {TABS.map((tab) => {
+          const on = tab.id === active
+          return (
+            <li key={tab.id} className="flex flex-1">
+              <a href={href(tab.to)} aria-current={on ? 'page' : undefined}
+                className={cn('flex flex-1 flex-col items-center justify-center gap-0.5 rounded-control no-underline transition-colors',
+                  on ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface')}>
+                <span className={cn('grid h-7 w-14 place-items-center rounded-full transition-colors', on && 'bg-primary-container')}>
+                  <Icon name={tab.icon} size={22} fill={on} />
+                </span>
+                {isAr
+                  ? <b lang="ar" className={cn('text-[14px] leading-tight', on ? 'font-bold' : 'font-medium')}>{tab.ar}</b>
+                  : <>
+                      <b className={cn('text-label leading-none', on ? 'font-bold' : 'font-medium')}>{tab.en}</b>
+                      <small lang="ar" className="font-arabic text-[11px] leading-tight opacity-80">{tab.ar}</small>
+                    </>}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
     </nav>
   )
 }
 
-function Rail({ active, settings, guide }: { active?: Tab; settings?: boolean; guide?: boolean }) {
-  return (
-    <nav className="rail lattice" aria-label={t('Main')}>
-      <a className="rail-brand" href={href('today')}>
-        <span className="rail-orn" aria-hidden="true">۞</span>
-        <span className="kufi" lang="ar">مسار التجويد</span>
-      </a>
-      {TABS.map((tab) => (
-        <a key={tab.id} href={href(tab.to)} aria-current={tab.id === active ? 'page' : undefined}>
-          <Icon name={tab.id} className="tab-ico" />
-          <b lang="ar">{tab.ar}</b>
-          {!isAr && <small>{tab.en}</small>}
-        </a>
-      ))}
-      <LangSwitch className="rail-gear rail-help" />
-      <a className="rail-gear" href={href('guide')} aria-current={guide ? 'page' : undefined}>
-        <Icon name="help" className="gear-ico" />
-        <b lang="ar">كيف يعمل</b>{!isAr && <small>Help</small>}
-      </a>
-      <a className="rail-gear" href={href('settings')} aria-current={settings ? 'page' : undefined}>
-        <Icon name="settings" className="gear-ico" />
-        <b lang="ar">الإعدادات</b>{!isAr && <small>Settings</small>}
+const railItem = 'flex min-h-12 items-center gap-space-sm rounded-control px-space-md no-underline transition-colors'
+const railIdle = 'text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
+const railOn = 'bg-primary text-on-primary font-semibold'
 
-      </a>
-    </nav>
+function RailLink({ to, icon, en, ar, on, small }: { to: string; icon: string; en: string; ar: string; on: boolean; small?: boolean }) {
+  return (
+    <a href={href(to)} aria-current={on ? 'page' : undefined} className={cn(railItem, on ? railOn : railIdle, small && 'min-h-11')}>
+      <Icon name={icon} size={small ? 20 : 22} fill={on} />
+      {isAr
+        ? <span lang="ar" className="text-body-md">{ar}</span>
+        : <>
+            <span className="text-body-md">{en}</span>
+            <span lang="ar" dir="rtl" className={cn('ms-auto font-arabic text-[13px]', on ? 'text-on-primary/80' : 'opacity-80')}>{ar}</span>
+          </>}
+    </a>
   )
 }
 
-function Dates() {
-  const { gregorian, hijri, late } = dates()
+/** Desktop side rail (≥ lg): brand, the four tabs, then Help · Language · Settings at the bottom. */
+function Rail({ active, current }: { active?: Tab; current: RouteName }) {
   return (
-    <p className="topbar-dates">
-      <span>{gregorian}</span> {hijri && <span lang="ar">{hijri}</span>}
-      {late && <span className="topbar-late">{late}</span>}
-    </p>
+    <nav aria-label={t('Main')}
+      className="fixed inset-y-0 start-0 z-40 hidden w-60 flex-col gap-space-lg overflow-y-auto border-e border-outline-variant bg-surface-container-low p-space-md lg:flex">
+      <a href={href('today')} className="flex items-center gap-space-sm px-space-xs py-space-sm no-underline">
+        <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-control bg-surface-container text-gold">
+          <Icon name="auto_awesome" />
+        </span>
+        <span className="flex flex-col">
+          <span lang="ar" className="font-naskh text-[22px] leading-tight font-bold text-primary">مسار التجويد</span>
+          {!isAr && <span className="text-caption tracking-wider text-on-surface-variant uppercase">Tajweed Path</span>}
+        </span>
+      </a>
+      <ul className="flex flex-col gap-space-xs">
+        {TABS.map((tab) => <li key={tab.id}><RailLink to={tab.to} icon={tab.icon} en={tab.en} ar={tab.ar} on={tab.id === active} /></li>)}
+      </ul>
+      <ul className="mt-auto flex flex-col gap-space-xs border-t border-outline-variant pt-space-md">
+        <li><RailLink small to="guide" icon="help" en="Help" ar="كيف يعمل" on={current === 'guide'} /></li>
+        <li>
+          <LangButton className={cn(railItem, railIdle, 'min-h-11 w-full cursor-pointer text-start')}>
+            <Icon name="translate" size={20} />
+            <span lang={isAr ? 'ar' : 'en'} className="text-body-md">{isAr ? 'اللغة' : 'Language'}</span>
+            <span className="ms-auto rounded-sm bg-surface-container px-1.5 py-0.5 text-label text-on-surface">{isAr ? 'English' : 'العربية'}</span>
+          </LangButton>
+        </li>
+        <li><RailLink small to="settings" icon="settings" en="Settings" ar="الإعدادات" on={current === 'settings'} /></li>
+      </ul>
+    </nav>
   )
 }

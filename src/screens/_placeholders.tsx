@@ -1,4 +1,5 @@
-import { Button, Card, EmptyState } from '../components'
+import { Button, EmptyState } from '../components'
+import { Page } from '@/components/kit'
 import { isAr, t } from '../i18n'
 
 // Until a screen file exists in src/screens/, App renders this with the route's names.
@@ -26,15 +27,15 @@ export const PLACEHOLDERS: Record<string, { ar: string; en: string }> = {
 
 export function Placeholder({ name, params }: { name: string; params: Record<string, string> }) {
   if (name === 'NotFound')
-    return <EmptyState title={t("This page doesn't exist.")} action={<Button href="#/today">{t('Go to Today')}</Button>}>{t('The link may be mistyped or from an older version.')}</EmptyState>
+    return <Page><EmptyState icon="explore_off" title={t("This page doesn't exist.")} action={<Button href="#/today">{t('Go to Today')}</Button>}>{t('The link may be mistyped or from an older version.')}</EmptyState></Page>
   const p = PLACEHOLDERS[name] ?? { ar: name, en: name }
   const keys = Object.entries(params)
   return (
-    <Card>
-      <EmptyState title={<><span className="k-h2" lang="ar">{p.ar}</span>{!isAr && <><br />{p.en}</>}</>}>
+    <Page>
+      <EmptyState icon="construction" title={<><span lang="ar" className="font-naskh">{p.ar}</span>{!isAr && <><br />{p.en}</>}</>}>
         {t('Not built yet.')}
-{keys.length ? ` Params: ${keys.map(([k, v]) => `${k}=${v}`).join(', ')}` : ''}
+        {keys.length ? ` Params: ${keys.map(([k, v]) => `${k}=${v}`).join(', ')}` : ''}
       </EmptyState>
-    </Card>
+    </Page>
   )
 }

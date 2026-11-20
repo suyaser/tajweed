@@ -11,8 +11,10 @@ import { segForWord, segsOf } from '../audio/player'
 import { list, remove, save, KEEP } from '../audio/recordings'
 import { playMe, playModelThenMe, type ComparePhase } from '../audio/compare'
 import {
-  AudioTransport, Button, EmptyState, Legend, Nudge, Passage, RecordButton, Sheet, Skeleton, T, ToggleChip, type PassageAyah,
+  Actions, AudioTransport, Button, EmptyState, Legend, Msg, Nudge, Passage, RecordButton, Sheet, Skeleton, T, ToggleChip, fieldCls, type PassageAyah,
 } from '../components'
+import { Page } from '@/components/kit'
+import { Icon } from '@/components/ui/icon'
 import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
 import { Hint } from './study/Hint'
 import { digits, locale, t } from '../i18n'
@@ -155,7 +157,7 @@ export default function Listen({ params }: ScreenProps) {
   // keyboard (design §5.7); never while typing, never over a focused control's own Space/Enter
   const keys = useRef<(e: KeyboardEvent) => void>()
   keys.current = (e) => {
-    if (e.metaKey || e.ctrlKey || e.altKey || typing(e.target) || document.querySelector('dialog[open]')) return
+    if (e.metaKey || e.ctrlKey || e.altKey || typing(e.target) || document.querySelector('[role="dialog"]')) return
     const onControl = e.target instanceof HTMLElement && !!e.target.closest('button, a, [role="button"]')
     const k = e.key.toLowerCase()
     if (k === ' ' && !onControl) { e.preventDefault(); togglePlay() }
@@ -176,7 +178,7 @@ export default function Listen({ params }: ScreenProps) {
   // keep the lit word (or ayah) in view
   useEffect(() => {
     if (!busy) return
-    const el = document.querySelector('.listen .w[data-mark="lamp"]') ?? document.querySelector('.listen .ayah[data-current]')
+    const el = document.querySelector('[data-listen] .w[data-mark="lamp"]') ?? document.querySelector('[data-listen] .ayah[data-current]')
     el?.scrollIntoView?.({ block: 'nearest' })
   }, [busy, state.verseKey, state.word])
 
@@ -201,27 +203,31 @@ export default function Listen({ params }: ScreenProps) {
   const quranCom = `https://quran.com/${s1}/${s1 === s2 ? (a1 === a2 ? a1 : `${a1}-${a2}`) : a1}`
 
   return (
-    <>
+    <Page width="wide" className="lg:max-w-[1120px]">
     <Hint id="listen">{t('Play to hear the reciter, repeat in the pause after each ayah. Tap a word to hear it alone. Record yourself, then play “reciter, then me”.')}</Hint>
-    <div className="listen">
-      <header className="listen-head">
-        <h2 className="a-lg" lang="ar" dir="rtl">{label}</h2>
-        <label className="listen-reciter t-sm">
-          <span>{t('Reciter')}</span>
-          <select value={reciter.id} onChange={(e) => { cancelCompare(); setReciterId(e.target.value) }} dir="auto">
+    <div data-listen className="grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_360px]">
+      <header className="flex flex-wrap items-center justify-between gap-x-space-md gap-y-space-sm lg:col-span-2">
+        <h2 className="font-naskh text-[24px] leading-snug font-bold sm:text-[28px]" lang="ar" dir="rtl">{label}</h2>
+        <label className="flex items-center gap-space-sm">
+          <span className="text-label font-semibold text-on-surface-variant">{t('Reciter')}</span>
+          <select value={reciter.id} onChange={(e) => { cancelCompare(); setReciterId(e.target.value) }} dir="auto"
+            className={fieldCls('w-auto max-w-[240px] cursor-pointer font-arabic text-body-md')}>
             {RECITERS.map((r) => <option key={r.id} value={r.id} lang="ar">{r.nameAr}</option>)}
           </select>
         </label>
-        <ToggleChip label={t('Colours')} value={colours ? t('on') : t('off')} pressed={colours} onClick={() => { setColours(!colours); setIsolate(null) }} />
-        {listenDone && <p className="t-sm listen-done" role="status"><span aria-hidden="true">✓</span> {t('Listening counted for today')}</p>}
+        {listenDone && <p className="flex basis-full items-center gap-1 text-body-md text-success" role="status"><Icon name="check_circle" size={18} fill />{t('Listening counted for today')}</p>}
       </header>
 
-      {params.range && !parsed && <Nudge><T>{t("That passage link isn't valid, so here is {label}.", { label })}</T></Nudge>}
-      {range.to !== wanted.to && <Nudge><T>{t('That passage is long, so here are its first {n} ayat: {label}.', { n: MAX_AYAT, label })}</T></Nudge>}
+      {(params.range && !parsed) || range.to !== wanted.to ? (
+        <div className="flex flex-col gap-space-sm lg:col-span-2">
+          {params.range && !parsed && <Nudge><T>{t("That passage link isn't valid, so here is {label}.", { label })}</T></Nudge>}
+          {range.to !== wanted.to && <Nudge><T>{t('That passage is long, so here are its first {n} ayat: {label}.', { n: MAX_AYAT, label })}</T></Nudge>}
+        </div>
+      ) : null}
 
-      <div className="listen-text">
+      <div className="flex min-w-0 flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg [&_.w]:scroll-mt-20 [&_.w]:scroll-mb-[300px]">
         {textError ? (
-          <EmptyState title={t("Couldn't load the text.")} action={<Button variant="secondary" onClick={() => setAttempt((n) => n + 1)}>{t('Try again')}</Button>}>
+          <EmptyState icon="cloud_off" title={t("Couldn't load the text.")} action={<Button variant="secondary" onClick={() => setAttempt((n) => n + 1)}>{t('Try again')}</Button>}>
             {t('Check your connection. Text you have opened before works offline.')}
           </EmptyState>
         ) : !verses ? (
@@ -243,18 +249,19 @@ export default function Listen({ params }: ScreenProps) {
               }}
             />
             {colours && (
-              <div className="t-sm">
+              <div className="flex flex-col gap-space-sm rounded-control bg-surface-container-low p-space-md text-body-md">
                 <Legend colours={shownColours} isolate={isolate} onIsolate={setIsolate} />
-                <p className="muted"><T>{t('Colours come from the quran-tajweed markup. It does not mark every rule (for example الراء and الإظهار), so a word without colour may still carry a rule.')}</T></p>
+                <p className="text-on-surface-variant"><T>{t('Colours come from the quran-tajweed markup. It does not mark every rule (for example الراء and الإظهار), so a word without colour may still carry a rule.')}</T></p>
               </div>
             )}
-            <p className="t-sm muted">{t('Tap a word to hear it alone. Tap an ayah number to jump to it.')}</p>
+            <p className="flex items-center gap-space-xs text-body-md text-on-surface-variant"><Icon name="touch_app" size={18} />{t('Tap a word to hear it alone. Tap an ayah number to jump to it.')}</p>
           </>
         )}
       </div>
 
-      <aside className="listen-side">
-        <div className="listen-dock" onClick={(e) => { if (state.status === 'gap' && e.target === e.currentTarget) player.skipGap() }}>
+      <aside className="flex flex-col gap-space-md max-lg:contents lg:sticky lg:top-24">
+        <div className="sticky bottom-0 z-20 -mx-gutter md:-mx-gutter-md md:px-gutter-md flex flex-col gap-space-sm border-t border-outline-variant bg-surface-container-lowest px-gutter pt-space-sm pb-[max(var(--spacing-space-sm),env(safe-area-inset-bottom))] shadow-bar max-lg:order-none lg:static lg:mx-0 lg:rounded-card lg:border lg:p-space-lg lg:shadow-card"
+          onClick={(e) => { if (state.status === 'gap' && e.target === e.currentTarget) player.skipGap() }}>
           <AudioTransport
             playing={busy || !!phase}
             loading={state.status === 'loading'}
@@ -274,76 +281,86 @@ export default function Listen({ params }: ScreenProps) {
             onRate={toggleRate}
             onGap={toggleGap}
             onSeekAyah={(i) => { cancelCompare(); player.seek(i) }}
+            chips={<ToggleChip icon="palette" label={t('Colours')} value={colours ? t('on') : t('off')} pressed={colours} onClick={() => { setColours(!colours); setIsolate(null) }} />}
           />
-          {state.status === 'gap' && <Button variant="ghost" onClick={() => player.skipGap()}>{t('Skip the pause')}</Button>}
-          {(state.status === 'error' || state.status === 'offline') && <Button variant="secondary" onClick={() => player.play()}>{t('Try again')}</Button>}
+          {(state.status === 'gap' || state.status === 'error' || state.status === 'offline') && (
+            <div className="flex justify-center">
+              {state.status === 'gap' && <Button variant="ghost" onClick={() => player.skipGap()}><Icon name="skip_next" size={20} />{t('Skip the pause')}</Button>}
+              {(state.status === 'error' || state.status === 'offline') && <Button variant="secondary" onClick={() => player.play()}><Icon name="refresh" size={20} />{t('Try again')}</Button>}
+            </div>
+          )}
         </div>
 
-        <section className="listen-rec card card-e1" aria-label={t('Record yourself')}>
+        <section aria-label={t('Record yourself')} className="flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
           <RecordButton
             state={recOff ? 'off' : recording ? 'recording' : saved != null ? 'saved' : 'idle'}
             seconds={recording && rec.state.startedAt ? (now - rec.state.startedAt) / 1000 : (saved ?? 0) / 1000}
             onClick={onRecord}
             offReason={recOff}
           />
-          {rec.state.status === 'error' && <p className="t-sm" role="alert">{rec.state.error ?? t('Recording failed.')} {t('Try again.')}</p>}
-          {saveError && <p className="t-sm" role="alert">{saveError}</p>}
+          {rec.state.status === 'error' && <Msg error>{rec.state.error ?? t('Recording failed.')} {t('Try again.')}</Msg>}
+          {saveError && <Msg error>{saveError}</Msg>}
           {recs[0] && (
-            <div className="listen-compare">
-              <Button variant={saved != null ? 'primary' : 'secondary'} onClick={() => modelThenMe(recs[0])} disabled={!verses || recording}>{t('Model, then me')}</Button>
-              <Button variant="ghost" onClick={() => me(recs[0])} disabled={recording}>{t('Me')}</Button>
-            </div>
+            <Actions>
+              <Button variant={saved != null ? 'primary' : 'secondary'} onClick={() => modelThenMe(recs[0])} disabled={!verses || recording}><Icon name="compare_arrows" size={20} />{t('Model, then me')}</Button>
+              <Button variant="ghost" onClick={() => me(recs[0])} disabled={recording}><Icon name="play_arrow" size={20} fill />{t('Me')}</Button>
+            </Actions>
           )}
           {phase && (
-            <p className="t-sm" aria-live="polite">
-              {phase === 'model' ? <>{t('Now:')} <bdi lang="ar" className="a">{reciter.nameAr}</bdi></> : phase === 'silence' ? t('Now: your turn is next…') : t('Now: You')}
+            <p className="text-body-md text-primary" aria-live="polite">
+              {phase === 'model' ? <>{t('Now:')} <bdi lang="ar" className="font-arabic">{reciter.nameAr}</bdi></> : phase === 'silence' ? t('Now: your turn is next…') : t('Now: You')}
             </p>
           )}
 
           {recs.length > 0 && (
-            <details className="listen-recs">
-              <summary>{t('Recordings · {n} · latest {time}', { n: recs.length, time: mmss(recs[0].durationMs) })}</summary>
-              <ul>
+            <details className="group rounded-control bg-surface-container-low">
+              <summary className="flex min-h-12 cursor-pointer list-none items-center gap-space-sm px-space-md text-body-md font-semibold [&::-webkit-details-marker]:hidden">
+                <Icon name="library_music" size={20} className="text-secondary" />
+                <span className="flex-1">{t('Recordings · {n} · latest {time}', { n: recs.length, time: mmss(recs[0].durationMs) })}</span>
+                <Icon name="expand_more" size={20} className="transition-transform group-open:rotate-180" />
+              </summary>
+              <ul className="flex flex-col divide-y divide-outline-variant px-space-md">
                 {recs.map((r) => (
-                  <li key={r.id}>
-                    <span className="num">{fmtWhen(r.createdAt)} · {mmss(r.durationMs)}</span>
-                    <span className="listen-rec-actions">
-                      <Button variant="ghost" onClick={() => me(r)} disabled={recording} aria-label={t('Play me, {when}', { when: fmtWhen(r.createdAt) })}>▶ {t('Me')}</Button>
-                      <Button variant="ghost" onClick={() => modelThenMe(r)} disabled={!verses || recording} aria-label={t('Model, then me, {when}', { when: fmtWhen(r.createdAt) })}>{t('Model, then me')}</Button>
-                      <Button variant="ghost" onClick={() => remove(r.id).then(refresh)} aria-label={t('Delete recording {when}', { when: fmtWhen(r.createdAt) })}>
-                        <span aria-hidden="true">🗑</span><span className="sr-only">{t('Delete')}</span>
+                  <li key={r.id} className="flex flex-wrap items-center justify-between gap-x-space-sm gap-y-1 py-space-xs">
+                    <span className="text-body-md tabular-nums">{fmtWhen(r.createdAt)} · {mmss(r.durationMs)}</span>
+                    <span className="flex flex-wrap items-center">
+                      <Button variant="ghost" size="sm" onClick={() => me(r)} disabled={recording} aria-label={t('Play me, {when}', { when: fmtWhen(r.createdAt) })}><Icon name="play_arrow" size={18} fill />{t('Me')}</Button>
+                      <Button variant="ghost" size="sm" onClick={() => modelThenMe(r)} disabled={!verses || recording} aria-label={t('Model, then me, {when}', { when: fmtWhen(r.createdAt) })}>{t('Model, then me')}</Button>
+                      <Button variant="ghost" size="sm" className="w-10 px-0 hover:text-error" onClick={() => remove(r.id).then(refresh)} aria-label={t('Delete recording {when}', { when: fmtWhen(r.createdAt) })}>
+                        <Icon name="delete" size={20} /><span className="sr-only">{t('Delete')}</span>
                       </Button>
                     </span>
                   </li>
                 ))}
               </ul>
-              <p className="t-sm muted">{t('Keeps your last {n} for this passage. They stay on this device.', { n: KEEP })}</p>
+              <p className="px-space-md pb-space-md text-body-md text-on-surface-variant">{t('Keeps your last {n} for this passage. They stay on this device.', { n: KEEP })}</p>
             </details>
           )}
 
-          <p className="t-sm">
-            <button type="button" className="linklike" onClick={askTeacher}>{t('Not sure? Ask your teacher')}</button>
-            {asked && <span role="status"> · {asked} <a href={href('teacher')}>{t('See sessions')}</a></span>}
+          <p className="flex flex-wrap items-center gap-x-space-sm text-body-md">
+            <Button variant="tertiary" className="px-0" onClick={askTeacher}><Icon name="record_voice_over" size={20} />{t('Not sure? Ask your teacher')}</Button>
+            {asked && <span role="status">{asked} <a href={href('teacher')} className="font-medium text-primary">{t('See sessions')}</a></span>}
           </p>
         </section>
 
-        <p className="t-sm"><a href={quranCom} target="_blank" rel="noopener"><T>{t('Open on Quran.com')}</T> ↗</a></p>
-        <p className="t-sm muted listen-keys" aria-hidden="true"><T>{t('Keys: Space play · R record · M model, then me · L loop · G gap · S speed · ← next · → previous')}</T></p>
+        <div className="flex flex-col gap-space-sm text-body-md">
+          <a href={quranCom} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center gap-1 font-medium text-primary"><T>{t('Open on Quran.com')}</T><Icon name="open_in_new" size={18} /></a>
+          <p className="hidden text-caption text-on-surface-variant lg:block" aria-hidden="true"><T>{t('Keys: Space play · R record · M model, then me · L loop · G gap · S speed · ← next · → previous')}</T></p>
+        </div>
       </aside>
 
       <Sheet open={askMic} onClose={() => setAskMic(false)} title={t('Record yourself')}>
         <p>{t('Your recordings stay on this device. They are never uploaded. Allow the microphone to record yourself.')}</p>
-        <div className="listen-compare">
+        <Actions>
           <Button onClick={() => {
             try { localStorage.setItem(MIC_KEY, '1') } catch { /* asks again next time */ }
             setAskMic(false)
             startRecording()
-          }}>{t('Allow microphone')}</Button>
+          }}><Icon name="mic" size={20} />{t('Allow microphone')}</Button>
           <Button variant="ghost" onClick={() => setAskMic(false)}>{t('Not now')}</Button>
-
-        </div>
+        </Actions>
       </Sheet>
     </div>
-    </>
+    </Page>
   )
 }
