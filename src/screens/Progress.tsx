@@ -73,7 +73,7 @@ function Recitation({ d }: { d: UserData }) {
     <Panel>
       <div className="flex flex-col gap-0.5">
         <Eyebrow>{t('From your teacher')}</Eyebrow>
-        <h2 className="text-headline-md text-on-surface">{t('How you recite')}</h2>
+        <h2 className="text-body-lg font-semibold text-on-surface">{t('How you recite')}</h2>
       </div>
       {!cs.length && !sessions.length ? (
         <Muted>{t("Your teacher's corrections will show here after your first session.")}</Muted>
@@ -133,7 +133,7 @@ function Recognition({ d }: { d: UserData }) {
     <Panel>
       <div className="flex flex-col gap-0.5">
         <Eyebrow>{t('From the quiz')}</Eyebrow>
-        <h2 className="text-headline-md text-on-surface">{t('What you can recognise')}</h2>
+        <h2 className="text-body-lg font-semibold text-on-surface">{t('What you can recognise')}</h2>
       </div>
       {!d.introductions.length ? (
         <Muted>{t('Levels start after your first lesson.')}</Muted>

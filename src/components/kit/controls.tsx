@@ -64,7 +64,7 @@ export function SegmentedControl<V extends string>({ value, onChange, options, l
       {options.map((o) => (
         <ToggleGroupItem key={o.value} value={o.value}
           className={cn('flex-1 data-[state=on]:bg-surface-container-lowest data-[state=on]:font-semibold data-[state=on]:text-on-surface data-[state=on]:shadow-card',
-            sm ? "relative h-9 min-w-0 rounded-[12px] px-3 text-label after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-['']" : 'h-10 min-w-20 rounded-[10px] px-space-md')}>
+            sm ? "relative h-9 min-w-0 rounded-[12px] px-3 text-label rtl:text-body-md after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-['']" : 'h-10 min-w-20 rounded-[10px] px-space-md')}>
           {o.icon && <Icon name={o.icon} size={18} />}{o.label}
         </ToggleGroupItem>
       ))}

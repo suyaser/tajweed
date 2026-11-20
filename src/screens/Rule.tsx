@@ -115,7 +115,7 @@ export default function Rule({ params }: ScreenProps) {
               {topic && <Chip tone="gold">{topic.nameAr}{!isAr && <><Sep /><span className="font-normal opacity-80">{topic.nameEn}</span></>}</Chip>}
               {lesson.colour && <Chip tone="outline"><ColourDot colour={lesson.colour} /><span lang="ar">{COLOURS[lesson.colour].ar}</span></Chip>}
             </div>
-            <div className="flex flex-col lg:flex-row-reverse lg:flex-wrap lg:items-baseline lg:justify-between lg:gap-x-space-lg">
+            <div className={cn('flex flex-col', !isAr && 'lg:flex-row-reverse lg:flex-wrap lg:items-baseline lg:justify-between lg:gap-x-space-lg')}>
               <h2 lang="ar" className="font-naskh text-[30px] leading-[1.5] font-bold text-on-surface sm:text-[36px] lg:text-primary">{lesson.nameAr}</h2>
               {!isAr && <p className="-mt-space-xs text-headline-md font-medium text-on-surface-variant lg:mt-0 lg:text-headline-lg lg:text-on-surface">{lesson.nameEn}</p>}
             </div>

@@ -76,7 +76,7 @@ export function CorrectionStep({ c, audio, onRate, onNext }: {
         </Button>
       </RowCard>
       <Panel className="gap-space-sm">
-        <h3 className="text-headline-md text-on-surface">{t('Did you apply the fix?')}</h3>
+        <h3 className="text-body-lg font-semibold text-on-surface">{t('Did you apply the fix?')}</h3>
         <div className="grid grid-cols-2 gap-space-sm">
           <Button variant={rated === true ? 'primary' : 'secondary'} className="h-auto min-h-12 whitespace-normal" disabled={!canRate || rated != null} onClick={() => rate(true)}>{t('Applied the fix')}</Button>
           <Button variant={rated === false ? 'primary' : 'secondary'} className="h-auto min-h-12 whitespace-normal" disabled={!canRate || rated != null} onClick={() => rate(false)}>{t('Not yet')}</Button>

@@ -76,8 +76,8 @@ export default function Settings({ params }: ScreenProps) {
         <label className="flex cursor-pointer items-center gap-3 px-space-md py-3">
           <span className="grid size-9 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name="texture" size={20} /></span>
           <span className="flex min-w-0 flex-1 flex-col">
-            <span className="text-body-md font-semibold">{t('Tajweed patterns')}</span>
-            <span className="text-label font-normal text-on-surface-variant">{t('Adds a pattern under each tajweed colour, so the rule does not rely on colour alone.')}</span>
+            <span className="text-body-md font-semibold rtl:text-body-lg">{t('Tajweed patterns')}</span>
+            <span className="text-label font-normal text-on-surface-variant rtl:text-body-md">{t('Adds a pattern under each tajweed colour, so the rule does not rely on colour alone.')}</span>
           </span>
           <Switch checked={s.tajweedPatterns} onCheckedChange={(v) => set({ tajweedPatterns: v })} />
         </label>
@@ -138,7 +138,7 @@ export default function Settings({ params }: ScreenProps) {
 
       <Group en="About" ar="عن التطبيق">
         <Row icon="library_books" href="#/resources" label={t('Credits and sources')} />
-        <p className="px-space-md py-3 text-label font-normal text-on-surface-variant">
+        <p className="px-space-md py-3 text-label font-normal text-on-surface-variant rtl:text-body-md">
           <T>{t('Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device. If you sign in, your progress (not your recordings) is also backed up to your account.')}</T>
         </p>
       </Group>
@@ -346,8 +346,8 @@ function Reset() {
       <div className="flex flex-wrap items-center gap-3">
         <span className="grid size-9 shrink-0 place-items-center rounded-control bg-error-container text-on-error-container"><Icon name="restart_alt" size={20} /></span>
         <div className="flex min-w-0 flex-1 basis-48 flex-col">
-          <span className="text-body-md font-semibold text-error">{t('Reset everything')}</span>
-          <span className="text-label font-normal text-on-surface-variant">{t('This deletes all your progress, sessions and recordings on this device.')}</span>
+          <span className="text-body-md font-semibold text-error rtl:text-body-lg">{t('Reset everything')}</span>
+          <span className="text-label font-normal text-on-surface-variant rtl:text-body-md">{t('This deletes all your progress, sessions and recordings on this device.')}</span>
         </div>
         {!open && <Button variant="danger" onClick={() => setOpen(true)}>{t('Reset everything')}</Button>}
       </div>

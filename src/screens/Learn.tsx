@@ -463,7 +463,7 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
       <SayRows key={`rows:${ex.id}`} ex={ex} audio={audio} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
       {notice}
       <Panel aria-labelledby="say-rate">
-        <h3 id="say-rate" className="text-headline-md text-on-surface">{t('Did it sound the same?')}</h3>
+        <h3 id="say-rate" className="text-body-lg font-semibold text-on-surface">{t('Did it sound the same?')}</h3>
         <div className="grid grid-cols-2 gap-space-sm" role="group" aria-label={t('Rate yourself')}>
           <Button variant="secondary" disabled={!ok} aria-pressed={mine === false} onClick={() => rate(false)}
             className={cn('h-auto min-h-12 whitespace-normal', mine === false && 'border-primary bg-surface-container')}>

@@ -128,7 +128,7 @@ export function RowCard({ n, title, status, children }: { n: number; title: stri
     <Panel>
       <h3 className="flex items-center gap-space-sm">
         <span className="grid size-7 shrink-0 place-items-center rounded-full bg-surface-container text-label font-bold text-primary">{digits(n)}</span>
-        <span className="min-w-0 flex-1 text-headline-md text-on-surface">{title}</span>
+        <span className="min-w-0 flex-1 text-body-lg font-semibold text-on-surface">{title}</span>
         {status}
       </h3>
       {children}

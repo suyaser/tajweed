@@ -163,7 +163,7 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
     put(side, 'letters',
       <SectionCard n={++n} {...bi('Which letters')}>
         <Letters letters={lesson.letters} />
-        {c > 1 && <p className="mt-space-sm text-label text-on-surface-variant">{tn('{n} letter', '{n} letters', c)}</p>}
+        {c > 1 && <p className="mt-space-sm text-label text-on-surface-variant rtl:text-body-md">{tn('{n} letter', '{n} letters', c)}</p>}
       </SectionCard>,
     )
   }

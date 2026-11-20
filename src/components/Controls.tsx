@@ -155,8 +155,8 @@ export function Row({ icon, label, hint, children, href, className, stack }: {
     <div className={cn('flex min-w-0 flex-1 items-start gap-3', !stack && (hint ? 'basis-60' : 'basis-32'))}>
       {icon && <span className="grid size-9 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name={icon} size={20} /></span>}
       <div className="flex min-w-0 flex-1 flex-col self-center">
-        <span className="text-body-md font-semibold text-on-surface">{label}</span>
-        {hint && <span className="text-label font-normal text-on-surface-variant">{hint}</span>}
+        <span className="text-body-md font-semibold text-on-surface rtl:text-body-lg">{label}</span>
+        {hint && <span className="text-label font-normal text-on-surface-variant rtl:text-body-md">{hint}</span>}
       </div>
     </div>
   )
