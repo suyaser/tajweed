@@ -189,7 +189,8 @@ export type LessonDotState = 'done' | 'current' | 'todo'
 
 /** A unit's lessons as a row of dots ending in the finale star. Dots link when `href` is set. */
 export function UnitPath({ lessons, finale = 'todo', className }: {
-  lessons: { state: LessonDotState; label: string; href?: string }[]; finale?: LessonDotState; className?: string
+  /** `null`: the unit has no finale (no star). */
+  lessons: { state: LessonDotState; label: string; href?: string }[]; finale?: LessonDotState | null; className?: string
 }) {
   const dot = (state: LessonDotState) => cn(
     'grid size-7 shrink-0 place-items-center rounded-full text-caption font-medium',
@@ -209,12 +210,12 @@ export function UnitPath({ lessons, finale = 'todo', className }: {
           </li>
         )
       })}
-      <li>
-        <span className={cn(dot(finale), finale === 'todo' ? 'bg-secondary-container text-secondary' : '')}>
+      {finale && <li>
+        <span className={cn(dot(finale),finale === 'todo' ? 'bg-secondary-container text-secondary' : '')}>
           <Icon name="star" size={16} fill={finale === 'done'} />
           <span className="sr-only">{t('Unit finale')}</span>
         </span>
-      </li>
+      </li>}
     </ol>
   )
 }

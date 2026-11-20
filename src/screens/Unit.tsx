@@ -6,15 +6,17 @@ import { completeFinale, useData } from '../core/store'
 import { courseProgress } from '../core/course'
 import { getUnit, unitMutun, units } from '../content/course'
 import { href } from '../app/router'
-import { Button, Card, EmptyState, StarBadge } from '../components'
 import { isAr, t } from '../i18n'
 import { Tx } from './study/i18n'
 import { getLesson } from '../content'
 import { SignInNudge } from '../sync/SignInNudge'
-import { UnitLessons } from './path/ui'
+import { Panel, UnitLessons, UnitNode } from './path/blocks'
 import { dayLabel } from './path/helpers'
 import { PassageRecite } from './study/Recorder'
 import { useStudyAudio } from './study/verse'
+import { Callout, EmptyState } from '@/components/kit'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
 
 export default function Unit({ params }: ScreenProps) {
   const u = getUnit(params.unitId)
@@ -22,41 +24,42 @@ export default function Unit({ params }: ScreenProps) {
   const audio = useStudyAudio()
   const [justDone, setJustDone] = useState<string | null>(null) // unit id whose finale was just recited here
   useEffect(() => { if (params.finale) document.getElementById('finale')?.scrollIntoView() }, [params.finale])
-  if (!u) return <EmptyState title={t("This unit isn't in the course.")} action={<Button href={href('plan')}>{t('Course map')}</Button>} />
+  if (!u) return <EmptyState icon="map" title={t("This unit isn't in the course.")} action={<Button asChild className="no-underline"><a href={href('plan')}>{t('Course map')}</a></Button>} />
   const p = courseProgress(d, units)
   const lines = unitMutun(u)
   const recited = d.finales.find((f) => f.unitId === u.id)
   const prev = units[units.indexOf(u) - 1]
 
   return (
-    <div className="p-stack">
-      <header className="p-row-inline">
-        <StarBadge n={u.n} size={52} state={p.lessonsDone(u) && p.finaleDone(u) ? 'done' : p.open(u) ? 'active' : 'locked'} />
-        <div>
-          <h1 className="a-h2" lang="ar">{u.nameAr}</h1>
-          <p className="muted">{isAr ? t('Unit {n}', { n: u.n }) : <>Unit {u.n} · {u.nameEn}</>}</p>
+    <div className="flex flex-col gap-space-lg">
+      <header className="flex items-center gap-space-md">
+        <UnitNode n={u.n} size="lg" status={p.lessonsDone(u) && p.finaleDone(u) ? 'passed' : p.open(u) ? 'active' : 'locked'} />
+        <div className="flex min-w-0 flex-col gap-0.5">
+          <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{isAr ? t('Unit {n}', { n: u.n }) : <>Unit {u.n} · {u.nameEn}</>}</p>
+          <h1 lang="ar" className="text-arabic-headline text-primary">{u.nameAr}</h1>
         </div>
       </header>
-      <p><Tx>{u.intro}</Tx></p>
-      {!p.open(u) && prev && <Card className="s-note"><p><Tx>{t('This unit opens after the finale of unit {n} · {name}.', { n: prev.n, name: prev.nameAr })}</Tx></p></Card>}
+      <p className="text-body-lg text-on-surface"><Tx>{u.intro}</Tx></p>
+      {!p.open(u) && prev && (
+        <Callout variant="note" icon="lock"><Tx>{t('This unit opens after the finale of unit {n} · {name}.', { n: prev.n, name: prev.nameAr })}</Tx></Callout>
+      )}
 
-      {u.lessonIds.length > 0 && <Card eyebrow={t('Lessons')}><UnitLessons u={u} p={p} /></Card>}
+      {u.lessonIds.length > 0 && <Panel title={t('Lessons')} ar="الدروس" icon="menu_book"><UnitLessons u={u} p={p} /></Panel>}
 
       {u.finale && (
-        <section id="finale" aria-label={t('Unit finale')}>
-          <Card eyebrow={<>{t('Finale')} · <span lang="ar">{u.finale.label}</span></>}>
-            {justDone === u.id ? <UnitComplete u={u} /> : <>
-              {recited && <p className="t-sm">{t('Recited {day}. You can recite it again any time.', { day: dayLabel(recited.on) })}</p>}
-              {p.open(u) && p.lessonsDone(u) ? (
-                <PassageRecite from={u.finale.from} to={u.finale.to} audio={audio} doneLabel={t('I recited it')}
-                  onDone={recited ? undefined : () => { audio.stop(); completeFinale(u.id); setJustDone(u.id); window.scrollTo(0, 0) }} />
-              ) : (
-                <p className="t-sm"><Tx>{t('After the last lesson of this unit, recite {x}. That opens the next unit.', { x: u.finale.label })}</Tx></p>
-              )}
-            </>}
-            <p className="t-sm muted">{t('Self-checked against the reciter. A teacher can listen too: add it to your next session.')}</p>
-          </Card>
-        </section>
+        <Panel id="finale" aria-label={t('Unit finale')} title={t('Finale')} ar={u.finale.label} icon="star"
+          aside={isAr ? <span lang="ar" className="font-naskh text-body-md font-semibold text-primary">{u.finale.label}</span> : undefined}>
+          {justDone === u.id ? <UnitComplete u={u} /> : <>
+            {recited && <p className="flex items-center gap-1.5 text-body-md text-on-surface"><Icon name="check_circle" size={18} fill className="text-success" />{t('Recited {day}. You can recite it again any time.', { day: dayLabel(recited.on) })}</p>}
+            {p.open(u) && p.lessonsDone(u) ? (
+              <PassageRecite from={u.finale.from} to={u.finale.to} audio={audio} doneLabel={t('I recited it')}
+                onDone={recited ? undefined : () => { audio.stop(); completeFinale(u.id); setJustDone(u.id); window.scrollTo(0, 0) }} />
+            ) : (
+              <p className="text-body-md text-on-surface-variant"><Tx>{t('After the last lesson of this unit, recite {x}. That opens the next unit.', { x: u.finale.label })}</Tx></p>
+            )}
+          </>}
+          <p className="text-label text-on-surface-variant">{t('Self-checked against the reciter. A teacher can listen too: add it to your next session.')}</p>
+        </Panel>
       )}
 
       {lines.length > 0 && <Mutun lines={lines} />}
@@ -73,12 +76,14 @@ function UnitComplete({ u }: { u: UnitT }) {
       ? { link: href('unit', next.unit.id), label: t('Open unit {n} · {name}', { n: next.unit.n, name: next.unit.nameAr }) }
       : { link: href('today'), label: t('Back to today') }
   return (
-    <div className="s-study s-summary" role="status">
-      <StarBadge n={u.n} size={52} state="done" />
-      <p className="t-lg">{t('Unit {n} complete.', { n: u.n })}</p>
-      <p>{next.kind === 'done' ? <Tx>{t('The course is done. تقبّل الله منك')}</Tx> : t('The next unit is open.')}</p>
-      <Button block href={to.link}><Tx>{to.label}</Tx></Button>
-      <SignInNudge />
+    <div role="status" className="flex flex-col items-center gap-space-sm py-space-md text-center">
+      <UnitNode n={u.n} size="lg" status="passed" />
+      <p className="text-headline-md text-on-surface">{t('Unit {n} complete.', { n: u.n })}</p>
+      <p className="text-body-md text-on-surface-variant">{next.kind === 'done' ? <Tx>{t('The course is done. تقبّل الله منك')}</Tx> : t('The next unit is open.')}</p>
+      <Button asChild className="mt-space-sm w-full no-underline">
+        <a href={to.link}><Tx>{to.label}</Tx><Icon name="arrow_forward" size={20} rtlFlip /></a>
+      </Button>
+      <div className="w-full text-start"><SignInNudge /></div>
     </div>
   )
 }
@@ -88,30 +93,36 @@ const MATN_NAME: Record<MatnLine['matn'], string> = { tuhfa: 'تحفة الأط�
 /** Optional: the matching lines of تحفة الأطفال / الجزرية; memorise = the first half-line shown, tap to reveal the second. */
 function Mutun({ lines }: { lines: MatnLine[] }) {
   const [memorise, setMemorise] = useState(false)
+  const verse = 'font-naskh text-[20px] leading-[1.9] text-on-surface'
   return (
-    <Card eyebrow={isAr ? 'المتون (اختياري)' : <>Optional · <span lang="ar">المتون</span></>}>
-      <Button variant="secondary" aria-pressed={memorise} onClick={() => setMemorise(!memorise)}>{memorise ? t('Show whole lines') : t('Memorise')}</Button>
+    <Panel title={isAr ? 'المتون (اختياري)' : 'Optional'} ar="المتون" icon="history_edu"
+      aside={<Button variant="secondary" size="sm" aria-pressed={memorise} onClick={() => setMemorise(!memorise)}>
+        <Icon name={memorise ? 'visibility' : 'psychology'} size={18} />{memorise ? t('Show whole lines') : t('Memorise')}
+      </Button>}>
       {(['tuhfa', 'jazariyya'] as const).filter((m) => lines.some((l) => l.matn === m)).map((m) => (
-      <section key={m} aria-label={MATN_NAME[m]}>
-      <h3 className="a-lg" lang="ar">{MATN_NAME[m]}</h3>
-      <ol className="p-list u-mutun">
-        {lines.filter((l) => l.matn === m).map((l) => (
-          <li key={l.id} className="p-item p-item-col">
-            {memorise ? (
-              <details>
-                <summary lang="ar" dir="rtl" className="a-lg">{l.sadr}</summary>
-                <p lang="ar" dir="rtl" className="a-lg">{l.ajz}</p>
-              </details>
-            ) : (
-              <p lang="ar" dir="rtl" className="a-lg">{l.sadr}<br />{l.ajz}</p>
-            )}
-            {l.gloss && !memorise && <p className="t-sm muted"><Tx>{l.gloss}</Tx></p>}
-          </li>
-        ))}
-      </ol>
-      </section>
+        <section key={m} aria-label={MATN_NAME[m]} className="flex flex-col gap-space-sm">
+          <h3 lang="ar" className="text-arabic-label font-semibold text-secondary">{MATN_NAME[m]}</h3>
+          <ol className="flex flex-col gap-space-sm">
+            {lines.filter((l) => l.matn === m).map((l) => (
+              <li key={l.id} className="flex flex-col gap-1 rounded-control bg-surface-container-low px-space-md py-space-sm">
+                {memorise ? (
+                  <details className="group">
+                    <summary lang="ar" dir="rtl" className={`${verse} flex min-h-12 cursor-pointer list-none items-center gap-space-sm [&::-webkit-details-marker]:hidden`}>
+                      <span className="flex-1">{l.sadr}</span>
+                      <Icon name="expand_more" size={20} className="text-outline transition-transform group-open:rotate-180" />
+                    </summary>
+                    <p lang="ar" dir="rtl" className={`${verse} text-primary`}>{l.ajz}</p>
+                  </details>
+                ) : (
+                  <p lang="ar" dir="rtl" className={verse}>{l.sadr}<br />{l.ajz}</p>
+                )}
+                {l.gloss && !memorise && <p className="text-label text-on-surface-variant"><Tx>{l.gloss}</Tx></p>}
+              </li>
+            ))}
+          </ol>
+        </section>
       ))}
-      {memorise && <p className="t-sm muted">{t('Say the second half from memory, then tap the line to check.')}</p>}
-    </Card>
+      {memorise && <p className="text-label text-on-surface-variant">{t('Say the second half from memory, then tap the line to check.')}</p>}
+    </Panel>
   )
 }

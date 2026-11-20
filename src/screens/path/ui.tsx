@@ -1,27 +1,13 @@
 // Shared pieces for the Teacher and Path screens.
 import { useEffect, useState } from 'react'
-import type { Session, Unit, Verse, VerseKey } from '../../core/types'
-import type { courseProgress } from '../../core/course'
-import { getLesson } from '../../content'
-import { href } from '../../app/router'
+import type { Session, Verse, VerseKey } from '../../core/types'
 import { getSnapshot, planSession, suggestPassages, updateSession } from '../../core/store'
 import { today } from '../../core/day'
 import { ayahCount, getRange, surahName, tajweedSpans, toArabicDigits } from '../../quran'
-import { Button, CorrectionTag, SegmentedControl, type PassageAyah } from '../../components'
+import { Button, CorrectionTag, type PassageAyah } from '../../components'
 import { navigate } from '../../app/router'
 import { isAr, t } from '../../i18n'
 import { mergePassages, nextTeacherDay, upcomingSession, type Planned } from './helpers'
-
-export function PathTabs({ value }: { value: 'plan' | 'progress' }) {
-  return (
-    <SegmentedControl
-      label={t('Path')}
-      value={value}
-      onChange={(v) => navigate(v, { replace: true })}
-      options={[{ value: 'plan', label: t('Plan') }, { value: 'progress', label: t('Progress') }]}
-    />
-  )
-}
 
 /** Verses of a range, with tajweed segments for <Passage>. `error` when offline and not cached. */
 export function useVerses(from?: VerseKey, to?: VerseKey) {
@@ -125,40 +111,4 @@ export function startClass(sessionId?: string) {
   const planned = sessionId && getSnapshot().sessions.find((x) => x.id === sessionId)?.on
   if (sessionId && planned !== today(new Date(Date.now() + 3 * 3600_000))) updateSession(sessionId, { on })
   navigate(`#/teacher/${sessionId ?? planSession({ on }).id}?sheet=1`)
-}
-
-type Progress = ReturnType<typeof courseProgress>
-type St = 'done' | 'next' | 'catch-up' | 'locked'
-const PILL: Record<St, string> = { done: t('✓ done'), next: t('next'), 'catch-up': t('catch-up'), locked: t('locked') }
-const ACTION: Record<St, string> = { done: t('done, replay it'), next: t('next, start it'), 'catch-up': t('new in this version, open'), locked: t('locked') }
-
-function Row({ link, ar, en, st }: { link: string; ar: string; en: string; st: St }) {
-  return (
-    <li>
-      <a className="p-item p-item-link" href={link} aria-label={`${[en, ar].filter(Boolean).join(', ')}: ${ACTION[st]}`}>
-        <span className="p-item-main">
-          <span className="a-sm" lang="ar">{ar}</span>
-          {en && <span className="t-sm muted">{en}</span>}
-        </span>
-        <span className="p-pill" data-st={st} aria-hidden="true">{PILL[st]}</span>
-      </a>
-    </li>
-  )
-}
-
-/** A unit's lessons (done / next / catch-up / locked) and its finale: the course map and the unit page. A locked lesson's
- *  page says what comes first and offers its card. */
-export function UnitLessons({ u, p }: { u: Unit; p: Progress }) {
-  const nextId = p.next.kind === 'lesson' ? p.next.id : null
-  const finale: St = p.finaleDone(u) ? 'done' : p.next.kind === 'finale' && p.next.unit === u ? 'next' : 'locked'
-  return (
-    <ul className="p-list">
-      {u.lessonIds.map((id) => {
-        const l = getLesson(id)!
-        const st: St = p.done.has(id) ? 'done' : id === nextId ? 'next' : p.catchUp(id) ? 'catch-up' : 'locked'
-        return <Row key={id} link={href('learn', id)} ar={l.nameAr} en={isAr ? '' : l.nameEn} st={st} />
-      })}
-      {u.finale && <Row link={href('unit', u.id) + '?finale=1'} ar={u.finale.label} en={t('Unit finale: recite the passage')} st={finale} />}
-    </ul>
-  )
 }

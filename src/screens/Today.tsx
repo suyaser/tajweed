@@ -1,5 +1,5 @@
 // #/today → "Continue" (v2 spec §5): the next step in the course, review, practice, and where you are in the unit.
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
 import { storagePersisted, suggestPassages, useData } from '../core/store'
 import { buildQueue } from '../core/scheduler'
 import { courseProgress } from '../core/course'
@@ -7,15 +7,19 @@ import { diffDays, today } from '../core/day'
 import { getLesson } from '../content'
 import { courseLesson, courseOrder, getUnit, units } from '../content/course'
 import { href } from '../app/router'
-import { Button, Card, CorrectionTag, Nudge, ProgressDots, Sheet, StarBadge } from '../components'
-import { isAr, t, FWD } from '../i18n'
+import { isAr, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
 import { SignInNudge } from '../sync/SignInNudge'
 import { useSync } from '../sync/sync'
 import { getSteps, type StepId } from './study/lessonSteps'
 import { ROUTINE_KEY } from './Onboarding'
-import type { Unit } from '../core/types'
+import { Note, Panel, SeverityChip, WeekDots } from './path/blocks'
+import { STEP_ICONS, UnitPath } from '@/components/kit'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+import { cn } from '@/lib/utils'
 
 const STEP_NAME: Record<StepId, string> = {
   hear: t('Hear'), notice: t('Notice'), learn: t('Learn'), say: t('Say'), find: t('Find'), check: t('Check'), recite: t('Recite'),
@@ -23,19 +27,30 @@ const STEP_NAME: Record<StepId, string> = {
 
 const readRoutine = () => { try { return localStorage.getItem(ROUTINE_KEY) === 'pending' } catch { return false } }
 
-/** The current unit as a small path: one dot per lesson (done / current / not yet), then the finale star. */
-function UnitPath({ unit, done, current, finaleDone }: { unit: Unit; done: Set<string>; current?: string; finaleDone: boolean }) {
-  const state = (id: string) => (done.has(id) ? 'done' : id === current ? 'current' : 'locked')
-  const said = { done: t('done'), current: t('current'), locked: t('not yet') }
+/** A link styled as a button (the ui Button renders a <button> unless asChild). */
+function LinkButton({ to, children, variant = 'primary', className, ...rest }: {
+  to: string; children: ReactNode; variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost'; className?: string; 'aria-label'?: string
+}) {
+  return <Button asChild variant={variant} className={cn('no-underline', className)}><a href={to} {...rest}>{children}</a></Button>
+}
+
+const Fwd = () => <Icon name="arrow_forward" size={20} rtlFlip />
+
+/** A tappable row inside a card: label, optional Arabic detail, forward chevron. */
+function LinkRow({ to, children }: { to: string; children: ReactNode }) {
   return (
-    <ol className="u-path" aria-label={t('Lessons in unit {n}', { n: unit.n })}>
-      {unit.lessonIds.map(id => {
-        const s = state(id)
-        return <li key={id} data-state={s} aria-current={s === 'current' ? 'step' : undefined}><span className="sr-only">{`${getLesson(id)?.nameAr ?? id}: ${said[s]}`}</span></li>
-      })}
-      {unit.finale && <li className="u-path-finale" data-state={finaleDone ? 'done' : 'locked'}><span aria-hidden="true">★</span><span className="sr-only">{`${t('finale')}: ${finaleDone ? said.done : said.locked}`}</span></li>}
-    </ol>
+    <li>
+      <a href={to} className="flex min-h-12 items-center gap-space-sm rounded-control px-space-sm text-body-md text-on-surface no-underline transition-colors hover:bg-surface-container-low">
+        <span className="min-w-0 flex-1">{children}</span>
+        <Icon name="chevron_right" size={20} rtlFlip className="text-outline" />
+      </a>
+    </li>
   )
+}
+
+/** The inset panel at the heart of the Continue card. */
+function Inset({ children, className }: { children: ReactNode; className?: string }) {
+  return <div className={cn('flex flex-col gap-space-sm rounded-card bg-surface-container-low p-space-md', className)}>{children}</div>
 }
 
 export default function Today() {
@@ -63,6 +78,7 @@ export default function Today() {
   const finaleUnit = q.finaleUnit ? getUnit(q.finaleUnit) : undefined
   // v1 learners: lessons v2 added to units they had passed (engineering M4); optional, never blocking
   const catchUp = courseOrder.filter(progress.catchUp)
+  const closing = nextLesson ? courseLesson(nextLesson.id).closing : null
 
   // review
   const due = q.sabqi.length + q.manzil.length
@@ -93,164 +109,216 @@ export default function Today() {
         : null
   const tips = !dismissed['hint:today']
 
+  const said = { done: t('done'), current: t('current'), todo: t('not yet') }
+  const dotState = (id: string) => (progress.done.has(id) ? 'done' : id === nextLesson?.id ? 'current' : 'todo') as keyof typeof said
+
   return (
-    <div className="today">
-      <section aria-label={t('Continue')} className="today-main s-study">
-        <Card level="e2" className="today-continue" eyebrow={isAr ? 'تابع' : <>Continue · <span lang="ar">تابع</span></>}>
+    <div className="wide grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
+      <section aria-label={t('Continue')} className="flex min-w-0 flex-col gap-space-lg">
+        <Panel as="div" className="gap-space-lg shadow-card">
+          {/* unit + path */}
           {next.kind !== 'done' && (
-            <div className="u-head">
-              <p className="t-sm"><b>{t('Unit {n}', { n: unit.n })}</b> · <bdi lang="ar">{unit.nameAr}</bdi></p>
-              <UnitPath unit={unit} done={progress.done} current={nextLesson?.id} finaleDone={progress.finaleDone(unit)} />
+            <div className="flex flex-col gap-space-sm">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-space-md gap-y-1">
+                <p className="text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case">
+                  {t('Unit {n}', { n: unit.n })}{!isAr && <> · {unit.nameEn}</>}
+                </p>
+                <p lang="ar" className="text-arabic-label text-secondary">{unit.nameAr}</p>
+              </div>
+              <div role="group" aria-label={t('Lessons in unit {n}', { n: unit.n })}>
+                <UnitPath
+                  lessons={unit.lessonIds.map(id => ({ state: dotState(id), label: `${getLesson(id)?.nameAr ?? id}: ${said[dotState(id)]}` }))}
+                  finale={unit.finale ? (progress.finaleDone(unit) ? 'done' : 'todo') : null}
+                />
+              </div>
+              {q.sabaq && nextLesson && (
+                <p className="text-body-md text-on-surface-variant">
+                  {t('Lesson {n} of {m}', { n: courseOrder.indexOf(nextLesson.id) + 1, m: courseOrder.length })}
+                  <span aria-hidden className="mx-1.5 text-outline">·</span>
+                  <span className="font-medium text-on-surface">{t('{n} of {m} lessons done', { n: unitDone, m: unit.lessonIds.length })}</span>
+                </p>
+              )}
             </div>
           )}
+
           {q.sabaq && nextLesson ? (
             <>
-              <p className="t-sm muted num">{t('Lesson {n} of {m}', { n: courseOrder.indexOf(nextLesson.id) + 1, m: courseOrder.length })}{' · '}{t('{n} of {m} lessons done', { n: unitDone, m: unit.lessonIds.length })}</p>
-              <p className="a-h3" lang="ar">{nextLesson.nameAr}</p>
-              {!isAr && <p className="muted">{nextLesson.nameEn}</p>}
-              {started && <p className="t-sm today-resume">{t('Resume at step: {x}', { x: STEP_NAME[steps!.current] })}</p>}
-              {learnedToday.length > 0 && <p className="t-sm"><Tx>{t('Learned today: {x}', { x: learnedToday.join('، ') })}</Tx></p>}
-              <Button block href={href('learn', nextLesson.id)}>{resume ? t('Continue lesson') : t('Start lesson')}</Button>
+              <Inset>
+                <p lang="ar" className="text-arabic-headline text-primary">{nextLesson.nameAr}</p>
+                {!isAr && <p className="text-body-lg font-medium text-on-surface">{nextLesson.nameEn}</p>}
+                {started && (
+                  <p className="inline-flex w-fit items-center gap-1.5 rounded-full bg-surface-container-high px-3 py-1.5 text-label font-medium text-primary">
+                    <Icon name={STEP_ICONS[steps!.current]} size={16} fill />
+                    {t('Resume at step: {x}', { x: STEP_NAME[steps!.current] })}
+                  </p>
+                )}
+                {learnedToday.length > 0 && <p className="text-body-md text-on-surface-variant"><Tx>{t('Learned today: {x}', { x: learnedToday.join('، ') })}</Tx></p>}
+              </Inset>
+              {closing && (
+                <div className="flex items-center gap-space-sm rounded-card bg-surface-container/60 p-space-md">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-surface-container-lowest text-primary"><Icon name={STEP_ICONS.recite} size={18} /></span>
+                  <span className="text-caption tracking-wider text-on-surface-variant uppercase rtl:normal-case">{t('Recite')}</span>
+                  <span className="ms-auto"><bdi lang="ar" className="font-naskh text-body-lg font-semibold text-primary">{rangeRef(closing.from, closing.to)}</bdi></span>
+                </div>
+              )}
+              <LinkButton to={href('learn', nextLesson.id)} className="w-full">{resume ? t('Continue lesson') : t('Start lesson')}<Fwd /></LinkButton>
             </>
           ) : q.sabaqReason === 'finale' && finaleUnit ? (
             <>
-              <p className="t-sm muted">{t('Unit {n} finale', { n: finaleUnit.n })}</p>
-              <p className="a-h3" lang="ar">{finaleUnit.finale?.label ?? finaleUnit.nameAr}</p>
-              <p><Tx>{t('Every lesson of {u} is done. Recite {x} from start to end to open the next unit.', { u: finaleUnit.nameAr, x: finaleUnit.finale?.label ?? t('the passage') })}</Tx></p>
-              <Button block href={href('unit', finaleUnit.id) + '?finale=1'}>{t('Recite the finale')}</Button>
+              <Inset>
+                <p className="flex items-center gap-1.5 text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
+                  <Icon name="star" size={16} fill className="text-gold" />{t('Unit {n} finale', { n: finaleUnit.n })}
+                </p>
+                <p lang="ar" className="text-arabic-headline text-primary">{finaleUnit.finale?.label ?? finaleUnit.nameAr}</p>
+                <p className="text-body-md text-on-surface"><Tx>{t('Every lesson of {u} is done. Recite {x} from start to end to open the next unit.', { u: finaleUnit.nameAr, x: finaleUnit.finale?.label ?? t('the passage') })}</Tx></p>
+              </Inset>
+              <LinkButton to={href('unit', finaleUnit.id) + '?finale=1'} className="w-full">{t('Recite the finale')}<Fwd /></LinkButton>
             </>
           ) : q.sabaqReason === 'pace' ? (
-            <>
-              <p className="t-lg"><Tx>{t('Learned today: {x}.', { x: learnedToday.join('، ') })}</Tx></p>
-              <p>
+            <Inset>
+              <p className="text-body-lg font-medium text-on-surface"><Tx>{t('Learned today: {x}.', { x: learnedToday.join('، ') })}</Tx></p>
+              <p className="text-body-md text-on-surface-variant">
                 {t('Two new lessons a day is the pace that sticks.')} {nextLesson && <Tx>{t('Tomorrow: {x}.', { x: nextLesson.nameAr })}</Tx>}{' '}
                 {due > 0 ? t('Today, do your review below.') : practice.length ? t('Today, recite your recent passages below.') : t('Come back tomorrow.')}
               </p>
-            </>
+            </Inset>
           ) : q.sabaqReason === 'backlog' ? (
             <>
-              <p className="t-lg">{t('Review first.')}</p>
-              <p>{tn('{n} reviews are due. New lessons resume when fewer than 15 are overdue.', '{n} reviews are due. New lessons resume when fewer than 15 are overdue.', dueManzil)}</p>
-              <Button block href={href('review') + '?go=1'}>{t('Review')}</Button>
+              <Inset>
+                <p className="text-body-lg font-medium text-on-surface">{t('Review first.')}</p>
+                <p className="text-body-md text-on-surface-variant">{tn('{n} reviews are due. New lessons resume when fewer than 15 are overdue.', '{n} reviews are due. New lessons resume when fewer than 15 are overdue.', dueManzil)}</p>
+              </Inset>
+              <LinkButton to={href('review') + '?go=1'} className="w-full">{t('Review')}<Fwd /></LinkButton>
             </>
           ) : (
-            <>
-              <StarBadge size={44} state="done" />
-              <p className="t-lg"><Tx>{t('The course is done. تقبّل الله منك')}</Tx></p>
-              <p>{t('Keep your review going, and keep reciting to a teacher.')}</p>
-            </>
+            <Inset className="items-center text-center">
+              <span className="grid size-14 place-items-center rounded-full bg-primary text-on-primary"><Icon name="star" size={28} fill /></span>
+              <p className="text-body-lg font-medium text-on-surface"><Tx>{t('The course is done. تقبّل الله منك')}</Tx></p>
+              <p className="text-body-md text-on-surface-variant">{t('Keep your review going, and keep reciting to a teacher.')}</p>
+            </Inset>
           )}
-          <p className="t-sm s-links"><a href={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit ›')}</a> <a href={href('plan')}>{t('Course map ›')}</a></p>
-        </Card>
+          <p className="-my-space-sm flex flex-wrap justify-center gap-x-space-md">
+            <LinkButton variant="tertiary" to={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit ›')}</LinkButton>
+            <LinkButton variant="tertiary" to={href('plan')}>{t('Course map ›')}</LinkButton>
+          </p>
+        </Panel>
 
-        <Card eyebrow={isAr ? 'المراجعة' : <><span lang="ar">المراجعة</span> · Review</>}>
-          {due > 0 ? (
-            <>
-              <p className="num"><Tx>{t('This week (سبقي) {a} · Older (منزل) {b}', { a: q.sabqi.length, b: q.manzil.length })}</Tx>{reviewedToday > 0 && t(' · {n} left', { n: due })}</p>
-              {jali > 0 && (isAr
-                ? <p className="t-sm">⚑ {tn('{n} correction due', '{n} corrections due', jali)} <CorrectionTag severity="jali" /></p>
-                : <p className="t-sm">⚑ {jali} <CorrectionTag severity="jali" /> {jali === 1 ? 'correction' : 'corrections'} due</p>)}
-              <div className="s-part-actions"><Button href={href('review') + '?go=1'}>{reviewedToday ? t('Continue review') : t('Review')}</Button></div>
-            </>
-          ) : (
-            <p className="t-sm">{data.items.length ? t('Nothing due today.') : t('Nothing to review yet. Your first lesson starts it.')}</p>
-          )}
-        </Card>
+        <Panel as="div" className="flex-row flex-wrap items-center gap-space-md">
+          <span className="grid size-12 shrink-0 place-items-center rounded-full bg-surface-container-low text-primary"><Icon name="history_edu" /></span>
+          <div className="flex min-w-0 flex-1 basis-48 flex-col gap-0.5">
+            <h2 className="flex flex-wrap items-baseline gap-x-space-sm">
+              <span className="text-body-lg font-semibold text-on-surface">{t('Review')}</span>
+              {!isAr && <span lang="ar" className="text-arabic-label text-on-surface-variant">المراجعة</span>}
+            </h2>
+            {due > 0 ? (
+              <>
+                <p className="text-body-md text-on-surface-variant"><Tx>{t('This week (سبقي) {a} · Older (منزل) {b}', { a: q.sabqi.length, b: q.manzil.length })}</Tx>{reviewedToday > 0 && t(' · {n} left', { n: due })}</p>
+                {jali > 0 && (isAr
+                  ? <p className="flex flex-wrap items-center gap-1.5 text-body-md text-on-surface">{tn('{n} correction due', '{n} corrections due', jali)} <SeverityChip severity="jali" /></p>
+                  : <p className="flex flex-wrap items-center gap-1.5 text-body-md text-on-surface">{jali} <SeverityChip severity="jali" /> {jali === 1 ? 'correction' : 'corrections'} due</p>)}
+              </>
+            ) : (
+              <p className="text-body-md text-on-surface-variant">{data.items.length ? t('Nothing due today.') : t('Nothing to review yet. Your first lesson starts it.')}</p>
+            )}
+          </div>
+          {due > 0 && <LinkButton variant="secondary" to={href('review') + '?go=1'} className="max-sm:w-full">{reviewedToday ? t('Continue review') : t('Review')}</LinkButton>}
+        </Panel>
 
         {routine && data.introductions.length > 0 && (
-          <Card eyebrow={t('Set up your routine')} className="today-routine">
-            <p className="t-sm">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
-            <ul className="s-targets">
-              <li><a href={href('settings') + '?s=recitation'}>{t('Model reciter')} <span aria-hidden="true">{FWD}</span></a></li>
-              <li><a href={href('settings') + '?s=wird'}>{t('Daily study time (wird)')} <span aria-hidden="true">{FWD}</span></a></li>
-              <li><a href={href('settings') + '?s=wird'}>{t('Teacher day')} <span aria-hidden="true">{FWD}</span></a></li>
+          <Panel title={t('Set up your routine')} icon="tune">
+            <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
+            <ul className="-mx-space-sm flex flex-col">
+              <LinkRow to={href('settings') + '?s=recitation'}>{t('Model reciter')}</LinkRow>
+              <LinkRow to={href('settings') + '?s=wird'}>{t('Daily study time (wird)')}</LinkRow>
+              <LinkRow to={href('settings') + '?s=wird'}>{t('Teacher day')}</LinkRow>
             </ul>
-            <Button variant="ghost" onClick={hideRoutine}>{t('Done, hide this')}</Button>
-          </Card>
+            <Button variant="ghost" onClick={hideRoutine} className="self-start">{t('Done, hide this')}</Button>
+          </Panel>
         )}
 
         {catchUp.length > 0 && (
-          <Card eyebrow={t('New in this version')}>
-            <p className="t-sm">{tn("{n} new lesson in units you have finished. Take them when you like; they don't hold up the course.", "{n} new lessons in units you have finished. Take them when you like; they don't hold up the course.", catchUp.length)}</p>
-            <Button variant="secondary" href={href('learn', catchUp[0])}><Tx>{t('Start {x}', { x: getLesson(catchUp[0])?.nameAr ?? '' })}</Tx></Button>
-          </Card>
+          <Panel title={t('New in this version')} icon="new_releases">
+            <p className="-mt-space-sm text-body-md text-on-surface-variant">{tn("{n} new lesson in units you have finished. Take them when you like; they don't hold up the course.", "{n} new lessons in units you have finished. Take them when you like; they don't hold up the course.", catchUp.length)}</p>
+            <LinkButton variant="secondary" to={href('learn', catchUp[0])} className="self-start"><Tx>{t('Start {x}', { x: getLesson(catchUp[0])?.nameAr ?? '' })}</Tx></LinkButton>
+          </Panel>
         )}
 
         {practice.length > 0 && (
-          <Card eyebrow={isAr ? 'التلاوة' : <><span lang="ar">التلاوة</span> · Practice</>}>
-            <p className="t-sm">{t('Recite your recent passages again: listen, recite, record, compare.')}</p>
-            <ul className="s-targets">
+          <Panel title={isAr ? 'التلاوة' : 'Practice'} ar="التلاوة" icon="record_voice_over">
+            <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Recite your recent passages again: listen, recite, record, compare.')}</p>
+            <ul className="-mx-space-sm flex flex-col">
               {practice.map(p => (
-                <li key={p.id}>
-                  <a href={href('listen', rangeParam(p.closing!.from, p.closing!.to))}>
-                    <bdi lang="ar">{rangeRef(p.closing!.from, p.closing!.to)}</bdi>{' '}
-                    <bdi lang="ar" className="t-sm muted">{getLesson(p.id)?.nameAr}</bdi> <span aria-hidden="true">{FWD}</span>
-                  </a>
-                </li>
+                <LinkRow key={p.id} to={href('listen', rangeParam(p.closing!.from, p.closing!.to))}>
+                  <span className="flex flex-wrap items-baseline gap-x-space-sm">
+                    <bdi lang="ar" className="font-naskh text-body-lg font-semibold">{rangeRef(p.closing!.from, p.closing!.to)}</bdi>
+                    <bdi lang="ar" className="font-arabic text-label text-on-surface-variant">{getLesson(p.id)?.nameAr}</bdi>
+                  </span>
+                </LinkRow>
               ))}
             </ul>
-          </Card>
+          </Panel>
         )}
       </section>
 
-      <aside className="today-side">
-        <Card eyebrow={t('This week')}>
-          <ProgressDots days={w.marks} today={w.todayIndex} />
-          <p className="t-sm num">
+      <aside className="flex min-w-0 flex-col gap-space-lg">
+        <Panel title={t('This week')} icon="calendar_month">
+          <WeekDots days={w.marks} today={w.todayIndex} />
+          <p className="text-body-md text-on-surface-variant">
             {w.count === 0 && data.settings.onboardedOn === day ? t('Your week starts today.') : `${tn('{n} day studied this week', '{n} days studied this week', w.count)} · ${t('This month: {n}', { n: w.month })}`}
           </p>
-        </Card>
+        </Panel>
 
         {near && (
-          <Card eyebrow={isAr ? `الشيخ · ${near.when === 'today' ? t('today') : t('tomorrow')}` : <><span lang="ar">الشيخ</span> · Teacher {near.when}</>}>
-            <p>
+          <Panel title={isAr ? `الشيخ · ${near.when === 'today' ? t('today') : t('tomorrow')}` : `Teacher ${near.when}`} ar="الشيخ" icon="record_voice_over">
+            <p className="-mt-space-sm text-body-md text-on-surface">
               {data.settings.teacherName ? <Tx>{t('With {x}', { x: data.settings.teacherName })}</Tx> : t('Your session')}
               {plan[0] && <> · <Tx>{t('recite {x}', { x: rangeRef(plan[0].from, plan[0].to) })}</Tx></>}
               {openCorr > 0 && ` · ${tn('{n} correction to re-check', '{n} corrections to re-check', openCorr)}`}
             </p>
-            <Button variant="secondary" href={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>{near.session ? t('Open the plan') : t('Plan this session')} {FWD}</Button>
-          </Card>
+            <LinkButton variant="secondary" to={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>
+              {near.session ? t('Open the plan') : t('Plan this session')}<Fwd />
+            </LinkButton>
+          </Panel>
         )}
 
         {q.welcomeBack && (
-          <Card className="s-note">
-            <p>
-              {isAr
-                ? `${t('Welcome back.')} ${tn('{n} reviews are waiting', '{n} reviews are waiting', q.welcomeBack.due)}، ${tn('about {n} day at today\'s pace', 'about {n} days at today\'s pace', q.welcomeBack.daysToCatchUp)}. ${t('New lessons resume after that.')}`
-                : <>Welcome back. {q.welcomeBack.due} reviews are waiting, about {q.welcomeBack.daysToCatchUp}{' '}
-              {q.welcomeBack.daysToCatchUp === 1 ? 'day' : 'days'} at today's pace. New lessons resume after that.</>}
-            </p>
-          </Card>
+          <Note icon="waving_hand">
+            {isAr
+              ? `${t('Welcome back.')} ${tn('{n} reviews are waiting', '{n} reviews are waiting', q.welcomeBack.due)}، ${tn('about {n} day at today\'s pace', 'about {n} days at today\'s pace', q.welcomeBack.daysToCatchUp)}. ${t('New lessons resume after that.')}`
+              : <>Welcome back. {q.welcomeBack.due} reviews are waiting, about {q.welcomeBack.daysToCatchUp}{' '}
+                {q.welcomeBack.daysToCatchUp === 1 ? 'day' : 'days'} at today's pace. New lessons resume after that.</>}
+          </Note>
         )}
       </aside>
 
-      <div className="today-nudges">
+      <div className="flex min-w-0 flex-col gap-space-sm lg:col-span-2">
         {tips && (
-          <Nudge action={<Button variant="ghost" href={href('guide')}>{t('How it works')}</Button>} onDismiss={() => dismiss('hint:today')}>
+          <Note icon="lightbulb" action={<LinkButton variant="tertiary" to={href('guide')}>{t('How it works')}</LinkButton>} onDismiss={() => dismiss('hint:today')}>
             {t('One lesson at a time, about 15 minutes, in seven short steps. Then do your review.')}
-          </Nudge>
+          </Note>
         )}
         <SignInNudge />
         {nudge === 'install' && (
-          <Nudge
-            action={<button type="button" className="btn btn-ghost" onClick={() => setHowOpen(true)}>{t('How')}</button>}
-            onDismiss={() => dismiss('install')}
-          >
+          <Note icon="install_mobile" action={<Button variant="tertiary" onClick={() => setHowOpen(true)}>{t('How')}</Button>} onDismiss={() => dismiss('install')}>
             {t("Install to home screen so your data is kept. Safari can clear sites you haven't opened for a week.")}
-          </Nudge>
+          </Note>
         )}
         {nudge === 'backup' && !user && (
-          <Nudge action={<Button variant="ghost" href={href('settings')}>{t('Back up now')}</Button>} onDismiss={() => dismiss('backup')}>
+          <Note icon="backup" action={<LinkButton variant="tertiary" to={href('settings')}>{t('Back up now')}</LinkButton>} onDismiss={() => dismiss('backup')}>
             {backupAge == null ? t('No backup yet.') : tn('Last backup: {n} days ago.', 'Last backup: {n} days ago.', backupAge)}
-          </Nudge>
+          </Note>
         )}
       </div>
-      <Sheet open={howOpen} onClose={() => setHowOpen(false)} title={t('Install Tajweed Path')}>
-        <ul className="s-bullets">
-          <li>{t('iPhone (Safari): tap Share, then “Add to Home Screen”.')}</li>
-          <li>{t('Android (Chrome): open the ⋮ menu, then “Install app”.')}</li>
-          <li>{t('Laptop (Chrome or Edge): use the install icon in the address bar.')}</li>
-        </ul>
+
+      <Sheet open={howOpen} onOpenChange={setHowOpen}>
+        <SheetContent aria-describedby={undefined}>
+          <SheetHeader><SheetTitle>{t('Install Tajweed Path')}</SheetTitle></SheetHeader>
+          <ul className="flex list-disc flex-col gap-space-sm px-space-lg ps-10 pb-space-lg text-body-md text-on-surface">
+            <li>{t('iPhone (Safari): tap Share, then “Add to Home Screen”.')}</li>
+            <li>{t('Android (Chrome): open the ⋮ menu, then “Install app”.')}</li>
+            <li>{t('Laptop (Chrome or Edge): use the install icon in the address bar.')}</li>
+          </ul>
+        </SheetContent>
       </Sheet>
     </div>
   )
