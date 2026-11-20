@@ -97,7 +97,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
     const el = document.documentElement
     if (theme === 'system') delete el.dataset.theme
     else el.dataset.theme = theme
-    el.dataset.textSize = textSize
+    el.dataset.uiScale = textSize // whole-UI zoom (base.css); replaces the Quran-only data-text-size
     el.classList.toggle('tj-patterns', tajweedPatterns)
   }, [theme, textSize, tajweedPatterns])
 

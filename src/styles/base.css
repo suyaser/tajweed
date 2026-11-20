@@ -23,11 +23,23 @@ a { color: var(--link); text-underline-offset: 3px; }
 :root[lang="ar"] body { font-family: var(--f-ar); }
 /* every type token (font: var(--t-sm) …) falls through to the Arabic face; Latin keeps Figtree glyph by glyph */
 :root[lang="ar"] {
-  --f-body: "Figtree", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", sans-serif;
-  --f-disp: "Figtree", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-body: "Figtree", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-disp: "Figtree", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  /* small Arabic labels stay ≥ 14px */
+  --t-cap: 600 14px/20px var(--f-body);
 }
+:root[lang="ar"] :is(small, .rrow-meta, .ctag, .cbadge, .verse figcaption, .t-dot) { font-size: max(14px, 0.85em); }
 /* Arabic UI: an Arabic island is just text, no size bump */
 :root[lang="ar"] bdi.a { font-size: inherit; line-height: inherit; }
+
+/* Arabic UI face: Noto Sans Arabic (larger x-height, clearer dots and digits than IBM Plex Sans Arabic at 13–16px).
+   Overrides tokens.css; .theme-* are the dev gallery's scopes. */
+:root, .theme-light, .theme-dark { --f-ar: "Noto Sans Arabic", "Geeza Pro", sans-serif; }
+
+/* Text size setting (settings.textSize): zooms the whole UI, since every token is px. --zoom undoes it for viewport units. */
+:root { --zoom: 1; }
+:root[data-ui-scale="l"] { zoom: 1.125; --zoom: 1.125; }
+:root[data-ui-scale="xl"] { zoom: 1.25; --zoom: 1.25; }
 
 /* B2: Arabic inside Latin lines */
 [lang="ar"] { font-family: var(--f-ar); }

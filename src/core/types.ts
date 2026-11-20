@@ -115,6 +115,7 @@ export interface Settings extends Row {
   textSize: 'm' | 'l' | 'xl'
   theme: 'system' | 'light' | 'dark'
   tajweedPatterns: boolean // second cue for colour
+  tajweedColours: boolean // Listen player: tajweed colours on (off by default, doc 10 §1.1)
   onboardedOn: Day | null
   lastExportOn: Day | null
 }

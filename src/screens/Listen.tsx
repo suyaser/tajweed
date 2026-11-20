@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ScreenProps } from '../app/App'
 import { href } from '../app/router'
-import { addListenSeconds, noteRecording, planSession, suggestPassages, updateSession, useData, uuid } from '../core/store'
+import { addListenSeconds, noteRecording, planSession, suggestPassages, updateSession, updateSettings, useData, uuid } from '../core/store'
 import { today } from '../core/day'
 import type { ColourKey, Recording, Verse } from '../core/types'
 import { getRange, RECITERS, ruleColour, tajweedSpans } from '../quran'
@@ -51,7 +51,9 @@ export default function Listen({ params }: ScreenProps) {
   // player
   const { state, player } = usePlayer(verses ?? undefined, reciter)
   useEffect(() => { player.setGap(reciter.style === 'muallim' ? 'off' : 'same') }, [player, reciter]) // spec F5 default
-  const [colours, setColours] = useState(false)
+  // tajweed colours: off by default, remembered in settings (doc 10 §1.1)
+  const colours = data.settings.tajweedColours
+  const setColours = (on: boolean) => updateSettings({ tajweedColours: on })
   const [isolate, setIsolate] = useState<ColourKey | null>(null)
   const [dotted, setDotted] = useState<string | null>(null)
   const compare = useRef<{ cancel(): void } | null>(null)

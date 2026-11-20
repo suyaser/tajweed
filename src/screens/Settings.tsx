@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import type { Settings as SettingsT } from '../core/types'
+import type { ScreenProps } from '../app/App'
 import { STORAGE_KEY, exportJson, storagePersisted, updateSettings, useData } from '../core/store'
 import { today } from '../core/day'
 import { makeWirdIcs } from '../core/ics'
@@ -31,8 +32,13 @@ function Row({ label, hint, children }: { label: ReactNode; hint?: ReactNode; ch
   )
 }
 
-export default function Settings() {
+export default function Settings({ params }: ScreenProps) {
   const { settings: s } = useData()
+  // ?s=wird|recitation (Today's routine card): scroll to that section after the shell's scroll-to-top
+  useEffect(() => {
+    const id = setTimeout(() => document.getElementById(`set-${params.s}`)?.scrollIntoView({ block: 'start' }))
+    return () => clearTimeout(id)
+  }, [params.s])
   const set = (patch: Partial<SettingsT>) => updateSettings(patch)
   const [name, setName] = useState(s.teacherName ?? '')
   const [munfasilChanged, setMunfasilChanged] = useState(false)
@@ -49,7 +55,7 @@ export default function Settings() {
         </Row>
       </Card>
 
-      <OrnHeading>{t('Your wird')}</OrnHeading>
+      <div id="set-wird" className="p-anchor"><OrnHeading>{t('Your wird')}</OrnHeading></div>
       <Card>
         <Row label={t('Wird time')}>
           <input type="time" value={s.wirdTime} onChange={(e) => e.target.value && set({ wirdTime: e.target.value })} aria-label={t('Wird time')} />
@@ -81,7 +87,7 @@ export default function Settings() {
         </Row>
       </Card>
 
-      <OrnHeading>{t('Recitation')}</OrnHeading>
+      <div id="set-recitation" className="p-anchor"><OrnHeading>{t('Recitation')}</OrnHeading></div>
       <Card>
         <fieldset className="p-radios">
           <legend>{t('Model reciter')}</legend>
@@ -112,9 +118,9 @@ export default function Settings() {
 
       <OrnHeading>{t('Reading')}</OrnHeading>
       <Card>
-        <Row label={t('Quran text size')}>
-          <SegmentedControl label={t('Quran text size')} value={s.textSize} onChange={(v) => set({ textSize: v })}
-            options={[{ value: 'm', label: t('M') }, { value: 'l', label: t('L') }, { value: 'xl', label: t('XL') }]} />
+        <Row label={t('Text size')} hint={t('Makes all text and buttons bigger, including the Quran text.')}>
+          <SegmentedControl label={t('Text size')} value={s.textSize} onChange={(v) => set({ textSize: v })}
+            options={[{ value: 'm', label: t('Normal') }, { value: 'l', label: t('Large') }, { value: 'xl', label: t('Larger') }]} />
         </Row>
         <div className="p-preview"><VerseBlock text="قُلْ هُوَ ٱللَّهُ أَحَدٌ" reference="الإخلاص ١" size="read" /></div>
         <Row label={t('Theme')}>

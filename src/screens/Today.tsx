@@ -15,6 +15,30 @@ import './study.css'
 import './path.css'
 import { SignInNudge } from '../sync/SignInNudge'
 import { useSync } from '../sync/sync'
+import { getSteps, type StepId } from './study/lessonSteps'
+import { ROUTINE_KEY } from './Onboarding'
+import type { Unit } from '../core/types'
+
+const STEP_NAME: Record<StepId, string> = {
+  hear: t('Hear'), notice: t('Notice'), learn: t('Learn'), say: t('Say'), find: t('Find'), check: t('Check'), recite: t('Recite'),
+}
+
+const readRoutine = () => { try { return localStorage.getItem(ROUTINE_KEY) === 'pending' } catch { return false } }
+
+/** The current unit as a small path: one dot per lesson (done / current / not yet), then the finale star. */
+function UnitPath({ unit, done, current, finaleDone }: { unit: Unit; done: Set<string>; current?: string; finaleDone: boolean }) {
+  const state = (id: string) => (done.has(id) ? 'done' : id === current ? 'current' : 'locked')
+  const said = { done: t('done'), current: t('current'), locked: t('not yet') }
+  return (
+    <ol className="u-path" aria-label={t('Lessons in unit {n}', { n: unit.n })}>
+      {unit.lessonIds.map(id => {
+        const s = state(id)
+        return <li key={id} data-state={s} aria-current={s === 'current' ? 'step' : undefined}><span className="sr-only">{`${getLesson(id)?.nameAr ?? id}: ${said[s]}`}</span></li>
+      })}
+      {unit.finale && <li className="u-path-finale" data-state={finaleDone ? 'done' : 'locked'}><span aria-hidden="true">★</span><span className="sr-only">{`${t('finale')}: ${finaleDone ? said.done : said.locked}`}</span></li>}
+    </ol>
+  )
+}
 
 export default function Today() {
   const data = useData()
@@ -30,7 +54,11 @@ export default function Today() {
   // the course
   const next = progress.next
   const nextLesson = next.kind === 'lesson' ? getLesson(next.id) : undefined
-  const resume = q.sabaq && m.lesson?.id === q.sabaq && m.lesson.on === day && m.lesson.step > 0
+  const steps = nextLesson ? getSteps(nextLesson.id) : undefined
+  const started = !!steps && (steps.done.length > 0 || steps.current !== 'hear')
+  const resume = started || (q.sabaq && m.lesson?.id === q.sabaq && m.lesson.on === day && m.lesson.step > 0)
+  const [routine, setRoutine] = useState(readRoutine)
+  const hideRoutine = () => { try { localStorage.removeItem(ROUTINE_KEY) } catch { /* blocked */ } setRoutine(false) }
   const learnedToday = data.introductions.filter(i => i.on === day).map(i => getLesson(i.lessonId)?.nameAr ?? '')
   const unit = next.kind === 'done' ? units[units.length - 1] : next.unit
   const unitDone = unit.lessonIds.filter(id => progress.done.has(id)).length
@@ -70,18 +98,19 @@ export default function Today() {
   return (
     <div className="today">
       <section aria-label={t('Continue')} className="today-main s-study">
-        {tips && (
-          <Nudge action={<Button variant="ghost" href={href('guide')}>{t('How it works')}</Button>} onDismiss={() => dismiss('hint:today')}>
-            {t('Start with the card below: one lesson at a time, about 15 minutes, in seven short steps. Then do your review. ✕ hides these tips.')}
-          </Nudge>
-        )}
-
-        <Card level="e2" eyebrow={isAr ? 'تابع' : <>Continue · <span lang="ar">تابع</span></>}>
+        <Card level="e2" className="today-continue" eyebrow={isAr ? 'تابع' : <>Continue · <span lang="ar">تابع</span></>}>
+          {next.kind !== 'done' && (
+            <div className="u-head">
+              <p className="t-sm"><b>{t('Unit {n}', { n: unit.n })}</b> · <bdi lang="ar">{unit.nameAr}</bdi></p>
+              <UnitPath unit={unit} done={progress.done} current={nextLesson?.id} finaleDone={progress.finaleDone(unit)} />
+            </div>
+          )}
           {q.sabaq && nextLesson ? (
             <>
-              <p className="t-sm muted num">{t('Lesson {n} of {m} · Unit {u}', { n: courseOrder.indexOf(nextLesson.id) + 1, m: courseOrder.length, u: unit.n })}</p>
+              <p className="t-sm muted num">{t('Lesson {n} of {m}', { n: courseOrder.indexOf(nextLesson.id) + 1, m: courseOrder.length })}{' · '}{t('{n} of {m} lessons done', { n: unitDone, m: unit.lessonIds.length })}</p>
               <p className="a-h3" lang="ar">{nextLesson.nameAr}</p>
               {!isAr && <p className="muted">{nextLesson.nameEn}</p>}
+              {started && <p className="t-sm today-resume">{t('Resume at step: {x}', { x: STEP_NAME[steps!.current] })}</p>}
               {learnedToday.length > 0 && <p className="t-sm"><Tx>{t('Learned today: {x}', { x: learnedToday.join('، ') })}</Tx></p>}
               <Button block href={href('learn', nextLesson.id)}>{resume ? t('Continue lesson') : t('Start lesson')}</Button>
             </>
@@ -113,6 +142,7 @@ export default function Today() {
               <p>{t('Keep your review going, and keep reciting to a teacher.')}</p>
             </>
           )}
+          <p className="t-sm s-links"><a href={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit ›')}</a> <a href={href('plan')}>{t('Course map ›')}</a></p>
         </Card>
 
         <Card eyebrow={isAr ? 'المراجعة' : <><span lang="ar">المراجعة</span> · Review</>}>
@@ -128,6 +158,18 @@ export default function Today() {
             <p className="t-sm">{data.items.length ? t('Nothing due today.') : t('Nothing to review yet. Your first lesson starts it.')}</p>
           )}
         </Card>
+
+        {routine && data.introductions.length > 0 && (
+          <Card eyebrow={t('Set up your routine')} className="today-routine">
+            <p className="t-sm">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
+            <ul className="s-targets">
+              <li><a href={href('settings') + '?s=recitation'}>{t('Model reciter')} <span aria-hidden="true">›</span></a></li>
+              <li><a href={href('settings') + '?s=wird'}>{t('Daily study time (wird)')} <span aria-hidden="true">›</span></a></li>
+              <li><a href={href('settings') + '?s=wird'}>{t('Teacher day')} <span aria-hidden="true">›</span></a></li>
+            </ul>
+            <Button variant="ghost" onClick={hideRoutine}>{t('Done, hide this')}</Button>
+          </Card>
+        )}
 
         {catchUp.length > 0 && (
           <Card eyebrow={t('New in this version')}>
@@ -154,14 +196,6 @@ export default function Today() {
       </section>
 
       <aside className="today-side">
-        <Card eyebrow={<>{t('Unit {n}', { n: unit.n })} · <span lang="ar">{unit.nameAr}</span></>}>
-          <p className="t-sm num">
-            {unit.lessonIds.length ? t('{n} of {m} lessons done', { n: unitDone, m: unit.lessonIds.length }) : t('One passage, every rule so far')}
-            {unit.finale && (progress.finaleDone(unit) ? t(' · finale recited') : t(' · then the finale'))}
-          </p>
-          <p className="t-sm s-links"><a href={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit ›')}</a> <a href={href('plan')}>{t('Course map ›')}</a></p>
-        </Card>
-
         <Card eyebrow={t('This week')}>
           <ProgressDots days={w.marks} today={w.todayIndex} />
           <p className="t-sm num">
@@ -193,6 +227,11 @@ export default function Today() {
       </aside>
 
       <div className="today-nudges">
+        {tips && (
+          <Nudge action={<Button variant="ghost" href={href('guide')}>{t('How it works')}</Button>} onDismiss={() => dismiss('hint:today')}>
+            {t('One lesson at a time, about 15 minutes, in seven short steps. Then do your review.')}
+          </Nudge>
+        )}
         <SignInNudge />
         {nudge === 'install' && (
           <Nudge

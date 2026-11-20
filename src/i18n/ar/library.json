@@ -473,5 +473,10 @@
   "pause mark: stop at one of the pair": "علامة وقف: وقف المعانقة، قف على أحد الموضعين",
   "pause mark: sakt": "علامة سكت",
   "prostration mark": "علامة سجدة",
-  "pause mark": "علامة وقف"
+  "pause mark": "علامة وقف",
+  "Text size": "حجم الخط",
+  "Makes all text and buttons bigger, including the Quran text.": "يكبّر كل النصوص والأزرار، ومعها نص القرآن.",
+  "Normal": "عادي",
+  "Large": "كبير",
+  "Larger": "أكبر"
 }

@@ -414,5 +414,15 @@
   "The next unit is open.": "فُتحت الوحدة التالية.",
   "Show whole lines": "اعرض الأبيات كاملة",
   "Memorise": "احفظ",
-  "Say the second half from memory, then tap the line to check.": "قل الشطر الثاني من حفظك، ثم المس البيت لتتحقق."
+  "Say the second half from memory, then tap the line to check.": "قل الشطر الثاني من حفظك، ثم المس البيت لتتحقق.",
+  "done": "تمّ",
+  "current": "الحالي",
+  "not yet": "لم يُفتح بعد",
+  "Lessons in unit {n}": "دروس الوحدة {n}",
+  "Lesson {n} of {m}": "الدرس {n} من {m}",
+  "Resume at step: {x}": "تابع من خطوة: {x}",
+  "Set up your routine": "رتّب وردك",
+  "Three choices make the course yours. You can change them any time in Settings.": "ثلاثة اختيارات تجعل المسار على مقاسك. يمكنك تغييرها متى شئت من الإعدادات.",
+  "Done, hide this": "انتهيت، أخفِ هذا",
+  "One lesson at a time, about 15 minutes, in seven short steps. Then do your review.": "درس واحد في كل مرة، نحو ١٥ دقيقة، في سبع خطوات قصيرة. ثم راجع."
 }

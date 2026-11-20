@@ -23,7 +23,7 @@ function defaultSettings(at = nowIso()): Settings {
   return {
     id: uuid(), createdAt: at, updatedAt: at, deletedAt: null,
     wirdTime: '05:30', timezone, reciterId: 'husary-muallim', munfasilLength: 4, teacherDays: [],
-    textSize: 'm', theme: 'system', tajweedPatterns: false, onboardedOn: null, lastExportOn: null,
+    textSize: 'm', theme: 'system', tajweedPatterns: false, tajweedColours: false, onboardedOn: null, lastExportOn: null,
   }
 }
 
