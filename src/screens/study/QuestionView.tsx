@@ -128,7 +128,7 @@ function Feedback({ q, chosen, mode, audio, vs }: { q: Question; chosen: string;
       <p className="t-lg">{correct && <span aria-hidden="true">✓ </span>}<Tx>{verdict}</Tx></p>
       <p><Tx>{q.explanation}</Tx></p>
       {hint && <p className="s-fb-hint"><span className="muted">{t('Easy to mix up: ')}</span><Tx>{hint}</Tx></p>}
-      {ex && <ExampleVerse ex={ex} vs={vs} coloured spanOnly />}
+      {ex && <ExampleVerse ex={ex} vs={vs} spanOnly />}
       <p className="s-fb-links">
         {ex && <PlayButton audio={audio} label={t('the example')} onClick={hear}>{t('▶ hear it')}</PlayButton>}
         <a href={href('rules', q.lessonId)}>{t('Open card ›')}</a>

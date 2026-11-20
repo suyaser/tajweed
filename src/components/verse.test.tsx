@@ -4,11 +4,11 @@ import { Passage, VerseBlock } from './Verse'
 
 const html = (el: JSX.Element) => renderToStaticMarkup(el)
 
-it('focusText underlines only that part of the focused words; falls back to whole words', () => {
+it('focusText highlights only that part of the focused words; falls back to whole words', () => {
   const t = 'وَقِيلَ مَنْ رَاقٍ'
   const out = html(<VerseBlock text={t} focus={[2, 3]} focusText="نْ رَ" />)
-  expect(out.match(/<mark class="q">([^<]*)<\/mark>/g)).toEqual(['<mark class="q">نْ</mark>', '<mark class="q">رَ</mark>'])
-  expect(html(<VerseBlock text={t} focus={[2, 2]} focusText="xyz" />)).toMatch(/<mark class="q"><span class="w">مَنْ<\/span>/)
+  expect(out.match(/<mark class="focus">([^<]*)<\/mark>/g)).toEqual(['<mark class="focus">نْ</mark>', '<mark class="focus">رَ</mark>'])
+  expect(html(<VerseBlock text={t} focus={[2, 2]} focusText="xyz" />)).toMatch(/<mark class="focus"><span class="w">مَنْ<\/span>/)
 })
 
 it('pause marks follow their word; ayah 1 gets the surah title and basmala (not for 1 or 9)', () => {

@@ -156,12 +156,12 @@ export function makeQuestion(
       ? t("It's {n} counts, the length you chose for المنفصل; المتصل is read the same. {m} is also correct for حفص من طريق الشاطبية; keep one length throughout.", { n, m: n === 4 ? 5 : 4 })
         + (lesson.id === 'muttasil' ? t(' 6 is also allowed when you stop on a final همزة.') : '') + (example.note ? ` ${example.note}` : '')
       : /^[\d٠-٩]/.test(why) ? t("It's {x}.", { x: why }) : t("It's {counts}: {why}", { counts: countsText(tr(answer.labelEn, answer.labelAr)), why })
-    return { ...base, kind, prompt: t('How many counts on the underlined مد?'), options, answerId: answer.id, explanation }
+    return { ...base, kind, prompt: t('How many counts on the highlighted مد?'), options, answerId: answer.id, explanation }
   }
 
   const options = shuffle([lesson, ...distractors(lesson, ctx, rng, example)], rng).map(l => ({ id: l.id, labelAr: l.nameAr, labelEn: l.nameEn }))
   return {
-    ...base, kind: 'identify', prompt: ctx.vs ? t('Which of the two is the underlined part?') : t('Which rule is the underlined part?'),
+    ...base, kind: 'identify', prompt: ctx.vs ? t('Which of the two is the highlighted part?') : t('Which rule is the highlighted part?'),
     options, answerId: lesson.id, explanation: reasonFor(lesson, example),
   }
 }

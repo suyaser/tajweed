@@ -57,15 +57,15 @@ interface WordTokenProps {
   isolate?: ColourKey | null
   onTap?: () => void
   tabbable?: boolean
-  /** Underline only these UTF-16 offsets [start, end) of the word (focusText). */
+  /** Highlight only these UTF-16 offsets [start, end) of the word (focusText). */
   q?: [number, number]
 }
 
-/** `text` starting at word offset `off`, with the part inside `q` wrapped in the question underline. */
+/** `text` starting at word offset `off`, with the part inside `q` wrapped in the focus highlight. */
 function underline(text: string, off: number, q?: [number, number]): ReactNode {
   const a = q ? Math.max(0, q[0] - off) : 0, b = q ? Math.min(text.length, q[1] - off) : 0
   if (a >= b) return text
-  return <>{text.slice(0, a)}<mark className="q">{text.slice(a, b)}</mark>{text.slice(b)}</>
+  return <>{text.slice(0, a)}<mark className="focus">{text.slice(a, b)}</mark>{text.slice(b)}</>
 }
 
 export function WordToken({ parts, mark, tajweed = true, isolate, onTap, tabbable, q }: WordTokenProps) {
@@ -176,9 +176,9 @@ export interface VerseBlockProps {
   size?: 'inline' | 'read' | 'focus'
   /** Show tajweed colours from segments (default true). Quiz prompts pass false. */
   tajweed?: boolean
-  /** 1-based inclusive word range: neutral question underline, never a tajweed hue. */
+  /** 1-based inclusive word range: neutral focus highlight, never a tajweed hue. */
   focus?: [number, number]
-  /** Underline only this substring (first occurrence inside `focus`); whole focus words if not found. */
+  /** Highlight only this substring (first occurrence inside `focus`); whole focus words if not found. */
   focusText?: string
   /** Pause / sajdah marks (Verse.marks), shown after their word. */
   pauses?: PauseMark[]
@@ -206,7 +206,7 @@ export function VerseBlock({
   const body = focus && q
     ? [
         ...join(toks.slice(0, focus[1])),
-        <span key="q" className="sr-only" lang="en"> (underlined: {focusText})</span>,
+        <span key="q" className="sr-only">{t(' (highlighted: {x})', { x: focusText! })}</span>,
         focus[1] < toks.length ? ' ' : null,
         ...join(toks.slice(focus[1])),
       ]
@@ -214,9 +214,9 @@ export function VerseBlock({
     ? [
         ...join(toks.slice(0, focus[0] - 1)),
         focus[0] > 1 ? ' ' : null,
-        <mark key="q" className="q">
+        <mark key="q" className="focus">
           {join(toks.slice(focus[0] - 1, focus[1]))}
-          <span className="sr-only" lang={isAr ? undefined : 'en'}>{t(' (underlined)')}</span>
+          <span className="sr-only">{t(' (highlighted)')}</span>
         </mark>,
         focus[1] < toks.length ? ' ' : null,
         ...join(toks.slice(focus[1])),

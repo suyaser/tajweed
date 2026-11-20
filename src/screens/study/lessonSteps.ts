@@ -22,3 +22,20 @@ export function clearSteps(lessonId: string) {
   delete all[lessonId]
   try { localStorage.setItem(KEY, JSON.stringify(all)) } catch { /* storage blocked */ }
 }
+
+/** Steps a lesson can't be finished without (when the lesson has them). Notice and Find are recommended only. */
+export const REQUIRED: readonly StepId[] = ['hear', 'learn', 'say', 'check', 'recite']
+
+export const freshSteps = (current: StepId, on: Day): LessonSteps => ({ done: [], visited: [current], current, on })
+const add = (xs: StepId[], id: StepId) => (xs.includes(id) ? xs : [...xs, id])
+
+/** Open a step: it becomes current and visited, never done. */
+export const visitStep = (s: LessonSteps, id: StepId, on: Day): LessonSteps => ({ ...s, visited: add(s.visited, id), current: id, on })
+
+/** A step's minimum was met (docs/10 §3.1 "Done means completed"). */
+export const completeStep = (s: LessonSteps, id: StepId, on: Day): LessonSteps =>
+  s.done.includes(id) ? s : { ...s, done: add(s.done, id), visited: add(s.visited, id), on }
+
+/** Required steps, in order, that exist for this lesson and aren't done; `except` is the step finishing now. */
+export const missingSteps = (s: LessonSteps, exists: (id: StepId) => boolean, except?: StepId): StepId[] =>
+  REQUIRED.filter(id => id !== except && exists(id) && !s.done.includes(id))

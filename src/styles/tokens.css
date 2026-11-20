@@ -18,6 +18,7 @@
   --gold-display: #7a5810; /* Kufi title on the band */
   --link: #0f5c55;
   --good: #1a7b42;
+  --focus-ink: #0b6e63; --focus-bg: #e2eeec; /* lesson focus highlight (docs/10 §2) */
   --bad: #c23b3b;
   --rec: #b3261e;
   --backdrop: rgb(20 18 15 / 0.5);
@@ -37,7 +38,7 @@
 
   /* §3.3 families */
   --f-quran: "Amiri Quran", "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
-  --f-ar: "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-ar: "Noto Sans Arabic", "Geeza Pro", sans-serif;
   --f-kufi: "Noto Naskh Arabic", "Amiri", "Geeza Pro", serif; /* Arabic headings (naskh) */
   --f-disp: "Figtree", system-ui, sans-serif;
   --f-body: "Figtree", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -100,13 +101,8 @@
   color-scheme: light;
 }
 
-/* text size setting (Settings.textSize: m default · l · xl) */
-:root[data-text-size="l"] { --q-read: 40px; --q-focus: 42px; }
-:root[data-text-size="xl"] { --q-read: 46px; --q-focus: 48px; }
 @media (min-width: 1024px) {
   :root { --q-inline: 28px; --q-read: 38px; --q-focus: 44px; }
-  :root[data-text-size="l"] { --q-read: 44px; --q-focus: 50px; }
-  :root[data-text-size="xl"] { --q-read: 50px; --q-focus: 56px; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -114,6 +110,7 @@
     --bg: #121110; --surface: #1c1b19; --soft: #26231f; --ink: #efe9df; --muted: #aba398; --line: #34312c;
     --green: #23756a; --on-green: #ffffff; --gold: #d9b46a; --gold-ink: #dfbe7a; --gold-soft: #3b3322;
     --gold-display: #e8cf8f; --link: #79d3c4; --good: #62d68f; --bad: #ff7d7d; --rec: #ff8a80;
+    --focus-ink: #5fd3c2; --focus-bg: #273834;
     --t-clear: #b593f2; --t-ghunnah: #5fd876; --t-silent: #97a29d; --t-merge: #ef86cf;
     --t-madd2: #e3b763; --t-madd45: #ff6f6f; --t-madd246: #ffa45e; --t-madd6: #ff5875;
     --t-qalqalah: #65bff5; --t-heavy: #8aa5ff; --t-light: #55d8d3;
@@ -124,6 +121,7 @@
   --bg: #121110; --surface: #1c1b19; --soft: #26231f; --ink: #efe9df; --muted: #aba398; --line: #34312c;
   --green: #23756a; --on-green: #ffffff; --gold: #d9b46a; --gold-ink: #dfbe7a; --gold-soft: #3b3322;
   --gold-display: #e8cf8f; --link: #79d3c4; --good: #62d68f; --bad: #ff7d7d; --rec: #ff8a80;
+  --focus-ink: #5fd3c2; --focus-bg: #273834;
   --t-clear: #b593f2; --t-ghunnah: #5fd876; --t-silent: #97a29d; --t-merge: #ef86cf;
   --t-madd2: #e3b763; --t-madd45: #ff6f6f; --t-madd246: #ffa45e; --t-madd6: #ff5875;
   --t-qalqalah: #65bff5; --t-heavy: #8aa5ff; --t-light: #55d8d3;

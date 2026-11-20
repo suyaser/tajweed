@@ -1,74 +1,168 @@
-// The rule card body for Learn step 2 (design §5.6), with ▶ per example.
+// The rule card as numbered sections (docs/10 §4.4): Learn step and the lesson's Rule sheet. No tajweed colours.
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type { Example, Lesson } from '../../core/types'
 import { getLesson } from '../../content'
 import { href } from '../../app/router'
-import { Card, CountBeats, LetterTiles, Line, RuleChip } from '../../components'
+import { CountBeats, LetterTiles, Line, RuleChip } from '../../components'
+import { updateSettings, useData } from '../../core/store'
 import { countsText } from '../../core/questions'
-import { isAr, t } from '../../i18n'
-import { Tx } from './i18n'
-import { rangeParam, verseRef } from './helpers'
-import { ExampleVerse, PlayButton, useVerse, type StudyAudio } from './verse'
+import { digits, t } from '../../i18n'
+import { tn, Tx } from './i18n'
+import { verseRef } from './helpers'
+import { ExampleCard, ExampleVerse, PlayButton, useVerse, type StudyAudio } from './verse'
 
-function ExampleRow({ ex, audio }: { ex: Example; audio: StudyAudio }) {
+const SHOW = 3
+
+/** First sentence, and the rest (until content has a `short` field). */
+export function splitDefinition(s: string): [string, string] {
+  const i = s.search(/[.!?؟]\s/)
+  return i < 0 ? [s, ''] : [s.slice(0, i + 1), s.slice(i + 2).trim()]
+}
+
+/** Letter tiles in a letters string (labels like `الهمس:` and a bracketed gloss don't count). */
+export const letterCount = (letters: string) =>
+  /[A-Za-z]/.test(letters) ? 0 : letters.replace(/\([^)]*\)/g, '').split(/[\s·]+/).filter(x => x && !x.endsWith(':') && /[؀-ۿ]/.test(x)).length
+
+function Section({ n, title, children }: { n: number; title: string; children: ReactNode }) {
+  return (
+    <section className="s-sec">
+      <h3 className="s-sec-h"><span className="s-sec-n" aria-hidden="true">{digits(n)}</span>{title}</h3>
+      {children}
+    </section>
+  )
+}
+
+function MoreExample({ ex, audio }: { ex: Example; audio: StudyAudio }) {
   const vs = useVerse(ex.verseKey)
   return (
     <li className="s-ex-row">
-      <ExampleVerse
-        ex={ex} vs={vs} coloured
-        actions={<>
-          <PlayButton audio={audio} label={verseRef(ex.verseKey)} onClick={vs.verse && (() => audio.ayah(vs.verse!))} />
-          <a className="icon-btn" dir={isAr ? undefined : 'ltr'} lang={isAr ? undefined : 'en'} href={href('listen', rangeParam(ex.verseKey))} aria-label={t('Open {x} in the player', { x: verseRef(ex.verseKey) })}>{t('Player ›')}</a>
-        </>}
-      />
-      {ex.note && <p className="t-sm"><Tx>{ex.note}</Tx></p>}
+      <ExampleVerse ex={ex} vs={vs} spanOnly reference
+        actions={<PlayButton audio={audio} label={verseRef(ex.verseKey)} onClick={vs.verse && (() => audio.example(vs.verse!, ex))} />} />
+      {ex.note && <p className="t-sm muted"><Tx>{ex.note}</Tx></p>}
     </li>
   )
 }
 
-export function RuleBody({ lesson, audio }: { lesson: Lesson; audio: StudyAudio }) {
-  const counts = lesson.counts
+/** المد المنفصل: the learner's length, asked where it is taught (review plan: just in time, not in onboarding). */
+function MunfasilChoice() {
+  const { settings } = useData()
+  const [changed, setChanged] = useState(false)
   return (
-    <Card stripe={lesson.colour} as="article" className="s-rule-body">
-      <header>
-        <h2 className="a-h3" lang="ar">{lesson.nameAr}</h2>
-        {!isAr && <p className="muted">{lesson.nameEn}</p>}
-      </header>
-      {lesson.review.status !== 'verified' && (
-        <p className="s-draft">{t('Draft. Not yet checked by a teacher. Read it with your teacher before relying on it.')}</p>
-      )}
-      <p><Tx>{lesson.summary}</Tx></p>
-      {(lesson.letters || counts) && (
-        <dl className="s-facts">
-          {lesson.letters && <><dt className="eyebrow">{t('Letters')}</dt><dd><LetterTiles letters={lesson.letters} colour={lesson.colour} /></dd></>}
-          {counts && (
-            <><dt className="eyebrow">{t('Length')}</dt>
-              <dd><CountBeats min={counts.min} max={counts.max} colour={lesson.colour} /> {countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}
-                {counts.note && <span className="t-sm muted"> · <Tx>{counts.note}</Tx></span>}</dd></>
+    <div className="s-choice" role="group" aria-labelledby="munfasil-h">
+      <p id="munfasil-h"><b>{t('Your choice:')}</b> <Tx>{t('4 or 5 counts. Ask your teacher; pick 4 if unsure.')}</Tx></p>
+      <p className="t-sm"><Tx>{t('Both are correct for حفص من طريق الشاطبية. Keep the one you choose the same every time, and equal to your المد المتصل.')}</Tx></p>
+      <div className="opts">
+        {([4, 5] as const).map(n => (
+          <button key={n} type="button" className="opt s-pick" aria-pressed={settings.munfasilLength === n}
+            onClick={() => { updateSettings({ munfasilLength: n }); setChanged(true) }}>
+            <CountBeats min={n} /><small>{countsText(n)}</small>
+          </button>
+        ))}
+      </div>
+      <p className="t-sm muted" role="status">
+        {changed ? t('Saved. Questions now expect {n} counts.', { n: settings.munfasilLength }) : t('You can change it later in Settings.')}
+      </p>
+    </div>
+  )
+}
+
+/** `onRead` fires once the Remember section has been on screen (Learn's "done"). */
+export function RuleBody({ lesson, audio, onRead }: { lesson: Lesson; audio: StudyAudio; onRead?: () => void }) {
+  const [what, detail] = splitDefinition(lesson.summary)
+  const counts = lesson.counts
+  const conds = lesson.conditions ?? []
+  const [allConds, setAllConds] = useState(false)
+  const [played, setPlayed] = useState(false)
+  const remember = useRef<HTMLDivElement>(null)
+  const [ex0, ...moreEx] = lesson.examples
+  useEffect(() => {
+    const el = remember.current
+    if (!el || !onRead || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { onRead(); io.disconnect() } })
+    io.observe(el)
+    return () => io.disconnect()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  let n = 0
+  const sections: ReactNode[] = []
+  sections.push(<Section key="what" n={++n} title={t('What happens')}><p className="t-lg"><Tx>{what}</Tx></p></Section>)
+  if (lesson.letters)
+    sections.push(
+      <Section key="letters" n={++n} title={t('Which letters')}>
+        <LetterTiles letters={lesson.letters} />
+        {letterCount(lesson.letters) > 1 && <p className="t-sm muted">{tn('{n} letter', '{n} letters', letterCount(lesson.letters))}</p>}
+      </Section>,
+    )
+  if (counts)
+    sections.push(
+      <Section key="long" n={++n} title={t('How long')}>
+        <p className="s-beats"><CountBeats min={counts.min} max={counts.max} /> {countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}</p>
+        {counts.note && <p className="t-sm muted"><Tx>{counts.note}</Tx></p>}
+        {lesson.id === 'munfasil' && <MunfasilChoice />}
+      </Section>,
+    )
+  if (conds.length)
+    sections.push(
+      <Section key="when" n={++n} title={t('When it applies')}>
+        <ol className="s-numlist">{(allConds ? conds : conds.slice(0, SHOW)).map((c, i) => <li key={i}><Tx>{c}</Tx></li>)}</ol>
+        {conds.length > SHOW && !allConds && (
+          <button type="button" className="s-linkbtn" onClick={() => setAllConds(true)}>{tn('Show {n} more', 'Show {n} more', conds.length - SHOW)}</button>
+        )}
+      </Section>,
+    )
+  if (ex0)
+    sections.push(
+      <Section key="ex" n={++n} title={t('Example')}>
+        <ExampleCard ex={ex0} eyebrow={t('Example')} audio={audio} played={played} onPlayed={() => setPlayed(true)} />
+      </Section>,
+    )
+  if (lesson.tip)
+    sections.push(
+      <Section key="tip" n={++n} title={t('Remember')}>
+        <div ref={remember} className="s-remember"><Tx>{lesson.tip}</Tx></div>
+      </Section>,
+    )
+
+  const hasMore = detail || lesson.list?.length || moreEx.length || lesson.confusableWith.length || lesson.sources.length || lesson.review.notes
+  return (
+    <article className="s-rule">
+      {lesson.review.status !== 'verified' && <p className="s-draft">{t('Draft · check with your teacher')}</p>}
+      {sections}
+      {!lesson.tip && <div ref={remember} />}
+      {hasMore && (
+        <details className="s-more">
+          <summary>{t('More')}</summary>
+          {detail && <><h4 className="eyebrow">{t('In detail')}</h4><p><Tx>{detail}</Tx></p></>}
+          {lesson.list?.length ? (
+            <ul className="s-pairs-list">{lesson.list.map(([a, b], i) => <li key={i}><span><Tx>{a}</Tx></span> {b && <Line text={b} />}</li>)}</ul>
+          ) : null}
+          {moreEx.length > 0 && (
+            <>
+              <h4 className="eyebrow">{t('More examples ({n})', { n: moreEx.length })}</h4>
+              <ul className="s-ex-list">{moreEx.map(ex => <MoreExample key={ex.id} ex={ex} audio={audio} />)}</ul>
+            </>
           )}
-        </dl>
+          {lesson.confusableWith.length > 0 && (
+            <>
+              <h4 className="eyebrow">{t('Easy to mix up with')}</h4>
+              <div className="s-chips">
+                {lesson.confusableWith.map(id => {
+                  const l = getLesson(id)
+                  return l && <RuleChip key={id} nameAr={l.nameAr} href={href('rules', id)} />
+                })}
+              </div>
+            </>
+          )}
+          {lesson.review.notes && <p className="t-sm"><Tx>{lesson.review.notes}</Tx></p>}
+          {lesson.sources.length > 0 && (
+            <>
+              <h4 className="eyebrow">{t('Sources')}</h4>
+              <ul className="s-bullets t-sm">{lesson.sources.map((s, i) => <li key={i}><Tx>{s.title}</Tx>{s.locator && <span className="muted"> · <Tx>{s.locator}</Tx></span>}</li>)}</ul>
+            </>
+          )}
+          <p className="t-sm"><a href={href('rules', lesson.id)}>{t('Open card ›')}</a></p>
+        </details>
       )}
-      {lesson.conditions?.length ? <ul className="s-bullets">{lesson.conditions.map((c, i) => <li key={i}><Tx>{c}</Tx></li>)}</ul> : null}
-      {lesson.list?.length ? (
-        <ul className="s-pairs-list">
-          {lesson.list.map(([a, b], i) => <li key={i}><span><Tx>{a}</Tx></span> <Line text={b} /></li>)}
-        </ul>
-      ) : null}
-      {lesson.examples.length > 0 && (
-        <>
-          <p className="eyebrow">{isAr ? 'أمثلة' : <>Examples · <span lang="ar">أمثلة</span></>}</p>
-          <ul className="s-ex-list">{lesson.examples.map(ex => <ExampleRow key={ex.id} ex={ex} audio={audio} />)}</ul>
-        </>
-      )}
-      {lesson.tip && <p className="s-tip"><b>{t('Tip:')}</b> <Tx>{lesson.tip}</Tx></p>}
-      {lesson.confusableWith.length > 0 && (
-        <div className="s-mix">
-          <p className="t-sm muted">{t('Easy to mix up with:')}</p>
-          {lesson.confusableWith.map(id => {
-            const l = getLesson(id)
-            return l && <RuleChip key={id} nameAr={l.nameAr} colour={l.colour} href={href('rules', id)} />
-          })}
-        </div>
-      )}
-    </Card>
+    </article>
   )
 }
