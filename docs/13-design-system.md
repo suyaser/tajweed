@@ -15,13 +15,13 @@ This doc is the contract for migrating screens off the legacy CSS.
 | `cn()` | `src/lib/utils.ts` (tailwind-merge taught our token names) |
 | Gallery | `#/dev/components` (dev only): EN/AR × light/dark frames, phone 390 or wide |
 
-Path alias: `@/` → `src/`. Radix reads direction from `Direction.Provider` in `main.tsx`; `Tooltip.Provider` is there too.
+Path alias: `@/` → `src/`. Radix reads direction from `Direction.Provider` in `main.tsx` (a Tooltip needs its own `TooltipProvider`).
 
 ### Cascade layers
 
-`theme < base (Tailwind preflight) < legacy < components < utilities`. Every old stylesheet (`tokens.css`,
-`base.css`, `components.css`, `screens/{path,library,study}.css`, `sync/sync.css`) is imported in `app.css` into the
-`legacy` layer: old screens look as before, and no legacy element rule can beat a utility.
+`theme < base (Tailwind preflight + app.css base rules) < legacy < components < utilities`. The only CSS outside
+`app.css` is the muṣḥaf tajweed palette: `tokens.css` (`--t-*`, both themes) and `components.css` (the `.tj-*` word
+classes and their pattern cue), imported into `legacy`. Nothing there can beat a utility.
 
 ## Tokens
 
@@ -36,7 +36,8 @@ the same rule, but you should rarely need it.
 | `surface-container-low` · `surface-container` · `-high` · `-highest` | insets, chips, tracks, rails (light → stronger) |
 | `on-surface` · `on-surface-variant` | ink · muted ink |
 | `outline` · `outline-variant` | inactive icons / control borders · 1px hairlines |
-| `primary` · `primary-hover` · `on-primary` | deep teal action, its hover, text on it |
+| `primary` | teal **text**, icons, borders, focus outline (light #115e57, dark #5fd3c2: ≥4.5:1) |
+| `primary-fill` · `primary-hover` · `on-primary` | teal **fill** (`bg-primary-fill`, dark #23756a), its hover, text on it |
 | `primary-container` · `on-primary-container` | tinted teal fill + its text (selected, played) |
 | `secondary` | gold **text** (eyebrows, Arabic labels) |
 | `gold` | gold **graphics only**: callout edge, current-dot ring, pips, ornaments |
@@ -76,15 +77,16 @@ scale (`p-4`) still works for small in-component nudges.
 (step nodes, dots). **Shadows**: `shadow-card` (the one resting shadow) · `shadow-bar` (bottom bar). Depth otherwise
 comes from surface steps and `border-outline-variant` hairlines.
 
-**Focus**: global `:focus-visible` = 1.5px `primary` outline, 2px offset, no blur ring. Don't add `outline-none` to
+**Focus**: global `:focus-visible` = 2px `primary` outline, 2px offset, no blur ring. Don't add `outline-none` to
 interactive elements.
 
 ## Icons
 
-`<Icon name="headphones" size={24} fill={false} rtlFlip={false} />` renders an `aria-hidden` ligature span; label the
-control around it. `rtlFlip` mirrors in RTL: use it for `arrow_forward`, `arrow_back`, `chevron_left/right`,
+`<Icon name="headphones" size={24} fill={false} rtlFlip={false} />` renders an `aria-hidden` ligature span (class
+`ms-icon`, base layer, so `hidden`, sizes and alignment utilities win); label the control around it. `rtlFlip` mirrors in RTL: use it for `arrow_forward`, `arrow_back`, `chevron_left/right`,
 `navigate_next/before`, `undo/redo`-style direction icons, never for media glyphs (`play_arrow` stays).
-The font is fetched with `display=block` (no ligature text flash) and cached by the service worker (`isFont`).
+The font is fetched with `display=block` (no ligature text flash) and only the icons in `&icon_names=` (index.html,
+sorted): **add a new icon's name there**, or `icon.test.ts` fails. The service worker caches it (`isFont`).
 
 | Concept | Icon |
 |---|---|
@@ -103,6 +105,7 @@ radio-group, checkbox, input, label, select, accordion, skeleton, icon. Restyled
 - `Button` variants `primary` (default; teal, white, h-12, 14px radius, px-6) · `secondary` (hairline outline) ·
   `tertiary` (teal text) · `ghost` · `destructive`; sizes `default` (48) · `sm` (40, dense rows only) · `lg` (52) ·
   `icon` (48×48 round). `type="button"` by default. Button, Badge, Toggle and Input forward refs (React 18 + `asChild`).
+- `Button` `sm` is 44px (still a touch target).
 - `Badge` variants `default` · `primary` · `secondary` (gold) · `success` · `destructive` · `outline`, 28px tall.
 - `SheetContent side` is `bottom` (default, rounded top, safe area) · `top` · `start` · `end` (logical).
 - When adding more with `npx shadcn add`, replace any lucide import with `Icon`, drop `dark:` classes and
@@ -110,18 +113,22 @@ radio-group, checkbox, input, label, select, accordion, skeleton, icon. Restyled
 
 ## kit components (`@/components/kit`)
 
-- `Page {width?: 'narrow'|'default'|'wide'}`: centred column (680/760/960), safe-area gutters, 24px rhythm.
+- `Page {width?: 'narrow'|'default'|'wide'}`: centred column (680/760/960), safe-area gutters, 24px rhythm. Tabs
+  (Today, Rules, Teacher, Path) are `wide`, pushed pages `default`, lessons/review/onboarding `narrow`.
 - `PageHeader {en, ar?, eyebrow?, subtitle?, actions?}`: EN shows English + Arabic in naskh; AR shows Arabic only.
 - `SectionCard {n?, en, ar?, children}`: numbered card; EN: label at the start, Arabic at the end; AR: Arabic only.
 - `Callout {variant: 'listen-for'|'tip'|'note', title?, icon?, children}`: gold edge on the inline start.
 - `Chip {tone?: 'neutral'|'primary'|'gold'|'success'|'error'|'outline', icon?, fill?, pressed?, onClick?, label?}`:
-  28px pill; a button with a 48px hit area when `onClick`.
+  28px pill; a 44px toggle button when `onClick`.
+- `Panel {title?, ar?, icon?, aside?, as?}`: the white card (hairline, `rounded-card`, padding). Use it instead of
+  repeating the card classes.
+- `Sep`: separator between items on one line (a small gold dot; screen readers hear a comma). Never type "·" between
+  items: next to Arabic-Indic digits it reads as ٠. In a plain string use `SEP` from `@/i18n` (، in Arabic).
 - `StatusChip {status: 'done'|'current'|'info'|'todo'|'warning', children}`.
 - `SegmentedControl {value, onChange, options: {value, label, icon?}[], label}`.
-- `StepBar {steps: {key: StepKey, state: 'current'|'done'|'visited'|'not-visited'|'skipped', disabled?}[], onStep?}`;
-  `STEP_ICONS` maps step → icon.
+- `STEP_ICONS` maps step → icon. The step bar is `StepNav` in `screens/study/LessonShell.tsx` (the only one).
 - `ExampleCard {index, total, reference?, children, controls?, onPrev?, onNext?, onPick?}` (0-based index).
-  `PagerDots {index, total, onPick?}` on its own.
+  `PagerDots {index, total, onPick?, reached?, played?}` on its own (44px dots; past `reached` disabled).
 - `AudioControls {playing, onPlay, played?, slow?, onSlow?, loop?, onLoop?, disabled?}`: 56px play; chips appear
   only when their handler is given.
 - `LetterTile {letter, name?, selected?, onClick?}` · `CountBeats {min, max?, active?}` (numbered beats; solid =
@@ -151,6 +158,6 @@ Kit strings go through `t()`; their Arabic is in `src/i18n/ar/library.json` (the
   Mirror directional icons with `rtlFlip`.
 - Strings via `t()`/`pick()` as today; add Arabic for any new string.
 - Don't change behaviour: same routes, data, and accessible names (tests rely on them).
-- When a screen no longer uses a legacy class, **delete its CSS** (and the file plus its `@import` in `app.css`
-  when empty). Shared legacy components (`src/components/*.tsx`, `components.css`) go when their last user goes.
+- No new `.css` files; the legacy screen stylesheets are gone. Shared legacy components (`src/components/*.tsx`) go
+  when their last user goes.
 - Check the screen in EN/AR × light/dark at 390px and wide before handing over.
