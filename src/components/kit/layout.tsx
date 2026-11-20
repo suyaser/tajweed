@@ -68,7 +68,7 @@ export function PageHeader({ en, ar, eyebrow, detail, actions, stacked, classNam
   const items = (detail ?? []).filter((x) => x != null && x !== false && x !== '')
   return (
     <header className={cn('flex flex-col items-center gap-1 text-center lg:flex-row lg:items-end lg:justify-between lg:gap-space-lg lg:text-start', className)}>
-      <div className="flex min-w-0 flex-col items-center gap-1 lg:items-start">
+      <div className="flex w-full min-w-0 flex-col items-center gap-1 lg:w-auto lg:items-start">
         {(eyebrow || actions) && (
           <div className={cn('flex min-h-12 w-full items-center gap-space-sm lg:min-h-0', eyebrow ? 'justify-between' : 'justify-end lg:hidden')}>
             {eyebrow && <p className="text-label font-semibold tracking-widest text-secondary uppercase rtl:tracking-normal">{eyebrow}</p>}

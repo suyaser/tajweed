@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState, type KeyboardEvent, type ReactNode } fro
 import type { Lesson } from '../../core/types'
 import { courseOrder, unitOf } from '../../content/course'
 import { digits, isAr, t } from '../../i18n'
-import { BottomBar as KitBottomBar, Sep, STEP_ICONS } from '@/components/kit'
+import { BottomBar as KitBottomBar, PageHeader, Sep, STEP_ICONS } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
 import { STEP_IDS, type StepId } from './lessonSteps'
@@ -14,29 +14,16 @@ export const STEP_NAMES: Record<StepId, [string, string]> = {
 }
 export const stepName = (id: StepId) => (isAr ? STEP_NAMES[id][0] : t(STEP_NAMES[id][1]))
 
-/** Title block: `Lesson 16 of 58 · Unit 2`, the Arabic name, the English gloss, a small ornament. `action`: top end (Rule). */
+/** Title block (the kit PageHeader, stacked): `Lesson 16 of 58 · Unit 2`, the Arabic name, the English gloss, the
+ *  unit's surahs, the divider. `action`: top end (Rule), on the eyebrow's row so nothing shifts between steps. */
 export function LessonHeader({ lesson, action }: { lesson: Lesson; action?: ReactNode }) {
   const unit = unitOf(lesson.id)
   const n = courseOrder.indexOf(lesson.id) + 1
   const where = unit ? (unit.surahs && unit.surahs !== '—' ? unit.surahs : unit.nameAr) : ''
   return (
-    <header className="flex flex-col items-center gap-1 text-center">
-      {/* eyebrow at the start, the step's action (Rule) at the end: the same row on every step, so nothing shifts */}
-      <div className="flex min-h-12 w-full items-center justify-between gap-space-sm">
-        {n > 0 && (
-          <p className="text-label font-semibold tracking-widest text-secondary uppercase rtl:tracking-normal">
-            {t('Lesson {n} of {m}', { n, m: courseOrder.length })}{unit && <><Sep />{t('Unit {n}', { n: unit.n })}</>}
-          </p>
-        )}
-        {action}
-      </div>
-      <h1 className="text-arabic-headline text-on-surface" lang="ar">{lesson.nameAr}</h1>
-      {!isAr && <p className="text-body-lg text-on-surface-variant">{lesson.nameEn}</p>}
-      {where && <p className="text-arabic-label text-on-surface-variant" lang="ar" dir="rtl">{where.split('، ').map((w, i) => <Fragment key={i}>{i > 0 && '، '}<bdi>{w}</bdi></Fragment>)}</p>}
-      <span aria-hidden className="mt-1 flex w-32 items-center gap-2 opacity-75">
-        <span className="h-px flex-1 bg-gold" /><Icon name="star" size={14} className="text-gold" /><span className="h-px flex-1 bg-gold" />
-      </span>
-    </header>
+    <PageHeader stacked en={lesson.nameEn} ar={lesson.nameAr} actions={action || undefined}
+      eyebrow={n > 0 ? <>{t('Lesson {n} of {m}', { n, m: courseOrder.length })}{unit && <><Sep />{t('Unit {n}', { n: unit.n })}</>}</> : undefined}
+      detail={where ? [<span lang="ar" dir="rtl" className="text-arabic-label">{where.split('، ').map((w, i) => <Fragment key={i}>{i > 0 && '، '}<bdi>{w}</bdi></Fragment>)}</span>] : undefined} />
   )
 }
 
@@ -136,7 +123,7 @@ export function DoneLine({ children }: { children: ReactNode }) {
 /** One primary action, sticky on phone; a muted hint says what is missing while it is disabled. */
 export function BottomBar({ hint, children }: { hint?: ReactNode; children: ReactNode }) {
   return (
-    <KitBottomBar className="mt-auto">
+    <KitBottomBar className="mt-auto lg:w-full lg:max-w-md lg:self-end">
       {hint && <p className="text-center text-body-md text-on-surface-variant">{hint}</p>}
       {children}
     </KitBottomBar>

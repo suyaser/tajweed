@@ -83,7 +83,25 @@ async function pickFindAyah(lesson: Lesson, closing?: string): Promise<FindPick 
 
 /** Steps with the rule card one tap away (review S1): worked example at hand, but never during Check (retrieval). */
 const RULE_SHEET: StepId[] = ['say', 'find', 'recite']
-const COLUMN = 'mx-auto flex w-full max-w-[640px] min-w-0 flex-col gap-space-lg pt-space-sm'
+const COLUMN = 'mx-auto flex w-full max-w-[640px] min-w-0 flex-col gap-space-lg pt-space-sm lg:max-w-none'
+/** Gate and done screens: one centred column on desktop too. */
+const NARROW = `${COLUMN} lg:max-w-[760px]`
+/** One-column steps (Check, Recite) on desktop. */
+const SOLO = 'flex min-w-0 flex-col gap-space-lg max-lg:contents lg:mx-auto lg:w-full lg:max-w-[760px]'
+
+/**
+ * From lg a step uses the width: `aside` (the word or ayah) at the start, sticky under the bar, and the step's work
+ * beside it. On phones both wrappers are `contents`, so the children are one column in this order and the bottom bar
+ * stays sticky as before.
+ */
+function Split({ aside, children }: { aside: ReactNode; children: ReactNode }) {
+  return (
+    <div className="contents lg:grid lg:grid-cols-2 lg:items-start lg:gap-gutter-md">
+      <div className="contents lg:sticky lg:top-24 lg:flex lg:min-w-0 lg:flex-col lg:gap-space-lg">{aside}</div>
+      <div className="contents lg:flex lg:min-w-0 lg:flex-col lg:gap-space-lg">{children}</div>
+    </div>
+  )
+}
 const Next = ({ children }: { children: ReactNode }) => <>{children}<Icon name="arrow_forward" size={20} rtlFlip /></>
 
 export default function Learn({ params }: ScreenProps) {
@@ -178,7 +196,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     const due = q.sabqi.length + q.manzil.length > 0 // never send them to an empty review (UX minor 8)
     const reviewFirst = gate === 'backlog' || (gate === 'pace' && due)
     return (
-      <div className={COLUMN}>
+      <div className={NARROW}>
         <LessonHeader lesson={lesson} />
         <EmptyState
           icon={gate === 'pace' ? 'bedtime' : gate === 'backlog' ? 'history' : 'lock'}
@@ -206,7 +224,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     const firstTime = data.introductions.find(i => i.lessonId === lesson.id)?.on === day
     const nextId = after.sabaq && after.sabaq !== lesson.id ? after.sabaq : null
     return (
-      <div className={COLUMN}>
+      <div className={NARROW}>
         <LessonHeader lesson={lesson} />
         <Panel className="items-center text-center">
           <span className="grid size-16 place-items-center rounded-full bg-secondary-container text-on-secondary-container"><Icon name="star" size={32} fill /></span>
@@ -294,15 +312,14 @@ function Hear({ exs, audio, nextLabel, onNext, onDone, wasDone, notice }: StepPr
   const ex = exs[sp.at]
   const ok = sp.played(sp.at) || wasDone
   return (
-    <>
-      <ExampleCard key={ex.id} ex={ex} audio={audio} nav={stepperNav(sp, audio)} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
+    <Split aside={<ExampleCard key={ex.id} ex={ex} audio={audio} nav={stepperNav(sp, audio)} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />}>
       {notice}
       <BottomBar hint={!ok && (sp.last ? tn('Play the word to continue.', 'Play all {n} words to continue.', exs.length) : t('Play this word to continue.'))}>
         <Button size="lg" disabled={!ok} onClick={() => { if (sp.last) onNext(); else { audio.stop(); sp.go(sp.at + 1) } }}>
           <Next>{sp.last ? nextLabel : t('Next word')}</Next>
         </Button>
       </BottomBar>
-    </>
+    </Split>
   )
 }
 
@@ -322,7 +339,7 @@ function Notice({ lesson, other, ex, audio, nextLabel, onNext, onDone, wasDone }
   const pick = (i: number) => { setPicked(i); onDone() }
   return (
     <>
-      <ol className="flex flex-col gap-space-md">
+      <ol className="flex flex-col gap-space-md lg:grid lg:grid-cols-2 lg:items-start lg:gap-gutter-md">
         {pair.map((ex, i) => (
           <li key={ex.id}>
             <ExampleCard ex={ex} audio={audio} hidden={picked === null} played={played.includes(i)} onPlayed={() => setPlayed(p => (p.includes(i) ? p : [...p, i]))}
@@ -428,7 +445,7 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
   const mine = rated[sp.at]
   const canGo = allRated || wasDone
   return (
-    <>
+    <Split aside={<>
       {drill && sp.at === 0 && (
         <section className="flex flex-col gap-space-sm">
           <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{t('Warm-up · say each one slowly')}</p>
@@ -442,6 +459,7 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
         </DoneLine>
       )}
       <ExampleCard key={ex.id} ex={ex} audio={audio} audioRow={false} nav={stepperNav(sp, audio)} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
+    </>}>
       <SayRows key={`rows:${ex.id}`} ex={ex} audio={audio} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
       {notice}
       <Panel aria-labelledby="say-rate">
@@ -461,7 +479,7 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
       <BottomBar hint={!canGo && t('Rate each word to continue.')}>
         <Button size="lg" disabled={!canGo} onClick={onNext}><Next>{nextLabel}</Next></Button>
       </BottomBar>
-    </>
+    </Split>
   )
 }
 
@@ -481,7 +499,7 @@ function Find({ found, audio, nextLabel, onNext, onDone }: StepProps & { found: 
   const extra = picked.filter(n => !targets.includes(n) && !neutral.includes(n)).length
   const toggle = (n: number) => !checked && setPicked(p => (p.includes(n) ? p.filter(x => x !== n) : [...p, n]))
   return (
-    <>
+    <Split aside={
       <Panel>
         <div className="flex flex-wrap items-center justify-between gap-space-sm">
           <Chip icon="bookmark"><span lang="ar">{verseRef(v.verseKey)}</span></Chip>
@@ -490,7 +508,7 @@ function Find({ found, audio, nextLabel, onNext, onDone }: StepProps & { found: 
         <VerseBlock segments={flat(wordSegments(v) as TajweedSegment[][])} pauses={v.marks} verseKey={v.verseKey}
           size="focus" tajweed={false} marks={marks} onWord={n => toggle(n)} chips />
         <p className="text-caption text-on-surface-variant">{t('Checked against tajweed data, which can miss a rule that depends on stopping.')}</p>
-      </Panel>
+      </Panel>}>
       <p role="status" className="flex items-center justify-center gap-space-xs text-center text-body-lg font-medium text-on-surface empty:hidden">
         {checked && (!missed && !extra ? t('All found.') : [missed && t('{n} missed', { n: missed }), extra && t('{n} not this one', { n: extra })].filter(Boolean).join(SEP))}
       </p>
@@ -502,7 +520,7 @@ function Find({ found, audio, nextLabel, onNext, onDone }: StepProps & { found: 
           ? <Button size="lg" onClick={onNext}><Next>{nextLabel}</Next></Button>
           : <Button size="lg" disabled={!picked.length} onClick={() => { setChecked(true); onDone() }}><Icon name="fact_check" size={20} />{t('Check ({n} picked)', { n: picked.length })}</Button>}
       </BottomBar>
-    </>
+    </Split>
   )
 }
 
@@ -514,7 +532,7 @@ function Check({ qs, audio, nextLabel, onNext, onScore }: StepProps & { qs: Retu
   if (!cq) return null
   const last = qi + 1 >= qs.length
   return (
-    <>
+    <div className={SOLO}>
       <Instruction icon="fact_check">{t('Question {n} of {m}. Read it, then choose one answer.', { n: qi + 1, m: qs.length })}</Instruction>
       <QuestionView
         key={`chk${qi}`} q={cq} mode="check" audio={audio} nextLabel={last ? nextLabel : t('Next question')}
@@ -527,7 +545,7 @@ function Check({ qs, audio, nextLabel, onNext, onScore }: StepProps & { qs: Retu
         }}
         onNext={() => (last ? onNext() : (audio.stop(), setQi(qi + 1), window.scrollTo(0, 0)))}
       />
-    </>
+    </div>
   )
 }
 
@@ -538,7 +556,7 @@ function Recite({ lesson, audio, wasDone, closing, missing, onMissing, onFinish 
   const [ready, setReady] = useState(wasDone)
   const markReady = () => setReady(true)
   return (
-    <>
+    <div className={SOLO}>
       {closing ? <PassageRecite from={closing.from} to={closing.to} audio={audio} onReady={markReady} /> : <SayAll lesson={lesson} audio={audio} onReady={markReady} />}
       {missing.length ? (
         <BottomBar hint={t('Finishing needs every required step.')}>
@@ -549,7 +567,7 @@ function Recite({ lesson, audio, wasDone, closing, missing, onMissing, onFinish 
           <Button size="lg" disabled={!ready} onClick={onFinish}><Icon name="check_circle" size={20} />{t('Finish lesson')}</Button>
         </BottomBar>
       )}
-    </>
+    </div>
   )
 }
 

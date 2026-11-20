@@ -129,7 +129,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
         {kind === 'tab' && <TabBarTop />}
         {deskPage && (
           <header className={cn(bar, 'hidden lg:flex lg:ps-space-lg')}>
-            <a className={cn(iconBtn, 'w-auto gap-1 px-space-sm')} href={href(parent)}>
+            <a className={cn(iconBtn, 'flex w-auto items-center gap-1 px-space-sm')} href={href(parent)}>
               <Icon name="arrow_back" rtlFlip /><span className="text-label font-semibold">{isAr ? META[parent as RouteName]?.ar ?? META.today.ar : META[parent as RouteName]?.en ?? META.today.en}</span>
             </a>
             <FocusTitle route={route} ar={meta.ar} en={meta.en} />

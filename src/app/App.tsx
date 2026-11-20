@@ -15,7 +15,7 @@ void startSync()
 export type ScreenProps = { params: Record<string, string> }
 /** Screens without their own <Page>, and the width they read best at. */
 const PAGE_WIDTH: Partial<Record<RouteName, 'narrow' | 'default' | 'wide'>> = {
-  today: 'wide', plan: 'wide', progress: 'wide', unit: 'default', guide: 'default', onboarding: 'narrow', learn: 'narrow', review: 'narrow', notFound: 'default',
+  today: 'wide', plan: 'wide', progress: 'wide', unit: 'default', guide: 'default', onboarding: 'narrow', learn: 'wide', review: 'narrow', notFound: 'default',
 }
 
 // Every src/screens/<Name>.tsx is a route's screen. The rarely used ones load on first visit (their own chunk).
