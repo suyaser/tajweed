@@ -9,9 +9,9 @@ import { courseProgress } from '../core/course'
 import { digits, isAr, SEP, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { accuracy, dayLabel, live, studiedDays, weeks } from './path/helpers'
-import { LevelChip, Panel, PathTabs, WeekDots } from './path/blocks'
+import { LevelChip, Panel, PathHeader, PathTabs, WeekDots } from './path/blocks'
 import { BackupBadge } from '../sync/SignInNudge'
-import { Chip, PageHeader, Sep } from '@/components/kit'
+import { Chip, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
 
@@ -19,7 +19,7 @@ export default function Progress() {
   const d = useData()
   return (
     <div className="flex flex-col gap-space-lg">
-      <PageHeader en="Path" ar="المسار" />
+      <PathHeader p={courseProgress(d, units)} />
       <PathTabs value="progress" />
       <BackupBadge detail />
       <div className="grid items-start gap-space-lg lg:grid-cols-2">

@@ -86,7 +86,7 @@ function Frame() {
   return (
     <div className="min-h-dvh bg-background text-on-surface">
       <Page>
-        <PageHeader en="Rules" ar="الأحكام" eyebrow="Lesson 14 of 58 · Unit 2" subtitle="Every rule card, any time."
+        <PageHeader en="Rules" ar="الأحكام" detail={['42 rules', '9 topics']}
           actions={<Button variant="ghost" size="icon" aria-label="Settings"><Icon name="settings" /></Button>} />
 
         <Sec title="StepNav (current / done / visited / not started / skipped)">

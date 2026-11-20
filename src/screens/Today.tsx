@@ -118,10 +118,11 @@ export default function Today() {
   const d = dates()
   return (
     <>
-    <PageHeader en="Today" ar="اليوم" subtitle={<>
-      <span>{digits(d.gregorian)}</span>{d.hijri && <><Sep /><span lang="ar" className="text-secondary">{d.hijri}</span></>}
-      {d.late && <span className="block text-caption">{d.late}</span>}
-    </>} />
+    <PageHeader en="Today" ar="اليوم" detail={[
+      digits(d.gregorian),
+      d.hijri && <span lang="ar" className="text-secondary">{d.hijri}</span>,
+      d.late,
+    ]} />
     <div className="grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
       <section aria-label={t('Continue')} className="flex min-w-0 flex-col gap-space-lg">
         <Panel as="div" className="gap-space-lg shadow-card">

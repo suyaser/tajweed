@@ -42,10 +42,10 @@ export default function Shared({ params }: { params: Record<string, string> }) {
   const item = 'flex items-start justify-between gap-space-md px-space-md py-space-sm'
   return (
     <Page>
-      <PageHeader en="Shared progress" ar="التقدّم المشارَك" eyebrow={<span lang="ar">مسار التجويد</span>}
-        subtitle={<>
-          {t('A read-only summary a learner shared')}{data.teacherName ? <> {t('with')} <bdi>{data.teacherName}</bdi></> : null}{t('. It shows lessons, open corrections and study days; nothing here can be changed.')}
-        </>} />
+      <PageHeader en="Shared progress" ar="التقدّم المشارَك" eyebrow={<span lang="ar">مسار التجويد</span>} />
+      <p className="text-center text-body-md text-on-surface-variant lg:text-start">
+        {t('A read-only summary a learner shared')}{data.teacherName ? <> {t('with')} <bdi>{data.teacherName}</bdi></> : null}{t('. It shows lessons, open corrections and study days; nothing here can be changed.')}
+      </p>
 
       <Group en="Study days" ar="أيام الدراسة">
         <div className="flex flex-col gap-space-sm p-space-md">

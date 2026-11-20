@@ -82,7 +82,7 @@ export interface ShellProps {
 }
 
 const iconBtn = 'grid size-12 shrink-0 cursor-pointer place-items-center rounded-full text-on-surface-variant no-underline transition-colors hover:bg-surface-container hover:text-on-surface'
-const bar = 'sticky top-0 z-30 flex h-16 items-center gap-space-xs bg-surface/85 pt-[env(safe-area-inset-top)] backdrop-blur-xl ps-[max(var(--spacing-space-sm),env(safe-area-inset-left))] pe-[max(var(--spacing-space-sm),env(safe-area-inset-right))] box-content'
+const bar = 'sticky top-0 z-30 flex h-16 items-center gap-space-xs border-b border-outline-variant bg-surface/85 shadow-top pt-[env(safe-area-inset-top)] backdrop-blur-xl ps-[max(var(--spacing-space-sm),env(safe-area-inset-left))] pe-[max(var(--spacing-space-sm),env(safe-area-inset-right))] box-content'
 
 export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, miniPlayer, focusStatus, children }: ShellProps) {
   const meta = META[route.name]
@@ -105,6 +105,9 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
 
   const parent = route.name === 'session' && kind === 'focus' ? `teacher/${route.params.id}` : meta.parent ?? 'today'
   const hasNav = kind === 'tab' || kind === 'pushed'
+  // A lesson is a focus screen on phones and a normal page from lg: side rail, top bar with Back (docs/13 "Layouts").
+  const deskPage = kind === 'focus' && route.name === 'learn'
+  const rail = hasNav || deskPage
 
   return (
     <div data-kind={kind} className="min-h-[calc(100dvh/var(--zoom))] bg-background text-on-surface">
@@ -112,10 +115,10 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
         className="sr-only z-50 rounded-control bg-primary-fill px-space-md py-space-sm text-on-primary focus:not-sr-only focus:fixed focus:top-2 focus:start-2">
         {t('Skip to content')}
       </a>
-      {hasNav && <Rail active={meta.tab} current={route.name} />}
-      <div className={cn('flex min-h-[calc(100dvh/var(--zoom))] min-w-0 flex-col', hasNav && 'lg:ps-60')}>
+      {rail && <Rail active={meta.tab} current={route.name} />}
+      <div className={cn('flex min-h-[calc(100dvh/var(--zoom))] min-w-0 flex-col', rail && 'lg:ps-60')}>
         {kind === 'focus' && (
-          <header className={cn(bar, 'border-b border-outline-variant')}>
+          <header className={cn(bar, deskPage && 'lg:hidden')}>
             <button type="button" className={cn(iconBtn, 'w-auto gap-1 px-space-sm')} onClick={() => navigate(parent)}>
               <Icon name="close" /><span className="text-label font-semibold">{t('Close')}</span>
             </button>
@@ -124,22 +127,27 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
           </header>
         )}
         {kind === 'tab' && <TabBarTop />}
+        {deskPage && (
+          <header className={cn(bar, 'hidden lg:flex lg:ps-space-lg')}>
+            <a className={cn(iconBtn, 'w-auto gap-1 px-space-sm')} href={href(parent)}>
+              <Icon name="arrow_back" rtlFlip /><span className="text-label font-semibold">{isAr ? META[parent as RouteName]?.ar ?? META.today.ar : META[parent as RouteName]?.en ?? META.today.en}</span>
+            </a>
+            <FocusTitle route={route} ar={meta.ar} en={meta.en} />
+            <span className="min-w-24 pe-space-sm text-end text-label text-on-surface-variant tabular-nums">{focusStatus}</span>
+          </header>
+        )}
         {kind === 'pushed' && (
           <header className={cn(bar, 'lg:ps-space-lg')}>
             <a className={iconBtn} href={href(parent)} aria-label={t('Back')}>
               <Icon name="arrow_back" rtlFlip />
             </a>
-            <h1 className="flex min-w-0 flex-1 items-baseline gap-x-space-sm truncate">
-              {isAr
-                ? <span className="truncate text-headline-md">{meta.ar}</span>
-                : <><span className="truncate text-headline-md">{meta.en}</span><span lang="ar" dir="rtl" className="hidden text-arabic-label text-secondary sm:inline">{meta.ar}</span></>}
-            </h1>
+            <BarTitle path={route.path} ar={meta.ar} en={meta.en} />
             <TopActions current={route.name} />
           </header>
         )}
         <main key={route.path} id="main" ref={mainRef} tabIndex={-1}
           className={cn('w-full flex-1 overflow-x-clip outline-none motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300',
-            hasNav && 'pb-[calc(6rem+env(safe-area-inset-bottom))] lg:pb-space-xl')}>
+            hasNav && 'pb-[calc(6rem+env(safe-area-inset-bottom))] lg:pb-space-xl', deskPage && 'lg:pb-space-xl')}>
           {children}
         </main>
         {hasNav && miniPlayer && (
@@ -192,21 +200,39 @@ function LangButton({ className, children }: { className: string; children?: Rea
   )
 }
 
-/** The page's own <h1> is on screen (false once it scrolls under the bar, or when there is none). */
-function useHeadingVisible(key: string) {
-  const [visible, setVisible] = useState(false)
+/** The page's own <h1>: 'none', or whether it is on screen ('hidden' once it scrolls under the bar). */
+function usePageHeading(key: string) {
+  const [state, setState] = useState<'none' | 'visible' | 'hidden'>('none')
   useEffect(() => {
     let io: IntersectionObserver | undefined
-    // the screen renders its header after the shell: look on the next frame
-    const id = requestAnimationFrame(() => {
+    // the screen renders its header after the shell (lazy screens later still): look on the next frames
+    let tries = 0
+    let id = 0
+    const look = () => {
       const h = document.querySelector('main h1')
-      if (!h || typeof IntersectionObserver === 'undefined') return setVisible(false)
-      io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { rootMargin: '-64px 0px 0px 0px' })
+      if (!h) { if (++tries < 20) id = requestAnimationFrame(look); else setState('none'); return }
+      if (typeof IntersectionObserver === 'undefined') return setState('visible')
+      io = new IntersectionObserver(([e]) => setState(e.isIntersecting ? 'visible' : 'hidden'), { rootMargin: '-64px 0px 0px 0px' })
       io.observe(h)
-    })
+    }
+    id = requestAnimationFrame(look)
     return () => { cancelAnimationFrame(id); io?.disconnect() }
   }, [key])
-  return visible
+  return state
+}
+const useHeadingVisible = (key: string) => usePageHeading(key) === 'visible'
+
+/** A pushed screen's bar title: its <h1> when the page has none; when the page has its own header (PageHeader), the
+ *  same words appear here only once that header has scrolled away, so the title is never on screen twice. */
+function BarTitle({ path, ar, en }: { path: string; ar: string; en: string }) {
+  const own = usePageHeading(path)
+  const body = isAr
+    ? <span className="truncate text-headline-md">{ar}</span>
+    : <><span className="truncate text-headline-md">{en}</span><span lang="ar" dir="rtl" className="hidden text-arabic-label text-secondary sm:inline">{ar}</span></>
+  if (own === 'none') return <h1 className="flex min-w-0 flex-1 items-baseline gap-x-space-sm truncate">{body}</h1>
+  return (
+    <span aria-hidden className={cn('flex min-w-0 flex-1 items-baseline gap-x-space-sm truncate transition-opacity', own === 'visible' && 'opacity-0')}>{body}</span>
+  )
 }
 
 /** The focus bar title. In a lesson: the step, and the lesson's name once the page header (which shows it) has

@@ -565,5 +565,17 @@
   "Learn the letters and marks first with القاعدة النورانية (a short reading primer), alongside the first units or before them. A teacher or a maqraʾa can take you through it; see Resources.": "تعلّم الحروف والحركات أولًا بالقاعدة النورانية، قبل الوحدات الأولى أو معها. ويمكن أن يأخذك فيها شيخ أو مقرأة؛ انظر المصادر.",
   "Watch القاعدة النورانية": "شاهد شرح القاعدة النورانية",
   "Watch it explained": "شاهد الشرح",
-  "م. علاء حامد, episode {n} at {at}": "م. علاء حامد، الحلقة {n} عند {at}"
+  "م. علاء حامد, episode {n} at {at}": "م. علاء حامد، الحلقة {n} عند {at}",
+  "{n} unit": "وحدة واحدة",
+  "{n} units": "وحدتان|{n} وحدات|{n} وحدة|{n} وحدة",
+  "{n} of {m} units done": "الوحدات المنجزة: {n} من {m}",
+  "Course path": "المسار",
+  "{n} rule": "حكم واحد",
+  "{n} rules": "حكمان|{n} أحكام|{n} حكمًا|{n} حكم",
+  "{n} topic": "باب واحد",
+  "{n} topics": "بابان|{n} أبواب|{n} بابًا|{n} باب",
+  "{n} session": "جلسة واحدة",
+  "{n} sessions": "جلستان|{n} جلسات|{n} جلسة|{n} جلسة",
+  "{n} open correction": "تصحيح واحد مفتوح",
+  "{n} open corrections": "تصحيحان مفتوحان|{n} تصحيحات مفتوحة|{n} تصحيحًا مفتوحًا|{n} تصحيح مفتوح"
 }

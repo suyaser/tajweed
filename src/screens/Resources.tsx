@@ -4,7 +4,7 @@ import { RECITERS } from '../quran'
 import videos from '../../content/videos.json'
 import { Bdi, Group, T } from '../components'
 import { isAr, t } from '../i18n'
-import { Page, Sep } from '@/components/kit'
+import { Page, PageHeader, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 
 // Carried over from docs/reference/artifact-v3.html (Resources), plus Credits (licence requirement, spec §8.2).
@@ -43,6 +43,10 @@ function Item({ icon, title, children, extra }: { icon: string; title: ReactNode
 export default function Resources(_: ScreenProps) {
   return (
     <Page>
+      <PageHeader en="Resources" ar="المصادر" detail={[
+        t('{n} video episodes', { n: EPISODES.length }),
+        t('{n} reciters', { n: RECITERS.length }),
+      ]} />
       <Panel ar="اقرأ على شيخ" en="Find a teacher">
         <li className="p-space-md text-body-md text-on-surface-variant">{t('This app cannot hear you. A teacher with a sanad can, and only a teacher can grant an ijazah. These connect you with one online.')}</li>
         <Item icon="school" title={<Ext to="https://maqraa.prh.gov.sa/"><Bdi>مقرأة الحرمين</Bdi></Ext>}>{t('The online maqraʾa of the Two Holy Mosques: live recitation sessions with qualified teachers, with a section for women.')}</Item>

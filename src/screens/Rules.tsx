@@ -9,6 +9,7 @@ import { lessonStatus, type LessonStatus } from './library/shared'
 import { normalize } from './library/range'
 import { ColourDot, LevelChip, LevelMark, Letters } from './library/ui'
 import { Hint } from './study/Hint'
+import { tn } from './study/i18n'
 import { digits, isAr, t } from '../i18n'
 import { cn } from '@/lib/utils'
 import { Chip, CountBeats, Page, PageHeader, Sep } from '@/components/kit'
@@ -43,7 +44,11 @@ export default function Rules(_: ScreenProps) {
 
   return (
     <Page width="wide">
-      <PageHeader en="Rules" ar="أحكام التجويد" />
+      <PageHeader en="Rules" ar="أحكام التجويد" detail={[
+        tn('{n} rule', '{n} rules', lessons.length),
+        tn('{n} topic', '{n} topics', topics.filter((tp) => lessons.some((l) => l.topicId === tp.id)).length),
+        t('{n} known', { n: lessons.filter((l) => isKnown(status.get(l.id)!)).length }),
+      ]} />
       <Hint id="rules">{t('Every rule card, the mind map and confusing pairs. Open any card any time, even before its lesson. Colours match the coloured muṣḥaf.')}</Hint>
 
       <div className="flex flex-col gap-space-md">

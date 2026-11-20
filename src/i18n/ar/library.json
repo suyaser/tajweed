@@ -496,5 +496,9 @@
   "A free app with certified teachers for correcting recitation and memorisation, at any hour.": "تطبيق مجاني فيه معلمون مجازون لتصحيح التلاوة والحفظ، في أي ساعة.",
   "Bring your teacher log: Teacher keeps their corrections, and a share link shows them your progress.": "خذ معك سجلّ الشيخ: صفحة الشيخ تحفظ تصحيحاته، ورابط المشاركة يريه تقدّمك.",
   "Paid one-to-one tutors who set their own rates, with a free 30-minute trial.": "معلمون بأجر في حصص فردية، يحدد كل معلم سعره، مع حصة تجريبية مجانية مدتها ٣٠ دقيقة.",
-  "Your intro course: 6 practical episodes. The course units follow its surahs, and each lesson links to the moment its rule is explained.": "دورتك التمهيدية: ٦ حلقات عملية. وحدات المسار تسير على سوَرها، وكل درس يربطك بموضع شرح حكمه."
+  "Your intro course: 6 practical episodes. The course units follow its surahs, and each lesson links to the moment its rule is explained.": "دورتك التمهيدية: ٦ حلقات عملية. وحدات المسار تسير على سوَرها، وكل درس يربطك بموضع شرح حكمه.",
+  "{n} known": "المتقنة: {n}",
+  "Wird at {time}": "الورد عند {time}",
+  "{n} video episodes": "حلقات الشرح: {n}",
+  "{n} reciters": "القرّاء: {n}"
 }

@@ -6,9 +6,9 @@ import { useData } from '../core/store'
 import { courseProgress } from '../core/course'
 import { courseOrder, units } from '../content/course'
 import { href } from '../app/router'
-import { Hint, PathTabs, UnitLessons, UnitNode, type UnitStatus } from './path/blocks'
+import { Hint, PathHeader, PathTabs, UnitLessons, UnitNode, type UnitStatus } from './path/blocks'
 import { isAr, t } from '../i18n'
-import { Chip, PageHeader, StatusChip } from '@/components/kit'
+import { Chip, StatusChip } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Progress } from '@/components/ui/progress'
@@ -54,19 +54,13 @@ export default function Plan() {
 
   return (
     <div className="flex flex-col gap-space-lg">
-      <PageHeader en="Path" ar="المسار" />
+      <PathHeader p={p} />
       <PathTabs value="plan" />
       <Hint id="plan">{t('The course, unit by unit. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.')}</Hint>
-      <header className="flex flex-col gap-space-sm">
-        <h2 className="flex flex-wrap items-baseline gap-x-space-sm">
-          <span className={isAr ? 'text-arabic-headline text-on-surface' : 'text-headline-md text-on-surface'}>{t('Course map')}</span>
-          {!isAr && <span lang="ar" className="font-naskh text-headline-md text-primary">خريطة المسار</span>}
-        </h2>
-        <p className="text-body-md text-on-surface-variant">
-          {t('{n} of {m} lessons · {u} of {v} units done', { n: p.done.size, m: courseOrder.length, u: unitsDone, v: units.length })}
-        </p>
-        <Progress value={(100 * p.done.size) / courseOrder.length} aria-hidden />
-      </header>
+      <div className="flex flex-col gap-1.5">
+        <p className="text-label text-on-surface-variant">{t('{n} of {m} units done', { n: unitsDone, m: units.length })}</p>
+        <Progress value={(100 * p.done.size) / courseOrder.length} aria-label={t('{n} of {m} lessons done', { n: p.done.size, m: courseOrder.length })} />
+      </div>
 
       <div className="grid items-start gap-space-lg lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-gutter-md">
         <ol className="relative flex flex-col gap-space-sm">

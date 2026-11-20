@@ -98,6 +98,7 @@
   /* the single resting shadow (DESIGN.md "ephemeral") and the bottom bar's upward one */
   --shadow-card: 0 4px 20px -2px rgb(28 26 23 / 0.05);
   --shadow-bar: 0 -4px 16px rgb(28 26 23 / 0.06);
+  --shadow-top: 0 1px 8px rgb(28 26 23 / 0.06);  /* under the top bar, with its hairline */
 
   --breakpoint-lg: 64rem;
 }
@@ -199,6 +200,7 @@
   --color-on-success-container: #a6eec0;
   --shadow-card: 0 4px 20px -2px rgb(0 0 0 / 0.3);
   --shadow-bar: 0 -4px 16px rgb(0 0 0 / 0.3);
+  --shadow-top: 0 1px 8px rgb(0 0 0 / 0.35);
   color-scheme: dark;
   } }
 }
@@ -224,12 +226,14 @@
 }
 @utility text-headline-md {
   font-family: var(--ui-face); font-size: 20px; line-height: var(--tw-leading, 28px); font-weight: var(--tw-font-weight, 600);
-  &:lang(ar) { line-height: var(--tw-leading, 32px); }
+  letter-spacing: var(--tw-tracking, -0.01em);
+  &:lang(ar) { line-height: var(--tw-leading, 32px); letter-spacing: var(--tw-tracking, 0); }
 }
 @utility text-headline-lg {
   font-family: var(--ui-face); font-size: 24px; line-height: var(--tw-leading, 32px); font-weight: var(--tw-font-weight, 600);
+  letter-spacing: var(--tw-tracking, -0.02em);
   @media (width >= 40rem) { font-size: 30px; line-height: var(--tw-leading, 38px); }
-  &:lang(ar) { line-height: var(--tw-leading, 38px); }
+  &:lang(ar) { line-height: var(--tw-leading, 38px); letter-spacing: var(--tw-tracking, 0); }
 }
 @utility text-arabic-label {
   font-family: var(--font-arabic); font-size: 14px; line-height: var(--tw-leading, 22px); font-weight: var(--tw-font-weight, 500);

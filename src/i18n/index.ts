@@ -35,6 +35,8 @@ export { AR, loadArabic } from './arData'
 const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩'
 /** Separator between items in a plain string: the Arabic comma in Arabic (a "·" reads as ٠ beside Arabic digits). */
 export const SEP = isAr ? '، ' : ' · '
+/** The app's one riwayah (decision log), shown in Arabic in both UIs. */
+export const RIWAYAH = 'رواية حفص عن عاصم'
 
 export const digits = (s: string | number) => (isAr ? String(s).replace(/\d/g, d => AR_DIGITS[+d]) : String(s))
 

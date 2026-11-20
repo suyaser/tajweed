@@ -1,4 +1,4 @@
-export { Page, PageHeader, SectionCard, Callout, EmptyState, BottomBar, Panel, Sep } from './layout'
+export { Page, PageHeader, Divider, SectionCard, Callout, EmptyState, BottomBar, Panel, Sep } from './layout'
 export { Chip, StatusChip, SegmentedControl, type ChipTone } from './controls'
 export {
   STEP_ICONS, ExampleCard, PagerDots, AudioControls, LetterTile, CountBeats, UnitPath,

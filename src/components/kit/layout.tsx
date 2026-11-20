@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from 'react'
+import { Fragment, type HTMLAttributes, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { digits, isAr } from '@/i18n'
 import { Icon } from '@/components/ui/icon'
@@ -38,7 +38,7 @@ export function Page({ children, width = 'default', className }: { children: Rea
       className={cn(
         'mx-auto flex w-full flex-col gap-space-lg py-space-lg',
         'ps-[max(var(--spacing-gutter),env(safe-area-inset-left))] pe-[max(var(--spacing-gutter),env(safe-area-inset-right))] md:px-gutter-md',
-        { narrow: 'max-w-[680px]', default: 'max-w-[760px]', wide: 'max-w-[960px]' }[width],
+        { narrow: 'max-w-[680px]', default: 'max-w-[760px]', wide: 'max-w-[1120px]' }[width],
         className,
       )}
     >
@@ -47,27 +47,60 @@ export function Page({ children, width = 'default', className }: { children: Rea
   )
 }
 
-/** Screen title. Arabic UI shows `ar` only; English UI shows `en` with the Arabic beside it in naskh. */
-export function PageHeader({ en, ar, eyebrow, subtitle, actions, className }: {
-  en: string; ar?: string; eyebrow?: ReactNode; subtitle?: ReactNode; actions?: ReactNode; className?: string
-}) {
+/** The thin gold rule with a small star under a page title (also the lesson header). */
+export function Divider({ className }: { className?: string }) {
   return (
-    <header className={cn('flex items-start justify-between gap-space-md', className)}>
-      <div className="flex min-w-0 flex-col gap-space-xs">
-        {eyebrow && <span className="text-label text-secondary uppercase rtl:normal-case">{eyebrow}</span>}
-        <h1 className="flex flex-wrap items-baseline gap-x-space-sm">
-          {isAr ? (
-            <span className="text-arabic-headline text-on-surface">{ar ?? en}</span>
-          ) : (
-            <>
-              <span className="text-headline-lg text-on-surface">{en}</span>
-              {ar && <span lang="ar" dir="rtl" className="text-arabic-headline font-semibold text-primary">{ar}</span>}
-            </>
-          )}
-        </h1>
-        {subtitle && <p className="text-body-md text-on-surface-variant">{subtitle}</p>}
+    <span aria-hidden className={cn('flex w-32 items-center gap-2 opacity-80', className)}>
+      <span className="h-px flex-1 bg-gold" /><Icon name="star" size={12} fill className="text-gold" /><span className="h-px flex-1 bg-gold" />
+    </span>
+  )
+}
+
+/**
+ * Page title (docs/13 "Page header"): ornament ۞, the title (English · Arabic in the English UI, Arabic only in the
+ * Arabic UI), a detail line of real facts (items joined by Sep), and the gold divider. Centred on phones; from lg it
+ * sits at the start with `actions` at the end. `stacked`: the Arabic is the title and the English a gloss under it
+ * (lessons). `eyebrow` and `actions` share the top row on phones.
+ */
+export function PageHeader({ en, ar, eyebrow, detail, actions, stacked, className }: {
+  en: string; ar?: string; eyebrow?: ReactNode; detail?: ReactNode[]; actions?: ReactNode; stacked?: boolean; className?: string
+}) {
+  const items = (detail ?? []).filter((x) => x != null && x !== false && x !== '')
+  return (
+    <header className={cn('flex flex-col items-center gap-1 text-center lg:flex-row lg:items-end lg:justify-between lg:gap-space-lg lg:text-start', className)}>
+      <div className="flex min-w-0 flex-col items-center gap-1 lg:items-start">
+        {(eyebrow || actions) && (
+          <div className={cn('flex min-h-12 w-full items-center gap-space-sm lg:min-h-0', eyebrow ? 'justify-between' : 'justify-end lg:hidden')}>
+            {eyebrow && <p className="text-label font-semibold tracking-widest text-secondary uppercase rtl:tracking-normal">{eyebrow}</p>}
+            {actions && <div className="flex shrink-0 items-center gap-space-xs lg:hidden">{actions}</div>}
+          </div>
+        )}
+        {!eyebrow && <span aria-hidden lang="ar" className="font-quran text-[22px] leading-none text-gold lg:hidden">۞</span>}
+        {stacked ? (
+          <>
+            <h1 lang="ar" className="text-arabic-headline text-on-surface">{ar ?? en}</h1>
+            {!isAr && <p className="text-body-lg text-on-surface-variant">{en}</p>}
+          </>
+        ) : (
+          <h1 className="flex flex-wrap items-baseline justify-center gap-x-space-sm lg:justify-start">
+            {isAr ? (
+              <span className="text-arabic-headline text-on-surface">{ar ?? en}</span>
+            ) : (
+              <>
+                <span className="text-headline-lg text-on-surface">{en}</span>
+                {ar && <><Sep className="mx-0 self-center" /><span lang="ar" dir="rtl" className="font-naskh text-[22px] leading-[1.4] font-semibold text-primary sm:text-[26px]">{ar}</span></>}
+              </>
+            )}
+          </h1>
+        )}
+        {items.length > 0 && (
+          <p className="flex flex-wrap items-center justify-center text-body-md text-on-surface-variant lg:justify-start">
+            {items.map((x, i) => <Fragment key={i}>{i > 0 && <Sep />}<span>{x}</span></Fragment>)}
+          </p>
+        )}
+        <Divider className="mt-1.5 lg:hidden" />
       </div>
-      {actions && <div className="flex shrink-0 items-center gap-space-xs">{actions}</div>}
+      {actions && <div className="hidden shrink-0 items-center gap-space-xs lg:flex">{actions}</div>}
     </header>
   )
 }

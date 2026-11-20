@@ -6,6 +6,7 @@ import { Actions, Button, EmptyState, Group, SegmentedControl, T } from '../comp
 import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, upcomingSession } from './path/helpers'
 import { startClass } from './path/ui'
 import { Hint } from './study/Hint'
+import { tn } from './study/i18n'
 import { Item, SeverityTag, refCls } from './library/teacher'
 import { t } from '../i18n'
 import { Page, PageHeader, Sep } from '@/components/kit'
@@ -23,7 +24,11 @@ export default function Teacher() {
 
   return (
     <Page width="wide">
-      <PageHeader en="Teacher" ar="الشيخ" />
+      <PageHeader en="Teacher" ar="الشيخ" detail={[
+        teacher && <bdi lang="ar">{teacher}</bdi>,
+        tn('{n} session', '{n} sessions', live(d.sessions).length),
+        tn('{n} open correction', '{n} open corrections', open.length),
+      ]} />
       <Hint id="teacher">{t('Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.')}</Hint>
 
       <section aria-labelledby="next-session" className="flex flex-col gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md shadow-card sm:p-space-lg">

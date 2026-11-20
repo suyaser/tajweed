@@ -7,13 +7,26 @@ import type { DayMark } from '../../components'
 import { getLesson } from '../../content'
 import { href, navigate } from '../../app/router'
 import { today } from '../../core/day'
-import { digits, isAr, t } from '../../i18n'
-import { Chip, SegmentedControl, Sep, StatusChip } from '@/components/kit'
+import { digits, isAr, RIWAYAH, t } from '../../i18n'
+import { courseOrder, units } from '../../content/course'
+import { tn } from '../study/i18n'
+import { Chip, PageHeader, SegmentedControl, Sep, StatusChip } from '@/components/kit'
 export { Panel } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { mem, setMem } from '../study/helpers'
+
+/** The Path tab's header (Plan and Progress): units, lessons done, the riwayah. */
+export function PathHeader({ p }: { p: Progress }) {
+  return (
+    <PageHeader en="Course path" ar="المسار" detail={[
+      tn('{n} unit', '{n} units', units.length),
+      t('{n} of {m} lessons done', { n: p.done.size, m: courseOrder.length }),
+      <span lang="ar" className="text-secondary">{RIWAYAH}</span>,
+    ]} />
+  )
+}
 
 export function PathTabs({ value }: { value: 'plan' | 'progress' }) {
   return (

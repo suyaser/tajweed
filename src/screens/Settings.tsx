@@ -14,9 +14,9 @@ import { getSupabase, hasBackend } from '../sync/supabase'
 import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
 import { BackupBadge, syncLabel } from '../sync/SignInNudge'
 import { CopyField } from '../sync/CopyField'
-import { isAr, lang, setLang, t } from '../i18n'
+import { digits, isAr, lang, RIWAYAH, setLang, t } from '../i18n'
 import { cn } from '@/lib/utils'
-import { Page } from '@/components/kit'
+import { Page, PageHeader } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { Switch } from '@/components/ui/switch'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
@@ -37,8 +37,14 @@ export default function Settings({ params }: ScreenProps) {
   const [name, setName] = useState(s.teacherName ?? '')
   const [munfasilChanged, setMunfasilChanged] = useState(false)
 
+  const reciter = RECITERS.find((r) => r.id === s.reciterId) ?? RECITERS[0]
   return (
-    <Page>
+    <Page className="gap-space-md">
+      <PageHeader en="Settings" ar="الإعدادات" className="mb-space-xs" detail={[
+        <bdi lang="ar">{reciter.nameAr}</bdi>,
+        t('Wird at {time}', { time: digits(s.wirdTime) }),
+        <span lang="ar" className="text-secondary">{RIWAYAH}</span>,
+      ]} />
       {hasBackend && (
         <Group en="Account and backup" ar="الحساب والنسخ الاحتياطي">
           <div className="px-space-md py-space-sm"><BackupBadge /></div>
