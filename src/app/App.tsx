@@ -54,10 +54,10 @@ export function App({ onboarded = true, theme = 'system', textSize = 'm', tajwee
   let body
   if (route.name === 'devComponents') body = <Placeholder name="NotFound" params={{}} />
   else if (Screen) body = <Screen params={route.params} />
+  else body = <Placeholder name={pascal(route.name)} params={route.params} />
   // Screens that don't lay out their own page get the shared Page (gutters, max width, rhythm).
   const width = PAGE_WIDTH[route.name]
   if (Screen && width) body = <Page width={width}>{body}</Page>
-  else body = <Placeholder name={pascal(route.name)} params={route.params} />
 
   return (
     <Shell route={route} theme={theme} textSize={textSize} tajweedPatterns={tajweedPatterns}>
