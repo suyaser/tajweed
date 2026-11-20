@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-secondary": "#ffffff",
+        "error-container": "#ffdad6",
+        "on-primary-fixed-variant": "#00504a",
+        "on-primary-fixed": "#00201d",
+        "on-error-container": "#93000a",
+        "tertiary-fixed-dim": "#84d5c7",
+        "tertiary-container": "#005f55",
+        "inverse-primary": "#8fd3ca",
+        "outline-variant": "#bec9c6",
+        "surface-container-high": "#ede7e2",
+        "tertiary": "#00453e",
+        "primary-fixed": "#abefe6",
+        "on-tertiary-fixed-variant": "#005048",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#efbf67",
+        "surface-container-highest": "#e7e1dc",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#f9f2ed",
+        "outline": "#6f7977",
+        "error": "#ba1a1a",
+        "surface": "#fff8f3",
+        "on-secondary-fixed": "#271900",
+        "background": "#fff8f3",
+        "surface-container": "#f3ede7",
+        "on-background": "#1d1b18",
+        "on-secondary-fixed-variant": "#5e4200",
+        "inverse-surface": "#32302d",
+        "on-error": "#ffffff",
+        "on-tertiary-container": "#86d7ca",
+        "secondary-container": "#fecd73",
+        "on-primary": "#ffffff",
+        "on-surface": "#1d1b18",
+        "secondary": "#7c5802",
+        "on-secondary-container": "#785500",
+        "tertiary-fixed": "#9ff2e3",
+        "on-surface-variant": "#3f4947",
+        "surface-tint": "#216962",
+        "on-tertiary-fixed": "#00201c",
+        "on-primary-container": "#91d5cc",
+        "inverse-on-surface": "#f6f0ea",
+        "primary": "#00453f",
+        "secondary-fixed": "#ffdea7",
+        "primary-fixed-dim": "#8fd3ca",
+        "surface-bright": "#fff8f3",
+        "surface-dim": "#dfd9d4",
+        "surface-variant": "#e7e1dc",
+        "primary-container": "#115e57"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "margin": "1rem",
+        "gutter-lg": "2rem",
+        "gutter-md": "1.5rem",
+        "space-xs": "0.25rem",
+        "space-md": "1rem",
+        "space-xl": "2.5rem",
+        "space-lg": "1.5rem",
+        "gutter": "1rem",
+        "margin-md": "2rem",
+        "margin-lg": "3.5rem",
+        "space-sm": "0.5rem"
+      },
+      "fontFamily": {
+        "arabic-headline-md": ["Noto Naskh Arabic"],
+        "caption": ["Inter"],
+        "arabic-body": ["Noto Sans Arabic"],
+        "arabic-label": ["Noto Sans Arabic"],
+        "headline-md": ["Inter"],
+        "label-md": ["Inter"],
+        "quran-display": ["Amiri Quran"],
+        "arabic-headline-lg": ["Noto Naskh Arabic"],
+        "headline-lg-mobile": ["Inter"],
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "quran-display-mobile": ["Amiri Quran"],
+        "body": ["Inter"]
+      },
+      "fontSize": {
+        "arabic-headline-md": ["22px", {"lineHeight": "34px", "fontWeight": "600"}],
+        "caption": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "arabic-body": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+        "arabic-label": ["13px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "quran-display": ["36px", {"lineHeight": "72px", "fontWeight": "400"}],
+        "arabic-headline-lg": ["28px", {"lineHeight": "42px", "fontWeight": "700"}],
+        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "quran-display-mobile": ["28px", {"lineHeight": "58px", "fontWeight": "400"}]
+      }
+    }
+  }
+};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(28,26,23,0.04)]"><div class="h-14 px-margin flex items-center justify-between"><button aria-label="Close Lesson" class="w-11 h-11 -ml-space-xs flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">close</span></button><div class="flex-1 flex flex-col items-center justify-center px-space-xs"><h1 class="font-headline-md text-headline-md text-on-surface text-center truncate max-w-[200px]">In Lesson Study Session</h1></div><div class="flex items-center justify-end w-11"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 px-margin bg-surface"><div class="flex flex-col w-full pb-safe">
+<!-- Unit & Subheader Bar -->
+<div class="flex items-center justify-between py-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-caption uppercase tracking-wider">Unit 2</span>
+<span class="text-outline text-caption">•</span>
+<span class="font-headline-md text-body-md text-on-surface">Lesson 14</span>
+</div>
+<button aria-label="Rule details" class="h-8 px-space-sm rounded-full bg-surface-container-high hover:bg-surface-container-highest text-primary flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span class="font-label-md text-caption font-semibold">القاعدة · Rule</span>
+</button>
+</div>
+<!-- Lesson Title & Sacred Geometry Accent -->
+<div class="mt-space-xs text-center flex flex-col items-center">
+<div class="flex items-center justify-center gap-space-sm w-full">
+<div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-outline-variant/40"></div>
+<div class="flex items-center gap-1.5 px-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="material-symbols-outlined text-secondary text-[16px]">auto_stories</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-outline-variant/40"></div>
+</div>
+<h2 class="mt-space-xs font-arabic-headline-md text-arabic-headline-md text-primary font-bold">
+      الإخفاء الحقيقي
+      <span class="block font-headline-md text-body-lg text-on-surface font-semibold tracking-normal mt-0.5">The True Concealment (Hidden Nūn)</span>
+</h2>
+</div>
+<!-- 7-Step Tajweed Pedagogical Path -->
+<div class="mt-space-md w-full bg-surface-container-lowest rounded-xl p-space-sm shadow-sm">
+<div class="flex items-center justify-between relative px-space-xs">
+<!-- Step 1: Hear -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</div>
+<span class="font-label-md text-caption text-outline">Hear</span>
+</div>
+<!-- Step 2: Notice -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</div>
+<span class="font-label-md text-caption text-outline">Notice</span>
+</div>
+<!-- Step 3: Learn -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</div>
+<span class="font-label-md text-caption text-outline">Learn</span>
+</div>
+<!-- Step 4: Say -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[15px]">check</span>
+</div>
+<span class="font-label-md text-caption text-outline">Say</span>
+</div>
+<!-- Step 5: Find (ACTIVE STEP) -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md scale-110">
+<span class="material-symbols-outlined text-[17px]">search</span>
+</div>
+<span class="font-label-md text-caption font-bold text-primary">Find</span>
+</div>
+<!-- Step 6: Check -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-caption">
+          6
+        </div>
+<span class="font-label-md text-caption text-outline">Check</span>
+</div>
+<!-- Step 7: Recite -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-caption">
+          7
+        </div>
+<span class="font-label-md text-caption text-outline">Recite</span>
+</div>
+</div>
+</div>
+<!-- Instruction Banner -->
+<div class="mt-space-sm bg-surface-container-low rounded-xl p-space-sm flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">touch_app</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-headline-md text-body-md font-semibold text-on-surface leading-tight">
+        Tap every word with Ikhfā’ Haqīqī
+      </p>
+<p class="font-arabic-label text-caption text-on-surface-variant mt-0.5" dir="rtl">
+        اضغط على كل كلمة أو موضع يحتوي حكم الإخفاء
+      </p>
+</div>
+</div>
+<!-- Main Quran Interactive Workspace -->
+<div class="mt-space-sm bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<!-- Surah Reference Badge -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-caption">
+<span class="material-symbols-outlined text-[15px] text-secondary">bookmark</span>
+<span>SURAH AL-BAQARAH · 2:4</span>
+</div>
+<span class="font-arabic-label text-caption text-outline" dir="rtl">سورة البقرة · الآية ٤</span>
+</div>
+<!-- Sacred Text RTL Word Flow Grid -->
+<div class="flex flex-wrap items-center justify-center gap-y-3 gap-x-2 py-space-sm" dir="rtl">
+<!-- Word 1: وَٱلَّذِينَ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">وَٱلَّذِينَ</span>
+</div>
+<!-- Word 2: يُؤْمِنُونَ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">يُؤْمِنُونَ</span>
+</div>
+<!-- Word 3: بِمَآ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">بِمَآ</span>
+</div>
+<!-- Word 4: أُنزِلَ (MATCH 1: Correctly Found) -->
+<div class="relative group">
+<div class="px-3 py-1.5 rounded-lg bg-primary-fixed/40 text-primary transition-all flex flex-col items-center">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide font-medium select-none text-primary">أُنزِلَ</span>
+</div>
+<!-- Status indicator tag -->
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.2 rounded-full bg-primary text-on-primary font-label-md text-[10px] flex items-center gap-0.5 shadow-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[11px]">check</span>
+<span>Found · ز</span>
+</div>
+</div>
+<!-- Word 5: إِلَيْكَ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">إِلَيْكَ</span>
+</div>
+<!-- Word 6: وَمَآ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">وَمَآ</span>
+</div>
+<!-- Word 7: أُنزِلَ (MATCH 2: Correctly Found) -->
+<div class="relative group">
+<div class="px-3 py-1.5 rounded-lg bg-primary-fixed/40 text-primary transition-all flex flex-col items-center">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide font-medium select-none text-primary">أُنزِلَ</span>
+</div>
+<!-- Status indicator tag -->
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-1.5 py-0.2 rounded-full bg-primary text-on-primary font-label-md text-[10px] flex items-center gap-0.5 shadow-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[11px]">check</span>
+<span>Found · ز</span>
+</div>
+</div>
+<!-- Word 8 & 9 Combined Phrase: مِن قَبْلِكَ (MATCH 3: Missed) -->
+<div class="relative group">
+<div class="px-3 py-1.5 rounded-lg bg-secondary-fixed/50 text-on-secondary-fixed transition-all flex items-center gap-1 shadow-xs">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide font-semibold select-none text-secondary">مِن قَبْلِكَ</span>
+</div>
+<!-- Status indicator tag: Missed -->
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-0.2 rounded-full bg-secondary text-on-secondary font-label-md text-[10px] flex items-center gap-0.5 shadow-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[11px]">error</span>
+<span>Missed · ق</span>
+</div>
+</div>
+<!-- Word 10: وَبِٱلْـَٔاخِرَةِ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">وَبِٱلْـَٔاخِرَةِ</span>
+</div>
+<!-- Word 11: هُمْ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">هُمْ</span>
+</div>
+<!-- Word 12: يُوقِنُونَ -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="font-quran-display-mobile text-quran-display-mobile tracking-wide select-none">يُوقِنُونَ</span>
+</div>
+<!-- Ayah end marker -->
+<div class="px-2 py-1 rounded-full bg-surface-container text-secondary flex items-center justify-center">
+<span class="font-arabic-body text-body-md font-bold">٤</span>
+</div>
+</div>
+<!-- Ayah Footnote Indicator -->
+<div class="flex items-center justify-center gap-space-xs text-caption font-label-md text-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>2 Identified</span>
+<span class="text-outline-variant">•</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>1 Unidentified</span>
+</div>
+</div>
+<!-- Detailed Scholarly Feedback & Audio Card -->
+<div class="mt-space-sm bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<!-- Header with progress pill -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[17px]">psychology</span>
+</div>
+<span class="font-headline-md text-body-md font-semibold text-on-surface">2 of 3 rules detected</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed font-label-md text-caption font-semibold">
+        66% Precision
+      </div>
+</div>
+<!-- Descriptive feedback text -->
+<div class="p-space-sm rounded-lg bg-surface-container-low text-on-surface-variant flex flex-col gap-1">
+<p class="font-body-md text-body-md leading-relaxed text-on-surface">
+        The ن in <span class="font-arabic-body font-semibold text-secondary">«مِن قَبْلِكَ»</span> is also concealed before the letter <span class="font-arabic-body font-bold text-secondary">ق</span>.
+      </p>
+<p class="font-caption text-caption text-on-surface-variant leading-normal">
+        Because <strong class="text-on-surface">Qāf (ق)</strong> is an elevated letter (مستعلٍ), the accompanying nasal Ghunnah must be vocalized with full heaviness (<span class="italic">Tafkhīm</span> / تفخيم).
+      </p>
+</div>
+<!-- Mini Recitation Player -->
+<div class="flex items-center justify-between p-space-sm rounded-xl bg-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Play recitation of missed word" class="w-10 h-10 rounded-full bg-primary hover:bg-primary-container text-on-primary flex items-center justify-center shadow-xs transition-transform active:scale-95" id="playback-button">
+<span class="material-symbols-outlined text-[20px]" id="play-icon">play_arrow</span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline-md text-body-md font-medium text-on-surface">Pronouncing «مِن قَبْلِكَ»</span>
+<span class="font-caption text-caption text-outline">Shaykh al-Husary · Hafs 'an 'Asim (0:03)</span>
+</div>
+</div>
+<!-- Animated micro waveform -->
+<div class="flex items-center gap-1 h-6 px-2">
+<span class="w-1 h-2 bg-primary/40 rounded-full animate-pulse"></span>
+<span class="w-1 h-4 bg-primary/70 rounded-full animate-pulse" style="animation-delay: 150ms;"></span>
+<span class="w-1 h-5 bg-primary rounded-full animate-pulse" style="animation-delay: 300ms;"></span>
+<span class="w-1 h-3 bg-primary/60 rounded-full animate-pulse" style="animation-delay: 200ms;"></span>
+<span class="w-1 h-2 bg-primary/30 rounded-full animate-pulse" style="animation-delay: 400ms;"></span>
+</div>
+</div>
+</div>
+<!-- Re-try & Supplemental Tools -->
+<div class="mt-space-sm flex items-center justify-center gap-space-md">
+<button class="flex items-center gap-1.5 py-2 px-space-sm rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-body-md">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Retry Exercise</span>
+</button>
+<span class="text-outline-variant">•</span>
+<button class="flex items-center gap-1.5 py-2 px-space-sm rounded-full text-primary hover:bg-surface-container transition-colors font-label-md text-body-md">
+<span class="material-symbols-outlined text-[18px]">hearing</span>
+<span>Hear Full Ayah</span>
+</button>
+</div>
+<!-- Primary Sticky Bottom Action Container -->
+<div class="mt-space-md sticky bottom-2 w-full pt-space-xs">
+<div class="p-1 rounded-xl bg-surface/90 backdrop-blur-md">
+<button class="w-full h-12 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-md text-body-lg font-semibold flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.99]">
+<span>Continue to Quick Check</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+    // Lightweight local playback toggle state for micro-interaction
+    const playBtn = document.getElementById('playback-button');
+    const playIcon = document.getElementById('play-icon');
+    let isPlaying = false;
+
+    if (playBtn && playIcon) {
+      playBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          playIcon.textContent = 'pause';
+          setTimeout(() => {
+            playIcon.textContent = 'play_arrow';
+            isPlaying = false;
+          }, 3000);
+        } else {
+          playIcon.textContent = 'play_arrow';
+        }
+      });
+    }
+  </script>
+</div></main></body></html>

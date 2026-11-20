@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-secondary": "#ffffff",
+        "error-container": "#ffdad6",
+        "on-primary-fixed-variant": "#00504a",
+        "on-primary-fixed": "#00201d",
+        "on-error-container": "#93000a",
+        "tertiary-fixed-dim": "#84d5c7",
+        "tertiary-container": "#005f55",
+        "inverse-primary": "#8fd3ca",
+        "outline-variant": "#bec9c6",
+        "surface-container-high": "#ede7e2",
+        "tertiary": "#00453e",
+        "primary-fixed": "#abefe6",
+        "on-tertiary-fixed-variant": "#005048",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#efbf67",
+        "surface-container-highest": "#e7e1dc",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#f9f2ed",
+        "outline": "#6f7977",
+        "error": "#ba1a1a",
+        "surface": "#fff8f3",
+        "on-secondary-fixed": "#271900",
+        "background": "#fff8f3",
+        "surface-container": "#f3ede7",
+        "on-background": "#1d1b18",
+        "on-secondary-fixed-variant": "#5e4200",
+        "inverse-surface": "#32302d",
+        "on-error": "#ffffff",
+        "on-tertiary-container": "#86d7ca",
+        "secondary-container": "#fecd73",
+        "on-primary": "#ffffff",
+        "on-surface": "#1d1b18",
+        "secondary": "#7c5802",
+        "on-secondary-container": "#785500",
+        "tertiary-fixed": "#9ff2e3",
+        "on-surface-variant": "#3f4947",
+        "surface-tint": "#216962",
+        "on-tertiary-fixed": "#00201c",
+        "on-primary-container": "#91d5cc",
+        "inverse-on-surface": "#f6f0ea",
+        "primary": "#00453f",
+        "secondary-fixed": "#ffdea7",
+        "primary-fixed-dim": "#8fd3ca",
+        "surface-bright": "#fff8f3",
+        "surface-dim": "#dfd9d4",
+        "surface-variant": "#e7e1dc",
+        "primary-container": "#115e57"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "margin": "1rem",
+        "gutter-lg": "2rem",
+        "gutter-md": "1.5rem",
+        "space-xs": "0.25rem",
+        "space-md": "1rem",
+        "space-xl": "2.5rem",
+        "space-lg": "1.5rem",
+        "gutter": "1rem",
+        "margin-md": "2rem",
+        "margin-lg": "3.5rem",
+        "space-sm": "0.5rem"
+      },
+      "fontFamily": {
+        "arabic-headline-md": ["Noto Naskh Arabic"],
+        "caption": ["Inter"],
+        "arabic-body": ["Noto Sans Arabic"],
+        "arabic-label": ["Noto Sans Arabic"],
+        "headline-md": ["Inter"],
+        "label-md": ["Inter"],
+        "quran-display": ["Amiri Quran"],
+        "arabic-headline-lg": ["Noto Naskh Arabic"],
+        "headline-lg-mobile": ["Inter"],
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "quran-display-mobile": ["Amiri Quran"],
+        "body": ["Inter"]
+      },
+      "fontSize": {
+        "arabic-headline-md": ["22px", {"lineHeight": "34px", "fontWeight": "600"}],
+        "caption": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "arabic-body": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+        "arabic-label": ["13px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "quran-display": ["36px", {"lineHeight": "72px", "fontWeight": "400"}],
+        "arabic-headline-lg": ["28px", {"lineHeight": "42px", "fontWeight": "700"}],
+        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "quran-display-mobile": ["28px", {"lineHeight": "58px", "fontWeight": "400"}]
+      }
+    }
+  }
+};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(28,26,23,0.04)]"><div class="h-14 px-margin flex items-center justify-between"><button aria-label="Close Lesson" class="w-11 h-11 -ml-space-xs flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">close</span></button><div class="flex-1 flex flex-col items-center justify-center px-space-xs"><h1 class="font-headline-md text-headline-md text-on-surface text-center truncate max-w-[200px]">In Lesson Study Session</h1></div><div class="flex items-center justify-end w-11"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 px-margin bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Header Meta & Context Card -->
+<section class="flex flex-col gap-space-sm pt-space-xs mb-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Lesson 14 of 58 · Unit 2</span>
+</div>
+<button class="h-7 px-3 rounded-full bg-surface-container-high hover:bg-surface-container-highest transition-colors flex items-center gap-1.5 text-on-surface" id="rule-btn" onclick="toggleRuleSheet()">
+<span class="material-symbols-outlined text-[16px] text-secondary">menu_book</span>
+<span class="font-label-md text-label-md">القاعدة · Rule</span>
+</button>
+</div>
+<div class="flex items-baseline justify-between mt-0.5">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+        Hidden Nūn
+      </h2>
+<span class="font-arabic-headline-md text-arabic-headline-md text-primary font-bold" dir="rtl">
+        الإخفاء الحقيقي
+      </span>
+</div>
+</section>
+<!-- 7-Step Tajweed Path Progress Tracker -->
+<section aria-label="Lesson Progress" class="w-full mb-space-lg">
+<div class="bg-surface-container-low rounded-xl p-space-sm flex items-center justify-between shadow-sm">
+<!-- 1. Hear (Completed) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-[17px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Hear</span>
+</div>
+<div class="flex-1 h-0.5 bg-primary mx-1"></div>
+<!-- 2. Notice (Completed) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-[17px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Notice</span>
+</div>
+<div class="flex-1 h-0.5 bg-primary mx-1"></div>
+<!-- 3. Learn (Completed) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-[17px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Learn</span>
+</div>
+<div class="flex-1 h-0.5 bg-primary mx-1"></div>
+<!-- 4. Say (ACTIVE STEP) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary ring-4 ring-primary-fixed shadow-sm">
+<span class="material-symbols-outlined text-[17px]">mic</span>
+</div>
+<span class="font-caption text-caption text-primary font-bold">Say</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-container-highest mx-1"></div>
+<!-- 5. Find -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="font-caption text-caption">5</span>
+</div>
+<span class="font-caption text-caption text-outline">Find</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-container-highest mx-1"></div>
+<!-- 6. Check -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="font-caption text-caption">6</span>
+</div>
+<span class="font-caption text-caption text-outline">Check</span>
+</div>
+<div class="flex-1 h-0.5 bg-surface-container-highest mx-1"></div>
+<!-- 7. Recite -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="font-caption text-caption">7</span>
+</div>
+<span class="font-caption text-caption text-outline">Recite</span>
+</div>
+</div>
+</section>
+<!-- Instruction Banner -->
+<div class="w-full bg-surface-container rounded-xl px-space-md py-space-sm mb-space-md flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[18px]">record_voice_over</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+      Listen closely, utter the phrase aloud, record your voice, and audit the nasal flow.
+    </p>
+</div>
+<!-- Target Script Card -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col items-center text-center relative overflow-hidden mb-space-md">
+<!-- Subtle Top Tag -->
+<div class="flex items-center gap-1.5 mb-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium tracking-wide uppercase">
+        Surah Al-Falaq (113:2) · الآية الكريمة
+      </span>
+</div>
+<!-- Sacred Scripture Focus Box -->
+<div class="py-space-md px-space-lg my-space-xs w-full flex items-center justify-center" dir="rtl">
+<span class="font-quran-display-mobile text-quran-display-mobile text-on-surface select-none leading-relaxed tracking-wide">
+        مِ<span class="inline-block px-2.5 mx-1 bg-primary-fixed rounded-lg text-primary font-semibold">ن شَـ</span>ـرِّ
+      </span>
+</div>
+<!-- Phonetic & Grammatical Guidance -->
+<div class="flex flex-col items-center gap-1 mt-space-xs">
+<span class="font-body-md text-body-md text-primary font-medium tracking-tight">
+        min sharri
+      </span>
+<p class="font-caption text-caption text-on-surface-variant">
+        Concealed Nūn Sākinah meeting the letter <span class="font-arabic-label text-arabic-label font-bold text-on-surface">ش</span> (Shīn) with 2 counts of Ghunnah.
+      </p>
+</div>
+</section>
+<!-- Three-Step Audio Practice Suite -->
+<div class="flex flex-col gap-space-md w-full mb-space-md">
+<!-- STEP 1: Listen to Master Reciter -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center">1</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Listen to Master Reciter</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-caption text-caption text-on-surface-variant font-medium">
+          Hafs · Al-Husary
+        </span>
+</div>
+<!-- Audio Track Container -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center gap-space-sm">
+<button class="w-11 h-11 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 hover:bg-primary-container transition-all active:scale-95 shadow-sm" id="master-play-btn" onclick="toggleMasterPlay()">
+<span class="material-symbols-outlined text-[24px]" id="master-icon">play_arrow</span>
+</button>
+<!-- Waveform Simulation -->
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<span>Murattal Reference</span>
+<span class="tabular-nums" id="master-time">0:00 / 0:03</span>
+</div>
+<div class="w-full h-6 flex items-center gap-1">
+<span class="w-1 h-2 rounded-full bg-primary-container"></span>
+<span class="w-1 h-3 rounded-full bg-primary-container"></span>
+<span class="w-1 h-5 rounded-full bg-primary"></span>
+<span class="w-1 h-6 rounded-full bg-primary"></span>
+<span class="w-1 h-4 rounded-full bg-primary"></span>
+<span class="w-1 h-5 rounded-full bg-primary"></span>
+<span class="w-1 h-6 rounded-full bg-primary"></span>
+<span class="w-1 h-5 rounded-full bg-primary"></span>
+<span class="w-1 h-3 rounded-full bg-primary-container"></span>
+<span class="w-1 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-3 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-4 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-5 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-3 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-2 rounded-full bg-outline-variant"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 2: Record Recitation -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center">2</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Record Your Voice</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-primary font-caption text-caption font-medium flex items-center gap-1" id="record-status-pill">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+          Recorded ✓
+        </span>
+</div>
+<!-- Tactile Recording Panel -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col items-center justify-center gap-space-sm">
+<div class="flex items-center justify-center gap-space-lg w-full">
+<!-- Small Retake Button -->
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" onclick="handleReRecord()" title="Re-record">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+<!-- Main Tactical Record Button -->
+<div class="relative flex items-center justify-center">
+<div class="absolute w-16 h-16 rounded-full bg-error/15 hidden animate-ping" id="pulse-ring"></div>
+<button class="relative w-14 h-14 rounded-full bg-error text-on-error flex items-center justify-center shadow-md active:scale-95 transition-transform" id="mic-trigger" onclick="toggleRecording()">
+<span class="material-symbols-outlined text-[28px]" id="mic-icon">mic</span>
+</button>
+</div>
+<!-- Play My Take Button -->
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors" id="play-my-take" onclick="playStudentAudio()" title="Play My Take">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md font-semibold text-on-surface tabular-nums" id="record-timer">0:02.4 / 0:04</span>
+<span class="font-caption text-caption text-on-surface-variant" id="record-prompt">Tap microphone to re-record phrase</span>
+</div>
+<!-- Recorded Waveform Sample -->
+<div class="w-48 h-5 flex items-center justify-center gap-1 pt-1 opacity-80">
+<span class="w-1 h-1.5 rounded-full bg-secondary"></span>
+<span class="w-1 h-3 rounded-full bg-secondary"></span>
+<span class="w-1 h-4 rounded-full bg-secondary"></span>
+<span class="w-1 h-5 rounded-full bg-secondary"></span>
+<span class="w-1 h-3.5 rounded-full bg-secondary"></span>
+<span class="w-1 h-4.5 rounded-full bg-secondary"></span>
+<span class="w-1 h-2 rounded-full bg-secondary"></span>
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+</div>
+</div>
+</div>
+<!-- STEP 3: Compare Articulation -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center">3</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Compare Articulation</h3>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+        Audit the sound side-by-side to hear if your nasal resonance matches the Sheikh.
+      </p>
+<!-- Triple Play Action Row -->
+<div class="grid grid-cols-3 gap-2 mt-1">
+<button class="h-11 rounded-lg bg-surface-container hover:bg-surface-container-high flex flex-col items-center justify-center transition-colors text-on-surface" onclick="playMasterAudioSolo()">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">play_circle</span>
+<span class="font-label-md text-label-md font-semibold">Sheikh</span>
+</div>
+<span class="font-caption text-[10px] text-on-surface-variant">Reference</span>
+</button>
+<button class="h-11 rounded-lg bg-surface-container hover:bg-surface-container-high flex flex-col items-center justify-center transition-colors text-on-surface" onclick="playStudentAudioSolo()">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">play_circle</span>
+<span class="font-label-md text-label-md font-semibold">My Take</span>
+</div>
+<span class="font-caption text-[10px] text-on-surface-variant">Recorded</span>
+</button>
+<button class="h-11 rounded-lg bg-primary hover:bg-primary-container text-on-primary flex flex-col items-center justify-center transition-all shadow-xs active:scale-[0.98]" id="both-compare-btn" onclick="playBothSequentially()">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">compare_arrows</span>
+<span class="font-label-md text-label-md font-semibold">Both</span>
+</div>
+<span class="font-caption text-[10px] text-primary-fixed">Back-to-back</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scholarly Guidance Note -->
+<div class="w-full bg-secondary-fixed/30 rounded-xl p-space-md mb-space-md flex gap-space-sm items-start">
+<span class="material-symbols-outlined text-secondary shrink-0 text-[22px] mt-0.5">verified</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-secondary-fixed font-bold">What to listen for (ضابط الإتقان):</span>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+        Ensure your tongue does not press firmly against the gum-line of the upper incisors. The Nūn sound should be partially masked, allowing the <span class="font-arabic-body text-arabic-body font-semibold">غنة</span> (resonant nasal hum) to flow softly for two measured beats.
+      </p>
+</div>
+</div>
+<!-- Self-Evaluation Question Box -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-md text-headline-md text-on-surface">
+        How did your Ghunnah sound?
+      </h4>
+<span class="font-arabic-label text-arabic-label text-on-surface-variant" dir="rtl">التقييم الذاتي</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mt-1">
+<button class="h-12 px-3 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center gap-2 text-on-surface-variant transition-all" id="eval-retry" onclick="selectEvaluation('retry')">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span class="font-label-md text-label-md font-semibold">Needs Polish</span>
+</button>
+<button class="h-12 px-3 rounded-lg bg-primary-fixed/60 hover:bg-primary-fixed text-primary flex items-center justify-center gap-2 transition-all" id="eval-match" onclick="selectEvaluation('match')">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span class="font-label-md text-label-md font-semibold">Matches Sheikh</span>
+</button>
+</div>
+</section>
+<!-- Interactive Rule Sheet (Collapsible modal/bottom drawer trigger) -->
+<div class="hidden mb-space-md w-full bg-surface-container rounded-xl p-space-md transition-all" id="rule-sheet">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">auto_stories</span>
+<span class="font-headline-md text-headline-md text-on-surface">Rule Reference: Ikhfa Haqiqi</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="toggleRuleSheet()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">
+      Literally means "concealment". In Tajweed, it is pronouncing a non-voweled Nūn or Tanween between clear Izhar and full Idgham without Tashdeed, keeping the nasal Ghunnah on the following 15 letters.
+    </p>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg font-arabic-body text-arabic-body text-primary text-center" dir="rtl">
+      صِفْ ذَا ثَنَا كَمْ جَادَ شَخْصٌ قَدْ سَمَا · دُمْ طَيِّبًا زِدْ فِي تُقَى ضَعْ ظَالِمَا
+    </div>
+</div>
+<!-- Primary Fixed Progression Button -->
+<div class="w-full pt-space-xs pb-safe">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container flex items-center justify-center gap-2 font-headline-md text-headline-md shadow-md active:scale-[0.99] transition-all">
+<span>Next: Find it in an ayah</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+  let isRecording = false;
+  let isMasterPlaying = false;
+  let recTimerInterval;
+
+  function toggleMasterPlay() {
+    const icon = document.getElementById('master-icon');
+    const time = document.getElementById('master-time');
+    isMasterPlaying = !isMasterPlaying;
+    if (isMasterPlaying) {
+      icon.textContent = 'pause';
+      time.textContent = '0:02 / 0:03';
+    } else {
+      icon.textContent = 'play_arrow';
+      time.textContent = '0:00 / 0:03';
+    }
+  }
+
+  function toggleRecording() {
+    const pulse = document.getElementById('pulse-ring');
+    const micIcon = document.getElementById('mic-icon');
+    const statusPill = document.getElementById('record-status-pill');
+    const prompt = document.getElementById('record-prompt');
+    const timer = document.getElementById('record-timer');
+
+    isRecording = !isRecording;
+    if (isRecording) {
+      pulse.classList.remove('hidden');
+      micIcon.textContent = 'stop';
+      statusPill.innerHTML = '<span class="w-2 h-2 rounded-full bg-error animate-pulse mr-1"></span> Recording...';
+      prompt.textContent = 'Speak clearly into your microphone...';
+      let sec = 0;
+      timer.textContent = '0:00 / 0:04';
+      recTimerInterval = setInterval(() => {
+        sec += 0.2;
+        timer.textContent = `0:0${sec.toFixed(1)} / 0:04`;
+        if (sec >= 4.0) {
+          toggleRecording();
+        }
+      }, 200);
+    } else {
+      clearInterval(recTimerInterval);
+      pulse.classList.add('hidden');
+      micIcon.textContent = 'mic';
+      statusPill.innerHTML = '<span class="material-symbols-outlined text-[13px]">check_circle</span> Recorded ✓';
+      prompt.textContent = 'Recitation captured. Listen and compare.';
+    }
+  }
+
+  function handleReRecord() {
+    toggleRecording();
+  }
+
+  function playStudentAudio() {
+    const prompt = document.getElementById('record-prompt');
+    prompt.textContent = 'Playing your recitation take...';
+    setTimeout(() => {
+      prompt.textContent = 'Tap microphone to re-record phrase';
+    }, 2000);
+  }
+
+  function playMasterAudioSolo() {
+    toggleMasterPlay();
+  }
+
+  function playStudentAudioSolo() {
+    playStudentAudio();
+  }
+
+  function playBothSequentially() {
+    const btn = document.getElementById('both-compare-btn');
+    btn.classList.add('opacity-80');
+    toggleMasterPlay();
+    setTimeout(() => {
+      toggleMasterPlay();
+      playStudentAudio();
+      btn.classList.remove('opacity-80');
+    }, 2500);
+  }
+
+  function selectEvaluation(type) {
+    const retryBtn = document.getElementById('eval-retry');
+    const matchBtn = document.getElementById('eval-match');
+    if (type === 'match') {
+      matchBtn.classList.add('ring-2', 'ring-primary');
+      retryBtn.classList.remove('ring-2', 'ring-primary');
+    } else {
+      retryBtn.classList.add('ring-2', 'ring-secondary');
+      matchBtn.classList.remove('ring-2', 'ring-primary');
+    }
+  }
+
+  function toggleRuleSheet() {
+    const sheet = document.getElementById('rule-sheet');
+    sheet.classList.toggle('hidden');
+  }
+</script></main></body></html>

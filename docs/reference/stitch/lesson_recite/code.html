@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-secondary": "#ffffff",
+        "error-container": "#ffdad6",
+        "on-primary-fixed-variant": "#00504a",
+        "on-primary-fixed": "#00201d",
+        "on-error-container": "#93000a",
+        "tertiary-fixed-dim": "#84d5c7",
+        "tertiary-container": "#005f55",
+        "inverse-primary": "#8fd3ca",
+        "outline-variant": "#bec9c6",
+        "surface-container-high": "#ede7e2",
+        "tertiary": "#00453e",
+        "primary-fixed": "#abefe6",
+        "on-tertiary-fixed-variant": "#005048",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#efbf67",
+        "surface-container-highest": "#e7e1dc",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#f9f2ed",
+        "outline": "#6f7977",
+        "error": "#ba1a1a",
+        "surface": "#fff8f3",
+        "on-secondary-fixed": "#271900",
+        "background": "#fff8f3",
+        "surface-container": "#f3ede7",
+        "on-background": "#1d1b18",
+        "on-secondary-fixed-variant": "#5e4200",
+        "inverse-surface": "#32302d",
+        "on-error": "#ffffff",
+        "on-tertiary-container": "#86d7ca",
+        "secondary-container": "#fecd73",
+        "on-primary": "#ffffff",
+        "on-surface": "#1d1b18",
+        "secondary": "#7c5802",
+        "on-secondary-container": "#785500",
+        "tertiary-fixed": "#9ff2e3",
+        "on-surface-variant": "#3f4947",
+        "surface-tint": "#216962",
+        "on-tertiary-fixed": "#00201c",
+        "on-primary-container": "#91d5cc",
+        "inverse-on-surface": "#f6f0ea",
+        "primary": "#00453f",
+        "secondary-fixed": "#ffdea7",
+        "primary-fixed-dim": "#8fd3ca",
+        "surface-bright": "#fff8f3",
+        "surface-dim": "#dfd9d4",
+        "surface-variant": "#e7e1dc",
+        "primary-container": "#115e57"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "margin": "1rem",
+        "gutter-lg": "2rem",
+        "gutter-md": "1.5rem",
+        "space-xs": "0.25rem",
+        "space-md": "1rem",
+        "space-xl": "2.5rem",
+        "space-lg": "1.5rem",
+        "gutter": "1rem",
+        "margin-md": "2rem",
+        "margin-lg": "3.5rem",
+        "space-sm": "0.5rem"
+      },
+      "fontFamily": {
+        "arabic-headline-md": ["Noto Naskh Arabic"],
+        "caption": ["Inter"],
+        "arabic-body": ["Noto Sans Arabic"],
+        "arabic-label": ["Noto Sans Arabic"],
+        "headline-md": ["Inter"],
+        "label-md": ["Inter"],
+        "quran-display": ["Amiri Quran"],
+        "arabic-headline-lg": ["Noto Naskh Arabic"],
+        "headline-lg-mobile": ["Inter"],
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "quran-display-mobile": ["Amiri Quran"],
+        "body": ["Inter"]
+      },
+      "fontSize": {
+        "arabic-headline-md": ["22px", {"lineHeight": "34px", "fontWeight": "600"}],
+        "caption": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "arabic-body": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+        "arabic-label": ["13px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "quran-display": ["36px", {"lineHeight": "72px", "fontWeight": "400"}],
+        "arabic-headline-lg": ["28px", {"lineHeight": "42px", "fontWeight": "700"}],
+        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "quran-display-mobile": ["28px", {"lineHeight": "58px", "fontWeight": "400"}]
+      }
+    }
+  }
+};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(28,26,23,0.04)]"><div class="h-14 px-margin flex items-center justify-between"><button aria-label="Close Lesson" class="w-11 h-11 -ml-space-xs flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">close</span></button><div class="flex-1 flex flex-col items-center justify-center px-space-xs"><h1 class="font-headline-md text-headline-md text-on-surface text-center truncate max-w-[200px]">In Lesson Study Session</h1></div><div class="flex items-center justify-end w-11"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 px-margin bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Unit & Lesson Subheader -->
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Unit 2 · Lesson 14</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-arabic-label text-arabic-label hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[15px]">menu_book</span>
+<span>القاعدة · Rule</span>
+</button>
+</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-semibold">حَفْص عَنْ عَاصِم</span>
+</div>
+</div>
+<!-- Lesson Title Banner -->
+<div class="flex items-center justify-between bg-surface-container-low rounded-xl px-space-md py-3 mb-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-arabic-headline-md text-arabic-headline-md text-on-surface leading-tight truncate">الإِخْفَاءُ الحَقِيقِيُّ</h2>
+<span class="text-secondary text-[14px]">✦</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant truncate">The True Concealment · Hidden Nūn with Ghunnah</p>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container-highest font-label-md text-label-md text-on-surface-variant">Step 7/7</span>
+</div>
+<!-- 7-Step Tajweed Pedagogical Journey Tracker -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md mb-space-lg shadow-sm">
+<div class="flex items-center justify-between relative">
+<!-- Continuous Spine -->
+<div class="absolute left-3 right-3 top-3.5 h-[2px] bg-surface-container-high -z-0"></div>
+<!-- Step 1: Hear -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-1">Hear</span>
+</div>
+<!-- Step 2: Notice -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-1">Notice</span>
+</div>
+<!-- Step 3: Learn -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-1">Learn</span>
+</div>
+<!-- Step 4: Say -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-1">Say</span>
+</div>
+<!-- Step 5: Find -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-1">Find</span>
+</div>
+<!-- Step 6: Check -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-1">Check</span>
+</div>
+<!-- Step 7: Recite (Current Active Step) -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md ring-4 ring-primary-fixed">
+<span class="material-symbols-outlined text-[14px]">mic</span>
+</div>
+<span class="font-caption text-caption text-primary font-bold mt-1">Recite</span>
+</div>
+</div>
+</div>
+<!-- Instruction Banner -->
+<div class="bg-surface-container rounded-xl p-space-md mb-space-md flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-snug">
+        Recite this closing passage — it only contains rules you have already mastered.
+      </p>
+<p class="font-arabic-body text-arabic-body text-on-surface-variant text-right mt-1 leading-relaxed" dir="rtl">
+        رتّل السورة كاملة — لا تحتوي إلا على أحكام أتقنتها وتدرّبت عليها.
+      </p>
+</div>
+</div>
+<!-- Sacred Mushaf Card: Surat An-Nas -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-md relative overflow-hidden">
+<!-- Traditional Header Ornament Strip -->
+<div class="bg-surface-container-low rounded-lg p-2.5 mb- space-md flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_stories</span>
+<span class="font-label-md text-label-md font-semibold tracking-wide uppercase">Surat An-Nās</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-arabic-label text-arabic-label text-on-surface-variant">مَكِّيَّة · ٦ آيَات</span>
+<span class="font-arabic-headline-md text-arabic-headline-md text-secondary leading-none">سُورَةُ النَّاسِ</span>
+</div>
+</div>
+<!-- Bismillah Calligraphy -->
+<div class="text-center py-2 mb-3">
+<p class="font-quran-display-mobile text-quran-display-mobile text-primary font-normal leading-loose tracking-wide">
+        بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+      </p>
+</div>
+<!-- Surah Body with Precise Orthography and Applied Tajweed Tint Highlights -->
+<div class="bg-surface-container-low/60 rounded-xl p-4 text-center leading-[2.6]" dir="rtl">
+<p class="font-quran-display-mobile text-quran-display-mobile text-on-surface select-none">
+<span>قُلْ أَعُوذُ بِرَبِّ</span>
+<span class="inline-block px-1 mx-0.5 rounded bg-surface-container-high text-primary font-medium" title="Ghunnah on Nūn Mushaddadah">ٱلنَّاسِ</span>
+<span class="inline-flex items-center justify-center w-7 h-7 mx-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-arabic-label text-arabic-label align-middle shadow-xs">١</span>
+<span>مَلِكِ</span>
+<span class="inline-block px-1 mx-0.5 rounded bg-surface-container-high text-primary font-medium" title="Ghunnah on Nūn Mushaddadah">ٱلنَّاسِ</span>
+<span class="inline-flex items-center justify-center w-7 h-7 mx-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-arabic-label text-arabic-label align-middle shadow-xs">٢</span>
+<span>إِلَٰهِ</span>
+<span class="inline-block px-1 mx-0.5 rounded bg-surface-container-high text-primary font-medium" title="Ghunnah on Nūn Mushaddadah">ٱلنَّاسِ</span>
+<span class="inline-flex items-center justify-center w-7 h-7 mx-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-arabic-label text-arabic-label align-middle shadow-xs">٣</span>
+<!-- Targeted Rule Highlight: Ikhfa' Haqiqi on Min Sharri -->
+<span class="inline-block px-1.5 mx-0.5 rounded-md bg-primary-fixed text-on-primary-fixed-variant font-medium shadow-xs" title="Al-Ikhfā' al-Ḥaqīqī: Nūn Sākinah before Shīn">
+          مِن شَرِّ
+        </span>
+<span>ٱلْوَسْوَاسِ</span>
+<span>ٱلْخَنَّاسِ</span>
+<span class="inline-flex items-center justify-center w-7 h-7 mx-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-arabic-label text-arabic-label align-middle shadow-xs">٤</span>
+<span>ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ</span>
+<span class="inline-block px-1 mx-0.5 rounded bg-surface-container-high text-primary font-medium" title="Ghunnah on Nūn Mushaddadah">ٱلنَّاسِ</span>
+<span class="inline-flex items-center justify-center w-7 h-7 mx-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-arabic-label text-arabic-label align-middle shadow-xs">٥</span>
+<span>مِنَ</span>
+<span>ٱلْجِنَّةِ</span>
+<span>وَ</span><span class="inline-block px-1 mx-0.5 rounded bg-surface-container-high text-primary font-medium">ٱلنَّاسِ</span>
+<span class="inline-flex items-center justify-center w-7 h-7 mx-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-arabic-label text-arabic-label align-middle shadow-xs">٦</span>
+</p>
+</div>
+<!-- Tajweed Legend & Applied Rules Chips -->
+<div class="mt-4 pt-3 flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-primary-fixed"></span>
+<span class="font-caption text-caption text-on-surface-variant">إِخْفَاءٌ حَقِيقِيّ (Ayah 4: <span class="font-arabic-label" dir="rtl">مِن شَرِّ</span>)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-surface-container-high"></span>
+<span class="font-caption text-caption text-on-surface-variant">غُنَّةُ النُّونِ الْمُشَدَّدَةِ (2 Ḥarakāt)</span>
+</div>
+</div>
+</section>
+<!-- Audio Reciter & Studio Practice Suite -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-md">
+<!-- Reciter Metadata Header -->
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-sm">
+          ح
+        </div>
+<div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Sh. Mahmoud Khalil Al-Husary</h3>
+<p class="font-caption text-caption text-on-surface-variant">Murattal · Transmission of Hafs ‘an ‘Asim</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface-variant">
+        0:28
+      </span>
+</div>
+<!-- Interactive Waveform Player -->
+<div class="bg-surface-container-low rounded-lg p-3 mb-3">
+<div class="flex items-center gap-3">
+<button aria-label="Play Master Recitation" class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all shadow-sm shrink-0" id="masterPlayBtn" type="button">
+<span class="material-symbols-outlined text-[24px]">play_arrow</span>
+</button>
+<!-- Waveform Bars -->
+<div class="flex-1 flex flex-col gap-1.5">
+<div class="h-6 flex items-center gap-[3px]">
+<span class="w-1 h-3 rounded-full bg-primary"></span>
+<span class="w-1 h-5 rounded-full bg-primary"></span>
+<span class="w-1 h-4 rounded-full bg-primary"></span>
+<span class="w-1 h-6 rounded-full bg-primary"></span>
+<span class="w-1 h-5 rounded-full bg-primary"></span>
+<span class="w-1 h-3 rounded-full bg-primary"></span>
+<span class="w-1 h-4 rounded-full bg-primary"></span>
+<span class="w-1 h-6 rounded-full bg-primary"></span>
+<span class="w-1 h-4 rounded-full bg-primary"></span>
+<span class="w-1 h-3 rounded-full bg-primary"></span>
+<span class="w-1 h-5 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-4 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-6 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-3 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-5 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-4 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-5 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-3 rounded-full bg-outline-variant"></span>
+<span class="w-1 h-4 rounded-full bg-outline-variant"></span>
+</div>
+<div class="flex justify-between font-caption text-caption text-on-surface-variant">
+<span>0:11 (Ayah 4)</span>
+<span>0:28</span>
+</div>
+</div>
+</div>
+<!-- Playback Precision Utility Chips -->
+<div class="flex items-center gap-2 mt-3 pt-2.5 border-t border-outline-variant/30 overflow-x-auto">
+<button class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">
+          0.75× Slower
+        </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center gap-1 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[14px]">repeat</span> Loop Ayah 4
+        </button>
+<button class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md font-medium flex items-center gap-1 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[14px]">record_voice_over</span> ردّد آية بآية
+        </button>
+</div>
+</div>
+<!-- Student Recording & Comparison Studio -->
+<div class="rounded-xl bg-surface-container p-3 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 rounded-full bg-error text-on-error flex items-center justify-center shadow-xs active:scale-95 transition-transform" id="recordBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Your Recitation</p>
+<p class="font-caption text-caption text-on-surface-variant">0:25 / 0:28 recorded</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed font-arabic-label text-arabic-label text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+          إخفاء ممتاز
+        </span>
+</div>
+<!-- Comparative Listen Tabs -->
+<div class="grid grid-cols-3 gap-1.5 pt-1">
+<button class="py-1.5 px-2 rounded-lg bg-surface-container-lowest font-label-md text-label-md text-on-surface text-center shadow-xs hover:bg-surface-container-high transition-colors" type="button">
+          Reciter
+        </button>
+<button class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md text-center shadow-xs font-medium" type="button">
+          My Recitation
+        </button>
+<button class="py-1.5 px-2 rounded-lg bg-surface-container-lowest font-label-md text-label-md text-on-surface text-center shadow-xs hover:bg-surface-container-high transition-colors" type="button">
+          Side-by-side
+        </button>
+</div>
+</div>
+</section>
+<!-- Affirmation & Action State Toggle -->
+<div class="mb-space-md">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-body-md text-body-md font-semibold flex items-center justify-center gap-2 shadow-sm hover:bg-primary-container active:scale-[0.99] transition-all" id="recitedConfirmBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+<span>✓ I recited it · تَلَوْتُهَا كَامِلَةً</span>
+</button>
+</div>
+<!-- Contemplative Completion Milestone Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-md relative overflow-hidden">
+<!-- Star Motif Accent -->
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">stars</span>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-secondary font-medium tracking-wide">MILESTONE REACHED</span>
+<p class="font-arabic-label text-arabic-label text-on-surface-variant">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">
+      Lesson complete · Al-Ḥamdulillāh
+    </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+      You have successfully traversed all 7 pedagogical stages of <strong class="text-on-surface font-semibold">Al-Ikhfā' al-Ḥaqīqī</strong> (The True Concealment). Your articulation of the nasal Ghunnah across Surah An-Nās has been validated.
+    </p>
+<!-- Mastered Rule Summary Metrics -->
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-surface-container-low rounded-lg p-2.5">
+<span class="font-caption text-caption text-on-surface-variant block">Target Letters</span>
+<span class="font-arabic-headline-md text-arabic-headline-md text-primary">١٥ حَرْفًا</span>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Shīn, Dāl, Ṣād, ...</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2.5">
+<span class="font-caption text-caption text-on-surface-variant block">Ghunnah Duration</span>
+<span class="font-body-lg text-body-lg font-semibold text-primary">2 Ḥarakāt</span>
+<span class="font-caption text-caption text-on-surface-variant block mt-0.5">Nasal resonance</span>
+</div>
+</div>
+<!-- Next Lesson Preview Teaser -->
+<div class="rounded-xl bg-surface-container-low p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center shrink-0 font-bold text-xs">
+          15
+        </div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface-variant">Next Lesson:</span>
+<span class="font-arabic-label text-arabic-label text-secondary font-bold">الْقَلْقَلَة</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant truncate">Al-Qalqalah · The Echoing Bounce (Lesson 15 of 58)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">arrow_forward</span>
+</div>
+</section>
+<!-- Final Progression Actions -->
+<div class="flex flex-col gap-2.5">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-body-md text-body-md font-semibold flex items-center justify-center gap-2 shadow-sm hover:bg-primary-container active:scale-[0.99] transition-all" type="button">
+<span>Continue to Next Lesson: Al-Qalqalah</span>
+<span class="material-symbols-outlined text-[18px]">east</span>
+</button>
+<button class="w-full h-12 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md font-medium flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors shadow-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Practise Surat An-Nās again · إِعَادَةُ التَّرْتِيل</span>
+</button>
+</div>
+</div>
+<script>
+  (function () {
+    const playBtn = document.getElementById('masterPlayBtn');
+    let isPlaying = false;
+    if (playBtn) {
+      playBtn.addEventListener('click', function () {
+        isPlaying = !isPlaying;
+        const icon = playBtn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = isPlaying ? 'pause' : 'play_arrow';
+        }
+      });
+    }
+
+    const recordBtn = document.getElementById('recordBtn');
+    let isRecording = false;
+    if (recordBtn) {
+      recordBtn.addEventListener('click', function () {
+        isRecording = !isRecording;
+        recordBtn.classList.toggle('animate-pulse', isRecording);
+      });
+    }
+
+    const confirmBtn = document.getElementById('recitedConfirmBtn');
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', function () {
+        confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span><span>تَمَّتِ التِّلَاوَةُ بِتَوْفِيقِ اللَّهِ · Recitation Completed</span>';
+        confirmBtn.classList.replace('bg-primary', 'bg-tertiary-container');
+      });
+    }
+  })();
+</script></main></body></html>
