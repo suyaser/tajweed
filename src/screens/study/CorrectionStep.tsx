@@ -6,11 +6,16 @@ import { getLesson } from '../../content'
 import { useRecorder } from '../../audio/useRecorder'
 import { playModelThenMe } from '../../audio/compare'
 import { save } from '../../audio/recordings'
-import { Button, Card, CorrectionTag, RecordButton, Skeleton, VerseBlock } from '../../components'
+import { CorrectionTag, VerseBlock } from '../../components'
+import { Callout } from '@/components/kit'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
+import { Skeleton } from '@/components/ui/skeleton'
+import { RecordControl, RowCard, type Takes } from './Recorder'
 import { t } from '../../i18n'
 import { Tx } from './i18n'
 import { verseRef } from './helpers'
-import { useVerse, type StudyAudio } from './verse'
+import { PlayButton, useVerse, type StudyAudio } from './verse'
 
 export function CorrectionStep({ c, audio, onRate, onNext }: {
   c: Correction; audio: StudyAudio; onRate: (applied: boolean) => void; onNext: () => void
@@ -39,45 +44,50 @@ export function CorrectionStep({ c, audio, onRate, onNext }: {
   const canRate = !!take || micOff
   const rate = (applied: boolean) => { if (rated == null) { setRated(applied); onRate(applied) } }
 
+  const r: Takes = {
+    record, recording: rec.state.status === 'recording', last: take ?? undefined, off: micOff, seconds: Math.round((take?.durationMs ?? 0) / 1000), audio,
+    alert: rec.state.status === 'error' ? rec.state.error : null,
+  }
+
   return (
-    <div className="s-study">
-      <p className="eyebrow">{t('Teacher correction')} · <CorrectionTag severity={c.severity} gloss /></p>
-      <Card level="e2">
-        <VerseBlock
-          text={vs.verse?.text ?? ''} size="focus" reference={verseRef(c.verseKey)}
-          marks={c.wordPosition ? { [c.wordPosition]: 'ring' } : undefined}
-        />
-        {!vs.verse && (vs.failed ? <p className="t-sm muted">{t('The text needs a connection. Recite from your muṣḥaf.')}</p> : <Skeleton verse lines={2} />)}
-        {c.note && <p><span className="muted">{t("Your teacher's note: ")}</span><Tx>{c.note}</Tx></p>}
-        {lessons.length > 0 && <p className="t-sm muted"><Tx>{t('Rule: {x}', { x: lessons.map(l => l!.nameAr).join(' · ') })}</Tx></p>}
-      </Card>
-      <ol className="s-steps3">
-        <li>
-          {audio.offline
-            ? <span className="t-sm muted">{t('Audio needs a connection, so skip listening today.')}</span>
-            : <Button variant="secondary" disabled={!vs.verse} onClick={() => vs.verse && audio.ayah(vs.verse)}>{t('▶ Listen')}</Button>}
-        </li>
-        <li>
-          <RecordButton
-            state={micOff ? 'off' : rec.state.status === 'recording' ? 'recording' : take ? 'saved' : 'idle'}
-            seconds={Math.round((take?.durationMs ?? 0) / 1000)}
-            onClick={record}
-            offReason={rec.state.status === 'denied' ? t('The microphone is off. You can still rate yourself.') : t('Recording is not available here. You can still rate yourself.')}
-          />
-        </li>
-        <li><Button variant="secondary" disabled={!take || !vs.verse || audio.offline} onClick={compare}>{t('Model, then me')}</Button></li>
-      </ol>
-      <p className="t-lg">{t('Did you apply the fix?')}</p>
-      <div className="opts">
-        <Button variant={rated === true ? 'primary' : 'secondary'} disabled={!canRate || rated != null} onClick={() => rate(true)}>{t('Applied the fix')}</Button>
-        <Button variant={rated === false ? 'primary' : 'secondary'} disabled={!canRate || rated != null} onClick={() => rate(false)}>{t('Not yet')}</Button>
-      </div>
-      <p className="t-sm muted s-center">{t('Your own rating')}{canRate ? '' : t(' · record first')}</p>
-      <div aria-live="polite">
+    <div className="flex min-w-0 flex-col gap-space-md">
+      <p className="flex flex-wrap items-center gap-space-sm text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
+        {t('Teacher correction')} <CorrectionTag severity={c.severity} gloss />
+      </p>
+      <section className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+        {vs.verse ? (
+          <VerseBlock text={vs.verse.text} size="focus" reference={verseRef(c.verseKey)} marks={c.wordPosition ? { [c.wordPosition]: 'ring' } : undefined} />
+        ) : vs.failed ? <p className="text-body-md text-on-surface-variant">{t('The text needs a connection. Recite from your muṣḥaf.')}</p>
+          : <div role="status" className="flex flex-col gap-3 py-space-md">{[0, 1].map(i => <Skeleton key={i} className="h-8 w-full" />)}</div>}
+        {c.note && <Callout variant="note" title={t("Your teacher's note: ")}><Tx>{c.note}</Tx></Callout>}
+        {lessons.length > 0 && <p className="text-body-md text-on-surface-variant"><Tx>{t('Rule: {x}', { x: lessons.map(l => l!.nameAr).join(' · ') })}</Tx></p>}
+      </section>
+      <RowCard n={1} title={t('Listen')}>
+        {audio.offline
+          ? <p className="text-body-md text-on-surface-variant">{t('Audio needs a connection, so skip listening today.')}</p>
+          : <PlayButton audio={audio} label={verseRef(c.verseKey)} text={t('Listen')} onClick={vs.verse && (() => audio.ayah(vs.verse!))} className="self-start" />}
+      </RowCard>
+      <RowCard n={2} title={t('Record yourself')}>
+        <RecordControl r={r} offReason={rec.state.status === 'denied' ? t('The microphone is off. You can still rate yourself.') : t('Recording is not available here. You can still rate yourself.')} />
+      </RowCard>
+      <RowCard n={3} title={t('Compare')}>
+        <Button variant="secondary" className="self-start" disabled={!take || !vs.verse || audio.offline} onClick={compare}>
+          <Icon name="compare_arrows" size={20} />{t('Model, then me')}
+        </Button>
+      </RowCard>
+      <section className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+        <h3 className="text-headline-md text-on-surface">{t('Did you apply the fix?')}</h3>
+        <div className="grid grid-cols-2 gap-space-sm">
+          <Button variant={rated === true ? 'primary' : 'secondary'} className="h-auto min-h-12 whitespace-normal" disabled={!canRate || rated != null} onClick={() => rate(true)}>{t('Applied the fix')}</Button>
+          <Button variant={rated === false ? 'primary' : 'secondary'} className="h-auto min-h-12 whitespace-normal" disabled={!canRate || rated != null} onClick={() => rate(false)}>{t('Not yet')}</Button>
+        </div>
+        <p className="text-center text-body-md text-on-surface-variant">{t('Your own rating')}{canRate ? '' : t(' · record first')}</p>
+      </section>
+      <div aria-live="polite" className="flex flex-col gap-space-md">
         {rated != null && (
           <>
-            <Card className="s-feedback"><p>{t('Saved. Your teacher will check it.')}</p></Card>
-            <Button block autoFocus onClick={onNext} className="s-study-next">{t('Next')}</Button>
+            <Callout variant="note" icon="check_circle">{t('Saved. Your teacher will check it.')}</Callout>
+            <Button size="lg" className="w-full" autoFocus onClick={onNext}>{t('Next')}<Icon name="arrow_forward" size={20} rtlFlip /></Button>
           </>
         )}
       </div>

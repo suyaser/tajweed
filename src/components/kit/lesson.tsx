@@ -85,8 +85,10 @@ export function PagerDots({ index, total, onPick }: { index: number; total: numb
  * One example (word or ayah) in a lesson step: eyebrow "Example 1 of 3", reference chip, big content,
  * a controls row, and prev / dots / next. Content and controls are slots.
  */
-export function ExampleCard({ index, total, reference, children, controls, onPrev, onNext, onPick, className }: {
+export function ExampleCard({ index, total, eyebrow, reference, children, controls, onPrev, onNext, onPick, className }: {
   index: number; total: number; reference?: ReactNode; children: ReactNode; controls?: ReactNode
+  /** Replaces the "Example 1 of 3" eyebrow (e.g. "Sound A"). */
+  eyebrow?: ReactNode
   onPrev?: () => void; onNext?: () => void; onPick?: (i: number) => void; className?: string
 }) {
   const nav = 'grid size-12 cursor-pointer place-items-center rounded-full transition-colors hover:bg-surface-container disabled:cursor-default disabled:opacity-30'
@@ -95,7 +97,7 @@ export function ExampleCard({ index, total, reference, children, controls, onPre
       <header className="flex items-center justify-between gap-space-sm">
         <span className="flex items-center gap-1.5 text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
           <span aria-hidden className="size-1.5 rounded-full bg-gold" />
-          {t('Example {n} of {total}', { n: index + 1, total })}
+          {eyebrow ?? t('Example {n} of {total}', { n: index + 1, total })}
         </span>
         {reference && <Chip icon="bookmark">{reference}</Chip>}
       </header>

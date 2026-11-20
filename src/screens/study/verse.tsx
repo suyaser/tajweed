@@ -4,7 +4,11 @@ import type { Example, Verse } from '../../core/types'
 import { useData } from '../../core/store'
 import { getVerse, RECITERS, wordSegments } from '../../quran'
 import { usePlayer } from '../../audio/usePlayer'
-import { Card, VerseBlock, type TajweedSegment } from '../../components'
+import { VerseBlock, type TajweedSegment } from '../../components'
+import { AudioControls, Callout, Chip, ExampleCard as KitExampleCard } from '@/components/kit'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
+import { cn } from '@/lib/utils'
 import { verseRef } from './helpers'
 import { t } from '../../i18n'
 import { Tx } from './i18n'
@@ -75,37 +79,50 @@ export function useStudyAudio() {
 }
 export type StudyAudio = ReturnType<typeof useStudyAudio>
 
-/**
- * ▶ with a text label, ❚❚ while it plays (tap to stop); says so when audio is unavailable (design §5.3 states).
- * `text` shows a visible word next to the glyph (example cards: ▶ Play / ❚❚ Stop / ↻ Play again).
- */
-export function PlayButton({ label, onClick, audio, children = '▶', text, big }: {
-  label: string; onClick?: () => void; audio: StudyAudio; children?: ReactNode; text?: string; big?: boolean
-}) {
+/** Play / stop owned by one control: `playing` only while this control's playback runs. */
+export function usePlayToggle(audio: StudyAudio) {
   const id = useId()
-  if (audio.offline) return <span className="t-sm muted s-play-off">{t('Audio needs a connection')}</span>
   const playing = audio.busy && audio.owner === id
-  const tap = () => {
-    if (playing) return audio.stop()
-    audio.setOwner(id)
-    onClick?.()
+  return {
+    playing,
+    tap: (start?: () => void) => {
+      if (playing) return audio.stop()
+      audio.setOwner(id)
+      start?.()
+    },
   }
-  return (
-    <button type="button" className={`icon-btn s-play-btn${big ? ' s-play-big' : ''}`} onClick={tap} disabled={!onClick} aria-pressed={playing}
-      aria-label={text ? undefined : playing ? t('Stop {x}', { x: label }) : t('Play {x}', { x: label })}>
-      {playing ? <span aria-hidden="true">❚❚</span> : <span aria-hidden={!!text}>{children}</span>}
-      {text && <span>{playing ? t('Stop') : text}</span>}
-    </button>
+}
+
+/**
+ * ▶ Play with a visible word (`text`) or an icon-only round button named by `label`; ❚❚ Stop while it plays. Offline
+ * it says so instead (design §5.3 states).
+ */
+export function PlayButton({ label, onClick, audio, text, className }: {
+  label: string; onClick?: () => void; audio: StudyAudio; text?: string; className?: string
+}) {
+  const p = usePlayToggle(audio)
+  if (audio.offline) return <span className="text-caption text-on-surface-variant">{t('Audio needs a connection')}</span>
+  const icon = <Icon name={p.playing ? 'pause' : 'play_arrow'} fill size={text ? 20 : 24} />
+  return text ? (
+    <Button variant="secondary" className={cn('min-h-12 shrink whitespace-normal', className)} onClick={() => p.tap(onClick)} disabled={!onClick} aria-pressed={p.playing}>
+      {icon}{p.playing ? t('Stop') : text}
+    </Button>
+  ) : (
+    <Button variant="secondary" size="icon" className={cn('border-none bg-primary-container text-on-primary-container hover:bg-primary-container/80', className)}
+      onClick={() => p.tap(onClick)} disabled={!onClick} aria-pressed={p.playing}
+      aria-label={p.playing ? t('Stop {x}', { x: label }) : t('Play {x}', { x: label })}>
+      {icon}
+    </Button>
   )
 }
 
-/** Slower (0.75×) and Loop: text toggles, never a long-press (review plan "Now" 3). */
+/** Slower (0.75×) and Loop: toggles, never a long-press (review plan "Now" 3). */
 export function PlayOptions({ audio }: { audio: StudyAudio }) {
   if (audio.offline) return null
   return (
-    <span className="s-play-opts">
-      <button type="button" className="s-toggle" aria-pressed={audio.slow} onClick={() => audio.setSlow(!audio.slow)}>{t('Slower')}</button>
-      <button type="button" className="s-toggle" aria-pressed={audio.loop} onClick={() => audio.setLoop(!audio.loop)}>{t('Loop')}</button>
+    <span className="flex flex-wrap items-center gap-2">
+      <Chip icon="speed" pressed={audio.slow} onClick={() => audio.setSlow(!audio.slow)}>{t('Slower')}</Chip>
+      <Chip icon="repeat" pressed={audio.loop} onClick={() => audio.setLoop(!audio.loop)}>{t('Loop')}</Chip>
     </span>
   )
 }
@@ -142,59 +159,76 @@ export function ExampleVerse({ ex, vs, spanOnly = false, size = 'inline', action
 }
 
 /**
- * One numbered example (docs/10 §4.1): eyebrow `Example 1 of 3` · reference, the words with the focus highlighted,
- * the note, ▶ Play / ✓ Played, Slower / Loop, and the whole ayah on request. Offline it counts as played.
- * `hidden` hides the words (Notice, by ear) while the audio works. `children` go under the controls (Say rows).
+ * The example's audio row: ✓ Played · ▶ (56px) · Slower / Loop. Offline (or no ayah) it counts as played and says
+ * to read aloud, so the learner is never blocked.
  */
-export function ExampleCard({ ex, eyebrow, audio, played, onPlayed, hidden = false, children }: {
-  ex: Example; eyebrow: ReactNode; audio: StudyAudio; played: boolean; onPlayed: () => void; hidden?: boolean; children?: ReactNode
+export function ExampleAudio({ ex, audio, played, onPlayed }: { ex: Example; audio: StudyAudio; played: boolean; onPlayed: () => void }) {
+  const vs = useVerse(ex.verseKey)
+  const p = usePlayToggle(audio)
+  const noAudio = audio.offline || vs.failed || audio.state.status === 'error'
+  useEffect(() => { if (noAudio && !played) onPlayed() }, [noAudio]) // eslint-disable-line react-hooks/exhaustive-deps
+  if (noAudio)
+    return <Callout variant="note" icon="wifi_off"><span role="status">{t('Audio needs a connection. Read it aloud instead.')}</span></Callout>
+  return (
+    <>
+      <AudioControls playing={p.playing} disabled={!vs.verse} played={played}
+        onPlay={() => p.tap(vs.verse && (() => audio.example(vs.verse!, ex, onPlayed)))}
+        slow={audio.slow} onSlow={() => audio.setSlow(!audio.slow)} loop={audio.loop} onLoop={() => audio.setLoop(!audio.loop)} />
+      <span className="sr-only" role="status">{played ? t('Played') : ''}</span>
+    </>
+  )
+}
+
+/** Stepper props for the kit card footer: back freely, forward only to examples already reached (docs/10 §4.1). */
+export function stepperNav(sp: ReturnType<typeof useStepper>, audio: StudyAudio) {
+  const go = (i: number) => { if (i <= sp.reached && i !== sp.at) { audio.stop(); sp.go(i) } }
+  return {
+    index: sp.at, total: sp.n,
+    onPrev: sp.at > 0 ? () => go(sp.at - 1) : undefined,
+    onNext: sp.at < sp.reached ? () => go(sp.at + 1) : undefined,
+    onPick: go,
+  }
+}
+
+/**
+ * One example (docs/10 §4.1): eyebrow `Example 1 of 3` · reference, the words with the focus highlighted, the note,
+ * the audio row, and the whole ayah on request. `hidden` hides the words (Notice, by ear) while the audio works;
+ * `audioRow={false}` leaves the audio to the caller (Say's numbered Listen card). `children` go under it.
+ */
+export function ExampleCard({ ex, eyebrow, audio, played, onPlayed, hidden = false, audioRow = true, nav, children, className }: {
+  ex: Example; eyebrow?: ReactNode; audio: StudyAudio; played: boolean; onPlayed: () => void; hidden?: boolean; audioRow?: boolean
+  nav?: ReturnType<typeof stepperNav>; children?: ReactNode; className?: string
 }) {
   const vs = useVerse(ex.verseKey)
   const [whole, setWhole] = useState(false)
   const noAudio = audio.offline || vs.failed || audio.state.status === 'error'
-  useEffect(() => { if (noAudio && !played) onPlayed() }, [noAudio]) // eslint-disable-line react-hooks/exhaustive-deps
   const hide = hidden && !noAudio
   return (
-    <Card level="e2" className="s-excard">
-      <p className="s-excard-top t-sm muted"><span className="eyebrow">{eyebrow}</span>{!hide && <span lang="ar">{verseRef(ex.verseKey)}</span>}</p>
-      {!hide && <ExampleVerse ex={ex} vs={vs} spanOnly size="focus" />}
-      {!hide && ex.note && <p className="t-sm muted s-center"><Tx>{ex.note}</Tx></p>}
-      {noAudio ? (
-        <p className="t-sm muted s-center" role="status">{t('Audio needs a connection. Read it aloud instead.')}</p>
-      ) : (
-        <div className="s-excard-play">
-          <PlayButton big audio={audio} label={verseRef(ex.verseKey)} text={played ? t('Play again') : t('Play')}
-            onClick={vs.verse && (() => audio.example(vs.verse!, ex, onPlayed))}>{played ? '↻' : '▶'}</PlayButton>
-          <span className="s-played" role="status">{played && <><span aria-hidden="true">✓ </span>{t('Played')}</>}</span>
-        </div>
-      )}
-      {!noAudio && <PlayOptions audio={audio} />}
-      {!hide && vs.verse && (
+    <KitExampleCard index={nav?.index ?? 0} total={nav?.total ?? 1} eyebrow={eyebrow} onPrev={nav?.onPrev} onNext={nav?.onNext} onPick={nav?.onPick} className={className}
+      reference={!hide && <span lang="ar">{verseRef(ex.verseKey)}</span>}
+      controls={(audioRow || (!hide && vs.verse) || children) && (
         <>
-          <button type="button" className="s-linkbtn" aria-expanded={whole} onClick={() => setWhole(!whole)}>
-            {whole ? t('Hide the whole ayah') : t('Show the whole ayah')} <span aria-hidden="true">{whole ? '▴' : '▾'}</span>
-          </button>
-          {whole && <ExampleVerse ex={ex} vs={vs} size="read" />}
+          {audioRow && <ExampleAudio ex={ex} audio={audio} played={played} onPlayed={onPlayed} />}
+          {!hide && vs.verse && (
+            <div className="flex flex-col items-center gap-space-sm">
+              <Button variant="tertiary" size="sm" aria-expanded={whole} onClick={() => setWhole(!whole)}>
+                {whole ? t('Hide the whole ayah') : t('Show the whole ayah')}<Icon name={whole ? 'expand_less' : 'expand_more'} size={20} />
+              </Button>
+              {whole && <div className="w-full rounded-control bg-surface-container-low px-space-md"><ExampleVerse ex={ex} vs={vs} size="read" /></div>}
+            </div>
+          )}
+          {children}
+        </>
+      )}>
+      {hide ? (
+        <span className="grid size-20 place-items-center rounded-full bg-surface-container text-on-surface-variant"><Icon name="hearing" size={36} /></span>
+      ) : (
+        <>
+          <ExampleVerse ex={ex} vs={vs} spanOnly size="focus" reference={false} />
+          {ex.note && <p className="max-w-[50ch] text-body-md text-on-surface-variant"><Tx>{ex.note}</Tx></p>}
         </>
       )}
-      {children}
-    </Card>
-  )
-}
-
-/** The dot row under a stepper: one 48px button per example, filled once played; only reached ones go back. */
-export function Dots({ n, at, reached, played, onPick }: { n: number; at: number; reached: number; played: (i: number) => boolean; onPick: (i: number) => void }) {
-  return (
-    <ol className="s-dots" aria-label={t('Examples')}>
-      {Array.from({ length: n }, (_, i) => (
-        <li key={i}>
-          <button type="button" disabled={i > reached} aria-current={i === at ? 'step' : undefined} data-played={played(i) || undefined}
-            onClick={() => onPick(i)} aria-label={t('Example {n} of {m}', { n: i + 1, m: n }) + (played(i) ? t(', played') : '')}>
-            <i aria-hidden="true" />
-          </button>
-        </li>
-      ))}
-    </ol>
+    </KitExampleCard>
   )
 }
 

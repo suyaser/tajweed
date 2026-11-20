@@ -4,6 +4,35 @@ import { surahName } from '../quran'
 import { BASMALA_PREFIX } from '../quran/data'
 import { arDigits } from './bidi'
 import { isAr, t } from '../i18n'
+import { cn } from '@/lib/utils'
+
+// Tailwind styling (docs/13), set once on the text block: words (.w), the focus highlight (mark.focus) and pause marks
+// keep their plain class names (other screens and tests hook on them).
+const TEXT = cn(
+  'verse-text min-w-0 font-quran text-start break-words text-on-surface',
+  '[&_.w]:rounded-md [&_.w]:transition-colors',
+  '[&_.w[role=button]]:cursor-pointer [&_.w[role=button]]:py-[0.15em] [&_.w[role=button]]:focus-visible:outline-offset-0',
+  '[&_.w[data-mark=lamp]]:bg-secondary-container',
+  '[&_.w[data-mark=lamp-dotted]]:bg-transparent [&_.w[data-mark=lamp-dotted]]:outline-2 [&_.w[data-mark=lamp-dotted]]:outline-dotted [&_.w[data-mark=lamp-dotted]]:outline-gold',
+  '[&_.w[data-mark=ring]]:bg-focus-bg [&_.w[data-mark=ring]]:shadow-[0_0_0_2px_var(--color-focus-ink)]',
+  '[&_.w[data-mark=found]]:bg-success-container [&_.w[data-mark=found]]:shadow-[0_0_0_2px_var(--color-success)]',
+  '[&_.w[data-mark=missed]]:outline-2 [&_.w[data-mark=missed]]:outline-offset-1 [&_.w[data-mark=missed]]:outline-dashed [&_.w[data-mark=missed]]:outline-gold',
+  '[&_.w[data-mark=wrong]]:outline-2 [&_.w[data-mark=wrong]]:outline-offset-1 [&_.w[data-mark=wrong]]:outline-dotted [&_.w[data-mark=wrong]]:outline-outline [&_.w[data-mark=wrong]]:line-through',
+  // find results carry a small label above the word (✓ / missed / ✕)
+  '[&_.w[data-label]]:relative [&_.w[data-label]]:before:absolute [&_.w[data-label]]:before:inset-x-0 [&_.w[data-label]]:before:-top-[0.9em] [&_.w[data-label]]:before:text-center',
+  '[&_.w[data-label]]:before:font-ui [&_.w[data-label]]:before:text-[12px] [&_.w[data-label]]:before:leading-none [&_.w[data-label]]:before:font-bold [&_.w[data-label]]:before:whitespace-nowrap [&_.w[data-label]]:before:text-on-surface [&_.w[data-label]]:before:content-[attr(data-label)]',
+  '[&_mark.focus]:rounded-md [&_mark.focus]:bg-focus-bg [&_mark.focus]:px-0.5 [&_mark.focus]:text-focus-ink [&_mark.focus]:[-webkit-text-stroke:0.025em_currentColor]',
+  '[&_.pause]:text-[0.8em] [&_.pause]:text-secondary [&_.br]:text-[0.85em] [&_.br]:text-gold',
+)
+/** Find: each tappable word a chip on its own tinted tile. */
+const CHIPS = '[&_.br]:hidden [&_.w[role=button]]:mx-0.5 [&_.w[role=button]]:my-1.5 [&_.w[role=button]]:inline-block [&_.w[role=button]]:bg-surface-container-low [&_.w[role=button]]:px-2 [&_.w[role=button]]:leading-[1.9] [&_.w[role=button]]:hover:bg-surface-container'
+const LABEL: Partial<Record<WordMark, string>> = { found: '✓', missed: 'missed', wrong: '✕' }
+const SIZE = {
+  inline: 'text-[24px] leading-[2.1] sm:text-[26px]',
+  read: 'text-[30px] leading-[2.2] sm:text-[36px]',
+  focus: 'text-[36px] leading-[2.1] text-center sm:text-[44px]',
+} as const
+const AYAH_END = 'ayah-end inline-grid min-h-12 min-w-12 place-items-center border-0 bg-transparent px-0.5 font-quran text-[0.85em] leading-none text-gold'
 
 /** A run of verse text; `colour` set = a tajweed rule from a named source (design §1.2). */
 export interface TajweedSegment { text: string; colour?: ColourKey | null }
@@ -24,7 +53,7 @@ const BASMALA = BASMALA_PREFIX.trim()
 /** Surah title, and the basmala line for every surah except الفاتحة (its ayah 1) and التوبة (none). Not a numbered ayah. */
 export function SurahOpening({ surah }: { surah: number }) {
   return (
-    <span className="surah-open">
+    <span className="surah-open mt-2 mb-1 block text-center text-on-surface [&>span]:block [&>[role=heading]]:border-y [&>[role=heading]]:border-secondary-container [&>[role=heading]]:py-0.5 [&>[role=heading]]:font-naskh [&>[role=heading]]:text-[1.1rem] [&>[role=heading]]:leading-[1.6] [&>[role=heading]]:font-bold [&>[role=heading]]:text-secondary">
       <span className="surah-name" role="heading" aria-level={3}>سورة {surahName(surah)}</span>
       {surah !== 1 && surah !== 9 && (
         <span className="basmala">
@@ -80,12 +109,14 @@ export function WordToken({ parts, mark, tajweed = true, isolate, onTap, tabbabl
       <Fragment key={i}>{t}</Fragment>
     )
   })
-  if (!onTap) return <span className="w" data-mark={mark}>{inner}</span>
+  const label = mark && LABEL[mark] && t(LABEL[mark]!)
+  if (!onTap) return <span className="w" data-mark={mark} data-label={label || undefined}>{inner}</span>
   return (
     <span
       className="w"
       data-w=""
       data-mark={mark}
+      data-label={label || undefined}
       role="button"
       tabIndex={tabbable ? 0 : -1}
       aria-label={mark ? `${word}${t(', ')}${t(MARK_LABEL[mark])}` : word}
@@ -193,10 +224,12 @@ export interface VerseBlockProps {
   stopping?: boolean
   /** ▶ / › controls placed in the caption. */
   actions?: ReactNode
+  /** Tappable words (`onWord`) drawn as chips. */
+  chips?: boolean
 }
 
 export function VerseBlock({
-  text = '', segments, reference, size = 'inline', tajweed = true, focus, focusText, pauses, verseKey, current, marks, isolate, onWord, stopping, actions,
+  text = '', segments, reference, size = 'inline', tajweed = true, focus, focusText, pauses, verseKey, current, marks, isolate, onWord, stopping, actions, chips,
 }: VerseBlockProps) {
   const capId = useId()
   const segs = segments ?? [{ text }]
@@ -224,15 +257,15 @@ export function VerseBlock({
     : join(toks)
   const hasCaption = reference || stopping || actions
   return (
-    <figure className={`verse verse-${size}`} lang="ar" dir="rtl" data-isolate={isolate ?? undefined} aria-describedby={hasCaption ? capId : undefined}>
+    <figure className={`verse verse-${size} m-0 grid min-w-0 gap-1 py-2`} lang="ar" dir="rtl" data-isolate={isolate ?? undefined} aria-describedby={hasCaption ? capId : undefined}>
       {ayah === 1 && <SurahOpening surah={surah} />}
-      <p className="verse-text" onKeyDown={onWord ? roving : undefined}>
-        <span className="br" aria-hidden="true">﴿</span>{'\u00A0'}{body}<span className="nowrap">{'\u00A0'}<span className="br" aria-hidden="true">﴾</span></span>
+      <p className={cn(TEXT, SIZE[size], chips && CHIPS)} onKeyDown={onWord ? roving : undefined}>
+        <span className="br" aria-hidden="true">﴿</span>{'\u00A0'}{body}<span className="nowrap whitespace-nowrap">{'\u00A0'}<span className="br" aria-hidden="true">﴾</span></span>
       </p>
       {hasCaption && (
-        <figcaption id={capId}>
-          {stopping && <em className="stop">◼ وقف{!isAr && <> · <span lang="en">stopping here</span></>}</em>}
-          {reference && <span className="ref">{reference}</span>}
+        <figcaption id={capId} className={cn('flex flex-wrap items-center gap-3 text-caption text-on-surface-variant', size === 'focus' && 'justify-center')}>
+          {stopping && <em className="stop rounded border border-current px-1.5 text-[11px] font-bold tracking-wide text-on-surface not-italic">◼ وقف{!isAr && <> · <span lang="en" className="font-ui">stopping here</span></>}</em>}
+          {reference && <span className="ref text-arabic-label text-on-surface-variant">{reference}</span>}
           {actions}
         </figcaption>
       )}
@@ -264,8 +297,8 @@ export function Passage({ ayahs, size = 'read', tajweed = false, currentAyah, cu
   const word = useCallback((k: string, w: number, t: string) => cb.current.onWord?.(k, w, t), [])
   const ayah = useCallback((k: string) => cb.current.onAyah?.(k), [])
   return (
-    <div className={`verse verse-${size} passage`} lang="ar" dir="rtl">
-      <p className="verse-text" onKeyDown={onWord ? roving : undefined}>
+    <div className={`verse verse-${size} passage m-0 grid min-w-0 gap-1 py-2`} lang="ar" dir="rtl">
+      <p className={cn(TEXT, SIZE[size], 'text-start')} onKeyDown={onWord ? roving : undefined}>
         {ayahs.map((a, ai) => (
           <Fragment key={a.key}>
           {a.n === 1 && <SurahOpening surah={+a.key.split(':')[0]} />}
@@ -296,16 +329,16 @@ const AyahRun = memo(function AyahRun({ a, tajweed, isolate, marks, isCurrent, w
   }, a.key + '/')
   const end = `﴿${arDigits(a.n)}﴾`
   return (
-    <span className="ayah" data-current={isCurrent || undefined}>
+    <span className="ayah rounded-lg transition-colors data-[current]:bg-secondary-container/45" data-current={isCurrent || undefined}>
       {join(toks.slice(0, -1))}{toks.length > 1 && ' '}
       {/* the last word and its marker wrap together: ﴿٥﴾ never sits alone on a line (m17) */}
-      <span className="nowrap">
+      <span className="nowrap whitespace-nowrap">
         {toks[toks.length - 1]}{'\u00A0'}
         {onAyah ? (
-          <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang={isAr ? undefined : 'en'} aria-label={t('Ayah {n}', { n: a.n })}
+          <button type="button" className={AYAH_END} onClick={() => onAyah(a.key)} lang={isAr ? undefined : 'en'} aria-label={t('Ayah {n}', { n: a.n })}
 >{end}</button>
         ) : (
-          <span className="ayah-end">{end}</span>
+          <span className={AYAH_END}>{end}</span>
         )}
       </span>{' '}
     </span>

@@ -193,11 +193,11 @@ export function Band({ size = 'slim', children, className = '' }: { size?: 'slim
 export function CorrectionTag({ severity, gloss, count }: { severity: 'jali' | 'khafi'; gloss?: boolean; count?: number }) {
   const jali = severity === 'jali'
   return (
-    <span className={`ctag ctag-${severity}`}>
+    <span className={`ctag ctag-${severity} inline-flex min-h-7 items-center gap-1.5 rounded-full border border-on-surface px-2.5 text-label normal-case tracking-normal ${jali ? 'bg-on-surface text-surface' : 'bg-surface text-on-surface'}`}>
       <span aria-hidden="true">{jali ? '■' : '□'}</span>
-      {count != null && <span className="num">{count}</span>}
-      <span lang="ar">{jali ? 'جلي' : 'خفي'}</span>
-      {gloss && <small>{jali ? t('clear error') : t('fine detail')}</small>}
+      {count != null && <span className="tabular-nums">{count}</span>}
+      <span lang="ar" className="text-arabic-label font-bold">{jali ? 'جلي' : 'خفي'}</span>
+      {gloss && <small className="text-caption">{jali ? t('clear error') : t('fine detail')}</small>}
     </span>
   )
 }
