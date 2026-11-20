@@ -9,6 +9,7 @@ import { useSync } from '../sync/sync'
 import { CopyField } from '../sync/CopyField'
 import './path.css'
 import '../sync/sync.css'
+import { locale, t } from '../i18n'
 
 interface CircleRow { id: string; name: string; invite_code: string; owner: string }
 const NAME_KEY = 'tajweed-path:circle-name'
@@ -18,12 +19,12 @@ const inviteLink = (code: string) => `${location.origin}${location.pathname}#/ci
 
 export default function Circle({ params }: { params: Record<string, string> }) {
   const { user } = useSync()
-  if (!supabase) return <Card><p>Circles are not available in this version of the app.</p></Card>
+  if (!supabase) return <Card><p>{t('Circles are not available in this version of the app.')}</p></Card>
   if (!user)
     return (
-      <EmptyState title="Study together in a circle" action={<Button href="#/account">Sign in</Button>}>
-        A circle is a small private group (up to 20) that sees who studied which day this week. Sign in to create or join one.
-        {params.join ? ` After signing in, open the invite link again to join.` : ''}
+      <EmptyState title={t('Study together in a circle')} action={<Button href="#/account">{t('Sign in')}</Button>}>
+        {t('A circle is a small private group (up to 20) that sees who studied which day this week. Sign in to create or join one.')}
+        {params.join ? ' ' + t('After signing in, open the invite link again to join.') : ''}
       </EmptyState>
     )
   return params.id ? <CircleView id={params.id} userId={user.id} /> : <Circles join={params.join} />
@@ -42,7 +43,7 @@ function Circles({ join }: { join?: string }) {
   return (
     <div className="p-stack">
       {join && <JoinForm initialCode={join} />}
-      <OrnHeading>Your circles</OrnHeading>
+      <OrnHeading>{t('Your circles')}</OrnHeading>
       <Card>
         {list === null ? <Skeleton lines={2} /> : list.length ? (
           <ul className="p-list">
@@ -50,12 +51,12 @@ function Circles({ join }: { join?: string }) {
               <li key={c.id}><a className="p-item p-item-link" href={`#/circle/${c.id}`}><span className="p-item-main">{c.name}</span><span className="chev" aria-hidden="true">›</span></a></li>
             ))}
           </ul>
-        ) : <p className="muted">You are not in a circle yet. Create one and invite your friends, or join with a code.</p>}
+        ) : <p className="muted">{t('You are not in a circle yet. Create one and invite your friends, or join with a code.')}</p>}
         {err && <p role="alert" className="p-error">{err}</p>}
       </Card>
       <CreateForm />
       {!join && <JoinForm />}
-      <p className="t-sm muted">Members see each other's name and which days they studied this week. Nothing else: no scores, no lessons, no ranking.</p>
+      <p className="t-sm muted">{t("Members see each other's name and which days they studied this week. Nothing else: no scores, no lessons, no ranking.")}</p>
     </div>
   )
 }
@@ -63,7 +64,7 @@ function Circles({ join }: { join?: string }) {
 function NameField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
     <label className="p-field">
-      <span>Your name in the circle</span>
+      <span>{t('Your name in the circle')}</span>
       <input type="text" dir="auto" maxLength={40} required value={value} onChange={(e) => onChange(e.target.value)} />
     </label>
   )
@@ -76,7 +77,7 @@ function CreateForm() {
   const [err, setErr] = useState('')
   return (
     <>
-      <OrnHeading>Create a circle</OrnHeading>
+      <OrnHeading>{t('Create a circle')}</OrnHeading>
       <Card>
         <form className="p-stack" onSubmit={async (e) => {
           e.preventDefault()
@@ -88,11 +89,11 @@ function CreateForm() {
           navigate(`circle/${data}`)
         }}>
           <label className="p-field">
-            <span>Circle name</span>
+            <span>{t('Circle name')}</span>
             <input type="text" dir="auto" maxLength={60} required value={name} onChange={(e) => setName(e.target.value)} placeholder="حلقة الفجر" />
           </label>
           <NameField value={me} onChange={setMe} />
-          <Button type="submit" disabled={busy || !name.trim() || !me.trim()}>Create</Button>
+          <Button type="submit" disabled={busy || !name.trim() || !me.trim()}>{t('Create')}</Button>
           {err && <p role="alert" className="p-error">{err}</p>}
         </form>
       </Card>
@@ -107,7 +108,7 @@ function JoinForm({ initialCode = '' }: { initialCode?: string }) {
   const [err, setErr] = useState('')
   return (
     <>
-      <OrnHeading>Join a circle</OrnHeading>
+      <OrnHeading>{t('Join a circle')}</OrnHeading>
       <Card>
         <form className="p-stack" onSubmit={async (e) => {
           e.preventDefault()
@@ -115,16 +116,16 @@ function JoinForm({ initialCode = '' }: { initialCode?: string }) {
           const { data, error } = await supabase!.rpc('join_circle', { p_code: code.trim(), p_name: me.trim() })
           setBusy(false)
           if (error) return setErr(error.message)
-          if (!data) return setErr('That code did not work. Check it with whoever invited you and try again.')
+          if (!data) return setErr(t('That code did not work. Check it with whoever invited you and try again.'))
           saveName(me.trim())
           navigate(`circle/${data}`)
         }}>
           <label className="p-field">
-            <span>Invite code</span>
-            <input type="text" required autoCapitalize="characters" autoComplete="off" spellCheck={false} value={code} onChange={(e) => setCode(e.target.value)} />
+            <span>{t('Invite code')}</span>
+            <input type="text" dir="ltr" required autoCapitalize="characters" autoComplete="off" spellCheck={false} value={code} onChange={(e) => setCode(e.target.value)} />
           </label>
           <NameField value={me} onChange={setMe} />
-          <Button type="submit" disabled={busy || !code.trim() || !me.trim()}>Join</Button>
+          <Button type="submit" disabled={busy || !code.trim() || !me.trim()}>{t('Join')}</Button>
           {err && <p role="alert" className="p-error">{err}</p>}
         </form>
       </Card>
@@ -136,7 +137,7 @@ function JoinForm({ initialCode = '' }: { initialCode?: string }) {
 function lastWeek(): { days: string[]; labels: string[] } {
   const end = new Date(today() + 'T12:00:00Z')
   const days = Array.from({ length: 7 }, (_, i) => new Date(end.getTime() - (6 - i) * 864e5).toISOString().slice(0, 10))
-  const labels = days.map((d) => new Intl.DateTimeFormat('en-GB', { weekday: 'short', timeZone: 'UTC' }).format(new Date(d + 'T12:00:00Z')))
+  const labels = days.map((d) => new Intl.DateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' }).format(new Date(d + 'T12:00:00Z')))
   return { days, labels }
 }
 
@@ -158,8 +159,8 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
   }, [id])
   useEffect(() => { void load() }, [load])
 
-  if (circle === undefined) return <Skeleton lines={4} label="Loading circle…" />
-  if (!circle) return <EmptyState title="Circle not found" action={<Button href="#/circle">Your circles</Button>}>{err || 'You may have left it, or it was deleted.'}</EmptyState>
+  if (circle === undefined) return <Skeleton lines={4} label={t('Loading circle…')} />
+  if (!circle) return <EmptyState title={t('Circle not found')} action={<Button href="#/circle">{t('Your circles')}</Button>}>{err || t('You may have left it, or it was deleted.')}</EmptyState>
 
   const { days, labels } = lastWeek()
   const owner = circle.owner === userId
@@ -181,7 +182,7 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
   return (
     <div className="p-stack">
       <OrnHeading>{circle.name}</OrnHeading>
-      <Card eyebrow="This week">
+      <Card eyebrow={t('This week')}>
         {week === null ? <Skeleton lines={3} /> : week.length ? (
           <ul className="circle-week">
             {week.map((m, i) => {
@@ -189,50 +190,50 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
               const marks: DayMark[] = days.map((d) => (studied.has(d) ? 'studied' : 'not'))
               return (
                 <li key={i}>
-                  <span>{m.display_name}{m.is_me && <small className="muted"> (you)</small>}</span>
+                  <span><bdi>{m.display_name}</bdi>{m.is_me && <small className="muted"> {t('(you)')}</small>}</span>
                   <ProgressDots days={marks} today={6} labels={labels} />
                   {owner && !m.is_me && (
-                    <button type="button" className="p-linkbtn" onClick={() => setRemoving(m)}>Remove {m.display_name}</button>
+                    <button type="button" className="p-linkbtn" onClick={() => setRemoving(m)}>{t('Remove {name}', { name: m.display_name })}</button>
                   )}
                 </li>
               )
             })}
           </ul>
-        ) : <p className="muted">No members yet.</p>}
-        <p className="t-sm muted">A filled dot is a day that member studied. Days run {labels[0]} to {labels[6]} (today).</p>
+        ) : <p className="muted">{t('No members yet.')}</p>}
+        <p className="t-sm muted">{t('A filled dot is a day that member studied. Days run {from} to {to} (today).', { from: labels[0], to: labels[6] })}</p>
       </Card>
 
       {removing && (
         <Card level="e2">
-          <p>Remove {removing.display_name} from this circle? They can join again only with the code, so change the code too if you do not want that.</p>
+          <p>{t('Remove {name} from this circle? They can join again only with the code, so change the code too if you do not want that.', { name: removing.display_name })}</p>
           <div className="p-actions">
-            <Button variant="danger" onClick={async () => { if (await rpc('remove_member', { p_circle: id, p_user: removing.user_id })) setRemoving(null) }}>Remove</Button>
-            <Button variant="ghost" onClick={() => setRemoving(null)}>Cancel</Button>
+            <Button variant="danger" onClick={async () => { if (await rpc('remove_member', { p_circle: id, p_user: removing.user_id })) setRemoving(null) }}>{t('Remove')}</Button>
+            <Button variant="ghost" onClick={() => setRemoving(null)}>{t('Cancel')}</Button>
           </div>
         </Card>
       )}
 
-      <OrnHeading>Invite</OrnHeading>
+      <OrnHeading>{t('Invite')}</OrnHeading>
       <Card>
-        <p>Code: <span className="acc-code">{circle.invite_code}</span></p>
-        <CopyField text={inviteLink(circle.invite_code)} label="Invite link" />
-        <p className="t-sm muted">Anyone with the code or link who signs in can join (up to 20 members).</p>
-        {owner && <Button variant="secondary" onClick={() => void rpc('rotate_invite', { p_circle: id })}>Change the code</Button>}
-        {owner && <p className="t-sm muted">Changing the code stops the old code and link from working. Members stay in the circle.</p>}
+        <p>{t('Code:')} <bdi className="acc-code">{circle.invite_code}</bdi></p>
+        <CopyField text={inviteLink(circle.invite_code)} label={t('Invite link')} />
+        <p className="t-sm muted">{t('Anyone with the code or link who signs in can join (up to 20 members).')}</p>
+        {owner && <Button variant="secondary" onClick={() => void rpc('rotate_invite', { p_circle: id })}>{t('Change the code')}</Button>}
+        {owner && <p className="t-sm muted">{t('Changing the code stops the old code and link from working. Members stay in the circle.')}</p>}
       </Card>
 
       {owner && <RenameForm id={id} name={circle.name} onDone={load} />}
 
       {confirm ? (
         <Card level="e2">
-          <p>{confirm === 'delete' ? 'Delete this circle for everyone? Members keep their own progress.' : 'Leave this circle? You can join again with the code.'}</p>
+          <p>{confirm === 'delete' ? t('Delete this circle for everyone? Members keep their own progress.') : t('Leave this circle? You can join again with the code.')}</p>
           <div className="p-actions">
-            <Button variant="danger" onClick={leave}>{confirm === 'delete' ? 'Delete circle' : 'Leave'}</Button>
-            <Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button>
+            <Button variant="danger" onClick={leave}>{confirm === 'delete' ? t('Delete circle') : t('Leave')}</Button>
+            <Button variant="ghost" onClick={() => setConfirm(null)}>{t('Cancel')}</Button>
           </div>
         </Card>
       ) : (
-        <Button variant="ghost" onClick={() => setConfirm(owner ? 'delete' : 'leave')}>{owner ? 'Delete circle' : 'Leave circle'}</Button>
+        <Button variant="ghost" onClick={() => setConfirm(owner ? 'delete' : 'leave')}>{owner ? t('Delete circle') : t('Leave circle')}</Button>
       )}
       {err && <p role="alert" className="p-error">{err}</p>}
     </div>
@@ -243,7 +244,7 @@ function RenameForm({ id, name, onDone }: { id: string; name: string; onDone: ()
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState(name)
   const [err, setErr] = useState('')
-  if (!open) return <Button variant="ghost" onClick={() => { setValue(name); setOpen(true) }}>Rename circle</Button>
+  if (!open) return <Button variant="ghost" onClick={() => { setValue(name); setOpen(true) }}>{t('Rename circle')}</Button>
   return (
     <Card>
       <form className="p-stack" onSubmit={async (e) => {
@@ -255,12 +256,13 @@ function RenameForm({ id, name, onDone }: { id: string; name: string; onDone: ()
         await onDone()
       }}>
         <label className="p-field">
-          <span>Circle name</span>
+          <span>{t('Circle name')}</span>
           <input type="text" dir="auto" maxLength={60} required value={value} onChange={(e) => setValue(e.target.value)} />
         </label>
         <div className="p-actions">
-          <Button type="submit" disabled={!value.trim()}>Save</Button>
-          <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button type="submit" disabled={!value.trim()}>{t('Save')}</Button>
+          <Button variant="ghost" onClick={() => setOpen(false)}>{t('Cancel')}</Button>
+
         </div>
         {err && <p role="alert" className="p-error">{err}</p>}
       </form>

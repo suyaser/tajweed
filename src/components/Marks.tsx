@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import type { ColourKey } from '../core/types'
 import { arDigits } from './bidi'
 import { T } from './Text'
+import { isAr, t } from '../i18n'
 
 /** Muṣḥaf palette legend names (design §3.2). */
 export const COLOURS: Record<ColourKey, { ar: string; en: string }> = {
@@ -32,7 +33,7 @@ export function LevelBadge({ level, detail }: { level: Level; detail?: string })
   const [glyph, word] = LEVEL[level]
   return (
     <span className="level" data-level={level}>
-      <span aria-hidden="true" className="level-glyph">{glyph}</span> {word}
+      <span aria-hidden="true" className="level-glyph">{glyph}</span> {t(word)}
       {detail && <span className="muted"> · {detail}</span>}
     </span>
   )
@@ -54,7 +55,7 @@ export function RuleChip({ nameAr, colour, level, selected, onClick, href }: Rul
     <>
       {colour && <i className="dot" aria-hidden="true" />}
       <span lang="ar">{nameAr}</span>
-      {level && <span className="level-glyph" aria-label={LEVEL[level][1]}>{LEVEL[level][0]}</span>}
+      {level && <span className="level-glyph" aria-label={t(LEVEL[level][1])}>{LEVEL[level][0]}</span>}
     </>
   )
   const cls = `rchip${selected ? ' is-selected' : ''}`
@@ -82,7 +83,7 @@ export function RuleRow({ nameAr, nameEn, colour, level, correctionOpen, href }:
       <span className={`stripe tjp-${colour}`} aria-hidden="true" />
       <span className="rrow-main">
         <span className="a-lg" lang="ar">{nameAr}</span>
-        <span className="t-sm muted">{nameEn}</span>
+        {!isAr && <span className="t-sm muted">{nameEn}</span>}
       </span>
       <span className="rrow-meta">
         {level && <LevelBadge level={level} />}
@@ -118,7 +119,7 @@ export function Legend({ colours, isolate, onIsolate, notShown }: LegendProps) {
       </div>
       {notShown?.length ? (
         <p className="t-sm muted">
-          Not shown here yet: <span lang="ar">{notShown.join(' · ')}</span>
+          {t('Not shown here yet:')} <span lang="ar">{notShown.join(' · ')}</span>
         </p>
       ) : null}
     </div>
@@ -151,7 +152,7 @@ export function LetterTiles({ letters, colour, size = 'sm' }: { letters: string 
 
 /** 6 squares: solid = required, striped = allowed (artifact .beats). */
 export function CountBeats({ min, max = min, colour }: { min: number; max?: number; colour?: ColourKey }) {
-  const label = min === max ? `${min} counts` : `${min} to ${max} counts`
+  const label = min === max ? t('{n} counts', { n: min }) : t('{min} to {max} counts', { min, max })
   return (
     <span className="beats" role="img" aria-label={label} style={rc(colour)}>
       {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -196,12 +197,12 @@ export function CorrectionTag({ severity, gloss, count }: { severity: 'jali' | '
       <span aria-hidden="true">{jali ? '■' : '□'}</span>
       {count != null && <span className="num">{count}</span>}
       <span lang="ar">{jali ? 'جلي' : 'خفي'}</span>
-      {gloss && <small>{jali ? 'clear error' : 'fine detail'}</small>}
+      {gloss && <small>{jali ? t('clear error') : t('fine detail')}</small>}
     </span>
   )
 }
 
-export function CorrectionBadge({ children = 'correction open' }: { children?: ReactNode }) {
+export function CorrectionBadge({ children = t('correction open') }: { children?: ReactNode }) {
   return (
     <span className="cbadge">
       <span aria-hidden="true">●</span> {children}
@@ -214,13 +215,14 @@ export type DayMark = 'studied' | 'not' | 'future' | 'before'
 const WEEK = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 
 /** 7 day marks (Saturday first by default), no fraction, no streak (design §5.2). */
-export function ProgressDots({ days, today, labels = WEEK }: { days: DayMark[]; today?: number; labels?: string[] }) {
+export function ProgressDots({ days, today, labels = WEEK.map((w) => t(w)) }: { days: DayMark[]; today?: number; labels?: string[] }) {
   const n = days.filter((d) => d === 'studied').length
   return (
-    <ol className="dots" aria-label={`${n} ${n === 1 ? 'day' : 'days'} studied this week`}>
+    <ol className="dots" aria-label={n === 1 ? t('1 day studied this week') : t('{n} days studied this week', { n })}>
       {days.map((d, i) => (
         <li key={i} data-mark={d} data-today={today === i || undefined}>
-          <span className="sr-only">{`${labels[i]}: ${d === 'not' ? 'not studied' : d === 'before' ? 'before you started' : d}`}</span>
+          <span className="sr-only">{`${labels[i]}: ${d === 'not' ? t('not studied') : d === 'before' ? t('before you started') : t(d)}`}</span>
+
         </li>
       ))}
     </ol>

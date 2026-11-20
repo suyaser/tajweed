@@ -3,6 +3,7 @@ import type { ColourKey, Verse } from '../core/types'
 import { surahName } from '../quran'
 import { BASMALA_PREFIX } from '../quran/data'
 import { arDigits } from './bidi'
+import { isAr, t } from '../i18n'
 
 /** A run of verse text; `colour` set = a tajweed rule from a named source (design §1.2). */
 export interface TajweedSegment { text: string; colour?: ColourKey | null }
@@ -87,7 +88,7 @@ export function WordToken({ parts, mark, tajweed = true, isolate, onTap, tabbabl
       data-mark={mark}
       role="button"
       tabIndex={tabbable ? 0 : -1}
-      aria-label={mark ? `${word}, ${MARK_LABEL[mark]}` : word}
+      aria-label={mark ? `${word}${t(', ')}${t(MARK_LABEL[mark])}` : word}
       onClick={onTap}
     >
       {inner}
@@ -145,7 +146,7 @@ function tokens(segments: TajweedSegment[], o: WordsOpts, keyPrefix = '') {
     return (
       <Fragment key={keyPrefix + n}>
         {tok}
-        {ps.map((p, j) => <span key={j} className="pause" role="img" aria-label={PAUSE_LABEL[p.mark] ?? 'pause mark'}>{'\u00a0' + p.mark}</span>)}
+        {ps.map((p, j) => <span key={j} className="pause" role="img" aria-label={t(PAUSE_LABEL[p.mark] ?? 'pause mark')}>{'\u00a0' + p.mark}</span>)}
       </Fragment>
     )
   })
@@ -215,7 +216,7 @@ export function VerseBlock({
         focus[0] > 1 ? ' ' : null,
         <mark key="q" className="q">
           {join(toks.slice(focus[0] - 1, focus[1]))}
-          <span className="sr-only" lang="en"> (underlined)</span>
+          <span className="sr-only" lang={isAr ? undefined : 'en'}>{t(' (underlined)')}</span>
         </mark>,
         focus[1] < toks.length ? ' ' : null,
         ...join(toks.slice(focus[1])),
@@ -230,7 +231,7 @@ export function VerseBlock({
       </p>
       {hasCaption && (
         <figcaption id={capId}>
-          {stopping && <em className="stop">◼ وقف · <span lang="en">stopping here</span></em>}
+          {stopping && <em className="stop">◼ وقف{!isAr && <> · <span lang="en">stopping here</span></>}</em>}
           {reference && <span className="ref">{reference}</span>}
           {actions}
         </figcaption>
@@ -301,7 +302,8 @@ const AyahRun = memo(function AyahRun({ a, tajweed, isolate, marks, isCurrent, w
       <span className="nowrap">
         {toks[toks.length - 1]}{'\u00A0'}
         {onAyah ? (
-          <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang="en" aria-label={`Ayah ${a.n}`}>{end}</button>
+          <button type="button" className="ayah-end" onClick={() => onAyah(a.key)} lang={isAr ? undefined : 'en'} aria-label={t('Ayah {n}', { n: a.n })}
+>{end}</button>
         ) : (
           <span className="ayah-end">{end}</span>
         )}

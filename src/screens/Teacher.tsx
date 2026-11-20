@@ -7,6 +7,7 @@ import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, 
 import { startClass } from './path/ui'
 import './path.css'
 import { Hint } from './study/Hint'
+import { t } from '../i18n'
 
 export default function Teacher() {
   const d = useData()
@@ -19,47 +20,47 @@ export default function Teacher() {
 
   return (
     <div className="p-stack">
-      <Hint id="teacher">Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.</Hint>
-      <Card level="e2" eyebrow={next ? `Next session · ${dayLabel(next.on)}` : teacherDay ? `Next teacher day · ${dayLabel(teacherDay)}` : 'Next session'}>
+      <Hint id="teacher">{t('Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.')}</Hint>
+      <Card level="e2" eyebrow={next ? t('Next session · {day}', { day: dayLabel(next.on) }) : teacherDay ? t('Next teacher day · {day}', { day: dayLabel(teacherDay) }) : t('Next session')}>
         {next ? (
           <>
             <p>
-              {next.teacherName || d.settings.teacherName ? <bdi lang="ar" className="a">{next.teacherName || d.settings.teacherName}</bdi> : 'Your teacher'} · {next.plannedPassages.length}{' '}
-              {next.plannedPassages.length === 1 ? 'passage' : 'passages'}
+              {next.teacherName || d.settings.teacherName ? <bdi lang="ar" className="a">{next.teacherName || d.settings.teacherName}</bdi> : t('Your teacher')} ·{' '}
+              {next.plannedPassages.length === 1 ? t('1 passage') : t('{n} passages', { n: next.plannedPassages.length })}
             </p>
             <div className="p-actions">
-              <Button variant="secondary" href={`#/teacher/${next.id}`}>Open plan</Button>
-              <Button onClick={() => startClass(next.id)}>Start class</Button>
+              <Button variant="secondary" href={`#/teacher/${next.id}`}>{t('Open plan')}</Button>
+              <Button onClick={() => startClass(next.id)}>{t('Start class')}</Button>
             </div>
           </>
         ) : (
           <>
-            <p className="muted">No plan yet. The app suggests what to recite: your unit finale, open corrections and what you practised.</p>
+            <p className="muted">{t('No plan yet. The app suggests what to recite: your unit finale, open corrections and what you practised.')}</p>
             <div className="p-actions">
-              <Button href="#/teacher/new">Plan a session</Button>
-              <Button variant="secondary" onClick={() => startClass()}>Start class now</Button>
+              <Button href="#/teacher/new">{t('Plan a session')}</Button>
+              <Button variant="secondary" onClick={() => startClass()}>{t('Start class now')}</Button>
             </div>
           </>
         )}
       </Card>
 
       <SegmentedControl
-        label="Show"
+        label={t('Show')}
         value={filter}
         onChange={setFilter}
-        options={[{ value: 'all', label: 'All' }, { value: 'open', label: `Open corrections ${open.length}` }]}
+        options={[{ value: 'all', label: t('All') }, { value: 'open', label: t('Open corrections {n}', { n: open.length }) }]}
       />
 
       {filter === 'open' ? (
         open.length ? (
-          <ul className="p-list" aria-label="Open corrections">
+          <ul className="p-list" aria-label={t('Open corrections')}>
             {open.map((c) => (
               <li key={c.id} className="p-item">
                 <div className="p-item-main">
                   <a href={listenHref(c.verseKey)} className="a-lg" lang="ar">{corrLabel(c)}</a>
                   <span className="t-sm muted">
-                    <T>{c.lessonIds.map((l) => getLesson(l)?.nameAr ?? l).join('، ') || 'No rule tagged'}</T>
-                    {c.note ? <> · <bdi dir="auto">{c.note}</bdi></> : null} · since {dayLabel(c.on ?? c.createdAt.slice(0, 10))}
+                    <T>{c.lessonIds.map((l) => getLesson(l)?.nameAr ?? l).join('، ') || t('No rule tagged')}</T>
+                    {c.note ? <> · <bdi dir="auto">{c.note}</bdi></> : null} · {t('since {day}', { day: dayLabel(c.on ?? c.createdAt.slice(0, 10)) })}
                   </span>
                 </div>
                 <CorrectionTag severity={c.severity} />
@@ -67,13 +68,13 @@ export default function Teacher() {
             ))}
           </ul>
         ) : (
-          <EmptyState title="No open corrections.">When your teacher corrects something, it stays here until they say it is fixed.</EmptyState>
+          <EmptyState title={t('No open corrections.')}>{t('When your teacher corrects something, it stays here until they say it is fixed.')}</EmptyState>
         )
       ) : (
         <>
-          <OrnHeading>History</OrnHeading>
+          <OrnHeading>{t('History')}</OrnHeading>
           {sessions.length ? (
-            <ul className="p-list" aria-label="Sessions">
+            <ul className="p-list" aria-label={t('Sessions')}>
               {sessions.map((s) => {
                 const n = severityCounts(d.corrections, s.id)
                 return (
@@ -82,13 +83,13 @@ export default function Teacher() {
                       <span className="p-item-main">
                         <b>{dayLabel(s.on)}</b>
                         <span className="t-sm muted">
-                          {s.status === 'planned' ? 'Planned, not finished' : s.teacherName ? <bdi lang="ar" className="a">{s.teacherName}</bdi> : 'Session'}
+                          {s.status === 'planned' ? t('Planned, not finished') : s.teacherName ? <bdi lang="ar" className="a">{s.teacherName}</bdi> : t('Session')}
                         </span>
                       </span>
                       <span className="p-tags">
                         {n.jali > 0 && <CorrectionTag severity="jali" count={n.jali} />}
                         {n.khafi > 0 && <CorrectionTag severity="khafi" count={n.khafi} />}
-                        {!n.jali && !n.khafi && s.status === 'done' && <span className="t-sm muted">no corrections</span>}
+                        {!n.jali && !n.khafi && s.status === 'done' && <span className="t-sm muted">{t('no corrections')}</span>}
                       </span>
                       <span className="chev" aria-hidden="true">›</span>
                     </a>
@@ -97,9 +98,10 @@ export default function Teacher() {
               })}
             </ul>
           ) : next ? null : (
-            <p className="muted">No past sessions yet. They appear here after your first class.</p>
+            <p className="muted">{t('No past sessions yet. They appear here after your first class.')}</p>
           )}
-          {sessions.length > 0 && <Button variant="secondary" block href="#/teacher/new">+ Plan a session</Button>}
+          {sessions.length > 0 && <Button variant="secondary" block href="#/teacher/new">+ {t('Plan a session')}</Button>}
+
         </>
       )}
     </div>

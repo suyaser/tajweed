@@ -1,5 +1,6 @@
 import { Children, type ReactNode } from 'react'
-import { arRefs, carryMarks, isArabicLine, splitBidi } from './bidi'
+import { arRefs, carryMarks, isArabicLine, splitBidi, splitLatin } from './bidi'
+import { isAr } from '../i18n'
 
 /** One explicit Arabic island inside Latin text. */
 export function Bdi({ children }: { children: ReactNode }) {
@@ -8,14 +9,19 @@ export function Bdi({ children }: { children: ReactNode }) {
   return <bdi className={nw ? 'a nw' : 'a'} lang="ar">{children}</bdi>
 }
 
-/** Mixed English–Arabic text: every Arabic run in a top-level string child becomes a <bdi class="a" lang="ar">. */
+const latinLine = (s: string) => (s.match(/[A-Za-z]/g)?.length ?? 0) > (s.match(/[؀-ۿ]/g)?.length ?? 0)
+
+/** Mixed English–Arabic text: every Arabic run in a top-level string child becomes a <bdi class="a" lang="ar">.
+ *  In the Arabic UI it is the other way round: every Latin run becomes a <bdi> so it reads LTR inside the RTL line. */
 export function T({ children }: { children: ReactNode }) {
   return (
     <>
       {Children.map(children, (c) =>
-        typeof c === 'string'
-          ? splitBidi(carryMarks(arRefs(c))).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text))
-          : c,
+        typeof c !== 'string' ? c
+          // an untranslated English line (more Latin than Arabic letters) stays one LTR line with Arabic islands
+          : isAr && latinLine(c) ? <bdi dir="ltr">{splitBidi(carryMarks(arRefs(c))).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text))}</bdi>
+          : isAr ? splitLatin(carryMarks(arRefs(c))).map((p, i) => (p.latin ? <bdi key={i} dir="ltr">{p.text}</bdi> : p.text))
+          : splitBidi(carryMarks(arRefs(c))).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text)),
       )}
     </>
   )
@@ -26,7 +32,8 @@ export function ArLabel({ ar, en, size = 'sm' }: { ar: string; en?: string; size
   return (
     <span className={`arlabel arlabel-${size}`}>
       <span lang="ar" dir="rtl">{ar}</span>
-      {en && <small>{en}</small>}
+      {en && !isAr && <small>{en}</small>}
+
     </span>
   )
 }

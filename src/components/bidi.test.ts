@@ -1,4 +1,4 @@
-import { splitBidi, arDigits, arRefs, carryMarks, isArabicLine } from './bidi'
+import { splitLatin, splitBidi, arDigits, arRefs, carryMarks, isArabicLine } from './bidi'
 
 test('wraps multi-word Arabic runs as one island, keeps Latin punctuation outside', () => {
   expect(splitBidi('This is النون الساكنة والتنوين, then إدغام.')).toEqual([
@@ -42,4 +42,16 @@ test('a vowel mark with no letter rides a tatweel; marks on letters are untouche
   expect(carryMarks('فتحة َ and a شدة (ّ)')).toBe('فتحة ـَ and a شدة (ـّ)')
   expect(carryMarks('رَبِّ')).toBe('رَبِّ')
   expect(splitBidi(carryMarks('فتحة َ')).map(p => p.ar)).toEqual([true])
+})
+
+test('Arabic UI: Latin runs become one island each, Arabic passes through', () => {
+  expect(splitLatin('الألوان من quran-tajweed بترخيص CC BY 4.0. تحقّق')).toEqual([
+    { text: 'الألوان من ', latin: false },
+    { text: 'quran-tajweed', latin: true },
+    { text: ' بترخيص ', latin: false },
+    { text: 'CC BY 4.0', latin: true },
+    { text: '. تحقّق', latin: false },
+  ])
+  expect(splitLatin('افتح Quran.com')).toEqual([{ text: 'افتح ', latin: false }, { text: 'Quran.com', latin: true }])
+  expect(splitLatin('بلا لاتيني')).toEqual([{ text: 'بلا لاتيني', latin: false }])
 })

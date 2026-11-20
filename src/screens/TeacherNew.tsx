@@ -9,6 +9,7 @@ import type { ScreenProps } from '../app/App'
 import { dayLabel, listenHref, live, mergePassages, nextTeacherDay, refLabel, upcomingSession, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip } from './path/ui'
 import './path.css'
+import { t } from '../i18n'
 
 /** "Since last time": ranges recorded, and an example ayah of each lesson introduced, since the last finished session. */
 async function recentPassages(): Promise<Planned[]> {
@@ -51,19 +52,19 @@ export default function TeacherNew({ params }: ScreenProps) {
 
   return (
     <form className="p-stack" onSubmit={(e) => { e.preventDefault(); save() }}>
-      {existing && !params.id && <p className="t-sm muted">You already have a plan for {dayLabel(existing.on)}; changes go into it.</p>}
+      {existing && !params.id && <p className="t-sm muted">{t('You already have a plan for {day}; changes go into it.', { day: dayLabel(existing.on) })}</p>}
       <div className="p-row">
         <label className="p-field">
-          <span>Date</span>
+          <span>{t('Date')}</span>
           <input type="date" value={date} onChange={(e) => setDate(e.target.value || on)} required />
         </label>
         <label className="p-field">
-          <span>Teacher</span>
+          <span>{t('Teacher')}</span>
           <input type="text" dir="auto" lang="ar" value={name} onChange={(e) => setName(e.target.value)} placeholder="الشيخ…" autoComplete="off" />
         </label>
       </div>
 
-      <Card eyebrow="To recite">
+      <Card eyebrow={t('To recite')}>
         {passages.length ? (
           <ol className="p-list">
             {passages.map((p, i) => (
@@ -75,7 +76,7 @@ export default function TeacherNew({ params }: ScreenProps) {
                 <button
                   type="button"
                   className="icon-btn"
-                  aria-label={`Remove ${refLabel(p.from, p.to)}`}
+                  aria-label={t('Remove {name}', { name: refLabel(p.from, p.to) })}
                   onClick={() => setPassages(passages.filter((_, j) => j !== i))}
                 >
                   ✕
@@ -84,20 +85,21 @@ export default function TeacherNew({ params }: ScreenProps) {
             ))}
           </ol>
         ) : (
-          <p className="muted">Nothing suggested yet. Add a passage you want to recite.</p>
+          <p className="muted">{t('Nothing suggested yet. Add a passage you want to recite.')}</p>
         )}
         {adding ? (
           <AddPassage onAdd={(p) => { setPassages(mergePassages(passages, [p])); setAdding(false) }} />
         ) : (
-          <Button variant="ghost" onClick={() => setAdding(true)}>+ Add a passage</Button>
+          <Button variant="ghost" onClick={() => setAdding(true)}>+ {t('Add a passage')}</Button>
         )}
       </Card>
 
       <label className="p-field">
-        <span>Note to self</span>
-        <textarea dir="auto" rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="e.g. ask about ر in مصر" />
+        <span>{t('Note to self')}</span>
+        <textarea dir="auto" rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={t('e.g. ask about ر in مصر')} />
       </label>
-      <Button type="submit" block>Save plan</Button>
+      <Button type="submit" block>{t('Save plan')}</Button>
+
     </form>
   )
 }

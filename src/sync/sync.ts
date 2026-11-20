@@ -5,6 +5,7 @@ import { useSyncExternalStore } from 'react'
 import type { User } from '@supabase/supabase-js'
 import { defaultData, getLoadError, getSnapshot, importJson, resetAll, subscribe as onLocalChange, updateSettings } from '../core/store'
 import { today } from '../core/day'
+import { t } from '../i18n'
 import { studiedDays } from '../screens/path/helpers'
 import { firstSync, firstSyncDoc, mergeData, sameDoc } from './merge'
 import { exchangeCodeFromUrl, supabase } from './supabase'
@@ -85,7 +86,7 @@ async function run() {
       if (res.error?.code === '23503') return await accountGone() // the auth user is gone (deleted on another device)
       if (res.error && res.error.code !== '23505') throw res.error
       if (!res.error && res.data?.length) break
-      if (tries === 2) throw new Error('Another device kept writing; will try again.')
+      if (tries === 2) throw new Error(t('Another device kept writing; will try again.'))
     }
     rememberAccount(user.id)
     replaceRemote = false
@@ -139,13 +140,13 @@ export async function startSync() {
 /* ---------------- account actions ---------------- */
 
 export async function sendEmailLink(email: string, redirectTo: string) {
-  if (!supabase) throw new Error('Sign-in is not available in this build.')
+  if (!supabase) throw new Error(t('Sign-in is not available in this build.'))
   const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } })
   if (error) throw error
 }
 
 export async function signInWithGoogle(redirectTo: string) {
-  if (!supabase) throw new Error('Sign-in is not available in this build.')
+  if (!supabase) throw new Error(t('Sign-in is not available in this build.'))
   const { error } = await supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })
   if (error) throw error
 }
@@ -201,5 +202,5 @@ export async function deleteAccount() {
 async function accountGone() {
   rememberAccount(null)
   await signOut()
-  set({ error: 'This account was deleted. You are signed out on this device; your progress here is kept.' })
+  set({ error: t('This account was deleted. You are signed out on this device; your progress here is kept.') })
 }
