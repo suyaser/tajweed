@@ -3,10 +3,16 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type { Example, Lesson } from '../../core/types'
 import { getLesson } from '../../content'
 import { href } from '../../app/router'
-import { CountBeats, LetterTiles, Line, RuleChip } from '../../components'
+import { Line, T } from '../../components'
 import { updateSettings, useData } from '../../core/store'
 import { countsText } from '../../core/questions'
-import { digits, t } from '../../i18n'
+import { AR, digits, t } from '../../i18n'
+import { Callout, CountBeats, LetterTile, SectionCard } from '@/components/kit'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
+import { cn } from '@/lib/utils'
 import { tn, Tx } from './i18n'
 import { verseRef } from './helpers'
 import { ExampleCard, ExampleVerse, PlayButton, useVerse, type StudyAudio } from './verse'
@@ -23,22 +29,44 @@ export function splitDefinition(s: string): [string, string] {
 export const letterCount = (letters: string) =>
   /[A-Za-z]/.test(letters) ? 0 : letters.replace(/\([^)]*\)/g, '').split(/[\s·]+/).filter(x => x && !x.endsWith(':') && /[؀-ۿ]/.test(x)).length
 
-function Section({ n, title, children }: { n: number; title: string; children: ReactNode }) {
+/** A letters string as groups (`الهمس: ف ح …· …`) of tiles, plus a bracketed note. */
+export function letterGroups(letters: string) {
+  const note = letters.match(/\(([^)]+)\)/)?.[1]
+  const groups = letters.replace(/\([^)]*\)/g, '').split('·').map(g => {
+    const m = g.match(/^\s*([^:]+):(.*)$/)
+    return { label: m?.[1].trim(), tiles: (m ? m[2] : g).split(/\s+/).filter(Boolean) }
+  }).filter(g => g.tiles.length)
+  return { groups, note }
+}
+
+function Letters({ letters }: { letters: string }) {
+  if (/[A-Za-z]/.test(letters)) return <p><T>{letters}</T></p>
+  const { groups, note } = letterGroups(letters)
   return (
-    <section className="s-sec">
-      <h3 className="s-sec-h"><span className="s-sec-n" aria-hidden="true">{digits(n)}</span>{title}</h3>
-      {children}
-    </section>
+    <div className="flex flex-col gap-space-sm" lang="ar" dir="rtl">
+      {groups.map((g, i) => (
+        <div key={i} className="flex flex-col gap-1.5">
+          {g.label && <span className="text-arabic-label text-secondary">{g.label}</span>}
+          <div className="flex flex-wrap gap-2">{g.tiles.map((l, j) => <LetterTile key={j} letter={l} />)}</div>
+        </div>
+      ))}
+      {note && <span className="text-arabic-label text-on-surface-variant">({note})</span>}
+    </div>
   )
 }
+
+/** Section title in both languages (SectionCard shows the Arabic at the end in the English UI). */
+const bi = (en: string) => ({ en: t(en), ar: AR[en] })
 
 function MoreExample({ ex, audio }: { ex: Example; audio: StudyAudio }) {
   const vs = useVerse(ex.verseKey)
   return (
-    <li className="s-ex-row">
-      <ExampleVerse ex={ex} vs={vs} spanOnly reference
-        actions={<PlayButton audio={audio} label={verseRef(ex.verseKey)} onClick={vs.verse && (() => audio.example(vs.verse!, ex))} />} />
-      {ex.note && <p className="t-sm muted"><Tx>{ex.note}</Tx></p>}
+    <li className="flex items-center gap-space-sm rounded-control bg-surface-container-low px-space-sm">
+      <PlayButton audio={audio} label={verseRef(ex.verseKey)} onClick={vs.verse && (() => audio.example(vs.verse!, ex))} />
+      <div className="min-w-0 flex-1">
+        <ExampleVerse ex={ex} vs={vs} spanOnly reference />
+        {ex.note && <p className="pb-2 text-caption text-on-surface-variant"><Tx>{ex.note}</Tx></p>}
+      </div>
     </li>
   )
 }
@@ -48,23 +76,30 @@ function MunfasilChoice() {
   const { settings } = useData()
   const [changed, setChanged] = useState(false)
   return (
-    <div className="s-choice" role="group" aria-labelledby="munfasil-h">
+    <div className="mt-space-md flex flex-col gap-space-sm rounded-control border border-outline-variant p-space-md" role="group" aria-labelledby="munfasil-h">
       <p id="munfasil-h"><b>{t('Your choice:')}</b> <Tx>{t('4 or 5 counts. Ask your teacher; pick 4 if unsure.')}</Tx></p>
-      <p className="t-sm"><Tx>{t('Both are correct for حفص من طريق الشاطبية. Keep the one you choose the same every time, and equal to your المد المتصل.')}</Tx></p>
-      <div className="opts">
-        {([4, 5] as const).map(n => (
-          <button key={n} type="button" className="opt s-pick" aria-pressed={settings.munfasilLength === n}
-            onClick={() => { updateSettings({ munfasilLength: n }); setChanged(true) }}>
-            <CountBeats min={n} /><small>{countsText(n)}</small>
-          </button>
-        ))}
+      <p className="text-body-md text-on-surface-variant"><Tx>{t('Both are correct for حفص من طريق الشاطبية. Keep the one you choose the same every time, and equal to your المد المتصل.')}</Tx></p>
+      <div className="grid grid-cols-2 gap-space-sm">
+        {([4, 5] as const).map(n => {
+          const on = settings.munfasilLength === n
+          return (
+            <button key={n} type="button" aria-pressed={on} onClick={() => { updateSettings({ munfasilLength: n }); setChanged(true) }}
+              className={cn('flex min-h-16 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-control border p-space-sm transition-colors',
+                on ? 'border-primary bg-primary-container text-on-primary-container' : 'border-outline-variant hover:bg-surface-container-low')}>
+              <CountBeats min={n} className="gap-1 [&>span]:size-6" />
+              <span className="text-label font-semibold">{countsText(n)}</span>
+            </button>
+          )
+        })}
       </div>
-      <p className="t-sm muted" role="status">
+      <p className="text-body-md text-on-surface-variant" role="status">
         {changed ? t('Saved. Questions now expect {n} counts.', { n: settings.munfasilLength }) : t('You can change it later in Settings.')}
       </p>
     </div>
   )
 }
+
+const SUB = 'mb-space-xs text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case'
 
 /** `onRead` fires once the Remember section has been on screen (Learn's "done"). */
 /** `example`: the worked example (default the first); the others go under More. */
@@ -87,87 +122,121 @@ export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; a
 
   let n = 0
   const sections: ReactNode[] = []
-  sections.push(<Section key="what" n={++n} title={t('What happens')}><p className="t-lg"><Tx>{what}</Tx></p></Section>)
-  if (lesson.letters)
+  sections.push(<SectionCard key="what" n={++n} {...bi('What happens')}><p className="text-body-lg"><Tx>{what}</Tx></p></SectionCard>)
+  if (lesson.letters) {
+    const c = letterCount(lesson.letters)
     sections.push(
-      <Section key="letters" n={++n} title={t('Which letters')}>
-        <LetterTiles letters={lesson.letters} />
-        {letterCount(lesson.letters) > 1 && <p className="t-sm muted">{tn('{n} letter', '{n} letters', letterCount(lesson.letters))}</p>}
-      </Section>,
+      <SectionCard key="letters" n={++n} {...bi('Which letters')}>
+        <Letters letters={lesson.letters} />
+        {c > 1 && <p className="mt-space-sm text-body-md text-on-surface-variant">{tn('{n} letter', '{n} letters', c)}</p>}
+      </SectionCard>,
+    )
+  }
+  if (lesson.list?.length)
+    // the table is the lesson's key content where it has one (the marks in lesson 1, the cases of ر): a section, not More
+    sections.push(
+      <SectionCard key="list" n={++n} {...bi('At a glance')}>
+        <table className="w-full border-collapse text-body-md">
+          <tbody>
+            {lesson.list.map(([a, b], i) => (
+              <tr key={i} className="border-b border-surface-container align-top last:border-b-0">
+                <th scope="row" className="py-2.5 pe-space-sm text-start font-medium text-on-surface"><Tx>{a}</Tx></th>
+                <td className="py-2.5 text-on-surface-variant">{b && <Line text={b} />}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SectionCard>,
     )
   if (counts)
     sections.push(
-      <Section key="long" n={++n} title={t('How long')}>
-        <p className="s-beats"><CountBeats min={counts.min} max={counts.max} /> {!/counts|حرك/.test(counts.note ?? '') && countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}</p>
-        {counts.note && <p className="t-sm muted"><Tx>{counts.note}</Tx></p>}
+      <SectionCard key="long" n={++n} {...bi('How long')}>
+        <div className="flex flex-wrap items-center justify-between gap-space-sm rounded-control bg-surface-container-low p-space-md">
+          <span className="text-headline-md text-on-surface">{countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}</span>
+          <CountBeats min={counts.min} max={counts.max} className="flex-wrap" />
+        </div>
+        {counts.note && <p className="mt-space-sm text-body-md text-on-surface-variant"><Tx>{counts.note}</Tx></p>}
         {lesson.id === 'munfasil' && <MunfasilChoice />}
-      </Section>,
+      </SectionCard>,
     )
   if (conds.length)
     sections.push(
-      <Section key="when" n={++n} title={t('When it applies')}>
-        <ol className="s-numlist">{(allConds ? conds : conds.slice(0, SHOW)).map((c, i) => <li key={i}><Tx>{c}</Tx></li>)}</ol>
+      <SectionCard key="when" n={++n} {...bi('When it applies')}>
+        <ol className="flex flex-col gap-space-sm">
+          {(allConds ? conds : conds.slice(0, SHOW)).map((c, i) => (
+            <li key={i} className="flex gap-space-sm rounded-control bg-surface-container-low p-space-sm">
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-surface-container-lowest text-label font-semibold text-primary">{digits(i + 1)}</span>
+              <span className="min-w-0"><Tx>{c}</Tx></span>
+            </li>
+          ))}
+        </ol>
         {conds.length > SHOW && !allConds && (
-          <button type="button" className="s-linkbtn" onClick={() => setAllConds(true)}>{tn('Show {n} more', 'Show {n} more', conds.length - SHOW)}</button>
+          <Button variant="tertiary" size="sm" className="mt-space-xs" onClick={() => setAllConds(true)}>
+            {tn('Show {n} more', 'Show {n} more', conds.length - SHOW)}<Icon name="expand_more" size={20} />
+          </Button>
         )}
-      </Section>,
-    )
-  // the table is the lesson's key content where it has one (the marks in lesson 1, the cases of ر): a section, not More
-  if (lesson.list?.length)
-    sections.push(
-      <Section key="list" n={++n} title={t('At a glance')}>
-        <ul className="s-pairs-list">{lesson.list.map(([a, b], i) => <li key={i}><span><Tx>{a}</Tx></span> {b && <Line text={b} />}</li>)}</ul>
-      </Section>,
+      </SectionCard>,
     )
   if (ex0)
     sections.push(
-      <Section key="ex" n={++n} title={t('Example')}>
-        <ExampleCard ex={ex0} eyebrow={t('Example')} audio={audio} played={played} onPlayed={() => setPlayed(true)} />
-      </Section>,
-    )
-  if (lesson.tip)
-    sections.push(
-      <Section key="tip" n={++n} title={t('Remember')}>
-        <div ref={remember} className="s-remember"><Tx>{lesson.tip}</Tx></div>
-      </Section>,
+      <SectionCard key="ex" n={++n} {...bi('Example')}>
+        <ExampleCard ex={ex0} eyebrow={t('Example')} className="mt-space-xs rounded-control border-0 bg-surface-container-low" audio={audio} played={played} onPlayed={() => setPlayed(true)} />
+      </SectionCard>,
     )
 
-  const hasMore = detail || moreEx.length || lesson.confusableWith.length || lesson.sources.length || lesson.review.notes
+  const hasMore = !!(detail || moreEx.length || lesson.confusableWith.length || lesson.sources.length || lesson.review.notes)
   return (
-    <article className="s-rule">
-      {lesson.review.status !== 'verified' && <p className="s-draft">{t('Draft · check with your teacher')}</p>}
+    <article className="flex min-w-0 flex-col gap-space-md">
+      {lesson.review.status !== 'verified' && (
+        <Badge variant="secondary" className="self-start"><Icon name="info" size={16} />{t('Draft · check with your teacher')}</Badge>
+      )}
       {sections}
-      {!lesson.tip && <div ref={remember} />}
+      <div ref={remember}>
+        {lesson.tip && <Callout variant="tip" title={t('Remember')}><Tx>{lesson.tip}</Tx></Callout>}
+      </div>
       {hasMore && (
-        <details className="s-more">
-          <summary>{t('More')}</summary>
-          {detail && <><h4 className="eyebrow">{t('In detail')}</h4><p><Tx>{detail}</Tx></p></>}
-          {moreEx.length > 0 && (
-            <>
-              <h4 className="eyebrow">{t('More examples ({n})', { n: moreEx.length })}</h4>
-              <ul className="s-ex-list">{moreEx.map(ex => <MoreExample key={ex.id} ex={ex} audio={audio} />)}</ul>
-            </>
-          )}
-          {lesson.confusableWith.length > 0 && (
-            <>
-              <h4 className="eyebrow">{t('Easy to mix up with')}</h4>
-              <div className="s-chips">
-                {lesson.confusableWith.map(id => {
-                  const l = getLesson(id)
-                  return l && <RuleChip key={id} nameAr={l.nameAr} href={href('rules', id)} />
-                })}
-              </div>
-            </>
-          )}
-          {lesson.review.notes && <p className="t-sm"><Tx>{lesson.review.notes}</Tx></p>}
-          {lesson.sources.length > 0 && (
-            <>
-              <h4 className="eyebrow">{t('Sources')}</h4>
-              <ul className="s-bullets t-sm">{lesson.sources.map((s, i) => <li key={i}><Tx>{s.title}</Tx>{s.locator && <span className="muted"> · <Tx>{s.locator}</Tx></span>}</li>)}</ul>
-            </>
-          )}
-          <p className="t-sm"><a href={href('rules', lesson.id)}>{t('Open card ›')}</a></p>
-        </details>
+        <Accordion type="single" collapsible className="rounded-card border border-outline-variant bg-surface-container-lowest px-space-md">
+          <AccordionItem value="more">
+            <AccordionTrigger><span className="flex items-center gap-space-sm"><Icon name="library_books" size={20} className="text-secondary" />{t('More')}</span></AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-space-md">
+              {detail && <div><h4 className={SUB}>{t('In detail')}</h4><p><Tx>{detail}</Tx></p></div>}
+              {moreEx.length > 0 && (
+                <div>
+                  <h4 className={SUB}>{t('More examples ({n})', { n: moreEx.length })}</h4>
+                  <ul className="flex flex-col gap-space-xs">{moreEx.map(ex => <MoreExample key={ex.id} ex={ex} audio={audio} />)}</ul>
+                </div>
+              )}
+              {lesson.confusableWith.length > 0 && (
+                <div>
+                  <h4 className={SUB}>{t('Easy to mix up with')}</h4>
+                  <div className="flex flex-wrap gap-space-sm">
+                    {lesson.confusableWith.map(id => {
+                      const l = getLesson(id)
+                      return l && (
+                        <a key={id} href={href('rules', id)} lang="ar"
+                          className="inline-flex min-h-12 items-center rounded-control border border-outline-variant px-space-md text-arabic-label text-on-surface no-underline hover:bg-surface-container-low">
+                          {l.nameAr}
+                        </a>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+              {lesson.review.notes && <p className="text-body-md"><Tx>{lesson.review.notes}</Tx></p>}
+              {lesson.sources.length > 0 && (
+                <div>
+                  <h4 className={SUB}>{t('Sources')}</h4>
+                  <ul className="list-disc ps-5 text-body-md">
+                    {lesson.sources.map((s, i) => <li key={i}><Tx>{s.title}</Tx>{s.locator && <span className="text-on-surface-variant"> · <Tx>{s.locator}</Tx></span>}</li>)}
+                  </ul>
+                </div>
+              )}
+              <Button variant="tertiary" asChild className="self-start px-0">
+                <a href={href('rules', lesson.id)}>{t('Open card')}<Icon name="chevron_right" size={20} rtlFlip /></a>
+              </Button>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       )}
     </article>
   )

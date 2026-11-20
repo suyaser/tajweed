@@ -5,7 +5,7 @@ import { Slot } from "radix-ui"
 
 // DESIGN.md buttons: one primary per screen; secondary = hairline outline; tertiary = teal text.
 const buttonVariants = cva(
-  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-control text-body-md font-semibold whitespace-nowrap transition-colors select-none active:scale-[0.99] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_[data-slot=icon]]:pointer-events-none",
+  "inline-flex shrink-0 cursor-pointer items-center no-underline justify-center gap-2 rounded-control text-body-md font-semibold whitespace-nowrap transition-colors select-none active:scale-[0.99] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_[data-slot=icon]]:pointer-events-none",
   {
     variants: {
       variant: {

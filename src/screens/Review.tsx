@@ -9,7 +9,9 @@ import { diffDays, today } from '../core/day'
 import { getLesson, lessons, pairs } from '../content'
 import { units } from '../content/course'
 import { href } from '../app/router'
-import { Button, Card, EmptyState } from '../components'
+import { Callout, EmptyState } from '@/components/kit'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
 import { isAr, locale, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { confusableHint, mem, spread } from './study/helpers'
@@ -56,6 +58,8 @@ function saveRun(r: SavedRun) {
 /** The example or fact asked last for this lesson, from any source (Learn checks too), so it is not asked again next. */
 const lastAsked = (d: UserData, refId: string) => d.attempts.filter(a => a.kind === 'lesson' && a.refId === refId && a.exampleId).pop()?.exampleId
 
+const COLUMN = 'mx-auto flex w-full max-w-[640px] min-w-0 flex-col gap-space-lg pt-space-sm pb-space-lg'
+
 const DAY_NAME = (d: string) => new Date(d + 'T00:00:00Z').toLocaleDateString(locale, { weekday: 'long', timeZone: 'UTC' })
 
 export default function Review({ params }: ScreenProps) {
@@ -101,13 +105,19 @@ export default function Review({ params }: ScreenProps) {
   if (offer && run.q.sabaq) {
     const l = getLesson(run.q.sabaq)
     return (
-      <div className="s-study">
-        <Card level="e2" eyebrow={isAr ? 'السبق: درس اليوم الجديد' : <>Today's new lesson · <span lang="ar">السبق</span></>}>
-          <p className="a-h3" lang="ar">{l?.nameAr}</p>
-          {!isAr && <p className="muted">{l?.nameEn}</p>}
-          <Button block href={href('learn', run.q.sabaq)}>{t('Start lesson')}</Button>
-          <Button variant="ghost" block onClick={() => setOffer(false)}>{entries.length ? t('Review first') : t('Not today')}</Button>
-        </Card>
+      <div className={COLUMN}>
+        <section className="flex flex-col items-center gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-lg text-center">
+          <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
+            {isAr ? 'السبق: درس اليوم الجديد' : <>Today's new lesson · <span lang="ar" className="text-arabic-label">السبق</span></>}
+          </p>
+          <span className="grid size-14 place-items-center rounded-full bg-primary-container text-on-primary-container"><Icon name="menu_book" size={28} /></span>
+          <h2 className="text-arabic-headline text-on-surface" lang="ar">{l?.nameAr}</h2>
+          {!isAr && <p className="text-body-lg text-on-surface-variant">{l?.nameEn}</p>}
+          <div className="mt-space-sm flex w-full flex-col gap-space-sm">
+            <Button size="lg" asChild><a href={href('learn', run.q.sabaq)}>{t('Start lesson')}<Icon name="arrow_forward" size={20} rtlFlip /></a></Button>
+            <Button variant="secondary" onClick={() => setOffer(false)}>{entries.length ? t('Review first') : t('Not today')}</Button>
+          </div>
+        </section>
       </div>
     )
   }
@@ -117,8 +127,9 @@ export default function Review({ params }: ScreenProps) {
     const upcoming = data.items.filter(i => !i.deletedAt && (i.state === 'sabqi' || i.state === 'manzil') && i.dueOn > day).map(i => i.dueOn).sort()[0]
     return (
       <EmptyState
+        className="mx-auto mt-space-lg max-w-[640px]" icon="event_available"
         title={data.items.length ? t('Nothing due today.') : t('Nothing to review yet.')}
-        action={<Button href={href('today')}>{t('Back')}</Button>}
+        action={<Button asChild><a href={href('today')}>{t('Back')}</a></Button>}
       >
         {upcoming
           ? (diffDays(upcoming, day) === 1 ? t('Your next review is tomorrow.') : t('Your next review is on {day}.', { day: DAY_NAME(upcoming) }))
@@ -148,18 +159,20 @@ export default function Review({ params }: ScreenProps) {
   const n = entries.slice(0, idx + 1).filter(firstAsk).length
   const againLeft = entries.slice(idx + (firstAsk(entry) ? 1 : 0)).filter((e) => !firstAsk(e)).length
   const progress = (
-    <div className="s-rv-progress">
-      <span className="t-sm num">{t('{n} of {m}', { n, m: base })}{againLeft > 0 && t(' · {n} to look at again', { n: againLeft })}</span>
-      <div className="s-rv-bar" aria-hidden="true"><i style={{ width: `${(n / Math.max(1, base)) * 100}%` }} /></div>
+    <div className="flex flex-col gap-space-xs">
+      <span className="text-label text-on-surface-variant">{t('{n} of {m}', { n, m: base })}{againLeft > 0 && t(' · {n} to look at again', { n: againLeft })}</span>
+      <div className="h-1.5 overflow-hidden rounded-full bg-surface-container-high" aria-hidden="true">
+        <div className="h-full rounded-full bg-primary transition-[width]" style={{ width: `${(n / Math.max(1, base)) * 100}%` }} />
+      </div>
     </div>
   )
   const halfway = idx === 10 && entries.length > 12
-    ? <p className="t-sm muted">{t('Halfway. You can stop here; the rest stays due.')}</p> : null
+    ? <Callout variant="note">{t('Halfway. You can stop here; the rest stays due.')}</Callout> : null
 
   if (entry.item.kind === 'correction') {
     const c = data.corrections.find(c => c.id === entry.item.refId)!
     return (
-      <>
+      <div className={COLUMN}>
         {progress}
         {halfway}
         <CorrectionStep
@@ -169,11 +182,11 @@ export default function Review({ params }: ScreenProps) {
             setResults(r => [...r, { itemId: entry.item.id, kind: 'correction', refId: c.id, correct: applied, selfRated: true }])
           }}
         />
-      </>
+      </div>
     )
   }
 
-  if (!question) return <EmptyState title={t('This item has no question yet.')} action={<Button onClick={next}>{t('Skip')}</Button>} />
+  if (!question) return <EmptyState className="mx-auto mt-space-lg max-w-[640px]" title={t('This item has no question yet.')} action={<Button onClick={next}>{t('Skip')}</Button>} />
 
   const it = entry.item
   const again = !!(entry.relearn || entry.contrast)
@@ -187,11 +200,11 @@ export default function Review({ params }: ScreenProps) {
         : <Tx>{it.lastReviewedOn ? tn('منزل · older · last seen {n} days ago', 'منزل · older · last seen {n} days ago', diffDays(day, it.lastReviewedOn)) : t('منزل · older')}</Tx>
 
   return (
-    <>
+    <div className={COLUMN}>
       {progress}
       <QuestionView
         key={idx} q={question} mode={again ? 'relearn' : 'review'} eyebrow={eyebrow} audio={audio}
-        note={<>{halfway}{hint && <Card className="s-note"><p><Tx>{hint}</Tx></p></Card>}</>}
+        note={<>{halfway}{hint && <Callout variant="note" title={t('Easy to mix up')}><Tx>{hint}</Tx></Callout>}</>}
         onNext={next}
         onAnswer={(chosen, correct) => {
           recordAttempt({
@@ -209,6 +222,6 @@ export default function Review({ params }: ScreenProps) {
           setRun(r => ({ ...r, entries: [...r.entries, ...more] }))
         }}
       />
-    </>
+    </div>
   )
 }
