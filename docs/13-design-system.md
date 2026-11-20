@@ -59,12 +59,27 @@ override). Under `:lang(ar)` the small sizes grow so Arabic is never below 14px.
 | `text-label` | 12/18 · 500 · 0.02em | 14/22 |
 | `text-body-md` | 14/22 | 16/28 |
 | `text-body-lg` | 16/26 | 18/30 |
-| `text-headline-md` | 20/28 · 600 | 20/32 |
-| `text-headline-lg` | 24/32 · 600, 30/38 from 640px | |
+| `text-headline-md` | 20/28 · 600 · −0.01em | 20/32 |
+| `text-headline-lg` | 24/32 · 600 · −0.02em, 30/38 from 640px | 24/38 |
 | `text-arabic-label` | Noto Sans Arabic 14/22 · 500 | |
 | `text-arabic-body` | Noto Sans Arabic 16/28 | |
 | `text-arabic-headline` | Noto Naskh 22/34 · 700, 28/42 from 640px | |
 | `text-quran` | Amiri Quran 28, 36 from 640px, line height 2.05 | |
+
+**Hierarchy** (measured from Stitch's `code.html`; use these, not ad-hoc sizes):
+
+| Role | Class |
+|---|---|
+| Page title | `PageHeader` (headline-lg; Arabic in naskh beside it) |
+| Card / panel title, numbered row card ("1 Listen") | `text-body-lg font-semibold` |
+| Hero lesson name | Arabic `text-arabic-headline`, English `text-body-lg font-semibold` |
+| List row name | Arabic as before, English `text-body-md font-medium`; facts under it `text-label font-normal` |
+| Settings row | label `text-body-md font-semibold rtl:text-body-lg`, hint `text-label font-normal rtl:text-body-md` |
+| Eyebrow / section label | `text-label font-semibold uppercase tracking-wider` |
+| UI body | `text-body-md` |
+| Lesson reading text | `text-body-lg leading-relaxed` (kept at 16px: it is what is studied) |
+
+Arabic never gets smaller than it was: when an English role steps down a size, add the old size under `rtl:`.
 
 **Families**: `font-ui` (Inter, or Noto Sans Arabic first under `:lang(ar)`; also the default `font-sans`),
 `font-arabic`, `font-naskh`, `font-quran`.
@@ -74,7 +89,8 @@ override). Under `:lang(ar)` the small sizes grow so Arabic is never below 14px.
 scale (`p-4`) still works for small in-component nudges.
 
 **Radii**: `rounded-control` 14px (buttons, inputs, chips) · `rounded-card` 18px (cards, panels) · `rounded-full`
-(step nodes, dots). **Shadows**: `shadow-card` (the one resting shadow) · `shadow-bar` (bottom bar). Depth otherwise
+(step nodes, dots). **Shadows**: `shadow-card` (the one resting shadow) · `shadow-bar` (bottom bar) · `shadow-top` (under every top
+bar, with its `border-outline-variant` hairline). Depth otherwise
 comes from surface steps and `border-outline-variant` hairlines.
 
 **Focus**: global `:focus-visible` = 2px `primary` outline, 2px offset, no blur ring. Don't add `outline-none` to
@@ -113,9 +129,16 @@ radio-group, checkbox, input, label, select, accordion, skeleton, icon. Restyled
 
 ## kit components (`@/components/kit`)
 
-- `Page {width?: 'narrow'|'default'|'wide'}`: centred column (680/760/960), safe-area gutters, 24px rhythm. Tabs
-  (Today, Rules, Teacher, Path) are `wide`, pushed pages `default`, lessons/review/onboarding `narrow`.
-- `PageHeader {en, ar?, eyebrow?, subtitle?, actions?}`: EN shows English + Arabic in naskh; AR shows Arabic only.
+- `Page {width?: 'narrow'|'default'|'wide'}`: centred column (680/760/1120), safe-area gutters, 24px rhythm. Tabs
+  (Today, Rules, Teacher, Path) and lessons are `wide`, pushed pages `default`, review/onboarding `narrow`.
+- `PageHeader {en, ar?, detail?, eyebrow?, actions?, stacked?}`: **the page header**. A gold ۞ ornament (omitted
+  with an eyebrow), the title (EN: "English · Arabic" with the Arabic in naskh teal; AR: Arabic only), a detail line
+  (`detail` items joined by `Sep`), then `Divider` (thin gold rules, small star). Centred on phones; from lg it sits
+  at the start, ornament and divider hidden, `actions` at the end. `stacked`: Arabic title, English gloss under it
+  (the lesson header). **Every detail is real data** (counts, dates, names, the riwayah `RIWAYAH` from `@/i18n`);
+  never a placeholder. Used on Today, Path (Plan and Progress share `PathHeader`), Rules, Teacher, Settings,
+  Resources, Shared, and every lesson (`LessonHeader`).
+- `Divider`: the gold rule with a star, on its own.
 - `SectionCard {n?, en, ar?, children}`: numbered card; EN: label at the start, Arabic at the end; AR: Arabic only.
 - `Callout {variant: 'listen-for'|'tip'|'note', title?, icon?, children}`: gold edge on the inline start.
 - `Chip {tone?: 'neutral'|'primary'|'gold'|'success'|'error'|'outline', icon?, fill?, pressed?, onClick?, label?}`:
@@ -125,7 +148,10 @@ radio-group, checkbox, input, label, select, accordion, skeleton, icon. Restyled
 - `Sep`: separator between items on one line (a small gold dot; screen readers hear a comma). Never type "·" between
   items: next to Arabic-Indic digits it reads as ٠. In a plain string use `SEP` from `@/i18n` (، in Arabic).
 - `StatusChip {status: 'done'|'current'|'info'|'todo'|'warning', children}`.
-- `SegmentedControl {value, onChange, options: {value, label, icon?}[], label}`.
+- `SegmentedControl {value, onChange, options: {value, label, icon?}[], label, size?}`. `size="sm"`: 40px, 36px
+  segments with an outset hit area to 48px, for settings rows.
+- `Group` / `Row` (`@/components`): the grouped list. Row: 36px icon tile, 12px block padding, label and hint as in
+  the hierarchy table; a control sits beside a hint-less label and wraps under a long hint.
 - `STEP_ICONS` maps step → icon. The step bar is `StepNav` in `screens/study/LessonShell.tsx` (the only one).
 - `ExampleCard {index, total, reference?, children, controls?, onPrev?, onNext?, onPick?}` (0-based index).
   `PagerDots {index, total, onPick?, reached?, played?}` on its own (44px dots; past `reached` disabled).
@@ -139,6 +165,28 @@ radio-group, checkbox, input, label, select, accordion, skeleton, icon. Restyled
 - `EmptyState {icon?, title, children?, action?}`.
 
 Kit strings go through `t()`; their Arabic is in `src/i18n/ar/library.json` (the library test scans `kit/` and `ui/`).
+
+## Layouts
+
+- **Top bars** (tab, pushed, focus) all have the hairline and `shadow-top`. A pushed screen whose page has its own
+  `PageHeader` shows its bar title only once that header has scrolled away (`BarTitle`), like the lesson bar.
+- **Lessons**: phones keep the focus layout (✕ Close bar, no tab bar, sticky bottom bar). From lg a lesson is a
+  normal page: side rail, a top bar with "← Today", the step and the position. The header and step bar run the
+  full width; steps with a word or ayah use `Split` (`Learn.tsx`): that card at the start, sticky under the bar, the
+  step's work beside it. Check and Recite stay one 760px column. On phones both `Split` columns are
+  `display: contents`, so the order and the sticky bottom bar are unchanged. The primary button sits at the end,
+  448px wide, from lg.
+- **Learn / rule sheet** (`RuleBody`): from lg the explanation (What happens, How long, When it applies, the
+  example, Remember) is the main column and Which letters plus In the matn sit beside it; with nothing to put
+  beside it, the example goes there. Each section has an `order`, so phones read one column in the old order. Arabic
+  terms in the explanation are emphasised (teal, semibold) by CSS on their islands; content is never edited.
+- **Rule card** (`Rule.tsx`): side list of every topic, the current one open; title across the card (English at the
+  start, Arabic at the end in the English UI); definition beside the reminder; facts in two columns; examples in a
+  two-column grid. Phones: one column, `max-lg:order-*` keeps the reading order.
+- **Rules list**: search and view in one row from lg; rule rows become a two-column grid of cards with their letters,
+  counts and unit.
+- **Lesson cards** show only real facts: definition (first sentence), step meter and "Step n of 7", about 15 min
+  (`LESSON_MINUTES`, the onboarding figure), lesson number, review state, closing passage, unit finale.
 
 ## Usage rules
 
