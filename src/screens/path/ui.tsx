@@ -9,15 +9,16 @@ import { today } from '../../core/day'
 import { ayahCount, getRange, surahName, tajweedSpans, toArabicDigits } from '../../quran'
 import { Button, CorrectionTag, SegmentedControl, type PassageAyah } from '../../components'
 import { navigate } from '../../app/router'
+import { isAr, t } from '../../i18n'
 import { mergePassages, nextTeacherDay, upcomingSession, type Planned } from './helpers'
 
 export function PathTabs({ value }: { value: 'plan' | 'progress' }) {
   return (
     <SegmentedControl
-      label="Path"
+      label={t('Path')}
       value={value}
       onChange={(v) => navigate(v, { replace: true })}
-      options={[{ value: 'plan', label: 'Plan' }, { value: 'progress', label: 'Progress' }]}
+      options={[{ value: 'plan', label: t('Plan') }, { value: 'progress', label: t('Progress') }]}
     />
   )
 }
@@ -31,7 +32,7 @@ export function useVerses(from?: VerseKey, to?: VerseKey) {
     let alive = true
     getRange(from, to).then(
       (verses) => alive && set({ key, verses }),
-      () => alive && set({ key, error: 'The text needs a connection the first time it is opened.' }),
+      () => alive && set({ key, error: t('The text needs a connection the first time it is opened.') }),
     )
     return () => { alive = false }
   }, [from, to, key])
@@ -43,10 +44,10 @@ export function useVerses(from?: VerseKey, to?: VerseKey) {
 }
 
 export const REASON: Record<Planned['reason'], { glyph: string; label: string }> = {
-  milestone: { glyph: '◆', label: 'Unit finale' },
-  correction: { glyph: '↺', label: 'Re-check' },
-  recent: { glyph: '○', label: 'Since last time' },
-  ask: { glyph: '+', label: 'Added by you' },
+  milestone: { glyph: '◆', label: t('Unit finale') },
+  correction: { glyph: isAr ? '↻' : '↺', label: t('Re-check') },
+  recent: { glyph: '○', label: t('Since last time') },
+  ask: { glyph: '+', label: t('Added by you') },
 }
 
 export function ReasonChip({ p }: { p: Planned }) {
@@ -74,8 +75,8 @@ export function addToNextSession(p: Planned): Session {
 
 export function AddToNextSession({ p }: { p: Planned }) {
   const [done, setDone] = useState<string | null>(null)
-  if (done) return <a className="p-link t-sm" href={`#/teacher/${done}`}>Added to your next session ›</a>
-  return <Button variant="ghost" onClick={() => setDone(addToNextSession(p).id)}>Add to next session</Button>
+  if (done) return <a className="p-link t-sm" href={`#/teacher/${done}`}>{t('Added to your next session ›')}</a>
+  return <Button variant="ghost" onClick={() => setDone(addToNextSession(p).id)}>{t('Add to next session')}</Button>
 }
 
 /** Surah picker + ayah range. */
@@ -93,7 +94,7 @@ export function AddPassage({ onAdd, reason = 'ask' }: { onAdd: (p: Planned) => v
   return (
     <div className="p-add">
       <label className="p-field">
-        <span>Surah</span>
+        <span>{t('Surah')}</span>
         <select value={surah} onChange={(e) => { setSurah(+e.target.value); setA1(1); setA2(1) }}>
           {Array.from({ length: 114 }, (_, i) => (
             <option key={i} value={i + 1} lang="ar">{`${surahName(i + 1)} (${toArabicDigits(i + 1)})`}</option>
@@ -102,15 +103,15 @@ export function AddPassage({ onAdd, reason = 'ask' }: { onAdd: (p: Planned) => v
       </label>
       <div className="p-row">
         <label className="p-field">
-          <span>From ayah</span>
+          <span>{t('From ayah')}</span>
           <input type="number" inputMode="numeric" min={1} max={max} value={a1} onChange={(e) => setA1(+e.target.value)} />
         </label>
         <label className="p-field">
-          <span>To ayah</span>
+          <span>{t('To ayah')}</span>
           <input type="number" inputMode="numeric" min={1} max={max} value={a2} onChange={(e) => setA2(+e.target.value)} />
         </label>
       </div>
-      <Button variant="secondary" onClick={() => onAdd({ from: `${surah}:${from}`, to: `${surah}:${to}`, reason })}>Add this passage</Button>
+      <Button variant="secondary" onClick={() => onAdd({ from: `${surah}:${from}`, to: `${surah}:${to}`, reason })}>{t('Add this passage')}</Button>
     </div>
   )
 }
@@ -128,17 +129,18 @@ export function startClass(sessionId?: string) {
 
 type Progress = ReturnType<typeof courseProgress>
 type St = 'done' | 'next' | 'catch-up' | 'locked'
-const ACTION: Record<St, string> = { done: 'done, replay it', next: 'next, start it', 'catch-up': 'new in this version, open', locked: 'locked' }
+const PILL: Record<St, string> = { done: t('✓ done'), next: t('next'), 'catch-up': t('catch-up'), locked: t('locked') }
+const ACTION: Record<St, string> = { done: t('done, replay it'), next: t('next, start it'), 'catch-up': t('new in this version, open'), locked: t('locked') }
 
 function Row({ link, ar, en, st }: { link: string; ar: string; en: string; st: St }) {
   return (
     <li>
-      <a className="p-item p-item-link" href={link} aria-label={`${en}, ${ar}: ${ACTION[st]}`}>
+      <a className="p-item p-item-link" href={link} aria-label={`${[en, ar].filter(Boolean).join(', ')}: ${ACTION[st]}`}>
         <span className="p-item-main">
           <span className="a-sm" lang="ar">{ar}</span>
-          <span className="t-sm muted">{en}</span>
+          {en && <span className="t-sm muted">{en}</span>}
         </span>
-        <span className="p-pill" data-st={st} aria-hidden="true">{st === 'done' ? '✓ done' : st}</span>
+        <span className="p-pill" data-st={st} aria-hidden="true">{PILL[st]}</span>
       </a>
     </li>
   )
@@ -154,9 +156,9 @@ export function UnitLessons({ u, p }: { u: Unit; p: Progress }) {
       {u.lessonIds.map((id) => {
         const l = getLesson(id)!
         const st: St = p.done.has(id) ? 'done' : id === nextId ? 'next' : p.catchUp(id) ? 'catch-up' : 'locked'
-        return <Row key={id} link={href('learn', id)} ar={l.nameAr} en={l.nameEn} st={st} />
+        return <Row key={id} link={href('learn', id)} ar={l.nameAr} en={isAr ? '' : l.nameEn} st={st} />
       })}
-      {u.finale && <Row link={href('unit', u.id) + '?finale=1'} ar={u.finale.label} en="Unit finale: recite the passage" st={finale} />}
+      {u.finale && <Row link={href('unit', u.id) + '?finale=1'} ar={u.finale.label} en={t('Unit finale: recite the passage')} st={finale} />}
     </ul>
   )
 }

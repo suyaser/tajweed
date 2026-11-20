@@ -9,7 +9,9 @@ import { diffDays, today } from '../core/day'
 import { getLesson, lessons, pairs } from '../content'
 import { units } from '../content/course'
 import { href } from '../app/router'
-import { Button, Card, EmptyState, T } from '../components'
+import { Button, Card, EmptyState } from '../components'
+import { isAr, locale, t } from '../i18n'
+import { tn, Tx } from './study/i18n'
 import { confusableHint, mem, spread } from './study/helpers'
 import { useStudyAudio } from './study/verse'
 import { QuestionView } from './study/QuestionView'
@@ -55,7 +57,7 @@ function saveRun(r: SavedRun) {
 /** The example or fact asked last for this lesson, from any source (Learn checks too), so it is not asked again next. */
 const lastAsked = (d: UserData, refId: string) => d.attempts.filter(a => a.kind === 'lesson' && a.refId === refId && a.exampleId).pop()?.exampleId
 
-const DAY_NAME = (d: string) => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' })
+const DAY_NAME = (d: string) => new Date(d + 'T00:00:00Z').toLocaleDateString(locale, { weekday: 'long', timeZone: 'UTC' })
 
 export default function Review({ params }: ScreenProps) {
   const data = useData()
@@ -101,11 +103,11 @@ export default function Review({ params }: ScreenProps) {
     const l = getLesson(run.q.sabaq)
     return (
       <div className="s-study">
-        <Card level="e2" eyebrow={<>Today's new lesson · <span lang="ar">السبق</span></>}>
+        <Card level="e2" eyebrow={isAr ? 'السبق: درس اليوم الجديد' : <>Today's new lesson · <span lang="ar">السبق</span></>}>
           <p className="a-h3" lang="ar">{l?.nameAr}</p>
-          <p className="muted">{l?.nameEn}</p>
-          <Button block href={href('learn', run.q.sabaq)}>Start lesson</Button>
-          <Button variant="ghost" block onClick={() => setOffer(false)}>{entries.length ? 'Review first' : 'Not today'}</Button>
+          {!isAr && <p className="muted">{l?.nameEn}</p>}
+          <Button block href={href('learn', run.q.sabaq)}>{t('Start lesson')}</Button>
+          <Button variant="ghost" block onClick={() => setOffer(false)}>{entries.length ? t('Review first') : t('Not today')}</Button>
         </Card>
       </div>
     )
@@ -116,12 +118,12 @@ export default function Review({ params }: ScreenProps) {
     const upcoming = data.items.filter(i => !i.deletedAt && (i.state === 'sabqi' || i.state === 'manzil') && i.dueOn > day).map(i => i.dueOn).sort()[0]
     return (
       <EmptyState
-        title={data.items.length ? 'Nothing due today.' : 'Nothing to review yet.'}
-        action={<Button href={href('today')}>Back</Button>}
+        title={data.items.length ? t('Nothing due today.') : t('Nothing to review yet.')}
+        action={<Button href={href('today')}>{t('Back')}</Button>}
       >
         {upcoming
-          ? `Your next review is ${diffDays(upcoming, day) === 1 ? 'tomorrow' : `on ${DAY_NAME(upcoming)}`}.`
-          : !data.items.length ? 'Your first lesson starts it.' : null}
+          ? (diffDays(upcoming, day) === 1 ? t('Your next review is tomorrow.') : t('Your next review is on {day}.', { day: DAY_NAME(upcoming) }))
+          : !data.items.length ? t('Your first lesson starts it.') : null}
       </EmptyState>
     )
   }
@@ -148,12 +150,12 @@ export default function Review({ params }: ScreenProps) {
   const againLeft = entries.slice(idx + (firstAsk(entry) ? 1 : 0)).filter((e) => !firstAsk(e)).length
   const progress = (
     <div className="s-rv-progress">
-      <span className="t-sm num">{n} of {base}{againLeft > 0 && ` · ${againLeft} to look at again`}</span>
+      <span className="t-sm num">{t('{n} of {m}', { n, m: base })}{againLeft > 0 && t(' · {n} to look at again', { n: againLeft })}</span>
       <div className="s-rv-bar" aria-hidden="true"><i style={{ width: `${(n / Math.max(1, base)) * 100}%` }} /></div>
     </div>
   )
   const halfway = idx === 10 && entries.length > 12
-    ? <p className="t-sm muted">Halfway. You can stop here; the rest stays due.</p> : null
+    ? <p className="t-sm muted">{t('Halfway. You can stop here; the rest stays due.')}</p> : null
 
   if (entry.item.kind === 'correction') {
     const c = data.corrections.find(c => c.id === entry.item.refId)!
@@ -172,25 +174,25 @@ export default function Review({ params }: ScreenProps) {
     )
   }
 
-  if (!question) return <EmptyState title="This item has no question yet." action={<Button onClick={next}>Skip</Button>} />
+  if (!question) return <EmptyState title={t('This item has no question yet.')} action={<Button onClick={next}>{t('Skip')}</Button>} />
 
   const it = entry.item
   const again = !!(entry.relearn || entry.contrast)
   const hint = entry.contrast && confusableHint(pairs, entry.contrast.ask, entry.contrast.vs)
   const eyebrow = entry.contrast
-    ? 'Tell the two apart'
+    ? t('Tell the two apart')
     : entry.relearn
-      ? 'Once more, a different example'
+      ? t('Once more, a different example')
       : it.state === 'sabqi'
-        ? <T>سبقي · this week</T>
-        : <T>{it.lastReviewedOn ? `منزل · older · last seen ${diffDays(day, it.lastReviewedOn)} days ago` : 'منزل · older'}</T>
+        ? <Tx>{t('سبقي · this week')}</Tx>
+        : <Tx>{it.lastReviewedOn ? tn('منزل · older · last seen {n} days ago', 'منزل · older · last seen {n} days ago', diffDays(day, it.lastReviewedOn)) : t('منزل · older')}</Tx>
 
   return (
     <>
       {progress}
       <QuestionView
         key={idx} q={question} mode={again ? 'relearn' : 'review'} eyebrow={eyebrow} audio={audio}
-        note={<>{halfway}{hint && <Card className="s-note"><p><T>{hint}</T></p></Card>}</>}
+        note={<>{halfway}{hint && <Card className="s-note"><p><Tx>{hint}</Tx></p></Card>}</>}
         onNext={next}
         onAnswer={(chosen, correct) => {
           recordAttempt({

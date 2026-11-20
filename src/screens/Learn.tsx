@@ -12,7 +12,9 @@ import { courseProgress } from '../core/course'
 import { findTargets } from '../content/rulemap'
 import { getVerse, wordSegments } from '../quran'
 import { href } from '../app/router'
-import { Button, Card, EmptyState, Ornament, Skeleton, StarBadge, T, VerseBlock, type TajweedSegment, type WordMark } from '../components'
+import { Button, Card, EmptyState, Ornament, Skeleton, StarBadge, VerseBlock, type TajweedSegment, type WordMark } from '../components'
+import { isAr, t } from '../i18n'
+import { Tx } from './study/i18n'
 import { mem, setMem, verseRef } from './study/helpers'
 import { ExampleVerse, flat, PlayButton, useStudyAudio, useVerse, type StudyAudio } from './study/verse'
 import { Drill } from './study/Drill'
@@ -28,13 +30,13 @@ const [HEAR, NOTICE, LEARN, SAY, FIND, CHECK, RECITE, DONE] = [0, 1, 2, 3, 4, 5,
 function Steps({ step, status, skip }: { step: number; status: string; skip: (s: number) => boolean }) {
   return (
     <div className="s-lsteps s-lsteps-7">
-      <ol aria-label={`Step ${Math.min(step, RECITE) + 1} of ${STEPS.length}`}>
+      <ol aria-label={t('Step {n} of {m}', { n: Math.min(step, RECITE) + 1, m: STEPS.length })}>
         {STEPS.map(([ar, en], i) => {
           const skipped = i !== step && skip(i) // no contrast lesson, nothing to find: a dash, not ✓
           return (
             <li key={en} aria-current={i === step || undefined}>
               <StarBadge size={32} n={skipped ? '–' : undefined} state={skipped ? 'locked' : i < step ? 'done' : i === step ? 'active' : 'locked'} />
-              <span lang="ar">{ar}</span> <small>{en}{skipped && ' (skipped)'}</small>
+              <span lang="ar">{ar}</span> <small>{isAr ? skipped && t('(skipped)') : <>{en}{skipped && ' (skipped)'}</>}</small>
             </li>
           )
         })}
@@ -47,8 +49,8 @@ function Steps({ step, status, skip }: { step: number; status: string; skip: (s:
 export default function Learn({ params }: ScreenProps) {
   const lesson = getLesson(params.lessonId)
   return lesson ? <LessonFlow key={lesson.id} lesson={lesson} /> : (
-    <EmptyState title="This lesson isn't in the library." action={<Button href={href('today')}>Back to today</Button>}>
-      The link may be from an older version.
+    <EmptyState title={t("This lesson isn't in the library.")} action={<Button href={href('today')}>{t('Back to today')}</Button>}>
+      {t('The link may be from an older version.')}
     </EmptyState>
   )
 }
@@ -94,18 +96,18 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     const due = q.sabqi.length + q.manzil.length > 0 // never send them to an empty review (UX minor 8)
     return (
       <EmptyState
-        title={gate === 'backlog' ? 'Review first.'
-          : gate === 'pace' ? 'Come back tomorrow for this lesson.'
-            : firstId ? <T>{`Finish ${firstName} first.`}</T>
-              : unit ? <>This lesson opens later, in unit {unit.n} · <span lang="ar">{unit.nameAr}</span>.</> : 'This lesson is not in the course yet.'}
+        title={gate === 'backlog' ? t('Review first.')
+          : gate === 'pace' ? t('Come back tomorrow for this lesson.')
+            : firstId ? <Tx>{t('Finish {x} first.', { x: firstName })}</Tx>
+              : unit ? (isAr ? t('This lesson opens later, in unit {n} · {name}.', { n: unit.n, name: unit.nameAr }) : <>This lesson opens later, in unit {unit.n} · <span lang="ar">{unit.nameAr}</span>.</>) : t('This lesson is not in the course yet.')}
         action={<>
-          {(gate === 'backlog' || (gate === 'pace' && due)) && <Button href={href('review') + '?go=1'}>Review</Button>}
-          {firstId && <Button href={href('learn', firstId)}><T>{`Go to ${firstName}`}</T></Button>}
-          <Button variant={gate === 'backlog' || (gate === 'pace' && due) || firstId ? 'secondary' : 'primary'} href={href('rules', lesson.id)}>Read the card</Button>
+          {(gate === 'backlog' || (gate === 'pace' && due)) && <Button href={href('review') + '?go=1'}>{t('Review')}</Button>}
+          {firstId && <Button href={href('learn', firstId)}><Tx>{t('Go to {x}', { x: firstName })}</Tx></Button>}
+          <Button variant={gate === 'backlog' || (gate === 'pace' && due) || firstId ? 'secondary' : 'primary'} href={href('rules', lesson.id)}>{t('Read the card')}</Button>
         </>}>
-        {gate === 'backlog' ? 'More than 15 reviews are overdue. New lessons resume when you catch up.'
-          : gate === 'pace' ? `Two new lessons a day is the pace that sticks. ${due ? 'Do your review today.' : 'Nothing is due: recite your recent passages from Today, or come back tomorrow.'}`
-            : "Lessons open one after another. You can read the card now; reading it doesn't add it to your reviews."}
+        {gate === 'backlog' ? t('More than 15 reviews are overdue. New lessons resume when you catch up.')
+          : gate === 'pace' ? `${t('Two new lessons a day is the pace that sticks.')} ${due ? t('Do your review today.') : t('Nothing is due: recite your recent passages from Today, or come back tomorrow.')}`
+            : t("Lessons open one after another. You can read the card now; reading it doesn't add it to your reviews.")}
       </EmptyState>
     )
   }
@@ -114,9 +116,9 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <>
         {title}
-        {steps(HEAR, 'Hear')}
+        {steps(HEAR, t('Hear'))}
         <Hear lesson={lesson} notice={course.notice} audio={audio} />
-        <div className="s-sticky-cta"><Button block onClick={next}>Next</Button></div>
+        <div className="s-sticky-cta"><Button block onClick={next}>{t('Next')}</Button></div>
       </>
     )
 
@@ -124,7 +126,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <>
         {title}
-        {steps(NOTICE, 'Notice')}
+        {steps(NOTICE, t('Notice'))}
         <Notice lesson={lesson} other={other} notice={course.notice} audio={audio} onNext={next} />
       </>
     )
@@ -132,9 +134,9 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   if (step === LEARN)
     return (
       <>
-        {steps(LEARN, 'Learn')}
+        {steps(LEARN, t('Learn'))}
         <RuleBody lesson={lesson} audio={audio} />
-        <div className="s-sticky-cta"><Button block onClick={next}>I've read it · Say it</Button></div>
+        <div className="s-sticky-cta"><Button block onClick={next}>{t("I've read it · Say it")}</Button></div>
       </>
     )
 
@@ -142,7 +144,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <>
         {title}
-        {steps(SAY, 'Say')}
+        {steps(SAY, t('Say'))}
         <Say lesson={lesson} audio={audio} onNext={next} />
       </>
     )
@@ -151,7 +153,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <>
         {title}
-        {steps(FIND, 'Find')}
+        {steps(FIND, t('Find'))}
         <Find lesson={lesson} closing={course.closing?.from} onNext={next} onNone={() => { setNoFind(true); next() }} />
       </>
     )
@@ -161,7 +163,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <>
         {title}
-        {steps(CHECK, `Check · ${qi + 1} of ${qs.length}`)}
+        {steps(CHECK, t('Check · {n} of {m}', { n: qi + 1, m: qs.length }))}
         <QuestionView
           key={`chk${qi}`} q={cq} mode="check" audio={audio}
           onAnswer={(chosen, correct) => {
@@ -179,9 +181,9 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     return (
       <>
         {title}
-        {steps(RECITE, 'Recite')}
+        {steps(RECITE, t('Recite'))}
         {course.closing ? (
-          <PassageRecite from={course.closing.from} to={course.closing.to} audio={audio} doneLabel="I recited it" onDone={finish} />
+          <PassageRecite from={course.closing.from} to={course.closing.to} audio={audio} doneLabel={t('I recited it')} onDone={finish} />
         ) : (
           <SayAll lesson={lesson} audio={audio} onDone={finish} />
         )}
@@ -193,12 +195,12 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   const firstTime = data.introductions.find(i => i.lessonId === lesson.id)?.on === day
   return (
     <section className="s-study s-summary">
-      {steps(DONE, 'Done')}
+      {steps(DONE, t('Done'))}
       <Ornament />
-      <p className="t-lg"><T>{firstTime ? `${lesson.nameAr} is done. It comes back in your review tomorrow and every day this week.` : `${lesson.nameAr}: practised again.`}</T></p>
-      {qs.length > 0 && <p className="num">You answered {right} of {qs.length} checks right.</p>}
-      {after.sabaq && after.sabaq !== lesson.id && <Button block href={href('learn', after.sabaq)}><T>{`Next lesson: ${getLesson(after.sabaq)?.nameAr ?? ''}`}</T></Button>}
-      <Button block variant={after.sabaq ? 'secondary' : 'primary'} href={href('today')}>Back to today</Button>
+      <p className="t-lg"><Tx>{firstTime ? t('{x} is done. It comes back in your review tomorrow and every day this week.', { x: lesson.nameAr }) : t('{x}: practised again.', { x: lesson.nameAr })}</Tx></p>
+      {qs.length > 0 && <p className="num">{t('You answered {n} of {m} checks right.', { n: right, m: qs.length })}</p>}
+      {after.sabaq && after.sabaq !== lesson.id && <Button block href={href('learn', after.sabaq)}><Tx>{t('Next lesson: {x}', { x: getLesson(after.sabaq)?.nameAr ?? '' })}</Tx></Button>}
+      <Button block variant={after.sabaq ? 'secondary' : 'primary'} href={href('today')}>{t('Back to today')}</Button>
     </section>
   )
 }
@@ -219,7 +221,7 @@ function ExampleRow({ ex, audio, hideText = false, coloured = false }: { ex: Exa
 function Hear({ lesson, notice, audio }: { lesson: Lesson; notice: string | null; audio: StudyAudio }) {
   return (
     <div className="s-study">
-      <p className="t-lg"><T>{notice ?? 'Listen to each one, as many times as you like. What do they have in common?'}</T></p>
+      <p className="t-lg"><Tx>{notice ?? t('Listen to each one, as many times as you like. What do they have in common?')}</Tx></p>
       <ul className="s-ex-list">{lesson.examples.slice(0, 3).map(ex => <ExampleRow key={ex.id} ex={ex} audio={audio} />)}</ul>
     </div>
   )
@@ -238,20 +240,20 @@ function Notice({ lesson, other, notice, audio, onNext }: { lesson: Lesson; othe
   const answer = pair.findIndex(ex => ex.lessonId === lesson.id)
   return (
     <div className="s-study">
-      {notice && <Card className="s-note"><p className="eyebrow">Listen for</p><p><T>{notice}</T></p></Card>}
-      <p className="t-lg">{notice ? 'Listen to both. Which one has the sound described above?' : 'Listen to both. Which one sounds like the words in the last step?'}</p>
+      {notice && <Card className="s-note"><p className="eyebrow">{t('Listen for')}</p><p><Tx>{notice}</Tx></p></Card>}
+      <p className="t-lg">{notice ? t('Listen to both. Which one has the sound described above?') : t('Listen to both. Which one sounds like the words in the last step?')}</p>
       <ol className="s-notice">
         {pair.map((ex, i) => (
           <li key={ex.id}>
             <Card level="e2">
-              <p className="eyebrow">{i === 0 ? 'First' : 'Second'}{picked === i && ' · your pick'}</p>
+              <p className="eyebrow">{i === 0 ? t('First') : t('Second')}{picked === i && t(' · your pick')}</p>
               <ul className="s-ex-list"><ExampleRow ex={ex} audio={audio} hideText={picked === null} coloured={picked !== null} /></ul>
               {picked === null ? (
-                <Button variant="secondary" onClick={() => setPicked(i)}>This one</Button>
+                <Button variant="secondary" onClick={() => setPicked(i)}>{t('This one')}</Button>
               ) : i === answer ? (
-                <p><b>Has the sound.</b> <T>{`This is ${lesson.nameAr}, the rule you learn next.`}</T></p>
+                <p><b>{t('Has the sound.')}</b> <Tx>{t('This is {x}, the rule you learn next.', { x: lesson.nameAr })}</Tx></p>
               ) : (
-                <p><b>Doesn't have it.</b> <T>{`This is ${other.nameAr}, an earlier rule.`}</T></p>
+                <p><b>{t("Doesn't have it.")}</b> <Tx>{t('This is {x}, an earlier rule.', { x: other.nameAr })}</Tx></p>
               )}
             </Card>
           </li>
@@ -259,8 +261,8 @@ function Notice({ lesson, other, notice, audio, onNext }: { lesson: Lesson; othe
       </ol>
       {picked !== null && (
         <>
-          <p role="status">{picked === answer ? 'Yes, you heard it.' : 'Not this time. Play both again now that you can see which is which.'}</p>
-          <Button block onClick={onNext}>Next</Button>
+          <p role="status">{picked === answer ? t('Yes, you heard it.') : t('Not this time. Play both again now that you can see which is which.')}</p>
+          <Button block onClick={onNext}>{t('Next')}</Button>
         </>
       )}
     </div>
@@ -276,8 +278,8 @@ function Say({ lesson, audio, onNext }: { lesson: Lesson; audio: StudyAudio; onN
   if (!ex)
     return (
       <div className="s-study">
-        {drillFor(lesson).length ? <Drill lesson={lesson} audio={audio} /> : <p className="t-lg">Say the examples on the card aloud, slowly.</p>}
-        <Button block onClick={onNext}>Next</Button>
+        {drillFor(lesson).length ? <Drill lesson={lesson} audio={audio} /> : <p className="t-lg">{t('Say the examples on the card aloud, slowly.')}</p>}
+        <Button block onClick={onNext}>{t('Next')}</Button>
       </div>
     )
   const rate = (correct: boolean) => {
@@ -287,17 +289,17 @@ function Say({ lesson, audio, onNext }: { lesson: Lesson; audio: StudyAudio; onN
   }
   return (
     <div className="s-study">
-      <p className="t-lg">Play it, then say it the same way. Record yourself and compare.</p>
-      <p className="t-sm muted num">{i + 1} of {exs.length}</p>
+      <p className="t-lg">{t('Play it, then say it the same way. Record yourself and compare.')}</p>
+      <p className="t-sm muted num">{t('{n} of {m}', { n: i + 1, m: exs.length })}</p>
       <ExampleVerse ex={ex} vs={vs} spanOnly coloured size="focus"
         actions={<PlayButton audio={audio} label={verseRef(ex.verseKey)} onClick={vs.verse && (() => audio.example(vs.verse!, ex))} />} />
       {drillFor(lesson).length > 0 && i === 0 && <Drill lesson={lesson} audio={audio} />}
       <Recorder key={ex.id} from={`say:${ex.id}`} audio={audio}
         model={r => vs.verse && audio.exampleThen(vs.verse, ex, () => playMe(audio.player, r))} />
-      <p>Did it sound the same?</p>
-      <div className="s-part-actions" role="group" aria-label="Rate yourself">
-        <Button onClick={() => rate(true)}>Same</Button>
-        <Button variant="secondary" onClick={() => rate(false)}>Not yet</Button>
+      <p>{t('Did it sound the same?')}</p>
+      <div className="s-part-actions" role="group" aria-label={t('Rate yourself')}>
+        <Button onClick={() => rate(true)}>{t('Same')}</Button>
+        <Button variant="secondary" onClick={() => rate(false)}>{t('Not yet')}</Button>
       </div>
     </div>
   )
@@ -334,7 +336,7 @@ function Find({ lesson, closing, onNext, onNone }: { lesson: Lesson; closing?: s
     return () => { live = false }
   }, [lesson.id, closing]) // eslint-disable-line react-hooks/exhaustive-deps -- lesson.examples is fixed per id
   useEffect(() => { if (found === null) onNone() }, [found]) // eslint-disable-line react-hooks/exhaustive-deps
-  if (!found) return <Skeleton verse lines={2} label="Loading the ayah…" />
+  if (!found) return <Skeleton verse lines={2} label={t('Loading the ayah…')} />
 
   const { v, targets, neutral } = found
   const marks: Record<number, WordMark> = {}
@@ -348,21 +350,21 @@ function Find({ lesson, closing, onNext, onNone }: { lesson: Lesson; closing?: s
   const toggle = (n: number) => !checked && setPicked(p => (p.includes(n) ? p.filter(x => x !== n) : [...p, n]))
   return (
     <div className="s-study s-find">
-      <p className="t-lg"><T>{`Tap every word that has ${lesson.nameAr}.`}</T></p>
+      <p className="t-lg"><Tx>{t('Tap every word that has {x}.', { x: lesson.nameAr })}</Tx></p>
       <VerseBlock segments={flat(wordSegments(v) as TajweedSegment[][])} pauses={v.marks} verseKey={v.verseKey} reference={verseRef(v.verseKey)}
         size="focus" tajweed={checked} marks={marks} onWord={n => toggle(n)} />
       {!checked ? (
-        <Button block onClick={() => setChecked(true)} disabled={!picked.length}>Check</Button>
+        <Button block onClick={() => setChecked(true)} disabled={!picked.length}>{t('Check')}</Button>
       ) : (
         <>
           <p role="status">
-            {!missed && !extra ? 'All found.' : [missed && `${missed} missed (dotted)`, extra && `${extra} without it (crossed)`].filter(Boolean).join(' · ')}
+            {!missed && !extra ? t('All found.') : [missed && t('{n} missed (dotted)', { n: missed }), extra && t('{n} without it (crossed)', { n: extra })].filter(Boolean).join(' · ')}
           </p>
           {neutral.some(n => picked.includes(n)) && (
-            <p className="t-sm"><T>The last word is not counted either way: stopping on it makes its مد an عارض للسكون, which you learn next.</T></p>
+            <p className="t-sm"><Tx>{t('The last word is not counted either way: stopping on it makes its مد an عارض للسكون, which you learn next.')}</Tx></p>
           )}
-          <p className="t-sm muted">Checked against the tajweed colours of this ayah, which can miss a rule that depends on stopping.</p>
-          <Button block onClick={onNext}>Next</Button>
+          <p className="t-sm muted">{t('Checked against the tajweed colours of this ayah, which can miss a rule that depends on stopping.')}</p>
+          <Button block onClick={onNext}>{t('Next')}</Button>
         </>
       )}
     </div>
@@ -373,12 +375,12 @@ function Find({ lesson, closing, onNext, onNone }: { lesson: Lesson; closing?: s
 function SayAll({ lesson, audio, onDone }: { lesson: Lesson; audio: StudyAudio; onDone: () => void }) {
   return (
     <div className="s-study">
-      <p className="t-lg">Say these words aloud, one after another, the way the reciter does.</p>
+      <p className="t-lg">{t('Say these words aloud, one after another, the way the reciter does.')}</p>
       {lesson.examples.length ? (
         <ul className="s-ex-list">{lesson.examples.slice(0, 5).map(ex => <ExampleRow key={ex.id} ex={ex} audio={audio} />)}</ul>
       ) : drillFor(lesson).length ? <Drill lesson={lesson} audio={audio} /> : null}
       {lesson.examples.length > 0 && <Recorder from={`say:${lesson.id}`} audio={audio} />}
-      <Button block onClick={onDone}>I said them</Button>
+      <Button block onClick={onDone}>{t('I said them')}</Button>
     </div>
   )
 }

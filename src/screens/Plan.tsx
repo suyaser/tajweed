@@ -6,6 +6,7 @@ import { href } from '../app/router'
 import { StarBadge } from '../components'
 import { PathTabs, UnitLessons } from './path/ui'
 import { Hint } from './study/Hint'
+import { isAr, t } from '../i18n'
 import './path.css'
 
 export default function Plan() {
@@ -15,7 +16,7 @@ export default function Plan() {
   return (
     <div className="p-stack">
       <PathTabs value="plan" />
-      <Hint id="plan">The course, unit by unit. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.</Hint>
+      <Hint id="plan">{t('The course, unit by unit. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.')}</Hint>
       <ol className="p-timeline">
         {units.map((u) => {
           const complete = p.lessonsDone(u) && p.finaleDone(u)
@@ -28,15 +29,15 @@ export default function Plan() {
                   <StarBadge n={u.n} size={44} state={complete ? 'done' : status === 'active' ? 'active' : 'locked'} />
                   <span className="p-phase-title">
                     <span className="a-lg" lang="ar">{u.nameAr}</span>
-                    <span className="t-sm muted">{u.nameEn}</span>
+                    {!isAr && <span className="t-sm muted">{u.nameEn}</span>}
                   </span>
                   <span className="p-status t-sm num" data-status={status}>
-                    {complete ? '✓ done' : status === 'locked' ? 'locked' : u.lessonIds.length ? `${n} of ${u.lessonIds.length}` : 'finale'}
+                    {complete ? t('✓ done') : status === 'locked' ? t('locked') : u.lessonIds.length ? t('{n} of {m}', { n, m: u.lessonIds.length }) : t('finale')}
                   </span>
                 </summary>
                 <div className="p-phase-body">
                   <UnitLessons u={u} p={p} />
-                  <a className="p-link" href={href('unit', u.id)} aria-label={`Open unit ${u.n}, ${u.nameEn}`}>Open the unit ›</a>
+                  <a className="p-link" href={href('unit', u.id)} aria-label={t('Open unit {n}, {name}', { n: u.n, name: isAr ? u.nameAr : u.nameEn })}>{t('Open the unit ›')}</a>
                 </div>
               </details>
             </li>

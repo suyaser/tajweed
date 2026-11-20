@@ -5,7 +5,9 @@ import { noteRecording, uuid } from '../../core/store'
 import { useRecorder } from '../../audio/useRecorder'
 import { list, save } from '../../audio/recordings'
 import { playMe, playModelThenMe } from '../../audio/compare'
-import { Button, Passage, RecordButton, Skeleton, T } from '../../components'
+import { Button, Passage, RecordButton, Skeleton } from '../../components'
+import { t } from '../../i18n'
+import { Tx } from './i18n'
 import { useVerses } from '../path/ui'
 import { listenHref } from '../path/helpers'
 import { rangeRef } from './helpers'
@@ -37,7 +39,7 @@ export function Recorder({ from, to = from, audio, model }: { from: string; to?:
         await save({ id: uuid(), from, to, createdAt: new Date().toISOString(), durationMs: take.durationMs, mime: take.mime, blob: take.blob })
         noteRecording()
       } catch {
-        setError("Couldn't save the recording. Your device may be out of space.")
+        setError(t("Couldn't save the recording. Your device may be out of space."))
       }
       refresh()
     })
@@ -49,18 +51,18 @@ export function Recorder({ from, to = from, audio, model }: { from: string; to?:
       <RecordButton
         state={recording ? 'recording' : rec.state.status === 'unsupported' ? 'off' : last ? 'saved' : 'idle'}
         seconds={recording ? Math.max(0, Math.round((now - (rec.state.startedAt ?? now)) / 1000)) : Math.round((last?.durationMs ?? 0) / 1000)}
-        onClick={onRecord} offReason="Recording isn't available in this browser. Say it aloud anyway."
+        onClick={onRecord} offReason={t("Recording isn't available in this browser. Say it aloud anyway.")}
       />
       {(error || rec.state.status === 'denied' || rec.state.error) && (
-        <p className="t-sm" role="alert">{error ?? rec.state.error ?? 'The microphone is blocked. Allow it in the browser settings.'}</p>
+        <p className="t-sm" role="alert">{error ?? rec.state.error ?? t('The microphone is blocked. Allow it in the browser settings.')}</p>
       )}
       {last && !recording && (
         <div className="s-part-actions">
-          {model && !audio.offline && <Button variant="secondary" onClick={() => model(last)}>▶ Reciter, then me</Button>}
-          <Button variant="secondary" onClick={() => playMe(audio.player, last)}>▶ Play me</Button>
+          {model && !audio.offline && <Button variant="secondary" onClick={() => model(last)}>{t('▶ Reciter, then me')}</Button>}
+          <Button variant="secondary" onClick={() => playMe(audio.player, last)}>{t('▶ Play me')}</Button>
         </div>
       )}
-      <p className="t-sm muted">Recordings stay on this device.</p>
+      <p className="t-sm muted">{t('Recordings stay on this device.')}</p>
     </div>
   )
 }
@@ -72,17 +74,17 @@ export function PassageRecite({ from, to, audio, doneLabel, onDone }: {
   const { verses, ayahs, error, loading } = useVerses(from, to)
   return (
     <div className="s-study">
-      <p className="t-lg"><T>{`Recite ${rangeRef(from, to)}. Listen first, then recite it yourself and record.`}</T></p>
-      {loading && <Skeleton verse lines={3} label="Loading the text…" />}
+      <p className="t-lg"><Tx>{t('Recite {x}. Listen first, then recite it yourself and record.', { x: rangeRef(from, to) })}</Tx></p>
+      {loading && <Skeleton verse lines={3} label={t('Loading the text…')} />}
       {error && <p className="muted">{error}</p>}
       {ayahs && <Passage ayahs={ayahs} size="read" tajweed />}
       <div className="s-part-actions">
         {!audio.offline && (
           <Button variant="secondary" aria-pressed={audio.busy} onClick={() => (audio.busy ? audio.stop() : verses && audio.passage(verses))} disabled={!verses}>
-            {audio.busy ? '❚❚ Stop' : '▶ Listen'}
+            {audio.busy ? t('❚❚ Stop') : t('▶ Listen')}
           </Button>
         )}
-        <a className="btn btn-ghost" href={listenHref(from, to)}>Open in the player ›</a>
+        <a className="btn btn-ghost" href={listenHref(from, to)}>{t('Open in the player ›')}</a>
       </div>
       <Recorder from={from} to={to} audio={audio} model={r => { if (verses) { audio.player.load(verses, audio.reciter); playModelThenMe(audio.player, r) } }} />
       {onDone && <Button block onClick={onDone}>{doneLabel}</Button>}

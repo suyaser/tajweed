@@ -6,6 +6,7 @@ import { getVerse, RECITERS, wordSegments } from '../../quran'
 import { usePlayer } from '../../audio/usePlayer'
 import { VerseBlock, type TajweedSegment } from '../../components'
 import { verseRef } from './helpers'
+import { t } from '../../i18n'
 
 export interface VerseState { verse?: Verse; failed?: boolean }
 
@@ -54,7 +55,7 @@ export type StudyAudio = ReturnType<typeof useStudyAudio>
 /** ▶ with a text label, ❚❚ while it plays (tap to stop); says so when audio is unavailable (design §5.3 states). */
 export function PlayButton({ label, onClick, audio, children = '▶' }: { label: string; onClick?: () => void; audio: StudyAudio; children?: ReactNode }) {
   const id = useId()
-  if (audio.offline) return <span className="t-sm muted s-play-off">Audio needs a connection</span>
+  if (audio.offline) return <span className="t-sm muted s-play-off">{t('Audio needs a connection')}</span>
   const playing = audio.busy && audio.owner === id
   const tap = () => {
     if (playing) return audio.stop()
@@ -62,7 +63,7 @@ export function PlayButton({ label, onClick, audio, children = '▶' }: { label:
     onClick?.()
   }
   return (
-    <button type="button" className="icon-btn s-play-btn" onClick={tap} disabled={!onClick} aria-pressed={playing} aria-label={`${playing ? 'Stop' : 'Play'} ${label}`}>
+    <button type="button" className="icon-btn s-play-btn" onClick={tap} disabled={!onClick} aria-pressed={playing} aria-label={playing ? t('Stop {x}', { x: label }) : t('Play {x}', { x: label })}>
       {playing ? <span aria-hidden="true">❚❚</span> : children}
     </button>
   )
