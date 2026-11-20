@@ -2,6 +2,7 @@
 import type { Lesson } from '../../core/types'
 import { drillFor } from '../../content'
 import { Card } from '../../components'
+import { t } from '../../i18n'
 import type { StudyAudio } from './verse'
 import { Recorder } from './Recorder'
 
@@ -13,7 +14,7 @@ export function Drill({ lesson, audio }: { lesson: Lesson; audio: StudyAudio }) 
   if (!syllables.length) return null
   return (
     <Card level="e2" className="s-drill">
-      <p className="t-lg">Say each one slowly, from its place. Record yourself, then listen back.</p>
+      <p className="t-lg">{t('Say each one slowly, from its place. Record yourself, then listen back.')}</p>
       <p className="a-h3 s-center" lang="ar" dir="rtl">{syllables.join('، ')}</p>
       <Recorder from={drillKey(lesson.id)} audio={audio} />
     </Card>

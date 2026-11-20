@@ -6,7 +6,9 @@ import { completeFinale, useData } from '../core/store'
 import { courseProgress } from '../core/course'
 import { getUnit, unitMutun, units } from '../content/course'
 import { href } from '../app/router'
-import { Button, Card, EmptyState, StarBadge, T } from '../components'
+import { Button, Card, EmptyState, StarBadge } from '../components'
+import { isAr, t } from '../i18n'
+import { Tx } from './study/i18n'
 import { getLesson } from '../content'
 import { SignInNudge } from '../sync/SignInNudge'
 import { UnitLessons } from './path/ui'
@@ -22,7 +24,7 @@ export default function Unit({ params }: ScreenProps) {
   const audio = useStudyAudio()
   const [justDone, setJustDone] = useState<string | null>(null) // unit id whose finale was just recited here
   useEffect(() => { if (params.finale) document.getElementById('finale')?.scrollIntoView() }, [params.finale])
-  if (!u) return <EmptyState title="This unit isn't in the course." action={<Button href={href('plan')}>Course map</Button>} />
+  if (!u) return <EmptyState title={t("This unit isn't in the course.")} action={<Button href={href('plan')}>{t('Course map')}</Button>} />
   const p = courseProgress(d, units)
   const lines = unitMutun(u)
   const recited = d.finales.find((f) => f.unitId === u.id)
@@ -34,27 +36,27 @@ export default function Unit({ params }: ScreenProps) {
         <StarBadge n={u.n} size={52} state={p.lessonsDone(u) && p.finaleDone(u) ? 'done' : p.open(u) ? 'active' : 'locked'} />
         <div>
           <h1 className="a-h2" lang="ar">{u.nameAr}</h1>
-          <p className="muted">Unit {u.n} · {u.nameEn}</p>
+          <p className="muted">{isAr ? t('Unit {n}', { n: u.n }) : <>Unit {u.n} · {u.nameEn}</>}</p>
         </div>
       </header>
-      <p><T>{u.intro}</T></p>
-      {!p.open(u) && prev && <Card className="s-note"><p><T>{`This unit opens after the finale of unit ${prev.n} · ${prev.nameAr}.`}</T></p></Card>}
+      <p><Tx>{u.intro}</Tx></p>
+      {!p.open(u) && prev && <Card className="s-note"><p><Tx>{t('This unit opens after the finale of unit {n} · {name}.', { n: prev.n, name: prev.nameAr })}</Tx></p></Card>}
 
-      {u.lessonIds.length > 0 && <Card eyebrow="Lessons"><UnitLessons u={u} p={p} /></Card>}
+      {u.lessonIds.length > 0 && <Card eyebrow={t('Lessons')}><UnitLessons u={u} p={p} /></Card>}
 
       {u.finale && (
-        <section id="finale" aria-label="Unit finale">
-          <Card eyebrow={<>Finale · <span lang="ar">{u.finale.label}</span></>}>
+        <section id="finale" aria-label={t('Unit finale')}>
+          <Card eyebrow={<>{t('Finale')} · <span lang="ar">{u.finale.label}</span></>}>
             {justDone === u.id ? <UnitComplete u={u} /> : <>
-              {recited && <p className="t-sm">Recited {dayLabel(recited.on)}. You can recite it again any time.</p>}
+              {recited && <p className="t-sm">{t('Recited {day}. You can recite it again any time.', { day: dayLabel(recited.on) })}</p>}
               {p.open(u) && p.lessonsDone(u) ? (
-                <PassageRecite from={u.finale.from} to={u.finale.to} audio={audio} doneLabel="I recited it"
+                <PassageRecite from={u.finale.from} to={u.finale.to} audio={audio} doneLabel={t('I recited it')}
                   onDone={recited ? undefined : () => { audio.stop(); completeFinale(u.id); setJustDone(u.id); window.scrollTo(0, 0) }} />
               ) : (
-                <p className="t-sm"><T>{`After the last lesson of this unit, recite ${u.finale.label}. That opens the next unit.`}</T></p>
+                <p className="t-sm"><Tx>{t('After the last lesson of this unit, recite {x}. That opens the next unit.', { x: u.finale.label })}</Tx></p>
               )}
             </>}
-            <p className="t-sm muted">Self-checked against the reciter. A teacher can listen too: add it to your next session.</p>
+            <p className="t-sm muted">{t('Self-checked against the reciter. A teacher can listen too: add it to your next session.')}</p>
           </Card>
         </section>
       )}
@@ -68,16 +70,16 @@ export default function Unit({ params }: ScreenProps) {
 function UnitComplete({ u }: { u: UnitT }) {
   const next = courseProgress(useData(), units).next
   const to = next.kind === 'lesson'
-    ? { link: href('learn', next.id), label: `Next lesson: ${getLesson(next.id)?.nameAr ?? ''}` }
+    ? { link: href('learn', next.id), label: t('Next lesson: {x}', { x: getLesson(next.id)?.nameAr ?? '' }) }
     : next.kind === 'finale'
-      ? { link: href('unit', next.unit.id), label: `Open unit ${next.unit.n} · ${next.unit.nameAr}` }
-      : { link: href('today'), label: 'Back to today' }
+      ? { link: href('unit', next.unit.id), label: t('Open unit {n} · {name}', { n: next.unit.n, name: next.unit.nameAr }) }
+      : { link: href('today'), label: t('Back to today') }
   return (
     <div className="s-study s-summary" role="status">
       <StarBadge n={u.n} size={52} state="done" />
-      <p className="t-lg">Unit {u.n} complete.</p>
-      <p>{next.kind === 'done' ? <T>The course is done. تقبّل الله منك</T> : 'The next unit is open.'}</p>
-      <Button block href={to.link}><T>{to.label}</T></Button>
+      <p className="t-lg">{t('Unit {n} complete.', { n: u.n })}</p>
+      <p>{next.kind === 'done' ? <Tx>{t('The course is done. تقبّل الله منك')}</Tx> : t('The next unit is open.')}</p>
+      <Button block href={to.link}><Tx>{to.label}</Tx></Button>
       <SignInNudge />
     </div>
   )
@@ -89,8 +91,8 @@ const MATN_NAME: Record<MatnLine['matn'], string> = { tuhfa: 'تحفة الأط�
 function Mutun({ lines }: { lines: MatnLine[] }) {
   const [memorise, setMemorise] = useState(false)
   return (
-    <Card eyebrow={<>Optional · <span lang="ar">المتون</span></>}>
-      <Button variant="secondary" aria-pressed={memorise} onClick={() => setMemorise(!memorise)}>{memorise ? 'Show whole lines' : 'Memorise'}</Button>
+    <Card eyebrow={isAr ? 'المتون (اختياري)' : <>Optional · <span lang="ar">المتون</span></>}>
+      <Button variant="secondary" aria-pressed={memorise} onClick={() => setMemorise(!memorise)}>{memorise ? t('Show whole lines') : t('Memorise')}</Button>
       {(['tuhfa', 'jazariyya'] as const).filter((m) => lines.some((l) => l.matn === m)).map((m) => (
       <section key={m} aria-label={MATN_NAME[m]}>
       <h3 className="a-lg" lang="ar">{MATN_NAME[m]}</h3>
@@ -105,13 +107,13 @@ function Mutun({ lines }: { lines: MatnLine[] }) {
             ) : (
               <p lang="ar" dir="rtl" className="a-lg">{l.sadr}<br />{l.ajz}</p>
             )}
-            {l.gloss && !memorise && <p className="t-sm muted"><T>{l.gloss}</T></p>}
+            {l.gloss && !memorise && <p className="t-sm muted"><Tx>{l.gloss}</Tx></p>}
           </li>
         ))}
       </ol>
       </section>
       ))}
-      {memorise && <p className="t-sm muted">Say the second half from memory, then tap the line to check.</p>}
+      {memorise && <p className="t-sm muted">{t('Say the second half from memory, then tap the line to check.')}</p>}
     </Card>
   )
 }

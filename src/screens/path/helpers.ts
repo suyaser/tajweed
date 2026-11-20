@@ -4,6 +4,8 @@ import { addDays, weekDays } from '../../core/day'
 import { ayahCount, surahName, toArabicDigits } from '../../quran'
 import type { DayMark } from '../../components'
 import { RULE_LESSONS, wordSpan } from '../../content/rulemap'
+import { digits, isAr, locale, t } from '../../i18n'
+import { tn } from '../study/i18n'
 
 export type Planned = Session['plannedPassages'][number]
 
@@ -44,10 +46,10 @@ export function nextTeacherDay(teacherDays: number[], from: Day): Day | null {
   return null
 }
 
-const DAY_FMT = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })
+const DAY_FMT = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })
 /** 'Thu 20 Nov' */
-export const dayLabel = (d: Day) => DAY_FMT.format(new Date(d + 'T00:00:00Z')).replace(',', '')
-export const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+export const dayLabel = (d: Day) => digits(DAY_FMT.format(new Date(d + 'T00:00:00Z')).replace(',', ''))
+export const WEEKDAYS = isAr ? ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'] : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 export const live = <T extends { deletedAt: string | null }>(xs: T[]) => xs.filter((x) => !x.deletedAt)
 
@@ -114,13 +116,13 @@ export function accuracy(attempts: Attempt[], today: Day, days = 30) {
 }
 
 export function formatBytes(n: number): string {
-  if (n < 1024) return `${n} B`
-  if (n < 1024 * 1024) return `${(n / 1024).toFixed(n < 10240 ? 1 : 0)} KB`
-  return `${(n / 1024 / 1024).toFixed(1)} MB`
+  if (n < 1024) return t('{n} B', { n })
+  if (n < 1024 * 1024) return t('{n} KB', { n: digits((n / 1024).toFixed(n < 10240 ? 1 : 0)) })
+  return t('{n} MB', { n: digits((n / 1024 / 1024).toFixed(1)) })
 }
 
 /** "3 days ago" style for a past day. */
 export function daysAgo(d: Day, today: Day): string {
   const n = Math.round((Date.parse(today) - Date.parse(d)) / 86400000)
-  return n <= 0 ? 'today' : n === 1 ? 'yesterday' : `${n} days ago`
+  return n <= 0 ? t('today') : n === 1 ? t('yesterday') : tn('{n} days ago', '{n} days ago', n)
 }

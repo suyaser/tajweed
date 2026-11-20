@@ -4,6 +4,7 @@ import { studiedDays } from '../path/helpers'
 import type { DayMark } from '../../components'
 import { addDays, diffDays, weekDays } from '../../core/day'
 import { ayahCount, surahName, toArabicDigits } from '../../quran'
+import { digits, locale, t } from '../../i18n'
 
 const parse = (k: VerseKey) => k.split(':').map(Number) as [number, number]
 
@@ -34,9 +35,9 @@ export function confusableHint(pairs: ConfusablePair[], answerId: string, chosen
 /** 'today' · 'tomorrow' · '30 Nov' (Western digits for UI dates, B4). */
 export function dueLabel(due: Day, today: Day) {
   const n = diffDays(due, today)
-  if (n <= 0) return 'today'
-  if (n === 1) return 'tomorrow'
-  return new Date(due + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
+  if (n <= 0) return t('today')
+  if (n === 1) return t('tomorrow')
+  return digits(new Date(due + 'T00:00:00Z').toLocaleDateString(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' }))
 }
 
 /** Today's week dots: the same "studied" rule as Progress (any wird part, listening, a recording, an answer). */

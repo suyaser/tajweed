@@ -1,5 +1,9 @@
 // Spec §6.4: identify · length · fact.
 import type { Example, FactQuestion, Lesson, QuestionKind } from './types'
+import { digits, isAr, pick as tr, t } from '../i18n'
+
+/** '4–5 counts' · Arabic 'حركتان' / '٤–٥ حركات'. */
+export const countsText = (x: string | number) => (!isAr ? `${x} counts` : String(x) === '2' || String(x) === '٢' ? 'حركتان' : `${digits(x)} حركات`)
 
 export interface Option { id: string; labelAr: string; labelEn: string }
 
@@ -76,17 +80,17 @@ export function reasonFor(lesson: Lesson, ex: Example): string {
   const L = ls[ls.length - 1] // the letter after نْ / مْ / ال is the last one underlined
   const name = lesson.nameAr
   if (L) {
-    if (lesson.topicId === 'nun') return `${/[ً-ٍ]/.test(ex.focus) ? 'تنوين' : 'نْ'} then ${L} → ${name}.`
-    if (lesson.topicId === 'meem') return `مْ then ${L} → ${name}.`
-    if (lesson.id === 'lam-q') return `ال then ${L}, a moon letter: the ل is said → ${name}.`
-    if (lesson.id === 'lam-s') return `ال then ${L}, a sun letter: the ل merges into it → ${name}.`
-    if (lesson.id === 'qal-s') return `${ls[0]} with سكون → ${name}.`
-    if (lesson.id === 'qal-k') return `Stopping on ${L} → ${name}.`
-    if (lesson.id === 'ghunnah') return `${ls[0]} with شدة: hold the غنة 2 counts → ${name}.`
+    if (lesson.topicId === 'nun') return t('{x} then {L} → {name}.', { x: /[ً-ٍ]/.test(ex.focus) ? 'تنوين' : 'نْ', L, name })
+    if (lesson.topicId === 'meem') return t('{x} then {L} → {name}.', { x: 'مْ', L, name })
+    if (lesson.id === 'lam-q') return t('ال then {L}, a moon letter: the ل is said → {name}.', { L, name })
+    if (lesson.id === 'lam-s') return t('ال then {L}, a sun letter: the ل merges into it → {name}.', { L, name })
+    if (lesson.id === 'qal-s') return t('{x} with سكون → {name}.', { x: ls[0], name })
+    if (lesson.id === 'qal-k') return t('Stopping on {L} → {name}.', { L, name })
+    if (lesson.id === 'ghunnah') return t('{x} with شدة: hold the غنة 2 counts → {name}.', { x: ls[0], name })
   }
   if (lesson.counts) {
     const { min, max, note } = lesson.counts
-    return note?.includes('counts') ? `${name}: ${note}.` : `${name}: ${min === max ? min : `${min}–${max}`} counts. ${note ?? lesson.summary}` // no "2 counts. 2 counts"
+    return note && /counts|حرك/.test(note) ? `${name}: ${note}.` : t('{name}: {counts}. {more}', { name, counts: countsText(min === max ? min : `${min}–${max}`), more: note ?? lesson.summary }) // no "2 counts. 2 counts"
   }
   return lesson.summary
 }
@@ -149,14 +153,15 @@ export function makeQuestion(
     const answer = options.find(o => o.id === lengthId(lesson.counts!))!
     const why = example.note ?? lesson.counts.note ?? lesson.summary
     const explanation = munfasil
-      ? `It's ${n} counts, the length you chose for المنفصل; المتصل is read the same. ${n === 4 ? 5 : 4} is also correct for حفص من طريق الشاطبية; keep one length throughout.${lesson.id === 'muttasil' ? ' 6 is also allowed when you stop on a final همزة.' : ''}${example.note ? ` ${example.note}` : ''}`
-      : /^\d/.test(why) ? `It's ${why}.` : `It's ${answer.labelEn} counts: ${why}`
-    return { ...base, kind, prompt: 'How many counts on the underlined مد?', options, answerId: answer.id, explanation }
+      ? t("It's {n} counts, the length you chose for المنفصل; المتصل is read the same. {m} is also correct for حفص من طريق الشاطبية; keep one length throughout.", { n, m: n === 4 ? 5 : 4 })
+        + (lesson.id === 'muttasil' ? t(' 6 is also allowed when you stop on a final همزة.') : '') + (example.note ? ` ${example.note}` : '')
+      : /^[\d٠-٩]/.test(why) ? t("It's {x}.", { x: why }) : t("It's {counts}: {why}", { counts: countsText(tr(answer.labelEn, answer.labelAr)), why })
+    return { ...base, kind, prompt: t('How many counts on the underlined مد?'), options, answerId: answer.id, explanation }
   }
 
   const options = shuffle([lesson, ...distractors(lesson, ctx, rng, example)], rng).map(l => ({ id: l.id, labelAr: l.nameAr, labelEn: l.nameEn }))
   return {
-    ...base, kind: 'identify', prompt: ctx.vs ? 'Which of the two is the underlined part?' : 'Which rule is the underlined part?',
+    ...base, kind: 'identify', prompt: ctx.vs ? t('Which of the two is the underlined part?') : t('Which rule is the underlined part?'),
     options, answerId: lesson.id, explanation: reasonFor(lesson, example),
   }
 }

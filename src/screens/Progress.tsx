@@ -5,7 +5,9 @@ import { LADDER, hasOpenCorrection, levelOf, type Level } from '../core/schedule
 import { getLesson, lessons, topics } from '../content'
 import { courseOrder, getUnit, units } from '../content/course'
 import { courseProgress } from '../core/course'
-import { Bdi, Card, CorrectionBadge, LevelBadge, ProgressDots, T } from '../components'
+import { Bdi, Card, CorrectionBadge, LevelBadge, ProgressDots } from '../components'
+import { digits, isAr, t } from '../i18n'
+import { tn, Tx } from './study/i18n'
 import { accuracy, dayLabel, live, studiedDays, weeks } from './path/helpers'
 import { PathTabs } from './path/ui'
 import './path.css'
@@ -27,7 +29,9 @@ export default function Progress() {
   )
 }
 
-const plural = (n: number, one: string, many = one + 's') => `${n} ${n === 1 ? one : many}`
+const times = (n: number) => tn('{n} time', '{n} times', n)
+const lapses = (n: number) => tn('{n} lapse', '{n} lapses', n)
+const weeksN = (n: number) => tn('{n} week', '{n} weeks', n)
 
 /** "Title:" then one Arabic name per line, so a wrapped Arabic island never reorders the sentence. */
 function NameList({ title, items }: { title: string; items: [ar: string, detail: string][] }) {
@@ -51,15 +55,15 @@ function Recitation({ d }: { d: UserData }) {
   const passed = d.finales.map((f) => ({ label: getUnit(f.unitId)?.finale?.label ?? f.unitId, on: f.on }))
 
   return (
-    <Card eyebrow="From your teacher">
-      <h2 className="t-h3">How you recite</h2>
+    <Card eyebrow={t('From your teacher')}>
+      <h2 className="t-h3">{t('How you recite')}</h2>
       {!cs.length && !sessions.length ? (
-        <p className="muted">Your teacher's corrections will show here after your first session.</p>
+        <p className="muted">{t("Your teacher's corrections will show here after your first session.")}</p>
       ) : (
         <>
           {sessions.length > 0 && (
             <>
-              <p className="t-sm">Corrections per session <span className="muted">· newest first</span></p>
+              <p className="t-sm">{t('Corrections per session')} <span className="muted">{t('· newest first')}</span></p>
               <ul className="p-bars">
                 {sessions.map((s) => {
                   const mine = cs.filter((c) => c.sessionId === s.id)
@@ -72,19 +76,19 @@ function Recitation({ d }: { d: UserData }) {
                         {Array.from({ length: j }, (_, i) => <i key={'j' + i} className="j" />)}
                         {Array.from({ length: k }, (_, i) => <i key={'k' + i} />)}
                       </span>
-                      <span className="t-sm p-bar-n"><T>{`${j} جلي · ${k} خفي`}</T></span>
+                      <span className="t-sm p-bar-n"><Tx>{`${digits(j)} جلي · ${digits(k)} خفي`}</Tx></span>
                     </li>
                   )
                 })}
               </ul>
             </>
           )}
-          <p>Open {open} · Resolved {cs.length - open}</p>
+          <p>{t('Open {n} · Resolved {m}', { n: open, m: cs.length - open })}</p>
           {top.length > 0 && (
-            <NameList title="Corrected most" items={top.map(([id, n]) => [getLesson(id)?.nameAr ?? id, plural(n, "time")])} />
+            <NameList title={t('Corrected most')} items={top.map(([id, n]) => [getLesson(id)?.nameAr ?? id, times(n)])} />
           )}
           {passed.length > 0 && (
-            <NameList title="Unit finales recited" items={passed.map((p) => [p.label, dayLabel(p.on)])} />
+            <NameList title={t('Unit finales recited')} items={passed.map((p) => [p.label, dayLabel(p.on)])} />
           )}
         </>
       )}
@@ -108,27 +112,27 @@ function Recognition({ d }: { d: UserData }) {
   const acc = accuracy(d.attempts, on)
 
   return (
-    <Card eyebrow="From the quiz">
-      <h2 className="t-h3">What you can recognise</h2>
+    <Card eyebrow={t('From the quiz')}>
+      <h2 className="t-h3">{t('What you can recognise')}</h2>
       {!d.introductions.length ? (
-        <p className="muted">Levels start after your first lesson.</p>
+        <p className="muted">{t('Levels start after your first lesson.')}</p>
       ) : (
         <>
-          <p className="p-levels">{LEVELS.map((lv) => <LevelBadge key={lv} level={lv} detail={String(count(lv))} />)}</p>
+          <p className="p-levels">{LEVELS.map((lv) => <LevelBadge key={lv} level={lv} detail={digits(count(lv))} />)}</p>
           {acc.total > 0 && (
-            <p>In the last 30 days you answered {acc.correct} of {acc.total} review questions correctly.</p>
+            <p>{t('In the last 30 days you answered {n} of {m} review questions correctly.', { n: acc.correct, m: acc.total })}</p>
           )}
           {slipping.length > 0 && (
-            <NameList title="Slipping" items={slipping.map((r) => [r.l.nameAr, plural(r.it!.lapses, 'lapse')])} />
+            <NameList title={t('Slipping')} items={slipping.map((r) => [r.l.nameAr, lapses(r.it!.lapses)])} />
           )}
           <details className="p-details">
-            <summary>See all rules</summary>
-            {topics.map((t) => {
-              const tr = rows.filter((r) => r.l.topicId === t.id).sort((a, b) => (b.it?.lapses ?? 0) - (a.it?.lapses ?? 0))
+            <summary>{t('See all rules')}</summary>
+            {topics.map((tp) => {
+              const tr = rows.filter((r) => r.l.topicId === tp.id).sort((a, b) => (b.it?.lapses ?? 0) - (a.it?.lapses ?? 0))
               if (!tr.length) return null
               return (
-                <section key={t.id}>
-                  <h3 className="eyebrow"><T>{`${t.nameAr} · ${t.nameEn}`}</T></h3>
+                <section key={tp.id}>
+                  <h3 className="eyebrow"><Tx>{isAr ? tp.nameAr : `${tp.nameAr} · ${tp.nameEn}`}</Tx></h3>
                   <ul className="p-list">
                     {tr.map(({ l, it, level, last5, n5, open }) => (
                       <li key={l.id}>
@@ -137,13 +141,13 @@ function Recognition({ d }: { d: UserData }) {
                             <span className="a-sm" lang="ar">{l.nameAr}</span>
                             <span className="t-sm muted">
                               {it
-                                ? `every ${LADDER[it.step]} ${LADDER[it.step] === 1 ? 'day' : 'days'} · ${plural(it.lapses, 'lapse')} · last ${n5}: ${last5} right · next ${dayLabel(it.dueOn)}`
-                                : 'not started'}
+                                ? `${tn('every {n} day', 'every {n} days', LADDER[it.step])} · ${lapses(it.lapses)} · ${t('last {n}: {m} right', { n: n5, m: last5 })} · ${t('next {day}', { day: dayLabel(it.dueOn) })}`
+                                : t('not started')}
                             </span>
                           </span>
                           <span className="p-tags">
                             <LevelBadge level={level} />
-                            {open && <CorrectionBadge>teacher correction open</CorrectionBadge>}
+                            {open && <CorrectionBadge>{t('teacher correction open')}</CorrectionBadge>}
                           </span>
                         </a>
                       </li>
@@ -155,7 +159,7 @@ function Recognition({ d }: { d: UserData }) {
           </details>
         </>
       )}
-      <p className="t-sm muted">This shows you can name a rule. Only your teacher can tell you if you recite it.</p>
+      <p className="t-sm muted">{t('This shows you can name a rule. Only your teacher can tell you if you recite it.')}</p>
     </Card>
   )
 }
@@ -166,12 +170,12 @@ function Consistency({ d }: { d: UserData }) {
   const shown = w.weeks.filter((x) => x.counted)
   const thisWeek = w.weeks[w.weeks.length - 1]
   return (
-    <Card eyebrow="Consistency">
+    <Card eyebrow={t('Consistency')}>
       <p>
-        This week: {plural(thisWeek.count, 'day')} studied.
-        {w.total > 1 && ` Studied 5 or more days in ${w.full} of the last ${plural(w.total, 'week')}.`}
+        {tn('This week: {n} day studied.', 'This week: {n} days studied.', thisWeek.count)}
+        {w.total > 1 && t(' Studied 5 or more days in {n} of the last {weeks}.', { n: w.full, weeks: weeksN(w.total) })}
       </p>
-      <ol className="p-weeks" aria-label="Days studied per week, oldest first">
+      <ol className="p-weeks" aria-label={t('Days studied per week, oldest first')}>
         {(shown.length ? shown : [thisWeek]).map((x) => (
           <li key={x.start}>
             <span className="t-sm muted p-bar-day">{dayLabel(x.start)}</span>
@@ -198,21 +202,21 @@ function Goals({ d }: { d: UserData }) {
   const w = weeks(studiedDays(d), on, 16, d.settings.onboardedOn)
   const done = live(d.sessions).filter((s) => s.status === 'done').length
   const goals: [string, string, string][] = [
-    ['S1', 'The course', `${prog.done.size} of ${courseOrder.length} lessons · ${unitsDone} of ${units.length} units done`],
-    ['S2', 'Clear errors on the last finale session', jaliLast == null ? 'No milestone session yet' : `${jaliLast} جلي (goal: 0)`],
-    ['S3', 'Rule recognition (quiz only)', `${strongEnough} of ${quizzable.length} learned rules at a 14-day interval${acc.total ? ` · ${Math.round((100 * acc.correct) / acc.total)}% right in the last 2 weeks` : ''} (goal: all, and 90%)`],
-    ['S4', 'Fine-detail corrections that stick', khafi.length ? `${khafi.filter((c) => c.status === 'resolved').length} of ${khafi.length} خفي corrections resolved (goal: 80%)` : 'No خفي corrections yet'],
-    ['S5', 'Consistency', `${w.full} of ${plural(w.total, 'week')} with 5 or more study days (goal: 12 of 16)`],
-    ['S6', 'Teacher contact', `${plural(done, 'session')} logged (goal: 12)`],
+    ['S1', t('The course'), t('{n} of {m} lessons · {u} of {v} units done', { n: prog.done.size, m: courseOrder.length, u: unitsDone, v: units.length })],
+    ['S2', t('Clear errors on the last finale session'), jaliLast == null ? t('No milestone session yet') : t('{n} جلي (goal: 0)', { n: jaliLast })],
+    ['S3', t('Rule recognition (quiz only)'), t('{n} of {m} learned rules at a 14-day interval', { n: strongEnough, m: quizzable.length }) + (acc.total ? t(' · {p}% right in the last 2 weeks', { p: Math.round((100 * acc.correct) / acc.total) }) : '') + t(' (goal: all, and 90%)')],
+    ['S4', t('Fine-detail corrections that stick'), khafi.length ? t('{n} of {m} خفي corrections resolved (goal: 80%)', { n: khafi.filter((c) => c.status === 'resolved').length, m: khafi.length }) : t('No خفي corrections yet')],
+    ['S5', t('Consistency'), t('{n} of {weeks} with 5 or more study days (goal: 12 of 16)', { n: w.full, weeks: weeksN(w.total) })],
+    ['S6', t('Teacher contact'), tn('{n} session logged (goal: 12)', '{n} sessions logged (goal: 12)', done)],
   ]
   return (
     <details className="p-details card card-e1">
-      <summary>Goals</summary>
+      <summary>{t('Goals')}</summary>
       <dl className="p-goals">
         {goals.map(([id, name, value]) => (
           <div key={id}>
-            <dt className="t-sm"><b>{id}</b> · {name}</dt>
-            <dd><T>{value}</T></dd>
+            <dt className="t-sm"><b>{isAr ? digits(id.slice(1)) : id}</b> · {name}</dt>
+            <dd><Tx>{value}</Tx></dd>
           </div>
         ))}
       </dl>
