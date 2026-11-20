@@ -2,6 +2,7 @@
 import { AR, digits, isAr, t } from '../../i18n'
 import { Fragment } from 'react'
 import { T } from '../../components'
+import { carryMarks } from '../../components/bidi'
 
 type Vars = Record<string, string | number>
 
@@ -25,7 +26,8 @@ export function tn(one: string, other: string, n: number, vars?: Vars): string {
  */
 export function Tx({ children }: { children: string }) {
   const parts = children.split(/(\([^()]{1,24}\))/)
-  const one = (s: string) => (isAr ? digits(s) : <T>{s}</T>)
+  // a lone mark (the شدة in "(ّ)") sits on a tatweel, or it renders as a box (T does the same in English)
+  const one = (s: string) => (isAr ? digits(carryMarks(s)) : <T>{s}</T>)
   const body = parts.length === 1 ? one(children)
     : parts.map((s, i) => (i % 2 ? <span key={i} className="whitespace-nowrap">{one(s)}</span> : <Fragment key={i}>{one(s)}</Fragment>))
   return isAr && /[A-Za-z]/.test(children) ? <bdi>{body}</bdi> : <>{body}</>

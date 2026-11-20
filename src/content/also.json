@@ -511,7 +511,6 @@
   "tafkhim"
  ],
  "qal-k#2": [
-  "basics",
   "rawm-ishmam"
  ],
  "qal-k#3": [
@@ -597,6 +596,7 @@
   "tabii"
  ],
  "silah-s#2": [
+  "basics",
   "idgh-n",
   "tabii"
  ],
@@ -1025,9 +1025,7 @@
   "lam-jl"
  ],
  "basics#6": [
-  "qal-k",
-  "qal-s",
-  "rawm-ishmam"
+  "silah-s"
  ],
  "basics#7": [
   "tabii"
@@ -1253,7 +1251,6 @@
   "arid"
  ],
  "rawm-ishmam#2": [
-  "basics",
   "qal-k"
  ],
  "rawm-ishmam#3": [
