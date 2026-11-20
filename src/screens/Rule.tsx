@@ -37,7 +37,7 @@ export default function Rule({ params }: ScreenProps) {
     const lines = mutun.filter((m) => m.lessonIds.includes(lesson.id))
     return (['tuhfa', 'jazariyya'] as const).flatMap((k) => {
       const ns = lines.filter((m) => m.matn === k).map((m) => m.n).sort((a, b) => a - b)
-      return ns.length ? [{ k, name: k === 'tuhfa' ? 'تحفة الأطفال' : 'المقدمة الجزرية', range: ns.length > 1 ? `${arDigits(ns[0])}–${arDigits(ns[ns.length - 1])}` : arDigits(ns[0]) }] : []
+      return ns.length ? [{ k, from: ns[0], to: ns[ns.length - 1], name: k === 'tuhfa' ? 'تحفة الأطفال' : 'المقدمة الجزرية', range: ns.length > 1 ? `${arDigits(ns[0])}–${arDigits(ns[ns.length - 1])}` : arDigits(ns[0]) }] : []
     })
   }, [lesson])
 
@@ -242,7 +242,7 @@ export default function Rule({ params }: ScreenProps) {
                 <p className="flex flex-wrap items-center gap-space-sm text-body-md">
                   <Icon name="history_edu" size={20} className="text-secondary" />
                   {matn.map((m) => (
-                    <a key={m.k} href={href('mutun', m.k)} className="font-medium text-primary underline-offset-4 hover:underline">{t('R2:')} <bdi lang="ar" className="font-arabic">{m.name} {m.range}</bdi></a>
+                    <a key={m.k} href={`${href('mutun', m.k)}?from=${m.from}&to=${m.to}`} className="font-medium text-primary underline-offset-4 hover:underline">{t('In the matn:')} <bdi lang="ar" className="font-arabic">{m.name} {m.range}</bdi></a>
                   ))}
                 </p>
               )}

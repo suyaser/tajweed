@@ -122,7 +122,7 @@ function Matn({ lines }: { lines: MatnLine[] }) {
           </figure>
         ))}
       </div>
-      <a href={href('mutun', shown[0].matn)} lang="ar" className="mt-space-sm inline-flex min-h-11 items-center gap-1 text-arabic-label text-primary no-underline hover:underline">
+      <a href={`${href('mutun', shown[0].matn)}?from=${shown[0].n}&to=${shown[shown.length - 1].n}`} lang="ar" className="mt-space-sm inline-flex min-h-11 items-center gap-1 text-arabic-label text-primary no-underline hover:underline">
         <Icon name="history_edu" size={18} />{MATN_NAME[shown[0].matn]} {arDigits(shown[0].n)}{shown.length > 1 && `–${arDigits(shown[shown.length - 1].n)}`}
       </a>
     </SectionCard>

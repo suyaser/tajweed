@@ -39,7 +39,6 @@
   "Player": "المشغّل",
   "Tap a word to hear it alone.": "اضغط على كلمة لتسمعها وحدها.",
   "Easy to mix up with:": "قد يلتبس بـ:",
-  "R2:": "في المتن:",
   "Sources ({n})": "المصادر ({n})",
   "In your review. Next due {day}.": "في مراجعتك. موعده القادم {day}.",
   "In your review.": "في مراجعتك.",
@@ -500,5 +499,12 @@
   "{n} known": "المتقنة: {n}",
   "Wird at {time}": "الورد عند {time}",
   "{n} video episodes": "حلقات الشرح: {n}",
-  "{n} reciters": "القرّاء: {n}"
+  "{n} reciters": "القرّاء: {n}",
+  "In the matn:": "في المتن:",
+  "This text isn't in the app.": "هذا المتن ليس في التطبيق.",
+  "{n} lines": "{n} بيتًا",
+  "Source": "المصدر",
+  "Show whole lines": "اعرض الأبيات كاملة",
+  "Memorise": "احفظ",
+  "Say the second half from memory, then tap the line to check.": "قل الشطر الثاني من حفظك، ثم المس البيت لتتحقق."
 }
