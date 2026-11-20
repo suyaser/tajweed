@@ -10,6 +10,8 @@ import { normalize } from './library/range'
 import { ColourDot, LevelChip, LevelMark, Letters } from './library/ui'
 import { Hint } from './study/Hint'
 import { tn } from './study/i18n'
+import { letterCount } from './study/RuleBody'
+import { unitOf } from '../content/course'
 import { digits, isAr, t } from '../i18n'
 import { cn } from '@/lib/utils'
 import { Chip, CountBeats, Page, PageHeader, Sep } from '@/components/kit'
@@ -51,8 +53,8 @@ export default function Rules(_: ScreenProps) {
       ]} />
       <Hint id="rules">{t('Every rule card, the mind map and confusing pairs. Open any card any time, even before its lesson. Colours match the coloured muṣḥaf.')}</Hint>
 
-      <div className="flex flex-col gap-space-md">
-        <label className="relative flex items-center">
+      <div className="flex flex-col gap-space-md lg:flex-row lg:items-start">
+        <label className="relative flex items-center lg:flex-1">
           <Icon name="search" className="pointer-events-none absolute start-4 text-on-surface-variant" />
           <input
             type="search" dir="auto" value={q} onChange={(e) => { setQ(e.target.value); if (e.target.value) setView('list') }}
@@ -60,14 +62,14 @@ export default function Rules(_: ScreenProps) {
             className="h-12 w-full min-w-0 rounded-control border border-outline-variant bg-surface-container-lowest ps-12 pe-4 text-body-lg placeholder:text-on-surface-variant/70"
           />
         </label>
-        <div className="flex flex-wrap items-center justify-between gap-space-sm">
+        <div className="flex flex-wrap items-center justify-between gap-space-sm lg:flex-nowrap">
           <SegmentedControl label={t('View')} value={view} onChange={setView}
             options={[{ value: 'list', label: t('List') }, { value: 'map', label: t('Map') }]} />
-          <details className="group open:basis-full">
+          <details className="group open:basis-full lg:relative lg:open:basis-auto">
             <summary className="ms-auto flex h-12 w-fit cursor-pointer list-none items-center gap-1 rounded-control px-space-md text-body-md font-semibold text-primary hover:bg-surface-container [&::-webkit-details-marker]:hidden">
               <Icon name="palette" size={20} />{t('Colours')}<Icon name="expand_more" size={20} className="transition-transform group-open:rotate-180" />
             </summary>
-            <div className="mt-1 rounded-card border border-outline-variant bg-surface-container-lowest p-space-md shadow-card">
+            <div className="mt-1 rounded-card border border-outline-variant bg-surface-container-lowest p-space-md shadow-card lg:absolute lg:end-0 lg:z-20 lg:w-[480px]">
               <Legend colours={COLOUR_KEYS} />
             </div>
           </details>
@@ -75,8 +77,8 @@ export default function Rules(_: ScreenProps) {
       </div>
 
       {/* the map shows every topic itself: no topic list beside it, so its columns get the width */}
-      <div className={cn('grid items-start gap-space-lg', view !== 'map' && 'lg:grid-cols-[240px_1fr]')}>
-        <nav aria-label={t('Topics')} hidden={view === 'map'} className="-mx-gutter overflow-x-auto px-gutter md:-mx-gutter-md md:px-gutter-md lg:sticky lg:top-space-lg lg:mx-0 lg:px-0">
+      <div className={cn('grid items-start gap-space-lg', view !== 'map' && 'lg:grid-cols-[260px_1fr]')}>
+        <nav aria-label={t('Topics')} hidden={view === 'map'} className="-mx-gutter overflow-x-auto px-gutter md:-mx-gutter-md md:px-gutter-md lg:sticky lg:top-24 lg:mx-0 lg:px-0">
           <ul className="flex gap-space-sm lg:flex-col lg:gap-space-xs lg:rounded-card lg:border lg:border-outline-variant lg:bg-surface-container-lowest lg:p-space-sm">
             {byTopic.map(({ tp, all }) => {
               const known = all.filter((l) => isKnown(status.get(l.id)!)).length
@@ -115,20 +117,27 @@ export default function Rules(_: ScreenProps) {
                   </div>
                 </header>
                 {!nq && <Chooser topicId={tp.id} ls={ls} />}
-                <ul className="flex flex-col divide-y divide-outline-variant overflow-hidden rounded-card border border-outline-variant bg-surface-container-lowest">
+                {/* phones: one grouped list; from lg: a two-column grid of cards that uses the width */}
+                <ul className="flex flex-col divide-y divide-outline-variant overflow-hidden rounded-card border border-outline-variant bg-surface-container-lowest lg:grid lg:grid-cols-2 lg:gap-space-sm lg:divide-y-0 lg:overflow-visible lg:border-0 lg:bg-transparent">
                   {ls.map((l) => {
                     const s = status.get(l.id)!
+                    const facts = [
+                      l.letters && letterCount(l.letters) > 1 && tn('{n} letter', '{n} letters', letterCount(l.letters)),
+                      l.counts && (l.counts.min === l.counts.max ? t('{n} counts', { n: l.counts.min }) : t('{min}–{max} counts', { min: l.counts.min, max: l.counts.max })),
+                      unitOf(l.id) && t('Unit {n}', { n: unitOf(l.id)!.n }),
+                    ].filter(Boolean)
                     return (
-                      <li key={l.id}>
-                        <a href={href('rules', l.id)} className="flex min-h-16 items-center gap-space-md px-space-md py-space-sm text-on-surface no-underline transition-colors hover:bg-surface-container-low">
+                      <li key={l.id} className="lg:min-w-0 lg:rounded-card lg:border lg:border-outline-variant lg:bg-surface-container-lowest">
+                        <a href={href('rules', l.id)} className="flex min-h-16 items-center gap-space-md px-space-md py-space-sm text-on-surface no-underline transition-colors hover:bg-surface-container-low lg:h-full lg:rounded-card">
                           <ColourDot colour={l.colour} />
                           <span className="flex min-w-0 flex-1 flex-col">
                             <span lang="ar" className="font-naskh text-body-lg leading-snug font-semibold">{l.nameAr}</span>
-                            {!isAr && <span className="text-body-md text-on-surface-variant">{l.nameEn}</span>}
+                            {!isAr && <span className="text-body-md font-medium text-on-surface-variant">{l.nameEn}</span>}
+                            {facts.length > 0 && <span className="text-label font-normal text-on-surface-variant">{facts.map((f, i) => <span key={i}>{i > 0 && <Sep />}{f}</span>)}</span>}
                           </span>
                           {s.correction && <Chip tone="error" icon="flag" fill>{t('correction open')}</Chip>}
                           <LevelChip level={s.level} />
-                          <Icon name="chevron_right" rtlFlip className="text-outline" />
+                          <Icon name="chevron_right" rtlFlip className="text-outline lg:hidden" />
                         </a>
                       </li>
                     )

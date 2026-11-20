@@ -11,7 +11,7 @@ import { Button, COLOURS, EmptyState, Line, T, VerseBlock, arDigits } from '../c
 import { fmtDay, lessonStatus, useOnline } from './library/shared'
 import { rangeParam, refLabel } from './library/range'
 import { ColourDot, LevelChip, Letters } from './library/ui'
-import { isAr, t } from '../i18n'
+import { digits, isAr, t } from '../i18n'
 import { cn } from '@/lib/utils'
 import { Callout, Chip, CountBeats, Page, SectionCard, Sep } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
@@ -68,21 +68,43 @@ export default function Rule({ params }: ScreenProps) {
 
   return (
     <Page width="wide">
-      <div className="grid items-start gap-space-lg lg:grid-cols-[240px_1fr]">
+      <div className="grid items-start gap-space-lg lg:grid-cols-[260px_1fr]">
         {topic && (
-          <nav aria-label={t('Topics')} className="hidden rounded-card border border-outline-variant bg-surface-container-lowest p-space-sm lg:sticky lg:top-space-lg lg:block">
-            <p lang="ar" className="px-space-sm pt-space-xs pb-space-xs font-naskh text-body-lg font-bold text-secondary">{topic.nameAr}</p>
+          <nav aria-label={t('Topics')} className="hidden max-h-[calc(100dvh-7rem)] overflow-y-auto rounded-card border border-outline-variant bg-surface-container-lowest p-space-sm lg:sticky lg:top-24 lg:block">
+            <p className="px-space-sm pt-space-xs pb-space-sm text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case">{t('Topics')}</p>
             <ul className="flex flex-col gap-0.5">
-              {siblings.map((l) => (
-                <li key={l.id}>
-                  <a href={href('rules', l.id)} aria-current={l.id === lesson.id ? 'page' : undefined}
-                    className={cn('flex min-h-11 items-center gap-space-sm rounded-control px-space-sm no-underline transition-colors',
-                      l.id === lesson.id ? 'bg-primary-fill text-on-primary' : 'text-on-surface hover:bg-surface-container')}>
-                    <ColourDot colour={l.colour} />
-                    <span lang="ar" className="text-arabic-label">{l.nameAr}</span>
-                  </a>
-                </li>
-              ))}
+              {topics.map((tp) => {
+                const ls = lessons.filter((l) => l.topicId === tp.id)
+                if (!ls.length) return null
+                const here = tp.id === topic.id
+                return (
+                  <li key={tp.id} className={cn(here && 'rounded-control bg-surface-container-low pb-space-xs')}>
+                    <a href={href('rules', here ? lesson.id : ls[0].id)} aria-current={here ? 'true' : undefined}
+                      className="flex min-h-11 items-center gap-space-sm rounded-control px-space-sm text-on-surface no-underline hover:bg-surface-container">
+                      <Icon name={here ? 'expand_more' : 'chevron_right'} size={18} rtlFlip={!here} className="text-outline" />
+                      <span className="flex min-w-0 flex-1 flex-col">
+                        <span lang="ar" className={cn('font-naskh text-body-md leading-snug', here ? 'font-bold text-primary' : 'font-semibold')}>{tp.nameAr}</span>
+                        {!isAr && <span className="truncate text-caption text-on-surface-variant">{tp.nameEn}</span>}
+                      </span>
+                      <span className="text-caption text-on-surface-variant tabular-nums">{digits(ls.length)}</span>
+                    </a>
+                    {here && (
+                      <ul className="flex flex-col gap-0.5 ps-space-md pe-space-xs">
+                        {siblings.map((l) => (
+                          <li key={l.id}>
+                            <a href={href('rules', l.id)} aria-current={l.id === lesson.id ? 'page' : undefined}
+                              className={cn('flex min-h-11 items-center gap-space-sm rounded-control px-space-sm no-underline transition-colors',
+                                l.id === lesson.id ? 'bg-primary-fill text-on-primary' : 'text-on-surface hover:bg-surface-container')}>
+                              <ColourDot colour={l.colour} />
+                              <span lang="ar" className="text-arabic-label">{l.nameAr}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         )}
@@ -93,8 +115,10 @@ export default function Rule({ params }: ScreenProps) {
               {topic && <Chip tone="gold">{topic.nameAr}{!isAr && <><Sep /><span className="font-normal opacity-80">{topic.nameEn}</span></>}</Chip>}
               {lesson.colour && <Chip tone="outline"><ColourDot colour={lesson.colour} /><span lang="ar">{COLOURS[lesson.colour].ar}</span></Chip>}
             </div>
-            <h2 lang="ar" className="font-naskh text-[30px] leading-[1.5] font-bold text-on-surface sm:text-[36px]">{lesson.nameAr}</h2>
-            {!isAr && <p className="-mt-space-xs text-headline-md font-medium text-on-surface-variant">{lesson.nameEn}</p>}
+            <div className="flex flex-col lg:flex-row-reverse lg:flex-wrap lg:items-baseline lg:justify-between lg:gap-x-space-lg">
+              <h2 lang="ar" className="font-naskh text-[30px] leading-[1.5] font-bold text-on-surface sm:text-[36px] lg:text-primary">{lesson.nameAr}</h2>
+              {!isAr && <p className="-mt-space-xs text-headline-md font-medium text-on-surface-variant lg:mt-0 lg:text-headline-lg lg:text-on-surface">{lesson.nameEn}</p>}
+            </div>
             <div className="flex flex-wrap items-center gap-space-xs">
               <LevelChip level={s.level} detail={s.dueOn ? t('next review {day}', { day: fmtDay(s.dueOn) }) : undefined} />
             </div>
@@ -119,14 +143,18 @@ export default function Rule({ params }: ScreenProps) {
               )}
           </header>
 
-          <SectionCard n={n++} en="What it is" ar="التعريف">
-            <p className="text-body-lg"><T>{lesson.summary}</T></p>
+          {/* from lg: definition beside the reminder, the facts and examples across the width; phones keep reading order */}
+          <div className="grid items-start gap-space-lg lg:grid-cols-2">
+          <SectionCard n={n++} en="What it is" ar="التعريف" className={cn('max-lg:order-1', !lesson.tip && 'lg:col-span-2')}>
+            <p className="text-body-lg leading-relaxed"><T>{lesson.summary}</T></p>
           </SectionCard>
 
+          {lesson.tip && <Callout variant="tip" title={t('Remember')} className="max-lg:order-4 lg:h-full"><T>{lesson.tip}</T></Callout>}
+
           {facts && (
-            <SectionCard n={n++} en="How it works" ar="الضابط">
-              <dl className="flex flex-col gap-space-md">
-                {lesson.letters && <Fact label={t('Letters')}><Letters letters={lesson.letters} /></Fact>}
+            <SectionCard n={n++} en="How it works" ar="الضابط" className="max-lg:order-2 lg:col-span-2">
+              <dl className="flex flex-col gap-space-md lg:grid lg:grid-cols-2 lg:gap-x-gutter-md">
+                {lesson.letters && <Fact wide label={t('Letters')}><Letters letters={lesson.letters} /></Fact>}
                 {lesson.counts && (
                   <Fact label={t('Length')}>
                     <span className="flex flex-wrap items-center gap-space-sm">
@@ -142,7 +170,7 @@ export default function Rule({ params }: ScreenProps) {
                   </Fact>
                 ) : null}
                 {lesson.list?.length ? (
-                  <Fact label={t('List')}>
+                  <Fact wide label={t('List')}>
                     <ul className="flex flex-col divide-y divide-outline-variant">
                       {lesson.list.map(([a, b], i) => <li key={i} className="flex flex-col gap-1 py-space-sm sm:flex-row sm:items-center sm:justify-between"><span><T>{a}</T></span>{b && <Line text={b} />}</li>)}
                     </ul>
@@ -153,8 +181,8 @@ export default function Rule({ params }: ScreenProps) {
           )}
 
           {lesson.examples.length > 0 && (
-            <SectionCard n={n++} en="Examples" ar="أمثلة">
-              <div className="flex flex-col gap-space-md" aria-label={t('Examples')} role="group">
+            <SectionCard n={n++} en="Examples" ar="أمثلة" className="max-lg:order-3 lg:col-span-2">
+              <div className="grid gap-space-md lg:grid-cols-2" aria-label={t('Examples')} role="group">
                 {lesson.examples.map((e) => {
                   const v = verses[e.verseKey]
                   const lit = state.verseKey === e.verseKey && state.word ? state.word[0] + 1 : undefined
@@ -187,16 +215,14 @@ export default function Rule({ params }: ScreenProps) {
                     </div>
                   )
                 })}
-                {(state.status === 'error' || state.status === 'offline') && <p className="text-body-md" role="status">{state.error}</p>}
-                <p className="flex items-center gap-space-xs text-body-md text-on-surface-variant"><Icon name="touch_app" size={18} />{t('Tap a word to hear it alone.')}</p>
+                {(state.status === 'error' || state.status === 'offline') && <p className="text-body-md lg:col-span-2" role="status">{state.error}</p>}
+                <p className="flex items-center gap-space-xs text-body-md text-on-surface-variant lg:col-span-2"><Icon name="touch_app" size={18} />{t('Tap a word to hear it alone.')}</p>
               </div>
             </SectionCard>
           )}
 
-          {lesson.tip && <Callout variant="tip"><T>{lesson.tip}</T></Callout>}
-
           {(lesson.confusableWith.length > 0 || matn.length > 0) && (
-            <div className="flex flex-col gap-space-md rounded-card bg-surface-container p-space-md sm:p-space-lg">
+            <div className={cn('flex flex-col gap-space-md rounded-card bg-surface-container p-space-md max-lg:order-5 sm:p-space-lg', !lesson.sources.length && 'lg:col-span-2')}>
               {lesson.confusableWith.length > 0 && (
                 <div className="flex flex-col gap-space-sm">
                   <p className="text-label font-semibold text-on-surface-variant">{t('Easy to mix up with:')}</p>
@@ -224,7 +250,7 @@ export default function Rule({ params }: ScreenProps) {
           )}
 
           {lesson.sources.length > 0 && (
-            <details className="group rounded-card border border-outline-variant bg-surface-container-lowest">
+            <details className={cn('group rounded-card border border-outline-variant bg-surface-container-lowest max-lg:order-6', !(lesson.confusableWith.length > 0 || matn.length > 0) && 'lg:col-span-2')}>
               <summary className="flex min-h-12 cursor-pointer list-none items-center gap-space-sm px-space-md text-body-md font-semibold [&::-webkit-details-marker]:hidden">
                 <Icon name="menu_book" size={20} className="text-secondary" />
                 <span className="flex-1">{t('Sources ({n})', { n: lesson.sources.length })}</span>
@@ -238,7 +264,7 @@ export default function Rule({ params }: ScreenProps) {
             </details>
           )}
 
-          <footer className="flex flex-col gap-space-sm rounded-card bg-primary-fill p-space-md text-on-primary sm:flex-row sm:items-center sm:p-space-lg">
+          <footer className="flex flex-col gap-space-sm rounded-card bg-primary-fill p-space-md text-on-primary max-lg:order-7 sm:flex-row sm:items-center sm:p-space-lg lg:col-span-2">
             <Icon name={s.introduced ? 'event_repeat' : 'school'} className="hidden sm:block" />
             {s.introduced ? (
               <p className="flex-1 text-body-lg">{s.dueOn ? t('In your review. Next due {day}.', { day: fmtDay(s.dueOn) }) : t('In your review.')}</p>
@@ -251,15 +277,16 @@ export default function Rule({ params }: ScreenProps) {
               </>
             )}
           </footer>
+          </div>
         </article>
       </div>
     </Page>
   )
 }
 
-function Fact({ label, children }: { label: string; children: React.ReactNode }) {
+function Fact({ label, children, wide }: { label: string; children: React.ReactNode; wide?: boolean }) {
   return (
-    <div className="flex flex-col gap-space-xs">
+    <div className={cn('flex flex-col gap-space-xs', wide && 'lg:col-span-2')}>
       <dt className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{label}</dt>
       <dd className="flex flex-col gap-space-xs">{children}</dd>
     </div>
