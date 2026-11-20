@@ -27,6 +27,7 @@ import { ExampleAudio, ExampleCard, flat, PlayButton, stepperNav, useStepper, us
 import { Drill } from './study/Drill'
 import { QuestionView } from './study/QuestionView'
 import { RuleBody } from './study/RuleBody'
+import videos from '../../content/videos.json'
 import { CompareControl, PassageRecite, RecordControl, Recorder, RowCard, useTakes } from './study/Recorder'
 import { BottomBar, DoneLine, Instruction, LessonHeader, StepNav, stepName, type StepState } from './study/LessonShell'
 import { checkScore, completeStep, freshSteps, getSteps, missingSteps, saveSteps, scoreCheck, showStep, STEP_IDS, visitStep, type LessonSteps, type StepId } from './study/lessonSteps'
@@ -352,8 +353,27 @@ function LearnStep({ lesson, ex, audio, nextLabel, onNext, onDone }: StepProps &
   return (
     <>
       <RuleBody lesson={lesson} audio={audio} onRead={onDone} example={ex} />
+      <VideoLink lessonId={lesson.id} />
       <BottomBar><Button size="lg" onClick={() => { onDone(); onNext() }}><Next>{nextLabel}</Next></Button></BottomBar>
     </>
+  )
+}
+
+/** Where م. علاء حامد explains this rule in his course (content/videos.json, timed from the episode transcripts). */
+function VideoLink({ lessonId }: { lessonId: string }) {
+  const v = (videos.lessons as Record<string, { ep: number; t: number } | undefined>)[lessonId]
+  if (!v) return null
+  const at = `${Math.floor(v.t / 60)}:${String(v.t % 60).padStart(2, '0')}`
+  return (
+    <a href={`https://www.youtube.com/watch?v=${videos.episodes[v.ep - 1]}&t=${v.t}s`} target="_blank" rel="noopener"
+      className="flex items-center gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md no-underline hover:bg-surface-container-low">
+      <span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-control bg-surface-container text-primary"><Icon name="smart_display" size={22} /></span>
+      <span className="flex min-w-0 flex-1 flex-col">
+        <span className="text-body-lg font-semibold text-on-surface">{t('Watch it explained')}</span>
+        <span className="text-body-md text-on-surface-variant"><Tx>{t('م. علاء حامد, episode {n} at {at}', { n: v.ep, at })}</Tx></span>
+      </span>
+      <Icon name="open_in_new" size={18} className="text-outline" />
+    </a>
   )
 }
 

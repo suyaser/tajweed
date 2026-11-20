@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { ScreenProps } from '../app/App'
 import { RECITERS } from '../quran'
+import videos from '../../content/videos.json'
 import { Bdi, Group, T } from '../components'
 import { isAr, t } from '../i18n'
 import { Page, Sep } from '@/components/kit'
@@ -8,7 +9,7 @@ import { Icon } from '@/components/ui/icon'
 
 // Carried over from docs/reference/artifact-v3.html (Resources), plus Credits (licence requirement, spec §8.2).
 const yt = (q: string) => `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`
-const EPISODES = ['exqxpd33s1Q', 'mgKuf7JMYQg', 'P9gOC0jKqpU', 'VKxwdOPBLt4', 'hp-GlZQhBEk', 'Th6uDpvHxrQ']
+const EPISODES = videos.episodes
 const CC_BY = 'https://creativecommons.org/licenses/by/4.0/'
 
 /** Every outside link looks the same: teal, underlined, with the "opens elsewhere" icon. */
@@ -72,7 +73,7 @@ export default function Resources(_: ScreenProps) {
             </span>
           }
         >
-          {t('Your intro course: 6 short practical lessons. The course units follow its surahs; watch an episode alongside each unit.')}
+          {t('Your intro course: 6 practical episodes. The course units follow its surahs, and each lesson links to the moment its rule is explained.')}
         </Item>
         <Item icon="smart_display" title={<Ext to={yt('أيمن سويد التجويد المصور')}><Bdi>التجويد المصور، د. أيمن سويد</Bdi></Ext>}>{t('The most detailed visual explanation of المخارج والصفات. Use it with unit 9.')}</Item>
       </Panel>

@@ -9,3 +9,12 @@ test('every unit with lessons downloads its finale and in-surah ranges', () => {
     expect(new Set(keys).size).toBe(keys.length)
   }
 })
+
+test('every video link names a real lesson and episode', async () => {
+  const videos = (await import('../../content/videos.json')).default
+  const { getLesson } = await import('../content')
+  for (const [id, v] of Object.entries(videos.lessons)) {
+    expect(getLesson(id), id).toBeTruthy()
+    expect(videos.episodes[v.ep - 1], id).toBeTruthy()
+  }
+})

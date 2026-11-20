@@ -71,3 +71,4 @@ The learner approved R1 and asked me to decide and keep going. Each decision her
 | 60 | "Find a teacher" in Resources (مقرأة الحرمين، المقرأة الإلكترونية العالمية، Maqraatec, Qutor), linked from every unit finale; only facts checked on their pages | Competitor review (doc 14) idea 1: the app can't hear the learner, so it points to people who can | Yes |
 | 61 | Onboarding asks "Can you read this?" (الإخلاص ١–٢); "not yet" points to القاعدة النورانية. No test, no gate | Doc 14 idea 5 | Yes |
 | 62 | Unit page "Download audio": fetches every ayah the unit plays (examples, closings, finale) for the chosen reciter; audio cache now 90 days / 2000 files | Doc 14 idea 4: offline was only "after it played once" | Yes |
+| 63 | Each lesson's Learn step links to where م. علاء حامد explains its rule (content/videos.json, 31 lessons timed from the episode transcripts; partial explanations left out) | Doc 14 idea 2 | Yes |
