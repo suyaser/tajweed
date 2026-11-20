@@ -67,3 +67,7 @@ The learner approved R1 and asked me to decide and keep going. Each decision her
 | 56 | Inter replaces Figtree for Latin UI; dark-mode text teal #5fd3c2 (filled buttons keep #23756a); Arabic separators use a gold dot / Arabic comma (the middle dot read as ٠) | Contrast and Arabic legibility | Tokens |
 | 57 | Bundle: Supabase, Arabic dictionaries/content and rare screens load on demand; icon font subset to the icons used (16 kB) | English first load 371 → 240 kB gzip | Yes |
 | 58 | Listen transport reads "← Next / Prev →" following the right-to-left ayah order in both languages | Matches the muṣḥaf's reading direction | Yes |
+| 59 | Arabic is the default language for anyone who hasn't picked one (was: the browser's language); tests pin English | Learner's request, 2026-11-20 | Yes |
+| 60 | "Find a teacher" in Resources (مقرأة الحرمين، المقرأة الإلكترونية العالمية، Maqraatec, Qutor), linked from every unit finale; only facts checked on their pages | Competitor review (doc 14) idea 1: the app can't hear the learner, so it points to people who can | Yes |
+| 61 | Onboarding asks "Can you read this?" (الإخلاص ١–٢); "not yet" points to القاعدة النورانية. No test, no gate | Doc 14 idea 5 | Yes |
+| 62 | Unit page "Download audio": fetches every ayah the unit plays (examples, closings, finale) for the chosen reciter; audio cache now 90 days / 2000 files | Doc 14 idea 4: offline was only "after it played once" | Yes |

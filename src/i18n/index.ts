@@ -13,7 +13,8 @@ function initial(): Lang {
     const v = localStorage.getItem(KEY)
     if (v === 'en' || v === 'ar') return v
   } catch { /* storage blocked */ }
-  return typeof navigator !== 'undefined' && /^ar\b/i.test(navigator.language ?? '') ? 'ar' : 'en'
+  // Arabic by default (decision log): an English browser still starts in Arabic until the learner picks English.
+  return 'ar'
 }
 
 export const lang: Lang = initial()

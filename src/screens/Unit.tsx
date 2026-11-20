@@ -14,6 +14,8 @@ import { Panel, UnitLessons, UnitNode } from './path/blocks'
 import { dayLabel } from './path/helpers'
 import { PassageRecite } from './study/Recorder'
 import { useStudyAudio } from './study/verse'
+import { RECITERS } from '../quran'
+import { canDownload, cachedCount, download, unitUrls } from '../audio/download'
 import { Callout, EmptyState, Sep } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
@@ -58,9 +60,14 @@ export default function Unit({ params }: ScreenProps) {
               <p className="text-body-md text-on-surface-variant"><Tx>{t('After the last lesson of this unit, recite {x}. That opens the next unit.', { x: u.finale.label })}</Tx></p>
             )}
           </>}
-          <p className="text-label text-on-surface-variant">{t('Self-checked against the reciter. A teacher can listen too: add it to your next session.')}</p>
+          <p className="text-label text-on-surface-variant">
+            {t('Self-checked against the reciter. Only a teacher can tell you how you really recite.')}{' '}
+            <a href={href('resources')} className="font-semibold text-primary underline underline-offset-4">{t('Find a teacher')}</a>
+          </p>
         </Panel>
       )}
+
+      {u.lessonIds.length > 0 && <OfflineAudio u={u} />}
 
       {lines.length > 0 && <Mutun lines={lines} />}
     </div>
@@ -83,8 +90,42 @@ function UnitComplete({ u }: { u: UnitT }) {
       <Button asChild className="mt-space-sm w-full no-underline">
         <a href={to.link}><Tx>{to.label}</Tx><Icon name="arrow_forward" size={20} rtlFlip /></a>
       </Button>
+      <Button asChild variant="secondary" className="w-full no-underline">
+        <a href={href('resources')}><Icon name="school" size={20} />{t('Recite this unit to a teacher')}</a>
+      </Button>
       <div className="w-full text-start"><SignInNudge /></div>
     </div>
+  )
+}
+
+/** Save every ayah this unit plays for offline use (the service worker keeps it). Hidden where it can't work. */
+function OfflineAudio({ u }: { u: UnitT }) {
+  const { settings } = useData()
+  const folder = (RECITERS.find(r => r.id === settings.reciterId) ?? RECITERS[0]).folder
+  const urls = unitUrls(u, folder)
+  const [have, setHave] = useState<number | null>(null)
+  const [busy, setBusy] = useState<number | null>(null) // files done in the current download
+  const [failed, setFailed] = useState(0)
+  const ok = canDownload()
+  const key = urls.join()
+  useEffect(() => { if (ok) cachedCount(urls).then(setHave, () => setHave(null)) }, [key, ok]) // eslint-disable-line react-hooks/exhaustive-deps
+  if (!ok || have === null) return null
+  const all = have >= urls.length
+  const run = async () => {
+    setBusy(0); setFailed(0)
+    const f = await download(urls, setBusy)
+    setFailed(f); setBusy(null); setHave(await cachedCount(urls))
+  }
+  return (
+    <Panel title={t('Offline audio')} ar="الصوت دون إنترنت" icon={all ? 'cloud_done' : 'download'}>
+      <p className="text-body-md text-on-surface-variant">
+        {all ? t("This unit's recitation is saved on this device.") : t("Save this unit's recitation ({n} ayahs) to study without internet.", { n: urls.length })}
+      </p>
+      {busy !== null
+        ? <p role="status" className="text-body-md text-on-surface">{t('Saving {n} of {m}…', { n: busy, m: urls.length })}</p>
+        : !all && <Button variant="secondary" onClick={run}><Icon name="download" size={20} />{t('Download audio')}</Button>}
+      {failed > 0 && busy === null && <p role="alert" className="text-body-md text-error">{t('{n} files could not be saved. Check the connection and try again.', { n: failed })}</p>}
+    </Panel>
   )
 }
 

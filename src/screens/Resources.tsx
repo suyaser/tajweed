@@ -42,6 +42,15 @@ function Item({ icon, title, children, extra }: { icon: string; title: ReactNode
 export default function Resources(_: ScreenProps) {
   return (
     <Page>
+      <Panel ar="اقرأ على شيخ" en="Find a teacher">
+        <li className="p-space-md text-body-md text-on-surface-variant">{t('This app cannot hear you. A teacher with a sanad can, and only a teacher can grant an ijazah. These connect you with one online.')}</li>
+        <Item icon="school" title={<Ext to="https://maqraa.prh.gov.sa/"><Bdi>مقرأة الحرمين</Bdi></Ext>}>{t('The online maqraʾa of the Two Holy Mosques: live recitation sessions with qualified teachers, with a section for women.')}</Item>
+        <Item icon="school" title={<Ext to="https://apps.apple.com/app/id6448706254"><Bdi>المقرأة الإلكترونية العالمية، الجامعة الإسلامية</Bdi></Ext>}>{t('Run under the Quran College of the Islamic University of Madinah. Teachers with a sanad, in all ten readings.')}</Item>
+        <Item icon="school" title={<Ext to="https://apps.apple.com/app/id1582779076">Maqraatec</Ext>}>{t('A free app with certified teachers for correcting recitation and memorisation, at any hour.')}</Item>
+        <Item icon="school" title={<Ext to="https://qutor.com/">Qutor</Ext>}>{t('Paid one-to-one tutors who set their own rates, with a free 30-minute trial.')}</Item>
+        <li className="p-space-md text-body-md text-on-surface-variant">{t('Bring your teacher log: Teacher keeps their corrections, and a share link shows them your progress.')}</li>
+      </Panel>
+
       <Panel ar="الاستماع والترديد" en="Listen & repeat">
         <Item icon="headphones" title={<Ext to={yt('الحصري المصحف المعلم')}><Bdi>المصحف المعلم، الحصري</Bdi></Ext>}>{t('He reads, pauses, and you repeat. The best daily model.')}</Item>
         <Item icon="headphones" title={<Ext to={yt('المنشاوي المصحف المعلم مع الأطفال')}><Bdi>المصحف المعلم، المنشاوي مع الأطفال</Bdi></Ext>}>{t('Children repeat after him, so you hear common mistakes being corrected.')}</Item>

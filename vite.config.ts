@@ -36,8 +36,9 @@ export default defineConfig({
         clientsClaim: true,
         // Order matters: the first match wins (review B1).
         runtimeCaching: [
+          // 90 days / 2000 files: a downloaded unit (Unit page) stays offline; the age resets each time a file plays.
           { urlPattern: isAudio, handler: 'CacheFirst',
-            options: { cacheName: 'audio', rangeRequests: true, cacheableResponse: { statuses: [200] }, expiration: { maxEntries: 400, maxAgeSeconds: 7 * 24 * 3600, purgeOnQuotaError: true } } },
+            options: { cacheName: 'audio', rangeRequests: true, cacheableResponse: { statuses: [200] }, expiration: { maxEntries: 2000, maxAgeSeconds: 90 * 24 * 3600, purgeOnQuotaError: true } } },
           { urlPattern: isQuranData, handler: 'StaleWhileRevalidate', options: { cacheName: 'quran-data' } },
           { urlPattern: isFont, handler: 'CacheFirst',
             options: { cacheName: 'fonts', cacheableResponse: { statuses: [0, 200] }, expiration: { maxEntries: 60, maxAgeSeconds: 365 * 24 * 3600, purgeOnQuotaError: true } } },

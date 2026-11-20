@@ -546,5 +546,22 @@
   "One lesson at a time, in seven short steps. Then do your review.": "درس واحد في كل مرة، في سبع خطوات قصيرة. ثم راجع.",
   "Open the course map": "افتح خريطة المسار",
   "Open the unit": "افتح الوحدة",
-  "Seven short steps: hear real words, notice the sound, learn the rule, say it, find it in an ayah, check yourself, then recite a passage. At most two new lessons a day.": "سبع خطوات قصيرة: تسمع كلمات حقيقية، وتلاحظ الصوت، وتتعلّم الحكم، وتردّده، وتستخرجه من آية، وتختبر نفسك، ثم تتلو مقطعًا. درسان جديدان في اليوم على الأكثر."
+  "Seven short steps: hear real words, notice the sound, learn the rule, say it, find it in an ayah, check yourself, then recite a passage. At most two new lessons a day.": "سبع خطوات قصيرة: تسمع كلمات حقيقية، وتلاحظ الصوت، وتتعلّم الحكم، وتردّده، وتستخرجه من آية، وتختبر نفسك، ثم تتلو مقطعًا. درسان جديدان في اليوم على الأكثر.",
+  "Self-checked against the reciter. Only a teacher can tell you how you really recite.": "تتحقق منه بنفسك بمقارنته بالقارئ. ولا يخبرك بحقيقة تلاوتك إلا شيخ.",
+  "Find a teacher": "ابحث عن شيخ",
+  "Recite this unit to a teacher": "اقرأ هذه الوحدة على شيخ",
+  "Offline audio": "الصوت دون إنترنت",
+  "This unit's recitation is saved on this device.": "تلاوة هذه الوحدة محفوظة على هذا الجهاز.",
+  "Save this unit's recitation ({n} ayahs) to study without internet.": "احفظ تلاوة هذه الوحدة ({n} آية) لتدرس دون إنترنت.",
+  "Saving {n} of {m}…": "جارٍ الحفظ: {n} من {m}…",
+  "Download audio": "نزّل الصوت",
+  "{n} files could not be saved. Check the connection and try again.": "تعذّر حفظ {n} من الملفات. تحقّق من الاتصال وحاول مرة أخرى.",
+  "Reading check": "القراءة",
+  "Can you read this?": "هل تستطيع قراءة هذا؟",
+  "The course starts from reading Arabic with its marks (fatha, kasra, sukun…). Read these aloud.": "يبدأ المسار من قراءة العربية بحركاتها (الفتحة والكسرة والسكون…). اقرأ هذا بصوت مسموع.",
+  "Yes, I read it": "نعم، أقرؤه",
+  "Not yet, or only slowly": "ليس بعد، أو ببطء",
+  "Start with القاعدة النورانية": "ابدأ بالقاعدة النورانية",
+  "Learn the letters and marks first with القاعدة النورانية (a short reading primer), alongside the first units or before them. A teacher or a maqraʾa can take you through it; see Resources.": "تعلّم الحروف والحركات أولًا بالقاعدة النورانية، قبل الوحدات الأولى أو معها. ويمكن أن يأخذك فيها شيخ أو مقرأة؛ انظر المصادر.",
+  "Watch القاعدة النورانية": "شاهد شرح القاعدة النورانية"
 }

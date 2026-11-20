@@ -490,5 +490,11 @@
   "Storage": "التخزين",
   "Found": "وجدتها",
   "Missed": "فاتتك",
-  "Not this one": "ليست منه"
+  "Not this one": "ليست منه",
+  "This app cannot hear you. A teacher with a sanad can, and only a teacher can grant an ijazah. These connect you with one online.": "هذا التطبيق لا يسمعك. الشيخ المُسنِد يسمعك، ولا يمنح الإجازة إلا شيخ. هذه الجهات تصلك بشيخ عبر الإنترنت.",
+  "The online maqraʾa of the Two Holy Mosques: live recitation sessions with qualified teachers, with a section for women.": "المقرأة الإلكترونية للحرمين الشريفين: حلقات تلاوة مباشرة مع معلمين مؤهلين، وفيها قسم للنساء.",
+  "Run under the Quran College of the Islamic University of Madinah. Teachers with a sanad, in all ten readings.": "بإشراف كلية القرآن الكريم بالجامعة الإسلامية بالمدينة المنورة. مقرئون مُسنِدون، بالقراءات العشر.",
+  "A free app with certified teachers for correcting recitation and memorisation, at any hour.": "تطبيق مجاني فيه معلمون مجازون لتصحيح التلاوة والحفظ، في أي ساعة.",
+  "Bring your teacher log: Teacher keeps their corrections, and a share link shows them your progress.": "خذ معك سجلّ الشيخ: صفحة الشيخ تحفظ تصحيحاته، ورابط المشاركة يريه تقدّمك.",
+  "Paid one-to-one tutors who set their own rates, with a free 30-minute trial.": "معلمون بأجر في حصص فردية، يحدد كل معلم سعره، مع حصة تجريبية مجانية مدتها ٣٠ دقيقة."
 }

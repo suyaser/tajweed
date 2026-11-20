@@ -1,4 +1,4 @@
-// #/onboarding: Welcome (language, backup restore) → How it works → lesson 1 (doc 12 §6). Reciter, study time and
+// #/onboarding: Welcome (language, backup restore) → Can you read this? → How it works → lesson 1 (doc 12 §6). Reciter, study time and
 // teacher days wait in Today's "Set up your routine" card after the first lesson; the منفصل question is asked in its lesson.
 import { useRef, useState, type ReactNode } from 'react'
 import { completeOnboarding, importJson } from '../core/store'
@@ -18,9 +18,9 @@ import { cn } from '@/lib/utils'
 /** Device-local flag: this learner onboarded with the short flow, so Today offers the routine card (existing users never see it). */
 export const ROUTINE_KEY = 'tajweed-path:routine-card'
 
-const N = 2
+const N = 3
 // Language is fixed per page load, so module-level t() is safe.
-const STEP_NAMES = [t('Welcome'), t('How it works')]
+const STEP_NAMES = [t('Welcome'), t('Reading check'), t('How it works')]
 
 function Steps({ step }: { step: number }) {
   return (
@@ -44,9 +44,10 @@ export default function Onboarding() {
   return (
     <div className="mx-auto flex w-full max-w-[560px] flex-col gap-space-lg">
       {step === 0 && <Welcome onNext={() => { setStep(1); window.scrollTo(0, 0) }} />}
-      {step === 1 && (
+      {step === 1 && <ReadingCheck onNext={() => { setStep(2); window.scrollTo(0, 0) }} />}
+      {step === 2 && (
         <section className="flex flex-col gap-space-lg">
-          <Steps step={1} />
+          <Steps step={2} />
           <header className="flex flex-col items-center gap-space-xs text-center">
             <h1 lang="ar" className="text-arabic-headline text-primary">كيف يعمل</h1>
             {!isAr && <p className="text-headline-md text-on-surface">{t('How the course works')}</p>}
@@ -123,6 +124,41 @@ function Welcome({ onNext }: { onNext: () => void }) {
         {err && <p role="alert" className="text-body-md text-error">{err}</p>}
       </div>
     </>
+  )
+}
+
+/**
+ * The course assumes the learner already reads Arabic with its marks (competitor review, doc 14 idea 5). No test, no
+ * gate: an honest question, and a pointer to القاعدة النورانية for anyone who can't yet.
+ */
+function ReadingCheck({ onNext }: { onNext: () => void }) {
+  const vs = useVerse('112:1'), vs2 = useVerse('112:2')
+  const [answer, setAnswer] = useState<'yes' | 'slow' | null>(null)
+  return (
+    <section className="flex flex-col gap-space-lg">
+      <Steps step={1} />
+      <header className="flex flex-col items-center gap-space-xs text-center">
+        <h1 className="text-headline-md text-on-surface">{t('Can you read this?')}</h1>
+        <p className="text-body-md text-on-surface-variant">{t('The course starts from reading Arabic with its marks (fatha, kasra, sukun…). Read these aloud.')}</p>
+      </header>
+      <figure className="flex flex-col items-center gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest px-space-md py-space-lg text-center shadow-card">
+        {vs.verse && vs2.verse
+          ? <p lang="ar" dir="rtl" className="text-quran text-on-surface">{vs.verse.text} ﴿١﴾ {vs2.verse.text} ﴿٢﴾</p>
+          : <Skeleton className="h-14 w-3/4" />}
+        <figcaption><Chip tone="gold" icon="bookmark"><span lang="ar">{verseRef('112:1')}–٢</span></Chip></figcaption>
+      </figure>
+      <div className="flex flex-col gap-space-sm sm:flex-row">
+        <Choice on={answer === 'yes'} onClick={() => setAnswer('yes')}><span className="text-body-lg">{t('Yes, I read it')}</span></Choice>
+        <Choice on={answer === 'slow'} onClick={() => setAnswer('slow')}><span className="text-body-lg">{t('Not yet, or only slowly')}</span></Choice>
+      </div>
+      {answer === 'slow' && (
+        <Callout variant="note" title={t('Start with القاعدة النورانية')}>
+          <Tx>{t('Learn the letters and marks first with القاعدة النورانية (a short reading primer), alongside the first units or before them. A teacher or a maqraʾa can take you through it; see Resources.')}</Tx>{' '}
+          <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent('القاعدة النورانية')}`} target="_blank" rel="noopener" className="font-semibold text-primary underline underline-offset-4">{t('Watch القاعدة النورانية')}</a>
+        </Callout>
+      )}
+      <Button size="lg" className="w-full" disabled={!answer} onClick={onNext}>{t('Next')}<Icon name="arrow_forward" size={20} rtlFlip /></Button>
+    </section>
   )
 }
 
