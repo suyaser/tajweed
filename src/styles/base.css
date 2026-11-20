@@ -19,6 +19,9 @@ button { cursor: pointer; }
 a { color: var(--link); text-underline-offset: 3px; }
 :where(button, [role="button"], a, input, select, textarea) { touch-action: manipulation; }
 
+/* Arabic UI: the whole page reads in the Arabic interface face */
+:root[lang="ar"] body { font-family: var(--f-ar); }
+
 /* B2: Arabic inside Latin lines */
 [lang="ar"] { font-family: var(--f-ar); }
 bdi.a { font-family: var(--f-ar); font-size: 1.1em; line-height: 1; font-weight: inherit; }

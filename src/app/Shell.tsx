@@ -3,6 +3,18 @@ import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
 import { Icon } from './icons'
+import { isAr, setLang } from '../i18n'
+
+/** Switches the UI language (reloads). Shows the language you'd switch TO. */
+function LangSwitch({ className }: { className: string }) {
+  return (
+    <button type="button" className={className} onClick={() => setLang(isAr ? 'en' : 'ar')} lang={isAr ? 'en' : 'ar'}
+      aria-label={isAr ? 'English' : 'العربية'}>
+      <span className="lang-ico" aria-hidden="true">{isAr ? 'EN' : 'ع'}</span><small>{isAr ? 'English' : 'العربية'}</small>
+    </button>
+  )
+}
+
 
 type Tab = 'today' | 'rules' | 'teacher' | 'path'
 type Kind = 'tab' | 'pushed' | 'focus' | 'bare'
@@ -125,6 +137,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
               {route.name === 'today' && <Dates />}
             </div>
             <div className="topbar-actions">
+              <LangSwitch className="gear" />
               {route.name !== 'guide' && (
                 <a className="gear" href={href('guide')}>
                   <Icon name="help" className="gear-ico" /><small>Help</small>
@@ -176,7 +189,8 @@ function Rail({ active, settings, guide }: { active?: Tab; settings?: boolean; g
           <small>{t.en}</small>
         </a>
       ))}
-      <a className="rail-gear rail-help" href={href('guide')} aria-current={guide ? 'page' : undefined}>
+      <LangSwitch className="rail-gear rail-help" />
+      <a className="rail-gear" href={href('guide')} aria-current={guide ? 'page' : undefined}>
         <Icon name="help" className="gear-ico" />
         <b lang="ar">كيف يعمل</b><small>Help</small>
       </a>

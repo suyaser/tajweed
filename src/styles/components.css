@@ -34,6 +34,8 @@
 .gear { color: var(--ink); }
 .gear:hover { background: var(--soft); }
 .gear-ico, .tab-ico { width: 24px; height: 24px; }
+button.gear, button.rail-gear { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; }
+.lang-ico { display: grid; place-items: center; height: 24px; font-weight: 700; font-size: 17px; line-height: 1; }
 
 /* focus mode bar */
 .focusbar {
