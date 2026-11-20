@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
-import { Button } from '../components'
+import { Button, fieldCls } from '../components/Controls'
 import { t } from '../i18n'
+import { Icon } from '@/components/ui/icon'
 
 /** A read-only field with a Copy button. Without clipboard access it selects the text so the learner can copy it by hand. */
 export function CopyField({ text, label }: { text: string; label: string }) {
@@ -18,12 +19,11 @@ export function CopyField({ text, label }: { text: string; label: string }) {
     }
   }
   return (
-    <div className="p-stack">
-      <input ref={ref} className="acc-copyfield" readOnly value={text} aria-label={label} onFocus={(e) => e.target.select()} />
-      <div className="p-actions">
-        <Button variant="secondary" onClick={copy}>{t('Copy {label}', { label: label.toLowerCase() })}</Button>
-
-        {msg && <span className="t-sm" role="status">{msg}</span>}
+    <div className="flex flex-col gap-space-sm">
+      <input ref={ref} className={fieldCls('bg-surface-container-low font-mono text-body-md')} dir="ltr" readOnly value={text} aria-label={label} onFocus={(e) => e.target.select()} />
+      <div className="flex flex-wrap items-center gap-space-sm">
+        <Button variant="secondary" onClick={copy}><Icon name="content_copy" size={20} />{t('Copy {label}', { label: label.toLowerCase() })}</Button>
+        {msg && <span className="text-body-md text-on-surface-variant" role="status">{msg}</span>}
       </div>
     </div>
   )

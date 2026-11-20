@@ -1,12 +1,13 @@
 import { Children, type ReactNode } from 'react'
 import { arRefs, carryMarks, isArabicLine, splitBidi, splitLatin } from './bidi'
 import { digits, isAr } from '../i18n'
+import { cn } from '@/lib/utils'
 
 /** One explicit Arabic island inside Latin text. */
 export function Bdi({ children }: { children: ReactNode }) {
   // Short terms (≤ 3 words) never wrap mid-term (m12).
   const nw = typeof children === 'string' && children.trim().split(/\s+/).length <= 3
-  return <bdi className={nw ? 'a nw' : 'a'} lang="ar">{children}</bdi>
+  return <bdi className={cn('font-arabic', !isAr && 'text-[1.1em] leading-none', nw && 'whitespace-nowrap')} lang="ar">{children}</bdi>
 }
 
 const latinLine = (s: string) => (s.match(/[A-Za-z]/g)?.length ?? 0) > (s.match(/[؀-ۿ]/g)?.length ?? 0)
@@ -30,10 +31,9 @@ export function T({ children }: { children: ReactNode }) {
 /** Arabic-forward label: Arabic name first, small English gloss beneath (design §2.1). */
 export function ArLabel({ ar, en, size = 'sm' }: { ar: string; en?: string; size?: 'sm' | 'lg' | 'h2' }) {
   return (
-    <span className={`arlabel arlabel-${size}`}>
-      <span lang="ar" dir="rtl">{ar}</span>
-      {en && !isAr && <small>{en}</small>}
-
+    <span className="inline-flex flex-col">
+      <span lang="ar" dir="rtl" className={size === 'sm' ? 'text-arabic-label' : size === 'lg' ? 'text-arabic-body font-semibold' : 'text-arabic-headline'}>{ar}</span>
+      {en && !isAr && <small className="text-caption text-on-surface-variant">{en}</small>}
     </span>
   )
 }
@@ -42,5 +42,5 @@ export function ArLabel({ ar, en, size = 'sm' }: { ar: string; en?: string; size
  *  mixed lines go through <T>. */
 export function Line({ text }: { text: string }) {
   const t = isAr ? digits(carryMarks(arRefs(text))) : carryMarks(arRefs(text)) // Arabic UI: Arabic-Indic digits in content
-  return isArabicLine(t) ? <span className="ar-line" lang="ar" dir="rtl">{t}</span> : <span><T>{t}</T></span> // one element: safe in grid/flex parents (UX B1)
+  return isArabicLine(t) ? <span className="block text-start font-quran text-[24px] leading-[2] text-on-surface" lang="ar" dir="rtl">{t}</span> : <span><T>{t}</T></span> // one element: safe in grid/flex parents (UX B1)
 }

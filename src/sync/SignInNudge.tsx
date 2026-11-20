@@ -4,6 +4,8 @@ import { Button, Nudge } from '../components'
 import { supabase } from './supabase'
 import { useSync, type SyncState } from './sync'
 import { t } from '../i18n'
+import { cn } from '@/lib/utils'
+import { Icon } from '@/components/ui/icon'
 
 const DISMISS_KEY = 'tajweed-path:signin-nudge-dismissed'
 const WEEK = 7 * 24 * 3600 * 1000
@@ -49,7 +51,7 @@ export function SignInNudge() {
   return (
     <Nudge
       action={
-        <span className="p-actions">
+        <span className="flex flex-wrap gap-space-sm">
           <Button href="#/account">{t('Sign in')}</Button>
           <Button variant="ghost" onClick={later}>{t('Later')}</Button>
         </span>
@@ -66,9 +68,11 @@ export function BackupBadge({ detail = false }: { detail?: boolean }) {
   if (!supabase) return null
   const ok = !!s.user && s.status !== 'error' && s.status !== 'choose'
   return (
-    <a className="backup-badge" data-ok={ok} href="#/account">
-      <span aria-hidden="true">{ok ? '●' : '○'}</span> {detail ? syncLabel(s) : ok ? t('Backed up') : t('Not backed up')}
-
+    <a data-ok={ok} href="#/account"
+      className={cn('inline-flex min-h-7 items-center gap-1.5 rounded-control px-3 text-label font-medium no-underline',
+        ok ? 'bg-success-container text-on-success-container' : 'bg-secondary-container text-on-secondary-container')}>
+      <Icon name={ok ? 'cloud_done' : 'cloud_off'} size={16} />
+      {detail ? syncLabel(s) : ok ? t('Backed up') : t('Not backed up')}
     </a>
   )
 }

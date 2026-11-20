@@ -4,10 +4,13 @@ import { today } from '../core/day'
 import { getLesson } from '../content'
 import { listAll } from '../audio/recordings'
 import { navigate } from '../app/router'
-import { Button, Card } from '../components'
+import { Button, Field, Group, Msg, fieldCls } from '../components'
+import { Page } from '@/components/kit'
+import { Icon } from '@/components/ui/icon'
+import { Item, ReasonTag, refCls } from './library/teacher'
 import type { ScreenProps } from '../app/App'
 import { dayLabel, listenHref, live, mergePassages, nextTeacherDay, refLabel, upcomingSession, type Planned } from './path/helpers'
-import { AddPassage, ReasonChip } from './path/ui'
+import { AddPassage } from './path/ui'
 import { t } from '../i18n'
 
 /** "Since last time": ranges recorded, and an example ayah of each lesson introduced, since the last finished session. */
@@ -50,55 +53,53 @@ export default function TeacherNew({ params }: ScreenProps) {
   }
 
   return (
-    <form className="p-stack" onSubmit={(e) => { e.preventDefault(); save() }}>
-      {existing && !params.id && <p className="t-sm muted">{t('You already have a plan for {day}; changes go into it.', { day: dayLabel(existing.on) })}</p>}
-      <div className="p-row">
-        <label className="p-field">
-          <span>{t('Date')}</span>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value || on)} required />
-        </label>
-        <label className="p-field">
-          <span>{t('Teacher')}</span>
-          <input type="text" dir="auto" lang="ar" value={name} onChange={(e) => setName(e.target.value)} placeholder="الشيخ…" autoComplete="off" />
-        </label>
-      </div>
+    <Page width="narrow">
+      <form className="flex flex-col gap-space-lg" onSubmit={(e) => { e.preventDefault(); save() }}>
+        {existing && !params.id && <Msg className="text-on-surface-variant">{t('You already have a plan for {day}; changes go into it.', { day: dayLabel(existing.on) })}</Msg>}
+        <div className="grid gap-space-md sm:grid-cols-2">
+          <Field label={t('Date')}>
+            <input type="date" className={fieldCls()} value={date} onChange={(e) => setDate(e.target.value || on)} required />
+          </Field>
+          <Field label={t('Teacher')}>
+            <input type="text" dir="auto" lang="ar" className={fieldCls()} value={name} onChange={(e) => setName(e.target.value)} placeholder="الشيخ…" autoComplete="off" />
+          </Field>
+        </div>
 
-      <Card eyebrow={t('To recite')}>
-        {passages.length ? (
-          <ol className="p-list">
-            {passages.map((p, i) => (
-              <li key={`${p.from}-${p.to}`} className="p-item">
-                <span className="p-item-main">
-                  <ReasonChip p={p} />
-                  <a href={listenHref(p.from, p.to)} className="a-lg" lang="ar">{refLabel(p.from, p.to)}</a>
-                </span>
-                <button
-                  type="button"
-                  className="icon-btn"
-                  aria-label={t('Remove {name}', { name: refLabel(p.from, p.to) })}
-                  onClick={() => setPassages(passages.filter((_, j) => j !== i))}
-                >
-                  ✕
-                </button>
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <p className="muted">{t('Nothing suggested yet. Add a passage you want to recite.')}</p>
-        )}
-        {adding ? (
-          <AddPassage onAdd={(p) => { setPassages(mergePassages(passages, [p])); setAdding(false) }} />
-        ) : (
-          <Button variant="ghost" onClick={() => setAdding(true)}>+ {t('Add a passage')}</Button>
-        )}
-      </Card>
+        <Group en="To recite" ar="للتلاوة">
+          {passages.length ? (
+            <ol className="flex flex-col divide-y divide-outline-variant">
+              {passages.map((p, i) => (
+                <Item key={`${p.from}-${p.to}`} end={
+                  <button type="button" aria-label={t('Remove {name}', { name: refLabel(p.from, p.to) })}
+                    onClick={() => setPassages(passages.filter((_, j) => j !== i))}
+                    className="grid size-12 cursor-pointer place-items-center rounded-full text-on-surface-variant hover:bg-surface-container hover:text-error">
+                    <Icon name="close" />
+                  </button>
+                }>
+                  <ReasonTag p={p} />
+                  <a href={listenHref(p.from, p.to)} className={refCls} lang="ar">{refLabel(p.from, p.to)}</a>
+                </Item>
+              ))}
+            </ol>
+          ) : (
+            <p className="p-space-md text-on-surface-variant">{t('Nothing suggested yet. Add a passage you want to recite.')}</p>
+          )}
+          <div className="p-space-md">
+            {adding ? (
+              <AddPassage onAdd={(p) => { setPassages(mergePassages(passages, [p])); setAdding(false) }} />
+            ) : (
+              <Button variant="ghost" onClick={() => setAdding(true)}><Icon name="add" size={20} />{t('Add a passage')}</Button>
+            )}
+          </div>
+        </Group>
 
-      <label className="p-field">
-        <span>{t('Note to self')}</span>
-        <textarea dir="auto" rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={t('e.g. ask about ر in مصر')} />
-      </label>
-      <Button type="submit" block>{t('Save plan')}</Button>
+        <Field label={t('Note to self')}>
+          <textarea dir="auto" rows={2} className={fieldCls('h-auto py-space-sm')} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={t('e.g. ask about ر in مصر')} />
+        </Field>
 
-    </form>
+          <Button type="submit" block><Icon name="check" size={20} />{t('Save plan')}</Button>
+
+      </form>
+    </Page>
   )
 }

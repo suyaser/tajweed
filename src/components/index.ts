@@ -9,5 +9,6 @@ export {
 export type { Level, DayMark, RuleChipProps, RuleRowProps, LegendProps } from './Marks'
 export {
   Button, OptionButton, SegmentedControl, ToggleChip, Card, EmptyState, Skeleton, Nudge, Sheet, AudioTransport, RecordButton,
+  Eyebrow, Group, Row, Field, Msg, Actions, Confirm, fieldCls, RULE_BG,
 } from './Controls'
 export type { ButtonProps, OptionState, AudioTransportProps, RecordState } from './Controls'

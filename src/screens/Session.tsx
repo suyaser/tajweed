@@ -5,17 +5,47 @@ import { getLesson, lessons } from '../content'
 import { getUnit, units } from '../content/course'
 import { navigate } from '../app/router'
 import type { ScreenProps } from '../app/App'
-import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, Skeleton, StarBadge, T, type WordMark } from '../components'
+import { Actions, Button, Card, EmptyState, Field, Group, Passage, Sheet, Skeleton, T, fieldCls, type WordMark } from '../components'
 import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, refLabel, type Planned } from './path/helpers'
-import { AddPassage, ReasonChip, startClass, useVerses } from './path/ui'
-import { t, FWD, BACK } from '../i18n'
+import { AddPassage, startClass, useVerses } from './path/ui'
+import { Item, ReasonTag, SeverityTag, refCls } from './library/teacher'
+import { t } from '../i18n'
+import { cn } from '@/lib/utils'
+import { Chip, Page } from '@/components/kit'
+import { Icon } from '@/components/ui/icon'
 
 export default function Session({ params }: ScreenProps) {
   const d = useData()
   const s = d.sessions.find((x) => x.id === params.id && !x.deletedAt)
   if (!s)
-    return <EmptyState title={t('This session is not on this device.')} action={<Button href="#/teacher">{t('Back to sessions')}</Button>} />
+    return <Page width="narrow"><EmptyState icon="event_busy" title={t('This session is not on this device.')} action={<Button href="#/teacher">{t('Back to sessions')}</Button>} /></Page>
   return params.sheet ? <InClass d={d} s={s} index={+(params.p ?? 0)} /> : s.status === 'done' ? <Summary d={d} s={s} /> : <PlanView d={d} s={s} />
+}
+
+/** Date · teacher, as the screen's heading. */
+function Heading({ s, status }: { s: SessionT; status: string }) {
+  return (
+    <header className="flex items-center gap-space-md">
+      <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary-container text-on-primary-container">
+        <Icon name={s.status === 'done' ? 'event_available' : 'event'} />
+      </span>
+      <div className="flex min-w-0 flex-col">
+        <span className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{status}</span>
+        <h2 className="text-headline-md">
+          {dayLabel(s.on)}
+          {s.teacherName && <> · <bdi lang="ar" className="font-arabic">{s.teacherName}</bdi></>}
+        </h2>
+      </div>
+    </header>
+  )
+}
+
+function NoteBlock({ label, text }: { label: string; text: string }) {
+  return (
+    <Card level="e0" eyebrow={label}>
+      <p><bdi dir="auto">{text}</bdi></p>
+    </Card>
+  )
 }
 
 /* ---------------- planned: the plan, before class ---------------- */
@@ -23,40 +53,38 @@ export default function Session({ params }: ScreenProps) {
 function PlanView({ d, s }: { d: UserData; s: SessionT }) {
   const [confirmDelete, setConfirmDelete] = useState(false)
   return (
-    <div className="p-stack">
-      <p className="t-lg">
-        {dayLabel(s.on)}
-        {s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
-      </p>
-      <Card eyebrow={t('To recite')}>
+    <Page>
+      <Heading s={s} status={t('Planned, not finished')} />
+      <Group en="To recite" ar="للتلاوة">
         {s.plannedPassages.length ? (
-          <ol className="p-list">
+          <ol className="flex flex-col divide-y divide-outline-variant">
             {s.plannedPassages.map((p) => (
-              <li key={`${p.from}-${p.to}`} className="p-item">
-                <span className="p-item-main">
-                  <ReasonChip p={p} />
-                  <a className="a-lg" lang="ar" href={listenHref(p.from, p.to)}>{refLabel(p.from, p.to)}</a>
-                </span>
-                <a className="p-link t-sm" href={listenHref(p.from, p.to)}>{t('Listen')} {FWD}</a>
-              </li>
+              <Item key={`${p.from}-${p.to}`} end={
+                <Button variant="tertiary" size="sm" href={listenHref(p.from, p.to)}>
+                  <Icon name="headphones" size={18} />{t('Listen')}
+                </Button>
+              }>
+                <ReasonTag p={p} />
+                <a className={refCls} lang="ar" href={listenHref(p.from, p.to)}>{refLabel(p.from, p.to)}</a>
+              </Item>
             ))}
           </ol>
         ) : (
-          <p className="muted">{t('No passages yet.')}</p>
+          <p className="p-space-md text-on-surface-variant">{t('No passages yet.')}</p>
         )}
-      </Card>
-      {s.notes && <p><span className="eyebrow">{t('Note to self')}</span><br /><bdi dir="auto">{s.notes}</bdi></p>}
+      </Group>
+      {s.notes && <NoteBlock label={t('Note to self')} text={s.notes} />}
       <OpenCorrections d={d} />
-      <Button block onClick={() => startClass(s.id)}>{t('Start class')}</Button>
-      <div className="p-actions">
-        <Button variant="secondary" href={`#/teacher/new?id=${s.id}`}>{t('Edit plan')}</Button>
+      <Button block size="lg" onClick={() => startClass(s.id)}><Icon name="play_arrow" fill />{t('Start class')}</Button>
+      <Actions>
+        <Button variant="secondary" href={`#/teacher/new?id=${s.id}`}><Icon name="edit" size={20} />{t('Edit plan')}</Button>
         {confirmDelete ? (
           <Button variant="danger" onClick={() => { updateSession(s.id, { deletedAt: new Date().toISOString() }); navigate('teacher') }}>{t('Yes, delete this plan')}</Button>
         ) : (
-          <Button variant="ghost" onClick={() => setConfirmDelete(true)}>{t('Delete plan')}</Button>
+          <Button variant="ghost" className="text-error" onClick={() => setConfirmDelete(true)}><Icon name="delete" size={20} />{t('Delete plan')}</Button>
         )}
-      </div>
-    </div>
+      </Actions>
+    </Page>
   )
 }
 
@@ -64,19 +92,16 @@ function OpenCorrections({ d }: { d: UserData }) {
   const open = live(d.corrections).filter((c) => c.status === 'open')
   if (!open.length) return null
   return (
-    <Card eyebrow={t('Ask to re-check · {n} open', { n: open.length })}>
-      <ul className="p-list">
+    <Group en={t('Ask to re-check · {n} open', { n: open.length })} ar={undefined}>
+      <ul className="flex flex-col divide-y divide-outline-variant">
         {open.map((c) => (
-          <li key={c.id} className="p-item">
-            <span className="p-item-main">
-              <span className="a-lg" lang="ar">{corrLabel(c)}</span>
-              <span className="t-sm muted"><T>{ruleNames(c) || t('No rule tagged')}</T></span>
-            </span>
-            <CorrectionTag severity={c.severity} />
-          </li>
+          <Item key={c.id} end={<SeverityTag severity={c.severity} />}>
+            <span className={refCls} lang="ar">{corrLabel(c)}</span>
+            <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T></span>
+          </Item>
         ))}
       </ul>
-    </Card>
+    </Group>
   )
 }
 
@@ -129,20 +154,21 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
   }
 
   return (
-    <div className="p-stack p-class">
-      <div className="p-classbar">
-        <p className="t-sm">
-          {t('In class')}{s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
-          {p && <> · {t('Passage {i} of {n}', { i: i + 1, n: passages.length })} · <ReasonChip p={p} /></>}
+    <Page width="narrow">
+      <div className="flex flex-wrap items-center justify-between gap-space-sm rounded-card bg-surface-container p-space-sm ps-space-md">
+        <p className="flex min-w-0 flex-wrap items-center gap-x-space-sm gap-y-1 text-body-md">
+          <span className="inline-flex items-center gap-1 font-semibold text-primary"><span aria-hidden="true" className="size-2 rounded-full bg-error motion-safe:animate-pulse" />{t('In class')}</span>
+          {s.teacherName && <bdi lang="ar" className="font-arabic">{s.teacherName}</bdi>}
+          {p && <><span className="text-on-surface-variant">{t('Passage {i} of {n}', { i: i + 1, n: passages.length })}</span><ReasonTag p={p} /></>}
         </p>
-        <Button onClick={() => { updateSession(s.id, { status: 'done' }); navigate(`teacher/${s.id}`) }}>{t('Done')}</Button>
+        <Button onClick={() => { updateSession(s.id, { status: 'done' }); navigate(`teacher/${s.id}`) }}><Icon name="check" size={20} />{t('Done')}</Button>
       </div>
 
       {p && (
-        <section aria-label={t('Passage')}>
-          <h2 className="a-h3" lang="ar">{refLabel(p.from, p.to)}</h2>
+        <section aria-label={t('Passage')} className="flex flex-col gap-space-sm rounded-card border border-outline-variant bg-surface-container-lowest p-space-md sm:p-space-lg">
+          <h2 className="font-naskh text-[24px] leading-[1.6] font-bold" lang="ar">{refLabel(p.from, p.to)}</h2>
           {loading && <Skeleton verse lines={3} label={t('Loading the text…')} />}
-          {error && <p className="muted">{error} {t('You can still log a correction on the whole ayah after reconnecting.')}</p>}
+          {error && <p className="text-on-surface-variant">{error} {t('You can still log a correction on the whole ayah after reconnecting.')}</p>}
           {ayahs && (
             <Passage
               ayahs={ayahs}
@@ -152,38 +178,38 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
               onAyah={(key) => { setSaved(null); setTarget({ key }) }}
             />
           )}
-          <p className="t-sm muted">{t('Tap the word your teacher corrected, or an ayah number for the whole ayah.')}</p>
+          <p className="flex items-center gap-space-xs text-body-md text-on-surface-variant"><Icon name="touch_app" size={18} />{t('Tap the word your teacher corrected, or an ayah number for the whole ayah.')}</p>
         </section>
       )}
 
       {saved && (
-        <p className="p-saved" role="status">
-          {t('Saved')} · <span className="a-lg" lang="ar">{corrLabel(saved)}</span> · <CorrectionTag severity={saved.severity} />
-          <button type="button" className="p-linkbtn" onClick={() => { undoCorrection(saved.id); setSaved(null) }}>{t('Undo')}</button>
+        <p role="status" className="flex flex-wrap items-center gap-space-sm rounded-card bg-primary-container px-space-md py-space-xs text-on-primary-container">
+          <Icon name="check_circle" size={20} fill />{t('Saved')} · <span className="font-naskh text-[18px]" lang="ar">{corrLabel(saved)}</span> <SeverityTag severity={saved.severity} />
+          <Button variant="tertiary" className="ms-auto" onClick={() => { undoCorrection(saved.id); setSaved(null) }}><Icon name="undo" size={20} />{t('Undo')}</Button>
         </p>
       )}
 
       {ms && (
-        <Card eyebrow={t('Unit finale')}>
+        <Card eyebrow={t('Unit finale')} className="border-gold/50">
           <p><T>{t('Did your teacher pass {label}?', { label: ms.label })}</T></p>
-          <div className="p-actions" role="group" aria-label={t('Finale result')}>
-            <Button variant={result === 'passed' ? 'primary' : 'secondary'} aria-pressed={result === 'passed'} onClick={() => setResult('passed')}>{t('Passed')}</Button>
-            <Button variant={result === 'not_yet' ? 'primary' : 'secondary'} aria-pressed={result === 'not_yet'} onClick={() => setResult('not_yet')}>{t('Not yet')}</Button>
-          </div>
+            <div role="group" aria-label={t('Finale result')} className="flex flex-wrap gap-space-sm">
+              <Button variant={result === 'passed' ? 'primary' : 'secondary'} aria-pressed={result === 'passed'} onClick={() => setResult('passed')}><Icon name="star" size={20} fill={result === 'passed'} />{t('Passed')}</Button>
+              <Button variant={result === 'not_yet' ? 'primary' : 'secondary'} aria-pressed={result === 'not_yet'} onClick={() => setResult('not_yet')}>{t('Not yet')}</Button>
+            </div>
         </Card>
       )}
 
       {openHere.length > 0 && (
-        <Card eyebrow={t('Open corrections here')}>
-          <ul className="p-list">
+        <Group en={t('Open corrections here')} ar={undefined}>
+          <ul className="flex flex-col divide-y divide-outline-variant">
             {openHere.map((c) => <Recheck key={c.id} c={c} sessionId={s.id} d={d} />)}
           </ul>
-        </Card>
+        </Group>
       )}
 
-      <div className="p-pager">
-        <Button variant="ghost" disabled={i === 0} onClick={() => go(i - 1)}>{BACK} {t('Previous passage')}</Button>
-        <Button variant="ghost" disabled={i >= passages.length - 1} onClick={() => go(i + 1)}>{t('Next passage')} {FWD}</Button>
+      <div className="flex items-center justify-between gap-space-sm">
+        <Button variant="ghost" disabled={i === 0} onClick={() => go(i - 1)}><Icon name="arrow_back" rtlFlip size={20} />{t('Previous passage')}</Button>
+        <Button variant="ghost" disabled={i >= passages.length - 1} onClick={() => go(i + 1)}>{t('Next passage')}<Icon name="arrow_forward" rtlFlip size={20} /></Button>
       </div>
 
       {adding ? (
@@ -196,7 +222,7 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
           }} />
         </Card>
       ) : (
-        <Button variant="ghost" onClick={() => setAdding(true)}>+ {t('Add a passage')}</Button>
+        <Button variant="ghost" className="self-start" onClick={() => setAdding(true)}><Icon name="add" size={20} />{t('Add a passage')}</Button>
       )}
 
       <Notes s={s} />
@@ -211,27 +237,27 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
           setTarget(null)
         }}
       />
-    </div>
+    </Page>
   )
 }
 
 function Recheck({ c, sessionId, d }: { c: Correction; sessionId: string; d: UserData }) {
   const stillWrong = c.status === 'open' && d.attempts.some((a) => a.kind === 'correction' && a.refId === c.id && a.source === 'teacher' && !a.correct && a.at >= (d.sessions.find((s) => s.id === sessionId)?.createdAt ?? ''))
   return (
-    <li className="p-item p-item-col">
-      <span className="p-item-main">
-        <span><span className="a-lg" lang="ar">{corrLabel(c)}</span> <CorrectionTag severity={c.severity} /></span>
-        <span className="t-sm muted"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
+    <li className="flex flex-col gap-space-sm p-space-md">
+      <span className="flex flex-col gap-0.5">
+        <span className="flex flex-wrap items-center gap-space-sm"><span className={refCls} lang="ar">{corrLabel(c)}</span> <SeverityTag severity={c.severity} /></span>
+        <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
       </span>
       {c.status === 'resolved' ? (
-        <span className="t-sm">✓ {t('Correct now · closed')}</span>
+        <span className="flex items-center gap-1 text-body-md text-primary"><Icon name="check_circle" size={18} fill />{t('Correct now · closed')}</span>
       ) : stillWrong ? (
-        <span className="t-sm">↺ {t('Still wrong · back in review tomorrow')}</span>
+        <span className="flex items-center gap-1 text-body-md text-on-surface-variant"><Icon name="replay" size={18} />{t('Still wrong · back in review tomorrow')}</span>
       ) : (
-        <span className="p-actions">
-          <Button variant="secondary" onClick={() => resolveCorrection(c.id, 'correct', sessionId)}>✓ {t('Correct now')}</Button>
-          <Button variant="ghost" onClick={() => resolveCorrection(c.id, 'still_wrong', sessionId)}>↺ {t('Still wrong')}</Button>
-        </span>
+        <Actions>
+          <Button variant="secondary" onClick={() => resolveCorrection(c.id, 'correct', sessionId)}><Icon name="check" size={20} />{t('Correct now')}</Button>
+          <Button variant="ghost" onClick={() => resolveCorrection(c.id, 'still_wrong', sessionId)}><Icon name="replay" size={20} />{t('Still wrong')}</Button>
+        </Actions>
       )}
     </li>
   )
@@ -240,10 +266,9 @@ function Recheck({ c, sessionId, d }: { c: Correction; sessionId: string; d: Use
 function Notes({ s }: { s: SessionT }) {
   const [v, setV] = useState(s.notes ?? '')
   return (
-    <label className="p-field">
-      <span>{t('Notes')}</span>
-      <textarea dir="auto" rows={2} value={v} onChange={(e) => setV(e.target.value)} onBlur={() => v !== (s.notes ?? '') && updateSession(s.id, { notes: v.trim() || undefined })} />
-    </label>
+    <Field label={t('Notes')}>
+      <textarea dir="auto" rows={2} className={fieldCls('h-auto py-space-sm')} value={v} onChange={(e) => setV(e.target.value)} onBlur={() => v !== (s.notes ?? '') && updateSession(s.id, { notes: v.trim() || undefined })} />
+    </Field>
   )
 }
 
@@ -272,45 +297,45 @@ function CorrectionSheet({ target, verse, d, onClose, onSave }: {
     <Sheet
       open={!!target}
       onClose={onClose}
-      title={target ? <span lang="ar">{target.text ? `${target.text} · ` : 'الآية كاملة · '}{refLabel(target.key)}</span> : ''}
+      title={target ? <span lang="ar" className="font-naskh">{target.text ? `${target.text} · ` : 'الآية كاملة · '}{refLabel(target.key)}</span> : ''}
     >
-      <div className="p-sev" role="group" aria-label={t('Severity')}>
+      <div className="grid grid-cols-2 gap-space-sm" role="group" aria-label={t('Severity')}>
         {(['jali', 'khafi'] as const).map((sv) => (
-          <button key={sv} type="button" className="opt s-pick p-sevbtn" aria-pressed={severity === sv} onClick={() => setSeverity(sv)}>
-            <b lang="ar">{sv === 'jali' ? 'جلي' : 'خفي'}</b>
-            <small>{sv === 'jali' ? t('clear error: a letter or vowel') : t('fine detail of a rule')}</small>
+          <button key={sv} type="button" aria-pressed={severity === sv} onClick={() => setSeverity(sv)}
+            className={cn('flex min-h-20 cursor-pointer flex-col items-center justify-center gap-0.5 rounded-control border p-space-sm text-center transition-colors',
+              severity === sv ? 'border-2 border-primary bg-primary-container text-on-primary-container' : 'border-outline-variant hover:bg-surface-container')}>
+            <b lang="ar" className="font-naskh text-[22px] leading-snug">{sv === 'jali' ? 'جلي' : 'خفي'}</b>
+            <small className="text-caption text-on-surface-variant">{sv === 'jali' ? t('clear error: a letter or vowel') : t('fine detail of a rule')}</small>
           </button>
         ))}
       </div>
       {severity && (
         <>
-          <p className="eyebrow">{t('Rule (optional, up to 2)')}</p>
-          <div className="p-chips">
+          <p className="text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">{t('Rule (optional, up to 2)')}</p>
+          <div className="flex flex-wrap gap-x-space-sm gap-y-space-md">
             {chips.map((id) => {
               const l = getLesson(id)!
-              return <RuleChip key={id} nameAr={l.nameAr} colour={l.colour} selected={picked.includes(id)} onClick={() => toggle(id)} />
+              return <Chip key={id} tone="outline" pressed={picked.includes(id)} onClick={() => toggle(id)}><span lang="ar" className="font-arabic">{l.nameAr}</span></Chip>
             })}
-            <button type="button" className="rchip" aria-pressed={!picked.length} onClick={() => setPicked([])}>{t('Other / not a rule')}</button>
-            {q === null && <button type="button" className="rchip" onClick={() => setQ('')} aria-label={t('Search rules')}>🔍 {t('Search')}</button>}
+            <Chip tone="outline" pressed={!picked.length} onClick={() => setPicked([])}>{t('Other / not a rule')}</Chip>
+            {q === null && <Chip tone="outline" icon="search" onClick={() => setQ('')} label={t('Search rules')}>{t('Search')}</Chip>}
           </div>
           {q !== null && (
-            <label className="p-field">
-              <span>{t('Search rules')}</span>
-              <input type="search" dir="auto" value={q} onChange={(e) => setQ(e.target.value)} autoFocus placeholder={t('إخفاء, madd…')} />
-            </label>
+            <Field label={t('Search rules')}>
+              <input type="search" dir="auto" className={fieldCls()} value={q} onChange={(e) => setQ(e.target.value)} autoFocus placeholder={t('إخفاء, madd…')} />
+            </Field>
           )}
           {note === null ? (
-            <Button variant="ghost" onClick={() => setNote('')}>+ {t('Note')}</Button>
+            <Button variant="ghost" className="self-start" onClick={() => setNote('')}><Icon name="add" size={20} />{t('Note')}</Button>
           ) : (
-            <label className="p-field">
-              <span>{t('Note')}</span>
-              <input type="text" dir="auto" value={note} onChange={(e) => setNote(e.target.value)} autoFocus />
-            </label>
+            <Field label={t('Note')}>
+              <input type="text" dir="auto" className={fieldCls()} value={note} onChange={(e) => setNote(e.target.value)} autoFocus />
+            </Field>
           )}
         </>
       )}
       <Button block disabled={!severity} onClick={() => severity && onSave({ severity, lessonIds: picked, note: note?.trim() || undefined })}>{t('Save')}</Button>
-      {!severity && <p className="t-sm muted p-sev-why"><T>{t('Choose جلي or خفي to save.')}</T></p>}
+      {!severity && <p className="text-center text-body-md text-on-surface-variant"><T>{t('Choose جلي or خفي to save.')}</T></p>}
     </Sheet>
   )
 }
@@ -327,13 +352,10 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
   const untagged = mine.filter((c) => !c.lessonIds.length).length
 
   return (
-    <div className="p-stack">
-      <p className="t-lg">
-        {dayLabel(s.on)}
-        {s.teacherName && <> · <bdi lang="ar" className="a">{s.teacherName}</bdi></>}
-      </p>
-      <Card level="e2" eyebrow={t('Session saved')}>
-        <p>
+    <Page>
+      <Heading s={s} status={t('Session saved')} />
+      <Card level="e2">
+        <p className="text-body-lg">
           {mine.length ? (mine.length === 1 ? t('1 correction added to review.') : t('{n} corrections added to review.', { n: mine.length })) : t('No new corrections this time.')}
           {resolved.length > 0 && ' ' + (resolved.length === 1 ? t('1 closed: your teacher says it is correct now.') : t('{n} closed: your teacher says they are correct now.', { n: resolved.length }))}
         </p>
@@ -341,17 +363,17 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
         {early.length > 0 && <p><T>{early.length === 1
           ? t('{names}: not learned yet. It comes into review once you reach its lesson in the course.', { names: early[0] })
           : t('{names}: not learned yet. They come into review once you reach their lessons in the course.', { names: early.join(t(' and ')) })}</T></p>}
-        {untagged > 0 && <p className="muted">{untagged === 1 ? t('1 correction has no rule. They still come back in review.') : t('{n} corrections have no rule. They still come back in review.', { n: untagged })}</p>}
+        {untagged > 0 && <p className="text-on-surface-variant">{untagged === 1 ? t('1 correction has no rule. They still come back in review.') : t('{n} corrections have no rule. They still come back in review.', { n: untagged })}</p>}
         {s.milestoneResults.map((r) => {
           const u = getUnit(r.passageId)
           return (
-            <div key={r.passageId}>
+            <div key={r.passageId} className="flex flex-col gap-space-xs">
               <p><T>{r.result === 'passed'
                 ? t('Unit finale: {label} passed.', { label: u?.finale?.label ?? r.passageId })
                 : t('Unit finale: {label} not yet.', { label: u?.finale?.label ?? r.passageId })}</T></p>
               {r.result === 'passed' && u && (
-                <p className="p-row-inline">
-                  <StarBadge n={u.n} size={32} state="done" />
+                <p className="flex items-center gap-space-sm rounded-control bg-secondary-container px-space-md py-space-sm text-on-secondary-container">
+                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-primary text-on-primary"><Icon name="star" size={18} fill /></span>
                   <T>{t('Unit {n} · {name} complete.', { n: u.n, name: u.nameAr })}</T>
                 </p>
               )}
@@ -360,26 +382,22 @@ function Summary({ d, s }: { d: UserData; s: SessionT }) {
         })}
       </Card>
       {mine.length > 0 && (
-        <Card eyebrow={t('Corrections this session')}>
-          <ul className="p-list">
+        <Group en={t('Corrections this session')} ar={undefined}>
+          <ul className="flex flex-col divide-y divide-outline-variant">
             {mine.map((c) => (
-              <li key={c.id} className="p-item">
-                <span className="p-item-main">
-                  <a className="a-lg" lang="ar" href={listenHref(c.verseKey)}>{corrLabel(c)}</a>
-                  <span className="t-sm muted"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
-                </span>
-                <CorrectionTag severity={c.severity} />
-              </li>
+              <Item key={c.id} end={<SeverityTag severity={c.severity} />}>
+                <a className={refCls} lang="ar" href={listenHref(c.verseKey)}>{corrLabel(c)}</a>
+                <span className="text-body-md text-on-surface-variant"><T>{ruleNames(c) || t('No rule tagged')}</T>{c.note && <> · <bdi dir="auto">{c.note}</bdi></>}</span>
+              </Item>
             ))}
           </ul>
-        </Card>
+        </Group>
       )}
-      {s.notes && <p><span className="eyebrow">{t('Notes')}</span><br /><bdi dir="auto">{s.notes}</bdi></p>}
-      <div className="p-actions">
-        <Button variant="secondary" href={`#/teacher/${s.id}?sheet=1`}>{t('Reopen class')}</Button>
+      {s.notes && <NoteBlock label={t('Notes')} text={s.notes} />}
+      <Actions>
         <Button href="#/teacher">{t('Back')}</Button>
-
-      </div>
-    </div>
+        <Button variant="secondary" href={`#/teacher/${s.id}?sheet=1`}><Icon name="replay" size={20} />{t('Reopen class')}</Button>
+      </Actions>
+    </Page>
   )
 }

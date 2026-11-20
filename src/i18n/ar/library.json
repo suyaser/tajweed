@@ -484,5 +484,8 @@
   "Previous example": "المثال السابق",
   "Next example": "المثال التالي",
   "visited": "زرتها",
-  "skipped": "تخطّيتها"
+  "skipped": "تخطّيتها",
+  "Stop sample": "أوقف العيّنة",
+  "Play a sample of {name}": "استمع إلى عيّنة من {name}",
+  "Storage": "التخزين"
 }
