@@ -18,6 +18,9 @@ import { Note, Panel, SeverityChip, WeekDots } from './path/blocks'
 import { STEP_ICONS, UnitPath } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
+import { PageHeader } from '@/components/kit'
+import { dates } from '../app/Shell'
+import { digits } from '../i18n'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 
@@ -112,7 +115,13 @@ export default function Today() {
   const said = { done: t('done'), current: t('current'), todo: t('not yet') }
   const dotState = (id: string) => (progress.done.has(id) ? 'done' : id === nextLesson?.id ? 'current' : 'todo') as keyof typeof said
 
+  const d = dates()
   return (
+    <>
+    <PageHeader en="Today" ar="اليوم" subtitle={<>
+      <span>{digits(d.gregorian)}</span>{d.hijri && <span lang="ar" className="text-secondary"> · {d.hijri}</span>}
+      {d.late && <span className="block text-caption">{d.late}</span>}
+    </>} />
     <div className="wide grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
       <section aria-label={t('Continue')} className="flex min-w-0 flex-col gap-space-lg">
         <Panel as="div" className="gap-space-lg shadow-card">
@@ -321,5 +330,6 @@ export default function Today() {
         </SheetContent>
       </Sheet>
     </div>
+    </>
   )
 }

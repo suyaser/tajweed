@@ -6,12 +6,18 @@ import { Shell } from './Shell'
 import { Recovery, SaveErrorBanner } from './Recovery'
 import { getLoadError, useData } from '../core/store'
 import { startSync } from '../sync/sync'
+import { Page } from '../components/kit'
 
 // Optional account (spec §6): finish a returning sign-in link (?code=…) and start background sync. No-op without Supabase env.
 void startSync()
 
 /** Screen contract: src/screens/<Name>.tsx default-exports a component taking the route params. */
 export type ScreenProps = { params: Record<string, string> }
+/** Screens without their own <Page>, and the width they read best at. */
+const PAGE_WIDTH: Partial<Record<RouteName, 'narrow' | 'default' | 'wide'>> = {
+  today: 'wide', plan: 'wide', progress: 'wide', unit: 'default', guide: 'default', onboarding: 'narrow', learn: 'narrow', review: 'narrow', notFound: 'default',
+}
+
 const screens = import.meta.glob<{ default: ComponentType<ScreenProps> }>(['../screens/*.tsx', '!../screens/_*.tsx', '!../screens/*.test.tsx'], { eager: true })
 
 const pascal = (n: RouteName) => n[0].toUpperCase() + n.slice(1)
@@ -48,6 +54,9 @@ export function App({ onboarded = true, theme = 'system', textSize = 'm', tajwee
   let body
   if (route.name === 'devComponents') body = <Placeholder name="NotFound" params={{}} />
   else if (Screen) body = <Screen params={route.params} />
+  // Screens that don't lay out their own page get the shared Page (gutters, max width, rhythm).
+  const width = PAGE_WIDTH[route.name]
+  if (Screen && width) body = <Page width={width}>{body}</Page>
   else body = <Placeholder name={pascal(route.name)} params={route.params} />
 
   return (
