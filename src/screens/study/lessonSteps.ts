@@ -3,6 +3,8 @@
 import type { Day } from '../../core/types'
 
 export const STEP_IDS = ['hear', 'notice', 'learn', 'say', 'find', 'check', 'recite'] as const
+/** How long a lesson takes, as the app tells learners at onboarding ("Lessons are short (about 15 minutes)"). */
+export const LESSON_MINUTES = 15
 export type StepId = (typeof STEP_IDS)[number]
 /**
  * `find`: whether the tajweed data finds the rule in this lesson's ayahs (unknown until first checked).

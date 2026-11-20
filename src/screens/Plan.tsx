@@ -8,7 +8,8 @@ import { courseOrder, units } from '../content/course'
 import { href } from '../app/router'
 import { Hint, PathHeader, PathTabs, UnitLessons, UnitNode, type UnitStatus } from './path/blocks'
 import { isAr, t } from '../i18n'
-import { Chip, StatusChip } from '@/components/kit'
+import { Chip, Sep, StatusChip } from '@/components/kit'
+import { tn } from './study/i18n'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Progress } from '@/components/ui/progress'
@@ -83,7 +84,11 @@ export default function Plan() {
                   <span className="flex min-w-0 flex-1 flex-col gap-0.5">
                     <span className={cn('text-label font-semibold tracking-wider uppercase rtl:normal-case', status === 'locked' ? 'text-outline' : 'text-secondary')}>{t('Unit {n}', { n: u.n })}</span>
                     <span lang="ar" className={cn('font-naskh text-body-lg font-semibold', status === 'locked' ? 'text-on-surface-variant' : 'text-on-surface')}>{u.nameAr}</span>
-                    {!isAr && <span className="text-label text-on-surface-variant">{u.nameEn}</span>}
+                    {!isAr && <span className="text-body-md font-medium text-on-surface-variant">{u.nameEn}</span>}
+                    <span className="flex flex-wrap items-center text-label text-on-surface-variant">
+                      {u.lessonIds.length > 0 && <span>{status === 'locked' ? tn('{n} lesson', '{n} lessons', u.lessonIds.length) : t('{n} of {m} lessons done', { n, m: u.lessonIds.length })}</span>}
+                      {u.finale && <>{u.lessonIds.length > 0 && <Sep />}<span className="inline-flex items-center gap-1"><Icon name="star" size={14} fill={p.finaleDone(u)} className="text-gold" /><bdi lang="ar" className="font-arabic">{u.finale.label}</bdi></span></>}
+                    </span>
                     {status === 'active' && u.lessonIds.length > 0 && <Progress value={(100 * n) / u.lessonIds.length} className="mt-1.5" aria-hidden />}
                   </span>
                   {status === 'passed' ? <StatusChip status="done">{t('done')}</StatusChip>

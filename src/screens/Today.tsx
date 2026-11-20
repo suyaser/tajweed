@@ -12,7 +12,8 @@ import { tn, Tx } from './study/i18n'
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
 import { SignInNudge } from '../sync/SignInNudge'
 import { useSync } from '../sync/sync'
-import { getSteps, type StepId } from './study/lessonSteps'
+import { getSteps, LESSON_MINUTES, STEP_IDS, type LessonSteps, type StepId } from './study/lessonSteps'
+import { splitDefinition } from './study/RuleBody'
 import { ROUTINE_KEY } from './Onboarding'
 import { Note, Panel, SeverityChip, WeekDots } from './path/blocks'
 import { Sep, STEP_ICONS, UnitPath } from '@/components/kit'
@@ -48,6 +49,28 @@ function LinkRow({ to, children }: { to: string; children: ReactNode }) {
         <Icon name="chevron_right" size={20} rtlFlip className="text-outline" />
       </a>
     </li>
+  )
+}
+
+/** The lesson's seven steps as a thin meter (done teal, current gold), with "Step n of 7" or, before it starts, the
+ *  step count and about how long it takes (LESSON_MINUTES, the onboarding figure). */
+function StepMeter({ steps }: { steps?: LessonSteps }) {
+  const started = !!steps && (steps.done.length > 0 || steps.current !== 'hear')
+  const at = steps ? STEP_IDS.indexOf(steps.current) : -1
+  return (
+    <div className="flex flex-col gap-1.5">
+      <p className="flex flex-wrap items-center text-label text-on-surface-variant">
+        <span>{started ? t('Step {n} of {m}', { n: at + 1, m: STEP_IDS.length }) : t('{n} steps', { n: STEP_IDS.length })}</span>
+        {steps && steps.done.length > 0 && <><Sep /><span>{t('{n} done', { n: steps.done.length })}</span></>}
+        <Sep /><span className="inline-flex items-center gap-1"><Icon name="schedule" size={14} />{t('About {n} min', { n: LESSON_MINUTES })}</span>
+      </p>
+      <span aria-hidden className="grid grid-cols-7 gap-1">
+        {STEP_IDS.map((id, i) => (
+          <span key={id} className={cn('h-1 rounded-full',
+            steps?.done.includes(id) ? 'bg-primary-fill' : started && i === at ? 'bg-gold' : 'bg-surface-container-highest')} />
+        ))}
+      </span>
+    </div>
   )
 }
 
@@ -154,8 +177,12 @@ export default function Today() {
           {q.sabaq && nextLesson ? (
             <>
               <Inset>
-                <p lang="ar" className="text-arabic-headline text-primary">{nextLesson.nameAr}</p>
-                {!isAr && <p className="text-body-lg font-medium text-on-surface">{nextLesson.nameEn}</p>}
+                <div className="flex flex-col">
+                  <p lang="ar" className="text-arabic-headline text-primary">{nextLesson.nameAr}</p>
+                  {!isAr && <p className="text-body-lg font-semibold text-on-surface">{nextLesson.nameEn}</p>}
+                </div>
+                <p className="line-clamp-3 text-body-md text-on-surface-variant"><Tx>{splitDefinition(nextLesson.summary)[0]}</Tx></p>
+                <StepMeter steps={steps} />
                 {started && (
                   <p className="inline-flex w-fit items-center gap-1.5 rounded-full bg-surface-container-high px-3 py-1.5 text-label font-medium text-primary">
                     <Icon name={STEP_ICONS[steps!.current]} size={16} fill />

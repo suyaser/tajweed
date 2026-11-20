@@ -1,5 +1,5 @@
 // Building blocks shared by Today, the course map, Unit, Progress, Onboarding and Guide (design system, doc 13).
-import { useState, type ReactNode } from 'react'
+import { Fragment, useState, type ReactNode } from 'react'
 import type { Unit } from '../../core/types'
 import type { courseProgress } from '../../core/course'
 import type { Level } from '../../core/scheduler'
@@ -8,14 +8,17 @@ import { getLesson } from '../../content'
 import { href, navigate } from '../../app/router'
 import { today } from '../../core/day'
 import { digits, isAr, RIWAYAH, t } from '../../i18n'
-import { courseOrder, units } from '../../content/course'
+import { courseLesson, courseOrder, units } from '../../content/course'
+import { useData } from '../../core/store'
+import { getSteps, LESSON_MINUTES, STEP_IDS } from '../study/lessonSteps'
+import { dayLabel } from './helpers'
 import { tn } from '../study/i18n'
 import { Chip, PageHeader, SegmentedControl, Sep, StatusChip } from '@/components/kit'
 export { Panel } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { mem, setMem } from '../study/helpers'
+import { mem, rangeRef, setMem } from '../study/helpers'
 
 /** The Path tab's header (Plan and Progress): units, lessons done, the riwayah. */
 export function PathHeader({ p }: { p: Progress }) {
@@ -153,10 +156,11 @@ const PILL: Record<St, { status: 'done' | 'current' | 'info' | 'todo'; label: st
 const ACTION: Record<St, string> = { done: t('done, replay it'), next: t('next, start it'), 'catch-up': t('new in this version, open'), locked: t('locked') }
 const ROW_ICON: Record<St, string> = { done: 'check', next: 'play_arrow', 'catch-up': 'new_releases', locked: 'lock' }
 
-function Row({ link, ar, en, st, finale }: { link: string; ar: string; en: string; st: St; finale?: boolean }) {
+function Row({ link, ar, en, st, finale, meta, passage }: { link: string; ar: string; en: string; st: St; finale?: boolean; meta?: ReactNode[]; passage?: string }) {
+  const facts = (meta ?? []).filter(Boolean)
   return (
     <li>
-      <a href={link} aria-label={`${[en, ar].filter(Boolean).join(', ')}: ${ACTION[st]}`}
+      <a href={link} aria-label={`${[en, ar].filter(Boolean).join(', ')}: ${ACTION[st]}${[...facts.filter((f) => typeof f === 'string'), passage].filter(Boolean).map((f) => `, ${f}`).join('')}`}
         className={cn(
           'flex min-h-14 items-center gap-space-sm rounded-control px-space-sm py-space-xs text-on-surface no-underline transition-colors hover:bg-surface-container-low',
           st === 'next' && 'bg-surface-container-low',
@@ -171,8 +175,16 @@ function Row({ link, ar, en, st, finale }: { link: string; ar: string; en: strin
           <Icon name={finale ? 'star' : ROW_ICON[st]} size={18} fill={finale && st === 'done'} />
         </span>
         <span className="flex min-w-0 flex-1 flex-col">
-          <span lang="ar" className={cn('font-arabic text-body-lg', st === 'locked' && 'text-on-surface-variant', st === 'next' && 'font-semibold')}>{ar}</span>
-          {en && <span className="text-label text-on-surface-variant">{en}</span>}
+          <span className="flex flex-wrap items-baseline gap-x-space-sm">
+            <span lang="ar" className={cn('font-arabic text-body-lg', st === 'locked' && 'text-on-surface-variant', st === 'next' && 'font-semibold')}>{ar}</span>
+            {en && <span className={cn('text-body-md font-medium', st === 'locked' ? 'text-on-surface-variant' : 'text-on-surface')}>{en}</span>}
+          </span>
+          {(facts.length > 0 || passage) && (
+            <span className="flex flex-wrap items-center text-label font-normal text-on-surface-variant">
+              {facts.map((f, i) => <Fragment key={i}>{i > 0 && <Sep />}<span>{f}</span></Fragment>)}
+              {passage && <>{facts.length > 0 && <Sep />}<span className="inline-flex items-center gap-1"><Icon name="verified" size={14} /><bdi lang="ar" className="font-arabic">{passage}</bdi></span></>}
+            </span>
+          )}
         </span>
         <StatusChip status={PILL[st].status} className="max-sm:hidden">{PILL[st].label}</StatusChip>
       </a>
@@ -183,14 +195,28 @@ function Row({ link, ar, en, st, finale }: { link: string; ar: string; en: strin
 /** A unit's lessons (done / next / catch-up / locked) and its finale: the course map and the unit page. A locked lesson's
  *  page says what comes first and offers its card. */
 export function UnitLessons({ u, p }: { u: Unit; p: Progress }) {
+  const { items } = useData()
+  const day = today()
   const nextId = p.next.kind === 'lesson' ? p.next.id : null
+  // the details each row can show from real state: its number, review state, step progress, closing passage
+  const meta = (id: string, st: St): ReactNode[] => {
+    const item = items.find((i) => !i.deletedAt && i.kind === 'lesson' && i.refId === id)
+    const steps = st === 'next' ? getSteps(id) : undefined
+    const started = !!steps && (steps.done.length > 0 || steps.current !== 'hear')
+    return [
+      t('Lesson {n}', { n: courseOrder.indexOf(id) + 1 }),
+      st === 'done' && item && (item.dueOn <= day ? t('review due') : t('next review {day}', { day: dayLabel(item.dueOn) })),
+      st === 'next' && (started ? t('step {n} of {m}', { n: STEP_IDS.indexOf(steps!.current) + 1, m: STEP_IDS.length }) : t('about {n} min', { n: LESSON_MINUTES })),
+    ]
+  }
   const finale: St = p.finaleDone(u) ? 'done' : p.next.kind === 'finale' && p.next.unit === u ? 'next' : 'locked'
   return (
     <ul className="-mx-space-sm flex flex-col gap-0.5">
       {u.lessonIds.map((id) => {
         const l = getLesson(id)!
         const st: St = p.done.has(id) ? 'done' : id === nextId ? 'next' : p.catchUp(id) ? 'catch-up' : 'locked'
-        return <Row key={id} link={href('learn', id)} ar={l.nameAr} en={isAr ? '' : l.nameEn} st={st} />
+        const c = courseLesson(id).closing
+        return <Row key={id} link={href('learn', id)} ar={l.nameAr} en={isAr ? '' : l.nameEn} st={st} meta={meta(id, st)} passage={c ? rangeRef(c.from, c.to) : undefined} />
       })}
       {u.finale && <Row finale link={href('unit', u.id) + '?finale=1'} ar={u.finale.label} en={t('Unit finale: recite the passage')} st={finale} />}
     </ul>
