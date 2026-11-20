@@ -22,7 +22,6 @@
   "Check the link, or browse the library.": "تحقّق من الرابط، أو تصفّح المكتبة.",
   "next review {day}": "المراجعة القادمة {day}",
   "Teacher correction open:": "تصحيح مفتوح من الشيخ:",
-  "Checked against the sources by a teacher.": "راجعه معلّم على المصادر.",
   "Draft.": "مسودة.",
   "Not yet checked by a teacher. Read it with your teacher before relying on it.": "لم يراجعه معلّم بعد. اقرأه على شيخك قبل أن تعتمد عليه.",
   "Letters": "الحروف",
@@ -506,5 +505,7 @@
   "Source": "المصدر",
   "Show whole lines": "اعرض الأبيات كاملة",
   "Memorise": "احفظ",
-  "Say the second half from memory, then tap the line to check.": "قل الشطر الثاني من حفظك، ثم المس البيت لتتحقق."
+  "Say the second half from memory, then tap the line to check.": "قل الشطر الثاني من حفظك، ثم المس البيت لتتحقق.",
+  "Checked against at least two sources and the muṣḥaf text. Not yet reviewed by a teacher.": "رُوجع على مصدرين على الأقل وعلى نص المصحف، ولم يراجعه شيخ بعد.",
+  "all letters except ب and م": "كل الحروف عدا الباء والميم"
 }

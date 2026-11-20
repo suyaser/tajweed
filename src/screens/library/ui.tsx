@@ -33,7 +33,7 @@ export function ColourDot({ colour, className }: { colour?: ColourKey | null; cl
 /** Tiles for a letters string. Content may carry groups (`·`), group labels (`الهمس:`) and a gloss in brackets
  *  (`ا و ي (حروف المد)`): groups get a gap, labels and the gloss are text, never tiles (M5). Latin → plain text. */
 export function Letters({ letters, className }: { letters: string; className?: string }) {
-  if (/[A-Za-z]/.test(letters)) return <span><T>{letters}</T></span>
+  if (/[A-Za-z]/.test(letters)) return <span><T>{t(letters)}</T></span>
   const note = letters.match(/\(([^)]+)\)/)?.[1]
   const groups = letters.replace(/\([^)]*\)/g, '').split('·').map((g) => {
     const m = g.match(/^\s*([^:]+):(.*)$/)

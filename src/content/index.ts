@@ -25,7 +25,7 @@ export interface ArContent {
   topics: Record<string, { name?: string; intro?: string } | undefined>
   lessons: Record<string, {
     nameEn?: string; definition?: string; conditions?: string[]; tip?: string; countsNote?: string; list?: string[][]
-    exampleNotes?: Record<string, string>; facts?: { q: string; options: string[]; why: string }[]
+    exampleNotes?: Record<string, string>; reviewNotes?: string; facts?: { q: string; options: string[]; why: string }[]
   } | undefined>
   units: Record<string, { name?: string; intro?: string; mutun?: string[] } | undefined>
   course: Record<string, { notice?: string } | undefined>
@@ -63,6 +63,9 @@ export const mutun: MatnLine[] = rawMutun.lines.map(l => ({
   verified: l.verified as MatnLine['verified'],
 }))
 
+/** The one English phrase in source locators (rules.json), in Arabic for the Arabic UI. */
+const arLocator = (l: string) => (isAr ? l.replace(/paging per the OpenITI copy of/g, 'بترقيم نسخة OpenITI من') : l)
+
 export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const a = isAr ? AR_CONTENT.lessons[r.id] : undefined
   const examples = (r.examples ?? []).map((e, i) => ({
@@ -86,8 +89,8 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
     conditions: pick(r.conditions, a?.conditions), tip: pick(r.tip, a?.tip),
     list: pick(r.list, a?.list) as [string, string][] | undefined, examples, facts, questionKinds,
     confusableWith: pairs.flatMap(p => (p.a === r.id ? [p.b] : p.b === r.id ? [p.a] : [])),
-    sources: (r.sources ?? []).map(s => (typeof s === 'string' ? { title: s, locator: '' } : { title: s.title, locator: s.locator ?? '' })),
-    review: { status: r.review?.status === 'verified' ? 'verified' : 'needs-teacher', notes: r.review?.notes },
+    sources: (r.sources ?? []).map(s => (typeof s === 'string' ? { title: s, locator: '' } : { title: s.title, locator: arLocator(s.locator ?? '') })),
+    review: { status: r.review?.status === 'verified' ? 'verified' : 'needs-teacher', notes: pick(r.review?.notes, a?.reviewNotes) },
   }
 })
 

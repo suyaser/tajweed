@@ -40,7 +40,7 @@ export function letterGroups(letters: string) {
 }
 
 function Letters({ letters }: { letters: string }) {
-  if (/[A-Za-z]/.test(letters)) return <p><T>{letters}</T></p>
+  if (/[A-Za-z]/.test(letters)) return <p><T>{t(letters)}</T></p> // a description, not tiles (translated in library.json)
   const { groups, note } = letterGroups(letters)
   return (
     <div className="flex flex-col gap-space-sm" lang="ar" dir="rtl">

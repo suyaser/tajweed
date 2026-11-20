@@ -132,7 +132,7 @@ export default function Rule({ params }: ScreenProps) {
             ))}
             {lesson.review.status === 'verified'
               ? <p className="flex gap-space-xs text-body-md text-on-surface-variant"><Icon name="verified" size={18} fill className="mt-0.5 text-primary" />
-                  <span>{t('Checked against the sources by a teacher.')}{lesson.review.notes ? <> <T>{lesson.review.notes}</T></> : null}</span></p>
+                  <span>{t('Checked against at least two sources and the muṣḥaf text. Not yet reviewed by a teacher.')}{lesson.review.notes ? <> <T>{lesson.review.notes}</T></> : null}</span></p>
               : (
                 <div role="note">
                   <Callout variant="note" icon="edit_note" title={t('Draft.')}>
