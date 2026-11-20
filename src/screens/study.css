@@ -137,12 +137,13 @@ mark.focus { color: var(--focus-ink); background: var(--focus-bg); border-radius
 
 /* step bar (§3.1): current filled green, done green outline ✓, visited gold dashed with a dot, not visited line */
 .s-stepnav { display: grid; justify-items: center; gap: var(--s1); container-type: inline-size; min-width: 0; }
-.s-stepnav ol { display: flex; gap: 2px; justify-content: center; list-style: none; padding: 0; margin: 0; max-width: 100%; }
-.s-stepnav li { flex: 0 1 56px; min-width: 0; display: grid; }
+.s-stepnav ol { display: flex; gap: 2px; justify-content: center; list-style: none; padding: 0; margin: 0; width: 100%; }
+.s-stepnav li { flex: 0 1 56px; min-width: 0; display: grid; } /* one column per step: labels clip, never run together */
 .s-step { display: grid; justify-items: center; gap: 2px; min-width: 0; min-height: var(--target); padding: 2px; background: none; border: 0; color: var(--muted); font: inherit; border-radius: var(--r-ctl); }
 button.s-step { cursor: pointer; }
-.s-step small { font-size: 12px; line-height: 1.3; white-space: nowrap; }
-:root[lang="ar"] .s-step small { font-size: 14px; line-height: 1.4; }
+.s-step { width: 100%; }
+.s-step small { font-size: 12px; line-height: 1.3; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+:root[lang="ar"] .s-step small { font-size: 12px; line-height: 1.5; }
 .s-step-star { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--line); font-weight: 700; font-size: 14px; background: var(--surface); position: relative; }
 li[data-state="current"] .s-step-star { background: var(--green); border-color: var(--green); color: var(--on-green); }
 li[data-state="current"] .s-step small { color: var(--ink); font-weight: 700; }
@@ -150,7 +151,7 @@ li[data-state="done"] .s-step-star { border-color: var(--green); color: var(--gr
 li[data-state="done"] .s-step small { color: var(--ink); }
 li[data-state="visited"] .s-step-star { border: 1.5px dashed var(--gold); color: var(--gold-ink); }
 li[data-state="visited"] .s-step-star::after { content: ""; position: absolute; bottom: -7px; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
-li[data-state="skipped"] .s-step { opacity: 0.6; }
+li[data-state="skipped"] .s-step, li[data-state="pending"] .s-step { opacity: 0.6; }
 /* narrow (phone at large UI zoom): stars only; the label under the bar names the current step */
 @container (max-width: 340px) { .s-step small { display: none; } }
 
@@ -178,11 +179,13 @@ li[data-state="skipped"] .s-step { opacity: 0.6; }
 .s-excard { padding: var(--s4); text-align: center; }
 @media (min-width: 768px) { .s-excard { padding: var(--s5); } }
 .s-lesson .s-excard-top { max-width: none; }
-.s-excard-top { display: flex; justify-content: space-between; gap: var(--s3); margin: 0; text-align: start; }
+.s-excard-top { justify-self: stretch; width: 100%; display: flex; justify-content: space-between; gap: var(--s3); margin: 0; text-align: start; }
 .s-excard-top .eyebrow { margin: 0; }
 .s-excard-top [lang="ar"] { font: var(--a-sm); }
 .s-excard .verse { margin-inline: auto; }
-.s-excard-play { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--s3); }
+.s-excard-play { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s3); } /* Play centred, ✓ Played beside it */
+.s-excard-play > :first-child { grid-column: 2; }
+.s-excard-play .s-played { justify-self: start; min-width: 0; }
 .s-play-big { min-height: 64px; min-width: 120px; padding: 0 var(--s5); border-radius: var(--r-pill); border: 1.5px solid var(--green); color: var(--link); font-size: 17px; }
 .s-play-big[aria-pressed="true"] { background: var(--soft); }
 .s-played { color: var(--good); font-weight: 600; min-width: 5em; }

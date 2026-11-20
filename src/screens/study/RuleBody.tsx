@@ -67,14 +67,16 @@ function MunfasilChoice() {
 }
 
 /** `onRead` fires once the Remember section has been on screen (Learn's "done"). */
-export function RuleBody({ lesson, audio, onRead }: { lesson: Lesson; audio: StudyAudio; onRead?: () => void }) {
+/** `example`: the worked example (default the first); the others go under More. */
+export function RuleBody({ lesson, audio, onRead, example }: { lesson: Lesson; audio: StudyAudio; onRead?: () => void; example?: Example }) {
   const [what, detail] = splitDefinition(lesson.summary)
   const counts = lesson.counts
   const conds = lesson.conditions ?? []
   const [allConds, setAllConds] = useState(false)
   const [played, setPlayed] = useState(false)
   const remember = useRef<HTMLDivElement>(null)
-  const [ex0, ...moreEx] = lesson.examples
+  const ex0 = example ?? lesson.examples[0]
+  const moreEx = lesson.examples.filter(x => x !== ex0)
   useEffect(() => {
     const el = remember.current
     if (!el || !onRead || typeof IntersectionObserver === 'undefined') return
@@ -96,7 +98,7 @@ export function RuleBody({ lesson, audio, onRead }: { lesson: Lesson; audio: Stu
   if (counts)
     sections.push(
       <Section key="long" n={++n} title={t('How long')}>
-        <p className="s-beats"><CountBeats min={counts.min} max={counts.max} /> {countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}</p>
+        <p className="s-beats"><CountBeats min={counts.min} max={counts.max} /> {!/counts|حرك/.test(counts.note ?? '') && countsText(counts.min === counts.max ? counts.min : `${counts.min}–${counts.max}`)}</p>
         {counts.note && <p className="t-sm muted"><Tx>{counts.note}</Tx></p>}
         {lesson.id === 'munfasil' && <MunfasilChoice />}
       </Section>,
@@ -108,6 +110,13 @@ export function RuleBody({ lesson, audio, onRead }: { lesson: Lesson; audio: Stu
         {conds.length > SHOW && !allConds && (
           <button type="button" className="s-linkbtn" onClick={() => setAllConds(true)}>{tn('Show {n} more', 'Show {n} more', conds.length - SHOW)}</button>
         )}
+      </Section>,
+    )
+  // the table is the lesson's key content where it has one (the marks in lesson 1, the cases of ر): a section, not More
+  if (lesson.list?.length)
+    sections.push(
+      <Section key="list" n={++n} title={t('At a glance')}>
+        <ul className="s-pairs-list">{lesson.list.map(([a, b], i) => <li key={i}><span><Tx>{a}</Tx></span> {b && <Line text={b} />}</li>)}</ul>
       </Section>,
     )
   if (ex0)
@@ -123,7 +132,7 @@ export function RuleBody({ lesson, audio, onRead }: { lesson: Lesson; audio: Stu
       </Section>,
     )
 
-  const hasMore = detail || lesson.list?.length || moreEx.length || lesson.confusableWith.length || lesson.sources.length || lesson.review.notes
+  const hasMore = detail || moreEx.length || lesson.confusableWith.length || lesson.sources.length || lesson.review.notes
   return (
     <article className="s-rule">
       {lesson.review.status !== 'verified' && <p className="s-draft">{t('Draft · check with your teacher')}</p>}
@@ -133,9 +142,6 @@ export function RuleBody({ lesson, audio, onRead }: { lesson: Lesson; audio: Stu
         <details className="s-more">
           <summary>{t('More')}</summary>
           {detail && <><h4 className="eyebrow">{t('In detail')}</h4><p><Tx>{detail}</Tx></p></>}
-          {lesson.list?.length ? (
-            <ul className="s-pairs-list">{lesson.list.map(([a, b], i) => <li key={i}><span><Tx>{a}</Tx></span> {b && <Line text={b} />}</li>)}</ul>
-          ) : null}
           {moreEx.length > 0 && (
             <>
               <h4 className="eyebrow">{t('More examples ({n})', { n: moreEx.length })}</h4>

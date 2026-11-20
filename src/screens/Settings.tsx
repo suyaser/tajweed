@@ -18,7 +18,7 @@ import { supabase } from '../sync/supabase'
 import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
 import { BackupBadge, syncLabel } from '../sync/SignInNudge'
 import { CopyField } from '../sync/CopyField'
-import { isAr, lang, setLang, t } from '../i18n'
+import { isAr, lang, setLang, t, FWD } from '../i18n'
 
 function Row({ label, hint, children }: { label: ReactNode; hint?: ReactNode; children: ReactNode }) {
   return (
@@ -138,7 +138,7 @@ export default function Settings({ params }: ScreenProps) {
 
       <OrnHeading>{t('About')}</OrnHeading>
       <Card>
-        <a className="p-item p-item-link" href="#/resources"><span className="p-item-main">{t('Credits and sources')}</span><span className="chev" aria-hidden="true">›</span></a>
+        <a className="p-item p-item-link" href="#/resources"><span className="p-item-main">{t('Credits and sources')}</span><span className="chev" aria-hidden="true">{FWD}</span></a>
         <p className="t-sm muted">
           <T>{t('Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device. If you sign in, your progress (not your recordings) is also backed up to your account.')}</T>
         </p>
@@ -156,8 +156,8 @@ function AccountSection() {
       <Card>
         <BackupBadge />
         <p className="t-sm">{sync.user ? t('{status}. Signed in as {email}.', { status: syncLabel(sync), email: sync.user.email ?? t('your account') }) : t('Your progress is saved only on this device. Sign in to keep it safe and use it on any device.')}</p>
-        <a className="p-item p-item-link" href="#/account"><span className="p-item-main">{sync.user ? t('Account') : t('Sign in')}</span><span className="chev" aria-hidden="true">›</span></a>
-        <a className="p-item p-item-link" href="#/circle"><span className="p-item-main">{t('Circles')}<small className="muted">{t('Study with friends: see who studied each day this week')}</small></span><span className="chev" aria-hidden="true">›</span></a>
+        <a className="p-item p-item-link" href="#/account"><span className="p-item-main">{sync.user ? t('Account') : t('Sign in')}</span><span className="chev" aria-hidden="true">{FWD}</span></a>
+        <a className="p-item p-item-link" href="#/circle"><span className="p-item-main">{t('Circles')}<small className="muted">{t('Study with friends: see who studied each day this week')}</small></span><span className="chev" aria-hidden="true">{FWD}</span></a>
       </Card>
       {sync.user && <TeacherLink userId={sync.user.id} />}
     </>

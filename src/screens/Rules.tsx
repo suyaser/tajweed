@@ -11,7 +11,7 @@ import { lessonStatus, type LessonStatus } from './library/shared'
 import { normalize } from './library/range'
 import './library.css'
 import { Hint } from './study/Hint'
-import { isAr, t } from '../i18n'
+import { isAr, t, FWD } from '../i18n'
 
 const ASK: Record<string, string> = { nun: t('The next letter is…'), meem: t('The next letter is…'), lam: t('The letter after ال is…') }
 const GLYPH = { 'not-started': '☆', learning: '◐', known: '●', strong: '★' } as const
@@ -97,7 +97,7 @@ export default function Rules(_: ScreenProps) {
         <a className="rrow" href={href('resources')}>
           <span className="stripe" aria-hidden="true" />
           <span className="rrow-main"><span className="a-lg" lang="ar">المصادر</span><span className="t-sm muted">{t('Resources and credits')}</span></span>
-          <span className="chev" aria-hidden="true">›</span>
+          <span className="chev" aria-hidden="true">{FWD}</span>
         </a>
       </nav>
       </div>

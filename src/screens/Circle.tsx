@@ -9,7 +9,7 @@ import { useSync } from '../sync/sync'
 import { CopyField } from '../sync/CopyField'
 import './path.css'
 import '../sync/sync.css'
-import { locale, t } from '../i18n'
+import { locale, t, FWD } from '../i18n'
 
 interface CircleRow { id: string; name: string; invite_code: string; owner: string }
 const NAME_KEY = 'tajweed-path:circle-name'
@@ -48,7 +48,7 @@ function Circles({ join }: { join?: string }) {
         {list === null ? <Skeleton lines={2} /> : list.length ? (
           <ul className="p-list">
             {list.map((c) => (
-              <li key={c.id}><a className="p-item p-item-link" href={`#/circle/${c.id}`}><span className="p-item-main">{c.name}</span><span className="chev" aria-hidden="true">›</span></a></li>
+              <li key={c.id}><a className="p-item p-item-link" href={`#/circle/${c.id}`}><span className="p-item-main">{c.name}</span><span className="chev" aria-hidden="true">{FWD}</span></a></li>
             ))}
           </ul>
         ) : <p className="muted">{t('You are not in a circle yet. Create one and invite your friends, or join with a code.')}</p>}

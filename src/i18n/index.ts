@@ -41,5 +41,9 @@ export function t(en: string, vars?: Record<string, string | number>): string {
 /** Pick between an English and an Arabic value (content fields that carry both). */
 export const pick = <T,>(en: T, ar: T | undefined | null): T => (isAr && ar != null && ar !== '' ? ar : en)
 
-/** Locale for Intl (dates, plurals). */
-export const locale = isAr ? 'ar' : 'en-GB'
+/** Locale for Intl (dates, plurals). Arabic forces Arabic-Indic digits: some engines default `ar` to Latin digits. */
+export const locale = isAr ? 'ar-u-nu-arab' : 'en-GB'
+
+/** Direction-aware chevrons: "forward" points along the reading direction, "back" against it. */
+export const FWD = isAr ? '‹' : '›'
+export const BACK = isAr ? '›' : '‹'

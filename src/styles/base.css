@@ -44,7 +44,7 @@ a { color: var(--link); text-underline-offset: 3px; }
 /* B2: Arabic inside Latin lines */
 [lang="ar"] { font-family: var(--f-ar); }
 bdi.a { font-family: var(--f-ar); font-size: 1.1em; line-height: 1; font-weight: inherit; }
-bdi.a.nw { white-space: nowrap; }
+bdi.a.nw, span.nw { white-space: nowrap; }
 :where(h1, h2, h3, .t-h2, .t-h3) bdi.a { font-size: 1.1em; font-weight: 700; }
 .t-sm bdi.a, small bdi.a, .t-cap bdi.a { font-size: max(1.25em, 16px); }
 .kufi { font-family: var(--f-kufi); }

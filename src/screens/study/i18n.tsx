@@ -1,5 +1,6 @@
 // Study/Path screens' i18n helpers on top of src/i18n: Arabic plurals and mixed-text rendering.
 import { AR, digits, isAr, t } from '../../i18n'
+import { Fragment } from 'react'
 import { T } from '../../components'
 
 type Vars = Record<string, string | number>
@@ -18,8 +19,14 @@ export function tn(one: string, other: string, n: number, vars?: Vars): string {
   return Object.entries(v).reduce((acc, [k, x]) => acc.split(`{${k}}`).join(typeof x === 'number' ? digits(x) : x), s)
 }
 
-/** Mixed English–Arabic text: <T> islands in English; in Arabic the line is already Arabic, and a Latin-led one is isolated. */
+/**
+ * Mixed English–Arabic content text: <T> islands in English; in Arabic the line is already Arabic (digits made
+ * Arabic-Indic), and a Latin-led one is isolated. Short bracketed groups never break across lines.
+ */
 export function Tx({ children }: { children: string }) {
-  if (!isAr) return <T>{children}</T>
-  return /[A-Za-z]/.test(children) ? <bdi>{children}</bdi> : <>{children}</>
+  const parts = children.split(/(\([^()]{1,24}\))/)
+  const one = (s: string) => (isAr ? digits(s) : <T>{s}</T>)
+  const body = parts.length === 1 ? one(children)
+    : parts.map((s, i) => (i % 2 ? <span key={i} className="nw">{one(s)}</span> : <Fragment key={i}>{one(s)}</Fragment>))
+  return isAr && /[A-Za-z]/.test(children) ? <bdi>{body}</bdi> : <>{body}</>
 }

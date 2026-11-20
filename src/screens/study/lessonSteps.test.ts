@@ -1,5 +1,5 @@
 import { beforeEach, expect, it } from 'vitest'
-import { completeStep, freshSteps, getSteps, missingSteps, saveSteps, visitStep } from './lessonSteps'
+import { checkScore, completeStep, freshSteps, getSteps, missingSteps, saveSteps, scoreCheck, visitStep } from './lessonSteps'
 
 const D = '2026-11-20'
 const all = () => true
@@ -32,4 +32,27 @@ it('persists per lesson', () => {
   saveSteps('tabii', s)
   expect(getSteps('tabii')).toEqual(s)
   expect(getSteps('ikhfa')).toBeUndefined()
+})
+
+it('remembers whether Find exists, with the steps', () => {
+  saveSteps('basics', { ...freshSteps('hear', D), find: false })
+  saveSteps('ikhfa', { ...freshSteps('hear', D), find: true })
+  expect(getSteps('basics')?.find).toBe(false)
+  expect(getSteps('ikhfa')?.find).toBe(true)
+  // visiting and completing steps keep the answer
+  const s = completeStep(visitStep(getSteps('basics')!, 'learn', D), 'learn', D)
+  expect(s.find).toBe(false)
+})
+
+it('keeps the Check score until a full new pass replaces it', () => {
+  let s = scoreCheck(freshSteps('check', D), [true, false, true], D)
+  expect(s.done).toContain('check')
+  saveSteps('tabii', s)
+  // reopening Check (a visit) and finishing the lesson keep the score
+  s = visitStep(getSteps('tabii')!, 'check', D)
+  s = { ...completeStep(s, 'recite', D), current: 'hear' }
+  expect(checkScore(s)).toEqual({ n: 2, m: 3 })
+  s = scoreCheck(s, [true, true, true], D)
+  expect(checkScore(s)).toEqual({ n: 3, m: 3 })
+  expect(checkScore(freshSteps('hear', D))).toEqual({ n: 0, m: 0 })
 })

@@ -1,9 +1,12 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useSyncExternalStore, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
 import { Icon } from './icons'
-import { isAr, locale, setLang, t } from '../i18n'
+import { getLesson } from '../content'
+import { onShownStep, shownStep } from '../screens/study/lessonSteps'
+import { stepName } from '../screens/study/LessonShell'
+import { isAr, locale, setLang, t, BACK } from '../i18n'
 
 /** Switches the UI language (reloads). Shows the language you'd switch TO. */
 function LangSwitch({ className }: { className: string }) {
@@ -120,7 +123,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
             <button type="button" className="icon-btn close" onClick={() => navigate(parent)}>
               <span aria-hidden="true">✕</span> {t('Close')}
             </button>
-            <span className="focusbar-title"><span lang="ar">{meta.ar}</span>{!isAr && <> <small className="t-sm muted">{meta.en}</small></>}</span>
+            <FocusTitle route={route} ar={meta.ar} en={meta.en} />
             <span className="focusbar-status t-sm">{focusStatus}</span>
           </header>
         )}
@@ -128,7 +131,7 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
           <header className={`topbar gutter${route.name === 'today' ? ' topbar-today' : ''}`}>
             {kind === 'pushed' && (
               <a className="back" href={href(parent)}>
-                <span aria-hidden="true">‹</span> {t('Back')}
+                <span aria-hidden="true">{BACK}</span> {t('Back')}
               </a>
             )}
             <div className="topbar-title">
@@ -158,6 +161,20 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
         {hasNav && <TabBar active={meta.tab} />}
       </div>
     </div>
+  )
+}
+
+/** The focus bar title; in a lesson, the lesson's name and the current step, so it stays visible while scrolling. */
+function FocusTitle({ route, ar, en }: { route: Route; ar: string; en: string }) {
+  const step = useSyncExternalStore(onShownStep, shownStep)
+  const lesson = route.name === 'learn' ? getLesson(route.params.lessonId) : undefined
+  if (!lesson) return <span className="focusbar-title"><span lang="ar">{ar}</span>{!isAr && <> <small className="t-sm muted">{en}</small></>}</span>
+  const sub = [!isAr && lesson.nameEn, step && stepName(step)].filter(Boolean).join(' · ')
+  return (
+    <span className="focusbar-title focusbar-lesson">
+      <span lang="ar">{lesson.nameAr}</span>
+      {sub && <small className="t-sm muted">{sub}</small>}
+    </span>
   )
 }
 

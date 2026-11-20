@@ -9,7 +9,7 @@ import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, Skel
 import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, refLabel, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip, startClass, useVerses } from './path/ui'
 import './path.css'
-import { t } from '../i18n'
+import { t, FWD, BACK } from '../i18n'
 
 export default function Session({ params }: ScreenProps) {
   const d = useData()
@@ -38,7 +38,7 @@ function PlanView({ d, s }: { d: UserData; s: SessionT }) {
                   <ReasonChip p={p} />
                   <a className="a-lg" lang="ar" href={listenHref(p.from, p.to)}>{refLabel(p.from, p.to)}</a>
                 </span>
-                <a className="p-link t-sm" href={listenHref(p.from, p.to)}>{t('Listen')} ›</a>
+                <a className="p-link t-sm" href={listenHref(p.from, p.to)}>{t('Listen')} {FWD}</a>
               </li>
             ))}
           </ol>
@@ -183,8 +183,8 @@ function InClass({ d, s, index }: { d: UserData; s: SessionT; index: number }) {
       )}
 
       <div className="p-pager">
-        <Button variant="ghost" disabled={i === 0} onClick={() => go(i - 1)}>‹ {t('Previous passage')}</Button>
-        <Button variant="ghost" disabled={i >= passages.length - 1} onClick={() => go(i + 1)}>{t('Next passage')} ›</Button>
+        <Button variant="ghost" disabled={i === 0} onClick={() => go(i - 1)}>{BACK} {t('Previous passage')}</Button>
+        <Button variant="ghost" disabled={i >= passages.length - 1} onClick={() => go(i + 1)}>{t('Next passage')} {FWD}</Button>
       </div>
 
       {adding ? (

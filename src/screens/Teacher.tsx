@@ -7,7 +7,7 @@ import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, 
 import { startClass } from './path/ui'
 import './path.css'
 import { Hint } from './study/Hint'
-import { t } from '../i18n'
+import { t, FWD } from '../i18n'
 
 export default function Teacher() {
   const d = useData()
@@ -91,7 +91,7 @@ export default function Teacher() {
                         {n.khafi > 0 && <CorrectionTag severity="khafi" count={n.khafi} />}
                         {!n.jali && !n.khafi && s.status === 'done' && <span className="t-sm muted">{t('no corrections')}</span>}
                       </span>
-                      <span className="chev" aria-hidden="true">›</span>
+                      <span className="chev" aria-hidden="true">{FWD}</span>
                     </a>
                   </li>
                 )

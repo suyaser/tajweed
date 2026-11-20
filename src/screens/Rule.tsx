@@ -14,7 +14,7 @@ import { fmtDay, lessonStatus, useOnline } from './library/shared'
 import { rangeParam, refLabel } from './library/range'
 import './library.css'
 import './study.css' // mark.focus (the lesson focus highlight)
-import { isAr, t } from '../i18n'
+import { isAr, t, FWD } from '../i18n'
 
 export default function Rule({ params }: ScreenProps) {
   const lesson = getLesson(params.lessonId)
@@ -133,7 +133,7 @@ export default function Rule({ params }: ScreenProps) {
                         <span aria-hidden="true">{playingThis ? '■' : '▶'}</span>{!online && <small> {t('needs a connection')}</small>}
                       </button>
                       <a className="icon-btn" href={href('listen', rangeParam({ from: e.verseKey, to: e.verseKey }))} aria-label={t('Open {ref} in the player', { ref: refLabel(e.verseKey) })}>
-                        {t('Player')} <span aria-hidden="true">›</span>
+                        {t('Player')} <span aria-hidden="true">{FWD}</span>
                       </a>
                     </span>
                   }

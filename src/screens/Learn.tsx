@@ -2,7 +2,7 @@
 // Recite, in one shell (header, step bar, instruction, one primary). Step state is per lesson (lessonSteps.ts).
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import type { ScreenProps } from '../app/App'
-import type { Lesson, Verse } from '../core/types'
+import type { Example, Lesson, Verse } from '../core/types'
 import { introduceLesson, recordAttempt, useData } from '../core/store'
 import { checkQuestions } from '../core/questions'
 import { buildQueue, lessonGate } from '../core/scheduler'
@@ -23,7 +23,7 @@ import { QuestionView } from './study/QuestionView'
 import { RuleBody } from './study/RuleBody'
 import { PassageRecite, Recorder } from './study/Recorder'
 import { BottomBar, DoneLine, LessonHeader, StepNav, stepName, type StepState } from './study/LessonShell'
-import { completeStep, freshSteps, getSteps, missingSteps, saveSteps, STEP_IDS, visitStep, type LessonSteps, type StepId } from './study/lessonSteps'
+import { checkScore, completeStep, freshSteps, getSteps, missingSteps, saveSteps, scoreCheck, showStep, STEP_IDS, visitStep, type LessonSteps, type StepId } from './study/lessonSteps'
 import { playMe } from '../audio/compare'
 import './study.css'
 
@@ -31,6 +31,50 @@ const NEXT: Record<StepId, string> = {
   hear: 'Next: Hear the examples', notice: 'Next: Notice the difference', learn: 'Next: Learn the rule', say: 'Next: Say it yourself',
   find: 'Next: Find it in an ayah', check: 'Next: Check what you know', recite: 'Next: Recite the passage',
 }
+/** The course's "Listen for" note without its own leading "Listen to / for" (the label already says it). */
+export function listenFor(s: string) {
+  const r = s.replace(/^\s*(listen\s+(to|for)|استمع\s+(إلى|ل)|انتبه\s+(إلى|ل))\s*:?\s*/i, '')
+  return r.charAt(0).toUpperCase() + r.slice(1)
+}
+
+/**
+ * Which examples each step shows: Hear the first three; Say, Learn and Notice start on other examples where the
+ * lesson has them, so the same word doesn't open every step.
+ */
+export function exampleSets<E>(xs: E[]) {
+  const hear = xs.slice(0, 3)
+  const say = xs.length >= 6 ? xs.slice(3, 6) : [...hear.slice(1), ...hear.slice(0, 1)]
+  const fresh = (...not: (E | undefined)[]) => [...xs.slice(3), ...xs.slice(1, 3), ...xs.slice(0, 1)].find(x => !not.includes(x))
+  const learn = fresh(hear[0], say[0]) ?? fresh(hear[0]) ?? xs[0]
+  const notice = fresh(hear[0], say[0], learn) ?? fresh(hear[0]) ?? xs[0]
+  return { hear, say, learn, notice }
+}
+
+type FindPick = { v: Verse; targets: number[]; neutral: number[] }
+/**
+ * The ayah for Find, checked against the tajweed data (`findTargets`): the closing passage first, then the examples'
+ * ayahs. Prefers an ayah where the rule is not only on the last (stop) word, where it is ambiguous with المد العارض
+ * (UX M5). null: the data finds the rule in none of them; undefined: some ayah couldn't load (unknown, offline).
+ */
+async function pickFindAyah(lesson: Lesson, closing?: string): Promise<FindPick | null | undefined> {
+  const keys = [...new Set([closing, ...lesson.examples.map(e => e.verseKey)].filter((k): k is string => !!k))]
+  let fallback: FindPick | null = null
+  let unknown = false
+  for (const k of keys) {
+    const v = await getVerse(k).catch(() => undefined)
+    if (!v) { unknown = true; continue }
+    const targets = findTargets(v, lesson.id)
+    const last = v.words.length
+    // stopping turns a final طبيعي into عارض: that word is a sub-case, neither right nor wrong
+    const neutral = lesson.id === 'tabii' && !targets.includes(last) && findTargets(v, 'arid').includes(last) ? [last] : []
+    if (!targets.length) continue
+    const f = { v, targets, neutral }
+    if (targets.some(n => n < last)) return f
+    fallback ??= f
+  }
+  return fallback ?? (unknown ? undefined : null)
+}
+
 /** Steps with the rule card one tap away (review S1): worked example at hand, but never during Check (retrieval). */
 const RULE_SHEET: StepId[] = ['say', 'find', 'recite']
 
@@ -57,20 +101,33 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   const qs = useMemo(() => checkQuestions(lesson, lessons, introducedIds.filter(id => id !== lesson.id), munfasil), [lesson, munfasil])
   const other = course.contrastWith ? getLesson(course.contrastWith) : undefined
   const hasNotice = !!(other?.examples.length && lesson.examples.length)
-  const [noFind, setNoFind] = useState(false) // Find skips itself when the data can't detect the rule
-  const exists = (id: StepId) => !((id === 'hear' && !lesson.examples.length) || (id === 'notice' && !hasNotice) || (id === 'check' && !qs.length) || (id === 'find' && noFind))
+  const sets = useMemo(() => exampleSets(lesson.examples), [lesson])
+  const [saved] = useState(() => getSteps(lesson.id))
+  // Find exists when the data detects the rule in one of the lesson's ayahs: loaded on open (cached), the answer kept
+  // with the lesson's steps, so the step bar doesn't change under the learner. undefined = still loading.
+  const [findPick, setFindPick] = useState<FindPick | null>()
+  const findOk = findPick !== undefined ? findPick !== null : saved?.find
+  const exists = (id: StepId) => !((id === 'hear' && !lesson.examples.length) || (id === 'notice' && !hasNotice) || (id === 'check' && !qs.length) || (id === 'find' && findOk === false))
   const firstStep = STEP_IDS.find(exists) ?? 'learn'
   const nextOf = (id: StepId) => STEP_IDS.slice(STEP_IDS.indexOf(id) + 1).find(exists)
 
-  const [startedToday] = useState(() => getSteps(lesson.id)?.on === day)
-  const [st, setSt] = useState<LessonSteps>(() => {
-    const s = getSteps(lesson.id)
-    return s && exists(s.current) ? visitStep(s, s.current, day) : freshSteps(firstStep, day)
-  })
+  const [startedToday] = useState(() => saved?.on === day)
+  const [st, setSt] = useState<LessonSteps>(() => (saved && exists(saved.current) ? visitStep(saved, saved.current, day) : freshSteps(firstStep, day)))
   const [finished, setFinished] = useState(false)
   const [arrived, setArrived] = useState<StepId | null>(null) // the step just left with the primary: its done line
-  const [right, setRight] = useState(0)
+  const [focusTick, setFocusTick] = useState(0) // a step chosen from the bar: focus its heading
   const [sheet, setSheet] = useState(false)
+  const score = checkScore(st)
+
+  useEffect(() => {
+    let live = true
+    pickFindAyah(lesson, course.closing?.from).then(f => {
+      if (!live) return
+      setFindPick(f ?? null) // unknown (offline): no Find this visit, nothing remembered
+      if (f !== undefined) setSt(s => (s.find === !!f ? s : { ...s, find: !!f }))
+    })
+    return () => { live = false }
+  }, [lesson.id]) // eslint-disable-line react-hooks/exhaustive-deps -- fixed per lesson
 
   // gate: a new lesson only when it is unlocked and today's pace allows (spec §4); replays and today's resume open
   const gate = !already && !startedToday && !finished ? lessonGate(data, units, lesson.id, day) : null
@@ -80,10 +137,17 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   const complete = (id: StepId) => setSt(s => completeStep(s, id, day))
   const go = (id: StepId, from: StepId | null = null) => {
     audio.stop()
+    audio.setSlow(false) // Slower and Loop are per step
+    audio.setLoop(false)
     setSt(s => visitStep(s, id, day))
     setArrived(from)
     window.scrollTo(0, 0)
   }
+  // the focus bar names the step; a step that turns out not to exist (no Find) hands over to the next one
+  useEffect(() => { showStep(gate || finished ? null : step) }, [step, gate, finished])
+  useEffect(() => () => showStep(null), [])
+  useEffect(() => { if (!exists(step)) { const n = nextOf(step); if (n) go(n) } }, [findOk]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (focusTick) document.querySelector<HTMLElement>('.s-lesson h2')?.focus({ preventScroll: true }) }, [focusTick])
   const advance = () => { const n = nextOf(step); if (n) go(n, step) }
   const missing = missingSteps(st, exists, 'recite')
   const finish = () => {
@@ -131,7 +195,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
           <Ornament />
           <p className="t-lg"><Tx>{firstTime ? t('{x} is done. It comes back in your review tomorrow.', { x: lesson.nameAr }) : t('{x}: practised again.', { x: lesson.nameAr })}</Tx></p>
           {course.closing && <p><Tx>{t('Recited {x}', { x: rangeRef(course.closing.from, course.closing.to) })}</Tx></p>}
-          {qs.length > 0 && <p className="num">{t('Checks: {n} of {m}', { n: right, m: qs.length })}</p>}
+          {score.m > 0 && <p className="num">{t('Checks: {n} of {m}', score)}</p>}
           {after.sabaq && after.sabaq !== lesson.id && <Button block href={href('learn', after.sabaq)}><Tx>{t('Next lesson: {x}', { x: getLesson(after.sabaq)?.nameAr ?? '' })}</Tx></Button>}
           <Button block variant={after.sabaq && after.sabaq !== lesson.id ? 'secondary' : 'primary'} href={href('today')}>{t('Back to today')}</Button>
         </section>
@@ -140,9 +204,11 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   }
 
   const stateOf = (id: StepId): StepState =>
-    !exists(id) ? 'skipped' : id === step ? 'current' : st.done.includes(id) ? 'done' : st.visited.includes(id) ? 'visited' : 'new'
+    !exists(id) ? 'skipped' : id === step ? 'current' : id === 'find' && findOk === undefined ? 'pending' : st.done.includes(id) ? 'done' : st.visited.includes(id) ? 'visited' : 'new'
   const next = nextOf(step)
-  const p: StepProps = { lesson, audio, nextLabel: next ? t(NEXT[next]) : t('Finish lesson'), onNext: advance, onDone: () => complete(step), wasDone: st.done.includes(step) }
+  // Find not known yet (first open, still loading): don't promise it
+  const nextLabel = !next ? t('Finish lesson') : next === 'find' && findOk === undefined ? t('Next') : t(NEXT[next])
+  const p: StepProps = { lesson, audio, nextLabel, onNext: advance, onDone: () => complete(step), wasDone: st.done.includes(step) }
   const n3 = Math.min(3, lesson.examples.length)
   const doneCopy: Record<StepId, ReactNode> = {
     hear: tn('You heard {n} word.', 'You heard {n} words.', n3),
@@ -150,7 +216,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     learn: <>{t('You read the rule.')} <span className="muted">{t('A good place to pause: your place is saved.')}</span></>,
     say: tn('You said {n} word.', 'You said {n} words.', n3),
     find: t('You found it in an ayah.'),
-    check: t('{n} of {m} right. They come back in review.', { n: right, m: qs.length }),
+    check: t('{n} of {m} right. They come back in review.', score),
     recite: null,
   }
   const instruction: Record<StepId, ReactNode> = {
@@ -166,23 +232,23 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
   return (
     <div className="s-lesson">
       <LessonHeader lesson={lesson} />
-      <StepNav stateOf={stateOf} onGo={id => id !== step && go(id)} />
+      <StepNav stateOf={stateOf} onGo={id => { if (id !== step) go(id); setFocusTick(n => n + 1) }} />
       {arrived && st.done.includes(arrived) && doneCopy[arrived] && <DoneLine key={arrived}>{doneCopy[arrived]}</DoneLine>}
       {instruction[step] && (
         <div className="s-instr">
-          <h2 className="t-lg">{instruction[step]}</h2>
+          <h2 className="t-lg" tabIndex={-1}>{instruction[step]}</h2>
           {RULE_SHEET.includes(step) && <button type="button" className="s-linkbtn" onClick={() => setSheet(true)}>{t('Rule')}</button>}
         </div>
       )}
-      {step === 'hear' && course.notice && <p className="t-sm muted s-listenfor"><b>{t('Listen for:')}</b> <Tx>{course.notice}</Tx></p>}
+      {(step === 'hear' || step === 'say') && course.notice && <p className="t-sm muted s-listenfor"><b>{t('Listen for:')}</b> <Tx>{listenFor(course.notice)}</Tx></p>}
 
-      {step === 'hear' && <Hear key="hear" {...p} />}
-      {step === 'notice' && other && <Notice key="notice" {...p} other={other} />}
-      {step === 'learn' && <LearnStep key="learn" {...p} />}
-      {step === 'say' && <Say key="say" {...p} notice={course.notice} />}
-      {step === 'find' && <Find key="find" {...p} closing={course.closing?.from} onNone={() => { setNoFind(true); const n = nextOf('find'); if (n) go(n) }} />}
+      {step === 'hear' && <Hear key="hear" {...p} exs={sets.hear} />}
+      {step === 'notice' && other && <Notice key="notice" {...p} other={other} ex={sets.notice} />}
+      {step === 'learn' && <LearnStep key="learn" {...p} ex={sets.learn} />}
+      {step === 'say' && <Say key="say" {...p} exs={sets.say} />}
+      {step === 'find' && (findPick ? <Find key="find" {...p} found={findPick} /> : <Skeleton verse lines={2} label={t('Loading the ayah…')} />)}
       {step === 'check' && (
-        <Check key="check" {...p} qs={qs} onRight={() => setRight(r => r + 1)} />
+        <Check key="check" {...p} qs={qs} onScore={r => setSt(s => scoreCheck(s, r, day))} />
       )}
       {step === 'recite' && (
         <Recite key="recite" {...p} closing={course.closing}
@@ -197,8 +263,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
 }
 
 /** Hear: three numbered example cards, one at a time; done when all have played. */
-function Hear({ lesson, audio, nextLabel, onNext, onDone, wasDone }: StepProps) {
-  const exs = lesson.examples.slice(0, 3)
+function Hear({ exs, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { exs: Example[] }) {
   const sp = useStepper(exs.length)
   useEffect(() => { if (sp.allPlayed) onDone() }, [sp.allPlayed]) // eslint-disable-line react-hooks/exhaustive-deps
   const ex = exs[sp.at]
@@ -219,11 +284,11 @@ function Hear({ lesson, audio, nextLabel, onNext, onDone, wasDone }: StepProps) 
  * Notice: which one has the sound from Hear? By ear first, then both revealed with their names (spec §3.2). The rule's
  * name is taught in the next step, so the question describes the sound, never the name (UX B2).
  */
-function Notice({ lesson, other, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { other: Lesson }) {
+function Notice({ lesson, other, ex, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { other: Lesson; ex: Example }) {
   const pair = useMemo(() => {
-    const xs = [lesson.examples[0], other.examples[0]]
+    const xs = [ex, other.examples[0]]
     return lesson.id.length % 2 ? xs : xs.reverse() // fixed per lesson, not always first
-  }, [lesson, other])
+  }, [lesson, other, ex])
   const [played, setPlayed] = useState<number[]>([])
   const [picked, setPicked] = useState<number | null>(null)
   const answer = pair.findIndex(ex => ex.lessonId === lesson.id)
@@ -256,18 +321,17 @@ function Notice({ lesson, other, audio, nextLabel, onNext, onDone, wasDone }: St
 }
 
 /** Learn: the rule in numbered sections; done when Remember has been on screen or the primary is tapped. */
-function LearnStep({ lesson, audio, nextLabel, onNext, onDone }: StepProps) {
+function LearnStep({ lesson, ex, audio, nextLabel, onNext, onDone }: StepProps & { ex?: Example }) {
   return (
     <>
-      <RuleBody lesson={lesson} audio={audio} onRead={onDone} />
+      <RuleBody lesson={lesson} audio={audio} onRead={onDone} example={ex} />
       <BottomBar><Button block onClick={() => { onDone(); onNext() }}>{nextLabel}</Button></BottomBar>
     </>
   )
 }
 
 /** Say: listen, record, compare, rate yourself against the "Listen for" criterion; letter drill for مخارج / صفات. */
-function Say({ lesson, audio, nextLabel, onNext, onDone, wasDone, notice }: StepProps & { notice: string | null }) {
-  const exs = lesson.examples.slice(0, 3)
+function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { exs: Example[] }) {
   const sp = useStepper(exs.length)
   const [rated, setRated] = useState<Record<number, boolean>>({})
   const drill = drillFor(lesson).length > 0
@@ -312,10 +376,7 @@ function Say({ lesson, audio, nextLabel, onNext, onDone, wasDone, notice }: Step
               reciter={() => vs.verse && audio.exampleThen(vs.verse, ex, () => {})}
               model={r => vs.verse && audio.exampleThen(vs.verse, ex, () => playMe(audio.player, r))} />
           </li>
-          <li>
-            <p className="s-row-h">{t('Did it sound the same?')}</p>
-            {notice && <p className="t-sm s-listenfor"><b>{t('Listen for:')}</b> <Tx>{notice}</Tx></p>}
-          </li>
+          <li><p className="s-row-h">{t('Did it sound the same?')}</p></li>
         </ol>
       </ExampleCard>
       <Dots n={exs.length} at={sp.at} reached={sp.reached} played={i => rated[i] !== undefined} onPick={i => { audio.stop(); sp.go(i) }} />
@@ -334,38 +395,10 @@ function Say({ lesson, audio, nextLabel, onNext, onDone, wasDone, notice }: Step
   )
 }
 
-/**
- * Find: tap every word that shows the rule; checked against the tajweed data (`findTargets`). `onNone` when the data
- * can't detect the rule in any candidate ayah. Prefers an ayah where the rule is not only on the last (stop) word,
- * where it is ambiguous with المد العارض (UX M5); a tap on such a word is neutral, not wrong. Never coloured.
- */
-function Find({ lesson, audio, closing, nextLabel, onNext, onDone, onNone }: StepProps & { closing?: string; onNone: () => void }) {
-  const [found, setFound] = useState<{ v: Verse; targets: number[]; neutral: number[] } | null>()
+/** Find: tap every word that shows the rule, then Check (the ayah is picked up front by `pickFindAyah`). Never coloured. */
+function Find({ found, audio, nextLabel, onNext, onDone }: StepProps & { found: FindPick }) {
   const [picked, setPicked] = useState<number[]>([])
   const [checked, setChecked] = useState(false)
-  useEffect(() => {
-    let live = true
-    const keys = [...new Set([closing, ...lesson.examples.map(e => e.verseKey)].filter((k): k is string => !!k))]
-    ;(async () => {
-      let fallback: { v: Verse; targets: number[]; neutral: number[] } | null = null
-      for (const k of keys) {
-        const v = await getVerse(k).catch(() => undefined)
-        if (!v) continue
-        const targets = findTargets(v, lesson.id)
-        const last = v.words.length
-        // stopping turns a final طبيعي into عارض: that word is a sub-case, neither right nor wrong
-        const neutral = lesson.id === 'tabii' && !targets.includes(last) && findTargets(v, 'arid').includes(last) ? [last] : []
-        if (!targets.length) continue
-        const f = { v, targets, neutral }
-        if (targets.some(n => n < last)) return live && setFound(f)
-        fallback ??= f
-      }
-      if (live) setFound(fallback)
-    })()
-    return () => { live = false }
-  }, [lesson.id, closing]) // eslint-disable-line react-hooks/exhaustive-deps -- lesson.examples is fixed per id
-  useEffect(() => { if (found === null) onNone() }, [found]) // eslint-disable-line react-hooks/exhaustive-deps
-  if (!found) return <Skeleton verse lines={2} label={t('Loading the ayah…')} />
 
   const { v, targets, neutral } = found
   const marks: Record<number, WordMark> = {}
@@ -398,21 +431,24 @@ function Find({ lesson, audio, closing, nextLabel, onNext, onDone, onNone }: Ste
   )
 }
 
-/** Check: one question per screen; done when every question is answered. */
-function Check({ qs, audio, nextLabel, onNext, onDone, onRight }: StepProps & { qs: ReturnType<typeof checkQuestions>; onRight: () => void }) {
+/** Check: one question per screen; done when every question is answered. A full pass replaces the kept score. */
+function Check({ qs, audio, nextLabel, onNext, onScore }: StepProps & { qs: ReturnType<typeof checkQuestions>; onScore: (results: boolean[]) => void }) {
   const [qi, setQi] = useState(0)
+  const [res, setRes] = useState<boolean[]>([])
   const cq = qs[qi]
   if (!cq) return null
   const last = qi + 1 >= qs.length
   return (
     <>
-      <h2 className="t-lg">{t('Question {n} of {m}. Read it, then choose one answer.', { n: qi + 1, m: qs.length })}</h2>
+      <h2 className="t-lg" tabIndex={-1}>{t('Question {n} of {m}. Read it, then choose one answer.', { n: qi + 1, m: qs.length })}</h2>
       <QuestionView
         key={`chk${qi}`} q={cq} mode="check" audio={audio} nextLabel={last ? nextLabel : t('Next question')}
         onAnswer={(chosen, correct) => {
           recordAttempt({ kind: 'lesson', refId: cq.lessonId, source: 'learn', questionKind: cq.kind, exampleId: cq.exampleId, chosen, correct, countsForSchedule: false })
-          if (correct) onRight()
-          if (last) onDone()
+          const r = [...res]
+          r[qi] = correct
+          setRes(r)
+          if (last) onScore(r)
         }}
         onNext={() => (last ? onNext() : (audio.stop(), setQi(qi + 1), window.scrollTo(0, 0)))}
       />
@@ -444,7 +480,7 @@ function Recite({ lesson, audio, wasDone, closing, missing, onMissing, onFinish 
 
 /** Recite fallback when the lesson has no closing passage yet: the first 5 examples, one at a time, with a recorder. */
 function SayAll({ lesson, audio, onReady }: { lesson: Lesson; audio: StudyAudio; onReady: () => void }) {
-  const exs = lesson.examples.slice(0, 5)
+  const exs = useMemo(() => { const xs = lesson.examples.slice(0, 5); return xs.length > 2 ? [...xs.slice(2), ...xs.slice(0, 2)] : xs }, [lesson]) // not Hear's first again
   const sp = useStepper(exs.length)
   const ex = exs[sp.at]
   const vs = useVerse(ex?.verseKey)

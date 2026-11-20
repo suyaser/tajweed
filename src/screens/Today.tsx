@@ -8,7 +8,7 @@ import { getLesson } from '../content'
 import { courseLesson, courseOrder, getUnit, units } from '../content/course'
 import { href } from '../app/router'
 import { Button, Card, CorrectionTag, Nudge, ProgressDots, Sheet, StarBadge } from '../components'
-import { isAr, t } from '../i18n'
+import { isAr, t, FWD } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
 import './study.css'
@@ -163,9 +163,9 @@ export default function Today() {
           <Card eyebrow={t('Set up your routine')} className="today-routine">
             <p className="t-sm">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
             <ul className="s-targets">
-              <li><a href={href('settings') + '?s=recitation'}>{t('Model reciter')} <span aria-hidden="true">›</span></a></li>
-              <li><a href={href('settings') + '?s=wird'}>{t('Daily study time (wird)')} <span aria-hidden="true">›</span></a></li>
-              <li><a href={href('settings') + '?s=wird'}>{t('Teacher day')} <span aria-hidden="true">›</span></a></li>
+              <li><a href={href('settings') + '?s=recitation'}>{t('Model reciter')} <span aria-hidden="true">{FWD}</span></a></li>
+              <li><a href={href('settings') + '?s=wird'}>{t('Daily study time (wird)')} <span aria-hidden="true">{FWD}</span></a></li>
+              <li><a href={href('settings') + '?s=wird'}>{t('Teacher day')} <span aria-hidden="true">{FWD}</span></a></li>
             </ul>
             <Button variant="ghost" onClick={hideRoutine}>{t('Done, hide this')}</Button>
           </Card>
@@ -186,7 +186,7 @@ export default function Today() {
                 <li key={p.id}>
                   <a href={href('listen', rangeParam(p.closing!.from, p.closing!.to))}>
                     <bdi lang="ar">{rangeRef(p.closing!.from, p.closing!.to)}</bdi>{' '}
-                    <bdi lang="ar" className="t-sm muted">{getLesson(p.id)?.nameAr}</bdi> <span aria-hidden="true">›</span>
+                    <bdi lang="ar" className="t-sm muted">{getLesson(p.id)?.nameAr}</bdi> <span aria-hidden="true">{FWD}</span>
                   </a>
                 </li>
               ))}
@@ -210,7 +210,7 @@ export default function Today() {
               {plan[0] && <> · <Tx>{t('recite {x}', { x: rangeRef(plan[0].from, plan[0].to) })}</Tx></>}
               {openCorr > 0 && ` · ${tn('{n} correction to re-check', '{n} corrections to re-check', openCorr)}`}
             </p>
-            <Button variant="secondary" href={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>{near.session ? t('Open the plan') : t('Plan this session')} ›</Button>
+            <Button variant="secondary" href={near.session ? href('teacher', near.session.id) : href('teacher', 'new')}>{near.session ? t('Open the plan') : t('Plan this session')} {FWD}</Button>
           </Card>
         )}
 

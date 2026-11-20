@@ -29,7 +29,8 @@ export function LessonHeader({ lesson }: { lesson: Lesson }) {
   )
 }
 
-export type StepState = 'current' | 'done' | 'visited' | 'new' | 'skipped'
+/** `pending`: not known yet whether the step exists for this lesson (Find, while its ayah loads). */
+export type StepState = 'current' | 'done' | 'visited' | 'new' | 'skipped' | 'pending'
 
 /** Every step that exists is a button, backward or forward (docs/10 §3.1). ← / → move in visual order. */
 export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState; onGo: (id: StepId) => void }) {
@@ -57,8 +58,8 @@ export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState;
           const glyph = s === 'skipped' ? '–' : s === 'done' ? '✓' : digits(k + 1)
           return (
             <li key={id} data-state={s}>
-              {s === 'skipped' ? (
-                <span className="s-step" aria-label={t('{x}, not in this lesson', { x: stepName(id) })}>
+              {s === 'skipped' || s === 'pending' ? (
+                <span className="s-step" aria-label={s === 'pending' ? t('{x}, not started', { x: stepName(id) }) : t('{x}, not in this lesson', { x: stepName(id) })}>
                   <span className="s-step-star" aria-hidden="true">{glyph}</span>
                   <small aria-hidden="true">{stepName(id)}</small>
                 </span>

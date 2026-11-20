@@ -1,6 +1,6 @@
 import { Children, type ReactNode } from 'react'
 import { arRefs, carryMarks, isArabicLine, splitBidi, splitLatin } from './bidi'
-import { isAr } from '../i18n'
+import { digits, isAr } from '../i18n'
 
 /** One explicit Arabic island inside Latin text. */
 export function Bdi({ children }: { children: ReactNode }) {
@@ -12,7 +12,7 @@ export function Bdi({ children }: { children: ReactNode }) {
 const latinLine = (s: string) => (s.match(/[A-Za-z]/g)?.length ?? 0) > (s.match(/[؀-ۿ]/g)?.length ?? 0)
 
 /** Mixed English–Arabic text: every Arabic run in a top-level string child becomes a <bdi class="a" lang="ar">.
- *  In the Arabic UI it is the other way round: every Latin run becomes a <bdi> so it reads LTR inside the RTL line. */
+ *  In the Arabic UI it is the other way round: every Latin run becomes a <bdi> so it reads LTR inside the RTL line, and digits are Arabic-Indic. */
 export function T({ children }: { children: ReactNode }) {
   return (
     <>
@@ -20,7 +20,7 @@ export function T({ children }: { children: ReactNode }) {
         typeof c !== 'string' ? c
           // an untranslated English line (more Latin than Arabic letters) stays one LTR line with Arabic islands
           : isAr && latinLine(c) ? <bdi dir="ltr">{splitBidi(carryMarks(arRefs(c))).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text))}</bdi>
-          : isAr ? splitLatin(carryMarks(arRefs(c))).map((p, i) => (p.latin ? <bdi key={i} dir="ltr">{p.text}</bdi> : p.text))
+          : isAr ? splitLatin(digits(carryMarks(arRefs(c)))).map((p, i) => (p.latin ? <bdi key={i} dir="ltr">{p.text}</bdi> : p.text))
           : splitBidi(carryMarks(arRefs(c))).map((p, i) => (p.ar ? <Bdi key={i}>{p.text}</Bdi> : p.text)),
       )}
     </>
@@ -41,6 +41,6 @@ export function ArLabel({ ar, en, size = 'sm' }: { ar: string; en?: string; size
 /** A content line: an all-Arabic line (an example like ٱدْعُ ← اُدْعُ) is its own RTL block so it reads one way (M3);
  *  mixed lines go through <T>. */
 export function Line({ text }: { text: string }) {
-  const t = carryMarks(arRefs(text))
+  const t = isAr ? digits(carryMarks(arRefs(text))) : carryMarks(arRefs(text)) // Arabic UI: Arabic-Indic digits in content
   return isArabicLine(t) ? <span className="ar-line" lang="ar" dir="rtl">{t}</span> : <span><T>{t}</T></span> // one element: safe in grid/flex parents (UX B1)
 }

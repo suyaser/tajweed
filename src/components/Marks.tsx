@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import type { ColourKey } from '../core/types'
 import { arDigits } from './bidi'
 import { T } from './Text'
-import { isAr, t } from '../i18n'
+import { isAr, t, FWD } from '../i18n'
 
 /** Muṣḥaf palette legend names (design §3.2). */
 export const COLOURS: Record<ColourKey, { ar: string; en: string }> = {
@@ -89,7 +89,7 @@ export function RuleRow({ nameAr, nameEn, colour, level, correctionOpen, href }:
         {level && <LevelBadge level={level} />}
         {correctionOpen && <CorrectionBadge />}
       </span>
-      <span className="chev" aria-hidden="true">›</span>
+      <span className="chev" aria-hidden="true">{FWD}</span>
     </a>
   )
 }
