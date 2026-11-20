@@ -3,7 +3,7 @@ import { Actions, Button, Confirm, Field, Group, Msg, Row, T, fieldCls } from '.
 import { Page } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 
-import { authError, clearAuthError, redirectUrl, supabase } from '../sync/supabase'
+import { authError, clearAuthError, hasBackend, redirectUrl } from '../sync/supabase'
 import { chooseAccountData, deleteAccount, sendEmailLink, signInWithGoogle, signOut, syncNow, useSync, type SyncState } from '../sync/sync'
 import { syncLabel } from '../sync/SignInNudge'
 import { t } from '../i18n'
@@ -14,7 +14,7 @@ export default function Account() {
   const [notice, setNotice] = useState('')
   useEffect(() => { const id = setInterval(() => tick((n) => n + 1), 30000); return () => clearInterval(id) }, []) // keeps "2 min ago" fresh
 
-  if (!supabase) return <Page width="narrow"><Group en="Account and backup" ar="الحساب والنسخ الاحتياطي"><p className="p-space-md">{t('Sign-in is not available in this version of the app. Your progress stays on this device; use Back up in Settings.')}</p></Group></Page>
+  if (!hasBackend) return <Page width="narrow"><Group en="Account and backup" ar="الحساب والنسخ الاحتياطي"><p className="p-space-md">{t('Sign-in is not available in this version of the app. Your progress stays on this device; use Back up in Settings.')}</p></Group></Page>
 
   return (
     <Page width="narrow">

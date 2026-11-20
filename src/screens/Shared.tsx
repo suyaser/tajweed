@@ -5,7 +5,7 @@ import { Chip, Page, PageHeader } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { getLesson } from '../content'
 import course from '../../content/course.json'
-import { supabase } from '../sync/supabase'
+import { getSupabase, hasBackend } from '../sync/supabase'
 import { digits, isAr, locale, t } from '../i18n'
 
 interface Summary {
@@ -26,9 +26,9 @@ export default function Shared({ params }: { params: Record<string, string> }) {
   const [err, setErr] = useState('')
 
   useEffect(() => {
-    if (!supabase) { setErr(t('This version of the app cannot open shared progress.')); return }
+    if (!hasBackend) { setErr(t('This version of the app cannot open shared progress.')); return }
     if (!/^[0-9a-f-]{36}$/i.test(params.token ?? '')) { setData(null); return }
-    supabase.rpc('shared_progress', { p_token: params.token }).then(
+    getSupabase().then((sb) => sb!.rpc('shared_progress', { p_token: params.token })).then(
       ({ data, error }) => (error ? setErr(error.message) : setData((data as Summary | null) ?? null)),
       (e) => setErr((e as Error).message),
     )

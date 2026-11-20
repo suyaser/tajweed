@@ -1,11 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
-import { Direction, Tooltip } from 'radix-ui'
+import { Direction } from 'radix-ui'
 import './styles/app.css'
-import { Root } from './app/App'
-import { ErrorBoundary } from './app/Recovery'
-import { lang } from './i18n'
+import { lang, loadArabic } from './i18n'
 
 document.documentElement.lang = lang
 document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
@@ -21,14 +19,19 @@ const updateSW = registerSW({
   },
 })
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Direction.Provider dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <Tooltip.Provider delayDuration={300}>
+// The language is fixed per load: the Arabic dictionaries and content overlay load first (only in Arabic), then the
+// app, whose modules read them as they are evaluated.
+async function start() {
+  if (lang === 'ar') await loadArabic()
+  const [{ Root }, { ErrorBoundary }] = await Promise.all([import('./app/App'), import('./app/Recovery')])
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <Direction.Provider dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         <ErrorBoundary>
           <Root />
         </ErrorBoundary>
-      </Tooltip.Provider>
-    </Direction.Provider>
-  </StrictMode>,
-)
+      </Direction.Provider>
+    </StrictMode>,
+  )
+}
+void start()

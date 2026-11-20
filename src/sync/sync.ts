@@ -8,7 +8,7 @@ import { today } from '../core/day'
 import { t } from '../i18n'
 import { studiedDays } from '../screens/path/helpers'
 import { firstSync, firstSyncDoc, mergeData, sameDoc } from './merge'
-import { exchangeCodeFromUrl, supabase } from './supabase'
+import { exchangeCodeFromUrl, getSupabase, hasBackend } from './supabase'
 
 /** 'choose': another account synced on this device before; sync waits for the learner's choice on the Account screen. */
 export type SyncStatus = 'signed-out' | 'syncing' | 'synced' | 'offline' | 'error' | 'choose'
@@ -52,6 +52,7 @@ export function syncNow(): Promise<void> {
 
 async function run() {
   const user = state.user
+  const supabase = await getSupabase()
   if (!supabase || !user || deleting || getLoadError()) return // unreadable local data waits for Recovery: never overwrite it
   if (state.status === 'choose' && !switchChoice) return // paused until the learner chooses
   if (typeof navigator !== 'undefined' && navigator.onLine === false) { set({ status: 'offline' }); return }
@@ -104,6 +105,7 @@ async function run() {
 /** One `activity` row per studied day, for circles. Best effort. */
 async function recordActivity(userId: string) {
   const day = today()
+  const supabase = await getSupabase()
   if (!supabase || activityDay === day || !studiedDays(getSnapshot()).has(day)) return
   const { error } = await supabase.from('activity').upsert({ user_id: userId, day }, { onConflict: 'user_id,day', ignoreDuplicates: true })
   if (!error) activityDay = day
@@ -118,8 +120,10 @@ const schedule = () => {
 let started = false
 /** Once at startup: follow the session, local changes, focus and network, and finish a returning sign-in link. */
 export async function startSync() {
-  if (started || !supabase) return
+  if (started || !hasBackend) return
   started = true
+  const supabase = await getSupabase()
+  if (!supabase) return
   // Listen before the code exchange: its session arrives as an auth event.
   supabase.auth.onAuthStateChange((event, session) => {
     const user = session?.user ?? null
@@ -140,12 +144,14 @@ export async function startSync() {
 /* ---------------- account actions ---------------- */
 
 export async function sendEmailLink(email: string, redirectTo: string) {
+  const supabase = await getSupabase()
   if (!supabase) throw new Error(t('Sign-in is not available in this build.'))
   const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } })
   if (error) throw error
 }
 
 export async function signInWithGoogle(redirectTo: string) {
+  const supabase = await getSupabase()
   if (!supabase) throw new Error(t('Sign-in is not available in this build.'))
   const { error } = await supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })
   if (error) throw error
@@ -155,7 +161,7 @@ export async function signInWithGoogle(redirectTo: string) {
 export async function signOut() {
   clearTimeout(timer)
   switchChoice = null
-  await supabase?.auth.signOut({ scope: 'local' })
+  await (await getSupabase())?.auth.signOut({ scope: 'local' })
   set({ user: null, status: 'signed-out', lastSyncedAt: null })
 }
 
@@ -184,6 +190,7 @@ export function restoreBackup(text: string) {
 
 /** Deletes the account: auth.users cascades to the document, links, circles, memberships and activity. Then signs out here. */
 export async function deleteAccount() {
+  const supabase = await getSupabase()
   if (!supabase || !state.user) return
   deleting = true
   clearTimeout(timer)

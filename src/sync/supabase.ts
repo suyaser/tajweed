@@ -1,13 +1,19 @@
 // Optional backend (spec §6). Without the env values (or in unit tests) the app runs exactly as before: local only.
-import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+// The client library is loaded on first use (sync start, sign-in, circles), not in the main bundle.
+import type { SupabaseClient } from '@supabase/supabase-js'
 
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined
 
-export const supabase: SupabaseClient | null =
-  url && key && import.meta.env.MODE !== 'test'
-    ? createClient(url, key, { auth: { flowType: 'pkce', detectSessionInUrl: false, persistSession: true } })
-    : null
+/** This build has a backend (sign-in, sync, circles, teacher links). Known synchronously, for rendering. */
+export const hasBackend = !!(url && key && import.meta.env.MODE !== 'test')
+
+let client: Promise<SupabaseClient | null> | undefined
+/** The one client, created on first call (null without a backend). */
+export const getSupabase = (): Promise<SupabaseClient | null> =>
+  (client ??= hasBackend
+    ? import('@supabase/supabase-js').then((m) => m.createClient(url!, key!, { auth: { flowType: 'pkce', detectSessionInUrl: false, persistSession: true } }))
+    : Promise.resolve(null))
 
 /** Where sign-in links return: the app's own page, no hash (the code arrives in the query string; the hash router is untouched). */
 export const redirectUrl = () => location.origin + location.pathname
@@ -23,6 +29,7 @@ export async function exchangeCodeFromUrl(): Promise<void> {
   const failed = q.get('error_description') ?? q.get('error')
   if (!code && !failed) return
   try {
+    const supabase = code ? await getSupabase() : null
     if (code && supabase) {
       const { error } = await supabase.auth.exchangeCodeForSession(code)
       if (error) authError = error.message

@@ -18,9 +18,19 @@ const PAGE_WIDTH: Partial<Record<RouteName, 'narrow' | 'default' | 'wide'>> = {
   today: 'wide', plan: 'wide', progress: 'wide', unit: 'default', guide: 'default', onboarding: 'narrow', learn: 'narrow', review: 'narrow', notFound: 'default',
 }
 
-const screens = import.meta.glob<{ default: ComponentType<ScreenProps> }>(['../screens/*.tsx', '!../screens/_*.tsx', '!../screens/*.test.tsx'], { eager: true })
+// Every src/screens/<Name>.tsx is a route's screen. The rarely used ones load on first visit (their own chunk).
+type Mod = { default: ComponentType<ScreenProps> }
+const eager = import.meta.glob<Mod>(['../screens/*.tsx', '!../screens/_*.tsx', '!../screens/*.test.tsx',
+  '!../screens/{Session,Circle,CircleView,Account,Shared,Resources,Guide}.tsx'], { eager: true })
+const later = import.meta.glob<Mod>('../screens/{Session,Circle,CircleView,Account,Shared,Resources,Guide}.tsx')
+const screens: Record<string, ComponentType<ScreenProps>> = {
+  ...Object.fromEntries(Object.entries(eager).map(([k, m]) => [k, m.default])),
+  ...Object.fromEntries(Object.entries(later).map(([k, load]) => [k, lazy(load)])),
+}
 
-const pascal = (n: RouteName) => n[0].toUpperCase() + n.slice(1)
+export const pascal = (n: RouteName) => n[0].toUpperCase() + n.slice(1)
+/** The screen component for a route (undefined: no screen file yet, App shows the Placeholder). */
+export const screenFor = (n: RouteName): ComponentType<ScreenProps> | undefined => screens[`../screens/${pascal(n)}.tsx`]
 const DevGallery = import.meta.env.DEV ? lazy(() => import('./DevGallery')) : null
 
 /** The app wired to the store. Unreadable data shows Recovery before the onboarding gate (M5): never a fresh welcome. */
@@ -50,7 +60,7 @@ export function App({ onboarded = true, theme = 'system', textSize = 'm', tajwee
   // Dev gallery: no shell; the page embeds four frames (one language × theme each).
   if (route.name === 'devComponents' && DevGallery) return <Suspense fallback={null}><DevGallery frame={!!route.params.frame} /></Suspense>
 
-  const Screen = screens[`../screens/${pascal(route.name)}.tsx`]?.default
+  const Screen = screenFor(route.name)
   let body
   if (route.name === 'devComponents') body = <Placeholder name="NotFound" params={{}} />
   else if (Screen) body = <Screen params={route.params} />
@@ -62,7 +72,7 @@ export function App({ onboarded = true, theme = 'system', textSize = 'm', tajwee
   return (
     <Shell route={route} theme={theme} textSize={textSize} tajweedPatterns={tajweedPatterns}>
       <SaveErrorBanner />
-      {body}
+      <Suspense fallback={null}>{body}</Suspense>
     </Shell>
   )
 }

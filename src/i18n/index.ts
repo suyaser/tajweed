@@ -26,9 +26,10 @@ export function setLang(l: Lang, reload = true) {
   if (reload) location.reload()
 }
 
-// Arabic strings live in src/i18n/ar/*.json, keyed by the exact English text (one file per area, merged here).
-const files = import.meta.glob<Record<string, string>>('./ar/*.json', { eager: true, import: 'default' })
-export const AR: Record<string, string> = Object.assign({}, ...Object.values(files))
+// Arabic strings live in src/i18n/ar/*.json, keyed by the exact English text (one file per area), loaded by
+// loadArabic() (arData.ts) before the app starts in Arabic.
+import { AR } from './arData'
+export { AR, loadArabic } from './arData'
 
 const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩'
 export const digits = (s: string | number) => (isAr ? String(s).replace(/\d/g, d => AR_DIGITS[+d]) : String(s))
@@ -49,6 +50,4 @@ export const pick = <T,>(en: T, ar: T | undefined | null): T => (isAr && ar != n
 /** Locale for Intl (dates, plurals). Arabic forces Arabic-Indic digits: some engines default `ar` to Latin digits. */
 export const locale = isAr ? 'ar-u-nu-arab' : 'en-GB'
 
-/** Direction-aware chevrons: "forward" points along the reading direction, "back" against it. */
-export const FWD = isAr ? '‹' : '›'
-export const BACK = isAr ? '›' : '‹'
+

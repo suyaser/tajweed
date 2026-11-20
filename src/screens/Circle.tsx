@@ -7,7 +7,7 @@ import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
 import { navigate } from '../app/router'
 import { today } from '../core/day'
-import { supabase } from '../sync/supabase'
+import { getSupabase, hasBackend } from '../sync/supabase'
 import { useSync } from '../sync/sync'
 import { CopyField } from '../sync/CopyField'
 import { locale, t } from '../i18n'
@@ -20,7 +20,7 @@ const inviteLink = (code: string) => `${location.origin}${location.pathname}#/ci
 
 export default function Circle({ params }: { params: Record<string, string> }) {
   const { user } = useSync()
-  if (!supabase) return <Page width="narrow"><EmptyState icon="groups" title={t('Circles are not available in this version of the app.')} /></Page>
+  if (!hasBackend) return <Page width="narrow"><EmptyState icon="groups" title={t('Circles are not available in this version of the app.')} /></Page>
   if (!user)
     return (
       <Page width="narrow">
@@ -37,7 +37,7 @@ function Circles({ join }: { join?: string }) {
   const [list, setList] = useState<CircleRow[] | null>(null)
   const [err, setErr] = useState('')
   useEffect(() => {
-    supabase!.from('circles').select('id, name, invite_code, owner').order('created_at').then(({ data, error }) => {
+    getSupabase().then((sb) => sb!.from('circles').select('id, name, invite_code, owner').order('created_at')).then(({ data, error }) => {
       if (error) setErr(error.message)
       setList(data ?? [])
     })
@@ -79,7 +79,7 @@ function CreateForm() {
         <form className="flex flex-col gap-space-md p-space-md" onSubmit={async (e) => {
           e.preventDefault()
           setBusy(true); setErr('')
-          const { data, error } = await supabase!.rpc('create_circle', { p_name: name.trim(), p_display_name: me.trim() })
+          const { data, error } = await (await getSupabase())!.rpc('create_circle', { p_name: name.trim(), p_display_name: me.trim() })
           setBusy(false)
           if (error) return setErr(error.message)
           saveName(me.trim())
@@ -106,7 +106,7 @@ function JoinForm({ initialCode = '' }: { initialCode?: string }) {
         <form className="flex flex-col gap-space-md p-space-md" onSubmit={async (e) => {
           e.preventDefault()
           setBusy(true); setErr('')
-          const { data, error } = await supabase!.rpc('join_circle', { p_code: code.trim(), p_name: me.trim() })
+          const { data, error } = await (await getSupabase())!.rpc('join_circle', { p_code: code.trim(), p_name: me.trim() })
           setBusy(false)
           if (error) return setErr(error.message)
           if (!data) return setErr(t('That code did not work. Check it with whoever invited you and try again.'))
@@ -141,8 +141,8 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
 
   const load = useCallback(async () => {
     const [c, w] = await Promise.all([
-      supabase!.from('circles').select('id, name, invite_code, owner').eq('id', id).maybeSingle(),
-      supabase!.rpc('circle_week', { p_circle: id }),
+      (await getSupabase())!.from('circles').select('id, name, invite_code, owner').eq('id', id).maybeSingle(),
+      (await getSupabase())!.rpc('circle_week', { p_circle: id }),
     ])
     if (c.error) setErr(c.error.message)
     setCircle(c.data ?? null)
@@ -157,15 +157,15 @@ function CircleView({ id, userId }: { id: string; userId: string }) {
   const owner = circle.owner === userId
   const rpc = async (fn: string, args: Record<string, unknown>) => {
     setErr('')
-    const { error } = await supabase!.rpc(fn, args)
+    const { error } = await (await getSupabase())!.rpc(fn, args)
     if (error) setErr(error.message)
     else await load()
     return !error
   }
   const leave = async () => {
     const r = owner
-      ? await supabase!.from('circles').delete().eq('id', id)
-      : await supabase!.from('circle_members').delete().eq('circle_id', id).eq('user_id', userId)
+      ? await (await getSupabase())!.from('circles').delete().eq('id', id)
+      : await (await getSupabase())!.from('circle_members').delete().eq('circle_id', id).eq('user_id', userId)
     if (r.error) return setErr(r.error.message)
     navigate('circle')
   }
@@ -263,7 +263,7 @@ function RenameForm({ id, name, onDone }: { id: string; name: string; onDone: ()
       <form className="flex flex-col gap-space-md p-space-md" onSubmit={async (e) => {
         e.preventDefault()
         setErr('')
-        const { error } = await supabase!.from('circles').update({ name: value.trim() }).eq('id', id)
+        const { error } = await (await getSupabase())!.from('circles').update({ name: value.trim() }).eq('id', id)
         if (error) return setErr(error.message)
         setOpen(false)
         await onDone()

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useData } from '../core/store'
 import { Button, Nudge } from '../components'
-import { supabase } from './supabase'
+import { hasBackend } from './supabase'
 import { useSync, type SyncState } from './sync'
 import { t } from '../i18n'
 import { cn } from '@/lib/utils'
@@ -43,7 +43,7 @@ export function SignInNudge() {
   const { introductions } = useData()
   const { user } = useSync()
   const [hidden, setHidden] = useState(dismissedRecently)
-  if (!supabase || user || hidden || introductions.length === 0) return null
+  if (!hasBackend || user || hidden || introductions.length === 0) return null
   const later = () => {
     try { localStorage.setItem(DISMISS_KEY, String(Date.now())) } catch { /* storage blocked: hide for this visit */ }
     setHidden(true)
@@ -65,7 +65,7 @@ export function SignInNudge() {
 /** Small mark: "Not backed up" / "Backed up" (with a dot), linking to the Account screen. Optional `detail` shows the sync time. */
 export function BackupBadge({ detail = false }: { detail?: boolean }) {
   const s = useSync()
-  if (!supabase) return null
+  if (!hasBackend) return null
   const ok = !!s.user && s.status !== 'error' && s.status !== 'choose'
   return (
     <a data-ok={ok} href="#/account"

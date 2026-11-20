@@ -6,7 +6,7 @@ import rawPairs from '../../content/pairs.json'
 import rawMutun from '../../content/mutun.json'
 import also from './also.json'
 // Arabic overlay (content/ar.json), keyed by id; merged only when the UI is Arabic, English fields are the fallback.
-import rawAr from '../../content/ar.json'
+import { arContent } from '../i18n/arData'
 import { isAr, pick } from '../i18n'
 
 const ALSO = also as Record<string, string[] | undefined>
@@ -32,7 +32,7 @@ export interface ArContent {
   pairs: Record<string, string | undefined>
   mutun: Record<string, string | undefined>
 }
-export const AR_CONTENT = rawAr as ArContent
+export const AR_CONTENT = (arContent.data ?? { topics: {}, lessons: {}, units: {}, course: {}, pairs: {}, mutun: {} }) as ArContent
 
 const CATS: [id: string, nameAr: string, nameEn: string, intro: string][] = [
   ['found', 'المخارج والصفات', 'Foundations', 'Before any rule: each letter from its place (المخرج) with its qualities (الصفات).'],

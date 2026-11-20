@@ -30,17 +30,15 @@ vi.mock('./supabase', () => {
     db.row = { doc: JSON.parse(JSON.stringify(q.v.doc)), updated_at: q.v.updated_at }
     return { data: [{ user_id: 'x' }], error: null }
   }
-  return {
-    supabase: {
+  const supabase = {
       from: query,
       rpc: async (fn: string) => { db.rpcs.push(fn); return { data: null, error: null } },
       auth: {
         onAuthStateChange: (fn: any) => { db.auth = fn },
         signOut: async () => db.auth?.('SIGNED_OUT', null),
       },
-    },
-    exchangeCodeFromUrl: async () => {},
   }
+  return { hasBackend: true, getSupabase: async () => supabase, exchangeCodeFromUrl: async () => {} }
 })
 
 const ACCOUNT_KEY = 'tajweed-path:sync-account'

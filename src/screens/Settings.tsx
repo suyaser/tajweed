@@ -10,7 +10,7 @@ import { listAll, removeAll } from '../audio/recordings'
 import { Actions, Button, Confirm, Field, Group, Msg, Row, SegmentedControl, T, VerseBlock, fieldCls } from '../components'
 import { WEEKDAYS, daysAgo, formatBytes } from './path/helpers'
 import { download } from './path/ui'
-import { supabase } from '../sync/supabase'
+import { getSupabase, hasBackend } from '../sync/supabase'
 import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
 import { syncLabel } from '../sync/SignInNudge'
 import { CopyField } from '../sync/CopyField'
@@ -39,7 +39,7 @@ export default function Settings({ params }: ScreenProps) {
 
   return (
     <Page width="narrow">
-      {supabase && (
+      {hasBackend && (
         <Group en="Account and backup" ar="الحساب والنسخ الاحتياطي">
           <Row icon={sync.user ? 'cloud_done' : 'cloud_off'} href="#/account"
             label={sync.user ? t('Account') : t('Sign in')}
@@ -122,7 +122,7 @@ export default function Settings({ params }: ScreenProps) {
           />
         </Row>
         {sync.user && <TeacherLink userId={sync.user.id} />}
-        {supabase && <Row icon="groups" href="#/circle" label={t('Circles')} hint={t('Study with friends: see who studied each day this week')} />}
+        {hasBackend && <Row icon="groups" href="#/circle" label={t('Circles')} hint={t('Study with friends: see who studied each day this week')} />}
       </Group>
 
       <Group en="Your data" ar="بياناتك">
@@ -190,18 +190,18 @@ function TeacherLink({ userId }: { userId: string }) {
   const [token, setToken] = useState<string | null | undefined>(undefined)
   const [err, setErr] = useState('')
   useEffect(() => {
-    supabase!.from('share_links').select('token').eq('user_id', userId).is('revoked_at', null).order('created_at', { ascending: false }).limit(1)
+    getSupabase().then((sb) => sb!.from('share_links').select('token').eq('user_id', userId).is('revoked_at', null).order('created_at', { ascending: false }).limit(1))
       .then(({ data, error }) => { if (error) setErr(error.message); setToken(data?.[0]?.token ?? null) })
   }, [userId])
   const create = async () => {
     setErr('')
-    const { data, error } = await supabase!.from('share_links').insert({ user_id: userId }).select('token').single()
+    const { data, error } = await (await getSupabase())!.from('share_links').insert({ user_id: userId }).select('token').single()
     if (error) setErr(error.message)
     else setToken(data.token)
   }
   const revoke = async () => {
     setErr('')
-    const { error } = await supabase!.from('share_links').update({ revoked_at: new Date().toISOString() }).eq('user_id', userId).is('revoked_at', null)
+    const { error } = await (await getSupabase())!.from('share_links').update({ revoked_at: new Date().toISOString() }).eq('user_id', userId).is('revoked_at', null)
     if (error) setErr(error.message)
     else setToken(null)
   }

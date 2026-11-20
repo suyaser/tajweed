@@ -27,6 +27,6 @@ export function Tx({ children }: { children: string }) {
   const parts = children.split(/(\([^()]{1,24}\))/)
   const one = (s: string) => (isAr ? digits(s) : <T>{s}</T>)
   const body = parts.length === 1 ? one(children)
-    : parts.map((s, i) => (i % 2 ? <span key={i} className="nw">{one(s)}</span> : <Fragment key={i}>{one(s)}</Fragment>))
+    : parts.map((s, i) => (i % 2 ? <span key={i} className="whitespace-nowrap">{one(s)}</span> : <Fragment key={i}>{one(s)}</Fragment>))
   return isAr && /[A-Za-z]/.test(children) ? <bdi>{body}</bdi> : <>{body}</>
 }

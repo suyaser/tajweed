@@ -6,7 +6,7 @@ import { href } from '../../app/router'
 import { Line, T } from '../../components'
 import { updateSettings, useData } from '../../core/store'
 import { countsText } from '../../core/questions'
-import { AR, digits, t } from '../../i18n'
+import { digits, t } from '../../i18n'
 import { Callout, CountBeats, LetterTile, SectionCard } from '@/components/kit'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
@@ -56,7 +56,10 @@ function Letters({ letters }: { letters: string }) {
 }
 
 /** Section title in both languages (SectionCard shows the Arabic at the end in the English UI). */
-const bi = (en: string) => ({ en: t(en), ar: AR[en] })
+const SECTION_AR: Record<string, string> = {
+  'What happens': 'ما الذي يحدث', 'Which letters': 'الحروف', 'At a glance': 'باختصار', 'How long': 'المقدار', 'When it applies': 'متى يكون', Example: 'مثال',
+}
+const bi = (en: string) => ({ en: t(en), ar: SECTION_AR[en] })
 
 function MoreExample({ ex, audio }: { ex: Example; audio: StudyAudio }) {
   const vs = useVerse(ex.verseKey)

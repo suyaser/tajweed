@@ -18,6 +18,7 @@ describe('sw routes', () => {
   it('matches Google Fonts hosts only', () => {
     expect(isFont(m('https://fonts.gstatic.com/s/amiri/v1/x.woff2'))).toBe(true)
     expect(isFont(m('https://fonts.googleapis.com/css2?family=Amiri'))).toBe(true)
+    expect(isFont(m('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&icon_names=add,check&display=block'))).toBe(true)
     expect(isFont(m('https://evilfonts.gstatic.com.example/x'))).toBe(false)
   })
 })
