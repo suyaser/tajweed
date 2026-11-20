@@ -5,7 +5,6 @@ import { getLesson } from '../content'
 import { Button, Card, CorrectionTag, EmptyState, OrnHeading, SegmentedControl, T } from '../components'
 import { corrLabel, dayLabel, listenHref, live, nextTeacherDay, severityCounts, upcomingSession } from './path/helpers'
 import { startClass } from './path/ui'
-import './path.css'
 import { Hint } from './study/Hint'
 import { t, FWD } from '../i18n'
 

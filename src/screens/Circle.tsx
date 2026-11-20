@@ -7,8 +7,6 @@ import { today } from '../core/day'
 import { supabase } from '../sync/supabase'
 import { useSync } from '../sync/sync'
 import { CopyField } from '../sync/CopyField'
-import './path.css'
-import '../sync/sync.css'
 import { locale, t, FWD } from '../i18n'
 
 interface CircleRow { id: string; name: string; invite_code: string; owner: string }

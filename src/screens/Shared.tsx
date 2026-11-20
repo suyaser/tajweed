@@ -4,8 +4,6 @@ import { Card, OrnHeading, Skeleton } from '../components'
 import { getLesson } from '../content'
 import course from '../../content/course.json'
 import { supabase } from '../sync/supabase'
-import './path.css'
-import '../sync/sync.css'
 import { digits, isAr, locale, t } from '../i18n'
 
 interface Summary {

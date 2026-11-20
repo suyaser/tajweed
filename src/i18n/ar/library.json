@@ -478,5 +478,11 @@
   "Makes all text and buttons bigger, including the Quran text.": "يكبّر كل النصوص والأزرار، ومعها نص القرآن.",
   "Normal": "عادي",
   "Large": "كبير",
-  "Larger": "أكبر"
+  "Larger": "أكبر",
+  "Example {n} of {total}": "المثال {n} من {total}",
+  "Example {n}": "المثال {n}",
+  "Previous example": "المثال السابق",
+  "Next example": "المثال التالي",
+  "visited": "زرتها",
+  "skipped": "تخطّيتها"
 }

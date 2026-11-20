@@ -1,13 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { fileURLToPath } from 'node:url'
 import { VitePWA } from 'vite-plugin-pwa'
 import { isAudio, isFont, isQuranData } from './src/pwa/routes'
 
 // Relative base so the same build works on Vercel and GitHub Pages (hash routing).
 export default defineConfig({
   base: './',
+  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
   plugins: [
     react(),
+    tailwindcss(),
     VitePWA({
       // prompt: main.tsx applies an update only on Today, so a deploy never reloads a class or a recording.
       registerType: 'prompt',
@@ -36,7 +40,7 @@ export default defineConfig({
             options: { cacheName: 'audio', rangeRequests: true, cacheableResponse: { statuses: [200] }, expiration: { maxEntries: 400, maxAgeSeconds: 7 * 24 * 3600, purgeOnQuotaError: true } } },
           { urlPattern: isQuranData, handler: 'StaleWhileRevalidate', options: { cacheName: 'quran-data' } },
           { urlPattern: isFont, handler: 'CacheFirst',
-            options: { cacheName: 'fonts', cacheableResponse: { statuses: [0, 200] }, expiration: { maxEntries: 30, maxAgeSeconds: 365 * 24 * 3600, purgeOnQuotaError: true } } },
+            options: { cacheName: 'fonts', cacheableResponse: { statuses: [0, 200] }, expiration: { maxEntries: 60, maxAgeSeconds: 365 * 24 * 3600, purgeOnQuotaError: true } } },
         ],
       },
     }),

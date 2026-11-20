@@ -11,8 +11,6 @@ import { Button, Card, CorrectionTag, Nudge, ProgressDots, Sheet, StarBadge } fr
 import { isAr, t, FWD } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
-import './study.css'
-import './path.css'
 import { SignInNudge } from '../sync/SignInNudge'
 import { useSync } from '../sync/sync'
 import { getSteps, type StepId } from './study/lessonSteps'

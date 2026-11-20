@@ -4,6 +4,11 @@ export type Lang = 'en' | 'ar'
 const KEY = 'tajweed-path:lang'
 
 function initial(): Lang {
+  // Dev gallery frames (#/dev/components?frame=1&lang=ar) pick their language without touching the saved choice.
+  if (import.meta.env.DEV && typeof location !== 'undefined') {
+    const m = location.hash.match(/^#\/dev\/components\?.*\blang=(en|ar)\b/)
+    if (m) return m[1] as Lang
+  }
   try {
     const v = localStorage.getItem(KEY)
     if (v === 'en' || v === 'ar') return v

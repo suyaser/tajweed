@@ -9,7 +9,6 @@ import {
 } from '../components'
 import { lessonStatus, type LessonStatus } from './library/shared'
 import { normalize } from './library/range'
-import './library.css'
 import { Hint } from './study/Hint'
 import { isAr, t, FWD } from '../i18n'
 

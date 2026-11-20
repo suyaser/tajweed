@@ -7,7 +7,6 @@ import { StarBadge } from '../components'
 import { PathTabs, UnitLessons } from './path/ui'
 import { Hint } from './study/Hint'
 import { isAr, t } from '../i18n'
-import './path.css'
 
 export default function Plan() {
   const d = useData()

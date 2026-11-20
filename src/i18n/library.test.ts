@@ -4,7 +4,7 @@ import library from './ar/library.json'
 // Every t('…') literal in the library/teacher/settings/shell side of the app has an Arabic entry (library.json, or study.json for shared phrases).
 const SOURCES = import.meta.glob<string>([
   '../screens/{Rules,Rule,Listen,Resources,Teacher,TeacherNew,Session,Settings,Account,Circle,Shared,_placeholders}.tsx',
-  '../{components,app,sync,audio,screens/library}/*.{ts,tsx}', '!**/*.test.{ts,tsx}',
+  '../{components,components/kit,components/ui,app,sync,audio,screens/library}/*.{ts,tsx}', '!**/*.test.{ts,tsx}',
 ], { query: '?raw', import: 'default', eager: true })
 // Keys reached through a variable: t(word), t(WEEK_LONG[i]), …
 const DYNAMIC = [

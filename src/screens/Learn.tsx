@@ -25,7 +25,6 @@ import { PassageRecite, Recorder } from './study/Recorder'
 import { BottomBar, DoneLine, LessonHeader, StepNav, stepName, type StepState } from './study/LessonShell'
 import { checkScore, completeStep, freshSteps, getSteps, missingSteps, saveSteps, scoreCheck, showStep, STEP_IDS, visitStep, type LessonSteps, type StepId } from './study/lessonSteps'
 import { playMe } from '../audio/compare'
-import './study.css'
 
 const NEXT: Record<StepId, string> = {
   hear: 'Next: Hear the examples', notice: 'Next: Notice the difference', learn: 'Next: Learn the rule', say: 'Next: Say it yourself',

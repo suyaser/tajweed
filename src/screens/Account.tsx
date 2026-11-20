@@ -4,8 +4,6 @@ import { Button, Card, OrnHeading, T } from '../components'
 import { authError, clearAuthError, redirectUrl, supabase } from '../sync/supabase'
 import { chooseAccountData, deleteAccount, sendEmailLink, signInWithGoogle, signOut, syncNow, useSync, type SyncState } from '../sync/sync'
 import { syncLabel } from '../sync/SignInNudge'
-import './path.css'
-import '../sync/sync.css'
 import { t } from '../i18n'
 
 export default function Account() {

@@ -3,7 +3,6 @@ import { useData } from '../core/store'
 import { Button, Nudge } from '../components'
 import { supabase } from './supabase'
 import { useSync, type SyncState } from './sync'
-import './sync.css'
 import { t } from '../i18n'
 
 const DISMISS_KEY = 'tajweed-path:signin-nudge-dismissed'

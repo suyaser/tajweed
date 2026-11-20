@@ -8,7 +8,6 @@ import { Button, Card } from '../components'
 import type { ScreenProps } from '../app/App'
 import { dayLabel, listenHref, live, mergePassages, nextTeacherDay, refLabel, upcomingSession, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip } from './path/ui'
-import './path.css'
 import { t } from '../i18n'
 
 /** "Since last time": ranges recorded, and an example ayah of each lesson introduced, since the last finished session. */

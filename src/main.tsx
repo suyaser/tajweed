@@ -1,9 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
-import './styles/tokens.css'
-import './styles/base.css'
-import './styles/components.css'
+import { Direction, Tooltip } from 'radix-ui'
+import './styles/app.css'
 import { Root } from './app/App'
 import { ErrorBoundary } from './app/Recovery'
 import { lang } from './i18n'
@@ -24,8 +23,12 @@ const updateSW = registerSW({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ErrorBoundary>
-      <Root />
-    </ErrorBoundary>
+    <Direction.Provider dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <Tooltip.Provider delayDuration={300}>
+        <ErrorBoundary>
+          <Root />
+        </ErrorBoundary>
+      </Tooltip.Provider>
+    </Direction.Provider>
   </StrictMode>,
 )

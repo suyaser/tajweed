@@ -2,7 +2,6 @@ import type { ReactNode } from 'react'
 import type { ScreenProps } from '../app/App'
 import { RECITERS } from '../quran'
 import { Bdi, T } from '../components'
-import './library.css'
 import { isAr, t } from '../i18n'
 
 // Carried over from docs/reference/artifact-v3.html (Resources), plus Credits (licence requirement, spec §8.2).

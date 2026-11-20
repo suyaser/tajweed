@@ -40,8 +40,8 @@
   --f-quran: "Amiri Quran", "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
   --f-ar: "Noto Sans Arabic", "Geeza Pro", sans-serif;
   --f-kufi: "Noto Naskh Arabic", "Amiri", "Geeza Pro", serif; /* Arabic headings (naskh) */
-  --f-disp: "Figtree", system-ui, sans-serif;
-  --f-body: "Figtree", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-disp: "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Latin scale: size/line-height */
   --t-cap: 600 13px/18px var(--f-body);

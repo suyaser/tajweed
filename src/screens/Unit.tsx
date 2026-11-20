@@ -15,8 +15,6 @@ import { UnitLessons } from './path/ui'
 import { dayLabel } from './path/helpers'
 import { PassageRecite } from './study/Recorder'
 import { useStudyAudio } from './study/verse'
-import './path.css'
-import './study.css'
 
 export default function Unit({ params }: ScreenProps) {
   const u = getUnit(params.unitId)

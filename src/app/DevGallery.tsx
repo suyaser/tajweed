@@ -1,202 +1,260 @@
-import { useState, type ReactNode } from 'react'
-import type { ColourKey } from '../core/types'
+import { useEffect, useState, type ReactNode } from 'react'
+import { parseHash } from './router'
+import { Icon } from '@/components/ui/icon'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Toggle } from '@/components/ui/toggle'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { Switch } from '@/components/ui/switch'
+import { Progress } from '@/components/ui/progress'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Skeleton } from '@/components/ui/skeleton'
 import {
-  AudioTransport, Band, Button, Card, CorrectionBadge, CorrectionTag, CountBeats, EmptyState, Legend, LetterTiles,
-  LevelBadge, Nudge, OptionButton, Ornament, OrnHeading, Passage, ProgressDots, RecordButton, RuleChip, RuleRow,
-  SegmentedControl, Sheet, StarBadge, T, VerseBlock, ArLabel, type RecordState, type TajweedSegment,
-} from '../components'
+  AudioControls, BottomBar, Callout, Chip, CountBeats, EmptyState, ExampleCard, LetterTile, Page, PageHeader,
+  SectionCard, SegmentedControl, StatusChip, StepBar, UnitPath, STEP_ICONS, type StepKey, type StepState,
+} from '@/components/kit'
 
-// Dev-only (#/dev/components): every component, light and dark side by side, real Arabic.
+// Dev only (#/dev/components): every ui + kit component. The page embeds four frames (EN/AR × light/dark);
+// each frame is #/dev/components?frame=1&lang=…&theme=… rendered without the shell.
 
-const BAQARAH_4: TajweedSegment[] = [
-  { text: 'وَمَ' }, { text: 'آ', colour: 'madd45' }, { text: ' أُ' }, { text: 'ن', colour: 'ghunnah' },
-  { text: 'زِلَ مِ' }, { text: 'ن', colour: 'ghunnah' }, { text: ' قَ' }, { text: 'بْ', colour: 'qalqalah' }, { text: 'لِكَ' },
-]
-const DUHA = [
-  { key: '93:1', n: 1, text: 'وَٱلضُّحَىٰ' },
-  { key: '93:2', n: 2, text: 'وَٱلَّيْلِ إِذَا سَجَىٰ' },
-  { key: '93:3', n: 3, text: 'مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ' },
-]
-const LEGEND: ColourKey[] = ['clear', 'ghunnah', 'silent', 'merge', 'madd2', 'madd45', 'madd246', 'madd6', 'qalqalah', 'heavy', 'light']
-
-function Sec({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="gal-sec">
-      <h3 className="eyebrow">{title}</h3>
-      <div className="gal-body">{children}</div>
-    </section>
-  )
+export default function DevGallery({ frame }: { frame?: boolean }) {
+  return frame ? <Frame /> : <Grid />
 }
 
-function Demo({ theme }: { theme: 'light' | 'dark' }) {
-  const [isolate, setIsolate] = useState<ColourKey | null>(null)
-  const [seg, setSeg] = useState<'plan' | 'progress'>('plan')
-  const [sheet, setSheet] = useState(false)
-  const [tapped, setTapped] = useState<number | null>(null)
-  const [playing, setPlaying] = useState(false)
-  const [loop, setLoop] = useState(1)
-  const [rate, setRate] = useState(1)
-  const [gap, setGap] = useState(true)
-  const [ayah, setAyah] = useState(1)
-  const [rec, setRec] = useState<RecordState>('idle')
-  const [opt, setOpt] = useState<number | null>(null)
-
+function Grid() {
+  const [wide, setWide] = useState(false)
+  const frames = [['en', 'light'], ['en', 'dark'], ['ar', 'light'], ['ar', 'dark']] as const
   return (
-    <div className={`gal-panel theme-${theme}`}>
-      <h2 className="t-h2">{theme === 'light' ? 'Light' : 'Dark'}</h2>
-
-      <Sec title="Band · lattice">
-        <Band>
-          <span className="k-h2" lang="ar" style={{ color: 'var(--gold-display)' }}>مسار التجويد</span>
-        </Band>
-      </Sec>
-
-      <Sec title="T · mixed text (B1/B2)">
-        <p><T>The نْ is followed by ت, one of the fifteen letters of إخفاء, so hide it with غنة for 2 counts.</T></p>
-        <p className="t-sm muted"><T>Small text: النون الساكنة والتنوين · then إدغام.</T></p>
-        <ArLabel ar="الأحكام" en="Rules" />
-      </Sec>
-
-      <Sec title="VerseBlock · tajweed colours, isolate via legend">
-        <VerseBlock segments={BAQARAH_4} reference="البقرة ٤" size="read" isolate={isolate} actions={<button className="icon-btn" aria-label="Play البقرة ٤">▶</button>} />
-        <Legend colours={LEGEND} isolate={isolate} onIsolate={setIsolate} notShown={['مد البدل', 'السكت']} />
-      </Sec>
-
-      <Sec title="VerseBlock · question underline (neutral), stopping tag">
-        <Card level="e2">
-          <p>Which rule is the underlined part?</p>
-          <VerseBlock text="إِنَّ ٱلْإِنسَٰنَ لَفِى خُسْرٍ" focus={[2, 2]} reference="العصر ٢" size="focus" stopping />
-        </Card>
-      </Sec>
-
-      <Sec title="VerseBlock · tap a word (ring), roving keys ← →">
-        <VerseBlock
-          text="مِن شَرِّ مَا خَلَقَ"
-          reference="الفلق ٢"
-          marks={tapped ? { [tapped]: 'ring' } : undefined}
-          onWord={(n) => setTapped(n)}
-        />
-      </Sec>
-
-      <Sec title="Passage · current ayah + word lamp, ayah-end markers">
-        <Passage ayahs={DUHA} currentAyah={`93:${ayah}`} current={{ key: `93:${ayah}`, word: 1 }} onAyah={(k) => setAyah(+k.split(':')[1])} onWord={() => {}} />
-        <Passage ayahs={DUHA.slice(1, 2)} size="inline" marks={{ '93:2/1': 'found', '93:2/2': 'missed', '93:2/3': 'wrong' }} />
-      </Sec>
-
-      <Sec title="AudioTransport">
-        <AudioTransport
-          playing={playing} label={`الضحى · ${'١٢٣'[ayah - 1]}`} speaker="الحصري المعلّم" loop={loop} rate={rate} gap={gap}
-          ayahCount={11} ayahIndex={ayah - 1} yourTurn={playing && gap ? 4 : null}
-          onPlayPause={() => setPlaying(!playing)} onPrev={() => setAyah(Math.max(1, ayah - 1))} onNext={() => setAyah(Math.min(3, ayah + 1))}
-          onLoop={() => setLoop(({ 1: 3, 3: 5, 5: 10, 10: 1 } as Record<number, number>)[loop])} onRate={() => setRate(rate === 1 ? 0.75 : 1)} onGap={() => setGap(!gap)}
-          onSeekAyah={(i) => setAyah(Math.min(3, i + 1))}
-        />
-        <AudioTransport playing={false} label="الضحى ١" unavailable="Audio needs a connection. The text is here; recording still works." loop={1} rate={1} gap={false}
-          onPlayPause={() => {}} onPrev={() => {}} onNext={() => {}} onLoop={() => {}} onRate={() => {}} onGap={() => {}} />
-      </Sec>
-
-      <Sec title="RecordButton">
-        <RecordButton state={rec} seconds={rec === 'recording' ? 12 : 42} onClick={() => setRec(rec === 'recording' ? 'saved' : 'recording')} />
-        <RecordButton state="off" onClick={() => {}} offReason="Recording is off. You can turn the microphone on in your browser's site settings." />
-      </Sec>
-
-      <Sec title="Buttons · OptionButton">
-        <div className="gal-row">
-          <Button>Start lesson</Button>
-          <Button variant="secondary">Model, then me</Button>
-          <Button variant="ghost">Not today</Button>
-          <Button variant="danger">Reset everything</Button>
-          <Button disabled>Disabled</Button>
-        </div>
-        <div className="opts">
-          {[['الإخفاء الحقيقي', 'Hidden noon'], ['الإظهار الحلقي', 'Clear noon'], ['الإدغام بغنة', 'Merge with ghunnah'], ['الإقلاب', 'Conversion']].map(([ar, en], i) => (
-            <OptionButton key={i} ar={ar} en={en} disabled={opt != null}
-              state={opt == null ? 'idle' : i === 0 ? (opt === 0 ? 'correct' : 'revealed') : i === opt ? 'wrong' : 'idle'}
-              onClick={() => setOpt(i)} />
-          ))}
-        </div>
-        {opt != null && <Button variant="ghost" onClick={() => setOpt(null)}>Reset</Button>}
-      </Sec>
-
-      <Sec title="SegmentedControl">
-        <SegmentedControl label="Path" value={seg} onChange={setSeg} options={[{ value: 'plan', label: 'Plan' }, { value: 'progress', label: 'Progress' }]} />
-      </Sec>
-
-      <Sec title="RuleChip · RuleRow · LevelBadge · CorrectionTag">
-        <div className="gal-row">
-          <RuleChip nameAr="الإخفاء" colour="ghunnah" level="learning" onClick={() => {}} />
-          <RuleChip nameAr="المد المتصل" colour="madd45" href="#/rules/muttasil" />
-          <RuleChip nameAr="Other" />
-        </div>
-        <div className="rrows">
-          <RuleRow nameAr="الإظهار الحلقي" nameEn="Clear noon before a throat letter" colour="clear" level="known" href="#/rules/izhar" />
-          <RuleRow nameAr="الإدغام بغنة" nameEn="Merge with ghunnah" colour="merge" level="learning" correctionOpen href="#/rules/idgham" />
-          <RuleRow nameAr="المثلان والمتجانسان والمتقاربان" nameEn="Like, related and near letters" colour="madd246" level="not-started" href="#/rules/x" />
-        </div>
-        <div className="gal-row">
-          <LevelBadge level="not-started" /><LevelBadge level="learning" /><LevelBadge level="known" /><LevelBadge level="strong" detail="every 14 days" />
-        </div>
-        <div className="gal-row">
-          <CorrectionTag severity="jali" gloss /><CorrectionTag severity="khafi" gloss /><CorrectionTag severity="jali" count={2} /><CorrectionBadge />
-        </div>
-      </Sec>
-
-      <Sec title="LetterTiles · CountBeats">
-        <LetterTiles letters="ص ذ ث ك ج ش ق س د ط ز ف ت ض ظ" colour="ghunnah" />
-        <LetterTiles letters="ق ط ب ج د" size="option" />
-        <div className="gal-row">
-          <CountBeats min={2} colour="madd2" /> <CountBeats min={4} max={5} colour="madd45" /> <CountBeats min={2} max={6} colour="madd246" /> <CountBeats min={6} colour="madd6" />
-        </div>
-      </Sec>
-
-      <Sec title="StarBadge · Ornament · ProgressDots">
-        <div className="gal-row">
-          <StarBadge n={1} size={32} /><StarBadge n={2} /><StarBadge n={3} size={52} state="done" /><StarBadge n={4} size={60} state="locked" />
-        </div>
-        <Ornament />
-        <OrnHeading><T>الورد · Your wird, ~40′</T></OrnHeading>
-        <ProgressDots days={['studied', 'studied', 'studied', 'not', 'studied', 'future', 'future']} today={4} />
-      </Sec>
-
-      <Sec title="Card · EmptyState · Nudge · Sheet">
-        <Card stripe="ghunnah" eyebrow="غنة · إخفاء">
-          <h3 className="a-h3" lang="ar" style={{ color: 'var(--t-ghunnah)' }}>الإخفاء الحقيقي</h3>
-          <p className="muted t-sm">Hidden noon</p>
-        </Card>
-        <EmptyState title="Nothing due today." action={<Button variant="secondary">Back to today</Button>}>
-          Your next review is on Saturday.
-        </EmptyState>
-        <Nudge action={<Button variant="ghost">How</Button>} onDismiss={() => {}}>
-          Install to home screen so your data is kept.
-        </Nudge>
-        <Button variant="secondary" onClick={() => setSheet(true)}>Open sheet</Button>
-        <Sheet open={sheet} onClose={() => setSheet(false)} title={<T>ٱلضَّآلِّينَ · الفاتحة ٧</T>}>
-          <div className="gal-row">
-            <Button variant="primary">■ جلي clear error</Button>
-            <Button variant="secondary">□ خفي fine detail</Button>
-          </div>
-          <Button block onClick={() => setSheet(false)}>Save</Button>
-        </Sheet>
-      </Sec>
+    <div className="flex flex-col gap-space-md p-space-md">
+      <div className="flex items-center gap-space-md">
+        <h1 className="text-headline-md">Components</h1>
+        <SegmentedControl label="Frame width" value={wide ? 'wide' : 'phone'} onChange={(v) => setWide(v === 'wide')}
+          options={[{ value: 'phone', label: 'Phone 390', icon: 'smartphone' }, { value: 'wide', label: 'Wide 1100', icon: 'desktop_windows' }]} />
+      </div>
+      <div className="flex flex-wrap gap-space-md">
+        {frames.map(([lang, theme]) => (
+          <figure key={lang + theme} className="flex flex-col gap-1">
+            <figcaption className="text-label text-on-surface-variant">{lang.toUpperCase()} · {theme}</figcaption>
+            <iframe title={`${lang} ${theme}`} src={`#/dev/components?frame=1&lang=${lang}&theme=${theme}`}
+              className="h-[85dvh] rounded-card border border-outline-variant" style={{ width: wide ? 1100 : 390 }} />
+          </figure>
+        ))}
+      </div>
     </div>
   )
 }
 
-export default function DevGallery() {
-  const [patterns, setPatterns] = useState(false)
+function Sec({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="gallery">
-      <label className="gal-row">
-        <input type="checkbox" checked={patterns} onChange={(e) => {
-          setPatterns(e.target.checked)
-          document.documentElement.classList.toggle('tj-patterns', e.target.checked)
-        }} />
-        Tajweed patterns (second cue, §7.4)
-      </label>
-      <div className="gal-cols">
-        <Demo theme="light" />
-        <Demo theme="dark" />
-      </div>
+    <section className="flex flex-col gap-space-sm">
+      <h2 dir="ltr" className="text-label tracking-wider text-secondary uppercase">{title}</h2>
+      <div className="flex flex-col gap-space-sm">{children}</div>
+    </section>
+  )
+}
+const Row = ({ children }: { children: ReactNode }) => <div className="flex flex-wrap items-center gap-space-sm">{children}</div>
+
+const STEPS: { key: StepKey; state: StepState }[] = [
+  { key: 'hear', state: 'done' }, { key: 'notice', state: 'skipped' }, { key: 'learn', state: 'current' },
+  { key: 'say', state: 'visited' }, { key: 'find', state: 'not-visited' }, { key: 'check', state: 'not-visited' }, { key: 'recite', state: 'not-visited' },
+]
+
+function Frame() {
+  const theme = parseHash(location.hash).params.theme
+  useEffect(() => {
+    if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme
+  }, [theme])
+  const [seg, setSeg] = useState<'list' | 'map'>('list')
+  const [ex, setEx] = useState(0)
+  const [playing, setPlaying] = useState(false)
+  const [slow, setSlow] = useState(true)
+  const [loop, setLoop] = useState(false)
+  const [letter, setLetter] = useState<string | null>('ن')
+  const [step, setStep] = useState<StepKey>('learn')
+
+  return (
+    <div className="min-h-dvh bg-background text-on-surface">
+      <Page>
+        <PageHeader en="Rules" ar="الأحكام" eyebrow="Lesson 14 of 58 · Unit 2" subtitle="Every rule card, any time."
+          actions={<Button variant="ghost" size="icon" aria-label="Settings"><Icon name="settings" /></Button>} />
+
+        <Sec title="kit · StepBar (current / done / visited / not visited / skipped)">
+          <StepBar steps={STEPS.map((s) => ({ ...s, state: s.key === step ? 'current' : s.state === 'current' ? 'visited' : s.state }))} onStep={setStep} />
+        </Sec>
+
+        <Sec title="kit · ExampleCard + AudioControls">
+          <ExampleCard index={ex} total={3} reference="الناس ٤" onPrev={() => setEx(ex - 1)} onNext={() => setEx(ex + 1)} onPick={setEx}
+            controls={<AudioControls playing={playing} onPlay={() => setPlaying(!playing)} played={ex > 0 || playing} slow={slow} onSlow={() => setSlow(!slow)} loop={loop} onLoop={() => setLoop(!loop)} />}>
+            <p lang="ar" dir="rtl" className="text-quran">
+              مِ<mark className="rounded-md bg-focus-bg px-1.5 text-focus-ink">نْ</mark> شَرِّ
+            </p>
+          </ExampleCard>
+        </Sec>
+
+        <Sec title="kit · Callout">
+          <Callout variant="listen-for" title="Listen for">The نْ hides into the ش with a light ghunnah.</Callout>
+          <Callout variant="tip" title="Tip">Say it slowly first, then at reading speed.</Callout>
+          <Callout variant="note">A note with no title.</Callout>
+        </Sec>
+
+        <Sec title="kit · SectionCard">
+          <SectionCard n={1} en="What happens" ar="ما يحدث">
+            When a nūn sākinah is followed by one of the 15 letters, the n is hidden with ghunnah.
+          </SectionCard>
+          <SectionCard n={2} en="The 15 letters" ar="حروف الإخفاء">
+            <Row>{['ص', 'ذ', 'ث', 'ك', 'ج'].map((l) => <LetterTile key={l} letter={l} selected={letter === l} onClick={() => setLetter(l)} />)}</Row>
+          </SectionCard>
+        </Sec>
+
+        <Sec title="kit · LetterTile · CountBeats">
+          <Row>
+            <LetterTile letter="ن" name="nūn" /><LetterTile letter="م" name="mīm" selected /><LetterTile letter="ق" />
+          </Row>
+          <Row><CountBeats min={2} /><CountBeats min={4} max={5} active={3} /><CountBeats min={2} max={6} /></Row>
+        </Sec>
+
+        <Sec title="kit · UnitPath">
+          <UnitPath finale="todo" lessons={[
+            { state: 'done', label: 'Lesson 1', href: '#/learn/a' }, { state: 'done', label: 'Lesson 2', href: '#/learn/b' },
+            { state: 'current', label: 'Lesson 3', href: '#/learn/c' }, { state: 'todo', label: 'Lesson 4' }, { state: 'todo', label: 'Lesson 5' },
+          ]} />
+          <UnitPath finale="done" lessons={[{ state: 'done', label: 'Lesson 1' }, { state: 'done', label: 'Lesson 2' }]} />
+        </Sec>
+
+        <Sec title="kit · Chip · StatusChip · SegmentedControl">
+          <Row>
+            <Chip icon="bookmark">الفلق ٢</Chip><Chip tone="gold">مخرج</Chip><Chip tone="outline">Makhraj</Chip>
+            <Chip icon="repeat" pressed={loop} onClick={() => setLoop(!loop)} label="Loop" />
+          </Row>
+          <Row>
+            <StatusChip status="done">Known</StatusChip><StatusChip status="current">Learning</StatusChip>
+            <StatusChip status="todo">Not started</StatusChip><StatusChip status="info">Due</StatusChip><StatusChip status="warning">Correction</StatusChip>
+          </Row>
+          <SegmentedControl label="View" value={seg} onChange={setSeg} options={[{ value: 'list', label: 'List', icon: 'list' }, { value: 'map', label: 'Map', icon: 'account_tree' }]} />
+        </Sec>
+
+        <Sec title="kit · EmptyState">
+          <EmptyState icon="event_available" title="Nothing due today." action={<Button variant="secondary">Back to today</Button>}>
+            Your next review is on Saturday.
+          </EmptyState>
+        </Sec>
+
+        <Sec title="ui · Button (primary / secondary / tertiary / ghost / destructive; sizes)">
+          <Row>
+            <Button>Start lesson <Icon name="arrow_forward" size={20} rtlFlip /></Button>
+            <Button variant="secondary">Model, then me</Button>
+            <Button variant="tertiary">Course map</Button>
+            <Button variant="ghost">Not today</Button>
+            <Button variant="destructive">Reset</Button>
+          </Row>
+          <Row>
+            <Button size="sm">Small</Button><Button size="lg">Large</Button><Button disabled>Disabled</Button>
+            <Button size="icon" variant="secondary" aria-label="Play"><Icon name="play_arrow" fill /></Button>
+          </Row>
+        </Sec>
+
+        <Sec title="ui · Badge · Separator · Progress · Skeleton">
+          <Row>
+            <Badge>Makhraj</Badge><Badge variant="primary">Ikhfāʾ</Badge><Badge variant="secondary">Unit 2</Badge>
+            <Badge variant="success">Known</Badge><Badge variant="destructive">Error</Badge><Badge variant="outline">Outline</Badge>
+          </Row>
+          <Separator />
+          <Progress value={62} />
+          <Row><Skeleton className="h-6 w-32" /><Skeleton className="size-10 rounded-full" /></Row>
+        </Sec>
+
+        <Sec title="ui · Card">
+          <Card>
+            <CardHeader><CardTitle>Today</CardTitle><CardDescription>Lesson 3 · 15 minutes</CardDescription></CardHeader>
+            <CardContent className="text-body-md">Card content.</CardContent>
+            <CardFooter><Button className="w-full">Continue</Button></CardFooter>
+          </Card>
+        </Sec>
+
+        <Sec title="ui · Tabs · Toggle · ToggleGroup · Tooltip">
+          <Tabs defaultValue="plan">
+            <TabsList><TabsTrigger value="plan">Plan</TabsTrigger><TabsTrigger value="progress">Progress</TabsTrigger></TabsList>
+            <TabsContent value="plan" className="text-body-md">Plan tab.</TabsContent>
+            <TabsContent value="progress" className="text-body-md">Progress tab.</TabsContent>
+          </Tabs>
+          <Row>
+            <Toggle aria-label="Loop"><Icon name="repeat" /></Toggle>
+            <Toggle variant="outline">Slower</Toggle>
+            <ToggleGroup type="single" variant="outline" defaultValue="m">
+              <ToggleGroupItem value="m">M</ToggleGroupItem><ToggleGroupItem value="l">L</ToggleGroupItem><ToggleGroupItem value="xl">XL</ToggleGroupItem>
+            </ToggleGroup>
+            <Tooltip>
+              <TooltipTrigger asChild><Button variant="ghost" size="icon" aria-label="Help"><Icon name="help" /></Button></TooltipTrigger>
+              <TooltipContent>Help</TooltipContent>
+            </Tooltip>
+          </Row>
+        </Sec>
+
+        <Sec title="ui · Input · Label · Select · Switch · Checkbox · RadioGroup">
+          <div className="grid gap-1.5"><Label htmlFor="g-name">Teacher's name</Label><Input id="g-name" placeholder="Shaykh …" /></div>
+          <Select defaultValue="husary">
+            <SelectTrigger className="w-full" aria-label="Reciter"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="husary">الحصري المعلّم</SelectItem><SelectItem value="minshawi">المنشاوي</SelectItem>
+            </SelectContent>
+          </Select>
+          <Row><Switch id="g-sw" defaultChecked /><Label htmlFor="g-sw">Tajweed colours</Label></Row>
+          <Row><Checkbox id="g-cb" defaultChecked /><Label htmlFor="g-cb">Remind me</Label></Row>
+          <RadioGroup defaultValue="4" className="flex gap-space-md">
+            {['4', '5'].map((v) => <Row key={v}><RadioGroupItem value={v} id={`g-r${v}`} /><Label htmlFor={`g-r${v}`}>{v} counts</Label></Row>)}
+          </RadioGroup>
+        </Sec>
+
+        <Sec title="ui · Accordion · ScrollArea">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="a"><AccordionTrigger>Why two counts?</AccordionTrigger><AccordionContent>Because ghunnah is two counts.</AccordionContent></AccordionItem>
+            <AccordionItem value="b"><AccordionTrigger>Sources</AccordionTrigger><AccordionContent>Tuḥfat al-Aṭfāl.</AccordionContent></AccordionItem>
+          </Accordion>
+          <ScrollArea className="h-24 rounded-control border border-outline-variant p-space-sm">
+            {Object.keys(STEP_ICONS).map((k) => <p key={k} className="text-body-md">{k}</p>)}
+          </ScrollArea>
+        </Sec>
+
+        <Sec title="ui · Sheet · Dialog">
+          <Row>
+            <Sheet>
+              <SheetTrigger asChild><Button variant="secondary">Open sheet</Button></SheetTrigger>
+              <SheetContent>
+                <SheetHeader><SheetTitle>ٱلضَّآلِّينَ · الفاتحة ٧</SheetTitle><SheetDescription>Log a correction.</SheetDescription></SheetHeader>
+                <div className="px-space-lg pb-space-lg"><Button className="w-full">Save</Button></div>
+              </SheetContent>
+            </Sheet>
+            <Dialog>
+              <DialogTrigger asChild><Button variant="secondary">Open dialog</Button></DialogTrigger>
+              <DialogContent>
+                <DialogHeader><DialogTitle>Reset everything?</DialogTitle><DialogDescription>This deletes your progress on this device.</DialogDescription></DialogHeader>
+                <DialogFooter><Button variant="destructive">Reset</Button></DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </Row>
+        </Sec>
+
+        <Sec title="ui · Icon (rtlFlip on the arrows)">
+          <Row>
+            {Object.values(STEP_ICONS).map((n) => <Icon key={n} name={n} />)}
+            <Icon name="arrow_forward" rtlFlip /><Icon name="chevron_right" rtlFlip /><Icon name="star" fill className="text-gold" />
+          </Row>
+        </Sec>
+
+        <BottomBar><Button size="lg">Next: Notice the difference <Icon name="arrow_forward" size={20} rtlFlip /></Button></BottomBar>
+      </Page>
     </div>
   )
 }

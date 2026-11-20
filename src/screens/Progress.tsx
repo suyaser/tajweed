@@ -10,7 +10,6 @@ import { digits, isAr, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { accuracy, dayLabel, live, studiedDays, weeks } from './path/helpers'
 import { PathTabs } from './path/ui'
-import './path.css'
 import { BackupBadge } from '../sync/SignInNudge'
 
 export default function Progress() {

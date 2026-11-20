@@ -13,7 +13,6 @@ const WEEK_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frid
 // Arabic day chips: short forms that fit a chip (Sunday first, like WEEKDAYS)
 const AR_DAYS = ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت']
 import { download } from './path/ui'
-import './path.css'
 import { supabase } from '../sync/supabase'
 import { resetThisDevice, restoreBackup, useSync } from '../sync/sync'
 import { BackupBadge, syncLabel } from '../sync/SignInNudge'

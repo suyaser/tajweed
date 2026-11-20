@@ -10,7 +10,6 @@ import { verseRef } from './study/helpers'
 import { useVerse } from './study/verse'
 import { Basics } from './guide/content'
 import { courseOrder } from '../content/course'
-import './study.css'
 
 /** Device-local flag: this learner onboarded with the short flow, so Today offers the routine card (existing users never see it). */
 export const ROUTINE_KEY = 'tajweed-path:routine-card'

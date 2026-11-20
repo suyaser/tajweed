@@ -8,7 +8,6 @@ import type { ScreenProps } from '../app/App'
 import { Button, Card, CorrectionTag, EmptyState, Passage, RuleChip, Sheet, Skeleton, StarBadge, T, type WordMark } from '../components'
 import { corrLabel, dayLabel, inRange, likelyLessons, listenHref, live, mergePassages, refLabel, type Planned } from './path/helpers'
 import { AddPassage, ReasonChip, startClass, useVerses } from './path/ui'
-import './path.css'
 import { t, FWD, BACK } from '../i18n'
 
 export default function Session({ params }: ScreenProps) {

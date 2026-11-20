@@ -14,7 +14,6 @@ import {
   AudioTransport, Button, EmptyState, Legend, Nudge, Passage, RecordButton, Sheet, Skeleton, T, ToggleChip, type PassageAyah,
 } from '../components'
 import { DEFAULT_RANGE, MAX_AYAT, capRange, parseRange, rangeLabel, refLabel } from './library/range'
-import './library.css'
 import { Hint } from './study/Hint'
 import { digits, locale, t } from '../i18n'
 

@@ -12,8 +12,6 @@ import {
 } from '../components'
 import { fmtDay, lessonStatus, useOnline } from './library/shared'
 import { rangeParam, refLabel } from './library/range'
-import './library.css'
-import './study.css' // mark.focus (the lesson focus highlight)
 import { isAr, t, FWD } from '../i18n'
 
 export default function Rule({ params }: ScreenProps) {

@@ -16,15 +16,15 @@ h1, h2, h3 { font-weight: 400; line-height: 1.25; text-wrap: balance; }
 img, svg { display: block; max-width: 100%; }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
-a { color: var(--link); text-underline-offset: 3px; }
+a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; } /* preflight removes the UA underline */
 :where(button, [role="button"], a, input, select, textarea) { touch-action: manipulation; }
 
 /* Arabic UI: the whole page reads in the Arabic interface face */
 :root[lang="ar"] body { font-family: var(--f-ar); }
-/* every type token (font: var(--t-sm) …) falls through to the Arabic face; Latin keeps Figtree glyph by glyph */
+/* every type token (font: var(--t-sm) …) falls through to the Arabic face; Latin keeps Inter glyph by glyph */
 :root[lang="ar"] {
-  --f-body: "Figtree", "Noto Sans Arabic", "Geeza Pro", sans-serif;
-  --f-disp: "Figtree", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-body: "Inter", "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  --f-disp: "Inter", "Noto Sans Arabic", "Geeza Pro", sans-serif;
   /* small Arabic labels stay ≥ 14px */
   --t-cap: 600 14px/20px var(--f-body);
 }
@@ -66,13 +66,7 @@ bdi.a.nw, span.nw { white-space: nowrap; }
 .muted { color: var(--muted); }
 .eyebrow { font: var(--t-cap); letter-spacing: 0.01em; color: var(--gold-ink); }
 
-/* §7.1 focus ring: gold with an ink outer ring so it shows on the band too */
-:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 5px var(--ink);
-  border-radius: 4px;
-}
+/* focus ring: app.css (DESIGN.md: 1.5px primary outline, 2px offset) */
 :focus:not(:focus-visible) { outline: none; }
 
 .sr-only {

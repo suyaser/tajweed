@@ -41,9 +41,12 @@ export function App({ onboarded = true, theme = 'system', textSize = 'm', tajwee
   }, [redirect])
   if (redirect) return null
 
+  // Dev gallery: no shell; the page embeds four frames (one language × theme each).
+  if (route.name === 'devComponents' && DevGallery) return <Suspense fallback={null}><DevGallery frame={!!route.params.frame} /></Suspense>
+
   const Screen = screens[`../screens/${pascal(route.name)}.tsx`]?.default
   let body
-  if (route.name === 'devComponents') body = DevGallery ? <Suspense fallback={null}><DevGallery /></Suspense> : <Placeholder name="NotFound" params={{}} />
+  if (route.name === 'devComponents') body = <Placeholder name="NotFound" params={{}} />
   else if (Screen) body = <Screen params={route.params} />
   else body = <Placeholder name={pascal(route.name)} params={route.params} />
 

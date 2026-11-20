@@ -17,7 +17,6 @@ import { useStudyAudio } from './study/verse'
 import { QuestionView } from './study/QuestionView'
 import { CorrectionStep } from './study/CorrectionStep'
 import { Summary, type Result } from './study/Summary'
-import './study.css'
 
 /** relearn = example id to avoid; contrast = after a confusion, a two-option question between the two rules (learning M6). */
 interface Entry { item: ReviewItem; relearn?: string; contrast?: { ask: string; vs: string } }
