@@ -113,6 +113,39 @@ The iOS bundle id and Android applicationId are set in ONE place: `mobile/app_id
 **Replace it with the owned domain's reverse id before the first upload to either store: the id is permanent once uploaded.**
 The Android `namespace` (Kotlin package of MainActivity) is not the store id and need not change.
 
+## Release builds
+
+```sh
+flutter build appbundle --release          # Android: build/app/outputs/bundle/release/app-release.aab
+flutter build ipa                          # iOS, once the Apple team is set in Xcode (CI check: build ios --release --no-codesign)
+```
+
+Android signs with the upload key in `android/key.properties`; without that file a release build is signed with
+the debug key (it runs, but Play rejects it). R8 shrinks code and resources (`android/app/build.gradle.kts`; the
+plugins ship their own keep rules). To create the upload key once (keep the `.jks` and both passwords backed up
+outside git: losing them means asking Play support for a key reset):
+
+```sh
+keytool -genkeypair -v -keystore ~/keys/tajweed-upload.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+cat > mobile/android/key.properties <<'EOF'
+storePassword=<the keystore password>
+keyPassword=<the key password>
+keyAlias=upload
+storeFile=/Users/<you>/keys/tajweed-upload.jks
+EOF
+```
+
+`key.properties`, `*.jks` and `*.keystore` are git-ignored (`android/.gitignore`). Use Play App Signing (the default):
+Google keeps the app signing key, this is only the upload key.
+
+Icon and splash: `flutter test tool/gen_icons.dart` draws them from the web's `public/icon.svg` design (Android
+legacy and adaptive icons, the pre-12 splash image; the iOS 1024 icon, opaque, and the launch image). The splash
+background is the page colour (`color-background`, light and dark). Display name: "Tajweed Path", "مسار التجويد" in
+Arabic (`res/values-ar/strings.xml`, `ios/Runner/ar.lproj/InfoPlist.strings`).
+
+Store texts, Data safety and App Privacy answers: `docs/store/tajweed-path.md`; privacy policy:
+`docs/store/privacy-tajweed-path.md`.
+
 ## Theme tokens
 
 `lib/ui/tokens.g.dart` is generated from `src/styles/app.css` (light `@theme`, dark block) and `tokens.css` (muṣḥaf palette):
