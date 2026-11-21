@@ -37,7 +37,7 @@ flutter analyze && flutter test
 Gallery screenshots, Arabic/English × light/dark: `tool/gallery_shots.sh ios <sim-udid> <dir>` or
 `tool/gallery_shots.sh android emulator-5554 <dir>`.
 
-The whole check, in CI order (web tests → sync → analyze → Dart tests): `mobile/tool/check.sh`.
+The whole check, in CI order (web tests and `tsc -b` → sync → analyze → Dart tests): `mobile/tool/check.sh`.
 
 ## Parity with the web
 
