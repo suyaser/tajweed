@@ -107,7 +107,8 @@ function textLessons(ex: Pick<Example, 'text' | 'stopping'>, prev?: string, next
 /** One span → the lesson it shows, where cpfair's rule name covers several lessons. */
 function spanLesson(rule: string, span: string, stoppedOn: boolean): string | undefined {
   if (rule === 'madd_246') return span.includes(SUKUN) ? 'lin' : 'arid' // اللين: وْ يْ
-  if (rule === 'madd_6') return /[\u0628-\u064A]\u0653/.test(span) ? 'lazim-h' : 'lazim-k' // لٓ مٓ: a letter name
+  // a letter name of the opening letters: only ن ق ص ع س ل ك م carry ٓ (6 counts); in a word, ٓ sits on ا و ي (أَتُحَٰٓجُّوٓنِّى)
+  if (rule === 'madd_6') return /[نقصعسلكم]\u0653/.test(span) ? 'lazim-h' : 'lazim-k'
   if (rule === 'madd_munfasil') return /[\u06E5\u06E6]/.test(span) ? 'silah-k' : 'munfasil' // ۥ ۦ of the pronoun
   if (rule === 'qalqalah') return stoppedOn ? 'qal-k' : 'qal-s'
   return RULE_LESSONS[rule]?.[0]

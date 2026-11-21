@@ -97,6 +97,11 @@ export function checkExample(lessonId: string, e: RawEx, label: string, everyone
   for (const o of everyone)
     if (o.lessonId !== lessonId && o.verseKey === e.verse && o.wordFrom <= e.word_to && o.wordTo >= e.word_from && !SHARED_OK.has(`${e.verse}:${e.word_from}:${e.word_to}`))
       (role !== 'more' && o.role !== 'more' ? errs : warns).push(`${label}: same words as ${o.id} (${o.text}); a word should teach one lesson only`)
+  // the same word (any ayah) as a core example of another lesson: legal, but the learner meets it as a repeat
+  if (role && role !== 'more') {
+    const same = everyone.filter(o => o.lessonId !== lessonId && o.role !== 'more' && o.text === e.text && o.verseKey !== e.verse)
+    if (same.length) warns.push(`${label}: the same word "${e.text}" is a core example of ${[...new Set(same.map(o => o.lessonId))].join(', ')} too (another ayah); use a different word unless this one is clearly the best for both`)
+  }
   info.push(`${label}: surah ${surahOf(e.verse)}${unitSurahs(lessonId).includes(surahOf(e.verse)) ? ' (this unit)' : ''}; words ${own.join(',')}`)
   return [errs, warns, info] as const
 }
