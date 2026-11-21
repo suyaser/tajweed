@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import '../content/content.dart';
 import '../i18n/i18n.dart';
 import '../screens/onboarding.dart';
+import '../screens/plan.dart';
 import '../screens/today.dart';
+import '../screens/unit.dart';
 import '../ui/kit.dart';
 import '../ui/theme.dart';
 import 'recovery.dart';
@@ -142,6 +144,8 @@ class _ShellPageState extends State<ShellPage> {
   Widget _screen(AppRoute r) => switch (r.name) {
     'onboarding' => const Onboarding(),
     'today' => const Today(),
+    'plan' => const Plan(),
+    'unit' => UnitScreen(id: r.params['unitId']!, finale: r.params['finale'] != null),
     _ => NotBuilt(route: r),
   };
 }
