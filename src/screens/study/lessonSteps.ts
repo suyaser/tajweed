@@ -33,13 +33,6 @@ export function clearSteps(lessonId: string) {
 export const scoreCheck = (s: LessonSteps, results: boolean[], on: Day): LessonSteps => ({ ...completeStep(s, 'check', on), check: results })
 export const checkScore = (s: LessonSteps) => ({ n: s.check?.filter(Boolean).length ?? 0, m: s.check?.length ?? 0 })
 
-// The open lesson's current step, for the focus bar title (Shell). Set by Learn, null when no lesson is open.
-let shown: StepId | null = null
-const subs = new Set<() => void>()
-export const showStep = (id: StepId | null) => { shown = id; subs.forEach(f => f()) }
-export const shownStep = () => shown
-export const onShownStep = (f: () => void) => { subs.add(f); return () => { subs.delete(f) } }
-
 /** Steps a lesson can't be finished without (when the lesson has them). Notice and Find are recommended only. */
 export const REQUIRED: readonly StepId[] = ['hear', 'learn', 'say', 'check', 'recite']
 

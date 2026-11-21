@@ -6,6 +6,7 @@
   "literal": "making something good",
   "ar": "إعطاء كل حرف حقه ومستحقه في التلاوة: إخراجه من موضعه، ونطقه على هيئته، ومراعاة ما يتغير فيه إذا جاور غيره.",
   "arLiteral": "التحسين والإتقان",
+  "aside": true,
   "lesson": "basics"
  },
  {
@@ -105,6 +106,7 @@
   "literal": "stopping",
   "ar": "قطع الصوت على آخر الكلمة زمنًا يُتنفس فيه عادة، بنية مواصلة القراءة.",
   "arLiteral": "الكف والحبس",
+  "aside": true,
   "lesson": "basics"
  },
  {
@@ -114,6 +116,7 @@
   "literal": "joining",
   "ar": "قراءة الكلمة متصلة بما بعدها من غير وقف.",
   "arLiteral": "ضد القطع",
+  "aside": true,
   "lesson": "basics"
  },
  {
@@ -123,6 +126,7 @@
   "literal": "a way out",
   "ar": "الموضع الذي يخرج منه صوت الحرف: الحلق، أو الفم (اللسان والشفتان)، أو الأنف، أو فراغ الفم والحلق لحروف المد. وجمعه مخارج.",
   "arLiteral": "موضع الخروج",
+  "aside": true,
   "lesson": "basics"
  },
  {
@@ -132,6 +136,7 @@
   "literal": "a narration",
   "ar": "قراءة القرآن كما نقلها تلميذ معيّن عن أحد أئمة القراءة.",
   "arLiteral": "النقل",
+  "aside": true,
   "lesson": "basics"
  },
  {
@@ -139,6 +144,7 @@
   "say": "Ḥafṣ",
   "en": "Ḥafṣ ibn Sulaymān of Kufa (d. 180 AH), the student of the reciter ʿĀṣim. His رواية is the one printed in مصحف المدينة, and this course teaches it as the الشاطبية, the famous poem on the readings by al-Shāṭibī, gives it.",
   "ar": "حفص بن سليمان الكوفي (ت ١٨٠ هـ)، تلميذ الإمام عاصم. وروايته عنه هي المطبوعة في مصحف المدينة، ويعلّمها هذا المقرر من طريق الشاطبية، وهي المنظومة المشهورة للإمام الشاطبي في القراءات.",
+  "aside": true,
   "lesson": "basics"
  },
  {

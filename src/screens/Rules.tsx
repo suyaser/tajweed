@@ -8,7 +8,6 @@ import { COLOUR_KEYS, EmptyState, Legend, SegmentedControl, T } from '../compone
 import { lessonStatus, type LessonStatus } from './library/shared'
 import { normalize } from './library/range'
 import { ColourDot, LevelChip, LevelMark, Letters } from './library/ui'
-import { Hint } from './study/Hint'
 import { tn } from './study/i18n'
 import { letterCount } from './study/RuleBody'
 import { unitOf } from '../content/course'
@@ -51,7 +50,6 @@ export default function Rules(_: ScreenProps) {
         tn('{n} topic', '{n} topics', topics.filter((tp) => lessons.some((l) => l.topicId === tp.id)).length),
         t('{n} known', { n: lessons.filter((l) => isKnown(status.get(l.id)!)).length }),
       ]} />
-      <Hint id="rules">{t('Every rule card, the mind map and confusing pairs. Open any card any time, even before its lesson. Colours match the coloured muṣḥaf.')}</Hint>
 
       <div className="flex flex-col gap-space-md lg:flex-row lg:items-start">
         <label className="relative flex items-center lg:flex-1">
@@ -59,7 +57,7 @@ export default function Rules(_: ScreenProps) {
           <input
             type="search" dir="auto" value={q} onChange={(e) => { setQ(e.target.value); if (e.target.value) setView('list') }}
             placeholder={t('Search · ابحث — e.g. إخفاء or مد')} aria-label={t('Search rules')}
-            className="h-12 w-full min-w-0 rounded-control border border-outline-variant bg-surface-container-lowest ps-12 pe-4 text-body-lg placeholder:text-on-surface-variant/70"
+            className="h-12 w-full min-w-0 rounded-control border border-outline bg-surface-container-lowest ps-12 pe-4 text-body-lg placeholder:text-on-surface-variant"
           />
         </label>
         <div className="flex flex-wrap items-center justify-between gap-space-sm lg:flex-nowrap">

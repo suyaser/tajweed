@@ -66,6 +66,41 @@ export default function Rule({ params }: ScreenProps) {
     setStarted(e.id)
   }
 
+  /** One example: the ayah (tap a word to hear it), Play, Player. */
+  const exampleCard = (e: Example) => {
+    const v = verses[e.verseKey]
+    const lit = state.verseKey === e.verseKey && state.word ? state.word[0] + 1 : undefined
+    const playingThis = busy && started === e.id
+    return (
+      <div key={e.id} className="flex flex-col gap-space-xs rounded-control bg-surface-container-low p-space-md">
+        <VerseBlock
+          text={v?.text ?? e.text}
+          focus={v ? [e.wordFrom, e.wordTo] : undefined}
+          focusText={e.focus}
+          pauses={v?.marks}
+          current={lit}
+          stopping={e.stopping}
+          onWord={v ? (n) => { setStarted(null); player.playWord(v, n - 1) } : undefined}
+          reference={refLabel(e.verseKey)}
+          actions={
+            <span className="flex flex-wrap items-center gap-space-xs" lang={isAr ? 'ar' : 'en'} dir={isAr ? 'rtl' : 'ltr'}>
+              <Button variant="secondary" size="sm" onClick={() => play(e)} disabled={!v || !online}
+                aria-label={online ? `${playingThis ? t('Stop') : t('Play')} ${refLabel(e.verseKey)}` : t('Play: needs a connection')}>
+                <Icon name={playingThis ? 'stop' : 'volume_up'} size={18} fill={playingThis} />
+                {online ? (playingThis ? t('Stop') : t('Play')) : t('needs a connection')}
+              </Button>
+              <Button variant="tertiary" size="sm" href={href('listen', rangeParam({ from: e.verseKey, to: e.verseKey }))} aria-label={t('Open {ref} in the player', { ref: refLabel(e.verseKey) })}>
+                {t('Player')}<Icon name={isAr ? 'arrow_back' : 'arrow_forward'} size={18} />
+              </Button>
+            </span>
+          }
+        />
+        {e.note && <p className="text-body-md text-on-surface-variant"><T>{e.note}</T></p>}
+      </div>
+    )
+  }
+  const more = lesson.examples.slice(3)
+
   return (
     <Page width="wide">
       <div className="grid items-start gap-space-lg lg:grid-cols-[260px_1fr]">
@@ -130,10 +165,7 @@ export default function Rule({ params }: ScreenProps) {
                 {c.note && <span className="text-body-md text-on-surface-variant"><T>{c.note}</T></span>}
               </p>
             ))}
-            {lesson.review.status === 'verified'
-              ? <p className="flex gap-space-xs text-body-md text-on-surface-variant"><Icon name="verified" size={18} fill className="mt-0.5 text-primary" />
-                  <span>{t('Checked against at least two sources and the muṣḥaf text. Not yet reviewed by a teacher.')}{lesson.review.notes ? <> <T>{lesson.review.notes}</T></> : null}</span></p>
-              : (
+            {lesson.review.status !== 'verified' && (
                 <div role="note">
                   <Callout variant="note" icon="edit_note" title={t('Draft.')}>
                     {t('Not yet checked by a teacher. Read it with your teacher before relying on it.')}
@@ -183,38 +215,15 @@ export default function Rule({ params }: ScreenProps) {
           {lesson.examples.length > 0 && (
             <SectionCard n={n++} en="Examples" ar="أمثلة" className="max-lg:order-3 lg:col-span-2">
               <div className="grid gap-space-md lg:grid-cols-2" aria-label={t('Examples')} role="group">
-                {lesson.examples.map((e) => {
-                  const v = verses[e.verseKey]
-                  const lit = state.verseKey === e.verseKey && state.word ? state.word[0] + 1 : undefined
-                  const playingThis = busy && started === e.id
-                  return (
-                    <div key={e.id} className="flex flex-col gap-space-xs rounded-control bg-surface-container-low p-space-md">
-                      <VerseBlock
-                        text={v?.text ?? e.text}
-                        focus={v ? [e.wordFrom, e.wordTo] : undefined}
-                        focusText={e.focus}
-                        pauses={v?.marks}
-                        current={lit}
-                        stopping={e.stopping}
-                        onWord={v ? (n) => { setStarted(null); player.playWord(v, n - 1) } : undefined}
-                        reference={refLabel(e.verseKey)}
-                        actions={
-                          <span className="flex flex-wrap items-center gap-space-xs" lang={isAr ? 'ar' : 'en'} dir={isAr ? 'rtl' : 'ltr'}>
-                            <Button variant="secondary" size="sm" onClick={() => play(e)} disabled={!v || !online}
-                              aria-label={online ? `${playingThis ? t('Stop') : t('Play')} ${refLabel(e.verseKey)}` : t('Play: needs a connection')}>
-                              <Icon name={playingThis ? 'stop' : 'volume_up'} size={18} fill={playingThis} />
-                              {online ? (playingThis ? t('Stop') : t('Play')) : t('needs a connection')}
-                            </Button>
-                            <Button variant="tertiary" size="sm" href={href('listen', rangeParam({ from: e.verseKey, to: e.verseKey }))} aria-label={t('Open {ref} in the player', { ref: refLabel(e.verseKey) })}>
-                              {t('Player')}<Icon name={isAr ? 'arrow_back' : 'arrow_forward'} size={18} />
-                            </Button>
-                          </span>
-                        }
-                      />
-                      {e.note && <p className="text-body-md text-on-surface-variant"><T>{e.note}</T></p>}
-                    </div>
-                  )
-                })}
+                {lesson.examples.slice(0, 3).map(exampleCard)}
+                {more.length > 0 && (
+                  <details className="group/more lg:col-span-2">
+                    <summary className="flex min-h-11 w-fit cursor-pointer list-none items-center gap-1 rounded-control px-space-sm text-body-md font-semibold text-primary hover:bg-surface-container [&::-webkit-details-marker]:hidden">
+                      {t('More examples ({n})', { n: more.length })}<Icon name="expand_more" size={20} className="transition-transform group-open/more:rotate-180" />
+                    </summary>
+                    <div className="mt-space-md grid gap-space-md lg:grid-cols-2">{more.map(exampleCard)}</div>
+                  </details>
+                )}
                 {(state.status === 'error' || state.status === 'offline') && <p className="text-body-md lg:col-span-2" role="status">{state.error}</p>}
                 <p className="flex items-center gap-space-xs text-body-md text-on-surface-variant lg:col-span-2"><Icon name="touch_app" size={18} />{t('Tap a word to hear it alone.')}</p>
               </div>
@@ -249,7 +258,7 @@ export default function Rule({ params }: ScreenProps) {
             </div>
           )}
 
-          {lesson.sources.length > 0 && (
+          {(lesson.sources.length > 0 || lesson.review.status === 'verified') && (
             <details className={cn('group rounded-card border border-outline-variant bg-surface-container-lowest max-lg:order-6', !(lesson.confusableWith.length > 0 || matn.length > 0) && 'lg:col-span-2')}>
               <summary className="flex min-h-12 cursor-pointer list-none items-center gap-space-sm px-space-md text-body-md font-semibold [&::-webkit-details-marker]:hidden">
                 <Icon name="menu_book" size={20} className="text-secondary" />
@@ -257,6 +266,10 @@ export default function Rule({ params }: ScreenProps) {
                 <Icon name="expand_more" size={20} className="transition-transform group-open:rotate-180" />
               </summary>
               <ul className="flex flex-col gap-space-xs px-space-md pb-space-md">
+                {lesson.review.status === 'verified' && (
+                  <li className="flex gap-space-xs text-body-md text-on-surface-variant"><Icon name="verified" size={18} fill className="mt-0.5 shrink-0 text-primary" />
+                    <span>{t('Checked against at least two sources and the muṣḥaf text. Not yet reviewed by a teacher.')}{lesson.review.notes ? <> <T>{lesson.review.notes}</T></> : null}</span></li>
+                )}
                 {lesson.sources.map((src, i) => (
                   <li key={i} className="text-body-md"><T>{src.title}</T>{src.locator && <span className="text-on-surface-variant"><Sep /><Locator text={src.locator} /></span>}</li>
                 ))}
@@ -264,7 +277,9 @@ export default function Rule({ params }: ScreenProps) {
             </details>
           )}
 
-          <footer className="flex flex-col gap-space-sm rounded-card bg-primary-fill p-space-md text-on-primary max-lg:order-7 sm:flex-row sm:items-center sm:p-space-lg lg:col-span-2">
+          {/* not learned yet: "Learn this" sits right under the definition (row 2 from lg, order 1 on phones) */}
+          <footer className={cn('flex flex-col gap-space-sm rounded-card bg-primary-fill p-space-md text-on-primary sm:flex-row sm:items-center sm:p-space-lg lg:col-span-2',
+            s.introduced ? 'max-lg:order-7' : 'max-lg:order-1 lg:row-start-2')}>
             <Icon name={s.introduced ? 'event_repeat' : 'school'} className="hidden sm:block" />
             {s.introduced ? (
               <p className="flex-1 text-body-lg">{s.dueOn ? t('In your review. Next due {day}.', { day: fmtDay(s.dueOn) }) : t('In your review.')}</p>

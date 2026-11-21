@@ -14,20 +14,22 @@ export const STEP_NAMES: Record<StepId, [string, string]> = {
 }
 export const stepName = (id: StepId) => (isAr ? STEP_NAMES[id][0] : t(STEP_NAMES[id][1]))
 
-/** Title block (the kit PageHeader, stacked): `Lesson 16 of 58 · Unit 2`, the Arabic name, the English gloss, the
- *  unit's surahs, the divider. `action`: top end (Rule), on the eyebrow's row so nothing shifts between steps. */
-export function LessonHeader({ lesson, action }: { lesson: Lesson; action?: ReactNode }) {
+/** Title block (the kit PageHeader, stacked): `Lesson 16 of 58 · Unit 2`, the Arabic name, the English gloss, and,
+ *  outside a step (`step` false: gate and done screens), the unit's surahs and the divider. `action`: top end (Rule),
+ *  on the eyebrow's row so nothing shifts between steps. */
+export function LessonHeader({ lesson, action, step = false }: { lesson: Lesson; action?: ReactNode; step?: boolean }) {
   const unit = unitOf(lesson.id)
   const n = courseOrder.indexOf(lesson.id) + 1
-  const where = unit ? (unit.surahs && unit.surahs !== '—' ? unit.surahs : unit.nameAr) : ''
+  const where = unit && !step ? (unit.surahs && unit.surahs !== '—' ? unit.surahs : unit.nameAr) : ''
   return (
-    <PageHeader stacked en={lesson.nameEn} ar={lesson.nameAr} actions={action || undefined}
+    <PageHeader stacked plain={step} en={lesson.nameEn} ar={lesson.nameAr} actions={action || undefined}
       eyebrow={n > 0 ? <>{t('Lesson {n} of {m}', { n, m: courseOrder.length })}{unit && <><Sep />{t('Unit {n}', { n: unit.n })}</>}</> : undefined}
       detail={where ? [<span lang="ar" dir="rtl" className="text-arabic-label">{where.split('، ').map((w, i) => <Fragment key={i}>{i > 0 && '، '}<bdi>{w}</bdi></Fragment>)}</span>] : undefined} />
   )
 }
 
-/** `pending`: not known yet whether the step exists for this lesson (Find, while its ayah loads). */
+/** `pending`: not known yet whether the step exists for this lesson (Find, while its ayah loads). `skipped`: not in
+ *  this lesson, not drawn. */
 export type StepState = 'current' | 'done' | 'visited' | 'new' | 'skipped' | 'pending'
 
 const NODE: Record<StepState, string> = {
@@ -36,13 +38,15 @@ const NODE: Record<StepState, string> = {
   visited: 'border border-dashed border-gold bg-surface-container-lowest text-secondary',
   new: 'bg-surface-container-high text-outline',
   pending: 'bg-surface-container-high text-outline',
-  skipped: 'border border-dashed border-outline-variant bg-transparent text-outline',
+  skipped: '',
 }
 
-/** Every step that exists is a button, backward or forward (docs/10 §3.1). ← / → move in visual order. */
+/** Every step that exists is a button, backward or forward (docs/10 §3.1); steps the lesson doesn't have aren't drawn.
+ *  ← / → move in visual order. */
 export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState; onGo: (id: StepId) => void }) {
-  const current = STEP_IDS.find(id => stateOf(id) === 'current')
-  const i = current ? STEP_IDS.indexOf(current) : -1
+  const ids = STEP_IDS.filter(id => stateOf(id) !== 'skipped')
+  const current = ids.find(id => stateOf(id) === 'current')
+  const i = current ? ids.indexOf(current) : -1
   const key = (e: KeyboardEvent<HTMLOListElement>) => {
     const d = (e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0) * (isAr ? -1 : 1)
     if (!d) return
@@ -53,7 +57,7 @@ export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState;
     bs[Math.max(0, Math.min(bs.length - 1, at + d))].focus()
   }
   const label = (id: StepId, k: number, s: StepState) =>
-    s === 'current' ? t('{x}, step {n} of {m}, current', { x: stepName(id), n: k + 1, m: STEP_IDS.length })
+    s === 'current' ? t('{x}, step {n} of {m}, current', { x: stepName(id), n: k + 1, m: ids.length })
       : s === 'done' ? t('{x}, done', { x: stepName(id) })
         : s === 'visited' ? t('{x}, visited, not finished', { x: stepName(id) })
           : t('{x}, not started', { x: stepName(id) })
@@ -61,13 +65,12 @@ export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState;
     <nav aria-label={t('Lesson steps')} className="rounded-card bg-surface-container-lowest px-1 py-space-sm shadow-card">
       <ol onKeyDown={key} className="relative flex items-start justify-between">
         <span aria-hidden className="absolute inset-x-6 top-6 h-[1.5px] bg-surface-container-highest" />
-        {STEP_IDS.map((id, k) => {
+        {ids.map((id, k) => {
           const s = stateOf(id)
           const node = (
             <>
               <span className={cn('relative grid size-8 place-items-center rounded-full transition-colors', NODE[s])}>
-                {s === 'skipped' ? <Icon name="remove" size={16} />
-                  : <Icon name={s === 'done' ? 'check' : STEP_ICONS[id]} size={s === 'current' ? 18 : 16} fill={s === 'current'} />}
+                <Icon name={s === 'done' ? 'check' : STEP_ICONS[id]} size={s === 'current' ? 18 : 16} fill={s === 'current'} />
                 {s === 'visited' && <span className="absolute -bottom-1.5 size-1 rounded-full bg-gold" />}
               </span>
               <span aria-hidden className={cn('max-w-full truncate text-caption',
@@ -79,8 +82,8 @@ export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState;
           const cls = 'relative z-10 flex min-h-12 w-full min-w-0 flex-col items-center gap-1 rounded-control pt-2'
           return (
             <li key={id} data-state={s} className="flex min-w-0 flex-1 justify-center">
-              {s === 'skipped' || s === 'pending' ? (
-                <span className={cls} aria-label={s === 'pending' ? t('{x}, not started', { x: stepName(id) }) : t('{x}, not in this lesson', { x: stepName(id) })}>{node}</span>
+              {s === 'pending' ? (
+                <span className={cls} aria-label={t('{x}, not started', { x: stepName(id) })}>{node}</span>
               ) : (
                 <button type="button" className={cn(cls, 'cursor-pointer hover:bg-surface-container-low')} aria-current={s === 'current' ? 'step' : undefined}
                   aria-label={label(id, k, s)} onClick={() => onGo(id)}>{node}</button>
@@ -89,7 +92,7 @@ export function StepNav({ stateOf, onGo }: { stateOf: (id: StepId) => StepState;
           )
         })}
       </ol>
-      {current && <p className="sr-only">{t('Step {n} of {m} · {x}', { n: digits(i + 1), m: STEP_IDS.length, x: stepName(current) })}</p>}
+      {current && <p className="sr-only">{t('Step {n} of {m} · {x}', { n: digits(i + 1), m: ids.length, x: stepName(current) })}</p>}
     </nav>
   )
 }

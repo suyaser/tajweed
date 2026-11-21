@@ -7,7 +7,8 @@
    "en": "Reciting the Quran with every letter given its due: said from its own place, with its own sound, and with the changes it takes next to other letters.",
    "literal": "making something good",
    "ar": "إعطاء كل حرف حقه ومستحقه في التلاوة: إخراجه من موضعه، ونطقه على هيئته، ومراعاة ما يتغير فيه إذا جاور غيره.",
-   "arLiteral": "التحسين والإتقان"
+   "arLiteral": "التحسين والإتقان",
+   "aside": true
   },
   {
    "term": "حركة",
@@ -95,7 +96,8 @@
    "en": "Stopping on the end of a word, long enough to take a breath, intending to carry on reading.",
    "literal": "stopping",
    "ar": "قطع الصوت على آخر الكلمة زمنًا يُتنفس فيه عادة، بنية مواصلة القراءة.",
-   "arLiteral": "الكف والحبس"
+   "arLiteral": "الكف والحبس",
+   "aside": true
   },
   {
    "term": "وصل",
@@ -103,7 +105,8 @@
    "en": "Reading a word joined to the next one, without stopping.",
    "literal": "joining",
    "ar": "قراءة الكلمة متصلة بما بعدها من غير وقف.",
-   "arLiteral": "ضد القطع"
+   "arLiteral": "ضد القطع",
+   "aside": true
   },
   {
    "term": "مخرج",
@@ -111,7 +114,8 @@
    "en": "The place a letter's sound comes from: the throat, the mouth (tongue and lips), the nose, or, for the حروف مد, the open space of the mouth and throat. Plural مخارج.",
    "literal": "a way out",
    "ar": "الموضع الذي يخرج منه صوت الحرف: الحلق، أو الفم (اللسان والشفتان)، أو الأنف، أو فراغ الفم والحلق لحروف المد. وجمعه مخارج.",
-   "arLiteral": "موضع الخروج"
+   "arLiteral": "موضع الخروج",
+   "aside": true
   },
   {
    "term": "رواية",
@@ -119,13 +123,15 @@
    "en": "One way of reciting the Quran, as a particular student handed it down from one of the great reciters.",
    "literal": "a narration",
    "ar": "قراءة القرآن كما نقلها تلميذ معيّن عن أحد أئمة القراءة.",
-   "arLiteral": "النقل"
+   "arLiteral": "النقل",
+   "aside": true
   },
   {
    "term": "حفص",
    "say": "Ḥafṣ",
    "en": "Ḥafṣ ibn Sulaymān of Kufa (d. 180 AH), the student of the reciter ʿĀṣim. His رواية is the one printed in مصحف المدينة, and this course teaches it as the الشاطبية, the famous poem on the readings by al-Shāṭibī, gives it.",
-   "ar": "حفص بن سليمان الكوفي (ت ١٨٠ هـ)، تلميذ الإمام عاصم. وروايته عنه هي المطبوعة في مصحف المدينة، ويعلّمها هذا المقرر من طريق الشاطبية، وهي المنظومة المشهورة للإمام الشاطبي في القراءات."
+   "ar": "حفص بن سليمان الكوفي (ت ١٨٠ هـ)، تلميذ الإمام عاصم. وروايته عنه هي المطبوعة في مصحف المدينة، ويعلّمها هذا المقرر من طريق الشاطبية، وهي المنظومة المشهورة للإمام الشاطبي في القراءات.",
+   "aside": true
   }
  ],
  "en": {

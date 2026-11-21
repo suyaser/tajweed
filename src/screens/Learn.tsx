@@ -23,7 +23,7 @@ import { cn } from '@/lib/utils'
 import { isAr, SEP, t } from '../i18n'
 import { tn, Tx } from './study/i18n'
 import { rangeRef, verseRef } from './study/helpers'
-import { ExampleAudio, ExampleCard, flat, PlayButton, stepperNav, useStepper, useVerse, useStudyAudio, type StudyAudio } from './study/verse'
+import { ExampleCard, flat, PlayButton, stepperNav, useStepper, useVerse, useStudyAudio, type StudyAudio } from './study/verse'
 import { Drill } from './study/Drill'
 import { QuestionView } from './study/QuestionView'
 import { RuleBody } from './study/RuleBody'
@@ -31,7 +31,7 @@ import { Teach } from './study/Teach'
 import videos from '../../content/videos.json'
 import { CompareControl, PassageRecite, RecordControl, Recorder, RowCard, useTakes } from './study/Recorder'
 import { BottomBar, DoneLine, Instruction, LessonHeader, StepNav, stepName, type StepState } from './study/LessonShell'
-import { checkScore, completeStep, freshSteps, getSteps, missingSteps, saveSteps, scoreCheck, showStep, STEP_IDS, visitStep, type LessonSteps, type StepId } from './study/lessonSteps'
+import { checkScore, completeStep, freshSteps, getSteps, missingSteps, saveSteps, scoreCheck, STEP_IDS, visitStep, type LessonSteps, type StepId } from './study/lessonSteps'
 import { playMe } from '../audio/compare'
 
 const NEXT: Record<StepId, string> = {
@@ -181,9 +181,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
     setArrived(from)
     window.scrollTo(0, 0)
   }
-  // the focus bar names the step; a step that turns out not to exist (no Find) hands over to the next one
-  useEffect(() => { showStep(gate || finished ? null : step) }, [step, gate, finished])
-  useEffect(() => () => showStep(null), [])
+  // a step that turns out not to exist (no Find) hands over to the next one
   useEffect(() => { if (!exists(step)) { const n = nextOf(step); if (n) go(n) } }, [findOk]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (focusTick) document.querySelector<HTMLElement>('[data-lesson] h2')?.focus({ preventScroll: true }) }, [focusTick])
   const advance = () => { const n = nextOf(step); if (n) go(n, step) }
@@ -284,7 +282,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
 
   return (
     <div className={COLUMN} data-lesson="">
-      <LessonHeader lesson={lesson} action={RULE_SHEET.includes(step) && (
+      <LessonHeader step lesson={lesson} action={RULE_SHEET.includes(step) && (
         <Chip icon="menu_book" tone="gold" onClick={() => setSheet(true)}>{t('Rule')}</Chip>
       )} />
       <StepNav stateOf={stateOf} onGo={id => { if (id !== step) go(id); setFocusTick(n => n + 1) }} />
@@ -294,7 +292,7 @@ function LessonFlow({ lesson }: { lesson: Lesson }) {
       {step === 'hear' && <Hear key="hear" {...p} exs={sets.hear} notice={notice} />}
       {step === 'notice' && other && <Notice key="notice" {...p} other={other} ex={sets.notice} />}
       {step === 'learn' && <LearnStep key="learn" {...p} ex={sets.learn} />}
-      {step === 'say' && <Say key="say" {...p} exs={sets.say} notice={notice} />}
+      {step === 'say' && <Say key="say" {...p} exs={sets.say} />}
       {step === 'find' && (findPick ? <Find key="find" {...p} found={findPick} /> : (
         <Panel as="div" role="status"><span className="sr-only">{t('Loading the ayah…')}</span>{[0, 1].map(i => <Skeleton key={i} className="h-10 w-full" />)}</Panel>
       ))}
@@ -382,68 +380,58 @@ function Notice({ lesson, other, ex, audio, nextLabel, onNext, onDone, wasDone }
   )
 }
 
-/** Learn: the rule in numbered sections; done when Remember has been on screen or the primary is tapped. */
+/** Learn: the rule in numbered sections, done when the primary is tapped. The rule card (the summary) is not repeated
+ *  here: it is one tap away on Say, Find and Recite, and on the Rules tab. */
 function LearnStep({ lesson, ex, audio, nextLabel, onNext, onDone }: StepProps & { ex?: Example }) {
   return (
     <>
-      <Teach lesson={lesson} anchor={ex} audio={audio} />
-      {/* the card is the summary for review (and the Rules tab): folded here, so the lesson isn't read twice */}
-      <details className="group rounded-card border border-outline-variant bg-surface-container-lowest p-space-md">
-        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-space-sm text-body-md font-semibold text-on-surface [&::-webkit-details-marker]:hidden">
-          <Icon name="bookmark" size={20} className="text-secondary" />
-          <span className="flex-1">{t('Summary: the rule in short')}</span>
-          <Icon name="expand_more" size={20} className="text-outline transition-transform group-open:rotate-180" />
-        </summary>
-        <div className="mt-space-md"><RuleBody lesson={lesson} audio={audio} onRead={onDone} example={ex} /></div>
-      </details>
       <VideoLink lessonId={lesson.id} />
+      <Teach lesson={lesson} anchor={ex} audio={audio} />
       <BottomBar><Button size="lg" onClick={() => { onDone(); onNext() }}><Next>{nextLabel}</Next></Button></BottomBar>
     </>
   )
 }
 
-/** Where م. علاء حامد explains this rule in his course (content/videos.json, timed from the episode transcripts). */
+/** Where م. علاء حامد explains this rule in his course (content/videos.json, timed from the episode transcripts): a small
+ *  link at the top end of the step. */
 function VideoLink({ lessonId }: { lessonId: string }) {
   const v = (videos.lessons as Record<string, { ep: number; t: number } | undefined>)[lessonId]
   if (!v) return null
   const at = `${Math.floor(v.t / 60)}:${String(v.t % 60).padStart(2, '0')}`
   return (
     <a href={`https://www.youtube.com/watch?v=${videos.episodes[v.ep - 1]}&t=${v.t}s`} target="_blank" rel="noopener"
-      className="flex items-center gap-space-md rounded-card border border-outline-variant bg-surface-container-lowest p-space-md no-underline hover:bg-surface-container-low">
-      <span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-control bg-surface-container text-primary"><Icon name="smart_display" size={22} /></span>
-      <span className="flex min-w-0 flex-1 flex-col">
-        <span className="text-body-lg font-semibold text-on-surface">{t('Watch it explained')}</span>
-        <span className="text-body-md text-on-surface-variant"><Tx>{t('م. علاء حامد, episode {n} at {at}', { n: v.ep, at })}</Tx></span>
-      </span>
-      <Icon name="open_in_new" size={18} className="text-outline" />
+      title={t('م. علاء حامد, episode {n} at {at}', { n: v.ep, at })}
+      className="-my-space-sm inline-flex min-h-11 items-center gap-1.5 self-end rounded-control px-space-sm text-label font-semibold text-primary no-underline hover:bg-surface-container-low">
+      <Icon name="smart_display" size={20} />{t('Watch it explained')}<Icon name="open_in_new" size={14} className="text-outline" />
     </a>
   )
 }
 
-/** Say's numbered cards for one example (keyed by it): 1 Listen, 2 Record yourself, 3 Compare. */
-function SayRows({ ex, audio, played, onPlayed }: { ex: Example; audio: StudyAudio; played: boolean; onPlayed: () => void }) {
+/** Say's numbered cards for one example (keyed by it): 1 Record yourself, 2 Compare (once there is a take). The play
+ *  button is on the word card. */
+function SayRows({ ex, audio }: { ex: Example; audio: StudyAudio }) {
   const vs = useVerse(ex.verseKey)
   const r = useTakes(`say:${ex.id}`, `say:${ex.id}`, audio)
   return (
     <>
-      <RowCard n={1} title={t('Listen')}>
-        <ExampleAudio ex={ex} audio={audio} played={played} onPlayed={onPlayed} />
-      </RowCard>
-      <RowCard n={2} title={t('Record yourself')} status={r.last && !r.recording && <Chip tone="success" icon="check_circle" fill>{t('Recorded')}</Chip>}>
+      <RowCard n={1} title={t('Record yourself')} status={r.last && !r.recording && <Chip tone="success" icon="check_circle" fill>{t('Recorded')}</Chip>}>
         <RecordControl r={r} />
         <p className="text-center text-caption text-on-surface-variant">{t('Recordings stay on this device.')}</p>
       </RowCard>
-      <RowCard n={3} title={t('Compare')}>
-        <CompareControl r={r}
-          reciter={() => vs.verse && audio.exampleThen(vs.verse, ex, () => {})}
-          model={take => vs.verse && audio.exampleThen(vs.verse, ex, () => playMe(audio.player, take))} />
-      </RowCard>
+      {r.last && !r.recording && (
+        <RowCard n={2} title={t('Compare')}>
+          <CompareControl r={r}
+            reciter={() => vs.verse && audio.exampleThen(vs.verse, ex, () => {})}
+            model={take => vs.verse && audio.exampleThen(vs.verse, ex, () => playMe(audio.player, take))} />
+        </RowCard>
+      )}
     </>
   )
 }
 
-/** Say: listen, record, compare, rate yourself against the "Listen for" criterion; letter drill for مخارج / صفات. */
-function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }: StepProps & { exs: Example[]; notice: ReactNode }) {
+/** Say: listen, record, compare, rate yourself in the bottom bar (rating moves to the next word); letter drill for
+ *  مخارج / صفات. */
+function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { exs: Example[] }) {
   const sp = useStepper(exs.length)
   const [rated, setRated] = useState<Record<number, boolean>>({})
   const drill = drillFor(lesson).length > 0
@@ -484,27 +472,25 @@ function Say({ lesson, exs, audio, nextLabel, onNext, onDone, wasDone, notice }:
           {!prev && <> {t('Play the reciter again and listen for the highlighted part.')}</>}
         </DoneLine>
       )}
-      <ExampleCard key={ex.id} ex={ex} audio={audio} audioRow={false} nav={stepperNav(sp, audio)} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
+      <ExampleCard key={ex.id} ex={ex} audio={audio} nav={stepperNav(sp, audio)} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
     </>}>
-      <SayRows key={`rows:${ex.id}`} ex={ex} audio={audio} played={sp.played(sp.at)} onPlayed={() => sp.markPlayed(sp.at)} />
-      {notice}
-      <Panel aria-labelledby="say-rate">
-        <h3 id="say-rate" className="text-body-lg font-semibold text-on-surface">{t('Did it sound the same?')}</h3>
-        <div className="grid grid-cols-2 gap-space-sm" role="group" aria-label={t('Rate yourself')}>
-          <Button variant="secondary" disabled={!ok} aria-pressed={mine === false} onClick={() => rate(false)}
-            className={cn('h-auto min-h-12 whitespace-normal', mine === false && 'border-primary bg-surface-container')}>
-            <Icon name="replay" size={20} />{t('Not yet')}
-          </Button>
-          <Button variant="secondary" disabled={!ok} aria-pressed={mine === true} onClick={() => rate(true)}
-            className={cn('h-auto min-h-12 whitespace-normal border-transparent bg-primary-container text-on-primary-container hover:bg-primary-container/80', mine === true && 'ring-2 ring-primary')}>
-            <Icon name="done_all" size={20} />{t('Sounds the same')}
-          </Button>
-        </div>
-        {!ok && <p className="text-body-md text-on-surface-variant">{t('Play the reciter first, then rate yourself.')}</p>}
-      </Panel>
-      <BottomBar hint={!canGo && t('Rate each word to continue.')}>
-        <Button size="lg" disabled={!canGo} onClick={onNext}><Next>{nextLabel}</Next></Button>
-      </BottomBar>
+      <SayRows key={`rows:${ex.id}`} ex={ex} audio={audio} />
+      {canGo ? (
+        <BottomBar><Button size="lg" onClick={onNext}><Next>{nextLabel}</Next></Button></BottomBar>
+      ) : (
+        <BottomBar hint={<span id="say-rate">{ok ? t('Did it sound the same?') : t('Play the reciter first, then rate yourself.')}</span>}>
+          <div className="grid grid-cols-2 gap-space-sm" role="group" aria-labelledby="say-rate">
+            <Button variant="secondary" size="lg" disabled={!ok} aria-pressed={mine === false} onClick={() => rate(false)}
+              className={cn('h-auto min-h-[52px] whitespace-normal', mine === false && 'border-primary bg-surface-container')}>
+              <Icon name="replay" size={20} />{t('Not yet')}
+            </Button>
+            <Button size="lg" disabled={!ok} aria-pressed={mine === true} onClick={() => rate(true)}
+              className={cn('h-auto min-h-[52px] whitespace-normal', mine === true && 'ring-2 ring-primary ring-offset-2')}>
+              <Icon name="done_all" size={20} />{t('Sounds the same')}
+            </Button>
+          </div>
+        </BottomBar>
+      )}
     </Split>
   )
 }

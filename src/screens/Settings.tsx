@@ -85,17 +85,25 @@ export default function Settings({ params }: ScreenProps) {
 
       <Group id="set-recitation" en="Recitation" ar="التلاوة">
         <Reciters value={s.reciterId} onChange={(id) => set({ reciterId: id })} />
-        <Row icon="straighten"
-          label={isAr ? 'مقدار المد المنفصل' : <><span lang="ar" className="font-arabic">المد المنفصل</span> length</>}
-          hint={t('Used in explanations and in length questions. Pick the length your teacher uses and keep it.')}
-        >
-          <SegmentedControl size="sm" label={t('Munfasil length')} value={String(s.munfasilLength) as '4' | '5'}
-            onChange={(v) => { set({ munfasilLength: +v as 4 | 5 }); setMunfasilChanged(true) }}
-            options={[{ value: '4', label: t('{n} counts', { n: 4 }) }, { value: '5', label: t('{n} counts', { n: 5 }) }]} />
-          {munfasilChanged && (
-            <Msg className="basis-full">{t('From now on, questions expect {n} counts. Keep it the same every time; tell your teacher you changed it.', { n: s.munfasilLength })}</Msg>
-          )}
-        </Row>
+        {/* changes lessons and questions before المد المنفصل is taught: folded */}
+        <details className="group">
+          <summary className="flex min-h-12 cursor-pointer list-none items-center gap-3 px-space-md py-3 text-body-md font-semibold text-on-surface rtl:text-body-lg [&::-webkit-details-marker]:hidden">
+            <span className="grid size-9 shrink-0 place-items-center rounded-control bg-surface-container text-on-surface-variant"><Icon name="tune" size={20} /></span>
+            <span className="flex-1">{t('Advanced')}</span>
+            <Icon name="expand_more" size={20} className="text-outline transition-transform group-open:rotate-180" />
+          </summary>
+          <Row className="border-t border-outline-variant" icon="straighten"
+            label={isAr ? 'مقدار المد المنفصل' : <><span lang="ar" className="font-arabic">المد المنفصل</span> length</>}
+            hint={t('Used in explanations and in length questions. Pick the length your teacher uses and keep it.')}
+          >
+            <SegmentedControl size="sm" label={t('Munfasil length')} value={String(s.munfasilLength) as '4' | '5'}
+              onChange={(v) => { set({ munfasilLength: +v as 4 | 5 }); setMunfasilChanged(true) }}
+              options={[{ value: '4', label: t('{n} counts', { n: 4 }) }, { value: '5', label: t('{n} counts', { n: 5 }) }]} />
+            {munfasilChanged && (
+              <Msg className="basis-full">{t('From now on, questions expect {n} counts. Keep it the same every time; tell your teacher you changed it.', { n: s.munfasilLength })}</Msg>
+            )}
+          </Row>
+        </details>
       </Group>
 
       <Group id="set-wird" en="Study time and teacher" ar="الورد والشيخ">

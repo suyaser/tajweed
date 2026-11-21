@@ -1,5 +1,5 @@
 // The Learn step's teaching (docs/16-teaching-strategy.md): plain words, new words, where it fits, what happens and
-// why, how to spot it in the muṣḥaf, common mistakes; then the rule card as the summary. Words from other lessons
+// why, how to spot it in the muṣḥaf, common mistakes. Background words and words from other lessons
 // that the lesson uses are listed with their meaning, so a beginner never has to look elsewhere.
 import { useEffect, useState } from 'react'
 import type { Example, Lesson } from '../../core/types'
@@ -48,23 +48,30 @@ function TermRow({ term, from }: { term: Term; from?: string }) {
   )
 }
 
-/** Terms from other lessons that this lesson's text and card use: their meaning, folded away until wanted. */
-function OtherWords({ lesson, teach }: { lesson: Lesson; teach?: TeachT }) {
+/**
+ * The glossary, folded away until wanted: this lesson's background words (`aside`) and the terms from other lessons
+ * that its text and card use.
+ */
+function Glossary({ lesson, teach }: { lesson: Lesson; teach?: TeachT }) {
   const own = new Set((teach?.terms ?? []).map(x => x.term))
+  const aside = (teach?.terms ?? []).filter(x => x.aside)
   const text = [
     lesson.summary, ...(lesson.conditions ?? []), lesson.tip ?? '', ...(lesson.list ?? []).flat(), lesson.counts?.note ?? '',
     ...(teach ? [teach.ar.plain, teach.ar.fits, ...teach.ar.how, teach.ar.why, teach.ar.spot ?? '', ...teach.ar.mistakes.flatMap(m => [m.wrong, m.right])] : []),
   ].join(' ')
   const used = (termsIn(text) as GlossaryEntry[]).filter(e => !own.has(e.term) && e.lesson !== lesson.id)
-  if (!used.length) return null
+  if (!used.length && !aside.length) return null
   return (
     <details className="group rounded-card border border-outline-variant bg-surface-container-lowest p-space-md">
       <summary className="flex min-h-11 cursor-pointer list-none items-center gap-space-sm text-body-md font-semibold text-on-surface [&::-webkit-details-marker]:hidden">
         <Icon name="menu_book" size={20} className="text-secondary" />
-        <span className="flex-1">{t('Words from other lessons ({n})', { n: used.length })}</span>
+        <span className="flex-1">{t('Glossary ({n})', { n: aside.length + used.length })}</span>
         <Icon name="expand_more" size={20} className="text-outline transition-transform group-open:rotate-180" />
       </summary>
-      <ul className="mt-space-sm flex flex-col gap-space-sm">{used.map(e => <TermRow key={e.term} term={e} from={e.lesson} />)}</ul>
+      <ul className="mt-space-sm flex flex-col gap-space-sm">
+        {aside.map(e => <TermRow key={e.term} term={e} />)}
+        {used.map(e => <TermRow key={e.term} term={e} from={e.lesson} />)}
+      </ul>
     </details>
   )
 }
@@ -77,17 +84,18 @@ export function Teach({ lesson, anchor, audio }: { lesson: Lesson; anchor?: Exam
   const { loading, teach } = useTeach(lesson.id)
   const [played, setPlayed] = useState(false)
   if (loading) return <Skeleton className="h-40 w-full rounded-card" />
-  if (!teach) return <OtherWords lesson={lesson} />
+  if (!teach) return <Glossary lesson={lesson} />
   const x = teachText(teach)
+  const main = teach.terms.filter(term => !term.aside)
   let n = 0
   return (
     <div className="flex min-w-0 flex-col gap-space-md">
       <SectionCard n={++n} {...bi('In plain words', 'بكلمات بسيطة')}>
         <p className="text-body-lg leading-relaxed"><Tx>{x.plain}</Tx></p>
       </SectionCard>
-      {teach.terms.length > 0 && (
+      {main.length > 0 && (
         <SectionCard n={++n} {...bi('New words', 'كلمات جديدة')}>
-          <ul className="flex flex-col gap-space-sm">{teach.terms.map(term => <TermRow key={term.term} term={term} />)}</ul>
+          <ul className="flex flex-col gap-space-sm">{main.map(term => <TermRow key={term.term} term={term} />)}</ul>
         </SectionCard>
       )}
       <SectionCard n={++n} {...bi('Where it fits', 'أين يقع')}>
@@ -124,7 +132,7 @@ export function Teach({ lesson, anchor, audio }: { lesson: Lesson; anchor?: Exam
           </ul>
         </SectionCard>
       )}
-      <OtherWords lesson={lesson} teach={teach} />
+      <Glossary lesson={lesson} teach={teach} />
     </div>
   )
 }

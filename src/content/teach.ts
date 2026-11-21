@@ -14,6 +14,8 @@ export interface Term {
   literal?: string // the word's everyday meaning
   ar: string // المعنى بالعربية
   arLiteral?: string
+  /** Background word, not what the lesson is about: listed in the folded glossary, not under "New words". */
+  aside?: boolean
 }
 export interface TeachText {
   plain: string // one or two sentences, no jargon

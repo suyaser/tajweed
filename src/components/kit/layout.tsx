@@ -60,10 +60,10 @@ export function Divider({ className }: { className?: string }) {
  * Page title (docs/13 "Page header"): ornament ۞, the title (English · Arabic in the English UI, Arabic only in the
  * Arabic UI), a detail line of real facts (items joined by Sep), and the gold divider. Centred on phones; from lg it
  * sits at the start with `actions` at the end. `stacked`: the Arabic is the title and the English a gloss under it
- * (lessons). `eyebrow` and `actions` share the top row on phones.
+ * (lessons). `eyebrow` and `actions` share the top row on phones. `plain`: no ornament and no divider (lesson steps).
  */
-export function PageHeader({ en, ar, eyebrow, detail, actions, stacked, className }: {
-  en: string; ar?: string; eyebrow?: ReactNode; detail?: ReactNode[]; actions?: ReactNode; stacked?: boolean; className?: string
+export function PageHeader({ en, ar, eyebrow, detail, actions, stacked, plain, className }: {
+  en: string; ar?: string; eyebrow?: ReactNode; detail?: ReactNode[]; actions?: ReactNode; stacked?: boolean; plain?: boolean; className?: string
 }) {
   const items = (detail ?? []).filter((x) => x != null && x !== false && x !== '')
   return (
@@ -75,7 +75,7 @@ export function PageHeader({ en, ar, eyebrow, detail, actions, stacked, classNam
             {actions && <div className="flex shrink-0 items-center gap-space-xs lg:hidden">{actions}</div>}
           </div>
         )}
-        {!eyebrow && <span aria-hidden lang="ar" className="font-quran text-[22px] leading-none text-gold lg:hidden">۞</span>}
+        {!eyebrow && !plain && <span aria-hidden lang="ar" className="font-quran text-[22px] leading-none text-gold lg:hidden">۞</span>}
         {stacked ? (
           <>
             <h1 lang="ar" className="text-arabic-headline text-on-surface">{ar ?? en}</h1>
@@ -98,7 +98,7 @@ export function PageHeader({ en, ar, eyebrow, detail, actions, stacked, classNam
             {items.map((x, i) => <Fragment key={i}>{i > 0 && <Sep />}<span>{x}</span></Fragment>)}
           </p>
         )}
-        <Divider className="mt-1.5 lg:hidden" />
+        {!plain && <Divider className="mt-1.5 lg:hidden" />}
       </div>
       {actions && <div className="hidden shrink-0 items-center gap-space-xs lg:flex">{actions}</div>}
     </header>

@@ -6,7 +6,7 @@ import { useData } from '../core/store'
 import { courseProgress } from '../core/course'
 import { courseOrder, units } from '../content/course'
 import { href } from '../app/router'
-import { Hint, PathHeader, PathTabs, UnitLessons, UnitNode, type UnitStatus } from './path/blocks'
+import { PathHeader, PathTabs, UnitLessons, UnitNode, type UnitStatus } from './path/blocks'
 import { isAr, t } from '../i18n'
 import { Chip, Sep, StatusChip } from '@/components/kit'
 import { tn } from './study/i18n'
@@ -57,7 +57,6 @@ export default function Plan() {
     <div className="flex flex-col gap-space-lg">
       <PathHeader p={p} />
       <PathTabs value="plan" />
-      <Hint id="plan">{t('The course, unit by unit. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit.')}</Hint>
       <div className="flex flex-col gap-1.5">
         <p className="text-label text-on-surface-variant">{t('{n} of {m} units done', { n: unitsDone, m: units.length })}</p>
         <Progress value={(100 * p.done.size) / courseOrder.length} aria-label={t('{n} of {m} lessons done', { n: p.done.size, m: courseOrder.length })} />

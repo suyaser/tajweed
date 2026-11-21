@@ -46,3 +46,15 @@ test('dark primary text differs from the dark fill', () => {
   expect(dark.primary).not.toBe(dark['primary-fill'])
   expect(light.primary).toBe('#115e57')
 })
+
+// docs/18: dark cards separate from the page only through their 1px border.
+test('dark card border separates from the page', () => {
+  expect(ratio(dark['outline-variant'], dark.surface)).toBeGreaterThanOrEqual(1.85)
+})
+
+test.each([['light', light], ['dark', dark]] as const)('%s theme: boundaries, outline labels, placeholder', (_, t) => {
+  expect(ratio(t.primary, t['surface-container-highest'])).toBeGreaterThanOrEqual(3) // progress fill vs track
+  for (const bg of ['background', 'surface-container-lowest', 'surface-container', 'surface-container-high'])
+    expect(ratio(t.outline, t[bg]), `outline on ${bg}`).toBeGreaterThanOrEqual(4.5) // step names, node digits
+  expect(ratio(t['on-surface-variant'], t['surface-container-lowest'])).toBeGreaterThanOrEqual(4.5) // input placeholder
+})

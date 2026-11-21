@@ -19,11 +19,11 @@ export function PagerDots({ index, total, onPick, reached = total - 1, played }:
   return (
     <div className="flex items-center">
       {Array.from({ length: total }, (_, i) => {
-        const dot = <span className={cn('block h-1.5 rounded-full transition-all', i === index ? 'w-4 bg-primary-fill' : played?.(i) ? 'w-1.5 bg-primary' : 'w-1.5 bg-surface-container-highest')} />
+        const dot = <span className={cn('block h-1.5 rounded-full transition-all', i === index ? 'w-4 bg-primary' : played?.(i) ? 'w-1.5 bg-primary' : 'w-1.5 bg-surface-container-highest')} />
         return onPick ? (
           <button key={i} type="button" onClick={() => onPick(i)} disabled={i > reached} aria-current={i === index ? 'step' : undefined}
             aria-label={t('Example {n} of {m}', { n: i + 1, m: total }) + (played?.(i) ? t(', played') : '')}
-            className={cn('grid h-11 cursor-pointer place-items-center disabled:cursor-default disabled:opacity-40', total > 5 ? 'w-8' : 'w-11')}>{dot}</button>
+            className={cn('grid h-11 cursor-pointer place-items-center disabled:cursor-default disabled:opacity-70', total > 5 ? 'w-8' : 'w-11')}>{dot}</button>
         ) : <span key={i} className="grid h-6 w-3 place-items-center">{dot}</span>
       })}
     </div>

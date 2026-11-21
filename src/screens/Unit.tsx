@@ -6,7 +6,7 @@ import { completeFinale, useData } from '../core/store'
 import { courseProgress } from '../core/course'
 import { getUnit, unitMutun, units } from '../content/course'
 import { href } from '../app/router'
-import { isAr, t } from '../i18n'
+import { digits, isAr, t } from '../i18n'
 import { Tx } from './study/i18n'
 import { getLesson } from '../content'
 import { SignInNudge } from '../sync/SignInNudge'
@@ -69,7 +69,7 @@ export default function Unit({ params }: ScreenProps) {
 
       {u.lessonIds.length > 0 && <OfflineAudio u={u} />}
 
-      {lines.length > 0 && <Mutun lines={lines} />}
+      {lines.length > 0 && <MutunLinks lines={lines} />}
     </div>
   )
 }
@@ -131,39 +131,26 @@ function OfflineAudio({ u }: { u: UnitT }) {
 
 const MATN_NAME: Record<MatnLine['matn'], string> = { tuhfa: 'تحفة الأطفال', jazariyya: 'المقدمة الجزرية' }
 
-/** Optional: the matching lines of تحفة الأطفال / الجزرية; memorise = the first half-line shown, tap to reveal the second. */
-function Mutun({ lines }: { lines: MatnLine[] }) {
-  const [memorise, setMemorise] = useState(false)
-  const verse = 'font-naskh text-[20px] leading-[1.9] text-on-surface'
+/** Optional: one link per matn to its lines for this unit on the Mutun screen (which reads and memorises them). */
+function MutunLinks({ lines }: { lines: MatnLine[] }) {
   return (
-    <Panel title={isAr ? 'المتون (اختياري)' : 'Optional'} ar="المتون" icon="history_edu"
-      aside={<Button variant="secondary" size="sm" aria-pressed={memorise} onClick={() => setMemorise(!memorise)}>
-        <Icon name={memorise ? 'visibility' : 'psychology'} size={18} />{memorise ? t('Show whole lines') : t('Memorise')}
-      </Button>}>
-      {(['tuhfa', 'jazariyya'] as const).filter((m) => lines.some((l) => l.matn === m)).map((m) => (
-        <section key={m} aria-label={MATN_NAME[m]} className="flex flex-col gap-space-sm">
-          <h3 lang="ar" className="text-arabic-label font-semibold text-secondary">{MATN_NAME[m]}</h3>
-          <ol className="flex flex-col gap-space-sm">
-            {lines.filter((l) => l.matn === m).map((l) => (
-              <li key={l.id} className="flex flex-col gap-1 rounded-control bg-surface-container-low px-space-md py-space-sm">
-                {memorise ? (
-                  <details className="group">
-                    <summary lang="ar" dir="rtl" className={`${verse} flex min-h-12 cursor-pointer list-none items-center gap-space-sm [&::-webkit-details-marker]:hidden`}>
-                      <span className="flex-1">{l.sadr}</span>
-                      <Icon name="expand_more" size={20} className="text-outline transition-transform group-open:rotate-180" />
-                    </summary>
-                    <p lang="ar" dir="rtl" className={`${verse} text-primary`}>{l.ajz}</p>
-                  </details>
-                ) : (
-                  <p lang="ar" dir="rtl" className={verse}>{l.sadr}<br />{l.ajz}</p>
-                )}
-                {l.gloss && !memorise && <p className="text-label text-on-surface-variant"><Tx>{l.gloss}</Tx></p>}
-              </li>
-            ))}
-          </ol>
-        </section>
-      ))}
-      {memorise && <p className="text-label text-on-surface-variant">{t('Say the second half from memory, then tap the line to check.')}</p>}
+    <Panel title={isAr ? 'المتون (اختياري)' : 'Optional'} ar="المتون" icon="history_edu">
+      <ul className="-mx-space-sm flex flex-col">
+        {(['tuhfa', 'jazariyya'] as const).map((m) => {
+          const ns = lines.filter((l) => l.matn === m).map((l) => l.n)
+          if (!ns.length) return null
+          const from = Math.min(...ns), to = Math.max(...ns)
+          return (
+            <li key={m}>
+              <a href={`${href('mutun', m)}?from=${from}&to=${to}`}
+                className="flex min-h-12 items-center gap-space-sm rounded-control px-space-sm text-on-surface no-underline transition-colors hover:bg-surface-container-low">
+                <span lang="ar" className="min-w-0 flex-1 text-arabic-label font-semibold">{MATN_NAME[m]} {from === to ? digits(from) : `${digits(from)}–${digits(to)}`}</span>
+                <Icon name="chevron_right" size={20} rtlFlip className="text-outline" />
+              </a>
+            </li>
+          )
+        })}
+      </ul>
     </Panel>
   )
 }

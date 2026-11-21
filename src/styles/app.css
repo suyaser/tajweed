@@ -29,11 +29,11 @@
   --color-surface-container-low: #f4efe6;
   --color-surface-container: #f1ebdf;       /* subtle fill, chips, insets */
   --color-surface-container-high: #ebe4d6;
-  --color-surface-container-highest: #e3dccf; /* rails, inactive dots */
+  --color-surface-container-highest: #d6cdbc; /* rails, inactive dots */
   --color-on-surface: #1c1a17;              /* ink */
-  --color-on-surface-variant: #5f5850;      /* muted ink */
-  --color-outline: #7a7268;                 /* inactive icons, ≥3:1 */
-  --color-outline-variant: #e3dccf;         /* 1px hairlines */
+  --color-on-surface-variant: #4f4942;      /* muted ink, 8.2:1 on page; /80 still ≥4.5 */
+  --color-outline: #686157;                 /* inactive icons AND small labels: ≥4.5 on every container */
+  --color-outline-variant: #d6cdbc;         /* 1px hairlines */
   --color-inverse-surface: #32302d;
   --color-inverse-on-surface: #f6f0ea;
   --color-scrim: rgb(20 18 15 / 0.5);
@@ -46,7 +46,7 @@
   --color-on-primary-container: #0b6e63;
 
   --color-secondary: #77561a;               /* gold text (≥4.5:1) */
-  --color-gold: #a9802e;                    /* gold graphics only: edges, rings, pips, ornaments */
+  --color-gold: #94702a;                    /* gold graphics and ayah-end numerals: ≥4:1 on page */
   --color-on-secondary: #ffffff;
   --color-secondary-container: #f1e4c4;
   --color-on-secondary-container: #5e4200;
@@ -54,11 +54,11 @@
   --color-focus-ink: #0b6e63;               /* lesson focus highlight (docs/10 §2) */
   --color-focus-bg: #e2eeec;
 
-  --color-error: #c23b3b;
+  --color-error: #b23232;
   --color-on-error: #ffffff;
   --color-error-container: #fbe4e1;
   --color-on-error-container: #8c1d18;
-  --color-success: #1a7b42;
+  --color-success: #176f3b;
   --color-on-success: #ffffff;
   --color-success-container: #e1f1e6;
   --color-on-success-container: #135c31;
@@ -165,15 +165,15 @@
   :root { @variant dark {
   --color-background: #121110;
   --color-surface: #121110;
-  --color-surface-container-lowest: #1c1b19;
-  --color-surface-container-low: #201e1c;
-  --color-surface-container: #252320;
-  --color-surface-container-high: #2d2a26;
-  --color-surface-container-highest: #34312c;
+  --color-surface-container-lowest: #1f1e1b;
+  --color-surface-container-low: #292724;
+  --color-surface-container: #2e2c28;
+  --color-surface-container-high: #36332e;
+  --color-surface-container-highest: #45413a;
   --color-on-surface: #efe9df;
-  --color-on-surface-variant: #aba398;
-  --color-outline: #8a8378;
-  --color-outline-variant: #2d2a26;
+  --color-on-surface-variant: #b8b0a4;
+  --color-outline: #a39c90;
+  --color-outline-variant: #45413a;
   --color-inverse-surface: #efe9df;
   --color-inverse-on-surface: #1c1b19;
   --color-scrim: rgb(0 0 0 / 0.6);

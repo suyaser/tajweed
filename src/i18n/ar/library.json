@@ -1,7 +1,6 @@
 {
   "The next letter is…": "الحرف التالي…",
   "The letter after ال is…": "الحرف بعد «ال»…",
-  "Every rule card, the mind map and confusing pairs. Open any card any time, even before its lesson. Colours match the coloured muṣḥaf.": "بطاقات الأحكام كلها، والخريطة الذهنية، والأحكام المتشابهة. افتح أي بطاقة متى شئت، ولو قبل درسها. الألوان على ألوان مصحف التجويد.",
   "Topics": "الأبواب",
   "{known}/{all} known": "{known} من {all} معروفة",
   "Search · ابحث — e.g. إخفاء or مد": "ابحث — مثلًا: إخفاء أو مد",
@@ -108,7 +107,6 @@
   "المقدمة الجزرية · ابن الجزري, ed. عبد المحسن القاسم, 2nd ed. 1441/2020.": "المقدمة الجزرية، ابن الجزري، تحقيق عبد المحسن القاسم، ط٢، ١٤٤١هـ/٢٠٢٠م.",
   "Shamela 581": "الشاملة ٥٨١",
   "The classical texts are in the public domain; the vowelling and notes belong to their editors.": "المتون نفسها ملك عام؛ أما الضبط والتعليقات فلمحقّقيها.",
-  "Plan each class here, log your teacher’s corrections during it, and re-check them next time. Corrections come back in your daily review.": "خطّط لكل جلسة هنا، وسجّل تصحيحات شيخك أثناءها، وأعد عرضها عليه في المرة التالية. تعود التصحيحات في مراجعتك اليومية.",
   "Next session · {day}": "الجلسة القادمة، {day}",
   "Next teacher day · {day}": "يوم الشيخ القادم، {day}",
   "Next session": "الجلسة القادمة",
@@ -218,6 +216,7 @@
   "Model reciter": "القارئ النموذج",
   "Used in explanations and in length questions. Pick the length your teacher uses and keep it.": "يُستخدم في الشروح وأسئلة المقادير. اختر المقدار الذي يأخذ به شيخك والزمه.",
   "Munfasil length": "مقدار المد المنفصل",
+  "Advanced": "إعدادات متقدمة",
   "From now on, questions expect {n} counts. Keep it the same every time; tell your teacher you changed it.": "من الآن تتوقع الأسئلة {n} حركات. الزم المقدار نفسه دائمًا، وأخبر شيخك أنك غيّرته.",
   "Reading": "القراءة",
   "Quran text size": "حجم خط المصحف",

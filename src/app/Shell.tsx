@@ -1,11 +1,9 @@
-import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type { Settings } from '../core/types'
 import { href, navigate, type Route, type RouteName } from './router'
 import { today as studyDay } from '../core/day'
 import { getLesson } from '../content'
-import { onShownStep, shownStep } from '../screens/study/lessonSteps'
-import { stepName } from '../screens/study/LessonShell'
-import { isAr, locale, SEP, setLang, t } from '../i18n'
+import { isAr, locale, t } from '../i18n'
 import { cn } from '@/lib/utils'
 import { Icon } from '@/components/ui/icon'
 
@@ -142,7 +140,6 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
               <Icon name="arrow_back" rtlFlip />
             </a>
             <BarTitle path={route.path} ar={meta.ar} en={meta.en} />
-            <TopActions current={route.name} />
           </header>
         )}
         <main key={route.path} id="main" ref={mainRef} tabIndex={-1}
@@ -161,13 +158,12 @@ export function Shell({ route, theme, textSize = 'm', tajweedPatterns = false, m
   )
 }
 
-/** Phone header on tab screens: Help · language | brand | Settings. Hidden from lg (the rail has them). */
+/** Phone header on tab screens: Help | brand | Settings (the language is in Settings). Hidden from lg (the rail has them). */
 function TabBarTop() {
   return (
     <header className={cn(bar, 'justify-between lg:hidden')}>
       <div className="flex flex-1 items-center">
         <a className={iconBtn} href={href('guide')} aria-label={t('Help')}><Icon name="help" /></a>
-        <LangButton className={cn(iconBtn, 'w-auto px-space-sm')} />
       </div>
       <a href={href('today')} className="flex flex-col items-center text-center no-underline">
         <span lang="ar" className="font-naskh text-[22px] leading-tight font-bold text-primary">مسار التجويد</span>
@@ -177,26 +173,6 @@ function TabBarTop() {
         <a className={iconBtn} href={href('settings')} aria-label={t('Settings')}><Icon name="settings" /></a>
       </div>
     </header>
-  )
-}
-
-/** Help and Settings on pushed screens (phones). */
-function TopActions({ current }: { current: RouteName }) {
-  return (
-    <div className="flex items-center lg:hidden">
-      {current !== 'guide' && <a className={iconBtn} href={href('guide')} aria-label={t('Help')}><Icon name="help" /></a>}
-      {current !== 'settings' && <a className={iconBtn} href={href('settings')} aria-label={t('Settings')}><Icon name="settings" /></a>}
-    </div>
-  )
-}
-
-/** Switches the UI language (reloads). Shows the language you'd switch TO. */
-function LangButton({ className, children }: { className: string; children?: ReactNode }) {
-  return (
-    <button type="button" className={className} onClick={() => setLang(isAr ? 'en' : 'ar')} lang={isAr ? 'en' : 'ar'}
-      aria-label={children ? undefined : isAr ? 'English' : 'العربية'}>
-      {children ?? <span aria-hidden="true" className="text-label font-semibold">{isAr ? 'EN' : 'ع'}</span>}
-    </button>
   )
 }
 
@@ -235,20 +211,14 @@ function BarTitle({ path, ar, en }: { path: string; ar: string; en: string }) {
   )
 }
 
-/** The focus bar title. In a lesson: the step, and the lesson's name once the page header (which shows it) has
- *  scrolled away, so the title is never on screen twice. */
+/** The focus bar title. In a lesson: nothing while the page header (lesson name, step bar) is on screen, the lesson's
+ *  name once it has scrolled away, so nothing is on screen twice. */
 function FocusTitle({ route, ar, en }: { route: Route; ar: string; en: string }) {
-  const step = useSyncExternalStore(onShownStep, shownStep)
   const lesson = route.name === 'learn' ? getLesson(route.params.lessonId) : undefined
   const headerShown = useHeadingVisible(route.path)
-  if (lesson && headerShown)
-    return (
-      <span className="flex min-w-0 flex-1 flex-col items-center text-center">
-        <span className="max-w-full truncate text-body-md font-semibold text-on-surface">{step ? stepName(step) : isAr ? ar : en}</span>
-      </span>
-    )
+  if (lesson && headerShown) return <span className="min-w-0 flex-1" />
   const title = lesson ? lesson.nameAr : ar
-  const sub = lesson ? [!isAr && lesson.nameEn, step && stepName(step)].filter(Boolean).join(SEP) : !isAr ? en : ''
+  const sub = lesson ? (!isAr ? lesson.nameEn : '') : !isAr ? en : ''
   return (
     <span className="flex min-w-0 flex-1 flex-col items-center text-center">
       <span lang="ar" className="max-w-full truncate font-naskh text-body-lg leading-snug font-semibold text-on-surface">{title}</span>
@@ -299,13 +269,13 @@ function RailLink({ to, icon, en, ar, on, small }: { to: string; icon: string; e
         ? <span lang="ar" className="text-body-md">{ar}</span>
         : <>
             <span className="text-body-md">{en}</span>
-            <span lang="ar" dir="rtl" className={cn('ms-auto text-arabic-label', on ? 'text-on-primary/80' : 'opacity-80')}>{ar}</span>
+            <span lang="ar" dir="rtl" className={cn('ms-auto text-arabic-label', on ? 'text-on-primary' : 'opacity-80')}>{ar}</span>
           </>}
     </a>
   )
 }
 
-/** Desktop side rail (≥ lg): brand, the four tabs, then Help · Language · Settings at the bottom. */
+/** Desktop side rail (≥ lg): brand, the four tabs, then Help · Settings at the bottom (the language is in Settings). */
 function Rail({ active, current }: { active?: Tab; current: RouteName }) {
   return (
     <nav aria-label={t('Main')}
@@ -324,13 +294,6 @@ function Rail({ active, current }: { active?: Tab; current: RouteName }) {
       </ul>
       <ul className="mt-auto flex flex-col gap-space-xs border-t border-outline-variant pt-space-md">
         <li><RailLink small to="guide" icon="help" en="Help" ar="كيف يعمل" on={current === 'guide'} /></li>
-        <li>
-          <LangButton className={cn(railItem, railIdle, 'min-h-11 w-full cursor-pointer text-start')}>
-            <Icon name="translate" size={20} />
-            <span lang={isAr ? 'ar' : 'en'} className="text-body-md">{isAr ? 'اللغة' : 'Language'}</span>
-            <span className="ms-auto rounded-sm bg-surface-container px-1.5 py-0.5 text-label text-on-surface">{isAr ? 'English' : 'العربية'}</span>
-          </LangButton>
-        </li>
         <li><RailLink small to="settings" icon="settings" en="Settings" ar="الإعدادات" on={current === 'settings'} /></li>
       </ul>
     </nav>

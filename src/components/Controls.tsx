@@ -177,7 +177,7 @@ export function Row({ icon, label, hint, children, href, className, stack }: {
   )
 }
 
-const inputCls = 'h-12 w-full min-w-0 rounded-control border border-outline-variant bg-surface-container-lowest px-4 text-body-lg text-on-surface placeholder:text-on-surface-variant/70'
+const inputCls = 'h-12 w-full min-w-0 rounded-control border border-outline bg-surface-container-lowest px-4 text-body-lg text-on-surface placeholder:text-on-surface-variant'
 /** Classes for a text input / textarea / select (same look as ui Input). */
 export const fieldCls = (extra?: string) => cn(inputCls, extra)
 
@@ -255,7 +255,7 @@ export function AudioTransport(p: AudioTransportProps) {
             <button key={i} type="button" aria-current={i === p.ayahIndex || undefined} aria-label={t('Ayah {n}', { n: i + 1 })}
               onClick={() => p.onSeekAyah?.(i)} disabled={!p.onSeekAyah}
               className="group flex h-6 min-w-2 flex-1 cursor-pointer items-center disabled:cursor-default">
-              <i className={cn('block h-1 w-full rounded-full transition-colors', i <= (p.ayahIndex ?? -1) ? 'bg-primary-fill' : 'bg-surface-container-highest', i === p.ayahIndex && 'h-1.5')} />
+              <i className={cn('block h-1 w-full rounded-full transition-colors', i <= (p.ayahIndex ?? -1) ? 'bg-primary' : 'bg-surface-container-highest', i === p.ayahIndex && 'h-1.5')} />
             </button>
           ))}
         </div>

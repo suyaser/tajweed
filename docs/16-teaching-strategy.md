@@ -31,7 +31,7 @@ Style:
 - Never claim the app judges recitation. Where the sound is subtle, say "listen to your teacher".
 
 ## 4. Terms: defined once, in the lesson that teaches them
-A term may be used in a teaching text only if this lesson or an earlier one defines it (the checker enforces this). The card may use a later term, and Learn shows its meaning under "Words from other lessons". Each term is defined in exactly one lesson:
+A term may be used in a teaching text only if this lesson or an earlier one defines it (the checker enforces this). The card may use a later term, and Learn shows its meaning in the folded "Glossary" at the end. Each term is defined in exactly one lesson:
 
 | Lesson | Defines |
 |---|---|
@@ -68,6 +68,8 @@ A term may be used in a teaching text only if this lesson or an earlier one defi
 | tashil | تسهيل |
 | makharij-jawf | الجوف |
 | sifat-hams | صفة |
+
+A term marked `aside: true` is background, not what the lesson is about (lesson 1's وقف، وصل، مخرج، رواية، حفص، تجويد). It is still defined in that lesson, but shown in the folded Glossary instead of under "New words", so the lesson leads with what it teaches.
 
 A lesson may add terms that are only its own (هَمس, جهر, القلقلة الكبرى…). The checker refuses a second definition of a term another lesson owns. If a writer needs a term earlier than its owner lesson, they say it in plain words instead.
 

@@ -13,7 +13,7 @@ import { Callout, EmptyState, Sep } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { isAr, locale, t } from '../i18n'
-import { tn, Tx } from './study/i18n'
+import { Tx } from './study/i18n'
 import { confusableHint, mem, spread } from './study/helpers'
 import { useStudyAudio } from './study/verse'
 import { QuestionView } from './study/QuestionView'
@@ -162,7 +162,7 @@ export default function Review({ params }: ScreenProps) {
     <div className="flex flex-col gap-space-xs">
       <span className="text-label text-on-surface-variant">{t('{n} of {m}', { n, m: base })}{againLeft > 0 && t(' · {n} to look at again', { n: againLeft })}</span>
       <div className="h-1.5 overflow-hidden rounded-full bg-surface-container-high" aria-hidden="true">
-        <div className="h-full rounded-full bg-primary-fill transition-[width]" style={{ width: `${(n / Math.max(1, base)) * 100}%` }} />
+        <div className="h-full rounded-full bg-primary transition-[width]" style={{ width: `${(n / Math.max(1, base)) * 100}%` }} />
       </div>
     </div>
   )
@@ -195,9 +195,7 @@ export default function Review({ params }: ScreenProps) {
     ? t('Tell the two apart')
     : entry.relearn
       ? t('Once more, a different example')
-      : it.state === 'sabqi'
-        ? <Tx>{t('سبقي · this week')}</Tx>
-        : <Tx>{it.lastReviewedOn ? tn('منزل · older · last seen {n} days ago', 'منزل · older · last seen {n} days ago', diffDays(day, it.lastReviewedOn)) : t('منزل · older')}</Tx>
+      : undefined // a first ask needs no label (no سبقي / منزل jargon: the progress line counts what's due)
 
   return (
     <div className={COLUMN}>

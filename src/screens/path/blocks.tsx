@@ -1,5 +1,5 @@
 // Building blocks shared by Today, the course map, Unit, Progress, Onboarding and Guide (design system, doc 13).
-import { Fragment, useState, type ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import type { Unit } from '../../core/types'
 import type { courseProgress } from '../../core/course'
 import type { Level } from '../../core/scheduler'
@@ -18,7 +18,7 @@ export { Panel } from '@/components/kit'
 import { Icon } from '@/components/ui/icon'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { mem, rangeRef, setMem } from '../study/helpers'
+import { rangeRef } from '../study/helpers'
 
 /** The Path tab's header (Plan and Progress): units, lessons done, the riwayah. */
 export function PathHeader({ p }: { p: Progress }) {
@@ -56,18 +56,6 @@ export function Note({ children, action, onDismiss, icon = 'info' }: { children:
         )}
       </span>
     </div>
-  )
-}
-
-/** A one-time explanation at the top of a screen; ✕ hides it for good on this device (same memory as study/Hint). */
-export function Hint({ id, children }: { id: string; children: ReactNode }) {
-  const [hidden, setHidden] = useState(() => !!mem().dismissed?.[`hint:${id}`])
-  if (hidden) return null
-  const hide = () => { setMem({ dismissed: { ...mem().dismissed, [`hint:${id}`]: today() } }); setHidden(true) }
-  return (
-    <Note icon="lightbulb" onDismiss={hide} action={<Button variant="tertiary" size="sm" asChild className="no-underline"><a href={href('guide')}>{t('More')}</a></Button>}>
-      {children}
-    </Note>
   )
 }
 
@@ -162,14 +150,14 @@ function Row({ link, ar, en, st, finale, meta, passage }: { link: string; ar: st
     <li>
       <a href={link} aria-label={`${[en, ar].filter(Boolean).join(', ')}: ${ACTION[st]}${[...facts.filter((f) => typeof f === 'string'), passage].filter(Boolean).map((f) => `, ${f}`).join('')}`}
         className={cn(
-          'flex min-h-14 items-center gap-space-sm rounded-control px-space-sm py-space-xs text-on-surface no-underline transition-colors hover:bg-surface-container-low',
-          st === 'next' && 'bg-surface-container-low',
+          'flex min-h-14 items-center gap-space-sm rounded-control px-space-sm py-space-xs no-underline transition-colors',
+          st === 'next' ? 'bg-primary-fill text-on-primary hover:bg-primary-hover' : 'text-on-surface hover:bg-surface-container-low',
         )}>
         <span aria-hidden className={cn(
           'grid size-8 shrink-0 place-items-center rounded-full',
           finale ? 'bg-secondary-container text-on-secondary-container'
             : st === 'done' ? 'bg-primary-container text-on-primary-container'
-              : st === 'next' ? 'bg-primary-fill text-on-primary'
+              : st === 'next' ? 'bg-on-primary text-primary-fill'
                 : st === 'catch-up' ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-container text-outline',
         )}>
           <Icon name={finale ? 'star' : ROW_ICON[st]} size={18} fill={finale && st === 'done'} />
@@ -177,16 +165,16 @@ function Row({ link, ar, en, st, finale, meta, passage }: { link: string; ar: st
         <span className="flex min-w-0 flex-1 flex-col">
           <span className="flex flex-wrap items-baseline gap-x-space-sm">
             <span lang="ar" className={cn('font-arabic text-body-lg', st === 'locked' && 'text-on-surface-variant', st === 'next' && 'font-semibold')}>{ar}</span>
-            {en && <span className={cn('text-body-md font-medium', st === 'locked' ? 'text-on-surface-variant' : 'text-on-surface')}>{en}</span>}
+            {en && <span className={cn('text-body-md font-medium', st === 'locked' ? 'text-on-surface-variant' : st !== 'next' && 'text-on-surface')}>{en}</span>}
           </span>
           {(facts.length > 0 || passage) && (
-            <span className="flex flex-wrap items-center text-label font-normal text-on-surface-variant">
+            <span className={cn('flex flex-wrap items-center text-label font-normal', st !== 'next' && 'text-on-surface-variant')}>
               {facts.map((f, i) => <Fragment key={i}>{i > 0 && <Sep />}<span>{f}</span></Fragment>)}
               {passage && <>{facts.length > 0 && <Sep />}<span className="inline-flex items-center gap-1"><Icon name="verified" size={14} /><bdi lang="ar" className="font-arabic">{passage}</bdi></span></>}
             </span>
           )}
         </span>
-        <StatusChip status={PILL[st].status} className="max-sm:hidden">{PILL[st].label}</StatusChip>
+        {st !== 'next' && <StatusChip status={PILL[st].status} className="max-sm:hidden">{PILL[st].label}</StatusChip>}
       </a>
     </li>
   )

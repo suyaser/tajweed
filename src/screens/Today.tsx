@@ -12,11 +12,11 @@ import { tn, Tx } from './study/i18n'
 import { mem, rangeParam, rangeRef, setMem, teacherNear, week } from './study/helpers'
 import { SignInNudge } from '../sync/SignInNudge'
 import { useSync } from '../sync/sync'
-import { getSteps, LESSON_MINUTES, STEP_IDS, type LessonSteps, type StepId } from './study/lessonSteps'
-import { splitDefinition } from './study/RuleBody'
+import { hasBackend } from '../sync/supabase'
+import { getSteps, LESSON_MINUTES, STEP_IDS, type LessonSteps } from './study/lessonSteps'
 import { ROUTINE_KEY } from './Onboarding'
 import { Note, Panel, SeverityChip, WeekDots } from './path/blocks'
-import { Sep, STEP_ICONS, UnitPath } from '@/components/kit'
+import { Sep } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { PageHeader } from '@/components/kit'
@@ -24,10 +24,6 @@ import { dates } from '../app/Shell'
 import { digits } from '../i18n'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
-
-const STEP_NAME: Record<StepId, string> = {
-  hear: t('Hear'), notice: t('Notice'), learn: t('Learn'), say: t('Say'), find: t('Find'), check: t('Check'), recite: t('Recite'),
-}
 
 const readRoutine = () => { try { return localStorage.getItem(ROUTINE_KEY) === 'pending' } catch { return false } }
 
@@ -52,25 +48,15 @@ function LinkRow({ to, children }: { to: string; children: ReactNode }) {
   )
 }
 
-/** The lesson's seven steps as a thin meter (done teal, current gold), with "Step n of 7" or, before it starts, the
- *  step count and about how long it takes (LESSON_MINUTES, the onboarding figure). */
-function StepMeter({ steps }: { steps?: LessonSteps }) {
+/** The lesson's one progress line: "Step n of 7" or, before it starts, the step count; and about how long it takes
+ *  (LESSON_MINUTES, the onboarding figure). */
+function StepLine({ steps }: { steps?: LessonSteps }) {
   const started = !!steps && (steps.done.length > 0 || steps.current !== 'hear')
-  const at = steps ? STEP_IDS.indexOf(steps.current) : -1
   return (
-    <div className="flex flex-col gap-1.5">
-      <p className="flex flex-wrap items-center text-label text-on-surface-variant">
-        <span>{started ? t('Step {n} of {m}', { n: at + 1, m: STEP_IDS.length }) : t('{n} steps', { n: STEP_IDS.length })}</span>
-        {steps && steps.done.length > 0 && <><Sep /><span>{t('{n} done', { n: steps.done.length })}</span></>}
-        <Sep /><span className="inline-flex items-center gap-1"><Icon name="schedule" size={14} />{t('About {n} min', { n: LESSON_MINUTES })}</span>
-      </p>
-      <span aria-hidden className="grid grid-cols-7 gap-1">
-        {STEP_IDS.map((id, i) => (
-          <span key={id} className={cn('h-1 rounded-full',
-            steps?.done.includes(id) ? 'bg-primary-fill' : started && i === at ? 'bg-gold' : 'bg-surface-container-highest')} />
-        ))}
-      </span>
-    </div>
+    <p className="flex flex-wrap items-center text-body-md text-on-surface-variant">
+      <span>{started ? t('Step {n} of {m}', { n: STEP_IDS.indexOf(steps.current) + 1, m: STEP_IDS.length }) : t('{n} steps', { n: STEP_IDS.length })}</span>
+      <Sep /><span className="inline-flex items-center gap-1"><Icon name="schedule" size={16} />{t('About {n} min', { n: LESSON_MINUTES })}</span>
+    </p>
   )
 }
 
@@ -88,6 +74,7 @@ export default function Today() {
   const [m, setM] = useState(mem)
   const remember = (p: Parameters<typeof setMem>[0]) => { setMem(p); setM(mem()) }
   const [howOpen, setHowOpen] = useState(false)
+  const [routine, setRoutine] = useState(readRoutine)
   const w = week(data, day, data.settings.onboardedOn)
 
   // the course
@@ -96,15 +83,11 @@ export default function Today() {
   const steps = nextLesson ? getSteps(nextLesson.id) : undefined
   const started = !!steps && (steps.done.length > 0 || steps.current !== 'hear')
   const resume = started || (q.sabaq && m.lesson?.id === q.sabaq && m.lesson.on === day && m.lesson.step > 0)
-  const [routine, setRoutine] = useState(readRoutine)
   const hideRoutine = () => { try { localStorage.removeItem(ROUTINE_KEY) } catch { /* blocked */ } setRoutine(false) }
   const learnedToday = data.introductions.filter(i => i.on === day).map(i => getLesson(i.lessonId)?.nameAr ?? '')
-  const unit = next.kind === 'done' ? units[units.length - 1] : next.unit
-  const unitDone = unit.lessonIds.filter(id => progress.done.has(id)).length
   const finaleUnit = q.finaleUnit ? getUnit(q.finaleUnit) : undefined
   // v1 learners: lessons v2 added to units they had passed (engineering M4); optional, never blocking
   const catchUp = courseOrder.filter(progress.catchUp)
-  const closing = nextLesson ? courseLesson(nextLesson.id).closing : null
 
   // review
   const due = q.sabqi.length + q.manzil.length
@@ -123,7 +106,7 @@ export default function Today() {
   const openCorr = data.corrections.filter(c => !c.deletedAt && c.status === 'open').length
   const plan = near ? suggestPassages(data) : []
 
-  // one nudge at a time: install, then backup
+  // one nudge at a time, under Review and practice: install, routine, sign-in (or, without accounts, backup)
   const standalone = typeof matchMedia !== 'undefined' && matchMedia('(display-mode: standalone)').matches
   const lastExport = data.settings.lastExportOn
   const backupAge = lastExport ? diffDays(day, lastExport) : null
@@ -131,12 +114,10 @@ export default function Today() {
   const dismiss = (k: string) => remember({ dismissed: { ...dismissed, [k]: day } })
   const nudge =
     !standalone && storagePersisted() !== true && !dismissed.install ? 'install'
-      : data.attempts.length > 0 && (backupAge == null || backupAge >= (standalone ? 14 : 7)) && !(dismissed.backup && diffDays(day, dismissed.backup) < 7) ? 'backup'
-        : null
-  const tips = !dismissed['hint:today']
-
-  const said = { done: t('done'), current: t('current'), todo: t('not yet') }
-  const dotState = (id: string) => (progress.done.has(id) ? 'done' : id === nextLesson?.id ? 'current' : 'todo') as keyof typeof said
+      : routine && data.introductions.length > 0 ? 'routine'
+        : hasBackend ? 'signin' // SignInNudge hides itself when signed in, before the first lesson, or after Later
+          : data.attempts.length > 0 && (backupAge == null || backupAge >= (standalone ? 14 : 7)) && !(dismissed.backup && diffDays(day, dismissed.backup) < 7) ? 'backup'
+            : null
 
   const d = dates()
   return (
@@ -149,55 +130,13 @@ export default function Today() {
     <div className="grid items-start gap-space-lg lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:gap-gutter-md">
       <section aria-label={t('Continue')} className="flex min-w-0 flex-col gap-space-lg">
         <Panel as="div" className="gap-space-lg shadow-card">
-          {/* unit + path */}
-          {next.kind !== 'done' && (
-            <div className="flex flex-col gap-space-sm">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-space-md gap-y-1">
-                <p className="text-label font-semibold tracking-wider text-on-surface-variant uppercase rtl:normal-case">
-                  {t('Unit {n}', { n: unit.n })}{!isAr && <><Sep />{unit.nameEn}</>}
-                </p>
-                <p lang="ar" className="text-arabic-label text-secondary">{unit.nameAr}</p>
-              </div>
-              <div role="group" aria-label={t('Lessons in unit {n}', { n: unit.n })}>
-                <UnitPath
-                  lessons={unit.lessonIds.map(id => ({ state: dotState(id), label: `${getLesson(id)?.nameAr ?? id}: ${said[dotState(id)]}` }))}
-                  finale={unit.finale ? (progress.finaleDone(unit) ? 'done' : 'todo') : null}
-                />
-              </div>
-              {q.sabaq && nextLesson && (
-                <p className="text-body-md text-on-surface-variant">
-                  {t('Lesson {n} of {m}', { n: courseOrder.indexOf(nextLesson.id) + 1, m: courseOrder.length })}
-                  <Sep />
-                  <span className="font-medium text-on-surface">{t('{n} of {m} lessons done', { n: unitDone, m: unit.lessonIds.length })}</span>
-                </p>
-              )}
-            </div>
-          )}
-
           {q.sabaq && nextLesson ? (
             <>
-              <Inset>
-                <div className="flex flex-col">
-                  <p lang="ar" className="text-arabic-headline text-primary">{nextLesson.nameAr}</p>
-                  {!isAr && <p className="text-body-lg font-semibold text-on-surface">{nextLesson.nameEn}</p>}
-                </div>
-                <p className="line-clamp-3 text-body-md text-on-surface-variant"><Tx>{splitDefinition(nextLesson.summary)[0]}</Tx></p>
-                <StepMeter steps={steps} />
-                {started && (
-                  <p className="inline-flex w-fit items-center gap-1.5 rounded-full bg-surface-container-high px-3 py-1.5 text-label font-medium text-primary">
-                    <Icon name={STEP_ICONS[steps!.current]} size={16} fill />
-                    {t('Resume at step: {x}', { x: STEP_NAME[steps!.current] })}
-                  </p>
-                )}
-                {learnedToday.length > 0 && <p className="text-body-md text-on-surface-variant"><Tx>{t('Learned today: {x}', { x: learnedToday.join('، ') })}</Tx></p>}
-              </Inset>
-              {closing && (
-                <div className="flex items-center gap-space-sm rounded-card bg-surface-container/60 p-space-md">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-surface-container-lowest text-primary"><Icon name={STEP_ICONS.recite} size={18} /></span>
-                  <span className="text-caption tracking-wider text-on-surface-variant uppercase rtl:normal-case">{t('Recite')}</span>
-                  <span className="ms-auto"><bdi lang="ar" className="font-naskh text-body-lg font-semibold text-primary">{rangeRef(closing.from, closing.to)}</bdi></span>
-                </div>
-              )}
+              <div className="flex flex-col gap-space-xs">
+                <p lang="ar" className="text-arabic-headline text-primary">{nextLesson.nameAr}</p>
+                {!isAr && <p className="text-body-lg font-semibold text-on-surface">{nextLesson.nameEn}</p>}
+                <StepLine steps={steps} />
+              </div>
               <LinkButton to={href('learn', nextLesson.id)} className="w-full">{resume ? t('Continue lesson') : t('Start lesson')}<Fwd /></LinkButton>
             </>
           ) : q.sabaqReason === 'finale' && finaleUnit ? (
@@ -234,23 +173,7 @@ export default function Today() {
               <p className="text-body-md text-on-surface-variant">{t('Keep your review going, and keep reciting to a teacher.')}</p>
             </Inset>
           )}
-          <p className="-my-space-sm flex flex-wrap justify-center gap-x-space-md">
-            <LinkButton variant="tertiary" to={href('unit', unit.id)} aria-label={t('Open unit {n}, {name}', { n: unit.n, name: isAr ? unit.nameAr : unit.nameEn })}>{t('Open the unit')}<Icon name="chevron_right" size={20} rtlFlip /></LinkButton>
-            <LinkButton variant="tertiary" to={href('plan')}>{t('Course map')}<Icon name="chevron_right" size={20} rtlFlip /></LinkButton>
-          </p>
         </Panel>
-
-        {routine && data.introductions.length > 0 && (
-          <Panel title={t('Set up your routine')} icon="tune">
-            <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
-            <ul className="-mx-space-sm flex flex-col">
-              <LinkRow to={href('settings') + '?s=recitation'}>{t('Model reciter')}</LinkRow>
-              <LinkRow to={href('settings') + '?s=wird'}>{t('Daily study time (wird)')}</LinkRow>
-              <LinkRow to={href('settings') + '?s=wird'}>{t('Teacher day')}</LinkRow>
-            </ul>
-            <Button variant="ghost" onClick={hideRoutine} className="-ms-space-md self-start px-space-md">{t('Done, hide this')}</Button>
-          </Panel>
-        )}
 
         {catchUp.length > 0 && (
           <Panel title={t('New in this version')} icon="new_releases">
@@ -259,24 +182,6 @@ export default function Today() {
           </Panel>
         )}
 
-        <div className="flex min-w-0 flex-col gap-space-sm empty:hidden">
-          {tips && (
-            <Note icon="lightbulb" action={<LinkButton variant="tertiary" to={href('guide')}>{t('How it works')}</LinkButton>} onDismiss={() => dismiss('hint:today')}>
-              {t('One lesson at a time, in seven short steps. Then do your review.')}
-            </Note>
-          )}
-          <SignInNudge />
-          {nudge === 'install' && (
-            <Note icon="install_mobile" action={<Button variant="tertiary" onClick={() => setHowOpen(true)}>{t('How')}</Button>} onDismiss={() => dismiss('install')}>
-              {t("Install to home screen so your data is kept. Safari can clear sites you haven't opened for a week.")}
-            </Note>
-          )}
-          {nudge === 'backup' && !user && (
-            <Note icon="backup" action={<LinkButton variant="tertiary" to={href('settings')}>{t('Back up now')}</LinkButton>} onDismiss={() => dismiss('backup')}>
-              {backupAge == null ? t('No backup yet.') : tn('Last backup: {n} days ago.', 'Last backup: {n} days ago.', backupAge)}
-            </Note>
-          )}
-        </div>
       </section>
 
       <aside className="flex min-w-0 flex-col gap-space-lg">
@@ -289,7 +194,7 @@ export default function Today() {
             </h2>
             {due > 0 ? (
               <>
-                <p className="text-body-md text-on-surface-variant"><Tx>{t('This week (سبقي) {a} · Older (منزل) {b}', { a: q.sabqi.length, b: q.manzil.length })}</Tx>{reviewedToday > 0 && t(' · {n} left', { n: due })}</p>
+                <p className="text-body-md text-on-surface-variant">{t('{n} due', { n: due })}</p>
                 {jali > 0 && (isAr
                   ? <p className="flex flex-wrap items-center gap-1.5 text-body-md text-on-surface">{tn('{n} correction due', '{n} corrections due', jali)} <SeverityChip severity="jali" /></p>
                   : <p className="flex flex-wrap items-center gap-1.5 text-body-md text-on-surface">{jali} <SeverityChip severity="jali" /> {jali === 1 ? 'correction' : 'corrections'} due</p>)}
@@ -315,6 +220,29 @@ export default function Today() {
               ))}
             </ul>
           </Panel>
+        )}
+
+        {nudge === 'routine' && (
+          <Panel title={t('Set up your routine')} icon="tune">
+            <p className="-mt-space-sm text-body-md text-on-surface-variant">{t('Three choices make the course yours. You can change them any time in Settings.')}</p>
+            <ul className="-mx-space-sm flex flex-col">
+              <LinkRow to={href('settings') + '?s=recitation'}>{t('Model reciter')}</LinkRow>
+              <LinkRow to={href('settings') + '?s=wird'}>{t('Daily study time (wird)')}</LinkRow>
+              <LinkRow to={href('settings') + '?s=wird'}>{t('Teacher day')}</LinkRow>
+            </ul>
+            <Button variant="ghost" onClick={hideRoutine} className="-ms-space-md self-start px-space-md">{t('Done, hide this')}</Button>
+          </Panel>
+        )}
+        {nudge === 'signin' && <SignInNudge />}
+        {nudge === 'install' && (
+          <Note icon="install_mobile" action={<Button variant="tertiary" onClick={() => setHowOpen(true)}>{t('How')}</Button>} onDismiss={() => dismiss('install')}>
+            {t("Install to home screen so your data is kept. Safari can clear sites you haven't opened for a week.")}
+          </Note>
+        )}
+        {nudge === 'backup' && !user && (
+          <Note icon="backup" action={<LinkButton variant="tertiary" to={href('settings')}>{t('Back up now')}</LinkButton>} onDismiss={() => dismiss('backup')}>
+            {backupAge == null ? t('No backup yet.') : tn('Last backup: {n} days ago.', 'Last backup: {n} days ago.', backupAge)}
+          </Note>
         )}
 
         <Panel title={t('This week')} icon="calendar_month">
