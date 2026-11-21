@@ -2,6 +2,7 @@
 // <app support>/audio/<reciter>/SSSAAA.mp3, and the player prefers a saved file over the network (offline study).
 // The folder is left out of Android Auto Backup (res/xml): it can be downloaded again.
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -15,9 +16,12 @@ import '../ui/theme.dart';
 import 'player.dart';
 
 class Downloads {
-  Downloads(this.dir, {this.url = _everyayah}) : _http = HttpClient();
+  Downloads(this.dir, {this.url = _everyayah, List<VerseKey> Function(String unitId)? ayahsOf})
+      : ayahsOf = ayahsOf ?? ((id) => content.unitAyahs(content.getUnit(id)!)),
+        _http = HttpClient();
   final Directory dir;
   final String Function(Reciter r, VerseKey k) url; // a local server in tests
+  final List<VerseKey> Function(String unitId) ayahsOf;
   final HttpClient _http;
   static String _everyayah(Reciter r, VerseKey k) => ayahUrl(r.folder, k);
 
@@ -39,9 +43,26 @@ class Downloads {
     return n;
   }
 
-  /// Fetches the missing files 4 at a time; `onProgress(done)` after each. Resolves to how many failed.
-  Future<int> download(Reciter r, List<VerseKey> keys, void Function(int done) onProgress) async {
-    final queue = [...keys];
+  /// The units saved for this reciter (`<reciter>/units.json`): deleting one keeps the files another still plays.
+  File _unitsFile(Reciter r) => File('${dir.path}/${r.id}/units.json');
+  Future<Set<String>> _units(Reciter r) async {
+    try {
+      return {...(jsonDecode(await _unitsFile(r).readAsString()) as List).cast<String>()};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  Future<void> _setUnits(Reciter r, Set<String> ids) async {
+    final f = _unitsFile(r);
+    await f.parent.create(recursive: true);
+    await f.writeAsString(jsonEncode([...ids]));
+  }
+
+  /// Fetches the unit's missing files 4 at a time; `onProgress(done)` after each. Resolves to how many failed.
+  Future<int> download(Reciter r, String unitId, void Function(int done) onProgress) async {
+    await _setUnits(r, {...await _units(r), unitId});
+    final queue = [...ayahsOf(unitId)];
     var done = 0, failed = 0;
     Future<void> worker() async {
       while (queue.isNotEmpty) {
@@ -75,12 +96,14 @@ class Downloads {
     await part.rename(f.path);
   }
 
-  /// Deletes these ayahs' files.
-  // ponytail: a file another downloaded unit also plays (1:1, shared ayahs) goes too; that unit then shows it as missing.
-  Future<void> delete(Reciter r, List<VerseKey> keys) async {
-    for (final k in keys) {
+  /// Deletes the unit's files, except those another downloaded unit also plays (1:1, shared ayahs).
+  Future<void> delete(Reciter r, String unitId) async {
+    final others = (await _units(r))..remove(unitId);
+    await _setUnits(r, others);
+    final keep = {for (final id in others) ...ayahsOf(id)};
+    for (final k in ayahsOf(unitId)) {
       final f = fileOf(r, k);
-      if (await f.exists()) await f.delete();
+      if (!keep.contains(k) && await f.exists()) await f.delete();
     }
   }
 }
@@ -121,7 +144,7 @@ class OfflineAudioState extends State<OfflineAudio> {
       _busy = 0;
       _failed = 0;
     });
-    final f = await widget.downloads.download(widget.reciter, _keys, (n) => mounted ? setState(() => _busy = n) : null);
+    final f = await widget.downloads.download(widget.reciter, widget.unit.id, (n) => mounted ? setState(() => _busy = n) : null);
     if (mounted) {
       setState(() {
         _busy = null;
@@ -132,7 +155,7 @@ class OfflineAudioState extends State<OfflineAudio> {
   }
 
   Future<void> delete() async {
-    await widget.downloads.delete(widget.reciter, _keys);
+    await widget.downloads.delete(widget.reciter, widget.unit.id);
     await _recount();
   }
 

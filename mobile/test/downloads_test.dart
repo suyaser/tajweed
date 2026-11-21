@@ -18,11 +18,16 @@ void main() {
         ..close();
     });
     final tmp = await Directory.systemTemp.createTemp('dl');
-    final d = Downloads(Directory('${tmp.path}/audio'), url: (r, k) => 'http://127.0.0.1:${server.port}/${k == '9:9' ? '404' : k}');
+    const units = {
+      'u1': ['1:1', '112:1', '112:2', '9:9'],
+      'u2': ['1:1', '113:1'],
+    };
+    final d = Downloads(Directory('${tmp.path}/audio'),
+        url: (r, k) => 'http://127.0.0.1:${server.port}/${k == '9:9' ? '404' : k}', ayahsOf: (id) => units[id]!);
     final r = Reciter({'id': 'husary-muallim', 'folder': 'Husary_Muallim_128kbps', 'nameAr': '', 'nameEn': '', 'style': 'muallim', 'hasTimings': true});
-    final keys = ['1:1', '112:1', '112:2', '9:9'];
+    final keys = units['u1']!;
     final progress = <int>[];
-    expect(await d.download(r, keys, progress.add), 1);
+    expect(await d.download(r, 'u1', progress.add), 1);
     expect(progress, [1, 2, 3, 4]);
     expect(await d.count(r, keys), 3);
     expect(d.fileOf(r, '112:1').path, endsWith('/audio/husary-muallim/112001.mp3'));
@@ -31,10 +36,14 @@ void main() {
     expect((await d.source(r, '112:2')).scheme, 'file');
     expect((await d.source(r, '9:9')).scheme, 'http');
     hits = 0;
-    expect(await d.download(r, keys, (_) {}), 1); // the saved ones are not fetched again
+    expect(await d.download(r, 'u1', (_) {}), 1); // the saved ones are not fetched again
     expect(hits, 1);
-    await d.delete(r, keys);
-    expect(await d.count(r, keys), 0);
+    expect(await d.download(r, 'u2', (_) {}), 0);
+    await d.delete(r, 'u1');
+    expect(await d.count(r, keys), 1); // 1:1 stays: u2 plays it too
+    expect(await d.count(r, units['u2']!), 2);
+    await d.delete(r, 'u2');
+    expect(await d.count(r, units['u2']!), 0);
     await server.close(force: true);
     await tmp.delete(recursive: true);
   });
