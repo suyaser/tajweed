@@ -21,9 +21,14 @@ const _markLabel = {
   WordMark.found: 'found', WordMark.missed: 'missed', WordMark.wrong: 'not this rule',
 };
 const _pauseLabel = {
-  '\u06D6': 'pause mark: continuing is better', '\u06D7': 'pause mark: stopping is better', '\u06D8': 'pause mark: stop',
-  '\u06D9': 'pause mark: do not stop', '\u06DA': 'pause mark: stopping allowed', '\u06DB': 'pause mark: stop at one of the pair',
-  '\u06DC': 'pause mark: sakt', '\u06E9': 'prostration mark',
+  '\u06D6': 'pause mark: continuing is better',
+  '\u06D7': 'pause mark: stopping is better',
+  '\u06D8': 'pause mark: stop',
+  '\u06D9': 'pause mark: do not stop',
+  '\u06DA': 'pause mark: stopping allowed',
+  '\u06DB': 'pause mark: stop at one of the pair',
+  '\u06DC': 'pause mark: sakt',
+  '\u06E9': 'prostration mark',
 };
 
 /// The web's verse sizes (px, line height).
@@ -59,8 +64,7 @@ class QAyah {
   const QAyah({required this.key, required this.words, this.segments, this.pauses = const []});
 
   /// `tajweed`: carry the muṣḥaf colour segments.
-  QAyah.of(Verse v, {bool tajweed = false})
-    : key = v.verseKey, words = v.words, segments = tajweed ? wordSegments(v) : null, pauses = v.marks;
+  QAyah.of(Verse v, {bool tajweed = false}) : key = v.verseKey, words = v.words, segments = tajweed ? wordSegments(v) : null, pauses = v.marks;
   final VerseKey key;
   final List<String> words;
   final List<List<Segment>>? segments;
@@ -142,17 +146,21 @@ QuranLayout layoutQuran(List<QAyah> ayahs, {bool brackets = false, bool ayahEnds
 }
 
 Color tajweedColour(AppColors c, String key) => switch (key) {
-  'clear' => c.tClear, 'ghunnah' => c.tGhunnah, 'silent' => c.tSilent, 'merge' => c.tMerge, 'madd2' => c.tMadd2, //
-  'madd45' => c.tMadd45, 'madd246' => c.tMadd246, 'madd6' => c.tMadd6, 'qalqalah' => c.tQalqalah, 'heavy' => c.tHeavy,
+  'clear' => c.tClear,
+  'ghunnah' => c.tGhunnah,
+  'silent' => c.tSilent,
+  'merge' => c.tMerge,
+  'madd2' => c.tMadd2, //
+  'madd45' => c.tMadd45,
+  'madd246' => c.tMadd246,
+  'madd6' => c.tMadd6,
+  'qalqalah' => c.tQalqalah,
+  'heavy' => c.tHeavy,
   _ => c.tLight,
 };
 
-TextStyle quranStyle(BuildContext context, double px, {Color? color}) => TextStyle(
-  fontFamily: Fonts.quran,
-  fontFamilyFallback: Fonts.quranFallback,
-  fontSize: px,
-  color: color ?? context.c.onSurface,
-);
+TextStyle quranStyle(BuildContext context, double px, {Color? color}) =>
+    TextStyle(fontFamily: Fonts.quran, fontFamilyFallback: Fonts.quranFallback, fontSize: px, color: color ?? context.c.onSurface);
 
 /// The paragraph with everything painted behind it. `marks` / `current` keyed '2:5/3'.
 class QuranText extends StatefulWidget {
@@ -201,7 +209,7 @@ class _QuranTextState extends State<QuranText> {
     final c = context.c, w = widget, l = w.layout, px = w.size.px;
     final scaler = MediaQuery.textScalerOf(context);
     // Runs: words (for taps and their names), pause marks, brackets, colours. Words are cut only at their own edges,
-    // and inside a word only by tajweed colours.
+    // and inside a word only by colour-only runs (tajweed colours, the focus ink).
     final cuts = <(Range, TextStyle?, String?)>[]; // range, style, word id
     for (final r in l.pauses) {
       cuts.add((r, TextStyle(fontSize: px * 0.8, color: c.secondary), null));
@@ -218,8 +226,14 @@ class _QuranTextState extends State<QuranText> {
     final spans = <InlineSpan>[];
     var at = 0;
     // boundaries from every range, then one span per piece carrying its style and the word's recognizer
-    final pts = <int>{0, l.text.length, for (final (r, _, _) in cuts) ...[r.$1, r.$2], for (final e in words) ...[e.value.$1, e.value.$2], for (final (r, _) in colourRuns) ...[r.$1, r.$2]}.toList()
-      ..sort();
+    final pts = <int>{
+      0,
+      l.text.length,
+      for (final (r, _, _) in cuts) ...[r.$1, r.$2],
+      for (final e in words) ...[e.value.$1, e.value.$2],
+      for (final (r, _) in colourRuns) ...[r.$1, r.$2],
+      for (final r in l.focus) ...[r.$1, r.$2],
+    }.toList()..sort();
     for (var i = 0; i + 1 < pts.length; i++) {
       final a = pts[i], b = pts[i + 1];
       if (a >= b) continue;
@@ -233,6 +247,8 @@ class _QuranTextState extends State<QuranText> {
           decorationColor: tajweedColour(c, col.$2),
         );
       }
+      // the focus in the focus ink, as the web's mark.focus (a colour-only run: shaping across it is kept, see verse_ink_test)
+      if (col == null && l.focus.any(inR)) style = (style ?? const TextStyle()).copyWith(color: c.focusInk);
       final word = words.where((e) => inR(e.value)).firstOrNull;
       GestureRecognizer? rec;
       String? label;
@@ -383,10 +399,8 @@ class _MarksPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_MarksPainter o) =>
-      o.l != l || !_sameMarks(o.marks, marks) || o.currentAyah != currentAyah || o.c != c || o.em != em;
-  static bool _sameMarks(Map<String, WordMark> a, Map<String, WordMark> b) =>
-      a.length == b.length && a.entries.every((e) => b[e.key] == e.value);
+  bool shouldRepaint(_MarksPainter o) => o.l != l || !_sameMarks(o.marks, marks) || o.currentAyah != currentAyah || o.c != c || o.em != em;
+  static bool _sameMarks(Map<String, WordMark> a, Map<String, WordMark> b) => a.length == b.length && a.entries.every((e) => b[e.key] == e.value);
 }
 
 /// One word on its own (Find chips): a tinted tile, its mark drawn around it and a labelled badge under it.
@@ -412,12 +426,18 @@ class WordToken extends StatelessWidget {
       null => (c.surfaceContainerLow, null),
     };
     final text = Text.rich(
-      TextSpan(children: [
-        if (tajweed && segments != null)
-          for (final s in segments!) TextSpan(text: s.text, style: s.colour == null ? null : TextStyle(color: tajweedColour(c, s.colour!)))
-        else
-          TextSpan(text: word),
-      ]),
+      TextSpan(
+        children: [
+          if (tajweed && segments != null)
+            for (final s in segments!)
+              TextSpan(
+                text: s.text,
+                style: s.colour == null ? null : TextStyle(color: tajweedColour(c, s.colour!)),
+              )
+          else
+            TextSpan(text: word),
+        ],
+      ),
       style: quranStyle(context, px),
       textDirection: TextDirection.rtl,
       strutStyle: StrutStyle(fontFamily: Fonts.quran, fontSize: px, height: 1.9, forceStrutHeight: true),
@@ -446,7 +466,10 @@ class WordToken extends StatelessWidget {
               borderRadius: BorderRadius.circular(6),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
-                child: Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: Center(widthFactor: 1, child: text)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Center(widthFactor: 1, child: text),
+                ),
               ),
             ),
           ),
@@ -455,11 +478,14 @@ class WordToken extends StatelessWidget {
               margin: const EdgeInsets.only(top: 2, bottom: 4),
               padding: const EdgeInsetsDirectional.only(start: 4, end: 8),
               decoration: BoxDecoration(color: badge.$3, borderRadius: BorderRadius.circular(99)),
-              child: Row(mainAxisSize: MainAxisSize.min, children: [
-                Icon(badge.$1, size: 14, color: badge.$4),
-                const SizedBox(width: 2),
-                Text(t(badge.$2), style: ty.label.weight(600).copyWith(color: badge.$4, height: 1.7)),
-              ]),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(badge.$1, size: 14, color: badge.$4),
+                  const SizedBox(width: 2),
+                  Text(t(badge.$2), style: ty.label.weight(600).copyWith(color: badge.$4, height: 1.7)),
+                ],
+              ),
             ),
         ],
       ),
@@ -482,7 +508,9 @@ class SurahOpening extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(vertical: 2),
-            decoration: BoxDecoration(border: Border.symmetric(horizontal: BorderSide(color: c.secondaryContainer))),
+            decoration: BoxDecoration(
+              border: Border.symmetric(horizontal: BorderSide(color: c.secondaryContainer)),
+            ),
             child: Semantics(
               header: true,
               child: Text(
@@ -577,16 +605,30 @@ class VerseBlock extends StatelessWidget {
       if (stopping)
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 6),
-          decoration: BoxDecoration(border: Border.all(color: c.onSurface), borderRadius: BorderRadius.circular(4)),
+          decoration: BoxDecoration(
+            border: Border.all(color: c.onSurface),
+            borderRadius: BorderRadius.circular(4),
+          ),
           child: Text.rich(
-            TextSpan(children: [
-              const TextSpan(text: '◼ \u0648\u0642\u0641'),
-              if (!isAr) TextSpan(text: '$sep stopping here', style: ty.label.copyWith(fontWeight: FontWeight.normal)),
-            ]),
+            TextSpan(
+              children: [
+                const TextSpan(text: '◼ \u0648\u0642\u0641'),
+                if (!isAr)
+                  TextSpan(
+                    text: '$sep stopping here',
+                    style: ty.label.copyWith(fontWeight: FontWeight.normal),
+                  ),
+              ],
+            ),
             style: ty.label.weight(700).copyWith(color: c.onSurface),
           ),
         ),
-      if (reference != null) Text(reference!, style: ty.arabicLabel.copyWith(color: c.onSurfaceVariant), textDirection: TextDirection.rtl),
+      if (reference != null)
+        Text(
+          reference!,
+          style: ty.arabicLabel.copyWith(color: c.onSurfaceVariant),
+          textDirection: TextDirection.rtl,
+        ),
       ...actions,
     ];
     return Padding(
