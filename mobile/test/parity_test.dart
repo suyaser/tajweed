@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tajweed/app/router.dart';
 import 'package:tajweed/audio/player.dart';
 import 'package:tajweed/content/content.dart';
 import 'package:tajweed/core/course.dart';
@@ -218,6 +219,13 @@ void main() {
       same(missingSteps(s, (_) => true, 'recite'), o['missingExceptRecite'], 'missing except recite');
       final sc = checkScore(s);
       same({'n': sc.n, 'm': sc.m}, o['score'], 'checkScore');
+    }
+  });
+
+  test('router: parseHash', () {
+    for (final [h, r] in fixture('router') as List) {
+      final a = parseRoute(h as String);
+      same({'name': a.name, 'params': a.params, 'path': a.path}, r, 'parseRoute $h');
     }
   });
 

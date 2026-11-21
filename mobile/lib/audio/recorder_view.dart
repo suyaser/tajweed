@@ -35,14 +35,34 @@ Future<bool> askMicrophone(BuildContext context, Recorder r) async {
       false;
 }
 
+/// The three parts a screen may lay out apart (the lesson's numbered cards): the record button with its state line,
+/// the compare row (null until there is a take), and the "stay on this device" line.
+typedef RecorderLayout = Widget Function(BuildContext context, Widget record, Widget? compare, Widget private);
+
 class RecorderView extends StatefulWidget {
-  const RecorderView({super.key, required this.from, this.to, required this.player, required this.recordings, this.reciter, this.onSaved});
+  const RecorderView({
+    super.key,
+    required this.from,
+    this.to,
+    required this.player,
+    required this.recordings,
+    this.reciter,
+    this.model,
+    this.onSaved,
+    this.onStatus,
+    this.layout,
+  });
   final String from;
   final String? to;
   final Player player; // loaded with the range: Reciter plays it, Both plays it then the take
   final Recordings recordings;
   final VoidCallback? reciter; // null: no Reciter / Both buttons (e.g. offline)
   final VoidCallback? onSaved; // the store's noteRecording()
+  /// Both, when it isn't "the player's range, then the take" (Say: the word clip, then the take).
+  final void Function(String takePath)? model;
+  /// 'saved' once a take exists (also an older one), 'off' when the microphone can't be used.
+  final ValueChanged<String>? onStatus;
+  final RecorderLayout? layout;
 
   @override
   State<RecorderView> createState() => RecorderViewState();
@@ -75,7 +95,9 @@ class RecorderViewState extends State<RecorderView> {
 
   Future<void> _refresh() async {
     final xs = await widget.recordings.list(widget.from, _to);
-    if (mounted) setState(() => _takes = xs);
+    if (!mounted) return;
+    setState(() => _takes = xs);
+    if (xs.isNotEmpty) widget.onStatus?.call('saved');
   }
 
   Future<void> record() async {
@@ -85,6 +107,7 @@ class RecorderViewState extends State<RecorderView> {
     setState(() => _alert = null);
     if (!await askMicrophone(context, _rec)) return;
     final take = await _rec.start();
+    if (_rec.status == RecStatus.denied) widget.onStatus?.call('off');
     if (take == null) return;
     try {
       await widget.recordings.save(path: take.path, id: uuid(), from: widget.from, to: _to, durationMs: take.durationMs);
@@ -112,11 +135,7 @@ class RecorderViewState extends State<RecorderView> {
     final secs = rec ? DateTime.now().difference(_rec.startedAt!).inSeconds : ((last?.durationMs ?? 0) / 1000).round();
     final alert = _alert ?? _rec.error;
     final path = last == null ? null : widget.recordings.pathOf(last);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: Space.md,
-      children: [
-        Column(spacing: Space.sm, children: [
+    final recordUi = Column(spacing: Space.sm, children: [
           Semantics(
             button: true,
             label: rec ? t('Stop recording') : last != null ? t('Record again') : t('Record'),
@@ -146,11 +165,10 @@ class RecorderViewState extends State<RecorderView> {
                 : Text(t('Tap to record'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
           ),
           if (alert != null) Text(alert, style: ty.bodyMd.copyWith(color: c.error), textAlign: TextAlign.center),
-        ]),
-        if (path == null || rec)
-          Text(t('Record first, then compare.'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant))
-        else
-          Semantics(
+        ]);
+    final compare = path == null || rec
+        ? null
+        : Semantics(
             label: t('Compare'),
             child: Row(spacing: Space.sm, children: [
               if (widget.reciter != null)
@@ -165,17 +183,27 @@ class RecorderViewState extends State<RecorderView> {
               if (widget.reciter != null)
                 Expanded(child: _btn(Icons.compare_arrows, t('Both'), primary: true, both)),
             ]),
-          ),
-        Row(spacing: 6, children: [
-          Icon(Icons.lock_outline, size: 14, color: c.onSurfaceVariant),
-          Expanded(child: Text(t('Recordings stay on this device.'), style: ty.caption.copyWith(color: c.onSurfaceVariant))),
-        ]),
-        if (_both != null && _phase != null)
-          Text(
+          );
+    final private = Row(spacing: 6, children: [
+      Icon(Icons.lock_outline, size: 14, color: c.onSurfaceVariant),
+      Expanded(child: Text(t('Recordings stay on this device.'), style: ty.caption.copyWith(color: c.onSurfaceVariant))),
+    ]);
+    final phase = _both != null && _phase != null
+        ? Text(
             switch (_phase!) { ComparePhase.model || ComparePhase.silence => t('Reciter'), ComparePhase.me => t('Me'), ComparePhase.done => '' },
             textAlign: TextAlign.center,
             style: ty.label.weight(600).copyWith(color: c.primary),
-          ),
+          )
+        : null;
+    final cmp = compare == null ? null : Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: Space.sm, children: [compare, ?phase]);
+    if (widget.layout != null) return widget.layout!(context, recordUi, cmp, private);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      spacing: Space.md,
+      children: [
+        recordUi,
+        cmp ?? Text(t('Record first, then compare.'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
+        private,
       ],
     );
   }
@@ -185,6 +213,10 @@ class RecorderViewState extends State<RecorderView> {
     final last = _takes.firstOrNull;
     if (last == null) return Future.value();
     _stopAll();
+    if (widget.model != null) {
+      widget.model!(widget.recordings.pathOf(last));
+      return Future.value();
+    }
     final b = playModelThenMe(widget.player, widget.recordings.pathOf(last), (p) => mounted ? setState(() => _phase = p) : null);
     setState(() => _both = b);
     return b.done.whenComplete(() => mounted ? setState(() => _both = null) : null);

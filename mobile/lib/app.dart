@@ -9,13 +9,18 @@ import 'ui/theme.dart';
 /// The theme the learner chose (settings.theme: system / light / dark).
 final themeMode = ValueNotifier<ThemeMode>(ThemeMode.system);
 
+/// Text size (settings.textSize m / l / xl): the web zooms the whole UI by 1, 1.125, 1.25 on top of the system size.
+final uiScale = ValueNotifier<double>(1);
+
 class TajweedApp extends StatelessWidget {
-  const TajweedApp({super.key, required this.home});
-  final WidgetBuilder home;
+  const TajweedApp({super.key, this.home, this.initialRoute, this.onGenerateRoute});
+  final WidgetBuilder? home;
+  final String Function()? initialRoute; // read on every rebuild (a language switch starts over)
+  final Route<void> Function(String name)? onGenerateRoute;
 
   @override
   Widget build(BuildContext context) => ListenableBuilder(
-    listenable: Listenable.merge([lang, themeMode]),
+    listenable: Listenable.merge([lang, themeMode, uiScale]),
     builder: (context, _) {
       final a = isAr;
       return MaterialApp(
@@ -28,7 +33,18 @@ class TajweedApp extends StatelessWidget {
         themeMode: themeMode.value,
         theme: buildTheme(brightness: Brightness.light, ar: a),
         darkTheme: buildTheme(brightness: Brightness.dark, ar: a),
-        home: Builder(builder: home),
+        home: home == null ? null : Builder(builder: home!),
+        initialRoute: initialRoute?.call(),
+        onGenerateInitialRoutes: onGenerateRoute == null ? null : (name) => [onGenerateRoute!(name)],
+        onGenerateRoute: onGenerateRoute == null ? null : (s) => onGenerateRoute!(s.name ?? 'today'),
+        builder: (context, child) {
+          final mq = MediaQuery.of(context);
+          final scale = uiScale.value;
+          return MediaQuery(
+            data: mq.copyWith(textScaler: TextScaler.linear(mq.textScaler.scale(1) * scale)),
+            child: child!,
+          );
+        },
       );
     },
   );

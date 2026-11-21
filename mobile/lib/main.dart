@@ -2,8 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:intl/date_symbol_data_local.dart';
+
 import 'app.dart';
+import 'app/services.dart';
+import 'app/shell.dart';
 import 'audio/player.dart';
+import 'core/store.dart';
 import 'content/content.dart';
 import 'dev/gallery.dart';
 import 'dev/quran_page.dart';
@@ -24,11 +29,23 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadArabic();
   await configurePlaybackSession(); // iOS `playback`: the silent switch doesn't mute recitation
+  await initializeDateFormatting();
   final raw = await loadRawContent();
+  lang.value = await loadLang() ?? Lang.ar; // per device; Arabic until the learner picks (onboarding)
   useContent(raw);
   lang.addListener(() => useContent(raw)); // before the app rebuilds for the new language
-  // Until the screens are ported (docs/19 §3) the app opens on the dev gallery; the spike is one tap away.
-  // --dart-define=DEV_PAGE=quran opens the Quran/player/recorder page directly (device checks, screenshots).
+  await openServices();
+  void applySettings() {
+    final s = store.data.settings;
+    themeMode.value = switch (s.theme) { 'light' => ThemeMode.light, 'dark' => ThemeMode.dark, _ => ThemeMode.system };
+    uiScale.value = switch (s.textSize) { 'l' => 1.125, 'xl' => 1.25, _ => 1.0 };
+  }
+
+  applySettings();
+  store.addListener(applySettings);
+  // --dart-define=DEV_PAGE=quran | gallery opens a dev page (device checks, screenshots).
   const page = String.fromEnvironment('DEV_PAGE');
-  runApp(TajweedApp(home: (_) => page == 'quran' ? const QuranPage() : const DevGallery()));
+  runApp(page.isEmpty
+      ? TajweedApp(initialRoute: startRoute, onGenerateRoute: buildRoute)
+      : TajweedApp(home: (_) => page == 'quran' ? const QuranPage() : const DevGallery()));
 }

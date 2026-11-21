@@ -60,6 +60,7 @@ class AppButton extends StatelessWidget {
     this.variant = ButtonVariant.primary,
     this.size = ButtonSize.normal,
     this.icon,
+    this.iconEnd,
     this.block = false,
   });
   final String label;
@@ -67,6 +68,9 @@ class AppButton extends StatelessWidget {
   final ButtonVariant variant;
   final ButtonSize size;
   final IconData? icon;
+
+  /// After the label (→ on Next buttons; arrow icons mirror in RTL).
+  final IconData? iconEnd;
 
   /// Full width (the bottom bar's one action).
   final bool block;
@@ -108,7 +112,8 @@ class AppButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (icon != null) ...[Icon(icon, size: 20, color: fg), const SizedBox(width: 8)],
-                    Flexible(child: Text(label, style: style, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center)),
+                    Flexible(child: Text(label, style: style, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, maxLines: 2)),
+                    if (iconEnd != null) ...[const SizedBox(width: 8), Icon(iconEnd, size: 20, color: fg)],
                   ],
                 ),
               ),
@@ -790,4 +795,378 @@ Future<T?> showAppSheet<T>(BuildContext context, {required String title, require
       ),
     ),
   );
+}
+
+/* ---------------- Callout, EmptyState, progress, skeleton ---------------- */
+
+enum CalloutKind { listenFor, tip, note }
+
+/// Annotation box with a 2px gold edge on the inline start; [title] is a short label ("Listen for").
+class Callout extends StatelessWidget {
+  const Callout({super.key, this.kind = CalloutKind.note, this.title, this.icon, required this.child});
+  final CalloutKind kind;
+  final String? title;
+  final IconData? icon;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c, ty = context.type;
+    final (Color box, Color badge, Color badgeFg, IconData i) = switch (kind) {
+      CalloutKind.listenFor => (c.secondaryContainer.withValues(alpha: 0.6), c.secondaryContainer, c.onSecondaryContainer, Icons.hearing),
+      CalloutKind.tip => (c.primaryContainer.withValues(alpha: 0.6), c.primaryContainer, c.onPrimaryContainer, Icons.lightbulb_outline),
+      CalloutKind.note => (c.surfaceContainer, c.surfaceContainerHigh, c.onSurfaceVariant, Icons.info_outline),
+    };
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(Space.md),
+      decoration: BoxDecoration(
+        color: box,
+        border: BorderDirectional(start: BorderSide(color: c.gold, width: 2)),
+        borderRadius: const BorderRadiusDirectional.horizontal(start: Radius.circular(4), end: Radius.circular(Radii.card)),
+      ),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.start, spacing: Space.sm, children: [
+        Container(
+          width: 28,
+          height: 28,
+          decoration: BoxDecoration(color: badge, shape: BoxShape.circle),
+          child: Icon(icon ?? i, size: 16, color: badgeFg),
+        ),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, spacing: 2, children: [
+            if (title != null)
+              Text(isAr ? title! : title!.toUpperCase(), style: ty.label.weight(600).copyWith(color: c.secondary, letterSpacing: isAr ? 0 : 0.6)),
+            DefaultTextStyle.merge(style: ty.bodyMd.copyWith(color: c.onSurface), child: child),
+          ]),
+        ),
+      ]),
+    );
+  }
+}
+
+/// Nothing-here state: icon, title, optional body and one action (a dashed card).
+class EmptyState extends StatelessWidget {
+  const EmptyState({super.key, this.icon = Icons.inbox_outlined, required this.title, this.body, this.action});
+  final IconData icon;
+  final String title;
+  final String? body;
+  final Widget? action;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c, ty = context.type;
+    return CustomPaint(
+      foregroundPainter: _DashedBox(c.outlineVariant, Radii.card),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Space.lg, vertical: Space.xl),
+        child: Column(spacing: Space.sm, children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(color: c.surfaceContainer, shape: BoxShape.circle),
+            child: Icon(icon, color: c.onSurfaceVariant),
+          ),
+          Text(title, textAlign: TextAlign.center, style: ty.headlineMd.copyWith(color: c.onSurface)),
+          if (body != null)
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 360),
+              child: Text(body!, textAlign: TextAlign.center, style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
+            ),
+          if (action != null) Padding(padding: const EdgeInsets.only(top: Space.sm), child: action),
+        ]),
+      ),
+    );
+  }
+}
+
+class _DashedBox extends CustomPainter {
+  _DashedBox(this.color, this.radius);
+  final Color color;
+  final double radius;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1;
+    final path = Path()..addRRect(RRect.fromRectAndRadius(Offset.zero & size, Radius.circular(radius)));
+    for (final m in path.computeMetrics()) {
+      for (var d = 0.0; d < m.length; d += 8) {
+        canvas.drawPath(m.extractPath(d, math.min(d + 4, m.length)), p);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DashedBox old) => old.color != color;
+}
+
+/// The web's Progress: a 8px rounded bar, primary fill.
+class ProgressBar extends StatelessWidget {
+  const ProgressBar({super.key, required this.value, this.label});
+  final double value; // 0..1
+  final String? label;
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    return Semantics(
+      label: label,
+      value: '${(value * 100).round()}%',
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: LinearProgressIndicator(value: value.clamp(0, 1), minHeight: 8, color: c.primaryFill, backgroundColor: c.surfaceContainerHigh),
+      ),
+    );
+  }
+}
+
+/// A grey placeholder block while text loads.
+class Skeleton extends StatelessWidget {
+  const Skeleton({super.key, this.height = 24, this.width});
+  final double height;
+  final double? width;
+  @override
+  Widget build(BuildContext context) => Container(
+    height: height,
+    width: width,
+    decoration: BoxDecoration(color: context.c.surfaceContainerHigh, borderRadius: BorderRadius.circular(Radii.control)),
+  );
+}
+
+/// Mixed English–Arabic content text (the web's Tx): bidi isolates, Arabic-Indic digits in Arabic, lone marks carried.
+class Tx extends StatelessWidget {
+  const Tx(this.text, {super.key, this.style, this.textAlign});
+  final String text;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+  @override
+  Widget build(BuildContext context) => Text(bidi(text), style: style, textAlign: textAlign);
+}
+
+/* ---------------- lesson pieces (kit/lesson.tsx) ---------------- */
+
+/// Pager dots: the current one a wide pill, played ones teal; 44px buttons when [onPick] is set, later than
+/// [reached] disabled.
+class PagerDots extends StatelessWidget {
+  const PagerDots({super.key, required this.index, required this.total, this.onPick, int? reached, this.played})
+    : reached = reached ?? total - 1;
+  final int index, total, reached;
+  final ValueChanged<int>? onPick;
+  final bool Function(int)? played;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      for (var i = 0; i < total; i++)
+        Builder(builder: (context) {
+          final dot = AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            width: i == index ? 16 : 6,
+            height: 6,
+            decoration: BoxDecoration(
+              color: i == index || (played?.call(i) ?? false) ? c.primary : c.surfaceContainerHighest,
+              borderRadius: BorderRadius.circular(3),
+            ),
+          );
+          if (onPick == null) return SizedBox(width: 12, height: 24, child: Center(child: dot));
+          final on = i <= reached;
+          return Semantics(
+            button: true,
+            enabled: on,
+            label: t('Example {n} of {m}', {'n': i + 1, 'm': total}) + ((played?.call(i) ?? false) ? t(', played') : ''),
+            child: InkWell(
+              onTap: on ? () => onPick!(i) : null,
+              child: SizedBox(width: total > 5 ? 32 : 44, height: 44, child: Center(child: Opacity(opacity: on ? 1 : 0.7, child: dot))),
+            ),
+          );
+        }),
+    ]);
+  }
+}
+
+/// One example in a lesson step (kit ExampleCard): eyebrow "Example 1 of 3" (or [eyebrow]; '' for none), reference
+/// chip, the content, a controls slot, and ‹ dots › when there are several.
+class ExampleFrame extends StatelessWidget {
+  const ExampleFrame({
+    super.key,
+    required this.index,
+    required this.total,
+    this.eyebrow,
+    this.reference,
+    required this.child,
+    this.controls = const [],
+    this.onPrev,
+    this.onNext,
+    this.onPick,
+    this.reached,
+    this.played,
+    this.flat = false,
+  });
+  final int index, total;
+  final String? eyebrow; // '' hides it
+  final String? reference;
+  final Widget child;
+  final List<Widget> controls;
+  final VoidCallback? onPrev, onNext;
+  final ValueChanged<int>? onPick;
+  final int? reached;
+  final bool Function(int)? played;
+
+  /// Inside another card: no border, the low surface (Learn's "Spot it", the rule's example).
+  final bool flat;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c, ty = context.type;
+    Widget nav(IconData icon, VoidCallback? f, String label, Color color) => IconButton(
+      onPressed: f,
+      tooltip: label,
+      icon: Icon(icon, color: f == null ? color.withValues(alpha: 0.3) : color),
+      style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
+    );
+    final eb = eyebrow ?? t('Example {n} of {total}', {'n': index + 1, 'total': total});
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(Space.md),
+      decoration: BoxDecoration(
+        color: flat ? c.surfaceContainerLow : c.surfaceContainerLowest,
+        borderRadius: BorderRadius.circular(flat ? Radii.control : Radii.card),
+        border: flat ? null : Border.all(color: c.outlineVariant),
+      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: Space.md, children: [
+        if (eb.isNotEmpty || reference != null)
+          Row(children: [
+            if (eb.isNotEmpty)
+              Expanded(
+                child: Row(spacing: 6, children: [
+                  Container(width: 6, height: 6, decoration: BoxDecoration(color: c.gold, shape: BoxShape.circle)),
+                  Flexible(child: Text(isAr ? eb : eb.toUpperCase(), style: ty.label.weight(600).copyWith(color: c.secondary, letterSpacing: isAr ? 0 : 0.6))),
+                ]),
+              )
+            else
+              const Spacer(),
+            if (reference != null) AppChip(icon: Icons.bookmark_outline, label: reference),
+          ]),
+        ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 96),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: Space.sm),
+            child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [child]),
+          ),
+        ),
+        ...controls,
+        if (total > 1)
+          Container(
+            decoration: BoxDecoration(border: Border(top: BorderSide(color: c.surfaceContainer))),
+            padding: const EdgeInsets.only(top: 4),
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              nav(Icons.chevron_left, onPrev != null && index > 0 ? onPrev : null, t('Previous example'), c.outline),
+              PagerDots(index: index, total: total, onPick: onPick, reached: reached, played: played),
+              nav(Icons.chevron_right, onNext != null && index < total - 1 ? onNext : null, t('Next example'), c.primary),
+            ]),
+          ),
+      ]),
+    );
+  }
+}
+
+/// Big round play (56px) between a "Played" status and Slower / Loop toggles.
+class AudioControls extends StatelessWidget {
+  const AudioControls({super.key, required this.playing, required this.onPlay, this.played = false, this.slow, this.onSlow, this.loop, this.onLoop});
+  final bool playing, played;
+  final VoidCallback? onPlay;
+  final bool? slow, loop;
+  final VoidCallback? onSlow, onLoop;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    return Row(children: [
+      Expanded(
+        child: Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: played ? AppChip(tone: ChipTone.primary, icon: Icons.check_circle_outline, label: t('Played')) : null,
+        ),
+      ),
+      Semantics(
+        button: true,
+        label: playing ? t('Pause') : t('Play'),
+        excludeSemantics: true,
+        child: Opacity(
+          opacity: onPlay == null ? 0.5 : 1,
+          child: Material(
+            color: c.primaryFill,
+            shape: const CircleBorder(),
+            elevation: 1,
+            child: InkWell(
+              customBorder: const CircleBorder(),
+              onTap: onPlay,
+              child: SizedBox(width: 56, height: 56, child: Icon(playing ? Icons.pause : Icons.play_arrow, size: 28, color: c.onPrimary)),
+            ),
+          ),
+        ),
+      ),
+      Expanded(
+        child: Align(
+          alignment: AlignmentDirectional.centerEnd,
+          child: Row(mainAxisSize: MainAxisSize.min, spacing: 6, children: [
+            if (onSlow != null) AppChip(icon: Icons.speed_outlined, label: t('Slower'), pressed: slow ?? false, onTap: onSlow),
+            if (onLoop != null) AppChip(icon: Icons.repeat, semanticLabel: t('Loop'), pressed: loop ?? false, onTap: onLoop),
+          ]),
+        ),
+      ),
+    ]);
+  }
+}
+
+/// Numbered beats for a length in counts: 1…min solid, up to max dashed.
+class CountBeats extends StatelessWidget {
+  const CountBeats({super.key, required this.min, int? max, this.size = 32}) : max = max ?? min;
+  final int min, max;
+  final double size;
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    return Semantics(
+      label: min == max ? t('{n} counts', {'n': min}) : t('{min} to {max} counts', {'min': min, 'max': max}),
+      excludeSemantics: true,
+      child: Wrap(spacing: 6, runSpacing: 6, alignment: WrapAlignment.center, children: [
+        for (var n = 1; n <= max; n++)
+          CustomPaint(
+            foregroundPainter: n > min ? _DashedBox(c.outline, size / 2) : null,
+            child: Container(
+              width: size,
+              height: size,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(color: n <= min ? c.primaryContainer : null, shape: BoxShape.circle),
+              child: Text(digits(n), style: context.type.label.weight(600).copyWith(color: n <= min ? c.onPrimaryContainer : c.onSurfaceVariant)),
+            ),
+          ),
+      ]),
+    );
+  }
+}
+
+/// One Arabic letter (with an optional name under it).
+class LetterTile extends StatelessWidget {
+  const LetterTile({super.key, required this.letter, this.name, this.bare = false});
+  final String letter;
+  final String? name;
+  final bool bare; // inside an answer tile: no box
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    return Container(
+      constraints: const BoxConstraints(minWidth: 56, minHeight: 64),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      decoration: bare
+          ? null
+          : BoxDecoration(color: c.surfaceContainerLowest, borderRadius: BorderRadius.circular(Radii.control), border: Border.all(color: c.outlineVariant)),
+      child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text(letter, textDirection: TextDirection.rtl, style: TextStyle(fontFamily: Fonts.naskh, fontSize: 28, height: 1.3, color: c.onSurface).weight(600)),
+        if (name != null) Text(name!, style: context.type.caption.copyWith(color: c.onSurfaceVariant)),
+      ]),
+    );
+  }
 }

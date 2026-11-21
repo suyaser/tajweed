@@ -273,6 +273,13 @@ test('lesson steps', async () => {
   check('lessonSteps', { fresh: S.freshSteps('hear', D), required: S.REQUIRED, steps: S.STEP_IDS, minutes: S.LESSON_MINUTES, out })
 })
 
+test('router', async () => {
+  const { parseHash } = await import('./app/router')
+  const hashes = ['', '#/', '#/today', '#/learn/basics', '#/rules/ikhfa', '#/rules', '#/teacher/new', '#/teacher/4?sheet=1',
+    '#/unit/u1?finale=1', '#/listen/93:1-93:5', '#/mutun/tuhfa?from=3&to=7', '#/plan/', 'learn/idgh-g', '#/learn/a%20b', '#/nope/x/y', '#/settings?s=wird']
+  check('router', hashes.map((h) => [h, parseHash(h)]))
+})
+
 /* ---------------- player: segments, the word lamp, basmala ---------------- */
 
 test('player segments', async () => {
