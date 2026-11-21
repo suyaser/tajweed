@@ -30,6 +30,18 @@ flutter analyze && flutter test
 
 The whole check, in CI order (web tests → sync → analyze → Dart tests): `mobile/tool/check.sh`.
 
+## Parity with the web
+
+`src/parity.test.ts` runs the web's logic on fixed inputs (content adapter and i18n in both languages, day, a simulated
+learner through the scheduler and course, seeded questions, store migrations) and writes inputs and outputs to
+`mobile/test/fixtures/`. `test/parity_test.dart` must produce the same outputs. When web logic changes:
+
+```sh
+UPDATE_FIXTURES=1 npx vitest run src/parity.test.ts   # then make the Dart side pass
+```
+
+Without `UPDATE_FIXTURES` the web test fails if the committed fixtures are stale, so neither side can drift silently.
+
 ## App id (placeholder)
 
 The iOS bundle id and Android applicationId are set in ONE place: `mobile/app_id.xcconfig` (`APP_ID = app.placeholder.tajweed`).
