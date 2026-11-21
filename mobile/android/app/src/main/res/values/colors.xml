@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- public/icon.svg's tile -->
+    <color name="ic_launcher_background">#0F5B45</color>
+    <!-- color-background in src/styles/app.css (sand); dark in values-night -->
+    <color name="splash_bg">#F8F5EF</color>
+</resources>

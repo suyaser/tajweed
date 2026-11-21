@@ -1,2 +1,4 @@
 /* Microphone permission prompt (Info.plist NSMicrophoneUsageDescription) */
 "NSMicrophoneUsageDescription" = "Record yourself reciting so you can compare with the reciter. Recordings stay on this device.";
+/* Home screen name (Info.plist CFBundleDisplayName) */
+"CFBundleDisplayName" = "Tajweed Path";

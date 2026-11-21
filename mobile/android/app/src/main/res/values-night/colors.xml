@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dark color-background in src/styles/app.css -->
+    <color name="splash_bg">#121110</color>
+</resources>

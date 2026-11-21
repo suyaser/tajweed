@@ -1,9 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permissions (audited for the store; README "Release builds"): INTERNET streams and downloads the reciters'
+         audio from everyayah.com; RECORD_AUDIO records the learner, kept on the device. The release manifest also
+         gets ACCESS_NETWORK_STATE from ExoPlayer (media3, via just_audio): a normal permission, not asked for. -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- Record yourself and compare (lesson Say/Recite steps). The app shows its rationale before asking. -->
+    <!-- Record yourself and compare (lesson Say/Recite steps, Listen). The app shows its rationale before asking. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
-        android:label="tajweed"
+        android:label="@string/app_name"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:fullBackupContent="@xml/backup_rules"
