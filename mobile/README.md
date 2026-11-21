@@ -32,6 +32,18 @@ for the audio host fails). The engine sits behind `AudioOut`, so `test/player_te
 fake clock. The audio session is `playback`/speech (`configurePlaybackSession()` in `main.dart`): the iOS silent switch
 doesn't mute recitation.
 
+Recording (`lib/audio/recorder.dart`, `record` plugin): AAC-LC `.m4a`, mono 44.1 kHz 64 kbps, 3-minute guard, an
+8-second start timeout. On iOS the app owns the session: `playAndRecord` (speaker, Bluetooth) only while recording, then
+back to `playback`. Takes go to `<app support>/recordings/` with an index, the last 5 per range
+(`lib/audio/recordings.dart`); `RecorderView` is the record button and the Reciter / Me / Both row
+(`lib/audio/compare.dart`). Mic permission: `NSMicrophoneUsageDescription` in `Info.plist`, localised in
+`ios/Runner/{en,ar}.lproj/InfoPlist.strings`; Android `RECORD_AUDIO` with the app's rationale dialog first
+(`askMicrophone`). Android Auto Backup leaves `recordings/` and `audio/` out (`res/xml/*_rules.xml`).
+
+Offline audio (`lib/audio/downloads.dart`): a unit's ayahs (`content.unitAyahs`) saved to
+`<app support>/audio/<reciter>/SSSAAA.mp3`, 4 at a time through `.part` files; `Player.source = downloads.source`
+plays a saved file before the network. `OfflineAudio` is the Unit screen's panel (download, progress, failures, delete).
+
 ## Content sync
 
 The web files stay the single source. Copy them into `assets/shared/` (git-ignored) before running, testing or building:

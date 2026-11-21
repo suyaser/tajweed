@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto Backup (Android 6-11): progress is backed up; recordings and downloaded audio are not (25 MB cap; recordings
+     never leave the device, audio can be downloaded again). getApplicationSupportDirectory() is the "file" domain. -->
+<full-backup-content>
+    <exclude domain="file" path="recordings/" />
+    <exclude domain="file" path="audio/" />
+</full-backup-content>

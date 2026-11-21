@@ -252,3 +252,15 @@ extension type UserData(Json j) {
     for (final f in j['finales'] as List) (unitId: f['unitId'] as String, on: f['on'] as String),
   ];
 }
+
+/// A take of the learner reciting `from`..`to` (a verse range, or a pseudo-range like `drill:<id>`): an .m4a file in the
+/// recordings folder plus this row in its index. Never leaves the device.
+extension type Recording(Json j) {
+  String get id => j['id'];
+  String get from => j['from'];
+  String get to => j['to'];
+  Iso get createdAt => j['createdAt'];
+  int get durationMs => j['durationMs'];
+  String get mime => j['mime'];
+  String get file => j['file']; // name inside the recordings folder
+}

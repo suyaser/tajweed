@@ -1,0 +1,2 @@
+/* Microphone permission prompt (Info.plist NSMicrophoneUsageDescription) */
+"NSMicrophoneUsageDescription" = "سجّل تلاوتك لتقارنها بتلاوة القارئ. تبقى التسجيلات على هذا الجهاز.";
