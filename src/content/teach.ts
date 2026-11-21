@@ -7,6 +7,8 @@ import { isAr } from '../i18n'
 export interface Term {
   term: string // Arabic, as it appears in text (no case endings): غنة
   forms?: string[] // other written forms to match: الغنة is matched by the prefix rule; add plurals etc.
+  /** Phrases where the letters are not this term (سورة الروم for روم; بلين "smoothly" for لين): removed before matching. */
+  not?: string[]
   say: string // transliteration for the English UI: ghunnah
   en: string // what it means here, one sentence
   literal?: string // the word's everyday meaning
@@ -51,7 +53,8 @@ export function termsIn(text: string, entries: Term[] = glossary): Term[] {
   const t = fold(text)
   return entries.filter(e => {
     if (!patterns.has(e.term)) patterns.set(e.term, pattern(e))
-    return patterns.get(e.term)!.test(t)
+    const u = (e.not ?? []).reduce((x, n) => x.split(fold(n)).join(' '), t)
+    return patterns.get(e.term)!.test(u)
   })
 }
 

@@ -88,3 +88,14 @@ it('teaching texts', () => {
   if (!process.env.UPDATE_GLOSSARY) expect(stored, 'content/glossary.json is stale: run with UPDATE_GLOSSARY=1').toEqual(entries)
   expect(errs, errs.join('\n')).toEqual([])
 })
+
+it('term matching: prefixes and endings count, other words and "not" phrases do not', () => {
+  const ghunnah = { term: 'غنة', say: '', en: '', ar: '' }
+  expect(termsIn('بغنةٍ من الخيشوم', [ghunnah])).toHaveLength(1)
+  expect(termsIn('والغنة', [ghunnah])).toHaveLength(1)
+  const madd = { term: 'مد', say: '', en: '', ar: '' }
+  expect(termsIn('محمد', [madd])).toHaveLength(0)
+  const rawm = { term: 'روم', say: '', en: '', ar: '', not: ['سورة الروم'] }
+  expect(termsIn('في سورة الروم', [rawm])).toHaveLength(0)
+  expect(termsIn('بالروم', [rawm])).toHaveLength(1)
+})
