@@ -54,7 +54,9 @@ export function exampleSets<E extends { role?: ExampleRole }>(xs: E[]) {
     const by = (r: ExampleRole) => xs.filter(x => x.role === r)
     const anchor = by('anchor')[0] ?? xs[0]
     const say = by('say')
-    return { hear: [anchor, ...by('hear')].slice(0, 3), say: say.length ? say : xs.slice(0, 3), learn: anchor, notice: by('notice')[0] ?? anchor }
+    const core = [anchor, ...by('hear')].slice(0, 3)
+    // no say words (a rule with few places in the Quran): repeat the core words, never a "more" word (it may be read another way)
+    return { hear: core, say: say.length ? say : core, learn: anchor, notice: by('notice')[0] ?? anchor }
   }
   const hear = xs.slice(0, 3)
   const say = xs.length >= 6 ? xs.slice(3, 6) : [...hear.slice(1), ...hear.slice(0, 1)]

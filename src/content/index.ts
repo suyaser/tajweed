@@ -67,7 +67,7 @@ export const mutun: MatnLine[] = rawMutun.lines.map(l => ({
 /** The one English phrase in source locators (rules.json), in Arabic for the Arabic UI. */
 const arLocator = (l: string) => (isAr ? l.replace(/paging per the OpenITI copy of/g, 'بترقيم نسخة OpenITI من') : l)
 
-const NO_IDENTIFY = /^(makharij-|sifat-|maratib$|ibtida$|waqf-signs$|waqf-how$)/
+const NO_IDENTIFY = /^(makharij-|sifat-|maratib$|ibtida$|waqf-signs$|waqf-how$|rawm-ishmam$)/ // + الروم: heard, never written (unit 8 review)
 
 export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const a = isAr ? AR_CONTENT.lessons[r.id] : undefined

@@ -68,3 +68,13 @@ test('Notice prefers the same word with and without the rule', async () => {
   const pair = minimalPair(getLesson('tabii')!.examples, getLesson('basics')!.examples)
   expect(pair?.map(e => e.text)).toEqual(['مَٰلِكِ', 'مَلِكِ'])
 })
+
+test('with roles, steps show exactly their examples; no say words falls back to the core, never a "more" word', async () => {
+  const { exampleSets } = await import('../Learn')
+  const x = (id: string, role: 'anchor' | 'hear' | 'say' | 'notice' | 'more') => ({ id, role })
+  const s = exampleSets([x('a', 'anchor'), x('h1', 'hear'), x('h2', 'hear'), x('s1', 'say'), x('n', 'notice'), x('m', 'more')])
+  expect(s.hear.map(e => e.id)).toEqual(['a', 'h1', 'h2'])
+  expect(s.say.map(e => e.id)).toEqual(['s1'])
+  expect([s.learn.id, s.notice.id]).toEqual(['a', 'n'])
+  expect(exampleSets([x('a', 'anchor'), x('h1', 'hear'), x('m', 'more')]).say.map(e => e.id)).toEqual(['a', 'h1'])
+})
