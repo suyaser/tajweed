@@ -13,6 +13,9 @@ final basmala = basmalaPrefix.trim();
 
 final _cache = <int, Future<List<Verse>>>{};
 
+/// Tests: each test runs in its own zone, and a future cached by an earlier one never completes in the next.
+void clearSurahCache() => _cache.clear();
+
 /// Surah `n`'s verses. Memoised; a failed load is retried next call.
 Future<List<Verse>> loadSurah(int n, [AssetBundle? bundle]) => _cache.putIfAbsent(n, () {
   final f = (bundle ?? rootBundle)

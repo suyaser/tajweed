@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../content/content.dart';
 import '../i18n/i18n.dart';
+import '../screens/learn.dart';
 import '../screens/onboarding.dart';
 import '../screens/plan.dart';
 import '../screens/today.dart';
@@ -144,6 +145,7 @@ class _ShellPageState extends State<ShellPage> {
   Widget _screen(AppRoute r) => switch (r.name) {
     'onboarding' => const Onboarding(),
     'today' => const Today(),
+    'learn' => Learn(lessonId: r.params['lessonId']!),
     'plan' => const Plan(),
     'unit' => UnitScreen(id: r.params['unitId']!, finale: r.params['finale'] != null),
     _ => NotBuilt(route: r),
@@ -286,15 +288,15 @@ class _SaveErrorBanner extends StatelessWidget {
 
 /// Screen body (the web's Page): gutters, vertical rhythm, and an optional pinned bottom bar (the lesson's one action).
 class PageBody extends StatelessWidget {
-  const PageBody({super.key, required this.children, this.bottom, this.gap = Space.lg, this.top = Space.lg});
-  final List<Widget> children;
+  const PageBody({super.key, required this.items, this.bottom, this.gap = Space.lg, this.top = Space.lg});
+  final List<Widget> items;
   final Widget? bottom;
   final double gap, top;
   @override
   Widget build(BuildContext context) {
     final list = SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(Space.gutter, top, Space.gutter, Space.xl),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: gap, children: children),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: gap, children: items),
     );
     if (bottom == null) return list;
     return Column(children: [Expanded(child: list), bottom!]);
@@ -309,7 +311,7 @@ class NotBuilt extends StatelessWidget {
   Widget build(BuildContext context) {
     final m = meta[route.name]!;
     if (route.name == 'notFound') {
-      return PageBody(children: [
+      return PageBody(items: [
         EmptyState(
           icon: Icons.explore_off_outlined,
           title: t("This page doesn't exist."),
@@ -318,7 +320,7 @@ class NotBuilt extends StatelessWidget {
         ),
       ]);
     }
-    return PageBody(children: [
+    return PageBody(items: [
       EmptyState(icon: Icons.construction_outlined, title: isAr ? m.ar : '${m.en}\n${m.ar}', body: t('Not built yet.')),
     ]);
   }

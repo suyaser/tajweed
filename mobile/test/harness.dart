@@ -1,7 +1,7 @@
 // The app on temp files (store, device-local prefs, recordings, downloads), for screen tests.
 import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tajweed/app.dart';
 import 'package:tajweed/app/local.dart';
@@ -12,6 +12,7 @@ import 'package:tajweed/audio/recordings.dart';
 import 'package:tajweed/content/content.dart';
 import 'package:tajweed/core/store.dart';
 import 'package:tajweed/i18n/i18n.dart';
+import 'package:tajweed/quran/quran.dart';
 
 late RawContent raw;
 
@@ -23,6 +24,8 @@ Future<void> loadAll() async {
 /// Fresh services in a temp dir; `userdata` is written as the saved file first (null: none).
 Directory openTemp({String? userdata, Lang language = Lang.ar}) {
   lang.value = language;
+  clearSurahCache();
+  rootBundle.clear(); // cached futures from an earlier test's zone never complete in this one
   useContent(raw);
   final dir = Directory.systemTemp.createTempSync('app');
   final f = File('${dir.path}/userdata.json');
@@ -38,6 +41,8 @@ Future<void> pumpApp(WidgetTester tester) async {
   tester.view.physicalSize = const Size(390, 844);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
+  // the record plugin: no microphone in tests
+  tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(const MethodChannel('com.llfbandit.record/messages'), (_) async => null);
   await tester.pumpWidget(TajweedApp(initialRoute: startRoute, onGenerateRoute: buildRoute));
   await tester.pump();
   await tester.pump(const Duration(milliseconds: 400));

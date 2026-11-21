@@ -52,7 +52,7 @@ class _UnitScreenState extends State<UnitScreen> {
     final c = context.c, ty = context.type;
     final u = content.getUnit(widget.id);
     if (u == null) {
-      return PageBody(children: [
+      return PageBody(items: [
         EmptyState(
           icon: Icons.map_outlined,
           title: t("This unit isn't in the course."),
@@ -68,7 +68,7 @@ class _UnitScreenState extends State<UnitScreen> {
     final prev = i > 0 ? units[i - 1] : null;
     final fin = u.finale;
 
-    return PageBody(children: [
+    return PageBody(items: [
       Row(spacing: Space.md, children: [
         UnitNode(n: u.n, status: statusOf(u, p), large: true),
         Expanded(

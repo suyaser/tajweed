@@ -291,9 +291,9 @@ class ExampleVerse extends StatelessWidget {
   }
 }
 
-/// Stepper state shared by Hear, Say and the Recite fallback: one card at a time, fixed order (useStepper).
-class Stepper {
-  Stepper(this.n);
+/// ExStepper state shared by Hear, Say and the Recite fallback: one card at a time, fixed order (useStepper).
+class ExStepper {
+  ExStepper(this.n);
   final int n;
   int at = 0, reached = 0;
   final _played = <int>{};
@@ -330,7 +330,7 @@ class ExampleCard extends StatefulWidget {
   final VoidCallback onPlayed;
   final String? eyebrow;
   final bool hidden;
-  final Stepper? stepper;
+  final ExStepper? stepper;
   final ValueChanged<int>? onGo;
   final bool goForward; // every example open (Recite fallback): forward too
   final List<Widget> children;

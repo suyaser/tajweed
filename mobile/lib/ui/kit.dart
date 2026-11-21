@@ -182,7 +182,7 @@ class AppChip extends StatelessWidget {
       children: [
         if (icon != null) Icon(_filled(icon!, fill ?? pressed ?? false), size: 16, color: fg),
         if (icon != null && label != null) const SizedBox(width: 4),
-        if (label != null) Text(label!, style: context.type.label.copyWith(color: fg), maxLines: 1),
+        if (label != null) Flexible(child: Text(label!, style: context.type.label.copyWith(color: fg), maxLines: 1, overflow: TextOverflow.ellipsis)),
       ],
     );
     final box = Container(
@@ -1086,7 +1086,7 @@ class AudioControls extends StatelessWidget {
       Expanded(
         child: Align(
           alignment: AlignmentDirectional.centerStart,
-          child: played ? AppChip(tone: ChipTone.primary, icon: Icons.check_circle_outline, label: t('Played')) : null,
+          child: played ? FittedBox(fit: BoxFit.scaleDown, child: AppChip(tone: ChipTone.primary, icon: Icons.check_circle_outline, label: t('Played'))) : null,
         ),
       ),
       Semantics(
@@ -1110,10 +1110,13 @@ class AudioControls extends StatelessWidget {
       Expanded(
         child: Align(
           alignment: AlignmentDirectional.centerEnd,
-          child: Row(mainAxisSize: MainAxisSize.min, spacing: 6, children: [
-            if (onSlow != null) AppChip(icon: Icons.speed_outlined, label: t('Slower'), pressed: slow ?? false, onTap: onSlow),
-            if (onLoop != null) AppChip(icon: Icons.repeat, semanticLabel: t('Loop'), pressed: loop ?? false, onTap: onLoop),
-          ]),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(mainAxisSize: MainAxisSize.min, spacing: 6, children: [
+              if (onSlow != null) AppChip(icon: Icons.speed_outlined, label: t('Slower'), pressed: slow ?? false, onTap: onSlow),
+              if (onLoop != null) AppChip(icon: Icons.repeat, semanticLabel: t('Loop'), pressed: loop ?? false, onTap: onLoop),
+            ]),
+          ),
         ),
       ),
     ]);

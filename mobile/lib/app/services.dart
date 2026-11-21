@@ -27,4 +27,7 @@ Future<void> openServices() async {
 Reciter get learnerReciter => content.reciters.where((r) => r.id == store.data.settings.reciterId).firstOrNull ?? content.reciters.first;
 
 /// A player for one screen (the web's usePlayer per screen) that plays a saved file before the network.
-Player newPlayer() => Player()..source = downloads.source;
+Player newPlayer() => makePlayer();
+
+/// Tests swap the audio engine.
+Player Function() makePlayer = () => Player()..source = downloads.source;

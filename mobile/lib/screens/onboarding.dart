@@ -37,7 +37,7 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) => PageBody(
     key: ValueKey(_step), // each step starts at the top
-    children: switch (_step) {
+    items: switch (_step) {
       0 => _welcome(context),
       1 => [_ReadingCheck(onNext: () => setState(() => _step = 2))],
       _ => _how(context),

@@ -36,7 +36,7 @@ class _PlanState extends State<Plan> {
     }
     final unitsDone = units.where((u) => statusOf(u, p) == UnitStatus.passed).length;
     final total = content.courseOrder.length;
-    return PageBody(children: [
+    return PageBody(items: [
       PageHeader(en: 'Course path', ar: '\u0627\u0644\u0645\u0633\u0627\u0631', detail: [
         tn('{n} unit', '{n} units', units.length),
         t('{n} of {m} lessons done', {'n': p.done.length, 'm': total}),
