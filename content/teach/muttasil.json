@@ -1,0 +1,76 @@
+{
+ "lesson": "muttasil",
+ "terms": [
+  {
+   "term": "المد المتصل",
+   "forms": [
+    "المد الواجب المتصل"
+   ],
+   "say": "al-madd al-muttaṣil",
+   "en": "A حرف مد followed by a همزة in the same word. It must be held longer than two counts: 4 or 5 in حفص as this course reads.",
+   "literal": "the joined lengthening",
+   "ar": "أن تأتي همزة بعد حرف المد في الكلمة نفسها، فيجب مده أكثر من حركتين: أربعًا أو خمسًا لحفص من طريق الشاطبية.",
+   "arLiteral": "المد الموصول بسببه في كلمة واحدة"
+  }
+ ],
+ "en": {
+  "plain": "When a long vowel (ا, و or ي) is followed by a همزة in the same word, hold it four or five counts, not two.",
+  "fits": "You know المد الطبيعي: a حرف مد held two counts. A همزة right after it makes the مد longer. In this lesson the همزة is in the same word, as in جَآءَ; in the next one it starts the next word.",
+  "how": [
+   "Hold the ا, و or ي for 4 counts, the way read first, or 5. Count on your fingers at an even pace.",
+   "Keep the voice steady through the counts, then say the همزة clearly: جَآءَ.",
+   "Choose one length and keep it everywhere: if جَآءَ is 4, then سُوٓءَ and سِىٓءَ are 4 too.",
+   "If you stop on a word that ends in a همزة, as ٱلسَّمَآءِ: after 4, stop with 4 or 6; after 5, stop with 5 or 6."
+  ],
+  "why": "The همزة is a heavy letter, hard to say, and the حرف مد before it is weak and soft. The longer مد gives the voice time to say the همزة fully. All readers lengthen it beyond two, so it is called واجب, obligatory.",
+  "spot": "A wavy مد sign (ٓ) sits on the حرف مد, and the همزة follows in the same word: جَآءَ, سُوٓءَ. The next lesson's مد has the same sign; where the همزة is tells them apart.",
+  "mistakes": [
+   {
+    "wrong": "Holding جَآءَ for two counts, like a natural مد",
+    "right": "4 or 5 counts"
+   },
+   {
+    "wrong": "Different lengths in one recitation",
+    "right": "One length every time"
+   },
+   {
+    "wrong": "A weak or dropped همزة after the مد",
+    "right": "A clear همزة after the مد"
+   },
+   {
+    "wrong": "Six counts while joining",
+    "right": "Six only when you stop on a final همزة"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاءت همزة بعد حرف المد في الكلمة نفسها، مددتَه أربع حركات أو خمسًا، لا حركتين.",
+  "fits": "تعرف المد الطبيعي: حرف مد يُمد حركتين. فإذا جاءت بعده همزة طال المد. وفي هذا الدرس تكون الهمزة في الكلمة نفسها، كما في جَآءَ، وفي الدرس التالي تكون في أول الكلمة التي بعده.",
+  "how": [
+   "امدد الألف أو الواو أو الياء أربع حركات، وهو الوجه المقدَّم، أو خمسًا. عُدّ على أصابعك بإيقاع ثابت.",
+   "اجعل الصوت مستويًا طوال المد، ثم انطق الهمزة واضحة: جَآءَ.",
+   "التزم مقدارًا واحدًا في كل موضع: إن مددتَ جَآءَ أربعًا فامدد سُوٓءَ وسِىٓءَ أربعًا كذلك.",
+   "إذا وقفتَ على همزة في آخر الكلمة، كما في ٱلسَّمَآءِ: من قرأ بأربع وقف بأربع أو ست، ومن قرأ بخمس وقف بخمس أو ست."
+  ],
+  "why": "الهمزة حرف ثقيل صعب النطق، وحرف المد قبلها ضعيف خفي، فزيد في المد ليتمكن القارئ من نطق الهمزة على حقها. وقد أجمع القراء على مده أكثر من حركتين، ولذلك يسمى المد الواجب المتصل.",
+  "spot": "علامة المد (ٓ) فوق حرف المد، وبعده همزة في الكلمة نفسها: جَآءَ، سُوٓءَ. وهي العلامة نفسها في مد الدرس التالي، وإنما يفرّق بينهما موضع الهمزة.",
+  "mistakes": [
+   {
+    "wrong": "مدّ جَآءَ حركتين كالمد الطبيعي",
+    "right": "أربع حركات أو خمس"
+   },
+   {
+    "wrong": "مقادير مختلفة في التلاوة الواحدة",
+    "right": "مقدار واحد في كل موضع"
+   },
+   {
+    "wrong": "إضعاف الهمزة بعد المد أو إسقاطها",
+    "right": "همزة واضحة بعد المد"
+   },
+   {
+    "wrong": "المد ست حركات في الوصل",
+    "right": "الست عند الوقف على همزة متطرفة فقط"
+   }
+  ]
+ }
+}

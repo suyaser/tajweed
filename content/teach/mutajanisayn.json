@@ -1,0 +1,77 @@
+{
+ "lesson": "mutajanisayn",
+ "terms": [
+  {
+   "term": "المتجانسين",
+   "forms": [
+    "المتجانسان",
+    "متجانسان"
+   ],
+   "say": "al-mutajānisayn",
+   "en": "Two letters made at the same place (مخرج) but said differently. When the first has a سكون (المتجانسين الصغير), حفص merges seven such pairs.",
+   "literal": "two of the same kind",
+   "ar": "حرفان اتحدا في المخرج واختلفا في طريقة النطق. فإن سكن الأول (المتجانسان الصغير) أدغم حفص منهما سبعة أزواج.",
+   "arLiteral": "المتجانسان: المتشابهان في الجنس."
+  }
+ ],
+ "en": {
+  "plain": "When two different letters made at the same spot meet, the first with no vowel, حفص merges the first into the second in a few pairs: عَبَدتُّمْ is said عَبَتُّمْ, with one doubled ت.",
+  "fits": "In المثلين you merged the same letter twice. Here the two letters differ but share one مخرج: المتجانسين. حفص merges seven pairs: ت into ط, ط into ت, د into ت, ت into د, ذ into ظ, ث into ذ, ب into م. All other such meetings are said clearly. Letters from places that are close, not the same, come in a later lesson.",
+  "how": [
+   "Don't say the first letter on its own. In عَبَدتُّمْ the tongue makes no د; it goes straight to the ت and holds it as a doubled letter.",
+   "Most pairs merge completely: قَد تَّبَيَّنَ is said قَتَّبَيَّنَ, and in إِذ ظَّلَمُوٓا۟ and هَمَّت طَّآئِفَتَانِ you hear one heavy doubled ظ or ط.",
+   "In ٱرْكَب مَّعَنَا the ب becomes a doubled م, with the two-count غنة every مّ has.",
+   "ط before ت merges only partly: بَسَطتَ, أَحَطتُ. Raise the tongue and spread it on the roof of the mouth as for ط, then release a light ت that is not doubled."
+  ],
+  "why": "Two letters from one place, the first without a vowel, make the tongue work the same spot twice, which is heavy, so the first is merged to make the speech easy. The ط is far stronger than the ت, so its heaviness is not lost: the merge is incomplete.",
+  "spot": "The first letter has no sukun and the next has a شدة: عَبَدتُّمْ, قَد تَّبَيَّنَ. In بَسَطتَ the ط is bare but the ت has no شدة: the sign of the incomplete merge.",
+  "mistakes": [
+   {
+    "wrong": "Saying or bouncing the د in عَبَدتُّمْ.",
+    "right": "No د at all: عَبَتُّمْ, with a doubled ت."
+   },
+   {
+    "wrong": "Losing the ط in بَسَطتَ, so it sounds like بَسَتَّ.",
+    "right": "Keep the tongue raised for the ط, then a light, single ت."
+   },
+   {
+    "wrong": "Giving the ط of بَسَطتَ a قلقلة bounce.",
+    "right": "No bounce: the ط leads straight into the ت."
+   },
+   {
+    "wrong": "Still letting a ذ be heard in إِذ ظَّلَمُوٓا۟.",
+    "right": "One heavy doubled ظ."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا التقى حرفان مختلفان يخرجان من موضع واحد، وكان الأول ساكنًا، أدغم حفص الأول في الثاني في أزواج معدودة: عَبَدتُّمْ تُقرأ عَبَتُّمْ، بتاء واحدة مشددة.",
+  "fits": "في المثلين أدغمتَ الحرف في مثله. وهنا الحرفان مختلفان لكن مخرجهما واحد، ويسميان المتجانسين. ويُدغم حفص منهما سبعة أزواج: التاء في الطاء، والطاء في التاء، والدال في التاء، والتاء في الدال، والذال في الظاء، والثاء في الذال، والباء في الميم. وما سوى هذه الأزواج يُظهر. أما الحروف التي تتقارب مخارجها ولا تتحد فلها درس لاحق.",
+  "how": [
+   "لا تنطق الحرف الأول وحده. ففي عَبَدتُّمْ لا يصنع اللسان دالًا، بل ينتقل إلى التاء مباشرة ويمسكها مشددة.",
+   "أكثر الأزواج إدغامها كامل: قَد تَّبَيَّنَ تُقرأ قَتَّبَيَّنَ، وتسمع في إِذ ظَّلَمُوٓا۟ وهَمَّت طَّآئِفَتَانِ ظاءً أو طاءً واحدة مفخمة مشددة.",
+   "وفي ٱرْكَب مَّعَنَا تصير الباء ميمًا مشددة، بغنتها حركتين كما في كل مّ.",
+   "أما الطاء قبل التاء فإدغامها ناقص: بَسَطتَ، أَحَطتُ. ارفع اللسان وابسطه على سقف الفم كما في الطاء، ثم أطلقه بتاء خفيفة غير مشددة."
+  ],
+  "why": "الحرفان من مخرج واحد، والأول ساكن، يكلفان اللسان العمل في الموضع نفسه مرتين، وفي ذلك ثقل، فيُدغم الأول تخفيفًا. والطاء أقوى من التاء بكثير، فلا يذهب تفخيمها، ولذلك كان إدغامها ناقصًا.",
+  "spot": "الحرف الأول خالٍ من علامة السكون، والذي بعده مشدد: عَبَدتُّمْ، قَد تَّبَيَّنَ. وفي بَسَطتَ تجد الطاء خالية من السكون والتاء بلا شدة، وهذه علامة الإدغام الناقص.",
+  "mistakes": [
+   {
+    "wrong": "نطق الدال في عَبَدتُّمْ أو قلقلتها.",
+    "right": "لا دال أصلًا: عَبَتُّمْ، بتاء مشددة."
+   },
+   {
+    "wrong": "إذهاب الطاء في بَسَطتَ حتى تصير بَسَتَّ.",
+    "right": "أبقِ اللسان مرتفعًا للطاء، ثم تاء خفيفة غير مشددة."
+   },
+   {
+    "wrong": "قلقلة الطاء في بَسَطتَ.",
+    "right": "لا قلقلة: تنتقل الطاء إلى التاء مباشرة."
+   },
+   {
+    "wrong": "بقاء أثر الذال في إِذ ظَّلَمُوٓا۟.",
+    "right": "ظاء واحدة مفخمة مشددة."
+   }
+  ]
+ }
+}

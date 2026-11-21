@@ -1,0 +1,66 @@
+{
+ "lesson": "ra-l",
+ "terms": [],
+ "en": {
+  "plain": "The ر is thin and light with a كسرة, as in ٱلْخَيْرِ, and in some cases when it has no vowel or when you stop on it.",
+  "fits": "This completes the map of the ر. Ask the same questions in the same order: first, are you stopping on it (then it is ساكن); then its own vowel; then, for a ساكن ر, the vowel before it, stepping back past one ساكن at a stop, unless it is a ي (then light). Whatever is not heavy from the last lesson is light. A few words have two accepted readings, and the ر of مَجْر۪ىٰهَا (11:41) has its own way, taught later; it is light too.",
+  "how": [
+   "A ر with كسرة is light: رِجَالٌ, شَرِّ, ٱلْبَرِيَّةِ. The muṣḥaf has no sign for it; the vowels decide.",
+   "A ر with سكون after an original كسرة in the same word, with no heavy letter after it, is light: فِرْعَوْنَ, وَٱسْتَغْفِرْهُ.",
+   "Stopping, it is light after a يْ (لَّخَبِيرْ, ٱلْخَيْرْ), right after a كسرة (ٱلْمَقَابِرْ), or after a ساكن that is not a heavy letter with a كسرة before it (حِجْرْ, ٱلذِّكْرْ).",
+   "Keep the back of the tongue low and tap the tip once, lightly. The mouth does not fill.",
+   "Some words have two readings: فِرْقٍ, and at a stop مِصْرَ, ٱلْقِطْرِ, يَسْرِ, وَنُذُرِ, أَسْرِ. The books prefer one for each, and they differ on فِرْقٍ at a stop. Read what your teacher reads."
+  ],
+  "why": "A كسرة is a light vowel, and the ر takes its colour from it, whether on the ر or just before it. A يْ before a stopped ر counts like a كسرة. A heavy letter after the ر would pull it up again, which is why that case is heavy.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "A heavy ر when stopping on ٱلْخَيْرِ, because of the فتحة on خَ.",
+    "right": "A يْ comes right before the ر: light."
+   },
+   {
+    "wrong": "A heavy ر in فِرْعَوْنَ.",
+    "right": "رْ after an original كسرة, no heavy letter after it: light."
+   },
+   {
+    "wrong": "Rolling the light ر.",
+    "right": "One light tap."
+   },
+   {
+    "wrong": "Choosing a reading for مِصْرَ or فِرْقٍ on your own.",
+    "right": "These have two readings; follow your teacher."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "تُرقق الراء إذا كانت مكسورة، كما في ٱلْخَيْرِ، وفي أحوال أخرى إذا سكنت أو وقفت عليها.",
+  "fits": "بهذا الدرس تكتمل صورة الراء. اسأل الأسئلة نفسها بالترتيب نفسه: هل تقف عليها (فتكون ساكنة)؟ ثم حركتها، ثم الحركة قبلها إن كانت ساكنة، متجاوزًا ساكنًا واحدًا عند الوقف، إلا أن يكون ياءً فترقَّق. وكل ما لم يكن من أحوال التفخيم في الدرس الماضي فهو مرقق. وفي كلمات قليلة وجهان مقروءان، ولراء مَجْر۪ىٰهَا (هود ٤١) نطق خاص يأتي في درس لاحق، وهي مرققة أيضًا.",
+  "how": [
+   "الراء المكسورة مرققة: رِجَالٌ، شَرِّ، ٱلْبَرِيَّةِ. ولا علامة لذلك في المصحف، وإنما تحكم الحركات.",
+   "والراء الساكنة بعد كسرة أصلية في كلمتها، وليس بعدها حرف استعلاء، مرققة: فِرْعَوْنَ، وَٱسْتَغْفِرْهُ.",
+   "وعند الوقف تُرقق إذا سبقتها ياء ساكنة (لَّخَبِيرْ، ٱلْخَيْرْ)، أو كسرة مباشرة (ٱلْمَقَابِرْ)، أو ساكن ليس من حروف الاستعلاء قبله كسرة (حِجْرْ، ٱلذِّكْرْ).",
+   "أبقِ أقصى اللسان منخفضًا، واطرق بطرفه مرة واحدة خفيفة، فلا يمتلئ الفم.",
+   "في كلمات قليلة وجهان: فِرْقٍ، وعند الوقف مِصْرَ وٱلْقِطْرِ ويَسْرِ ووَنُذُرِ وأَسْرِ. وللعلماء في كل منها وجه مقدَّم، واختلفوا في فِرْقٍ عند الوقف. فاقرأ بما يقرأ به شيخك."
+  ],
+  "why": "الكسرة حركة خفيفة، والراء تأخذ لونها منها، سواء كانت عليها أو قبلها. والياء الساكنة قبل الراء الموقوف عليها بمنزلة الكسرة. أما حرف الاستعلاء بعدها فيرفعها، ولذلك فُخّمت معه.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "تفخيم الراء عند الوقف على ٱلْخَيْرِ بسبب فتحة الخاء.",
+    "right": "قبلها ياء ساكنة مباشرة، فهي مرققة."
+   },
+   {
+    "wrong": "تفخيم الراء في فِرْعَوْنَ.",
+    "right": "ساكنة بعد كسرة أصلية ولا استعلاء بعدها، فهي مرققة."
+   },
+   {
+    "wrong": "ترعيد الراء المرققة.",
+    "right": "طرقة واحدة خفيفة."
+   },
+   {
+    "wrong": "اختيار وجه في مِصْرَ أو فِرْقٍ من عندك.",
+    "right": "فيهما وجهان، فاتبع شيخك."
+   }
+  ]
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "lesson": "silent-letters",
+ "terms": [],
+ "en": {
+  "plain": "Some letters are written in the muṣḥaf but not said. A small round circle (۟) on a letter means it is never said; a small upright oval (۠) on an ا means it is said only when you stop on that word.",
+  "fits": "You have met letters that are written but dropped: the ل of اللام الشمسية, همزة الوصل when joined, and the ا with ۟ in قَالُوٓا۟. This lesson teaches the two marks that tell you a letter is not said. They change the مد too: in أَنَا۠ أُحْىِۦ, joined, there is no ا, so there is no المد المنفصل. You will meet the silent ا most often after the و at the end of verbs, as in فَلْيَعْبُدُوا۟.",
+  "how": [
+   "In this app the sukun and ۟ both look like small circles, so tell them by place. ۟ sits on an ا, or on a و or ي right after a ضمة or كسرة (one exception: بِأَيْي۟دٍ); a sukun never sits on an ا, and on و or ي it comes after a فتحة, as in خَوْفٍ.",
+   "۟ on a letter: skip it, joined or stopping. فَلْيَعْبُدُوا۟ ends on the و; أُو۟لَٰٓئِكَ is read أُلَٰٓئِكَ; مِا۟ئَةَ is read مِئَةَ.",
+   "۠ on an ا: when you join the word to the next, skip the ا and keep the vowel before it short. أَنَا۠ عَابِدٌ is read أَنَ عَابِدٌ.",
+   "If you stop on a word with ۠, the ا is said, two counts: أَنَا, ٱلظُّنُونَا at the end of the ayah.",
+   "In سورة الإنسان, سَلَٰسِلَا۟ (76:4) has no ا joined, and at a stop حفص reads it with or without the ا. Of the two قَوَارِيرَا, the first (76:15) has ۠ and follows the rule above; the second, قَوَارِيرَا۟ (76:16), never has its ا."
+  ],
+  "why": "The muṣḥaf keeps the spelling the Companions wrote, letter for letter. The reading itself was passed down by ear, teacher to student, and some written letters were never read. The marks tell you which.",
+  "spot": "مصحف المدينة has two marks: a small round zero ۟ (never said) and a small upright oval ۠ (said only at a stop). The printed muṣḥaf draws the sukun differently, but in this app the two look alike, so use their place (step 1): a letter with a sukun is said.",
+  "mistakes": [
+   {
+    "wrong": "Adding a sound for the ا after the و in فَلْيَعْبُدُوا۟ or يَتْلُوا۟.",
+    "right": "End on the و, a two-count مد."
+   },
+   {
+    "wrong": "Reading أُو۟لَٰٓئِكَ with a long و.",
+    "right": "The و is silent: أُلَٰٓئِكَ, with a short ضمة."
+   },
+   {
+    "wrong": "Stretching أَنَا۠ before a همزة when joined, as if it were المد المنفصل.",
+    "right": "Joined it is أَنَ أُحْيِى: short."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في المصحف حروف تُكتب ولا تُنطق. فالصفر المستدير الصغير (۟) فوق الحرف معناه أنه لا يُنطق أبدًا، والصفر المستطيل القائم (۠) فوق الألف معناه أنها لا تُنطق إلا إذا وقفت على الكلمة.",
+  "fits": "لقيتَ حروفًا تُكتب وتسقط من النطق: لام اللام الشمسية، وهمزة الوصل في الوصل، والألف التي عليها ۟ في قَالُوٓا۟. وهذا الدرس يعلمك العلامتين اللتين تدلانك على الحرف الذي لا يُنطق. ولهما أثر في المد: ففي أَنَا۠ أُحْىِۦ لا ألف عند الوصل، فلا مد منفصل. وأكثر ما ستلقى هذه الألف بعد الواو في آخر الأفعال، كما في فَلْيَعْبُدُوا۟.",
+  "how": [
+   "السكون والصفر المستدير يظهران في هذا التطبيق دائرتين صغيرتين متشابهتين، فميّز بينهما بموضعهما: الصفر المستدير يقع على الألف، أو على واو أو ياء بعد ضمة أو كسرة (إلا بِأَيْي۟دٍ)، والسكون لا يقع على الألف، ويقع على الواو والياء بعد فتحة كما في خَوْفٍ.",
+   "إذا رأيت ۟ فوق حرف فاتركه وصلًا ووقفًا: فَلْيَعْبُدُوا۟ تنتهي بالواو، وأُو۟لَٰٓئِكَ تُقرأ أُلَٰٓئِكَ، ومِا۟ئَةَ تُقرأ مِئَةَ.",
+   "وإذا رأيت ۠ فوق ألف ووصلت الكلمة بما بعدها فاحذف الألف واقصر الحركة قبلها: أَنَا۠ عَابِدٌ تُقرأ أَنَ عَابِدٌ.",
+   "فإن وقفت على الكلمة نطقت الألف حرف مد بحركتين: أَنَا، ٱلظُّنُونَا في آخر الآية.",
+   "وفي سورة الإنسان: سَلَٰسِلَا۟ (٤) لا ألف فيها وصلًا، ولحفص في الوقف عليها إثبات الألف وحذفها. وأما قَوَارِيرَا۠ الأولى (١٥) فعليها ۠ وحكمها ما سبق، والثانية قَوَارِيرَا۟ (١٦) لا تُنطق ألفها في وصل ولا وقف."
+  ],
+  "why": "حُفظت كتابة المصحف كما كتبها الصحابة حرفًا حرفًا، وأما القراءة فنُقلت بالسماع من شيخ إلى تلميذ، وفيها حروف مكتوبة لم تُقرأ قط. والعلامات تدلك عليها.",
+  "spot": "في مصحف المدينة علامتان: صفر مستدير صغير ۟ (لا يُنطق الحرف أبدًا)، وصفر مستطيل قائم ۠ (يُنطق عند الوقف فقط). وشكل السكون في المصحف المطبوع مختلف، لكنهما يتشابهان في هذا التطبيق، فميّز بالموضع (الخطوة الأولى): والحرف الساكن يُنطق.",
+  "mistakes": [
+   {
+    "wrong": "إظهار صوت للألف بعد الواو في فَلْيَعْبُدُوا۟ أو يَتْلُوا۟.",
+    "right": "اختم بالواو مدًا بحركتين."
+   },
+   {
+    "wrong": "قراءة أُو۟لَٰٓئِكَ بواو ممدودة.",
+    "right": "الواو لا تُنطق: أُلَٰٓئِكَ بضمة قصيرة."
+   },
+   {
+    "wrong": "مدّ أَنَا۠ قبل الهمزة عند الوصل كأنه مد منفصل.",
+    "right": "وصلًا تُقرأ أَنَ أُحْيِى بلا مد."
+   }
+  ]
+ }
+}

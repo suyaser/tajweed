@@ -1,0 +1,97 @@
+{
+ "lesson": "tafkhim",
+ "terms": [
+  {
+   "term": "تفخيم",
+   "forms": [
+    "مفخم"
+   ],
+   "say": "tafkhīm",
+   "en": "Saying a letter heavy: the sound is thick and fills the mouth. A letter said this way is مفخم.",
+   "literal": "making fat",
+   "ar": "نطق الحرف غليظًا يمتلئ الفم بصداه. والحرف الذي يُنطق كذلك مفخم.",
+   "arLiteral": "التسمين"
+  },
+  {
+   "term": "ترقيق",
+   "forms": [
+    "مرقق"
+   ],
+   "say": "tarqīq",
+   "en": "Saying a letter light: the sound is thin and does not fill the mouth. A letter said this way is مرقق.",
+   "literal": "making thin",
+   "ar": "نطق الحرف نحيفًا لا يمتلئ الفم بصداه. والحرف الذي يُنطق كذلك مرقق.",
+   "arLiteral": "التنحيف"
+  },
+  {
+   "term": "استعلاء",
+   "say": "istiʿlāʾ",
+   "en": "The back of the tongue rising toward the roof of the mouth as a letter is said. The seven letters of خُصَّ ضَغْطٍ قِظْ always have it, so they are always heavy.",
+   "literal": "rising up",
+   "ar": "ارتفاع أقصى اللسان إلى الحنك الأعلى عند النطق بالحرف. وحروفه سبعة يجمعها «خُصَّ ضَغْطٍ قِظْ»، ولذلك تُفخَّم دائمًا.",
+   "arLiteral": "العلو والارتفاع"
+  }
+ ],
+ "en": {
+  "plain": "Seven letters, خ ص ض غ ط ق ظ, are always said heavy: the back of the tongue rises and the sound fills the mouth. Almost every other letter is light.",
+  "fits": "So far you said each letter with its vowel. Letters also differ in weight. These seven are always heavy, and most letters are always light. Three change: the ا follows the letter before it (heavy in قَا, light in مَا), the ر has its own rules later, and the ل of the name اللَّه gets two lessons of its own in this unit.",
+  "how": [
+   "Say سَ, then صَ. Both are made in the same place, but for ص the back of the tongue rises toward the roof of the mouth, and the sound becomes full and deep. That rising is استعلاء.",
+   "Try the other pairs from one place: تَ then طَ, ذَ then ظَ. Light, then heavy.",
+   "The heaviness comes from the tongue, not the lips: do not round them, a heavy letter with a فتحة is still an a (خَ in ٱلْخَنَّاسِ). Listen to the reciter and to your teacher: heaviness is easier to hear than to describe.",
+   "Five levels, strongest first: فتحة with ا after it (قَا in ٱلْقَارِعَةُ), فتحة, ضمة, سكون, and كسرة (قِ in ٱلْمُسْتَقِيمَ, still heavy). This is ابن الجزري's choice; some teachers count three (فتحة, ضمة, كسرة) and give a letter with سكون the level of the vowel before it, so your teacher will say which to drill.",
+   "Keep it on its own letter: in ٱلْمُسْتَقِيمَ only the ق is heavy. The muṣḥaf has no sign for heavy or light; you learn the seven letters by heart."
+  ],
+  "why": "It is the nature of these letters: their sound is made with the tongue raised. Said light, they turn into other letters and the meaning changes: a light ص turns عَصَىٰ (he disobeyed) into عَسَىٰ (perhaps).",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Rounding the lips to make خَ or طَ heavy, so it sounds like خُ.",
+    "right": "Raise the back of the tongue; the lips do what the vowel needs."
+   },
+   {
+    "wrong": "Letting the heaviness spread: a heavy مُسْتَ in ٱلْمُسْتَقِيمَ.",
+    "right": "Only the ق is heavy; the letters around it stay light."
+   },
+   {
+    "wrong": "Saying قِ light because of its كسرة.",
+    "right": "It stays heavy, at its weakest level."
+   },
+   {
+    "wrong": "Making the ا heavy after a light letter, as in مَٰلِكِ.",
+    "right": "The ا follows the letter before it: light after م, heavy after ق."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "سبعة حروف تُنطق غليظة دائمًا: خ ص ض غ ط ق ظ. يرتفع معها أقصى اللسان، فيمتلئ الفم بصوتها. وأكثر الحروف الباقية تُنطق نحيفة.",
+  "fits": "نطقتَ حتى الآن كل حرف بحركته. والحروف تختلف أيضًا في غلظها ونحافتها: هذه السبعة مفخمة دائمًا، وأكثر الحروف مرققة دائمًا. وثلاثة تتغير: الألف تتبع ما قبلها (مفخمة في قَا، مرققة في مَا)، والراء لها أحكام تأتي لاحقًا، ولام اسم «اللَّه» لها درسان في هذه الوحدة.",
+  "how": [
+   "انطق سَ ثم صَ: مخرجهما واحد، لكن مع الصاد يرتفع أقصى اللسان نحو الحنك الأعلى، فيخرج الصوت ممتلئًا عميقًا. وهذا الارتفاع هو الاستعلاء.",
+   "جرّب الأزواج الأخرى من مخرج واحد: تَ ثم طَ، وذَ ثم ظَ. مرقق ثم مفخم.",
+   "التفخيم باللسان لا بالشفتين، فلا تضم شفتيك: الحرف المفخم المفتوح يبقى فتحة خالصة، كالخاء في ٱلْخَنَّاسِ. واستمع إلى القارئ وإلى شيخك، فالتفخيم يُدرك بالسماع أكثر من الوصف.",
+   "مراتبه خمس، أقواها المفتوح وبعده ألف (قَا في ٱلْقَارِعَةُ)، ثم المفتوح، ثم المضموم، ثم الساكن، وأضعفها المكسور (قِ في ٱلْمُسْتَقِيمَ) ويبقى مفخمًا. هذا اختيار ابن الجزري، وبعضهم يجعلها ثلاثًا: المفتوح والمضموم والمكسور، ويُلحق الساكن بحركة ما قبله، والشيخ يحدد ما تأخذ به.",
+   "واجعله في حرفه وحده: في ٱلْمُسْتَقِيمَ القاف وحدها مفخمة. وليس في المصحف علامة للتفخيم أو الترقيق، فاحفظ الحروف السبعة."
+  ],
+  "why": "هذه طبيعة الحروف السبعة: صوتها يخرج واللسان مرتفع. فإن رُققت انقلبت حروفًا أخرى وتغيّر المعنى: ترقيق الصاد يجعل عَصَىٰ (من المعصية) عَسَىٰ (للرجاء).",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "ضم الشفتين لتفخيم خَ أو طَ حتى تشبه خُ.",
+    "right": "ارفع أقصى اللسان، ودع الشفتين على ما تقتضيه الحركة."
+   },
+   {
+    "wrong": "سريان التفخيم إلى ما حوله: تفخيم مُسْتَ في ٱلْمُسْتَقِيمَ.",
+    "right": "القاف وحدها مفخمة، وما حولها مرقق."
+   },
+   {
+    "wrong": "ترقيق قِ لأنها مكسورة.",
+    "right": "تبقى مفخمة، في أدنى مراتبها."
+   },
+   {
+    "wrong": "تفخيم الألف بعد حرف مرقق، كما في مَٰلِكِ.",
+    "right": "الألف تتبع ما قبلها: مرققة بعد الميم، مفخمة بعد القاف."
+   }
+  ]
+ }
+}

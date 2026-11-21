@@ -1,0 +1,56 @@
+{
+ "lesson": "makharij-aqsa",
+ "terms": [],
+ "en": {
+  "plain": "ق and ك are made where the back of the tongue meets the roof of the mouth. ق is a little deeper, toward the throat; ك is a little further forward, toward the mouth.",
+  "fits": "You now leave the throat for the tongue, the third general place, which holds 10 of the 17 مخارج. This lesson takes the first two, at its back. You know ق already as a قلقلة letter and as a heavy letter (استعلاء).",
+  "how": [
+   "Say أَقْ: the back of the tongue rises and closes against the roof of the mouth (the palate) above it, near the throat. The sound stops there.",
+   "Say أَكْ: the contact moves a little in front of ق's point, toward the mouth.",
+   "Say أَقْ، أَكْ، أَقْ، أَكْ and feel the contact slide back and forth. In يَرْزُقُكُمْ you heard the two side by side.",
+   "Listen to the difference too: with ق the back of the tongue rises and the letter is heavy (استعلاء), while ك is light. The muṣḥaf has no mark for this; you learn it by ear."
+  ],
+  "why": "The two places are neighbours, so one slips into the other easily. A ق said too far forward sounds like ك, and the meaning changes: قَلْب is not كَلْب.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Saying ق from the throat, close to a همزة or a غ.",
+    "right": "Raise the back of the tongue to the palate and close there."
+   },
+   {
+    "wrong": "Saying the ق of قَلِيلًا light, like ك.",
+    "right": "Give it its weight: the back of the tongue rises."
+   },
+   {
+    "wrong": "Saying ك heavy, like ق.",
+    "right": "Close a little further forward and keep it light."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "القاف والكاف تخرجان من حيث يلتقي مؤخّر اللسان بسقف الفم. القاف أعمق قليلًا نحو الحلق، والكاف أقرب قليلًا إلى الفم.",
+  "fits": "تخرج الآن من الحلق إلى اللسان، وهو ثالث المخارج العامة، وفيه عشرة من المخارج السبعة عشر. وهذا الدرس لأول مخرجين منها في مؤخّره. وأنت تعرف القاف من قبل: حرفَ قلقلة، وحرفًا مفخّمًا فيه استعلاء.",
+  "how": [
+   "قل: أَقْ؛ يرتفع أقصى اللسان مما يلي الحلق فينطبق على ما فوقه من الحنك الأعلى (سقف الفم). وهناك ينقطع الصوت.",
+   "قل: أَكْ؛ يتقدّم موضع الالتقاء قليلًا عن مخرج القاف نحو الفم.",
+   "قل: أَقْ، أَكْ، أَقْ، أَكْ، وتحسّس الموضع يتراجع ويتقدّم. وقد سمعتَهما متجاورتين في يَرْزُقُكُمْ.",
+   "واسمع الفرق أيضًا: في القاف يرتفع أقصى اللسان فتُفخّم (استعلاء)، والكاف مرقّقة. ولا علامة لهذا في المصحف، وإنما يُعرف بالسماع."
+  ],
+  "why": "المخرجان متجاوران، فيسهل أن ينزلق أحدهما إلى الآخر. فإذا تقدّمت القاف عن موضعها قاربت الكاف، وتغيّر المعنى: فقَلْب غير كَلْب.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "إخراج القاف من الحلق، قريبة من الهمزة أو الغين.",
+    "right": "ارفع أقصى اللسان إلى الحنك وأطبقه هناك."
+   },
+   {
+    "wrong": "ترقيق القاف في قَلِيلًا حتى تشبه الكاف.",
+    "right": "أعطها تفخيمها: يرتفع أقصى اللسان."
+   },
+   {
+    "wrong": "تفخيم الكاف حتى تشبه القاف.",
+    "right": "أخرجها أمام موضع القاف قليلًا، ورقّقها."
+   }
+  ]
+ }
+}

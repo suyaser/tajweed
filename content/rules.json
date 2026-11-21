@@ -5877,7 +5877,8 @@
   "conditions": [
    "ع (in كٓهيعٓصٓ and عٓسٓقٓ) is 4 or 6, and 6 is preferred (الشاطبية: «وَفِي عَيْنٍ الْوَجْهَانِ وَالطُّولُ فُضِّلَا»).",
    "حي طهر (حَا، يَا، طَا، هَا، رَا) are two counts (مد طبيعي حرفي).",
-   "The ألف has no مد."
+   "The ألف has no مد.",
+   "الٓمٓ at the start of آل عمران joined to ٱللَّهُ: the last م takes a فتحة (مِيمَ ٱللَّهُ), so its ي is 6 or 2 counts."
   ],
   "tip": "In الٓمٓ the لام merges into the ميم: أَلِفْ لَامْ مِّيمْ.",
   "examples": [
@@ -6006,6 +6007,10 @@
    {
     "title": "غاية المريد في علم التجويد (عطية قابل نصر)، مقادير العارض",
     "locator": "https://shamela.ws/book/7311/132"
+   },
+   {
+    "title": "غاية المريد في علم التجويد (عطية قابل نصر)، ميم الٓمٓ أول آل عمران وصلًا",
+    "locator": "https://shamela.ws/book/7311/136"
    }
   ],
   "review": {
@@ -7329,7 +7334,7 @@
    ],
    [
     "كسرة ِ",
-    "an i, lips spread: بِ"
+    "an i, the lower jaw dropped a little: بِ"
    ],
    [
     "سكون ْ",
@@ -7397,7 +7402,7 @@
     "text": "عَلَيْهِمْ",
     "focus": "هِ",
     "stop": false,
-    "note": "كسرة on the ه: an i, lips spread.",
+    "note": "كسرة on the ه: an i, the lower jaw drops a little.",
     "role": "say"
    },
    {

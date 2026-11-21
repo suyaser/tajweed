@@ -1,0 +1,97 @@
+{
+ "lesson": "maratib",
+ "terms": [
+  {
+   "term": "مرتبة التحقيق",
+   "say": "martabat al-taḥqīq",
+   "en": "The slowest pace (not تحقيق الهمزة, saying a همزة fully): calm, with every letter, صفة and length given in full. It is the pace for learning and teaching.",
+   "literal": "giving a thing its full due",
+   "ar": "أبطأ مراتب القراءة (وليست تحقيق الهمزة، أي نطقها كاملة): بطمأنينة وتؤدة، مع إعطاء كل حرف حقه من المخرج والصفة والمد. وهي مرتبة التعلم والتعليم.",
+   "arLiteral": "الإتيان بالشيء على حقيقته"
+  },
+  {
+   "term": "التدوير",
+   "say": "al-tadwīr",
+   "en": "The middle pace, between التحقيق and الحدر. The usual pace of many readers.",
+   "ar": "المرتبة الوسطى بين التحقيق والحدر، وهي المعتادة عند كثير من القراء."
+  },
+  {
+   "term": "الحدر",
+   "say": "al-ḥadr",
+   "en": "A quick pace that keeps every rule: lengths, غنة and clear letters all stay.",
+   "literal": "going down quickly",
+   "ar": "الإسراع في القراءة مع مراعاة الأحكام كلها: تبقى مقادير المدود والغنن وبيان الحروف.",
+   "arLiteral": "الإسراع"
+  },
+  {
+   "term": "الترتيل",
+   "say": "al-tartīl",
+   "en": "Calm, measured reading with attention to the meaning, as commanded in 73:4. Books place it either as a pace close to التحقيق or as the manner that covers all three paces.",
+   "literal": "setting in good order",
+   "ar": "القراءة بتؤدة وطمأنينة مع تدبر المعاني، كما أمر الله في المزمل 4. وعدّه بعضهم مرتبة قريبة من التحقيق، وجعله آخرون هيئة تشمل المراتب الثلاث.",
+   "arLiteral": "التنسيق وحسن الترتيب"
+  }
+ ],
+ "en": {
+  "plain": "You may recite the Quran slowly, at a medium pace or quickly. At every pace each rule stays; only the speed changes.",
+  "fits": "Units 0 to 8 gave you the rules, and this unit the places and صفات of the letters. This last lesson is about pace: how fast you may recite while keeping all of them. The books agree on three speeds and differ on where الترتيل belongs.",
+  "how": [
+   "مرتبة التحقيق is the slowest: every letter is given its place and its صفات, every مد its full count. Use it to learn and to teach.",
+   "الحدر is quick, but no rule is dropped: each مد keeps its count, each غنة its two counts, each letter its clarity. التدوير lies between the two.",
+   "Try it: recite «وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا» at all three speeds. A count is shorter when you go faster, but the number of counts stays the same.",
+   "Whatever the pace, keep one choice for each مد length through the whole recitation. The muṣḥaf has no mark for the pace; you learn it by ear from your teacher.",
+   "الترتيل is the calm, measured reading the ayah commands: many count it as a speed close to مرتبة التحقيق, others as covering all three. Ibn al-Jazari: «كل تحقيق ترتيل وليس كل ترتيل تحقيقا»."
+  ],
+  "why": "The rules are part of the recitation itself, so speed never excuses dropping one. The three paces are all allowed; the pace changes with the setting, and the letters stay as they were received.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Cutting a 4- or 5-count مد to 2 because you read quickly.",
+    "right": "In الحدر the counts stay; each count is shorter."
+   },
+   {
+    "wrong": "Dropping the غنة of a نّ in a quick reading.",
+    "right": "Keep it two counts at any pace."
+   },
+   {
+    "wrong": "Reading المد المنفصل at 4 counts, then at 5, in the same recitation.",
+    "right": "Keep one choice throughout."
+   },
+   {
+    "wrong": "Stretching letters and vowels to make مرتبة التحقيق slower.",
+    "right": "مرتبة التحقيق is calm, not overdone: add no length."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "يجوز أن تقرأ القرآن ببطء، أو بسرعة متوسطة، أو بسرعة. وفي كل ذلك تبقى الأحكام كلها، وإنما تتغيّر السرعة.",
+  "fits": "تعلّمتَ الأحكام في الوحدات من 0 إلى 8، ومخارج الحروف وصفاتها في هذه الوحدة. وهذا الدرس الأخير عن سرعة القراءة: إلى أي حدّ تسرع مع حفظ ذلك كله. والكتب متفقة على ثلاث مراتب، ومختلفة في موضع الترتيل منها.",
+  "how": [
+   "مرتبة التحقيق أبطؤها: يُعطى كل حرف مخرجه وصفاته، وكل مد مقداره كاملًا. وهي للتعلم والتعليم.",
+   "الحدر سريع، لكن لا يسقط فيه حكم: يبقى لكل مد مقداره، وللغنة حركتاها، ولكل حرف بيانه. والتدوير بينهما.",
+   "جرّب: اقرأ «وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا» بالمراتب الثلاث. تقصر الحركة كلما أسرعت، لكن عدد الحركات لا يتغيّر.",
+   "وبأي مرتبة قرأت، التزم وجهًا واحدًا في مقدار كل مد طوال التلاوة. ولا علامة للمرتبة في المصحف، وإنما تُعرف بالسماع من المعلّم.",
+   "والترتيل هو القراءة المتأنية المتقنة التي أمرت بها الآية؛ عدّه كثيرون مرتبة قريبة من مرتبة التحقيق، وعدّه آخرون هيئة تشمل المراتب الثلاث. قال ابن الجزري: «كل تحقيق ترتيل وليس كل ترتيل تحقيقا»."
+  ],
+  "why": "الأحكام جزء من القراءة نفسها، فلا تبيح السرعة إسقاط شيء منها. والمراتب الثلاث كلها جائزة، تختار منها ما يناسب المقام، وتبقى الحروف كما تُلقّيت.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "قصر المد من أربع حركات أو خمس إلى حركتين بسبب السرعة.",
+    "right": "في الحدر يبقى عدد الحركات، وإنما تقصر الحركة."
+   },
+   {
+    "wrong": "إسقاط غنة النون المشددة عند الإسراع.",
+    "right": "أبقها حركتين في كل مرتبة."
+   },
+   {
+    "wrong": "قراءة المد المنفصل بأربع حركات ثم بخمس في التلاوة نفسها.",
+    "right": "التزم وجهًا واحدًا طوال التلاوة."
+   },
+   {
+    "wrong": "تمطيط الحروف والحركات بحجة مرتبة التحقيق.",
+    "right": "مرتبة التحقيق تؤدة بلا إفراط، فلا تزد في المدود."
+   }
+  ]
+ }
+}

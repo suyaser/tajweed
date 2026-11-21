@@ -1,0 +1,88 @@
+{
+ "lesson": "izhar",
+ "terms": [
+  {
+   "term": "النون الساكنة",
+   "say": "an-nūn as-sākinah",
+   "en": "A ن with a سكون, no vowel after it. It can come in the middle or at the end of a word, and it is written and said whether you join or stop.",
+   "literal": "the still noon",
+   "ar": "نونٌ لا حركة عليها، تقع في وسط الكلمة أو في آخرها، وتثبت كتابةً ونطقًا في الوصل والوقف.",
+   "arLiteral": "النون التي لا حركة لها"
+  },
+  {
+   "term": "إظهار",
+   "say": "iẓhār",
+   "en": "Saying the ن or تنوين clearly from its own place, with no held غنة, then going straight on to the next letter.",
+   "literal": "making clear",
+   "ar": "نطق النون الساكنة أو التنوين واضحةً من مخرجها، بلا غنة ممدودة، ثم الانتقال إلى الحرف التالي مباشرة.",
+   "arLiteral": "البيان والإيضاح"
+  },
+  {
+   "term": "حروف الحلق",
+   "say": "ḥurūf al-ḥalq",
+   "en": "The six letters made in the throat: ء هـ ع ح غ خ.",
+   "literal": "the throat letters",
+   "ar": "الحروف الستة التي تخرج من الحلق: ء هـ ع ح غ خ."
+  }
+ ],
+ "en": {
+  "plain": "When a ن with no vowel, or the ن sound of a تنوين, comes right before a letter made in the throat, say it as a plain, clear ن and move on. No held hum.",
+  "fits": "In the last lesson you held a two-count غنة on نّ and مّ. A ن with سكون, or a تنوين, is different: what you do depends on the letter after it, in four ways. Before the six throat letters ء هـ ع ح غ خ it stays clear: this lesson. Before ي ر م ل و ن at the start of the next word it goes into that letter, before ب it turns into a م, and before the other 15 letters it is hidden in a hum; the next four lessons teach those three.",
+  "how": [
+   "Say the ن from its place: the tip of the tongue against the gum above the upper front teeth.",
+   "Keep it short. Every ن has a small hum, but here you do not hold it: it is not the two-count غنة of إِنَّ.",
+   "Go straight on to the throat letter, with no pause and no vowel on the ن: أَنْعَمْتَ, مَنْ خَافَ.",
+   "A تنوين is a ن you say but don't write, so it works the same way: حَاسِدٍ إِذَا sounds ḥāsidin idhā, a clear n, then the همزة."
+  ],
+  "why": "The ن is made at the tip of the tongue, and these six letters in the throat. They are far apart, so nothing draws the ن toward them, and it stays as a ن normally is: clear.",
+  "spot": "The ن carries a سكون (نْ), as in مَنْ خَافَ; then check that the next letter is one of ء هـ ع ح غ خ. A تنوين has no extra sign on this screen, so in حَاسِدٍ إِذَا your sign is the letter after it, إ. In the printed مصحف المدينة the two marks of this تنوين are stacked one above the other, but this screen draws every تنوين that way.",
+  "mistakes": [
+   {
+    "wrong": "Holding a hum on the ن of مِنْ غَيْرِ, as if it had a شدة",
+    "right": "A short, clear ن, then the غ"
+   },
+   {
+    "wrong": "Pausing after the ن: مَنْ … خَافَ",
+    "right": "No break: the ن runs straight into the خ"
+   },
+   {
+    "wrong": "Swallowing the ن of أَنْعَمْتَ so it is hardly heard",
+    "right": "The tongue touches its place: a full, clear ن"
+   },
+   {
+    "wrong": "Putting a vowel on the ن: مَنِ خَافَ",
+    "right": "The ن has no vowel; it closes, then the خ"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاء بعد النون الساكنة أو التنوين حرفٌ من حروف الحلق، نطقتَ النون واضحةً كما هي، ثم انتقلتَ إلى الحرف التالي بلا غنة ممدودة.",
+  "fits": "تعلّمتَ في الدرس السابق أن الغنة تُمدّ حركتين في نّ ومّ. أما النون الساكنة والتنوين فلهما أربعة أحكام بحسب الحرف الذي يليهما. تظهر النون عند حروف الحلق الستة ء هـ ع ح غ خ، وهذا هو الإظهار، موضوع هذا الدرس. وتدخل في الحرف التالي إذا كان أول الكلمة التي بعدها ي أو ر أو م أو ل أو و أو ن (يجمعها لفظ «يَرْمَلُونَ»)، وتنقلب ميمًا عند الباء، وتختفي في غنة عند الحروف الخمسة عشر الباقية؛ وهذه الثلاثة تأتي في الدروس الأربعة القادمة.",
+  "how": [
+   "اجعل طرف اللسان على لثة الثنايا العليا، فتخرج النون من مخرجها كاملة.",
+   "في كل نون غنة يسيرة لا تفارقها، فلا تمدّها هنا: ليست هذه الغنة الممدودة حركتين التي في إِنَّ.",
+   "انتقل إلى حرف الحلق فورًا، بلا توقف بينهما ولا حركة على النون: أَنْعَمْتَ، مَنْ خَافَ.",
+   "والتنوين نون تُنطق ولا تُكتب، فحكمه حكمها: حَاسِدٍ إِذَا تُنطق «حاسِدِنْ إذا»، بنون واضحة ثم الهمزة."
+  ],
+  "why": "تخرج النون من طرف اللسان، وتخرج هذه الحروف من الحلق، وبينهما بُعد كبير. فليس هناك ما يقرّب النون منها، فتبقى على أصلها ظاهرة.",
+  "spot": "على النون سكون (نْ)، كما في مَنْ خَافَ؛ ثم انظر: أهو الحرف التالي من ء هـ ع ح غ خ؟ ولا علامة زائدة على التنوين في هذه الشاشة، فعلامتك في حَاسِدٍ إِذَا هي الهمزة بعده. أما في مصحف المدينة المطبوع فحركتا التنوين هنا متراكبتان، وهذه الشاشة ترسم كل تنوين على هذه الصورة.",
+  "mistakes": [
+   {
+    "wrong": "مدّ الغنة في نون مِنْ غَيْرِ كأنها مشددة",
+    "right": "نون قصيرة واضحة، ثم الغين مباشرة"
+   },
+   {
+    "wrong": "التوقف بعد النون: مَنْ … خَافَ",
+    "right": "صِلِ النون بالخاء بلا انقطاع"
+   },
+   {
+    "wrong": "تضييع النون في أَنْعَمْتَ حتى لا تكاد تُسمع",
+    "right": "يلمس اللسان مخرجها فتُسمع نونًا كاملة"
+   },
+   {
+    "wrong": "تحريك النون: «مَنِ خَافَ»",
+    "right": "النون ساكنة: تُنطق ثم تأتي الخاء"
+   }
+  ]
+ }
+}

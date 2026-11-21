@@ -1,0 +1,78 @@
+{
+ "lesson": "munfasil",
+ "terms": [
+  {
+   "term": "المد المنفصل",
+   "forms": [
+    "المد الجائز المنفصل"
+   ],
+   "say": "al-madd al-munfaṣil",
+   "en": "A حرف مد at the end of a word, with a همزة at the start of the next. Held 4 or 5 counts when you join, the same as your المد المتصل.",
+   "literal": "the separated lengthening",
+   "ar": "أن يكون حرف المد في آخر كلمة، والهمزة في أول الكلمة التالية؛ فيُمد عند الوصل أربعًا أو خمسًا، بمقدار المد المتصل.",
+   "arLiteral": "المد المفصول عن سببه بين كلمتين"
+  }
+ ],
+ "en": {
+  "plain": "When a word ends in a long vowel and the next word starts with a همزة, hold the vowel four or five counts as you join them.",
+  "fits": "In the last lesson the همزة was in the same word (جَآءَ). Here it starts the next word: لَآ أَعْبُدُ. In حفص as this course reads it, it is held as long as المد المتصل: 4 with 4, or 5 with 5. It is called جائز, permitted, because readers differ on it: some read it short.",
+  "how": [
+   "Hold the ا, و or ي at the end of the first word for the same count as your المد المتصل: 4 or 5.",
+   "Join straight into the همزة of the next word: لَآ أَعْبُدُ, فِىٓ أَحْسَنِ.",
+   "Only when you join. Stop on لَآ and it is a natural مد of two counts.",
+   "يَٰٓأَيُّهَا is written as one word but is two, يَا and أَيُّهَا, so this مد applies.",
+   "In قَالُوٓا۟ إِنَّ the ا with the round mark (۟) is not said: hold the و, then إِنَّ."
+  ],
+  "why": "The reason is that of المد المتصل: the longer مد prepares the voice for the heavy همزة. Here the همزة is in another word, so the tie is looser, and that is why readers differ on its length.",
+  "spot": "The wavy مد sign (ٓ) on the last letter of a word, and a همزة (أ or إ) starting the next: لَآ أَعْبُدُ. It is the same sign as in جَآءَ; the space between the words tells you which مد it is.",
+  "mistakes": [
+   {
+    "wrong": "Two counts in لَآ أَعْبُدُ",
+    "right": "4 or 5, equal to your المد المتصل"
+   },
+   {
+    "wrong": "4 for المد المتصل and 5 here",
+    "right": "4 with 4, or 5 with 5"
+   },
+   {
+    "wrong": "Holding it long after stopping on لَآ",
+    "right": "Stopped, it is two counts"
+   },
+   {
+    "wrong": "Saying the ا of قَالُوٓا۟",
+    "right": "It carries a round mark: not said"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا انتهت كلمة بحرف مد، وبدأت الكلمة التالية بهمزة، مددتَه عند الوصل أربع حركات أو خمسًا.",
+  "fits": "في الدرس السابق كانت الهمزة في الكلمة نفسها (جَآءَ)، وهنا تأتي في أول الكلمة التالية: لَآ أَعْبُدُ، وهذا هو المد المنفصل. ولحفص من طريق الشاطبية يُمد بمقدار المد المتصل: أربع مع أربع، أو خمس مع خمس. ويسمى «جائزًا» لأن القراء اختلفوا فيه، فمنهم من يقصره.",
+  "how": [
+   "امدد حرف المد في آخر الكلمة الأولى بمقدار مدّك المتصل: أربعًا أو خمسًا.",
+   "انتقل منه مباشرة إلى همزة الكلمة التالية: لَآ أَعْبُدُ، فِىٓ أَحْسَنِ.",
+   "هذا عند الوصل فقط: إن وقفتَ على لَآ فهو مد طبيعي حركتان.",
+   "يَٰٓأَيُّهَا كُتبت كلمة واحدة، وهي كلمتان: «يا» و«أيها»، فمدها من هذا النوع.",
+   "في قَالُوٓا۟ إِنَّ لا تُقرأ الألف التي عليها الدائرة (۟): تُمد الواو ثم إِنَّ."
+  ],
+  "why": "سببه سبب المد المتصل: يطول المد ليتهيأ الصوت للهمزة الثقيلة. لكن الهمزة هنا في كلمة أخرى، فالاتصال بينهما أضعف، ولذلك اختلف القراء في مقداره.",
+  "spot": "علامة المد (ٓ) على آخر حرف في الكلمة، وفي أول الكلمة التالية همزة (أ أو إ): لَآ أَعْبُدُ. وهي العلامة نفسها التي في جَآءَ؛ والفاصل بين الكلمتين يدلك على نوع المد.",
+  "mistakes": [
+   {
+    "wrong": "مدّ لَآ أَعْبُدُ حركتين",
+    "right": "أربعًا أو خمسًا، بمقدار المد المتصل"
+   },
+   {
+    "wrong": "المد المتصل أربعًا وهذا خمسًا",
+    "right": "سوِّ بينهما: أربع مع أربع، أو خمس مع خمس"
+   },
+   {
+    "wrong": "المد الطويل عند الوقف على لَآ",
+    "right": "عند الوقف حركتان"
+   },
+   {
+    "wrong": "نطق الألف في قَالُوٓا۟",
+    "right": "عليها دائرة: لا تُقرأ"
+   }
+  ]
+ }
+}

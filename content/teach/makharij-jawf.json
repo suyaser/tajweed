@@ -1,0 +1,86 @@
+{
+ "lesson": "makharij-jawf",
+ "terms": [
+  {
+   "term": "الجوف",
+   "say": "al-jawf",
+   "en": "The open space inside the throat and mouth. It is the مخرج of the three حروف المد.",
+   "literal": "the hollow, the inside",
+   "ar": "الخلاء الداخل في الحلق والفم، وهو مخرج حروف المد الثلاثة.",
+   "arLiteral": "الخلاء والداخل"
+  },
+  {
+   "term": "المخارج العامة",
+   "say": "al-makhārij al-ʿāmmah",
+   "en": "The five general places of speech, each holding one or more مخارج: الجوف, the throat, the tongue, the lips and الخيشوم.",
+   "literal": "the general places",
+   "ar": "المواضع الخمسة التي تخرج منها الحروف، في كل موضع مخرج أو أكثر: الجوف، والحلق، واللسان، والشفتان، والخيشوم."
+  },
+  {
+   "term": "المخارج الخاصة",
+   "say": "al-makhārij al-khāṣṣah",
+   "en": "The 17 exact points inside the five general places. Each gives one, two or three letters.",
+   "literal": "the specific places",
+   "ar": "المواضع السبعة عشر الدقيقة داخل المخارج العامة، يخرج من كل واحد منها حرف أو حرفان أو ثلاثة."
+  },
+  {
+   "term": "الحروف الهوائية",
+   "say": "al-ḥurūf al-hawāʾiyyah",
+   "en": "Another name for the three حروف المد: their sound has no point where it stops and ends only when the breath ends.",
+   "literal": "the airy letters",
+   "ar": "اسم آخر لحروف المد الثلاثة؛ لأنه ليس لها موضع ينقطع عنده صوتها، فينتهي بانتهاء الهواء."
+  }
+ ],
+ "en": {
+  "plain": "Every letter is made at its own place in the throat, mouth or nose. This unit maps those places, starting with the long ا و ي, which touch nothing and come from the open space inside.",
+  "fits": "Since lesson 1 you have known that each letter has a مخرج. Following الجزرية, there are five المخارج العامة: الجوف, the throat, the tongue, the lips and الخيشوم. Inside them are 17 المخارج الخاصة: الجوف 1, the throat 3, the tongue 10, the lips 2 and الخيشوم 1. This lesson is the first of them.",
+  "how": [
+   "Find a letter's مخرج with a همزة with a vowel before it and a سكون on it. Say أَبْ: the lips close and the sound stops there, at the مخرج of ب.",
+   "Say بَا and hold the ا: no part of your mouth touches another. The sound runs through the open space of the throat and mouth, which is الجوف.",
+   "Try بُو and بِي: the وْ after a ضمة and the يْ after a كسرة have no stopping point either. Their sound ends only when the breath ends, so they are called الحروف الهوائية.",
+   "Change the vowel before them and they leave الجوف, as in خَوْفٍ and بَيْتِ (لين) and in a voweled وَ or يَ. Then the و comes from the lips and the ي from the middle of the tongue against the roof of the mouth."
+  ],
+  "why": "Because their place is wide and open, the sound of حروف المد spreads, so they can be drawn out beyond their two counts. Every other letter stops at a point, and knowing that point keeps it from sliding into its neighbour.",
+  "spot": "The muṣḥaf puts no سكون on a حرف مد. A bare ا after a فتحة, a bare و after a ضمة or a bare ي after a كسرة comes from الجوف. In قَالُوا۟ the ا and the و are bare; the last ا has a small round zero (۟): it is not read.",
+  "mistakes": [
+   {
+    "wrong": "Ending the ا of قَالُوا۟ with a catch in the throat, like a small همزة.",
+    "right": "Let the sound fade as the breath ends."
+   },
+   {
+    "wrong": "Pressing the tongue or the lips while holding a حرف مد.",
+    "right": "Keep the mouth open and still: nothing touches."
+   },
+   {
+    "wrong": "Drawing out the وْ of خَوْفٍ like the و of يَقُولُ while you keep reading.",
+    "right": "Joined to what follows, it is لين, not a حرف مد: say it lightly."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "لكل حرف موضع يخرج منه في الحلق أو الفم أو الأنف. وفي هذه الوحدة نتعرّف على هذه المواضع، ونبدأ بالألف والواو والياء الممدودة، وهي لا تعتمد على شيء، بل تخرج من الفراغ الداخلي.",
+  "fits": "عرفتَ في الدرس الأول أن لكل حرف مخرجًا. وعلى ما في الجزرية، المخارج العامة خمسة: الجوف، والحلق، واللسان، والشفتان، والخيشوم. وفيها سبعة عشر من المخارج الخاصة: في الجوف واحد، وفي الحلق ثلاثة، وفي اللسان عشرة، وفي الشفتين اثنان، وفي الخيشوم واحد. وهذا الدرس أولها.",
+  "how": [
+   "لتعرف مخرج الحرف أدخل عليه همزة متحركة وسكّنه. قل: أَبْ، تنطبق الشفتان وينقطع الصوت عندهما، فهناك مخرج الباء.",
+   "قل: بَا وأطل الألف، فلا يلتقي في فمك شيء بشيء. يجري الصوت في الفراغ الذي في الحلق والفم، وهذا الفراغ هو الجوف.",
+   "جرّب بُو وبِي: الواو الساكنة بعد ضمة والياء الساكنة بعد كسرة ليس لهما موضع ينقطع عنده الصوت. بل ينتهي بانتهاء النفس، ولذلك تسمّى الحروف الهوائية.",
+   "إذا تغيّرت الحركة قبلهما خرجتا من غير الجوف، كما في خَوْفٍ وبَيْتِ (حرفا لين) وفي الواو والياء المتحركتين. فالواو حينئذ من الشفتين، والياء من وسط اللسان مع الحنك الأعلى (سقف الفم)."
+  ],
+  "why": "لأن مخرج حروف المد واسع مفتوح، ينتشر فيه الصوت ويقبل الامتداد، ولذلك قبلت الزيادة على مقدارها الطبيعي. أما سائر الحروف فلكلٍّ منها موضع ينقطع عنده، ومعرفته تحفظ الحرف من أن يميل إلى جاره.",
+  "spot": "لا يضع المصحف سكونًا على حرف المد. فالألف بعد فتحة، والواو المجرّدة بعد ضمة، والياء المجرّدة بعد كسرة، كلها من الجوف. وفي قَالُوا۟ الألف والواو مجرّدتان، والألف الأخيرة عليها صفر مستدير (۟) فلا تُقرأ.",
+  "mistakes": [
+   {
+    "wrong": "ختم ألف قَالُوا۟ بقطعة في الحلق كأنها همزة صغيرة.",
+    "right": "دع الصوت ينتهي بانتهاء النفس."
+   },
+   {
+    "wrong": "الضغط باللسان أو الشفتين أثناء مدّ الحرف.",
+    "right": "اترك الفم مفتوحًا ساكنًا، لا يلتقي فيه شيء."
+   },
+   {
+    "wrong": "مدّ الواو في خَوْفٍ كواو يَقُولُ عند الوصل.",
+    "right": "هي في الوصل حرف لين لا مد، فانطقها بخفّة."
+   }
+  ]
+ }
+}

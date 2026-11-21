@@ -1,0 +1,65 @@
+{
+ "lesson": "tashil",
+ "terms": [
+  {
+   "term": "تسهيل",
+   "say": "tashīl",
+   "en": "Saying a همزة softly, between a full همزة and the حرف مد that matches its vowel (here an ا). In ءَا۬عْجَمِىٌّ the second همزة is said between a همزة and an ا.",
+   "literal": "making easy",
+   "ar": "النطق بالهمزة بين الهمزة المحققة وحرف المد. وفي ءَا۬عْجَمِىٌّ تُنطق الهمزة الثانية بين الهمزة والألف.",
+   "arLiteral": "التيسير والتليين"
+  }
+ ],
+ "en": {
+  "plain": "In ءَا۬عْجَمِىٌّ (41:44) two همزة come together. The second is softened: its sound is between a همزة and an ا.",
+  "fits": "You know the همزة as a clear sound from the throat, and مد البدل, where a full همزة is followed by a real ا, as in ءَايَٰتُهُۥٓ just before. Here the first ءَ asks a question, and the second begins أَعْجَمِىٌّ. حفص must soften the second here and nowhere else; in three other words he has a choice.",
+  "how": [
+   "Say the first همزة clearly, with its فتحة: ءَ.",
+   "Say the second softer than a full همزة, leaning toward an ا: neither a clear همزة nor a long ا. Listen to your teacher for the sound.",
+   "Don't lengthen it: no مد after it. Then go on: ءَا۬عْجَمِىٌّ.",
+   "In ءَآلذَّكَرَيْنِ (6:143–144), ءَآلْـَٰٔنَ (10:51، 10:91) and ءَآللَّهُ (10:59، 27:59), read first the second همزة changed into a long ا of six counts, as in المد اللازم. التسهيل with no مد is also correct."
+  ],
+  "why": "Two همزة in a row are heavy to say, so the second is eased. Others read ءَا۬عْجَمِىٌّ with both in full, but حفص received it eased. In the ءَآلْ words the second همزة is the همزة الوصل of ال. It normally drops when joined, but dropping it here would make the question sound like a statement. So it is kept, as a long ا or eased.",
+  "spot": "The second letter of ءَا۬عْجَمِىٌّ is an ا with a round dot (۬) above it, and no همزة sign. The ءَآلْ words carry the long-ا sign ٓ, the first way.",
+  "mistakes": [
+   {
+    "wrong": "Two full همزة: ءَأَعْجَمِىٌّ.",
+    "right": "Soften the second, between a همزة and an ا."
+   },
+   {
+    "wrong": "Lengthening the softened همزة.",
+    "right": "No مد after it; it stays short."
+   },
+   {
+    "wrong": "Softening ءَآلذَّكَرَيْنِ and also lengthening it.",
+    "right": "Either a long ا of six counts (read first), or التسهيل with no مد."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في ءَا۬عْجَمِىٌّ (41:44) تجتمع همزتان، فتُنطق الثانية مسهَّلةً، بين الهمزة والألف.",
+  "fits": "تعرف الهمزة صوتًا واضحًا يخرج من الحلق، وتعرف مد البدل، وهو همزة محققة بعدها ألف حقيقية كما في ءَايَٰتُهُۥٓ قبلها. والهمزة الأولى هنا للاستفهام، والثانية أول كلمة أَعْجَمِىٌّ. ويجب على حفص تسهيل الثانية هنا وحدها، وله في ثلاث كلمات أخرى وجهان.",
+  "how": [
+   "انطق الهمزة الأولى محققة مفتوحة: ءَ.",
+   "انطق الثانية أخفّ من الهمزة المحققة، مائلةً إلى الألف: لا هي همزة واضحة ولا ألف ممدودة. وخذ صوتها من شيخك.",
+   "لا تمدها، فلا مد بعدها، ثم أكمل: ءَا۬عْجَمِىٌّ.",
+   "وفي ءَآلذَّكَرَيْنِ (6:143–144) و ءَآلْـَٰٔنَ (10:51، 10:91) و ءَآللَّهُ (10:59، 27:59) المقدَّم إبدال الهمزة الثانية ألفًا تُمد ست حركات كالمد اللازم، ويجوز التسهيل بلا مد."
+  ],
+  "why": "اجتماع همزتين ثقيل على اللسان، فتُسهَّل الثانية. وقد قرأ بعض القرّاء ءَا۬عْجَمِىٌّ بتحقيق الهمزتين، أما حفص فرواها بالتسهيل. وفي كلمات ءَآلْ الهمزة الثانية همزة وصل، وحقها أن تسقط في الوصل، لكن حذفها هنا يُلبس الاستفهام بالخبر، فتبقى: إما ألفًا ممدودة وإما مسهّلة.",
+  "spot": "الحرف الثاني في ءَا۬عْجَمِىٌّ ألف فوقها نقطة مستديرة (۬)، بلا رأس همزة. أما كلمات ءَآلْ فعليها علامة المد ٓ، وهي الوجه المقدَّم.",
+  "mistakes": [
+   {
+    "wrong": "تحقيق الهمزتين: ءَأَعْجَمِىٌّ.",
+    "right": "سهّل الثانية بين الهمزة والألف."
+   },
+   {
+    "wrong": "مدّ الهمزة المسهّلة.",
+    "right": "لا مد بعدها، بل تبقى قصيرة."
+   },
+   {
+    "wrong": "تسهيل ءَآلذَّكَرَيْنِ مع المد.",
+    "right": "إما ألف ممدودة ست حركات، وهو المقدَّم، وإما التسهيل بلا مد."
+   }
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "lesson": "imalah",
+ "terms": [
+  {
+   "term": "إمالة",
+   "say": "imālah",
+   "en": "Tilting a فتحة toward a كسرة and the ا after it toward a ي. In حفص it is in one word only, مَجْر۪ىٰهَا (11:41), in its full degree (إمالة كبرى).",
+   "literal": "making something lean",
+   "ar": "تقريب الفتحة من الكسرة والألف من الياء. ولا تكون عند حفص إلا في كلمة واحدة: مَجْر۪ىٰهَا (11:41)، وهي إمالة كبرى.",
+   "arLiteral": "جعل الشيء يميل"
+  }
+ ],
+ "en": {
+  "plain": "In one word, مَجْر۪ىٰهَا, the رَا is said leaning toward رِي. It is not a pure ا and not a full ي; it sits between them.",
+  "fits": "You know the plain ا after a فتحة, read two counts (المد الطبيعي), as in the very next word, وَمُرْسَىٰهَآ. Other readers tilt the ا in many words; حفص keeps every ا plain except this one.",
+  "how": [
+   "Say مَجْ: a م with فتحة, then a ج with سكون.",
+   "Say the ر light, with ترقيق, not heavy.",
+   "Tilt the فتحة of the ر toward a كسرة and the ا toward a ي, much nearer to them than a plain فتحة, without reaching a full ي. This is إمالة كبرى.",
+   "Hold it two counts, like any المد الطبيعي, then say هَا.",
+   "In وَمُرْسَىٰهَآ, the next word, the ا is plain. Listen to your teacher for the exact sound."
+  ],
+  "why": "Here حفص follows the reading he received; الشاطبية names this word for him. The ا here comes from a ي (جَرَى، يَجْرِي), and leaning toward ي shows that origin.",
+  "spot": "A small mark below the ر, in place of a فتحة: مَجْر۪ىٰهَا. No other word in the muṣḥaf has it.",
+  "mistakes": [
+   {"wrong": "Saying a full ي: مَجْرِيهَا.", "right": "Lean toward ي; don't reach it."},
+   {"wrong": "Making the ر heavy.", "right": "The ر is light in مَجْر۪ىٰهَا."},
+   {"wrong": "Tilting وَمُرْسَىٰهَآ as well.", "right": "Only مَجْر۪ىٰهَا is tilted; وَمُرْسَىٰهَآ has a plain فتحة and ا."}
+  ]
+ },
+ "ar": {
+  "plain": "في كلمة واحدة، هي مَجْر۪ىٰهَا، تُنطق «رَا» مائلةً نحو «رِي»: فلا هي ألف خالصة، ولا ياء خالصة، بل بينهما.",
+  "fits": "تعرف الألف الخالصة بعد الفتحة، تُمد حركتين، وهي المد الطبيعي، كما في الكلمة التالية مباشرة: وَمُرْسَىٰهَآ. وبعض القرّاء يميلون الألف في كلمات كثيرة، أما حفص فيقرأ الألف خالصة في القرآن كله إلا في هذه الكلمة.",
+  "how": [
+   "انطق مَجْ: ميمًا مفتوحة ثم جيمًا ساكنة.",
+   "انطق الراء مرققة لا مفخمة.",
+   "قرّب فتحة الراء من الكسرة، والألف من الياء، تقريبًا كثيرًا دون أن تصير ياءً خالصة، وهذه هي الإمالة الكبرى.",
+   "امددها حركتين كأي مد طبيعي، ثم انطق هَا.",
+   "وفي وَمُرْسَىٰهَآ بعدها الألف خالصة بلا إمالة. وخذ النطق الدقيق من شيخك."
+  ],
+  "why": "يتبع حفص هنا ما رواه، وقد نصّت الشاطبية على هذه الكلمة له. والألف فيها أصلها ياء (جَرَى، يَجْرِي)، فالإمالة نحو الياء تدل على هذا الأصل.",
+  "spot": "علامة صغيرة تحت الراء بدل الفتحة: مَجْر۪ىٰهَا. ولا توجد في غير هذه الكلمة من المصحف.",
+  "mistakes": [
+   {"wrong": "النطق بياء خالصة: مَجْرِيهَا.", "right": "مِل نحو الياء ولا تبلغها."},
+   {"wrong": "تفخيم الراء.", "right": "الراء مرققة في مَجْر۪ىٰهَا."},
+   {"wrong": "إمالة وَمُرْسَىٰهَآ أيضًا.", "right": "لا إمالة إلا في مَجْر۪ىٰهَا، أما وَمُرْسَىٰهَآ ففتحة خالصة وألف."}
+  ]
+ }
+}

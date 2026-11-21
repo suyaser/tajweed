@@ -1,0 +1,66 @@
+{
+ "lesson": "ra-h",
+ "terms": [],
+ "en": {
+  "plain": "The ر changes: sometimes heavy, sometimes light. With a فتحة or ضمة it is heavy, as in رَبَّكَ; with no vowel it looks at the letters around it.",
+  "fits": "In the تفخيم lesson you learned that the ر changes, heavy or light, by rule. These two lessons give the full map. Ask in order: 1) Are you stopping on it? Then it has lost its vowel; treat it as ساكن. 2) If it has a vowel, that vowel decides. 3) If it is ساكن, look at the vowel before it; at a stop, step back past one ساكن letter, unless that ساكن is a ي (then the ر is light). This lesson collects the heavy cases, the next one the light ones.",
+  "how": [
+   "A ر with فتحة or ضمة is heavy: رَبَّكَ, رَسُولٌ, شَرُّ. The muṣḥaf has no sign for heavy or light; the vowels decide.",
+   "A ر with سكون after a فتحة or ضمة is heavy: فَأَثَرْنَ, زُرْتُمُ.",
+   "A ر with سكون after a كسرة is heavy if the كسرة is not original (added only to start or to join, as in starting ٱرْجِعِىٓ: إِرْجِعِى), or if a heavy letter without a كسرة follows in the same word (لَبِٱلْمِرْصَادِ, قِرْطَاسٍ). In فِرْقٍ the ق has a كسرة, so it has two readings (next lesson).",
+   "Stopping: the ر takes a سكون. If the letter before it is a ساكن other than ي, look one more back: a فتحة or ضمة there makes it heavy, as in وَٱلْفَجْرْ and خُسْرْ (after يْ it is light: next lesson).",
+   "To make it heavy, raise the back of the tongue so the mouth fills, and tap the tip once. Don't roll it."
+  ],
+  "why": "The ر sits between the heavy and the light letters, so it takes its colour from its own vowel, or, when it has none, from the vowel before it. A heavy letter after it in the word pulls it up too.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Rolling the ر, tapping several times.",
+    "right": "One light tap of the tongue tip."
+   },
+   {
+    "wrong": "A light ر in لَبِٱلْمِرْصَادِ because of the كسرة before it.",
+    "right": "The ص after it in the same word makes it heavy."
+   },
+   {
+    "wrong": "Starting ٱرْجِعِىٓ with a light ر because of the كسرة of همزة الوصل.",
+    "right": "That كسرة is not original: the ر is heavy."
+   },
+   {
+    "wrong": "A light ر when stopping on وَٱلْفَجْرِ, because it had a كسرة when joined.",
+    "right": "At the stop look back: جْ, then a فتحة. Heavy."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "الراء حرف يتغير: تُفخَّم تارة وتُرقَّق تارة. فإذا كانت مفتوحة أو مضمومة فُخّمت، كما في رَبَّكَ، وإذا سكنت نظرتَ إلى ما حولها.",
+  "fits": "عرفتَ في درس التفخيم أن الراء تتغير بين التفخيم والترقيق بحسب قواعد. وفي هذا الدرس والذي يليه الصورة كاملة. اسأل بالترتيب: ١) هل تقف عليها؟ فقد سكنت، فعاملها معاملة الساكنة. ٢) إن كانت متحركة فحركتها تحكم. ٣) إن كانت ساكنة فانظر إلى الحركة قبلها، وعند الوقف تجاوز حرفًا ساكنًا واحدًا، إلا أن يكون ياءً فترقَّق الراء. وهذا الدرس يجمع أحوال التفخيم، والذي بعده أحوال الترقيق.",
+  "how": [
+   "الراء المفتوحة أو المضمومة مفخمة: رَبَّكَ، رَسُولٌ، شَرُّ. وليس في المصحف علامة للتفخيم أو الترقيق، وإنما تحكم الحركات.",
+   "الراء الساكنة بعد فتح أو ضم مفخمة: فَأَثَرْنَ، زُرْتُمُ.",
+   "والراء الساكنة بعد كسر تُفخم إذا كانت الكسرة غير أصلية (أي عارضة للابتداء أو الوصل، ليست من بنية الكلمة)، ككسرة همزة الوصل في الابتداء بـ ٱرْجِعِىٓ (إِرْجِعِى)، أو إذا وليها في كلمتها حرف استعلاء غير مكسور: لَبِٱلْمِرْصَادِ، قِرْطَاسٍ. أما فِرْقٍ فقافها مكسورة، ففيها وجهان (في الدرس التالي).",
+   "وعند الوقف تسكن الراء، فإن كان قبلها ساكن غير الياء فانظر إلى ما قبله: إن كان مفتوحًا أو مضمومًا فُخّمت، كما في وَٱلْفَجْرْ وخُسْرْ. أما بعد الياء الساكنة فتُرقق (الدرس التالي).",
+   "ولتفخيمها ارفع أقصى اللسان حتى يمتلئ الفم، واطرق بطرفه مرة واحدة، ولا تكرر الطرق."
+  ],
+  "why": "الراء بين الحروف المفخمة والمرققة، فتأخذ لونها من حركتها، فإن سكنت أخذته من الحركة التي قبلها. وإذا جاء بعدها في كلمتها حرف استعلاء جذبها إلى التفخيم.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "ترعيد الراء بطرقات متتابعة.",
+    "right": "طرقة واحدة خفيفة بطرف اللسان."
+   },
+   {
+    "wrong": "ترقيق الراء في لَبِٱلْمِرْصَادِ بسبب الكسرة قبلها.",
+    "right": "الصاد بعدها في الكلمة نفسها تفخمها."
+   },
+   {
+    "wrong": "ترقيق الراء في الابتداء بـ ٱرْجِعِىٓ بسبب كسرة همزة الوصل.",
+    "right": "هذه الكسرة غير أصلية، فالراء مفخمة."
+   },
+   {
+    "wrong": "ترقيق الراء عند الوقف على وَٱلْفَجْرِ لأنها مكسورة في الوصل.",
+    "right": "في الوقف انظر إلى ما قبلها: جْ ثم فتحة، فهي مفخمة."
+   }
+  ]
+ }
+}

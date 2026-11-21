@@ -1,0 +1,73 @@
+{
+ "lesson": "ikhfa",
+ "terms": [
+  {
+   "term": "إخفاء",
+   "say": "ikhfāʾ",
+   "en": "Hiding: the ن or تنوين is said in a state between clear and merged, with no شدة, while its two-count غنة stays.",
+   "literal": "hiding, covering",
+   "ar": "نطق النون الساكنة أو التنوين بحالة بين الإظهار والإدغام، بلا تشديد، مع بقاء الغنة حركتين.",
+   "arLiteral": "الستر"
+  }
+ ],
+ "en": {
+  "plain": "Before the other 15 letters, a ن with no vowel, or a تنوين, is neither clear nor merged. The tongue does not close on the ن; it gets ready for the next letter while a two-count hum comes from the nose.",
+  "fits": "This is the fourth and last ruling, and it has the most letters: the 15 left after the throat letters, يَرْمَلُونَ and ب. They are the first letters of the words in this line of تحفة الأطفال: صِفْ ذَا ثَنَا كَمْ جَادَ شَخْصٌ قَدْ سَمَا ۞ دُمْ طَيِّبًا زِدْ فِي تُقًى ضَعْ ظَالِمَا. Now you can sort any ن or تنوين: إظهار, إدغام, إقلاب or إخفاء.",
+  "how": [
+   "Don't press the tip of the tongue on the gum as for a clear ن. Keep it a little away.",
+   "Move the tongue toward the next letter's place, without settling on it: toward the ت in أَنتُمْ, toward the ش in مِن شَرِّ.",
+   "Hold the غنة in the nose for two counts: the nose vibrates and no ن is heard from the mouth. Then say the next letter.",
+   "The hum follows the next letter: full and heavy before ص ض ط ظ ق (مِن قُوَّةٍ), light before the others (أَنتُمْ)."
+  ],
+  "why": "The ن is not as far from these letters as from the throat letters, so it is not said clearly. It is not as close to them as to the letters of إدغام, so it does not merge. It gets the middle way: hidden, with its غنة kept.",
+  "spot": "The ن has no سكون and the next letter has no شدة: مِن شَرِّ, أَنتُمْ. A تنوين works the same way: no شدة after it, as in نَارًا ذَاتَ; the printed مصحف المدينة also staggers its marks, but this screen does not. If the next letter is one of the 15, it is إخفاء.",
+  "mistakes": [
+   {
+    "wrong": "Stretching the vowel before the ن: كُونْتُمْ, أَانْتُمْ",
+    "right": "A short vowel, then the hum: كُنتُمْ, أَنتُمْ"
+   },
+   {
+    "wrong": "Pressing the tongue on the gum, so a clear ن is heard with a hum",
+    "right": "Keep the tongue off the gum; only the hum is heard"
+   },
+   {
+    "wrong": "A light hum before the ق in مِن قُوَّةٍ",
+    "right": "Heavy before ص ض ط ظ ق, light before the others"
+   },
+   {
+    "wrong": "Cutting the hum short",
+    "right": "Hold it two full counts"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "عند الحروف الخمسة عشر الباقية لا تظهر النون الساكنة ولا التنوين ولا يُدغمان: لا يلمس اللسان مخرج النون، بل يتهيأ للحرف التالي، وتخرج غنة حركتين من الخيشوم.",
+  "fits": "هذا هو الحكم الرابع والأخير، وله أكثر الحروف: الخمسة عشر الباقية بعد حروف الحلق و«يَرْمَلُونَ» والباء. وقد جمعها صاحب تحفة الأطفال في أوائل كلمات هذا البيت: صِفْ ذَا ثَنَا كَمْ جَادَ شَخْصٌ قَدْ سَمَا ۞ دُمْ طَيِّبًا زِدْ فِي تُقًى ضَعْ ظَالِمَا. وبهذا تعرف حكم كل نون ساكنة وكل تنوين: إظهار، أو إدغام، أو إقلاب، أو إخفاء.",
+  "how": [
+   "لا تُلصق طرف اللسان باللثة كما في النون الظاهرة، بل أبعده عنها قليلًا.",
+   "قرّب اللسان من مخرج الحرف التالي دون أن تستقر عليه: نحو التاء في أَنتُمْ، ونحو الشين في مِن شَرِّ.",
+   "أمسك الغنة في الخيشوم حركتين: يهتز الأنف، ولا تُسمع نون من الفم. ثم انطق الحرف التالي.",
+   "الغنة تتبع الحرف الذي بعدها: تُفخَّم قبل حروف الاستعلاء ص ض ط ظ ق كما في مِن قُوَّةٍ، وتُرقَّق قبل غيرها كما في أَنتُمْ."
+  ],
+  "why": "ليست النون بعيدة عن هذه الحروف بُعدَها عن حروف الحلق فتظهر، ولا قريبة منها قُربَها من حروف الإدغام فتُدغم. فأُعطيت حكمًا وسطًا بينهما، هو الإخفاء مع بقاء الغنة.",
+  "spot": "لا سكون على النون، ولا شدة على الحرف بعدها: مِن شَرِّ، أَنتُمْ. والتنوين كذلك لا شدة بعده، كما في نَارًا ذَاتَ؛ وحركتاه متتابعتان في مصحف المدينة المطبوع لا في هذه الشاشة. فإن كان الحرف التالي من الخمسة عشر فالحكم إخفاء.",
+  "mistakes": [
+   {
+    "wrong": "مدّ الحركة قبل النون: «كُونْتُمْ»، «أَانْتُمْ»",
+    "right": "حركة قصيرة ثم الغنة: كُنتُمْ، أَنتُمْ"
+   },
+   {
+    "wrong": "إلصاق اللسان باللثة فتُسمع نون ظاهرة مع غنة",
+    "right": "يبتعد اللسان قليلًا، فلا يُسمع إلا صوت الغنة"
+   },
+   {
+    "wrong": "غنة رقيقة قبل القاف في مِن قُوَّةٍ",
+    "right": "تُفخَّم قبل ص ض ط ظ ق، وتُرقَّق قبل غيرها"
+   },
+   {
+    "wrong": "تقصير الغنة",
+    "right": "أتمّها حركتين"
+   }
+  ]
+ }
+}

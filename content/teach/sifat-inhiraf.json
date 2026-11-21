@@ -1,0 +1,97 @@
+{
+ "lesson": "sifat-inhiraf",
+ "terms": [
+  {
+   "term": "الانحراف",
+   "say": "al-inḥirāf",
+   "en": "The sound of the letter leans, after leaving its مخرج, toward another place. In ل and ر.",
+   "literal": "leaning, turning aside",
+   "ar": "ميل الحرف بعد خروجه من مخرجه حتى يتصل بمخرج غيره. وهو في اللام والراء.",
+   "arLiteral": "الميل"
+  },
+  {
+   "term": "التكرير",
+   "say": "al-takrīr",
+   "en": "The ر's tendency to trill, the tip of the tongue shaking. It is learned in order to hide it: one firm tap, with no trill.",
+   "literal": "repeating",
+   "ar": "قابلية الراء لارتعاد طرف اللسان عند النطق بها. وتُعرف لتُخفى: طرقة واحدة محكمة بلا ارتعاد.",
+   "arLiteral": "الإعادة"
+  },
+  {
+   "term": "التفشي",
+   "say": "al-tafashshī",
+   "en": "The air spreads through the mouth with ش.",
+   "literal": "spreading",
+   "ar": "انتشار الهواء في الفم عند النطق بالشين.",
+   "arLiteral": "الانتشار"
+  },
+  {
+   "term": "الاستطالة",
+   "say": "al-istiṭālah",
+   "en": "The sound of ض runs along the edge of the tongue until it nears the place of ل. Only ض has it.",
+   "literal": "stretching",
+   "ar": "امتداد صوت الضاد على حافة اللسان حتى يقرب من مخرج اللام. ولا تكون إلا في الضاد.",
+   "arLiteral": "الامتداد"
+  }
+ ],
+ "en": {
+  "plain": "The last four single صفات: the sound of ل and ر leans toward a neighbouring place, ر can trill, the air spreads with ش, and the sound of ض runs along the edge of the tongue.",
+  "fits": "These finish the seven صفات with no opposite, and with them the whole map from the first sifat lesson. Each belongs to one or two letters only.",
+  "how": [
+   "Say أَلْ and أَرْ: the sound turns aside from its place, for ل toward the tip of the tongue, for ر toward its top, leaning a little toward ل. That is الانحراف, and it is why a person who cannot say ر (الألثغ) says ل instead.",
+   "Say أَرْ with the tip of the tongue steady: if it shakes you hear رْرْرْ, and that is التكرير. Give the ر one firm tap, above all in a رّ as in كَرَّتَيْنِ.",
+   "Say أَشْ: the air spreads through the mouth, and that is التفشي. It is clearest with a سكون or a شدة, as in لِّلشَّيَٰطِينِ.",
+   "Say أَضْ: the edge of the tongue presses on the upper molars and the sound runs along that edge, from back to front, until it nears the place of ل: that is الاستطالة. The muṣḥaf has no mark for these صفات; you learn them by ear."
+  ],
+  "why": "These صفات keep their letters apart: without الاستطالة and its own place, ض would be ظ («والضاد باستطالة ومخرج ميز من الظاء»). ش needs its التفشي most at a stop and before ج, which shares its place (as in شَجَرَ). التكرير is named so that you hide it («وَأَخْفِ تَكْرِيراً إِذَا تُشَدَّدُ»), without pressing so hard that the ر sounds like ط; Ibn al-Jazari calls that a mistake too.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Trilling the رّ of كَرَّتَيْنِ.",
+    "right": "Say the رّ with one firm tap of the tongue; it must not shake."
+   },
+   {
+    "wrong": "Pressing the رّ so hard that it sounds like ط.",
+    "right": "One firm tap, then release: no trill, no squeeze."
+   },
+   {
+    "wrong": "Saying ش narrow, like س.",
+    "right": "Let the air spread through the mouth."
+   },
+   {
+    "wrong": "Saying the ض of ٱلْأَرْضِ with the tongue tip on the teeth, like ظ.",
+    "right": "Press the side of the tongue on the upper molars and let the sound run along it; take the exact sound from your teacher."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "آخر الصفات المفردة أربع: يميل صوت اللام والراء إلى مخرج مجاور، والراء قابلة للارتعاد، وينتشر الهواء مع الشين، ويمتد صوت الضاد على حافة اللسان.",
+  "fits": "بهذه الأربع تتمّ الصفات السبع التي لا ضد لها، وتكتمل الخريطة التي بدأت في أول دروس الصفات. وكل واحدة منها لحرف أو حرفين فقط.",
+  "how": [
+   "قل: أَلْ وأَرْ؛ ينحرف الصوت عن مخرجه: في اللام إلى طرف اللسان، وفي الراء إلى ظهره مع ميل قليل إلى جهة اللام. وهذا الانحراف، ولذلك يجعلها الألثغ لامًا.",
+   "قل: أَرْ وطرف لسانك ثابت، فإن ارتعد سمعتَ رْرْرْ، وهذا التكرير. اجعل الراء طرقة واحدة محكمة، ولا سيما المشددة كما في كَرَّتَيْنِ.",
+   "قل: أَشْ؛ ينتشر الهواء في الفم، وهذا التفشي. وهو أظهر في الشين الساكنة والمشددة، كما في لِّلشَّيَٰطِينِ.",
+   "قل: أَضْ؛ تعتمد حافة اللسان على الأضراس العليا، ويمتد الصوت على طولها من الخلف إلى الأمام حتى يقرب من مخرج اللام، وهذه الاستطالة. ولا علامة لهذه الصفات في المصحف، وإنما تُعرف بالسماع."
+  ],
+  "why": "بهذه الصفات لا يشتبه الحرف بغيره: فالضاد لولا الاستطالة والمخرج لكانت ظاءً: «والضاد باستطالة ومخرج ميز من الظاء». والشين يُعتنى بتفشيها في الوقف وقبل الجيم لاتحاد مخرجهما، كما في شَجَرَ. ويُعرف التكرير ليُخفى: «وَأَخْفِ تَكْرِيراً إِذَا تُشَدَّدُ»، من غير مبالغة في الحصر حتى تشبه الراء الطاء، فذلك خطأ أيضًا كما قال ابن الجزري.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "ترعيد الراء المشددة في كَرَّتَيْنِ.",
+    "right": "انطق الراء المشددة بطرقة واحدة محكمة لا يرتعد معها اللسان."
+   },
+   {
+    "wrong": "حصر الراء المشددة حتى تشبه الطاء.",
+    "right": "طرقة واحدة محكمة بلا ارتعاد ولا حصر."
+   },
+   {
+    "wrong": "تضييق الشين حتى تشبه السين.",
+    "right": "دع الهواء ينتشر في الفم."
+   },
+   {
+    "wrong": "نطق الضاد في ٱلْأَرْضِ بطرف اللسان على الثنايا كأنها ظاء.",
+    "right": "اعتمد بحافة اللسان على الأضراس، ودع الصوت يمتد عليها، وخذ صوت الضاد من معلّمك."
+   }
+  ]
+ }
+}

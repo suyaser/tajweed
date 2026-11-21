@@ -1,0 +1,65 @@
+{
+ "lesson": "lam-q",
+ "terms": [
+  {
+   "term": "اللام القمرية",
+   "say": "al-lām al-qamariyyah",
+   "en": "The ل of ال that is said, with سكون, before 14 letters: ا (the همزة) ب غ ح ج ك و خ ف ع ق ي م ه, gathered in «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ».",
+   "literal": "the moon ل, named after ٱلْقَمَر, where it is heard",
+   "ar": "لام ال التي تُنطق ساكنة واضحة قبل أربعة عشر حرفًا يجمعها قولهم «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ».",
+   "arLiteral": "نسبة إلى القمر، لأن لامها تُسمع في «ٱلْقَمَر»"
+  }
+ ],
+ "en": {
+  "plain": "In ٱلْوَسْوَاسِ the ل of ال is said clearly, with no vowel, and then the next letter. This happens before 14 letters.",
+  "fits": "Last lesson you learned to start on ال. Its ل has two fates. Before 14 letters it is said (this lesson); before the other 14 it is silent and the next letter is doubled (the next lesson). After that comes the ل in the name اللَّه, heavy after a فتحة or ضمة and light after a كسرة, with a lesson for each.",
+  "how": [
+   "Starting on ال, say its همزة الوصل with a فتحة: اَلْ. Joined, it drops: وَٱلْقَمَرِ is said وَلْقَمَرِ.",
+   "For ل, the tip and edge of the tongue touch the gum above the upper front teeth. Close the ل there with its سكون.",
+   "Go straight on to the next letter with its own vowel: ٱلْوَ، ٱلْحَ، ٱلْقَ. No vowel on the ل, no pause between.",
+   "Learn the 14 letters with «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ»: ا ب غ ح ج ك و خ ف ع ق ي م ه."
+  ],
+  "why": "The books give the reason: the ل is made far from where these letters are made, so it is easy to say it in full before them. It is called اللام القمرية after ٱلْقَمَر, the moon, where the ل is heard.",
+  "spot": "The ل carries a سكون (ْ) and the next letter has no شدة: see ٱلْوَسْوَاسِ below.",
+  "mistakes": [
+   {
+    "wrong": "Putting a vowel on the ل: ٱلَوَسْوَاسِ.",
+    "right": "A closed ل: ٱلْوَسْوَاسِ."
+   },
+   {
+    "wrong": "Dropping the ل and doubling the next letter: اَقَّمَرِ.",
+    "right": "Before these 14 letters the ل is always said: اَلْقَمَرِ."
+   },
+   {
+    "wrong": "Swallowing the همزة after the ل in ٱلْأَعْلَى.",
+    "right": "Say the ل, then a clear همزة: اَلْأَعْلَى."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في ٱلْوَسْوَاسِ تُنطق لام ال واضحة ساكنة، ثم الحرف الذي بعدها. ويكون ذلك قبل أربعة عشر حرفًا.",
+  "fits": "تعلّمت في الدرس السابق الابتداء بـ ال. وللام ال حالان: تُنطق قبل أربعة عشر حرفًا، وهذا هو الدرس؛ ولا تُنطق قبل الأربعة عشر الباقية فيُشدَّد الحرف بعدها، وهذا الدرس التالي. ثم تأتي اللام في اسم «اللَّه»: مفخمة بعد فتحة أو ضمة، ومرققة بعد كسرة، ولكلٍّ درس.",
+  "how": [
+   "إذا بدأت بـ ال فانطق همزة الوصل مفتوحة: اَلْ. وعند الوصل تسقط: وَٱلْقَمَرِ تُنطق وَلْقَمَرِ.",
+   "اللام تخرج من طرف اللسان وحافته مع لثة الأسنان العليا الأمامية. فأقفلها هناك بالسكون.",
+   "انتقل مباشرة إلى الحرف التالي بحركته: ٱلْوَ، ٱلْحَ، ٱلْقَ. بلا حركة على اللام، وبلا توقف بينهما.",
+   "احفظ الحروف الأربعة عشر بقولهم «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ»: ا ب غ ح ج ك و خ ف ع ق ي م ه."
+  ],
+  "why": "علّل العلماء ذلك ببعد مخرج اللام عن مخارج هذه الحروف، فيسهل نطقها واضحة قبلها. وتُسمّى اللام القمرية لأنها تُسمع في «ٱلْقَمَر».",
+  "spot": "على اللام سكون (ْ)، وليس على الحرف الذي بعدها شدة، كما في ٱلْوَسْوَاسِ أدناه.",
+  "mistakes": [
+   {
+    "wrong": "تحريك اللام: ٱلَوَسْوَاسِ.",
+    "right": "لام ساكنة: ٱلْوَسْوَاسِ."
+   },
+   {
+    "wrong": "إسقاط اللام وتشديد ما بعدها: اَقَّمَرِ.",
+    "right": "قبل هذه الحروف تُنطق اللام دائمًا: اَلْقَمَرِ."
+   },
+   {
+    "wrong": "تذويب الهمزة بعد اللام في ٱلْأَعْلَى.",
+    "right": "انطق اللام ثم همزة واضحة: اَلْأَعْلَى."
+   }
+  ]
+ }
+}

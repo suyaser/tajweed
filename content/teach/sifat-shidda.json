@@ -1,0 +1,81 @@
+{
+ "lesson": "sifat-shidda",
+ "terms": [
+  {
+   "term": "صفة الشدة",
+   "say": "ṣifat al-shiddah",
+   "en": "The sound is held back completely when the letter has a سكون, because the letter closes its place firmly. Its eight letters are in «أَجِدْ قَطٍ بَكَتْ». Not the شدة mark (ّ).",
+   "literal": "strength",
+   "ar": "انحباس الصوت كله عند إسكان الحرف، لقوة لزومه موضعه. وحروفها ثمانية يجمعها «أَجِدْ قَطٍ بَكَتْ». وهي غير علامة الشدة (ّ).",
+   "arLiteral": "القوة"
+  },
+  {
+   "term": "صفة التوسط",
+   "say": "ṣifat al-tawassuṭ",
+   "en": "Also called البينية. Part of the sound is held and part runs: neither a full stop nor a free flow. Its five letters are in «لِنْ عُمَرْ».",
+   "literal": "being in the middle",
+   "ar": "وتسمّى البينية: انحباس بعض الصوت وجريان بعضه، فلا ينحبس كله ولا يجري كله. وحروفها خمسة يجمعها «لِنْ عُمَرْ».",
+   "arLiteral": "الاعتدال"
+  },
+  {
+   "term": "الرخاوة",
+   "say": "al-rakhāwah",
+   "en": "The sound runs freely with the letter, because it rests lightly on its place. It is in every letter not in «أَجِدْ قَطٍ بَكَتْ» or «لِنْ عُمَرْ».",
+   "literal": "softness",
+   "ar": "جريان الصوت مع الحرف لضعف اعتماده على مخرجه. وهي في كل حرف ليس من «أَجِدْ قَطٍ بَكَتْ» ولا «لِنْ عُمَرْ».",
+   "arLiteral": "اللين"
+  }
+ ],
+ "en": {
+  "plain": "When a letter has a سكون, its sound either stops completely, runs on freely, or does something in between.",
+  "fits": "The last lesson was about breath (الهمس and الجهر). This second pair is about sound: صفة الشدة and its opposite الرخاوة, with صفة التوسط between them. صفة الشدة is not the شدة mark (ّ) from lesson 1: the word is the same, the thing is different.",
+  "how": [
+   "Say أَبْ، أَدْ، أَقْ and try to hold the sound: you can't, because the place closes and the sound stops. That is صفة الشدة, in «أَجِدْ قَطٍ بَكَتْ», as in قَدْ.",
+   "Say أَسْ، أَشْ: the sound goes on as long as you have breath. That is الرخاوة, as in the حْ of تُحْشَرُونَ.",
+   "Say أَلْ، أَنْ، أَعْ: the sound neither stops fully nor runs as freely as with س. That is صفة التوسط, in «لِنْ عُمَرْ»; in وَأَعْتَدْنَا the عْ is in between and the دْ stops.",
+   "ت and ك have صفة الشدة and الهمس: the sound stops first, then a little breath follows. The muṣḥaf has no mark for this; you learn it by ear."
+  ],
+  "why": "These صفات decide what a letter with a سكون sounds like: its sound runs on, part-runs, or stops. A letter with both صفة الشدة and الجهر lets out neither sound nor breath, which is why the قلقلة letters bounce.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Letting the sound run on after the دْ of قَدْ.",
+    "right": "Close fully: the sound stops, then the قلقلة bounce."
+   },
+   {
+    "wrong": "Cutting the حْ of تُحْشَرُونَ short, as if it stopped.",
+    "right": "Let the sound run through the ح."
+   },
+   {
+    "wrong": "Stopping the لْ of خَلْقِ dead, like a د.",
+    "right": "Let a little of the sound go on."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا سكن الحرف، فإما أن ينقطع صوته تمامًا، وإما أن يجري جريانًا تامًّا، وإما أن يكون بين ذلك.",
+  "fits": "كان الدرس الماضي عن النفس (الهمس والجهر). وهذا الزوج الثاني عن الصوت: صفة الشدة وضدها الرخاوة، وبينهما صفة التوسط. وصفة الشدة غير علامة الشدة (ّ) التي عرفتها في الدرس الأول؛ اللفظ واحد والمعنى مختلف.",
+  "how": [
+   "قل: أَبْ، أَدْ، أَقْ، وحاول أن تمدّ الصوت؛ لن تستطيع، لأن المخرج ينغلق فينقطع الصوت. هذه صفة الشدة، وحروفها «أَجِدْ قَطٍ بَكَتْ»، كما في قَدْ.",
+   "قل: أَسْ، أَشْ؛ يمتد الصوت ما دام معك نفَس. وهذه الرخاوة، كما في الحاء من تُحْشَرُونَ.",
+   "قل: أَلْ، أَنْ، أَعْ؛ لا ينقطع الصوت كله، ولا يجري كجريانه مع السين. هذه صفة التوسط، وحروفها «لِنْ عُمَرْ»، وفي وَأَعْتَدْنَا العين بين بين والدال ينقطع صوتها.",
+   "التاء والكاف فيهما صفة الشدة والهمس معًا: ينحبس الصوت أولًا، ثم يجري بعده نفَس خفيف. ولا علامة لهذا في المصحف، وإنما يُعرف بالسماع."
+  ],
+  "why": "بهذه الصفات يتحدّد صوت الحرف الساكن: يجري، أو يجري بعضه، أو ينقطع. وإذا اجتمعت صفة الشدة والجهر في حرف لم يجرِ معه صوت ولا نفَس، ولذلك تُقلقَل حروف القلقلة.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "إجراء الصوت بعد الدال الساكنة في قَدْ.",
+    "right": "أطبق المخرج تمامًا: ينقطع الصوت، ثم القلقلة."
+   },
+   {
+    "wrong": "قطع الحاء الساكنة في تُحْشَرُونَ كأنها حرف شديد.",
+    "right": "دع الصوت يجري مع الحاء."
+   },
+   {
+    "wrong": "قطع اللام الساكنة في خَلْقِ كأنها دال.",
+    "right": "دع شيئًا من صوتها يجري."
+   }
+  ]
+ }
+}

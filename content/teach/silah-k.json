@@ -1,0 +1,64 @@
+{
+ "lesson": "silah-k",
+ "terms": [
+  {
+   "term": "الصلة الكبرى",
+   "say": "aṣ-ṣilah al-kubrā",
+   "en": "The صلة when the next word starts with a همزة: held like المد المنفصل, 4 or 5 counts.",
+   "literal": "the big joining",
+   "ar": "الصلة إذا بدأت الكلمة التالية بهمزة، وتُمد كالمد المنفصل أربع حركات أو خمسًا."
+  }
+ ],
+ "en": {
+  "plain": "When the stretched pronoun هُۥ or هِۦ is followed by a word that starts with a همزة, it is held longer, 4 or 5 counts: مَالَهُۥٓ أَخْلَدَهُۥ.",
+  "fits": "In the last lesson the صلة was two counts. Here a همزة comes after it, so it is الصلة الكبرى and works like المد المنفصل: a مد at the end of one word, a همزة at the start of the next. Use the same length as your المنفصل and المتصل: 4 with 4, or 5 with 5.",
+  "how": [
+   "Find the pronoun between two vowels: its small و or ي carries a ٓ (مَالَهُۥٓ, بِهِۦٓ).",
+   "Look at the next word: it starts with a همزة, as in أَخْلَدَهُۥ, إِلَّا, أَحَدٌ.",
+   "Hold the هُو or هِى 4 or 5 counts, then say the همزة cleanly.",
+   "If you stop on the pronoun, the صلة goes entirely: طَعَامِهِۦٓ becomes طَعَامِهْ. No همزة is reached, so no long مد."
+  ],
+  "why": "Once the صلة is read, it is a real مد letter at the end of a word, and a همزة starts the next one. So it follows the rule of المد المنفصل, and the books count it with it (غاية المريد).",
+  "spot": "The small و or ي carries a ٓ: هُۥٓ, هِۦٓ. In مصحف المدينة the ٓ means a مد longer than two counts. Without the ٓ, the صلة is two counts.",
+  "mistakes": [
+   {
+    "wrong": "Holding يَرَهُۥٓ أَحَدٌ only two counts.",
+    "right": "4 or 5, your المنفصل length."
+   },
+   {
+    "wrong": "Using a different length here than in لَآ أَعْبُدُ in the same recitation.",
+    "right": "One length for المنفصل and this صلة."
+   },
+   {
+    "wrong": "Adding a صلة in مِنْهُ ءَايَٰتٌ because a همزة follows.",
+    "right": "A ساكن comes before the ه: no صلة, even before a همزة."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاءت بعد صلة هاء الضمير كلمة أولها همزة طال مدها إلى أربع حركات أو خمس: مَالَهُۥٓ أَخْلَدَهُۥ.",
+  "fits": "كانت الصلة في الدرس الماضي حركتين. وهنا تليها همزة، فتسمى الصلة الكبرى، وحكمها حكم المد المنفصل: مد في آخر كلمة، وهمزة في أول التي بعدها. فمُدّها بالمقدار الذي تمد به المنفصل والمتصل: أربعًا مع أربع، أو خمسًا مع خمس.",
+  "how": [
+   "ابحث عن الهاء الواقعة بين متحركين، تجد على حرفها الصغير علامة ٓ: مَالَهُۥٓ، بِهِۦٓ.",
+   "انظر إلى الكلمة التالية، تجدها تبدأ بهمزة: أَخْلَدَهُۥ، إِلَّا، أَحَدٌ.",
+   "مُدّ هُو أو هِى أربع حركات أو خمسًا، ثم انطق الهمزة واضحة.",
+   "إن وقفت على الهاء ذهبت الصلة كلها: طَعَامِهِۦٓ تصير طَعَامِهْ، فلا همزة تلحقها ولا مد طويل."
+  ],
+  "why": "إذا قُرئت الصلة صارت حرف مد حقيقيًا في آخر الكلمة، وبعدها همزة في أول الكلمة التالية، فأخذت حكم المد المنفصل، ولذلك يعدها العلماء منه (غاية المريد).",
+  "spot": "تجد على الواو أو الياء الصغيرة علامة ٓ: هُۥٓ، هِۦٓ. وهذه العلامة في مصحف المدينة تدل على مد أطول من حركتين، فإن غابت فالصلة حركتان.",
+  "mistakes": [
+   {
+    "wrong": "مدّ يَرَهُۥٓ أَحَدٌ حركتين فقط.",
+    "right": "أربع أو خمس، بمقدار منفصلك."
+   },
+   {
+    "wrong": "مخالفة مقدارها لمقدار لَآ أَعْبُدُ في التلاوة نفسها.",
+    "right": "مقدار واحد للمنفصل وهذه الصلة."
+   },
+   {
+    "wrong": "وصل الهاء في مِنْهُ ءَايَٰتٌ لأن بعدها همزة.",
+    "right": "قبل الهاء ساكن، فلا صلة ولو جاءت همزة."
+   }
+  ]
+ }
+}

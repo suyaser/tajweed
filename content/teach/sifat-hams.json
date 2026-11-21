@@ -1,0 +1,84 @@
+{
+ "lesson": "sifat-hams",
+ "terms": [
+  {
+   "term": "صفة",
+   "forms": [
+    "صفات"
+   ],
+   "say": "ṣifah",
+   "en": "A quality of a letter: the way it is said at its مخرج, such as how much breath or sound goes with it. Plural صفات.",
+   "literal": "a description",
+   "ar": "الحال التي يكون عليها الحرف عند النطق به في مخرجه، كجريان النفس أو الصوت معه وانحباسهما. وجمعها صفات.",
+   "arLiteral": "الوصف"
+  },
+  {
+   "term": "الهمس",
+   "say": "al-hams",
+   "en": "The breath flows with the letter, because the letter rests lightly on its place. Its ten letters, called مهموسة, are in «فَحَثَّهُ شَخْصٌ سَكَتْ».",
+   "literal": "whispering",
+   "ar": "جريان النفس مع الحرف لضعف اعتماده على مخرجه. وحروفه عشرة تسمّى المهموسة، يجمعها «فَحَثَّهُ شَخْصٌ سَكَتْ».",
+   "arLiteral": "الصوت الخفيّ"
+  },
+  {
+   "term": "الجهر",
+   "say": "al-jahr",
+   "en": "The breath is held back, because the letter presses firmly on its place. The other nineteen letters have it and are called مجهورة.",
+   "literal": "saying aloud",
+   "ar": "انحباس النفس عند النطق بالحرف لقوة اعتماده على مخرجه. وحروفه التسعة عشر الباقية تسمّى المجهورة.",
+   "arLiteral": "الإعلان"
+  }
+ ],
+ "en": {
+  "plain": "Besides its place, each letter has qualities: how much breath and sound go with it, and what the tongue does. In the first pair, ten letters let the breath flow on, and the rest hold it back.",
+  "fits": "You now know every letter's مخرج, but some letters share one, like س and ز; only their صفات tell them apart. الجزرية gives five pairs of opposite صفات and seven with no opposite. This lesson is the first pair; next come the sound (stopping or running), the tongue (rising, then pressing on the palate), lightness, and the seven single ones, among them قلقلة and لين, which you know.",
+  "how": [
+   "Say أَسْ and keep it going: breath streams out with the س. That flowing breath is الهمس.",
+   "Now say أَزْ: same place, but the breath is held back and you hear voice instead. That is الجهر, the only thing that separates ز from س.",
+   "The ten مهموسة letters are in «فَحَثَّهُ شَخْصٌ سَكَتْ». The other nineteen are مجهورة.",
+   "Hold your palm before your mouth and say أَتْ, then أَدْ: after ت a little breath reaches your hand, after د only the قلقلة bounce. The muṣḥaf has no mark for this; you learn it by ear."
+  ],
+  "why": "الهمس and الجهر separate letters that share a place: س and ز, ت and د, ث and ذ, ح and ع. They also tell you what each letter needs: a مهموسة letter must let its breath out, and هـ, the weakest of them, must be said clearly.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Holding back the breath of the stopped تْ in كُوِّرَتْ, so it sounds like د.",
+    "right": "Let a little breath follow the ت."
+   },
+   {
+    "wrong": "Swallowing the هْ of أَهْلَكَنِىَ.",
+    "right": "Let the breath of هـ be heard before the ل."
+   },
+   {
+    "wrong": "Pushing a long hiss of breath after every مهموسة letter.",
+    "right": "The breath flows with the letter; don't add to it."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "للحرف غير مخرجه صفات يُعرف بها: كم يجري معه من نفَس وصوت، وماذا يصنع اللسان. وفي أول زوج منها عشرة أحرف يجري معها النفس، وسائر الحروف يحبسه.",
+  "fits": "عرفتَ مخرج كل حرف، لكن بعض الحروف يشترك في مخرج واحد كالسين والزاي، ولا يفرّق بينها إلا صفاتها. وفي الجزرية خمسة أزواج من الصفات المتضادة، وسبع صفات لا ضد لها. وهذا الدرس للزوج الأول، ثم الصوت (انحباسه وجريانه)، ثم اللسان (ارتفاعه ثم انطباقه على الحنك)، ثم الخفة، ثم الصفات السبع المفردة، ومنها القلقلة واللين اللتان تعرفهما.",
+  "how": [
+   "قل: أَسْ وأطلها، فيخرج النفس جاريًا مع السين. وهذا الجريان هو الهمس.",
+   "قل الآن: أَزْ؛ المخرج واحد، لكن النفس ينحبس وتسمع صوتًا بدلًا منه. وهذا هو الجهر، ولا يفرّق بين الزاي والسين غيره.",
+   "الحروف المهموسة عشرة يجمعها «فَحَثَّهُ شَخْصٌ سَكَتْ». والتسعة عشر الباقية مجهورة.",
+   "ضع كفّك أمام فمك وقل أَتْ ثم أَدْ: بعد التاء يصل إلى كفّك نفَس خفيف، وبعد الدال لا تجد إلا نبرة القلقلة. ولا علامة لهذا في المصحف، وإنما يُعرف بالسماع."
+  ],
+  "why": "بالهمس والجهر تتميّز الحروف المشتركة في المخرج: السين والزاي، والتاء والدال، والثاء والذال، والحاء والعين. وبهما تعرف حقّ كل حرف: فالمهموس لا بدّ أن يخرج نفَسه، والهاء أضعفها فيجب بيانها.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "حبس النفس مع التاء الموقوف عليها في كُوِّرَتْ حتى تشبه الدال.",
+    "right": "أتبع التاء نفَسًا خفيفًا."
+   },
+   {
+    "wrong": "إخفاء الهاء الساكنة في أَهْلَكَنِىَ.",
+    "right": "أسمِع نفَس الهاء قبل اللام."
+   },
+   {
+    "wrong": "المبالغة في إخراج النفس بعد كل حرف مهموس.",
+    "right": "النفس يجري مع الحرف من غير زيادة."
+   }
+  ]
+ }
+}

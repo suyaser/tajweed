@@ -1,0 +1,58 @@
+{
+ "lesson": "aqwa-maddayn",
+ "terms": [],
+ "en": {
+  "plain": "Sometimes one مد letter has two reasons to be long: a همزة before it and something after it. Then you follow the stronger reason and drop the weaker: رِئَآءَ is 4 or 5, not 2.",
+  "fits": "You now know the main kinds of مد in حفص. With nothing after it, 2 counts: المد الطبيعي, العوض, الصلة الصغرى and مد البدل. With a همزة after it: المد المتصل, 4 or 5, and المد المنفصل with الصلة الكبرى, the same length. With a سكون after it: المد العارض and the لين at a stop, 2, 4 or 6, and المد اللازم, 6. From strongest to weakest: لازم, متصل, عارض, منفصل, بدل.",
+  "how": [
+   "Look after the مد letter first. A شدة or a fixed سكون: لازم, six. A همزة in the same word: متصل, 4 or 5.",
+   "A همزة starting the next word, read joined: منفصل, 4 or 5. A stop on the next letter: عارض, 2, 4 or 6.",
+   "Only when nothing follows does the همزة before it decide: مد البدل, two.",
+   "So ءَآمِّينَ is 6 (لازم beats بدل); رِئَآءَ is 4 or 5 (متصل); stopping on مُسْتَهْزِءُونَ, 2, 4 or 6 (عارض); وَجَآءُوٓ أَبَاهُمْ, 4 or 5 (منفصل).",
+   "With بدل and عارض, as when stopping on مُسْتَهْزِءُونَ, all three lengths are correct, but use the same length you use for every other عارض in that recitation."
+  ],
+  "why": "A cause that is fixed and in the same word is strongest; one that comes only at a stop, or sits in the next word, is weaker; a همزة before the letter is weakest, because every other cause comes after it (غاية المريد). One letter can't be read two lengths at once, so the stronger cause decides.",
+  "spot": "The ٓ helps. مصحف المدينة writes it for المتصل, المنفصل, المد اللازم and الصلة الكبرى, never for مد البدل, the عارض or a لين at a stop. In رِئَآءَ the ٓ tells you the بدل has given way.",
+  "mistakes": [
+   {
+    "wrong": "Reading رِئَآءَ with two counts because a همزة comes before the ا.",
+    "right": "A همزة after it too: متصل wins, 4 or 5."
+   },
+   {
+    "wrong": "Reading ءَآمِّينَ with 2 or 4 counts.",
+    "right": "A شدة after it: six."
+   },
+   {
+    "wrong": "Joining وَجَآءُوٓ أَبَاهُمْ with a two-count و.",
+    "right": "4 or 5: the منفصل wins."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "قد يجتمع لحرف المد الواحد سببان للمد: همزة قبله وشيء بعده. عندئذ تعمل بالسبب الأقوى وتترك الأضعف: رِئَآءَ تُمد أربعًا أو خمسًا، لا حركتين.",
+  "fits": "عرفتَ الآن أهم أنواع المد عند حفص. فما ليس بعده شيء: المد الطبيعي والعوض والصلة الصغرى ومد البدل، وكلها حركتان. وما بعده همزة: المد المتصل أربعًا أو خمسًا، والمد المنفصل والصلة الكبرى بمقداره. وما بعده سكون: المد العارض واللين عند الوقف حركتان أو أربع أو ست، والمد اللازم ست. وترتيبها من الأقوى إلى الأضعف: لازم، فمتصل، فعارض، فمنفصل، فبدل.",
+  "how": [
+   "انظر أولًا إلى ما بعد حرف المد: إن كان حرفًا مشددًا أو سكونًا ثابتًا فهو لازم، ست حركات. وإن كان همزة في الكلمة نفسها فهو متصل، أربع أو خمس.",
+   "وإن كانت الهمزة في أول الكلمة التالية ووصلت فهو منفصل، أربع أو خمس. وإن وقفت على الحرف التالي فهو عارض، حركتان أو أربع أو ست.",
+   "فإن لم يأت بعده شيء من ذلك حكمت الهمزة التي قبله: مد البدل، حركتان.",
+   "فـ ءَآمِّينَ ست (اللازم يغلب البدل)، ورِئَآءَ أربع أو خمس (المتصل)، والوقف على مُسْتَهْزِءُونَ حركتان أو أربع أو ست (العارض)، ووَجَآءُوٓ أَبَاهُمْ أربع أو خمس (المنفصل).",
+   "إذا اجتمع البدل والعارض، كالوقف على مُسْتَهْزِءُونَ، جازت الأوجه الثلاثة، لكن التزم المقدار الذي تقف به في سائر العارض في التلاوة نفسها."
+  ],
+  "why": "أقوى الأسباب ما كان ثابتًا في الكلمة نفسها، وأضعف منه ما لا يأتي إلا عند الوقف أو كان في كلمة أخرى، وأضعفها الهمزة قبل الحرف، لأن سائر الأسباب تأتي بعده (غاية المريد). ولا يُقرأ الحرف الواحد بمقدارين معًا، فيُعمل بالأقوى.",
+  "spot": "علامة ٓ تعينك: يكتبها مصحف المدينة في المتصل والمنفصل والمد اللازم والصلة الكبرى، ولا يكتبها في مد البدل ولا العارض ولا اللين عند الوقف. فوجودها في رِئَآءَ يخبرك أن البدل قد ترك مكانه لغيره.",
+  "mistakes": [
+   {
+    "wrong": "مدّ رِئَآءَ حركتين لأن قبل الألف همزة.",
+    "right": "بعدها همزة أيضًا، فالمتصل يغلب: أربع أو خمس."
+   },
+   {
+    "wrong": "مدّ ءَآمِّينَ حركتين أو أربعًا.",
+    "right": "بعدها شدة: ست حركات."
+   },
+   {
+    "wrong": "وصل وَجَآءُوٓ أَبَاهُمْ بواو قصيرة.",
+    "right": "أربع أو خمس: المنفصل يغلب."
+   }
+  ]
+ }
+}

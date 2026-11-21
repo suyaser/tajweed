@@ -1,0 +1,79 @@
+{
+ "lesson": "ghunnah",
+ "terms": [
+  {
+   "term": "غنة",
+   "say": "ghunnah",
+   "en": "A humming sound that comes out through the nose. It is part of every ن and م, the tongue plays no part in it, and on نّ and مّ it is at its fullest, held two حركات.",
+   "literal": "a sound that rings in the nose",
+   "ar": "صوت أغنّ يخرج من الأنف، مركّب في جسم النون والميم، لا عمل للسان فيه. وهو في النون والميم المشددتين أكمل ما يكون، ويُمد حركتين.",
+   "arLiteral": "صوت له رنين في الخيشوم"
+  },
+  {
+   "term": "الخيشوم",
+   "say": "al-khayshūm",
+   "en": "The top of the nose, at the back on the inside: where the غنة comes from.",
+   "ar": "أعلى الأنف وأقصاه من الداخل، ومنه تخرج الغنة."
+  }
+ ],
+ "en": {
+  "plain": "On every نّ and مّ you hum through your nose for two counts: the sound you heard in إِنَّ and عَمَّ.",
+  "fits": "From المد الطبيعي you know how long two حركات are, and from the basics that a شدة means the letter twice. Here the doubled letter is ن or م, and the two counts are filled with a hum from the nose. You have already met نّ after a silent ل, in ٱلنَّاسِ. In the next unit, a ن with سكون and the تنوين follow four rules, and in most of them this same sound is what changes.",
+  "how": [
+   "For نّ, put the tip of the tongue on the gum above the upper front teeth. For مّ, close the lips.",
+   "Keep them there and let the sound go out through your nose. The tongue and lips only hold the letter; the hum itself comes from الخيشوم.",
+   "Hold the hum two حركات, then say the vowel: إِنْ…نَ. Listen to your teacher for how full it should be.",
+   "A classroom check: lay a finger on the side of your nose and feel it buzz; pinch your nose and the hum is cut off."
+  ],
+  "why": "The غنة is part of the nature of ن and م. When one is doubled, the first, with سكون, goes into the second, and the غنة is at its fullest. The books give it two full counts.",
+  "spot": "A شدة on ن or م: نّ, مّ, as in ٱلْجِنَّةِ below. Every one you see is held two counts, in short words like إِنَّ and ثُمَّ too.",
+  "mistakes": [
+   {
+    "wrong": "Clipping the hum in short words: إِنَّ, ثُمَّ.",
+    "right": "Hold two full counts."
+   },
+   {
+    "wrong": "Opening the lips during مّ.",
+    "right": "Keep them closed for the whole hum."
+   },
+   {
+    "wrong": "Humming through the mouth, with no sound in the nose.",
+    "right": "Pinch your nose: if the hum does not stop, it is not a غنة."
+   },
+   {
+    "wrong": "Holding it three or four counts.",
+    "right": "Two counts, like المد الطبيعي."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "مع كل نّ ومّ يخرج من أنفك صوت أغنّ تمسكه حركتين: الصوت الذي سمعته في إِنَّ وعَمَّ.",
+  "fits": "عرفت من المد الطبيعي مقدار الحركتين، ومن الدرس الأول أن الشدة تكرار الحرف. وهنا يكون الحرف المشدد نونًا أو ميمًا، فتملأ الحركتين بصوت يخرج من الأنف. وقد مرّت بك النون المشددة بعد اللام التي لا تُنطق في ٱلنَّاسِ. وفي الوحدة التالية تتبع النون التي عليها سكون والتنوين أربعة أحكام، وفي أكثرها يتغير هذا الصوت نفسه.",
+  "how": [
+   "مع النون ضع طرف اللسان على لثة الأسنان العليا الأمامية، ومع الميم أطبق الشفتين.",
+   "أبقهما كذلك ودع الصوت يخرج من أنفك. فاللسان والشفتان يمسكان الحرف فقط، أمّا الغنة فتخرج من الخيشوم.",
+   "أمسك الغنة حركتين، ثم انطق الحركة: إِنْ…نَ. واستمع إلى شيخك في مقدار امتلائها.",
+   "ومما يُختبر به: ضع إصبعك على جانب أنفك فتحس اهتزازه، وأمسك أنفك فينقطع الصوت."
+  ],
+  "why": "الغنة من طبيعة النون والميم. فإذا شُدّدت إحداهما دخلت الأولى الساكنة في الثانية، فكانت الغنة أكمل ما تكون، وقدّرها العلماء بحركتين كاملتين.",
+  "spot": "شدة على النون أو الميم: نّ، مّ، كما في ٱلْجِنَّةِ أدناه. وكل واحدة تراها تُمد غنتها حركتين، ولو في الكلمات القصيرة مثل إِنَّ وثُمَّ.",
+  "mistakes": [
+   {
+    "wrong": "تقصير الغنة في الكلمات القصيرة: إِنَّ، ثُمَّ.",
+    "right": "أتمّ الحركتين."
+   },
+   {
+    "wrong": "فتح الشفتين أثناء الميم المشددة.",
+    "right": "أبقهما مطبقتين حتى تنتهي الغنة."
+   },
+   {
+    "wrong": "إخراج الصوت من الفم دون الأنف.",
+    "right": "أمسك أنفك: إن لم ينقطع الصوت فليس غنة."
+   },
+   {
+    "wrong": "مد الغنة ثلاث حركات أو أربعًا.",
+    "right": "حركتان، كالمد الطبيعي."
+   }
+  ]
+ }
+}

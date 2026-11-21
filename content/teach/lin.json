@@ -1,0 +1,72 @@
+{
+ "lesson": "lin",
+ "terms": [
+  {
+   "term": "لين",
+   "forms": [
+    "حرفا اللين",
+    "حرف لين"
+   ],
+   "say": "līn",
+   "en": "A و or ي with سكون after a فتحة, as in خَوْفٍ and ٱلْبَيْتِ. They are called حرفا اللين because they come out easily, with no effort.",
+   "literal": "softness",
+   "ar": "الواو أو الياء الساكنة بعد فتحة، كما في خَوْفٍ وٱلْبَيْتِ. وسُميا حرفي لين لخروجهما بسهولة من غير كلفة.",
+   "arLiteral": "السهولة واللطف.",
+   "not": [
+    "بلين"
+   ]
+  }
+ ],
+ "en": {
+  "plain": "A و or ي with no vowel after a فتحة glides softly: خَوْف, قُرَيْش. If you stop on the letter right after it, you may stretch that glide 2, 4 or 6 counts.",
+  "fits": "You know المد العارض: at a stop, a مد letter before the last letter may be 2, 4 or 6. مد اللين is its close relative. The letter before the last is not a full مد letter but a soft one, a لين letter: وْ or يْ after a فتحة. Joined, it is not lengthened at all; only the stop gives it a length.",
+  "how": [
+   "Find a فتحة followed by وْ or يْ: قُرَيْشٍ, خَوْفٍ, ٱلْبَيْتِ.",
+   "Reading on, say it as a quick glide with no stretch: in وَٱلصَّيْفِ فَلْيَعْبُدُوا۟ the يْ is not lengthened.",
+   "Stopping, the last letter takes a سكون (قُرَيْشْ) and you may stretch the glide 2, 4 or 6 counts. Keep the فتحة open before it.",
+   "In one recitation the لين may not be longer than your المد العارض: if your عارض is 4, the لين is 2 or 4."
+  ],
+  "why": "وْ and يْ after a فتحة keep some of the ease of the مد letters, so when a stop puts a سكون after them they may be stretched, as with المد العارض. Joined, nothing follows to call for it.",
+  "spot": "There is no مد sign. You see a فتحة, then و or ي with a sukun: قُرَيْشٍ, ٱلْبَيْتِ. The length comes only from your stop.",
+  "mistakes": [
+   {
+    "wrong": "Stretching the لين while reading on, as in وَٱلصَّيْفِ joined to the next ayah.",
+    "right": "Joined, no stretch at all."
+   },
+   {
+    "wrong": "Turning the glide into a long vowel: ٱلْبِيت or ٱلْبَات.",
+    "right": "Keep the فتحة, then glide to the ي: ٱلْبَيْت."
+   },
+   {
+    "wrong": "Holding the لين longer than your المد العارض in the same recitation.",
+    "right": "Equal or shorter: 4 and 4, or 4 and 2."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "الواو والياء الساكنتان بعد فتحة تُنطقان بانسياب لطيف: خَوْف، قُرَيْش. فإن وقفت على الحرف الذي بعدهما جاز أن تمد هذا الانسياب حركتين أو أربعًا أو ستًا.",
+  "fits": "عرفتَ المد العارض: عند الوقف يجوز في حرف المد الذي قبل الحرف الأخير حركتان أو أربع أو ست. ومد اللين قريب منه، غير أن الحرف الذي قبل الأخير ليس حرف مد كاملًا، بل حرف لين: واو أو ياء ساكنة بعد فتحة. وفي الوصل لا يُمد أصلًا، وإنما يأتيه المد من الوقف.",
+  "how": [
+   "ابحث عن فتحة بعدها وْ أو يْ: قُرَيْشٍ، خَوْفٍ، ٱلْبَيْتِ.",
+   "في الوصل انطقه سريعًا بلا مد: في وَٱلصَّيْفِ فَلْيَعْبُدُوا۟ لا تُمد الياء.",
+   "عند الوقف يسكن الحرف الأخير (قُرَيْشْ)، ولك أن تمد اللين حركتين أو أربعًا أو ستًا، مع إبقاء الفتحة قبله مفتوحة.",
+   "في التلاوة الواحدة لا يزيد اللين على مقدار العارض عندك: فإن مددت العارض أربعًا فاللين حركتان أو أربع."
+  ],
+  "why": "في الواو والياء الساكنتين بعد فتحة شيء من سهولة حروف المد، فإذا جاءهما سكون الوقف جاز مدهما كالمد العارض. وفي الوصل لا شيء بعدهما يقتضي المد.",
+  "spot": "لا علامة مد هنا. تجد فتحة، ثم واوًا أو ياءً عليها سكون: قُرَيْشٍ، ٱلْبَيْتِ. والمد يأتي من وقفك فقط.",
+  "mistakes": [
+   {
+    "wrong": "مدّ اللين في الوصل، كأن تصل وَٱلصَّيْفِ بالآية التالية ممدودة.",
+    "right": "في الوصل لا مد أصلًا."
+   },
+   {
+    "wrong": "تحويل الانسياب إلى صوت ممدود: ٱلْبِيت أو ٱلْبَات.",
+    "right": "أبقِ الفتحة ثم انتقل إلى الياء: ٱلْبَيْت."
+   },
+   {
+    "wrong": "مدّ اللين أطول من العارض في التلاوة نفسها.",
+    "right": "مثله أو أقصر: أربع وأربع، أو أربع واثنتان."
+   }
+  ]
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "lesson": "dad-zha",
+ "terms": [],
+ "en": {
+  "plain": "ض and ظ are both heavy, but they are made in different places: ض with the side of the tongue against the upper back teeth, ظ with the tip of the tongue at the upper front teeth.",
+  "fits": "You know both as heavy letters from «خُصَّ ضَغْطٍ قِظْ». What tells them apart is where they are made. Mixing them changes the word: نَّاضِرَةٌ (radiant) and نَاظِرَةٌ (looking) are next to each other in سورة القيامة. In أَنقَضَ ظَهْرَكَ they meet, and both must be clear.",
+  "how": [
+   "ظ: put the tip of the tongue against the edges of the upper front teeth, so it shows a little, and raise the back of the tongue. It is like ذ, but heavy.",
+   "ض: keep the tip back. Press the side of the tongue, one side or both, against the upper back teeth; the books say the left side is easier and more common.",
+   "Let the sound of ض run along the side of the tongue, from back to front. No other letter does this; a later lesson gives it its name.",
+   "When they meet, as in أَنقَضَ ظَهْرَكَ, finish the ض, then bring the tip forward for the ظ. Don't merge them.",
+   "The exact sound of ض is a known disagreement among teachers today, so learn it by ear from your teacher. The muṣḥaf has no sign for any of this."
+  ],
+  "why": "They are two letters with different meanings: ٱلضَّآلِّينَ (those astray) said with a ظ becomes another word. Changing one letter for another is a لحن جلي, so the books insist on keeping their places apart (غاية المريد).",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Saying ض with the tongue tip at the teeth, so نَّاضِرَةٌ sounds like نَاظِرَةٌ.",
+    "right": "Tip back, the side of the tongue on the back teeth."
+   },
+   {
+    "wrong": "Saying ظ light, like ذ: ذَهْرَكَ.",
+    "right": "Tip at the teeth and the back of the tongue raised: ظَهْرَكَ."
+   },
+   {
+    "wrong": "Letting the ض turn into a ظ next to the ظ: أَنقَظَ ظَهْرَكَ.",
+    "right": "Say both: the ض, then the ظ."
+   },
+   {
+    "wrong": "Saying ض like a heavy ل, or with a ز sound mixed in.",
+    "right": "Keep it on the side of the tongue, its sound running along it."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "الضاد والظاء كلتاهما مفخمة، لكن مخرجهما مختلف: الضاد من حافة اللسان مع الأضراس العليا، والظاء من طرف اللسان مع أطراف الأسنان الأمامية العليا.",
+  "fits": "تعرفهما من حروف «خُصَّ ضَغْطٍ قِظْ» المفخمة دائمًا. والذي يفرق بينهما هو المخرج. والخلط بينهما يغير الكلمة: نَّاضِرَةٌ (مشرقة) ونَاظِرَةٌ (تنظر) متجاورتان في سورة القيامة. وفي أَنقَضَ ظَهْرَكَ تلتقيان، فلا بد من بيان كل منهما.",
+  "how": [
+   "الظاء: ضع طرف اللسان على أطراف الأسنان الأمامية العليا حتى يبرز قليلًا، وارفع أقصى اللسان. فهي كالذال لكنها مفخمة.",
+   "الضاد: أبعِد طرف اللسان إلى الداخل، واضغط بحافته، من جهة واحدة أو من الجهتين، على الأضراس العليا. وتذكر الكتب أن الجهة اليسرى أيسر وأكثر.",
+   "دع صوت الضاد يمتد على حافة اللسان من أولها إلى آخرها. ولا يشاركها في ذلك حرف، وسيأتي اسم هذه الخاصية في درس لاحق.",
+   "إذا التقتا كما في أَنقَضَ ظَهْرَكَ فأتمّ الضاد، ثم قدّم طرف اللسان للظاء، ولا تدغم إحداهما في الأخرى.",
+   "وصوت الضاد بالتحديد موضع خلاف معروف بين المعلمين اليوم، فخذه بالسماع من شيخك. وليس في المصحف علامة لشيء من ذلك."
+  ],
+  "why": "هما حرفان مختلفان يختلف بهما المعنى: ٱلضَّآلِّينَ (من ضلّ) إذا نُطقت بالظاء صارت كلمة أخرى. وإبدال حرف بحرف لحن جلي، ولذلك شدد العلماء في التمييز بين مخرجيهما (غاية المريد).",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "نطق الضاد بطرف اللسان عند الأسنان الأمامية، فتصير نَّاضِرَةٌ كأنها نَاظِرَةٌ.",
+    "right": "طرف اللسان إلى الداخل، وحافته على الأضراس."
+   },
+   {
+    "wrong": "ترقيق الظاء حتى تصير ذالًا: ذَهْرَكَ.",
+    "right": "طرف اللسان عند الأسنان الأمامية وأقصاه مرتفع: ظَهْرَكَ."
+   },
+   {
+    "wrong": "نطق الضاد ظاءً لمجاورتها الظاء: أَنقَظَ ظَهْرَكَ.",
+    "right": "بيّن الحرفين: الضاد ثم الظاء."
+   },
+   {
+    "wrong": "نطق الضاد لامًا مفخمة، أو بشائبة زاي.",
+    "right": "من حافة اللسان، وصوتها يمتد عليها."
+   }
+  ]
+ }
+}

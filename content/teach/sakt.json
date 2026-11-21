@@ -1,0 +1,76 @@
+{
+ "lesson": "sakt",
+ "terms": [
+  {
+   "term": "سكت",
+   "forms": [
+    "سكتة"
+   ],
+   "say": "sakt",
+   "en": "Cutting the voice for a brief moment, without taking a breath, then carrying on. In حفص it is fixed to a few places.",
+   "literal": "falling silent",
+   "ar": "قطع الصوت زمنًا يسيرًا دون أخذ نفَس، ثم مواصلة القراءة. وهو عند حفص في مواضع محددة.",
+   "arLiteral": "الصمت والإمساك عن الكلام"
+  }
+ ],
+ "en": {
+  "plain": "In a few places, حفص stops the voice for a moment without taking a breath, then goes on. You heard it in بَلْ ۜ رَانَ: the ل stays clear.",
+  "fits": "You know الوقف: you stop and breathe. A سكت is shorter and has no breath. In حفص من طريق الشاطبية it is required in four places when you join, and optional in two. You met one in the المتقاربين lesson: بَلْ ۜ رَانَ, where the ل is not merged.",
+  "how": [
+   "Read to the end of the word before the sign, with a سكون on its last letter: بَلْ, مَنْ.",
+   "Cut the voice for about two counts. Keep your breath; don't take a new one. Then go on: بَلْ ۜ رَانَ (83:14), وَقِيلَ مَنْ ۜ رَاقٍ (75:27). The ل and the ن stay clear, not merged into the ر.",
+   "عِوَجَا ۜ قَيِّمًا (18:1–2) and مَرْقَدِنَا ۜ هَٰذَا (36:52): the سكت is on the ا, when you join. You may stop there instead; at مَرْقَدِنَا stopping is better, as ۗ shows.",
+   "Optional: مَالِيَهْ ۜ هَلَكَ (69:28–29), when joining, has a سكت (read first) or a merge of the two ه. Between الأنفال and التوبة you may stop, make a سكت, or join, all without البسملة."
+  ],
+  "why": "حفص received these places with a سكت. The books explain it by meaning: it shows that قَيِّمًا is not joined in grammar to what comes before it; that the disbelievers' words end at مَرْقَدِنَا, and هَٰذَا مَا وَعَدَ ٱلرَّحْمَٰنُ is said by others (the angels or the believers); and that مَنْ رَاقٍ and بَلْ رَانَ are two words each (النشر).",
+  "spot": "A small س (ۜ) after the last letter of a word: بَلْ ۜ رَانَ. As a pause sign it is printed only at the four required places and at مَالِيَهْ. The same small س on a ص inside a word (وَيَبْصُۜطُ) is a different sign: read that ص as س.",
+  "mistakes": [
+   {
+    "wrong": "Taking a breath at ۜ.",
+    "right": "Hold the breath: it is a pause, not a stop."
+   },
+   {
+    "wrong": "Merging: بَرَّانَ, مَرَّاقٍ.",
+    "right": "Say the ل and the ن clearly with a سكون, then pause."
+   },
+   {
+    "wrong": "Pausing as long as a full stop.",
+    "right": "Only a brief moment. Listen to the reciter in بَلْ ۜ رَانَ."
+   },
+   {
+    "wrong": "Adding a سكت on ال, on شَىْء, or before a همزة.",
+    "right": "Those come to حفص through another line of teachers (طريق الطيبة), not the الشاطبية line this course follows."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في مواضع قليلة يقطع حفص صوته لحظة دون أن يتنفس، ثم يكمل. وقد سمعته في بَلْ ۜ رَانَ، فبقيت اللام ظاهرة.",
+  "fits": "تعرف الوقف: قطع الصوت مع أخذ النفَس. أما السكت فأقصر منه، ولا نفَس فيه. وهو لحفص من طريق الشاطبية واجب في أربعة مواضع عند الوصل، وجائز في موضعين. وقد مرّ بك أحدها في درس المتقاربين: بَلْ ۜ رَانَ، حيث لا تُدغم اللام.",
+  "how": [
+   "اقرأ الكلمة التي عليها العلامة حتى آخرها، مسكّنًا آخرها: بَلْ، مَنْ.",
+   "اقطع الصوت بقدر حركتين تقريبًا، وأمسك نفَسك فلا تأخذ نفَسًا جديدًا، ثم أكمل: بَلْ ۜ رَانَ (83:14)، وَقِيلَ مَنْ ۜ رَاقٍ (75:27). فتبقى اللام والنون ظاهرتين ولا تُدغمان في الراء.",
+   "عِوَجَا ۜ قَيِّمًا (18:1–2) و مَرْقَدِنَا ۜ هَٰذَا (36:52): السكت على الألف عند الوصل. ولك أن تقف بدلًا منه، والوقف على مَرْقَدِنَا أولى كما تدل ۗ.",
+   "وجائز: مَالِيَهْ ۜ هَلَكَ (69:28–29) عند الوصل، ففيها السكت وهو المقدَّم، أو إدغام الهاء في الهاء. وبين الأنفال والتوبة لك الوقف أو السكت أو الوصل، وكلها بلا بسملة."
+  ],
+  "why": "هكذا رُويت هذه المواضع عن حفص. ويذكر العلماء لها عللًا من المعنى: لئلا يُظن أن قَيِّمًا متصل في الإعراب بما قبله، وليتبيّن أن كلام الكفار انتهى عند مَرْقَدِنَا، وأن هَٰذَا مَا وَعَدَ ٱلرَّحْمَٰنُ من كلام غيرهم (الملائكة أو المؤمنين)، وليظهر أن مَنْ رَاقٍ و بَلْ رَانَ كلمتان لا كلمة واحدة.",
+  "spot": "سين صغيرة (ۜ) بعد آخر الكلمة: بَلْ ۜ رَانَ. ولا تأتي علامةً للسكت إلا في المواضع الأربعة الواجبة وفي مَالِيَهْ. أما السين الصغيرة فوق الصاد داخل الكلمة (وَيَبْصُۜطُ) فعلامة أخرى، معناها: اقرأ الصاد سينًا.",
+  "mistakes": [
+   {
+    "wrong": "أخذ النفَس عند ۜ.",
+    "right": "أمسك نفَسك، فهي سكتة لا وقف."
+   },
+   {
+    "wrong": "الإدغام: بَرَّانَ، مَرَّاقٍ.",
+    "right": "أظهر اللام والنون ساكنتين، ثم اسكت."
+   },
+   {
+    "wrong": "إطالة السكت حتى يصير كالوقف.",
+    "right": "لحظة يسيرة فقط، واستمع إلى القارئ في بَلْ ۜ رَانَ."
+   },
+   {
+    "wrong": "السكت على ال، أو على شَىْء، أو قبل الهمزة.",
+    "right": "هذه وردت لحفص من طريق آخر، هو طريق الطيبة، لا من طريق الشاطبية الذي يتبعه هذا المقرر."
+   }
+  ]
+ }
+}

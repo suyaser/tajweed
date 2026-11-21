@@ -1,0 +1,83 @@
+{
+ "lesson": "istiadha",
+ "terms": [
+  {
+   "term": "الاستعاذة",
+   "say": "al-istiʿādhah",
+   "en": "Saying أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ before you recite: asking Allah to protect you from Satan.",
+   "literal": "seeking refuge",
+   "ar": "قول «أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ» قبل القراءة، أي الالتجاء إلى الله من شر الشيطان.",
+   "arLiteral": "طلب العوذ، أي الالتجاء والاعتصام"
+  },
+  {
+   "term": "البسملة",
+   "say": "al-basmalah",
+   "en": "Saying بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ.",
+   "literal": "a word made from the phrase بِسْمِ ٱللَّهِ",
+   "ar": "قول «بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ».",
+   "arLiteral": "كلمة منحوتة من «بِسْمِ ٱللَّهِ»"
+  }
+ ],
+ "en": {
+  "plain": "Before you recite, you ask Allah to protect you from Satan. At the start of a surah you also say بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ, except at the start of التوبة.",
+  "fits": "In the basics you learned وقف and وصل. Here you use them at the very start of a recitation: after the الاستعاذة and the البسملة you may stop or join; the one wrong way comes between two surahs. Then the rest of this unit takes you through سورة الناس.",
+  "how": [
+   "Say the الاستعاذة whenever you begin to recite, at the start of a surah or in the middle of one.",
+   "At the start of every surah except التوبة, say the البسملة after it. Starting in the middle of a surah, the البسملة is your choice.",
+   "At the start of a surah there are four ways, all correct: stop after each part; join all three (الاستعاذة, البسملة and the surah's first ayah); stop after the الاستعاذة, then join the البسملة to the surah; or join the الاستعاذة to the البسملة, stop, then begin the surah.",
+   "Between two surahs there are three correct ways: stop after each; join all; or stop at the end of the surah, then join the البسملة to the next one.",
+   "One way is not allowed: joining the end of a surah to the البسملة and then stopping."
+  ],
+  "why": "Allah commands it in the ayah you heard (16:98): «فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ». Most scholars read this command as a strong recommendation (a sunnah), and some count it as required; say it aloud when you recite aloud and someone is listening, and quietly when you recite alone or silently. The one forbidden way is forbidden because it makes the البسملة sound like part of the surah before.",
+  "spot": "The الاستعاذة is not printed in the muṣḥaf; you say it from memory. Below is the ayah that commands it, with فَٱسْتَعِذْ. In the printed muṣḥaf the البسملة heads every surah except التوبة; in الفاتحة it is numbered as the first ayah, and above the others it has no number.",
+  "mistakes": [
+   {
+    "wrong": "Joining the end of a surah to the البسملة, then stopping.",
+    "right": "Stop at the end of the surah, or join the البسملة on into the next surah too."
+   },
+   {
+    "wrong": "Saying the البسملة at the start of التوبة.",
+    "right": "Start التوبة with the الاستعاذة only."
+   },
+   {
+    "wrong": "Starting from the middle of a surah without the الاستعاذة.",
+    "right": "Say it every time you begin to recite."
+   },
+   {
+    "wrong": "Changing between the four ways each time while you are still learning.",
+    "right": "Learn one way first, usually stopping after each part, and keep to it."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "قبل أن تقرأ تلتجئ إلى الله من الشيطان. وإذا بدأت من أول سورة قلت بعد ذلك «بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ»، إلا في أول سورة التوبة.",
+  "fits": "عرفت في الدرس الأول الوقف والوصل، وهنا تستعملهما في أول التلاوة: بعد الاستعاذة والبسملة لك أن تقف أو تصل، ولا يُمنع إلا وجه واحد بين سورتين. ثم تمضي بقية هذه الوحدة مع سورة الناس.",
+  "how": [
+   "قل الاستعاذة كلما بدأت القراءة، من أول السورة كان ذلك أو من وسطها.",
+   "وفي أول كل سورة إلا التوبة قل البسملة بعدها. فإن بدأت من وسط السورة فأنت مخيّر في البسملة.",
+   "في أول السورة أربعة أوجه كلها صحيحة: أن تقف بعد كل جزء، أو تصل الثلاثة معًا (الاستعاذة والبسملة وأول آية من السورة)، أو تقف بعد الاستعاذة ثم تصل البسملة بالسورة، أو تصل الاستعاذة بالبسملة ثم تقف ثم تبدأ السورة.",
+   "وبين سورتين ثلاثة أوجه صحيحة: الوقف بعد كلٍّ، أو وصل الجميع، أو الوقف في آخر السورة ثم وصل البسملة بأول التالية.",
+   "ووجه واحد ممنوع: أن تصل آخر السورة بالبسملة ثم تقف."
+  ],
+  "why": "أمر الله بها في الآية التي سمعتها (16:98): «فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ». وحمل جمهور العلماء هذا الأمر على الندب فهي سنة، وقال بعضهم بوجوبها؛ وتقولها بصوت مسموع إذا قرأت بصوت مسموع بحضرة من يسمع، وفي سرّ إذا قرأت سرًّا أو وحدك. ومُنع ذلك الوجه لأنه يوهم أن البسملة من السورة السابقة.",
+  "spot": "الاستعاذة غير مكتوبة في المصحف، فتقولها من حفظك، وأدناه الآية التي تأمر بها وفيها فَٱسْتَعِذْ. أمّا البسملة فمطبوعة في رأس كل سورة إلا التوبة: في الفاتحة هي الآية الأولى وعليها رقمها، وفوق غيرها بلا رقم.",
+  "mistakes": [
+   {
+    "wrong": "وصل آخر السورة بالبسملة ثم الوقف.",
+    "right": "قف في آخر السورة، أو صل البسملة بالسورة التالية أيضًا."
+   },
+   {
+    "wrong": "قول البسملة في أول سورة التوبة.",
+    "right": "ابدأ التوبة بالاستعاذة وحدها."
+   },
+   {
+    "wrong": "البدء من وسط السورة بلا استعاذة.",
+    "right": "قلها كلما بدأت القراءة."
+   },
+   {
+    "wrong": "التنقل بين الأوجه الأربعة في كل مرة وأنت ما زلت تتعلم.",
+    "right": "تعلّم وجهًا واحدًا أولًا، وغالبًا الوقف بعد كل جزء، والتزمه."
+   }
+  ]
+ }
+}

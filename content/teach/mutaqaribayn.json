@@ -1,0 +1,79 @@
+{
+ "lesson": "mutaqaribayn",
+ "terms": [
+  {
+   "term": "المتقاربين",
+   "forms": [
+    "متقاربان",
+    "متقاربين"
+   ],
+   "say": "al-mutaqāribayn",
+   "en": "Two different letters whose مخارج are close (or that sound alike in their manner), the first with a سكون. In حفص only two such pairs merge beyond the rules you know: ل into ر, and ق into ك.",
+   "literal": "the two that are close to each other",
+   "ar": "حرفان مختلفان تقارب مخرجاهما أو تقاربا في طريقة النطق، والأول منهما ساكن. ولا يُدغم حفص من هذا النوع إلا اللام في الراء والقاف في الكاف، زيادةً على ما عرفتَه في النون الساكنة ولام التعريف.",
+   "arLiteral": "المتقاربان: الحرفان القريب أحدهما من الآخر"
+  }
+ ],
+ "en": {
+  "plain": "When a still ل meets a ر, the ل is not said and the ر is doubled: وَقُل رَّبِّ. The same happens once with ق before ك: نَخْلُقكُّم.",
+  "fits": "You know two kinds of merging between two letters: المثلين (the same letter twice) and المتجانسين (two letters from one مخرج, like د into ت in قَد تَّبَيَّنَ). المتقاربين is the third kind: the مخارج are close, not the same. Most close pairs are read clearly in حفص; apart from the نون and ال rules you know, only ل into ر and ق into ك merge.",
+  "how": [
+   "In وَقُل رَّبِّ the ل has a سكون and the ر comes next. Both are made with the front of the tongue, close to each other.",
+   "Don't say the ل at all. Go from the ضمة of the ق straight to a doubled ر, as the شدة on رَّ shows. There is no غنة. Check: if the tip of your tongue stops on the gum for an ل before the ر starts, you said the ل.",
+   "Read بَل رَّفَعَهُ, بَل رَّبُّكُمْ and فَقُل رَّبُّكُمْ the same way: no ل is heard.",
+   "In نَخْلُقكُّم (77:20) the ق and the ك are both made with the back of the tongue, the ق a little deeper. Read first the complete merge: no ق at all, only a doubled ك.",
+   "The books also allow an incomplete merge: the ق is not said, but its استعلاء (the back of the tongue rising) is kept before the ك. Ask your teacher which way they teach."
+  ],
+  "why": "A still letter followed at once by a letter made close to it is heavy on the tongue. Merging the first into the second makes it light and smooth, and this is how حفص received these words.",
+  "spot": "The ل is printed bare, with no سكون, and the ر after it has a شدة: قُل رَّبِّ. In نَخْلُقكُّم the ق is bare and the ك has a شدة. A bare letter before a شدة tells you to merge.",
+  "mistakes": [
+   {
+    "wrong": "Saying the ل before the ر: قُلْ رَبِّ.",
+    "right": "Drop the ل and double the ر: قُرَّبِّ."
+   },
+   {
+    "wrong": "Saying the ق in نَخْلُقكُّم with a bounce.",
+    "right": "Merge it into the ك; the complete merge is read first."
+   },
+   {
+    "wrong": "Adding a غنة to the merged ر.",
+    "right": "Neither ل nor ر has a غنة here."
+   },
+   {
+    "wrong": "Merging the ل in بَلْ ۜ رَانَ (83:14).",
+    "right": "There the small س asks for a short pause without breath, so the ل stays clear. A later lesson teaches it."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاءت اللام الساكنة قبل الراء لم تُنطق اللام، ونطقتَ راءً مشددة: وَقُل رَّبِّ. ومثلها مرةً واحدة في القرآن: القاف قبل الكاف في نَخْلُقكُّم.",
+  "fits": "عرفتَ نوعين من إدغام حرف في حرف: المثلين، وهما حرفان متماثلان، والمتجانسين، وهما حرفان من مخرج واحد كالدال في التاء في قَد تَّبَيَّنَ. وهذا النوع الثالث: المتقاربين، ومخرجاهما متقاربان لا متحدان. والأصل عند حفص إظهار المتقاربين، ولا يُدغم منها، زيادةً على ما عرفتَه في النون الساكنة ولام التعريف، إلا اللام في الراء والقاف في الكاف.",
+  "how": [
+   "في وَقُل رَّبِّ لامٌ ساكنة بعدها راء، وكلتاهما تخرجان من طرف اللسان من موضعين متقاربين.",
+   "لا تنطق اللام أصلًا، بل انتقل من ضمة القاف إلى راء مشددة كما تدل الشدة على رَّ. ولا غنة هنا. وللتحقق: إن توقف طرف لسانك على اللثة للام قبل أن تبدأ الراء فقد نطقت اللام.",
+   "وكذلك اقرأ بَل رَّفَعَهُ و بَل رَّبُّكُمْ و فَقُل رَّبُّكُمْ: لا يُسمع للام صوت.",
+   "في نَخْلُقكُّم (77:20) تخرج القاف والكاف من أقصى اللسان، والقاف أعمق قليلًا. والمقدَّم الإدغام الكامل: تذهب القاف كلها وتنطق كافًا مشددة.",
+   "ويجوز في الكتب الإدغام الناقص: تذهب القاف ويبقى استعلاؤها، أي ارتفاع أقصى اللسان، قبل الكاف. واسأل شيخك بأي الوجهين يأخذ."
+  ],
+  "why": "النطق بحرف ساكن ثم بحرف قريب من مخرجه مباشرة فيه ثقل على اللسان، فيُدغم الأول في الثاني طلبًا للخفة. وهكذا رُويت هذه الكلمات عن حفص.",
+  "spot": "تُكتب اللام عارية من السكون، وعلى الراء بعدها شدة: قُل رَّبِّ. وفي نَخْلُقكُّم القاف عارية والكاف مشددة. فالحرف العاري قبل حرف مشدد علامةٌ على الإدغام.",
+  "mistakes": [
+   {
+    "wrong": "إظهار اللام قبل الراء: قُلْ رَبِّ.",
+    "right": "أسقط اللام وشدّد الراء: قُرَّبِّ."
+   },
+   {
+    "wrong": "النطق بالقاف في نَخْلُقكُّم مقلقلةً.",
+    "right": "أدغمها في الكاف، والإدغام الكامل مقدَّم."
+   },
+   {
+    "wrong": "إضافة غنة إلى الراء المدغم فيها.",
+    "right": "لا غنة في اللام ولا في الراء هنا."
+   },
+   {
+    "wrong": "إدغام اللام في بَلْ ۜ رَانَ (83:14).",
+    "right": "السين الصغيرة هناك تطلب وقفة يسيرة بلا نفَس، فتبقى اللام ظاهرة. وستتعلمها في درس لاحق."
+   }
+  ]
+ }
+}

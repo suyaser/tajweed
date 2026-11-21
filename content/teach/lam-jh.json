@@ -1,0 +1,73 @@
+{
+ "lesson": "lam-jh",
+ "terms": [
+  {
+   "term": "لفظ الجلالة",
+   "say": "lafẓ al-jalālah",
+   "en": "The name اللَّه, and also اللَّهُمَّ. Its ل is heavy or light depending on the vowel before it.",
+   "literal": "the word of majesty",
+   "ar": "اسم «اللَّه»، ومثله «اللَّهُمَّ». وتُفخَّم لامه أو تُرقَّق بحسب الحركة التي قبلها.",
+   "arLiteral": "اللفظ الدال على الجلال، أي العظمة"
+  }
+ ],
+ "en": {
+  "plain": "In هُوَ ٱللَّهُ, after a فتحة or a ضمة, the ل of the name اللَّه is said heavy and full. It is heavy too when you start on the name.",
+  "fits": "You know تفخيم from the seven heavy letters, and the silent ل of ال: in لفظ الجلالة the first ل goes into the second, which has a شدة. Every other ل in the Quran is light; only this one is ever heavy. This lesson is its heavy side; the next is the light side, after a كسرة.",
+  "how": [
+   "Look at the vowel right before the name: هُوَ ends in a فتحة, رَسُولُ in a ضمة.",
+   "After a فتحة or a ضمة, say the doubled ل heavy, so the mouth fills as with the heavy letters. The ا after it follows the ل and is heavy too.",
+   "Starting on the name, as at the start of 112:2, the همزة الوصل takes a فتحة, so the ل is heavy.",
+   "Go by the vowel you say, not the letter you see: in إِلَى ٱللَّهِ the ى is not said when joined, so the ل follows the فتحة of لَ and is heavy."
+  ],
+  "why": "This is how the reading was handed down from the reciters, and the books explain it as honouring the name of Allah, heavy in sound as His name is great in meaning.",
+  "spot": "The name is written ٱللَّه: a ٱ, a ل with no mark, then a ل with a شدة. No sign tells you heavy or light; look at the mark on the letter before it, like the فتحة on the و of هُوَ below.",
+  "mistakes": [
+   {
+    "wrong": "Saying the ل thin after a فتحة or ضمة: هُوَ ٱللَّهُ.",
+    "right": "Heavy and full: the mouth fills."
+   },
+   {
+    "wrong": "Rounding the lips so the ا sounds like o.",
+    "right": "The heaviness is in the tongue; the ا stays an a."
+   },
+   {
+    "wrong": "Making other ل's heavy too, as in ٱلَّذِى or وَٱلَّيْلِ.",
+    "right": "Only the ل of the name is heavy."
+   },
+   {
+    "wrong": "Making the final ه heavy.",
+    "right": "The ه stays light."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في هُوَ ٱللَّهُ، بعد فتحة أو ضمة، تُنطق لام اسم «اللَّه» مفخمة ممتلئة. وتُفخَّم كذلك إذا بدأت بالاسم نفسه.",
+  "fits": "عرفت التفخيم في الحروف السبعة، وعرفت لام ال التي لا تُنطق: ففي لفظ الجلالة تدخل اللام الأولى في الثانية المشددة. وكل لام في القرآن مرققة، إلا هذه فقد تُفخَّم. وهذا الدرس في تفخيمها، والدرس التالي في ترقيقها بعد الكسرة.",
+  "how": [
+   "انظر إلى الحركة التي قبل الاسم مباشرة: هُوَ آخرها فتحة، ورَسُولُ آخرها ضمة.",
+   "بعد الفتحة أو الضمة انطق اللام المشددة مفخمة يمتلئ بها الفم كالحروف المفخمة. والألف بعدها تتبعها فتُفخَّم أيضًا.",
+   "وإذا بدأت بالاسم، كما في أول 112:2، فهمزة الوصل مفتوحة، فتُفخَّم اللام.",
+   "العبرة بالحركة المنطوقة لا بالحرف المكتوب: في إِلَى ٱللَّهِ لا تُنطق الألف المكتوبة ياءً (ى) عند الوصل، فتأتي اللام بعد فتحة اللام فتُفخَّم."
+  ],
+  "why": "هكذا تُلقّيت القراءة عن أئمتها، ويعلّله العلماء بتعظيم اسم الله تعالى، ليوافق تفخيمُ لفظه عظمةَ معناه.",
+  "spot": "يُكتب الاسم ٱللَّه: ألف وصل، ثم لام بلا علامة، ثم لام مشددة. ولا علامة للتفخيم أو الترقيق، فانظر إلى علامة الحرف الذي قبله، كفتحة الواو في هُوَ أدناه.",
+  "mistakes": [
+   {
+    "wrong": "ترقيق اللام بعد فتحة أو ضمة: هُوَ ٱللَّهُ.",
+    "right": "فخّمها حتى يمتلئ الفم."
+   },
+   {
+    "wrong": "ضم الشفتين حتى تُسمع الألف كالواو.",
+    "right": "التفخيم باللسان، والألف تبقى ألفًا."
+   },
+   {
+    "wrong": "تفخيم لامات أخرى، كما في ٱلَّذِى ووَٱلَّيْلِ.",
+    "right": "لا تُفخَّم إلا لام هذا الاسم."
+   },
+   {
+    "wrong": "تفخيم الهاء في آخره.",
+    "right": "الهاء تبقى مرققة."
+   }
+  ]
+ }
+}

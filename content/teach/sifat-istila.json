@@ -1,0 +1,99 @@
+{
+ "lesson": "sifat-istila",
+ "terms": [
+  {
+   "term": "الاستفال",
+   "say": "al-istifāl",
+   "en": "The opposite of استعلاء: the back of the tongue stays low, so the letter is light. Every letter outside «خُصَّ ضَغْطٍ قِظْ» has it.",
+   "literal": "going low",
+   "ar": "ضد الاستعلاء: انخفاض اللسان عن الحنك عند النطق بالحرف، فيُرقَّق. وهو في كل حرف ليس من «خُصَّ ضَغْطٍ قِظْ».",
+   "arLiteral": "الانخفاض"
+  },
+  {
+   "term": "صفة الإطباق",
+   "say": "ṣifat al-iṭbāq",
+   "en": "Part of the tongue presses up against the palate and the sound is held between them. Only in ص ض ط ظ, the heaviest letters. Not the closing of the lips in إقلاب.",
+   "literal": "covering, sticking together",
+   "ar": "التصاق طائفة من اللسان بالحنك الأعلى وانحصار الصوت بينهما. وهي في ص ض ط ظ فقط، وهي أقوى الحروف تفخيمًا. وليست إطباق الشفتين في الإقلاب.",
+   "arLiteral": "التلاصق"
+  },
+  {
+   "term": "الانفتاح",
+   "say": "al-infitāḥ",
+   "en": "The opposite of صفة الإطباق: the tongue stays apart from the palate and the sound is not held between them. Every letter except ص ض ط ظ.",
+   "literal": "opening",
+   "ar": "ضد صفة الإطباق: تباعد اللسان عن الحنك الأعلى فلا ينحصر الصوت بينهما. وهو في كل الحروف إلا ص ض ط ظ.",
+   "arLiteral": "الافتراق"
+  },
+  {
+   "term": "الإذلاق",
+   "say": "al-idhlāq",
+   "en": "Lightness: six letters come quickly and easily from the tip of the tongue or the lips: «فِرَّ مِن لُّبٍّ» (ف ر م ن ل ب).",
+   "literal": "fluency",
+   "ar": "خفة الحرف وسرعة خروجه من طرف اللسان أو الشفتين. وحروفه ستة يجمعها «فِرَّ مِن لُّبٍّ».",
+   "arLiteral": "الفصاحة والخفة"
+  },
+  {
+   "term": "الإصمات",
+   "say": "al-iṣmāt",
+   "en": "The opposite of الإذلاق: the other letters. A native Arabic word of four or five root letters is never built from them alone; it always has a letter of «فِرَّ مِن لُّبٍّ».",
+   "literal": "holding back",
+   "ar": "ضد الإذلاق، وهو في باقي الحروف. ولا تُبنى منها وحدها كلمة عربية رباعية أو خماسية الأصول، بل لا بدّ فيها من حرف من «فِرَّ مِن لُّبٍّ».",
+   "arLiteral": "المنع"
+  }
+ ],
+ "en": {
+  "plain": "For seven letters the back of the tongue rises to the palate, so they are always heavy. For four of them part of the tongue also presses on the palate, which makes them the heaviest of all.",
+  "fits": "You learned استعلاء with تفخيم in unit 1: the back of the tongue rises and the letter is heavy. Here it is one half of the third pair, with its opposite الاستفال. The fourth pair is صفة الإطباق and الانفتاح, and the fifth, الإذلاق and الإصمات, completes the five pairs.",
+  "how": [
+   "Say أَقْ، أَغْ، أَخْ: the back of the tongue rises toward the palate, the mouth fills with the sound and the letter is heavy. That is استعلاء, in «خُصَّ ضَغْطٍ قِظْ».",
+   "Say أَسْ, then أَصْ: same place, but for ص the back of the tongue rises and part of the tongue presses against the palate, holding the sound between them. That is صفة الإطباق, only in ص ض ط ظ.",
+   "So every letter with صفة الإطباق has استعلاء, but not the reverse: ق غ خ rise without pressing, and ص ض ط ظ are heavier. In ٱلْغَيْظِ you heard both kinds.",
+   "All other letters have الاستفال: the tongue stays low and the letter is light, as the ل after ض in ضَلَٰلٍ.",
+   "The fifth pair is light: «فِرَّ مِن لُّبٍّ» come quickly from the tip of the tongue or the lips (الإذلاق), the rest are heavier (الإصمات), and it does not change how you recite. The muṣḥaf has no mark for these صفات; you learn them by ear."
+  ],
+  "why": "These صفات separate letters that share one مخرج. Take away the raised, pressing tongue and ص becomes س, ظ becomes ذ, and ط becomes د.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Saying the ص of ٱلصُّدُورِ like س.",
+    "right": "Raise the back of the tongue and press it to the palate: the mouth fills."
+   },
+   {
+    "wrong": "Saying the ط of ٱلطَّيْرِ light, like ت.",
+    "right": "Same place as ت, with the tongue raised and pressing."
+   },
+   {
+    "wrong": "Letting the weight of ض spread to the ل of ضَلَٰلٍ.",
+    "right": "Drop the tongue for the ل: it has الاستفال."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في سبعة أحرف يرتفع أقصى اللسان إلى الحنك، فتُفخّم دائمًا. وفي أربعة منها تلتصق طائفة من اللسان بالحنك أيضًا، فتكون أقوى الحروف تفخيمًا.",
+  "fits": "عرفتَ الاستعلاء مع التفخيم في الوحدة الأولى: يرتفع أقصى اللسان فيُفخّم الحرف. وهو هنا أحد طرفي الزوج الثالث، وضده الاستفال. والزوج الرابع صفة الإطباق وضدها الانفتاح، والخامس الإذلاق والإصمات، وبه تتمّ الأزواج الخمسة.",
+  "how": [
+   "قل: أَقْ، أَغْ، أَخْ؛ يرتفع أقصى اللسان نحو الحنك، فيمتلئ الفم بالصوت ويُفخّم الحرف. هذا الاستعلاء، وحروفه «خُصَّ ضَغْطٍ قِظْ».",
+   "قل: أَسْ ثم أَصْ؛ المخرج واحد، لكن في الصاد يرتفع أقصى اللسان وتلتصق طائفة منه بالحنك فينحصر الصوت بينهما. هذه صفة الإطباق، ولا تكون إلا في ص ض ط ظ.",
+   "فكل حرف فيه صفة الإطباق فيه الاستعلاء ولا عكس: القاف والغين والخاء يرتفع معها اللسان ولا يلتصق، ولذلك كانت ص ض ط ظ أفخم منها. وقد سمعتَ النوعين في ٱلْغَيْظِ.",
+   "وسائر الحروف فيها الاستفال: ينخفض اللسان ويُرقَّق الحرف، كاللام بعد الضاد في ضَلَٰلٍ.",
+   "والزوج الخامس خفيف الأثر: حروف «فِرَّ مِن لُّبٍّ» تخرج بخفة من طرف اللسان أو الشفتين (الإذلاق)، وسائر الحروف أثقل (الإصمات)، ولا أثر لهما في الأداء. ولا علامة لهذه الصفات في المصحف، وإنما تُعرف بالسماع."
+  ],
+  "why": "بهذه الصفات تتميّز حروف يجمعها مخرج واحد: فلولا الاستعلاء والإطباق لصارت الصاد سينًا، والظاء ذالًا، والطاء دالًا.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "نطق الصاد في ٱلصُّدُورِ كالسين.",
+    "right": "ارفع أقصى اللسان وألصقه بالحنك، فيمتلئ الفم."
+   },
+   {
+    "wrong": "ترقيق الطاء في ٱلطَّيْرِ حتى تشبه التاء.",
+    "right": "المخرج مخرج التاء، مع ارتفاع اللسان والتصاقه."
+   },
+   {
+    "wrong": "سريان تفخيم الضاد إلى اللام في ضَلَٰلٍ.",
+    "right": "اخفض اللسان للام، ففيها الاستفال."
+   }
+  ]
+ }
+}

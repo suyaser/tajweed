@@ -1,0 +1,76 @@
+{
+ "lesson": "tabii",
+ "terms": [
+  {
+   "term": "المد الطبيعي",
+   "forms": [
+    "المد الأصلي"
+   ],
+   "say": "al-madd aṭ-ṭabīʿī",
+   "en": "The basic مد: a حرف مد with no همزة and no سكون after it, held exactly two حركات. Also called المد الأصلي.",
+   "literal": "the natural lengthening",
+   "ar": "مد حرف المد الذي ليس بعده همزة ولا سكون، بمقدار حركتين بالضبط. ويسمى أيضًا المد الأصلي.",
+   "arLiteral": "المد الذي يوافق الطبع السليم"
+  },
+  {
+   "term": "لحن جلي",
+   "say": "laḥn jalī",
+   "en": "A clear mistake that changes a letter or a vowel, or drops one, whether or not the meaning changes. Listeners notice it, and it is not allowed in recitation.",
+   "literal": "an obvious error",
+   "ar": "خطأ ظاهر يغيّر حرفًا أو حركة أو يُسقطهما، سواء تغيّر به المعنى أم لم يتغيّر. يعرفه القراء وغيرهم، وهو محرّم في التلاوة.",
+   "arLiteral": "الخطأ الواضح"
+  }
+ ],
+ "en": {
+  "plain": "When ا, و or ي carries the voice on after its short vowel, you hold it for two counts: never less, never more.",
+  "fits": "In the basics you met the حرف مد and the حركة as a beat. This is the first مد, and every other مد is built on it: when a همزة or a سكون comes after the حرف مد, it grows longer in later lessons. The first such case is the very next lesson: stopping on a word like ٱلنَّاسِ.",
+  "how": [
+   "Say the vowel before it: the ضمة on عُ in أَعُوذُ.",
+   "Let the voice run on into the و. It flows out of the open mouth and throat; no part of the tongue or lips stops it.",
+   "Hold it two حركات, the time of two short vowels. You can count them on a finger: one, two.",
+   "A small ا (ٰ), as in إِلَٰهِ, is held like a written ا. So is the ي of فِى (114:5), written ى without dots."
+  ],
+  "why": "The books say it is called natural because a person of sound nature neither shortens it nor stretches it. The letter only exists through this length: cut it and the letter is gone and the word changes, so يَقُولُ (he says), said short, becomes يَقُلُ.",
+  "spot": "A حرف مد carries no mark of its own: see the bare و after the ضمة in أَعُوذُ below. A small ا (ٰ) above a letter counts as an ا. There is no wavy sign ٓ over it; that sign marks the longer kinds, which come later.",
+  "mistakes": [
+   {
+    "wrong": "Cutting it short: أَعُوذُ said as أَعُذُ.",
+    "right": "Hold two full حركات. Cutting it drops a letter, which is a لحن جلي."
+   },
+   {
+    "wrong": "Holding it three or four counts in أَعُوذُ.",
+    "right": "Two counts, no more, as the reciter does."
+   },
+   {
+    "wrong": "Uneven lengths: one مد shorter than the next.",
+    "right": "Every one of them two counts, at the same speed."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا امتد الصوت بالألف أو الواو أو الياء بعد الحركة التي تناسبها، فأمسكه بمقدار حركتين: لا أقل ولا أكثر.",
+  "fits": "عرفت في الدرس الأول حرف المد، والحركة وحدةً للزمن. وهذا المد الطبيعي أول المدود، وعليه تُبنى المدود كلها: فإذا جاء بعد حرف المد همزة أو سكون طال المد، وذلك في دروس لاحقة. وأول ذلك في الدرس التالي: الوقف على كلمة مثل ٱلنَّاسِ.",
+  "how": [
+   "انطق الحركة التي قبله: ضمة العين في أَعُوذُ.",
+   "دع الصوت يمتد في الواو: يخرج من فراغ الفم والحلق، ولا يعترضه لسان ولا شفة.",
+   "أمسكه حركتين، أي زمن حركتين قصيرتين. ويمكنك أن تعدّهما بإصبعك: واحد، اثنان.",
+   "والألف الصغيرة (ٰ) كما في إِلَٰهِ تُمد كالألف المكتوبة، وكذلك ياء فِى (114:5) المكتوبة بلا نقط."
+  ],
+  "why": "سُمّي طبيعيًا لأن صاحب الطبع السليم لا يزيده عن حركتين ولا ينقصه. ولا يقوم حرف المد إلا به، فإن قصّرته سقط الحرف وتغيّرت الكلمة: يَقُولُ إذا قُصّرت صارت يَقُلُ.",
+  "spot": "حرف المد لا علامة عليه: انظر الواو الخالية من العلامات بعد الضمة في أَعُوذُ أدناه. والألف الصغيرة (ٰ) فوق الحرف في حكم الألف. ولا تجد فوقه علامة المد ٓ، فتلك للمدود الأطول، وتأتي لاحقًا.",
+  "mistakes": [
+   {
+    "wrong": "تقصيره: نطق أَعُوذُ أَعُذُ.",
+    "right": "أتمّ الحركتين. فتقصيره يُسقط حرفًا، وهذا لحن جلي."
+   },
+   {
+    "wrong": "مده ثلاث حركات أو أربعًا في أَعُوذُ.",
+    "right": "حركتان لا أكثر، كما يقرأ القارئ."
+   },
+   {
+    "wrong": "تفاوت المدود: مد أقصر من الذي بعده.",
+    "right": "كلها حركتان، بسرعة واحدة."
+   }
+  ]
+ }
+}

@@ -1,1 +1,929 @@
-[]
+[
+ {
+  "term": "تجويد",
+  "say": "tajwīd",
+  "en": "Reciting the Quran with every letter given its due: said from its own place, with its own sound, and with the changes it takes next to other letters.",
+  "literal": "making something good",
+  "ar": "إعطاء كل حرف حقه ومستحقه في التلاوة: إخراجه من موضعه، ونطقه على هيئته، ومراعاة ما يتغير فيه إذا جاور غيره.",
+  "arLiteral": "التحسين والإتقان",
+  "lesson": "basics"
+ },
+ {
+  "term": "حركة",
+  "say": "ḥarakah",
+  "en": "A short vowel said with a letter (فتحة, ضمة or كسرة). It is also tajweed's unit of time: one حركة is the time it takes to say one short vowel.",
+  "literal": "movement",
+  "ar": "صوت قصير يُنطق مع الحرف: فتحة أو ضمة أو كسرة. وهي أيضًا وحدة الزمن في التجويد: الحركة الواحدة زمن نطق حركة قصيرة.",
+  "arLiteral": "التحرّك، ضد السكون",
+  "lesson": "basics"
+ },
+ {
+  "term": "فتحة",
+  "say": "fatḥah",
+  "en": "The mark َ above a letter: a short a, said with the mouth open (مَ).",
+  "literal": "an opening",
+  "ar": "علامة َ فوق الحرف: صوت قصير يُنطق بفتح الفم (مَ).",
+  "arLiteral": "من فتح الفم",
+  "lesson": "basics"
+ },
+ {
+  "term": "ضمة",
+  "say": "ḍammah",
+  "en": "The mark ُ above a letter: a short u, said with the lips rounded forward (دُ).",
+  "literal": "a drawing together (of the lips)",
+  "ar": "علامة ُ فوق الحرف: صوت قصير يُنطق بضم الشفتين (دُ).",
+  "arLiteral": "من ضم الشفتين",
+  "lesson": "basics"
+ },
+ {
+  "term": "كسرة",
+  "say": "kasrah",
+  "en": "The mark ِ below a letter: a short i, said with the lower jaw dropped a little (بِ).",
+  "literal": "a breaking",
+  "ar": "علامة ِ تحت الحرف: صوت قصير يُنطق بخفض الفك السفلي قليلًا (بِ).",
+  "arLiteral": "من الكسر",
+  "lesson": "basics"
+ },
+ {
+  "term": "سكون",
+  "say": "sukūn",
+  "en": "The mark ْ above a letter: the letter has no vowel. You say it closed and go straight on (قُلْ).",
+  "literal": "stillness",
+  "ar": "علامة ْ فوق الحرف: الحرف بلا حركة، تنطقه ساكنًا ثم تنتقل إلى ما بعده (قُلْ).",
+  "arLiteral": "الثبات وعدم الحركة",
+  "lesson": "basics"
+ },
+ {
+  "term": "شدة",
+  "say": "shaddah",
+  "en": "The mark ّ above a letter: the letter is said twice, first with سكون, then with its vowel, joined: رَبِّ = رَبْ + بِ.",
+  "literal": "strength",
+  "ar": "علامة ّ فوق الحرف: الحرف مكرر، أوله ساكن وثانيه متحرك، يُنطقان متصلين: رَبِّ = رَبْ + بِ.",
+  "arLiteral": "القوة",
+  "lesson": "basics"
+ },
+ {
+  "term": "تنوين",
+  "say": "tanwīn",
+  "en": "A doubled vowel mark at the end of a noun (ً ٌ ٍ): after the vowel a ن with سكون is said, though it is not written: أَحَدٌ = أَحَدُنْ.",
+  "literal": "adding a nūn",
+  "ar": "حركتان في آخر الاسم (ً ٌ ٍ): تُنطق بعد الحركة نون ساكنة لا تُكتب: أَحَدٌ = أَحَدُنْ.",
+  "arLiteral": "إلحاق النون",
+  "lesson": "basics"
+ },
+ {
+  "term": "حرف مد",
+  "say": "ḥarf madd",
+  "en": "A letter that lets the voice run on: ا after a فتحة, و with no vowel after a ضمة, ي with no vowel after a كسرة.",
+  "literal": "a letter of lengthening",
+  "ar": "حرف يمتد به الصوت: الألف بعد فتحة، والواو الساكنة بعد ضمة، والياء الساكنة بعد كسرة.",
+  "arLiteral": "حرف الإطالة",
+  "lesson": "basics"
+ },
+ {
+  "term": "مد",
+  "say": "madd",
+  "en": "Holding the voice on a حرف مد. It is counted in حركات, and its basic length is two.",
+  "literal": "stretching",
+  "ar": "إطالة الصوت بحرف المد. ويُقاس بالحركات، وأصله حركتان.",
+  "arLiteral": "الزيادة والإطالة",
+  "lesson": "basics"
+ },
+ {
+  "term": "همزة",
+  "say": "hamzah",
+  "en": "The letter ء: a short catch from the deepest part of the throat, as at the start of أَعُوذُ. It is written on ا, و or ي, or on its own (أ إ ؤ ئ ء).",
+  "literal": "a press",
+  "ar": "الحرف ء: يخرج من أقصى الحلق بانحباس ثم انطلاق، كما في أول أَعُوذُ. ويُكتب على ألف أو واو أو ياء، أو منفردًا (أ إ ؤ ئ ء).",
+  "arLiteral": "الضغط والدفع",
+  "lesson": "basics"
+ },
+ {
+  "term": "وقف",
+  "say": "waqf",
+  "en": "Stopping on the end of a word, long enough to take a breath, intending to carry on reading.",
+  "literal": "stopping",
+  "ar": "قطع الصوت على آخر الكلمة زمنًا يُتنفس فيه عادة، بنية مواصلة القراءة.",
+  "arLiteral": "الكف والحبس",
+  "lesson": "basics"
+ },
+ {
+  "term": "وصل",
+  "say": "waṣl",
+  "en": "Reading a word joined to the next one, without stopping.",
+  "literal": "joining",
+  "ar": "قراءة الكلمة متصلة بما بعدها من غير وقف.",
+  "arLiteral": "ضد القطع",
+  "lesson": "basics"
+ },
+ {
+  "term": "مخرج",
+  "say": "makhraj",
+  "en": "The place a letter's sound comes from: the throat, the mouth (tongue and lips), the nose, or, for the حروف مد, the open space of the mouth and throat. Plural مخارج.",
+  "literal": "a way out",
+  "ar": "الموضع الذي يخرج منه صوت الحرف: الحلق، أو الفم (اللسان والشفتان)، أو الأنف، أو فراغ الفم والحلق لحروف المد. وجمعه مخارج.",
+  "arLiteral": "موضع الخروج",
+  "lesson": "basics"
+ },
+ {
+  "term": "رواية",
+  "say": "riwāyah",
+  "en": "One way of reciting the Quran, as a particular student handed it down from one of the great reciters.",
+  "literal": "a narration",
+  "ar": "قراءة القرآن كما نقلها تلميذ معيّن عن أحد أئمة القراءة.",
+  "arLiteral": "النقل",
+  "lesson": "basics"
+ },
+ {
+  "term": "حفص",
+  "say": "Ḥafṣ",
+  "en": "Ḥafṣ ibn Sulaymān of Kufa (d. 180 AH), the student of the reciter ʿĀṣim. His رواية is the one printed in مصحف المدينة, and this course teaches it as the الشاطبية, the famous poem on the readings by al-Shāṭibī, gives it.",
+  "ar": "حفص بن سليمان الكوفي (ت ١٨٠ هـ)، تلميذ الإمام عاصم. وروايته عنه هي المطبوعة في مصحف المدينة، ويعلّمها هذا المقرر من طريق الشاطبية، وهي المنظومة المشهورة للإمام الشاطبي في القراءات.",
+  "lesson": "basics"
+ },
+ {
+  "term": "الاستعاذة",
+  "say": "al-istiʿādhah",
+  "en": "Saying أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ before you recite: asking Allah to protect you from Satan.",
+  "literal": "seeking refuge",
+  "ar": "قول «أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ» قبل القراءة، أي الالتجاء إلى الله من شر الشيطان.",
+  "arLiteral": "طلب العوذ، أي الالتجاء والاعتصام",
+  "lesson": "istiadha"
+ },
+ {
+  "term": "البسملة",
+  "say": "al-basmalah",
+  "en": "Saying بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ.",
+  "literal": "a word made from the phrase بِسْمِ ٱللَّهِ",
+  "ar": "قول «بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ».",
+  "arLiteral": "كلمة منحوتة من «بِسْمِ ٱللَّهِ»",
+  "lesson": "istiadha"
+ },
+ {
+  "term": "المد الطبيعي",
+  "forms": [
+   "المد الأصلي"
+  ],
+  "say": "al-madd aṭ-ṭabīʿī",
+  "en": "The basic مد: a حرف مد with no همزة and no سكون after it, held exactly two حركات. Also called المد الأصلي.",
+  "literal": "the natural lengthening",
+  "ar": "مد حرف المد الذي ليس بعده همزة ولا سكون، بمقدار حركتين بالضبط. ويسمى أيضًا المد الأصلي.",
+  "arLiteral": "المد الذي يوافق الطبع السليم",
+  "lesson": "tabii"
+ },
+ {
+  "term": "لحن جلي",
+  "say": "laḥn jalī",
+  "en": "A clear mistake that changes a letter or a vowel, or drops one, whether or not the meaning changes. Listeners notice it, and it is not allowed in recitation.",
+  "literal": "an obvious error",
+  "ar": "خطأ ظاهر يغيّر حرفًا أو حركة أو يُسقطهما، سواء تغيّر به المعنى أم لم يتغيّر. يعرفه القراء وغيرهم، وهو محرّم في التلاوة.",
+  "arLiteral": "الخطأ الواضح",
+  "lesson": "tabii"
+ },
+ {
+  "term": "المد العارض",
+  "say": "al-madd al-ʿāriḍ",
+  "en": "A حرف مد right before the last letter of a word you stop on, when that letter is not a ء. The stop gives it a سكون, and the مد may then be held 2, 4 or 6 حركات.",
+  "literal": "the passing lengthening",
+  "ar": "حرف مد بعده حرف سكونه عارض، لم يسكن إلا لأنك وقفت عليه، ما لم يكن الحرف الأخير همزة؛ فيجوز مده حركتين أو أربعًا أو ستًّا.",
+  "arLiteral": "العارض: الطارئ غير الثابت",
+  "lesson": "arid"
+ },
+ {
+  "term": "القصر",
+  "say": "al-qaṣr",
+  "en": "Holding a مد two حركات, its shortest length here.",
+  "literal": "shortening",
+  "ar": "مدّ حرف المد حركتين، وهو أقصر مقاديره هنا.",
+  "arLiteral": "الحبس والتقصير",
+  "lesson": "arid"
+ },
+ {
+  "term": "التوسط",
+  "say": "at-tawassuṭ",
+  "en": "Holding a مد four حركات, the middle length here.",
+  "literal": "taking the middle",
+  "ar": "مدّ حرف المد أربع حركات، وهو المقدار الأوسط هنا.",
+  "arLiteral": "الاعتدال بين الطرفين",
+  "lesson": "arid"
+ },
+ {
+  "term": "الإشباع",
+  "say": "al-ishbāʿ",
+  "en": "Holding a مد six حركات, its longest length.",
+  "literal": "filling up",
+  "ar": "مدّ حرف المد ست حركات، وهو أطول مقاديره.",
+  "arLiteral": "الإتمام والإكمال",
+  "lesson": "arid"
+ },
+ {
+  "term": "العوض",
+  "say": "al-ʿiwaḍ",
+  "en": "The ا that takes the place of a تنوين with فتحة (ً) when you stop on it, held two حركات: أَفْوَاجًا, stopped, is أَفْوَاجَا.",
+  "literal": "the replacement",
+  "ar": "الألف التي تحل محل تنوين الفتح عند الوقف عليه، وتُمد حركتين: أَفْوَاجًا يُوقف عليها أَفْوَاجَا.",
+  "arLiteral": "ما يُعطى مكان غيره",
+  "lesson": "iwad"
+ },
+ {
+  "term": "تفخيم",
+  "forms": [
+   "مفخم"
+  ],
+  "say": "tafkhīm",
+  "en": "Saying a letter heavy: the sound is thick and fills the mouth. A letter said this way is مفخم.",
+  "literal": "making fat",
+  "ar": "نطق الحرف غليظًا يمتلئ الفم بصداه. والحرف الذي يُنطق كذلك مفخم.",
+  "arLiteral": "التسمين",
+  "lesson": "tafkhim"
+ },
+ {
+  "term": "ترقيق",
+  "forms": [
+   "مرقق"
+  ],
+  "say": "tarqīq",
+  "en": "Saying a letter light: the sound is thin and does not fill the mouth. A letter said this way is مرقق.",
+  "literal": "making thin",
+  "ar": "نطق الحرف نحيفًا لا يمتلئ الفم بصداه. والحرف الذي يُنطق كذلك مرقق.",
+  "arLiteral": "التنحيف",
+  "lesson": "tafkhim"
+ },
+ {
+  "term": "استعلاء",
+  "say": "istiʿlāʾ",
+  "en": "The back of the tongue rising toward the roof of the mouth as a letter is said. The seven letters of خُصَّ ضَغْطٍ قِظْ always have it, so they are always heavy.",
+  "literal": "rising up",
+  "ar": "ارتفاع أقصى اللسان إلى الحنك الأعلى عند النطق بالحرف. وحروفه سبعة يجمعها «خُصَّ ضَغْطٍ قِظْ»، ولذلك تُفخَّم دائمًا.",
+  "arLiteral": "العلو والارتفاع",
+  "lesson": "tafkhim"
+ },
+ {
+  "term": "ابتداء",
+  "say": "ibtidāʾ",
+  "en": "Starting to recite, at the beginning or again after a stop.",
+  "literal": "beginning",
+  "ar": "الشروع في القراءة، في أولها أو بعد وقف.",
+  "arLiteral": "البدء",
+  "lesson": "ibtida"
+ },
+ {
+  "term": "همزة الوصل",
+  "say": "hamzat al-waṣl",
+  "en": "A همزة at the start of a word, written ٱ, that is said only when you start on that word. When you join it to the word before, it drops out.",
+  "literal": "the joining hamzah",
+  "ar": "همزة في أول الكلمة تُكتب ٱ، تُنطق إذا بدأت بالكلمة، وتسقط إذا وصلتها بما قبلها.",
+  "arLiteral": "الهمزة التي يُتوصَّل بها إلى النطق بالساكن",
+  "lesson": "ibtida"
+ },
+ {
+  "term": "همزة القطع",
+  "say": "hamzat al-qaṭʿ",
+  "en": "A همزة that is always said, whether you start on it or join it, as in أَعُوذُ and إِنَّ.",
+  "literal": "the cutting hamzah",
+  "ar": "همزة تُنطق دائمًا، في البدء والوصل، كما في أَعُوذُ وإِنَّ.",
+  "arLiteral": "الهمزة التي يُقطع بها الصوت",
+  "lesson": "ibtida"
+ },
+ {
+  "term": "اللام القمرية",
+  "say": "al-lām al-qamariyyah",
+  "en": "The ل of ال that is said, with سكون, before 14 letters: ا (the همزة) ب غ ح ج ك و خ ف ع ق ي م ه, gathered in «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ».",
+  "literal": "the moon ل, named after ٱلْقَمَر, where it is heard",
+  "ar": "لام ال التي تُنطق ساكنة واضحة قبل أربعة عشر حرفًا يجمعها قولهم «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ».",
+  "arLiteral": "نسبة إلى القمر، لأن لامها تُسمع في «ٱلْقَمَر»",
+  "lesson": "lam-q"
+ },
+ {
+  "term": "اللام الشمسية",
+  "say": "al-lām ash-shamsiyyah",
+  "en": "The ل of ال that is not said before the other 14 letters: ط ث ص ر ت ض ذ ن د س ظ ز ش ل. It goes into the next letter, which is doubled.",
+  "literal": "the sun ل, named after ٱلشَّمْس, where it is silent",
+  "ar": "لام ال التي لا تُنطق قبل الأربعة عشر حرفًا الباقية: ط ث ص ر ت ض ذ ن د س ظ ز ش ل، بل تدخل في الحرف التالي فيُشدَّد.",
+  "arLiteral": "نسبة إلى الشمس، لأن لامها لا تُسمع في «ٱلشَّمْس»",
+  "lesson": "lam-s"
+ },
+ {
+  "term": "لفظ الجلالة",
+  "say": "lafẓ al-jalālah",
+  "en": "The name اللَّه, and also اللَّهُمَّ. Its ل is heavy or light depending on the vowel before it.",
+  "literal": "the word of majesty",
+  "ar": "اسم «اللَّه»، ومثله «اللَّهُمَّ». وتُفخَّم لامه أو تُرقَّق بحسب الحركة التي قبلها.",
+  "arLiteral": "اللفظ الدال على الجلال، أي العظمة",
+  "lesson": "lam-jh"
+ },
+ {
+  "term": "غنة",
+  "say": "ghunnah",
+  "en": "A humming sound that comes out through the nose. It is part of every ن and م, the tongue plays no part in it, and on نّ and مّ it is at its fullest, held two حركات.",
+  "literal": "a sound that rings in the nose",
+  "ar": "صوت أغنّ يخرج من الأنف، مركّب في جسم النون والميم، لا عمل للسان فيه. وهو في النون والميم المشددتين أكمل ما يكون، ويُمد حركتين.",
+  "arLiteral": "صوت له رنين في الخيشوم",
+  "lesson": "ghunnah"
+ },
+ {
+  "term": "الخيشوم",
+  "say": "al-khayshūm",
+  "en": "The top of the nose, at the back on the inside: where the غنة comes from.",
+  "ar": "أعلى الأنف وأقصاه من الداخل، ومنه تخرج الغنة.",
+  "lesson": "ghunnah"
+ },
+ {
+  "term": "النون الساكنة",
+  "say": "an-nūn as-sākinah",
+  "en": "A ن with a سكون, no vowel after it. It can come in the middle or at the end of a word, and it is written and said whether you join or stop.",
+  "literal": "the still noon",
+  "ar": "نونٌ لا حركة عليها، تقع في وسط الكلمة أو في آخرها، وتثبت كتابةً ونطقًا في الوصل والوقف.",
+  "arLiteral": "النون التي لا حركة لها",
+  "lesson": "izhar"
+ },
+ {
+  "term": "إظهار",
+  "say": "iẓhār",
+  "en": "Saying the ن or تنوين clearly from its own place, with no held غنة, then going straight on to the next letter.",
+  "literal": "making clear",
+  "ar": "نطق النون الساكنة أو التنوين واضحةً من مخرجها، بلا غنة ممدودة، ثم الانتقال إلى الحرف التالي مباشرة.",
+  "arLiteral": "البيان والإيضاح",
+  "lesson": "izhar"
+ },
+ {
+  "term": "حروف الحلق",
+  "say": "ḥurūf al-ḥalq",
+  "en": "The six letters made in the throat: ء هـ ع ح غ خ.",
+  "literal": "the throat letters",
+  "ar": "الحروف الستة التي تخرج من الحلق: ء هـ ع ح غ خ.",
+  "lesson": "izhar"
+ },
+ {
+  "term": "إدغام",
+  "say": "idghām",
+  "en": "Merging: a letter with no vowel goes into the next letter, and the two are said as one doubled letter.",
+  "literal": "putting one thing inside another",
+  "ar": "إدخال حرف ساكن في الحرف المتحرك بعده، فيصيران حرفًا واحدًا مشددًا.",
+  "arLiteral": "الإدخال",
+  "lesson": "idgh-g"
+ },
+ {
+  "term": "إدغام كامل",
+  "forms": [
+   "الإدغام الكامل"
+  ],
+  "say": "idghām kāmil",
+  "en": "A complete merge: nothing of the first letter is left. Here, the ن into ن or م.",
+  "literal": "complete merging",
+  "ar": "إدغام لا يبقى فيه من الحرف الأول شيء، كإدغام النون في النون والميم.",
+  "lesson": "idgh-g"
+ },
+ {
+  "term": "إدغام ناقص",
+  "forms": [
+   "الإدغام الناقص"
+  ],
+  "say": "idghām nāqiṣ",
+  "en": "An incomplete merge: something of the first letter stays. Here, the غنة of the ن stays when it merges into ي or و.",
+  "literal": "incomplete merging",
+  "ar": "إدغام يبقى فيه شيء من الحرف الأول، كبقاء غنة النون عند إدغامها في الياء والواو.",
+  "lesson": "idgh-g"
+ },
+ {
+  "term": "الإظهار المطلق",
+  "say": "al-iẓhār al-muṭlaq",
+  "en": "The clear ن before ي or و inside one word. It happens in four words only: دُنْيَا، بُنْيَٰنٌ، صِنْوَانٌ، قِنْوَانٌ.",
+  "ar": "إظهار النون الساكنة قبل الياء أو الواو في كلمة واحدة، وهو في أربع كلمات: دُنْيَا، بُنْيَٰنٌ، صِنْوَانٌ، قِنْوَانٌ.",
+  "lesson": "idgh-g"
+ },
+ {
+  "term": "إقلاب",
+  "say": "iqlāb",
+  "en": "Turning the ن or تنوين into a م before ب: a light, hidden م with a two-count غنة.",
+  "literal": "turning into something else",
+  "ar": "قلب النون الساكنة أو التنوين ميمًا خفيّة عند الباء، مع غنة مقدارها حركتان.",
+  "arLiteral": "التحويل",
+  "lesson": "iqlab"
+ },
+ {
+  "term": "إخفاء",
+  "say": "ikhfāʾ",
+  "en": "Hiding: the ن or تنوين is said in a state between clear and merged, with no شدة, while its two-count غنة stays.",
+  "literal": "hiding, covering",
+  "ar": "نطق النون الساكنة أو التنوين بحالة بين الإظهار والإدغام، بلا تشديد، مع بقاء الغنة حركتين.",
+  "arLiteral": "الستر",
+  "lesson": "ikhfa"
+ },
+ {
+  "term": "قلقلة",
+  "say": "qalqalah",
+  "en": "A small bounce heard when one of ق ط ب ج د has a سكون: the closed place comes apart, so the letter is heard, with no vowel.",
+  "literal": "shaking, stirring",
+  "ar": "نبرةٌ تُسمع عند النطق بأحد حروف «قُطْبُ جَدٍ» ساكنًا، يضطرب فيها المخرج فيظهر الحرف، دون أن يتحرك.",
+  "arLiteral": "الاضطراب",
+  "lesson": "qal-s"
+ },
+ {
+  "term": "التقاء الساكنين",
+  "say": "iltiqāʾ as-sākinayn",
+  "en": "Two letters with سكون coming one right after the other, here when you join two words.",
+  "literal": "the meeting of the two still letters",
+  "ar": "أن يلتقي حرفان ساكنان متتاليان، وهنا عند وصل كلمتين.",
+  "arLiteral": "اجتماع حرفين لا حركة عليهما",
+  "lesson": "sakinayn"
+ },
+ {
+  "term": "المد المتصل",
+  "forms": [
+   "المد الواجب المتصل"
+  ],
+  "say": "al-madd al-muttaṣil",
+  "en": "A حرف مد followed by a همزة in the same word. It must be held longer than two counts: 4 or 5 in حفص as this course reads.",
+  "literal": "the joined lengthening",
+  "ar": "أن تأتي همزة بعد حرف المد في الكلمة نفسها، فيجب مده أكثر من حركتين: أربعًا أو خمسًا لحفص من طريق الشاطبية.",
+  "arLiteral": "المد الموصول بسببه في كلمة واحدة",
+  "lesson": "muttasil"
+ },
+ {
+  "term": "المد المنفصل",
+  "forms": [
+   "المد الجائز المنفصل"
+  ],
+  "say": "al-madd al-munfaṣil",
+  "en": "A حرف مد at the end of a word, with a همزة at the start of the next. Held 4 or 5 counts when you join, the same as your المد المتصل.",
+  "literal": "the separated lengthening",
+  "ar": "أن يكون حرف المد في آخر كلمة، والهمزة في أول الكلمة التالية؛ فيُمد عند الوصل أربعًا أو خمسًا، بمقدار المد المتصل.",
+  "arLiteral": "المد المفصول عن سببه بين كلمتين",
+  "lesson": "munfasil"
+ },
+ {
+  "term": "المثلين",
+  "forms": [
+   "المثلان",
+   "إدغام المثلين"
+  ],
+  "say": "al-mithlayn",
+  "en": "Two of the same letter side by side. When the first has a سكون and the second a vowel, the first merges into the second, unless the first is a حرف مد.",
+  "literal": "the two alike",
+  "ar": "حرفان متماثلان متجاوران؛ فإذا سكن الأول وتحرك الثاني أُدغم الأول في الثاني، إلا أن يكون الأول حرف مد.",
+  "arLiteral": "الشيئان المتماثلان",
+  "lesson": "mithlayn"
+ },
+ {
+  "term": "الميم الساكنة",
+  "forms": [
+   "ميم ساكنة"
+  ],
+  "say": "al-mīm as-sākinah",
+  "en": "A م with a سكون and no vowel: the مْ of أَلَمْ. What happens to it depends on the letter after it.",
+  "literal": "the still mīm",
+  "ar": "الميم التي عليها سكون فلا حركة لها، مثل مْ في أَلَمْ. ويتغير نطقها بحسب الحرف الذي بعدها.",
+  "arLiteral": "الساكنة: التي لا حركة لها.",
+  "lesson": "m-izhar"
+ },
+ {
+  "term": "شفوي",
+  "say": "shafawī",
+  "en": "Of the lips. The three rulings of الميم الساكنة are called شفوي because the م is made with the two lips.",
+  "literal": "from شَفَة, lip",
+  "ar": "نسبة إلى الشفتين. تُسمى أحكام الميم الساكنة الثلاثة شفوية لأن الميم تخرج من الشفتين.",
+  "arLiteral": "منسوب إلى الشَّفة.",
+  "lesson": "m-izhar"
+ },
+ {
+  "term": "المتجانسين",
+  "forms": [
+   "المتجانسان",
+   "متجانسان"
+  ],
+  "say": "al-mutajānisayn",
+  "en": "Two letters made at the same place (مخرج) but said differently. When the first has a سكون (المتجانسين الصغير), حفص merges seven such pairs.",
+  "literal": "two of the same kind",
+  "ar": "حرفان اتحدا في المخرج واختلفا في طريقة النطق. فإن سكن الأول (المتجانسان الصغير) أدغم حفص منهما سبعة أزواج.",
+  "arLiteral": "المتجانسان: المتشابهان في الجنس.",
+  "lesson": "mutajanisayn"
+ },
+ {
+  "term": "هاء الضمير",
+  "forms": [
+   "هاء الكناية"
+  ],
+  "say": "hāʾ aḍ-ḍamīr",
+  "en": "The ه added at the end of a word to mean \"him\", \"his\" or \"it\" (one male): لَهُ, بِهِۦ, إِنَّهُۥ. A ه that belongs to the word itself, as in نَفْقَهُ or وَجْهُ, is not one (هَٰذِهِۦ is read the same way as the pronoun).",
+  "literal": "the pronoun hāʾ",
+  "ar": "الهاء الزائدة في آخر الكلمة يُكنى بها عن المفرد المذكر الغائب: لَهُ، بِهِۦ، إِنَّهُۥ. أما الهاء التي من أصل الكلمة، كما في نَفْقَهُ ووَجْهُ، فليست منها (وتُعامَل هاء هَٰذِهِۦ معاملتها فتوصل مثلها).",
+  "arLiteral": "الضمير: ما يُكنى به عن الاسم.",
+  "lesson": "silah-s"
+ },
+ {
+  "term": "صلة",
+  "say": "ṣilah",
+  "en": "Filling out the vowel of هاء الضمير until a مد letter grows from it: a و after هُ, a ي after هِ.",
+  "literal": "a joining",
+  "ar": "إشباع حركة هاء الضمير حتى يتولد منها حرف مد: واو بعد هُ، وياء بعد هِ.",
+  "arLiteral": "الوصل والإلحاق.",
+  "lesson": "silah-s"
+ },
+ {
+  "term": "الصلة الصغرى",
+  "say": "aṣ-ṣilah aṣ-ṣughrā",
+  "en": "The صلة when the next word does not start with a همزة: two counts.",
+  "literal": "the small joining",
+  "ar": "الصلة إذا لم تبدأ الكلمة التالية بهمزة، ومقدارها حركتان.",
+  "lesson": "silah-s"
+ },
+ {
+  "term": "الصلة الكبرى",
+  "say": "aṣ-ṣilah al-kubrā",
+  "en": "The صلة when the next word starts with a همزة: held like المد المنفصل, 4 or 5 counts.",
+  "literal": "the big joining",
+  "ar": "الصلة إذا بدأت الكلمة التالية بهمزة، وتُمد كالمد المنفصل أربع حركات أو خمسًا.",
+  "lesson": "silah-k"
+ },
+ {
+  "term": "مد البدل",
+  "say": "madd al-badal",
+  "en": "A مد letter that comes after a همزة in the same word, with no همزة or سكون after it: ءَامَنُوا۟, إِيمَٰنًا, أُوتُوا۟. In حفص it is two counts.",
+  "literal": "the madd of substitution",
+  "ar": "حرف مد تتقدمه همزة في الكلمة نفسها، وليس بعده همزة ولا سكون: ءَامَنُوا۟، إِيمَٰنًا، أُوتُوا۟. ومقداره عند حفص حركتان.",
+  "arLiteral": "البدل: ما يقوم مقام غيره.",
+  "lesson": "badal"
+ },
+ {
+  "term": "لين",
+  "forms": [
+   "حرفا اللين",
+   "حرف لين"
+  ],
+  "say": "līn",
+  "en": "A و or ي with سكون after a فتحة, as in خَوْفٍ and ٱلْبَيْتِ. They are called حرفا اللين because they come out easily, with no effort.",
+  "literal": "softness",
+  "ar": "الواو أو الياء الساكنة بعد فتحة، كما في خَوْفٍ وٱلْبَيْتِ. وسُميا حرفي لين لخروجهما بسهولة من غير كلفة.",
+  "arLiteral": "السهولة واللطف.",
+  "not": [
+   "بلين"
+  ],
+  "lesson": "lin"
+ },
+ {
+  "term": "المد اللازم",
+  "say": "al-madd al-lāzim",
+  "en": "A مد letter followed by a سكون that is part of the word, usually inside a شدة. The سكون is there joined or stopping, so the مد is six counts (the next lesson has two exceptions in the opening letters).",
+  "literal": "the necessary madd",
+  "ar": "حرف مد بعده سكون أصلي ثابت وصلًا ووقفًا، وأكثره سكون في حرف مشدد. ويُمد ست حركات، وفي فواتح السور استثناءان يأتيان في الدرس التالي.",
+  "arLiteral": "اللازم: الثابت الذي لا يتغير.",
+  "lesson": "lazim-k"
+ },
+ {
+  "term": "مثقل",
+  "say": "muthaqqal",
+  "en": "Of المد اللازم: the سكون after the مد letter is inside a شدة, as in ضَآلًّا.",
+  "literal": "made heavy",
+  "ar": "وصف للمد اللازم إذا كان السكون بعد حرف المد في حرف مشدد، كما في ضَآلًّا.",
+  "lesson": "lazim-k"
+ },
+ {
+  "term": "مخفف",
+  "say": "mukhaffaf",
+  "en": "Of المد اللازم: the سكون after the مد letter is a plain سكون, with no شدة.",
+  "literal": "made light",
+  "ar": "وصف للمد اللازم إذا كان السكون بعد حرف المد سكونًا خالصًا بلا شدة.",
+  "lesson": "lazim-k"
+ },
+ {
+  "term": "المتقاربين",
+  "forms": [
+   "متقاربان",
+   "متقاربين"
+  ],
+  "say": "al-mutaqāribayn",
+  "en": "Two different letters whose مخارج are close (or that sound alike in their manner), the first with a سكون. In حفص only two such pairs merge beyond the rules you know: ل into ر, and ق into ك.",
+  "literal": "the two that are close to each other",
+  "ar": "حرفان مختلفان تقارب مخرجاهما أو تقاربا في طريقة النطق، والأول منهما ساكن. ولا يُدغم حفص من هذا النوع إلا اللام في الراء والقاف في الكاف، زيادةً على ما عرفتَه في النون الساكنة ولام التعريف.",
+  "arLiteral": "المتقاربان: الحرفان القريب أحدهما من الآخر",
+  "lesson": "mutaqaribayn"
+ },
+ {
+  "term": "الوقف اللازم",
+  "say": "al-waqf al-lāzim",
+  "en": "A place where you must stop, because joining could suggest a meaning that is not meant. Its sign is a small م (ۘ).",
+  "literal": "the required stop",
+  "ar": "موضع يجب الوقف عليه، لأن الوصل يوهم معنى غير المعنى المراد. وعلامته ميم صغيرة (ۘ).",
+  "arLiteral": "الوقف الواجب",
+  "lesson": "waqf-signs"
+ },
+ {
+  "term": "الوقف الممنوع",
+  "say": "al-waqf al-mamnūʿ",
+  "en": "A place where you must not stop, because the words are not complete there. Its sign is لا (ۙ).",
+  "literal": "the forbidden stop",
+  "ar": "موضع لا يصح الوقف عليه، لأن الكلام لم يتم. وعلامته «لا» (ۙ).",
+  "arLiteral": "الوقف الذي لا يُسمح به",
+  "lesson": "waqf-signs"
+ },
+ {
+  "term": "الوقف الجائز",
+  "say": "al-waqf al-jāʾiz",
+  "en": "A place where stopping and joining are equal. Its sign is ج (ۚ).",
+  "literal": "the allowed stop",
+  "ar": "موضع يستوي فيه الوقف والوصل. وعلامته الجيم (ۚ).",
+  "arLiteral": "الوقف المسموح به",
+  "lesson": "waqf-signs"
+ },
+ {
+  "term": "تعانق الوقف",
+  "say": "taʿānuq al-waqf",
+  "en": "Two places close together, each marked with three dots (ۛ): stop at one of them, never at both.",
+  "literal": "the stops embracing each other",
+  "ar": "موضعان متقاربان، على كل منهما ثلاث نقاط (ۛ): تقف على أحدهما، ولا تقف عليهما معًا.",
+  "arLiteral": "تعانق الشيئين: التقاؤهما واتصالهما",
+  "lesson": "waqf-signs"
+ },
+ {
+  "term": "السكون المحض",
+  "say": "as-sukūn al-maḥḍ",
+  "en": "A plain سكون at a stop, with no hint of the vowel. It is the usual way to stop.",
+  "literal": "the pure stillness",
+  "ar": "سكون خالص عند الوقف، لا إشارة فيه إلى الحركة، وهو الأصل في الوقف.",
+  "arLiteral": "السكون الخالص",
+  "lesson": "rawm-ishmam"
+ },
+ {
+  "term": "روم",
+  "say": "rawm",
+  "en": "At a stop, saying about a third of the last vowel in a quiet voice, heard only by someone close. Used on a ضمة or a كسرة.",
+  "literal": "seeking, aiming at",
+  "ar": "النطق عند الوقف ببعض الحركة الأخيرة، نحو ثلثها، بصوت خفي لا يسمعه إلا القريب. ويكون في الضمة والكسرة.",
+  "arLiteral": "الطلب والقصد",
+  "not": [
+   "سورة الروم"
+  ],
+  "lesson": "rawm-ishmam"
+ },
+ {
+  "term": "إشمام",
+  "say": "ishmām",
+  "en": "At a stop, rounding the lips as for a ضمة right after the last letter is stilled, with no sound. It is seen, not heard. Used on a ضمة only.",
+  "literal": "giving a scent of something",
+  "ar": "ضم الشفتين عند الوقف كهيئتهما عند النطق بالضمة، بُعيد تسكين الحرف الأخير، بلا صوت. يُرى ولا يُسمع، ولا يكون إلا في الضمة.",
+  "arLiteral": "إيصال شيء يسير من الرائحة",
+  "lesson": "rawm-ishmam"
+ },
+ {
+  "term": "سكت",
+  "forms": [
+   "سكتة"
+  ],
+  "say": "sakt",
+  "en": "Cutting the voice for a brief moment, without taking a breath, then carrying on. In حفص it is fixed to a few places.",
+  "literal": "falling silent",
+  "ar": "قطع الصوت زمنًا يسيرًا دون أخذ نفَس، ثم مواصلة القراءة. وهو عند حفص في مواضع محددة.",
+  "arLiteral": "الصمت والإمساك عن الكلام",
+  "lesson": "sakt"
+ },
+ {
+  "term": "إمالة",
+  "say": "imālah",
+  "en": "Tilting a فتحة toward a كسرة and the ا after it toward a ي. In حفص it is in one word only, مَجْر۪ىٰهَا (11:41), in its full degree (إمالة كبرى).",
+  "literal": "making something lean",
+  "ar": "تقريب الفتحة من الكسرة والألف من الياء. ولا تكون عند حفص إلا في كلمة واحدة: مَجْر۪ىٰهَا (11:41)، وهي إمالة كبرى.",
+  "arLiteral": "جعل الشيء يميل",
+  "lesson": "imalah"
+ },
+ {
+  "term": "الاختلاس",
+  "say": "al-ikhtilās",
+  "en": "Saying a vowel quickly, with most of it (about two thirds, الميزان), unlike الروم at a stop (about a third). In تَأْمَ۫نَّا most books, هداية القاري and الوافي among them, call the unmerged way الاختلاس; some call it الروم.",
+  "literal": "snatching",
+  "ar": "النطق بالحركة مسرعًا بأكثرها، نحو ثلثيها، بخلاف الروم عند الوقف (نحو الثلث). وفي تَأْمَ۫نَّا يسمّي أكثر العلماء وجه الإظهار بهذا الاسم، ومنهم صاحبا هداية القاري والوافي، ويسمّيه بعضهم الروم.",
+  "arLiteral": "الأخذ بسرعة وخفية",
+  "lesson": "ishmam"
+ },
+ {
+  "term": "تسهيل",
+  "say": "tashīl",
+  "en": "Saying a همزة softly, between a full همزة and the حرف مد that matches its vowel (here an ا). In ءَا۬عْجَمِىٌّ the second همزة is said between a همزة and an ا.",
+  "literal": "making easy",
+  "ar": "النطق بالهمزة بين الهمزة المحققة وحرف المد. وفي ءَا۬عْجَمِىٌّ تُنطق الهمزة الثانية بين الهمزة والألف.",
+  "arLiteral": "التيسير والتليين",
+  "lesson": "tashil"
+ },
+ {
+  "term": "الجوف",
+  "say": "al-jawf",
+  "en": "The open space inside the throat and mouth. It is the مخرج of the three حروف المد.",
+  "literal": "the hollow, the inside",
+  "ar": "الخلاء الداخل في الحلق والفم، وهو مخرج حروف المد الثلاثة.",
+  "arLiteral": "الخلاء والداخل",
+  "lesson": "makharij-jawf"
+ },
+ {
+  "term": "المخارج العامة",
+  "say": "al-makhārij al-ʿāmmah",
+  "en": "The five general places of speech, each holding one or more مخارج: الجوف, the throat, the tongue, the lips and الخيشوم.",
+  "literal": "the general places",
+  "ar": "المواضع الخمسة التي تخرج منها الحروف، في كل موضع مخرج أو أكثر: الجوف، والحلق، واللسان، والشفتان، والخيشوم.",
+  "lesson": "makharij-jawf"
+ },
+ {
+  "term": "المخارج الخاصة",
+  "say": "al-makhārij al-khāṣṣah",
+  "en": "The 17 exact points inside the five general places. Each gives one, two or three letters.",
+  "literal": "the specific places",
+  "ar": "المواضع السبعة عشر الدقيقة داخل المخارج العامة، يخرج من كل واحد منها حرف أو حرفان أو ثلاثة.",
+  "lesson": "makharij-jawf"
+ },
+ {
+  "term": "الحروف الهوائية",
+  "say": "al-ḥurūf al-hawāʾiyyah",
+  "en": "Another name for the three حروف المد: their sound has no point where it stops and ends only when the breath ends.",
+  "literal": "the airy letters",
+  "ar": "اسم آخر لحروف المد الثلاثة؛ لأنه ليس لها موضع ينقطع عنده صوتها، فينتهي بانتهاء الهواء.",
+  "lesson": "makharij-jawf"
+ },
+ {
+  "term": "الحروف الشفوية",
+  "say": "al-ḥurūf al-shafawiyyah",
+  "en": "The lip letters: ف from the inside of the lower lip with the edges of the upper front teeth, and و ب م from both lips.",
+  "literal": "the lip letters",
+  "ar": "حروف الشفتين: الفاء من بطن الشفة السفلى مع أطراف الثنايا العليا، والواو والباء والميم من الشفتين معًا.",
+  "lesson": "makharij-shafatan"
+ },
+ {
+  "term": "صفة",
+  "forms": [
+   "صفات"
+  ],
+  "say": "ṣifah",
+  "en": "A quality of a letter: the way it is said at its مخرج, such as how much breath or sound goes with it. Plural صفات.",
+  "literal": "a description",
+  "ar": "الحال التي يكون عليها الحرف عند النطق به في مخرجه، كجريان النفس أو الصوت معه وانحباسهما. وجمعها صفات.",
+  "arLiteral": "الوصف",
+  "lesson": "sifat-hams"
+ },
+ {
+  "term": "الهمس",
+  "say": "al-hams",
+  "en": "The breath flows with the letter, because the letter rests lightly on its place. Its ten letters, called مهموسة, are in «فَحَثَّهُ شَخْصٌ سَكَتْ».",
+  "literal": "whispering",
+  "ar": "جريان النفس مع الحرف لضعف اعتماده على مخرجه. وحروفه عشرة تسمّى المهموسة، يجمعها «فَحَثَّهُ شَخْصٌ سَكَتْ».",
+  "arLiteral": "الصوت الخفيّ",
+  "lesson": "sifat-hams"
+ },
+ {
+  "term": "الجهر",
+  "say": "al-jahr",
+  "en": "The breath is held back, because the letter presses firmly on its place. The other nineteen letters have it and are called مجهورة.",
+  "literal": "saying aloud",
+  "ar": "انحباس النفس عند النطق بالحرف لقوة اعتماده على مخرجه. وحروفه التسعة عشر الباقية تسمّى المجهورة.",
+  "arLiteral": "الإعلان",
+  "lesson": "sifat-hams"
+ },
+ {
+  "term": "صفة الشدة",
+  "say": "ṣifat al-shiddah",
+  "en": "The sound is held back completely when the letter has a سكون, because the letter closes its place firmly. Its eight letters are in «أَجِدْ قَطٍ بَكَتْ». Not the شدة mark (ّ).",
+  "literal": "strength",
+  "ar": "انحباس الصوت كله عند إسكان الحرف، لقوة لزومه موضعه. وحروفها ثمانية يجمعها «أَجِدْ قَطٍ بَكَتْ». وهي غير علامة الشدة (ّ).",
+  "arLiteral": "القوة",
+  "lesson": "sifat-shidda"
+ },
+ {
+  "term": "صفة التوسط",
+  "say": "ṣifat al-tawassuṭ",
+  "en": "Also called البينية. Part of the sound is held and part runs: neither a full stop nor a free flow. Its five letters are in «لِنْ عُمَرْ».",
+  "literal": "being in the middle",
+  "ar": "وتسمّى البينية: انحباس بعض الصوت وجريان بعضه، فلا ينحبس كله ولا يجري كله. وحروفها خمسة يجمعها «لِنْ عُمَرْ».",
+  "arLiteral": "الاعتدال",
+  "lesson": "sifat-shidda"
+ },
+ {
+  "term": "الرخاوة",
+  "say": "al-rakhāwah",
+  "en": "The sound runs freely with the letter, because it rests lightly on its place. It is in every letter not in «أَجِدْ قَطٍ بَكَتْ» or «لِنْ عُمَرْ».",
+  "literal": "softness",
+  "ar": "جريان الصوت مع الحرف لضعف اعتماده على مخرجه. وهي في كل حرف ليس من «أَجِدْ قَطٍ بَكَتْ» ولا «لِنْ عُمَرْ».",
+  "arLiteral": "اللين",
+  "lesson": "sifat-shidda"
+ },
+ {
+  "term": "الاستفال",
+  "say": "al-istifāl",
+  "en": "The opposite of استعلاء: the back of the tongue stays low, so the letter is light. Every letter outside «خُصَّ ضَغْطٍ قِظْ» has it.",
+  "literal": "going low",
+  "ar": "ضد الاستعلاء: انخفاض اللسان عن الحنك عند النطق بالحرف، فيُرقَّق. وهو في كل حرف ليس من «خُصَّ ضَغْطٍ قِظْ».",
+  "arLiteral": "الانخفاض",
+  "lesson": "sifat-istila"
+ },
+ {
+  "term": "صفة الإطباق",
+  "say": "ṣifat al-iṭbāq",
+  "en": "Part of the tongue presses up against the palate and the sound is held between them. Only in ص ض ط ظ, the heaviest letters. Not the closing of the lips in إقلاب.",
+  "literal": "covering, sticking together",
+  "ar": "التصاق طائفة من اللسان بالحنك الأعلى وانحصار الصوت بينهما. وهي في ص ض ط ظ فقط، وهي أقوى الحروف تفخيمًا. وليست إطباق الشفتين في الإقلاب.",
+  "arLiteral": "التلاصق",
+  "lesson": "sifat-istila"
+ },
+ {
+  "term": "الانفتاح",
+  "say": "al-infitāḥ",
+  "en": "The opposite of صفة الإطباق: the tongue stays apart from the palate and the sound is not held between them. Every letter except ص ض ط ظ.",
+  "literal": "opening",
+  "ar": "ضد صفة الإطباق: تباعد اللسان عن الحنك الأعلى فلا ينحصر الصوت بينهما. وهو في كل الحروف إلا ص ض ط ظ.",
+  "arLiteral": "الافتراق",
+  "lesson": "sifat-istila"
+ },
+ {
+  "term": "الإذلاق",
+  "say": "al-idhlāq",
+  "en": "Lightness: six letters come quickly and easily from the tip of the tongue or the lips: «فِرَّ مِن لُّبٍّ» (ف ر م ن ل ب).",
+  "literal": "fluency",
+  "ar": "خفة الحرف وسرعة خروجه من طرف اللسان أو الشفتين. وحروفه ستة يجمعها «فِرَّ مِن لُّبٍّ».",
+  "arLiteral": "الفصاحة والخفة",
+  "lesson": "sifat-istila"
+ },
+ {
+  "term": "الإصمات",
+  "say": "al-iṣmāt",
+  "en": "The opposite of الإذلاق: the other letters. A native Arabic word of four or five root letters is never built from them alone; it always has a letter of «فِرَّ مِن لُّبٍّ».",
+  "literal": "holding back",
+  "ar": "ضد الإذلاق، وهو في باقي الحروف. ولا تُبنى منها وحدها كلمة عربية رباعية أو خماسية الأصول، بل لا بدّ فيها من حرف من «فِرَّ مِن لُّبٍّ».",
+  "arLiteral": "المنع",
+  "lesson": "sifat-istila"
+ },
+ {
+  "term": "الصفير",
+  "say": "al-ṣafīr",
+  "en": "A sharp sound like a bird's whistle that comes with ص ز س, as the air squeezes through the narrow gap at the tip of the tongue.",
+  "literal": "whistling",
+  "ar": "صوت حادّ يشبه صفير الطائر يصاحب الصاد والزاي والسين، لضيق المجرى عند طرف اللسان.",
+  "arLiteral": "صوت الطائر",
+  "lesson": "sifat-safir"
+ },
+ {
+  "term": "الانحراف",
+  "say": "al-inḥirāf",
+  "en": "The sound of the letter leans, after leaving its مخرج, toward another place. In ل and ر.",
+  "literal": "leaning, turning aside",
+  "ar": "ميل الحرف بعد خروجه من مخرجه حتى يتصل بمخرج غيره. وهو في اللام والراء.",
+  "arLiteral": "الميل",
+  "lesson": "sifat-inhiraf"
+ },
+ {
+  "term": "التكرير",
+  "say": "al-takrīr",
+  "en": "The ر's tendency to trill, the tip of the tongue shaking. It is learned in order to hide it: one firm tap, with no trill.",
+  "literal": "repeating",
+  "ar": "قابلية الراء لارتعاد طرف اللسان عند النطق بها. وتُعرف لتُخفى: طرقة واحدة محكمة بلا ارتعاد.",
+  "arLiteral": "الإعادة",
+  "lesson": "sifat-inhiraf"
+ },
+ {
+  "term": "التفشي",
+  "say": "al-tafashshī",
+  "en": "The air spreads through the mouth with ش.",
+  "literal": "spreading",
+  "ar": "انتشار الهواء في الفم عند النطق بالشين.",
+  "arLiteral": "الانتشار",
+  "lesson": "sifat-inhiraf"
+ },
+ {
+  "term": "الاستطالة",
+  "say": "al-istiṭālah",
+  "en": "The sound of ض runs along the edge of the tongue until it nears the place of ل. Only ض has it.",
+  "literal": "stretching",
+  "ar": "امتداد صوت الضاد على حافة اللسان حتى يقرب من مخرج اللام. ولا تكون إلا في الضاد.",
+  "arLiteral": "الامتداد",
+  "lesson": "sifat-inhiraf"
+ },
+ {
+  "term": "مرتبة التحقيق",
+  "say": "martabat al-taḥqīq",
+  "en": "The slowest pace (not تحقيق الهمزة, saying a همزة fully): calm, with every letter, صفة and length given in full. It is the pace for learning and teaching.",
+  "literal": "giving a thing its full due",
+  "ar": "أبطأ مراتب القراءة (وليست تحقيق الهمزة، أي نطقها كاملة): بطمأنينة وتؤدة، مع إعطاء كل حرف حقه من المخرج والصفة والمد. وهي مرتبة التعلم والتعليم.",
+  "arLiteral": "الإتيان بالشيء على حقيقته",
+  "lesson": "maratib"
+ },
+ {
+  "term": "التدوير",
+  "say": "al-tadwīr",
+  "en": "The middle pace, between التحقيق and الحدر. The usual pace of many readers.",
+  "ar": "المرتبة الوسطى بين التحقيق والحدر، وهي المعتادة عند كثير من القراء.",
+  "lesson": "maratib"
+ },
+ {
+  "term": "الحدر",
+  "say": "al-ḥadr",
+  "en": "A quick pace that keeps every rule: lengths, غنة and clear letters all stay.",
+  "literal": "going down quickly",
+  "ar": "الإسراع في القراءة مع مراعاة الأحكام كلها: تبقى مقادير المدود والغنن وبيان الحروف.",
+  "arLiteral": "الإسراع",
+  "lesson": "maratib"
+ },
+ {
+  "term": "الترتيل",
+  "say": "al-tartīl",
+  "en": "Calm, measured reading with attention to the meaning, as commanded in 73:4. Books place it either as a pace close to التحقيق or as the manner that covers all three paces.",
+  "literal": "setting in good order",
+  "ar": "القراءة بتؤدة وطمأنينة مع تدبر المعاني، كما أمر الله في المزمل 4. وعدّه بعضهم مرتبة قريبة من التحقيق، وجعله آخرون هيئة تشمل المراتب الثلاث.",
+  "arLiteral": "التنسيق وحسن الترتيب",
+  "lesson": "maratib"
+ }
+]

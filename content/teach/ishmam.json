@@ -1,0 +1,67 @@
+{
+ "lesson": "ishmam",
+ "terms": [
+  {
+   "term": "الاختلاس",
+   "say": "al-ikhtilās",
+   "en": "Saying a vowel quickly, with most of it (about two thirds, الميزان), unlike الروم at a stop (about a third). In تَأْمَ۫نَّا most books, هداية القاري and الوافي among them, call the unmerged way الاختلاس; some call it الروم.",
+   "literal": "snatching",
+   "ar": "النطق بالحركة مسرعًا بأكثرها، نحو ثلثيها، بخلاف الروم عند الوقف (نحو الثلث). وفي تَأْمَ۫نَّا يسمّي أكثر العلماء وجه الإظهار بهذا الاسم، ومنهم صاحبا هداية القاري والوافي، ويسمّيه بعضهم الروم.",
+   "arLiteral": "الأخذ بسرعة وخفية"
+  }
+ ],
+ "en": {
+  "plain": "تَأْمَ۫نَّا (12:11) comes from تَأْمَنُنَا: two ن, the first with a ضمة. حفص reads it in one of two ways, and both point to that hidden ضمة.",
+  "fits": "You learned الروم and الإشمام at a stop, on a word's last letter. Here the same names are used in the middle of a word, while you keep reading. This إشمام is a different act: the lips round as the ن is merged, not after a stop. It is the only word where حفص does this.",
+  "how": [
+   "Know the word first: تَأْمَنُنَا, a ن with ضمة, then a ن with فتحة.",
+   "Way one, الاختلاس (also called الروم): don't merge. Say the first ن with most of its ضمة, about two thirds, quickly, then نَا. It is more than الروم at a stop.",
+   "Way two, merging with الإشمام: merge the first ن into the second, so you say one doubled ن with its غنة, نَّا. With the merge, round your lips as for a ضمة, with no ضمة sound. Check in a mirror: your lips round on نَّا.",
+   "Both ways are from الشاطبية. هداية القاري (by المرصفي) reads the first way first; الوافي says the second is better known and is read by most teachers. Follow your teacher.",
+   "Unlike the stop, the lips round inside the word, on the merged ن, and you go on reading. Your teacher will show you exactly when."
+  ],
+  "why": "Merging the two ن makes the word light to say. الروم or الإشمام keeps a trace of the first ن's ضمة, so the word's original form is not lost.",
+  "spot": "A small mark above the م: تَأْمَ۫نَّا, with a شدة on the ن. It is printed only in this word.",
+  "mistakes": [
+   {
+    "wrong": "A plain merge, نَّا with nothing else.",
+    "right": "Add الإشمام with the merge, or read the first way, الاختلاس (also called الروم)."
+   },
+   {
+    "wrong": "Saying the full ضمة: تَأْمَنُنَا.",
+    "right": "In الاختلاس (also called الروم) say most of it, quickly, not all of it."
+   },
+   {
+    "wrong": "Making a sound with the lips in الإشمام.",
+    "right": "The rounding is silent: it is seen, not heard."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "أصل تَأْمَ۫نَّا (12:11) تَأْمَنُنَا: نونان، الأولى مضمومة. ولحفص فيها وجهان، وكلاهما يشير إلى تلك الضمة الخفية.",
+  "fits": "تعلّمت الروم والإشمام عند الوقف على آخر الكلمة. وهنا يُستعمل الاسمان نفساهما في وسط الكلمة وأنت تواصل القراءة. والإشمام هنا عمل آخر: تنضم الشفتان مع إدغام النون، لا بعد الوقف. ولا يفعل حفص ذلك إلا في هذه الكلمة.",
+  "how": [
+   "اعرف أصل الكلمة أولًا: تَأْمَنُنَا، نون مضمومة ثم نون مفتوحة.",
+   "الوجه الأول، الاختلاس (ويسمّى الروم): لا تُدغم، بل انطق النون الأولى بأكثر ضمتها، نحو ثلثيها، مسرعًا، ثم نَا. وهو أكثر من الروم عند الوقف.",
+   "الوجه الثاني، الإدغام مع الإشمام: أدغم النون الأولى في الثانية فتنطق نونًا واحدة مشددة بغنتها: نَّا. ومع الإدغام ضم شفتيك كما تضمهما للضمة، دون أن تنطق بها. وتحقّق بالمرآة من انضمام شفتيك عند نَّا.",
+   "والوجهان كلاهما من الشاطبية. ويقدّم المرصفي في هداية القاري الوجه الأول، وذكر صاحب الوافي أن الثاني أشهر وعليه أكثر أهل الأداء، فاتبع شيخك.",
+   "وبخلاف الوقف، تنضم الشفتان هنا داخل الكلمة عند النون المدغمة، ثم تمضي في القراءة. وسيريك شيخك متى تضمهما بالضبط."
+  ],
+  "why": "إدغام النونين أخف في النطق، والروم أو الإشمام يُبقي أثرًا لضمة النون الأولى، فلا يضيع أصل الكلمة.",
+  "spot": "علامة صغيرة فوق الميم: تَأْمَ۫نَّا، وعلى النون شدة. ولا تأتي هذه العلامة إلا في هذه الكلمة.",
+  "mistakes": [
+   {
+    "wrong": "الإدغام المحض: نَّا بلا شيء معه.",
+    "right": "ضمّ شفتيك مع الإدغام (الإشمام)، أو اقرأ بالوجه الأول، الاختلاس (ويسمّى الروم)."
+   },
+   {
+    "wrong": "النطق بالضمة كاملة: تَأْمَنُنَا.",
+    "right": "في الاختلاس (ويسمّى الروم) انطق بأكثرها مسرعًا، لا بها كلها."
+   },
+   {
+    "wrong": "إخراج صوت مع الإشمام.",
+    "right": "ضم الشفتين بلا صوت: يُرى ولا يُسمع."
+   }
+  ]
+ }
+}

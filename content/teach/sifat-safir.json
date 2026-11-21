@@ -1,0 +1,73 @@
+{
+ "lesson": "sifat-safir",
+ "terms": [
+  {
+   "term": "الصفير",
+   "say": "al-ṣafīr",
+   "en": "A sharp sound like a bird's whistle that comes with ص ز س, as the air squeezes through the narrow gap at the tip of the tongue.",
+   "literal": "whistling",
+   "ar": "صوت حادّ يشبه صفير الطائر يصاحب الصاد والزاي والسين، لضيق المجرى عند طرف اللسان.",
+   "arLiteral": "صوت الطائر"
+  }
+ ],
+ "en": {
+  "plain": "Three صفات with no opposite: a whistle in ص ز س, a bounce in ق ط ب ج د when they have a سكون, and an easy, soft sound in وْ and يْ after a فتحة.",
+  "fits": "The five pairs are done. Now come the seven صفات with no opposite. This lesson has three: الصفير is new; قلقلة you learned in unit 2 and لين in unit 5. Here you see what makes them.",
+  "how": [
+   "Say أَسْ، أَزْ، أَصْ: the air squeezes through the narrow gap between the tip of the tongue and the front teeth and whistles. That is الصفير, strongest in ص, then ز, lightest in س.",
+   "Say يَنقَلِبْ: the ب has صفة الشدة and الجهر, so with its سكون neither sound nor breath passes the closed lips. The قلقلة bounce lets it be heard.",
+   "Check with أَبْ: the lips part a little to release the bounce, without a full فتحة or ضمة. Teachers differ on which vowel the bounce leans toward; follow your teacher.",
+   "Say ٱلْمَوْتَ and كَيْفَ: the وْ and يْ after a فتحة come out easily, with no effort, and that is لين (not lengthened while joining). The muṣḥaf has no mark for these صفات; you learn them by ear."
+  ],
+  "why": "The whistle is a mark of strength in ص ز س, so they keep it. The قلقلة exists because a letter with صفة الشدة and الجهر would otherwise be hard to hear.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Dulling the whistle of the صْ in أَصْبَحَ.",
+    "right": "Keep the narrow gap and let it whistle."
+   },
+   {
+    "wrong": "Bouncing into a vowel: قَدِ or يَنقَلِبَ.",
+    "right": "The bounce has no vowel; the سكون stays."
+   },
+   {
+    "wrong": "Ending the bounce with a همزة: وَلَقَدْءْ.",
+    "right": "Let the bounce end by itself."
+   },
+   {
+    "wrong": "Lengthening the وْ of ٱلْمَوْتَ while joining.",
+    "right": "Joined, a لين letter is not lengthened."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "ثلاث صفات لا ضد لها: صفير في الصاد والزاي والسين، ونبرة في ق ط ب ج د عند سكونها، وسهولة ولين في الواو والياء الساكنتين بعد فتح.",
+  "fits": "انتهت الأزواج الخمسة، وجاءت الصفات السبع التي لا ضد لها. وفي هذا الدرس ثلاث منها: الصفير جديد، والقلقلة عرفتها في الوحدة الثانية، واللين في الوحدة الخامسة. وهنا تعرف سببهما.",
+  "how": [
+   "قل: أَسْ، أَزْ، أَصْ؛ يضيق مجرى الهواء بين طرف اللسان والثنايا فيخرج صوت كصفير الطائر، وهذا الصفير. وأقواها الصاد، ثم الزاي، وأضعفها السين.",
+   "قل: يَنقَلِبْ؛ الباء فيها صفة الشدة والجهر، فإذا سكنت انطبقت الشفتان ولم يجرِ صوت ولا نفَس. فتأتي القلقلة لتُسمِع الحرف.",
+   "اختبر بـأَبْ: تنفرج الشفتان قليلًا لتخرج النبرة، دون فتحة أو ضمة كاملة. واختلف العلماء في جهة ميلها، فاتبع معلّمك.",
+   "قل: ٱلْمَوْتَ وكَيْفَ؛ تخرج الواو والياء الساكنتان بعد الفتح بسهولة ومن غير كلفة، وهذا اللين، ولا تُمدّان في الوصل. ولا علامة لهذه الصفات في المصحف، وإنما تُعرف بالسماع."
+  ],
+  "why": "الصفير علامة قوة في الصاد والزاي والسين، فلا بدّ من بيانه. والقلقلة سببها أن الحرف الذي اجتمعت فيه صفة الشدة والجهر يصعب إسماعه من غيرها.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "إضعاف صفير الصاد الساكنة في أَصْبَحَ.",
+    "right": "حافظ على الفرجة الضيقة ودع الصفير يظهر."
+   },
+   {
+    "wrong": "خلط القلقلة بحركة: قَدِ أو يَنقَلِبَ.",
+    "right": "القلقلة بلا حركة، والسكون باقٍ."
+   },
+   {
+    "wrong": "ختم القلقلة بهمزة: وَلَقَدْءْ.",
+    "right": "دع النبرة تنتهي وحدها."
+   },
+   {
+    "wrong": "مدّ الواو في ٱلْمَوْتَ عند الوصل.",
+    "right": "حرف اللين لا يُمدّ في الوصل."
+   }
+  ]
+ }
+}

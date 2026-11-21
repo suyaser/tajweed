@@ -1,0 +1,93 @@
+{
+ "lesson": "silah-s",
+ "terms": [
+  {
+   "term": "هاء الضمير",
+   "forms": [
+    "هاء الكناية"
+   ],
+   "say": "hāʾ aḍ-ḍamīr",
+   "en": "The ه added at the end of a word to mean \"him\", \"his\" or \"it\" (one male): لَهُ, بِهِۦ, إِنَّهُۥ. A ه that belongs to the word itself, as in نَفْقَهُ or وَجْهُ, is not one (هَٰذِهِۦ is read the same way as the pronoun).",
+   "literal": "the pronoun hāʾ",
+   "ar": "الهاء الزائدة في آخر الكلمة يُكنى بها عن المفرد المذكر الغائب: لَهُ، بِهِۦ، إِنَّهُۥ. أما الهاء التي من أصل الكلمة، كما في نَفْقَهُ ووَجْهُ، فليست منها (وتُعامَل هاء هَٰذِهِۦ معاملتها فتوصل مثلها).",
+   "arLiteral": "الضمير: ما يُكنى به عن الاسم."
+  },
+  {
+   "term": "صلة",
+   "say": "ṣilah",
+   "en": "Filling out the vowel of هاء الضمير until a مد letter grows from it: a و after هُ, a ي after هِ.",
+   "literal": "a joining",
+   "ar": "إشباع حركة هاء الضمير حتى يتولد منها حرف مد: واو بعد هُ، وياء بعد هِ.",
+   "arLiteral": "الوصل والإلحاق."
+  },
+  {
+   "term": "الصلة الصغرى",
+   "say": "aṣ-ṣilah aṣ-ṣughrā",
+   "en": "The صلة when the next word does not start with a همزة: two counts.",
+   "literal": "the small joining",
+   "ar": "الصلة إذا لم تبدأ الكلمة التالية بهمزة، ومقدارها حركتان."
+  }
+ ],
+ "en": {
+  "plain": "The little ه that means \"him\" or \"his\" is stretched two counts when the letters on both sides of it have vowels, as if a small و or ي followed it: وَإِنَّهُۥ عَلَىٰ.",
+  "fits": "You know المد الطبيعي: a مد letter held two counts. This lesson adds a مد letter that is not written in full: the صلة of هاء الضمير, a small و after هُ or a small ي after هِ. Here it is الصلة الصغرى, two counts, like المد الطبيعي. When a همزة starts the next word it is longer: that is the next lesson.",
+  "how": [
+   "Check the letter before the ه and the letter after it. Both must have a vowel: in إِنَّهُۥ كَانَ, نَّ before and كَ after.",
+   "Stretch the ه's vowel two counts: هُۥ sounds like هُو, and هِۦ like هِى.",
+   "If either neighbour has no vowel, the ه stays short: مِنْهُ, عَلَيْهِ, لَهُ ٱلدِّينَ. A مد letter like the ي of فِيهِ, or the silent start of ٱل, counts.",
+   "When you stop on the word there is no صلة: the ه takes a سكون, so وَعَدَّدَهُۥ becomes وَعَدَّدَهْ.",
+   "حفص has a few exceptions: فِيهِۦ مُهَانًا (25:69) is stretched though the ي before is ساكن; يَرْضَهُ لَكُمْ (39:7) is short; أَرْجِهْ and فَأَلْقِهْ have a سكون."
+  ],
+  "why": "This is how the pronoun was read by حفص: between two vowels its vowel is filled out until a و or ي grows from it. When a ساكن follows, the صلة is dropped so that two letters with سكون don't meet (غاية المريد).",
+  "spot": "مصحف المدينة writes a small و (ۥ) after هُ and a small ي (ۦ) after هِ where the صلة is read: إِنَّهُۥ, بِهِۦ. Where there is no small letter, keep the ه short.",
+  "mistakes": [
+   {
+    "wrong": "Clipping the صلة: a quick ه in إِنَّهُۥ كَانَ.",
+    "right": "Two full counts: إِنَّهُو كَانَ."
+   },
+   {
+    "wrong": "Adding a صلة next to a ساكن, as in فِيهِ هُدًى or مِنْهُ.",
+    "right": "No small letter in the muṣḥaf, no صلة."
+   },
+   {
+    "wrong": "Stretching a ه that is part of the word, as in مَا نَفْقَهُ كَثِيرًا.",
+    "right": "This ه belongs to the word: no صلة. The one non-pronoun ه that takes a صلة is the ه of هَٰذِهِۦ, and the muṣḥaf shows its small ي."
+   },
+   {
+    "wrong": "Keeping the صلة at a stop: وَعَدَّدَهُو.",
+    "right": "Stop with a سكون: وَعَدَّدَهْ."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "الهاء التي تعود على المفرد المذكر الغائب، كما في إِنَّهُۥ وبِهِۦ، تُمد حركتين إذا كان الحرفان قبلها وبعدها متحركين، كأن بعدها واوًا أو ياءً صغيرة: وَإِنَّهُۥ عَلَىٰ.",
+  "fits": "عرفتَ المد الطبيعي: حرف مد يُمد حركتين. ويضيف هذا الدرس حرف مد لا يُكتب كاملًا، وهو صلة هاء الضمير: واو صغيرة بعد هُ، أو ياء صغيرة بعد هِ. وما هنا هو الصلة الصغرى، ومقدارها حركتان كالمد الطبيعي. فإن بدأت الكلمة التالية بهمزة طال المد، وذلك موضوع الدرس القادم.",
+  "how": [
+   "انظر إلى الحرف الذي قبل الهاء والذي بعدها، فلا بد أن يكونا متحركين: في إِنَّهُۥ كَانَ تجد نَّ قبلها وكَ بعدها.",
+   "مُدّ حركة الهاء حركتين: هُۥ تُنطق كأنها هُو، وهِۦ كأنها هِى.",
+   "إن كان أحد الحرفين بلا حركة بقيت الهاء قصيرة: مِنْهُ، عَلَيْهِ، لَهُ ٱلدِّينَ. ويدخل فيه حرف المد كياء فِيهِ، وأول ٱل.",
+   "إذا وقفت على الكلمة فلا صلة، بل تسكن الهاء: وَعَدَّدَهُۥ تصير وَعَدَّدَهْ.",
+   "ولحفص مواضع خاصة: فِيهِۦ مُهَانًا (الفرقان ٦٩) تُوصل مع سكون الياء قبلها، ويَرْضَهُ لَكُمْ (الزمر ٧) بلا صلة، وأَرْجِهْ وفَأَلْقِهْ بسكون الهاء."
+  ],
+  "why": "هكذا رُويت قراءة حفص لهذا الضمير: إذا وقع بين متحركين أُشبعت حركته حتى تولد منها واو أو ياء. فإن تلاه ساكن حُذفت الصلة لئلا يلتقي ساكنان (غاية المريد).",
+  "spot": "يكتب مصحف المدينة واوًا صغيرة (ۥ) بعد هُ، وياءً صغيرة (ۦ) بعد هِ، حيث تُقرأ الصلة: إِنَّهُۥ، بِهِۦ. فإن لم تجد الحرف الصغير فاقرأ الهاء قصيرة.",
+  "mistakes": [
+   {
+    "wrong": "اختطاف الصلة، فتمر الهاء سريعة في إِنَّهُۥ كَانَ.",
+    "right": "حركتان كاملتان: إِنَّهُو كَانَ."
+   },
+   {
+    "wrong": "وصل الهاء وبجوارها ساكن، كما في فِيهِ هُدًى ومِنْهُ.",
+    "right": "لا حرف صغير في المصحف، فلا صلة."
+   },
+   {
+    "wrong": "مدّ هاء من أصل الكلمة، كما في مَا نَفْقَهُ كَثِيرًا.",
+    "right": "هذه الهاء من أصل الكلمة فلا صلة لها. ولا يوصل من غير هاء الضمير إلا هاء هَٰذِهِۦ، وتجد عليها الياء الصغيرة في المصحف."
+   },
+   {
+    "wrong": "إبقاء الصلة عند الوقف: وَعَدَّدَهُو.",
+    "right": "قف بالسكون: وَعَدَّدَهْ."
+   }
+  ]
+ }
+}

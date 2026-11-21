@@ -1,0 +1,67 @@
+{
+ "lesson": "lam-s",
+ "terms": [
+  {
+   "term": "اللام الشمسية",
+   "say": "al-lām ash-shamsiyyah",
+   "en": "The ل of ال that is not said before the other 14 letters: ط ث ص ر ت ض ذ ن د س ظ ز ش ل. It goes into the next letter, which is doubled.",
+   "literal": "the sun ل, named after ٱلشَّمْس, where it is silent",
+   "ar": "لام ال التي لا تُنطق قبل الأربعة عشر حرفًا الباقية: ط ث ص ر ت ض ذ ن د س ظ ز ش ل، بل تدخل في الحرف التالي فيُشدَّد.",
+   "arLiteral": "نسبة إلى الشمس، لأن لامها لا تُسمع في «ٱلشَّمْس»"
+  }
+ ],
+ "en": {
+  "plain": "In ٱلرَّحْمَٰنِ you do not hear the ل at all: you go straight to a doubled ر. This happens before the other 14 letters.",
+  "fits": "Last lesson the ل of ال was said before 14 letters. Before the other 14 it is silent, and the next letter takes a شدة. That completes ال. Next come two lessons on the ل in the name اللَّه, heavy or light; the first ل of that name is silent in this same way.",
+  "how": [
+   "Starting, say the همزة الوصل with a فتحة, then skip the ل: ٱلرَّحْمَٰنِ sounds اَرْرَحْمَٰنِ.",
+   "Say the next letter twice, as its شدة asks: first with سكون, then with its vowel. No ل sound comes in between.",
+   "Joined, both the همزة and the ل drop: وَٱلشَّمْسِ is said وَشَّمْسِ.",
+   "Before a ل (وَٱلَّيْلِ) the two become one doubled ل. Before ن (ٱلنَّاسِ) you get a doubled ن; how to hold its sound comes in a later lesson.",
+   "The 14 letters open the words of «طِبْ ثُمَّ صِلْ رُحْمًا تَفُزْ ضِفْ ذَا نِعَمْ دَعْ سُوءَ ظَنٍّ زُرْ شَرِيفًا لِلْكَرَمْ»."
+  ],
+  "why": "The ل is made close to these letters (and before ل it is the very same letter), so saying it and then the next letter is heavy on the tongue. Letting it go into the next letter makes the word light and smooth. It is called اللام الشمسية after ٱلشَّمْس, the sun, where the ل is not heard.",
+  "spot": "The ل has no mark at all and the next letter has a شدة, as in ٱلرَّحْمَٰنِ below. A bare ل with a شدة after it means: skip the ل.",
+  "mistakes": [
+   {
+    "wrong": "Saying the ل: اَلْرَحْمَٰنِ.",
+    "right": "Skip it: اَرْرَحْمَٰنِ."
+   },
+   {
+    "wrong": "Saying the doubled letter once: اَرَحْمَٰنِ.",
+    "right": "Twice, joined: اَرْرَحْمَٰنِ."
+   },
+   {
+    "wrong": "Guessing from the sound of the word whether to say the ل.",
+    "right": "Look at the marks: a سكون on the ل, say it; a شدة on the next letter, skip it."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في ٱلرَّحْمَٰنِ لا تُسمع اللام أصلًا، بل تنتقل مباشرة إلى راء مشددة. ويكون ذلك قبل الأربعة عشر حرفًا الباقية.",
+  "fits": "في الدرس السابق نُطقت لام ال قبل أربعة عشر حرفًا. وقبل الأربعة عشر الباقية لا تُنطق، ويأخذ الحرف بعدها شدة. وبهذا يكتمل حكم ال. ثم يأتي درسان في اللام من اسم «اللَّه»: مفخمة أو مرققة، ولامه الأولى لا تُنطق على هذا النحو نفسه.",
+  "how": [
+   "إذا بدأت فانطق همزة الوصل مفتوحة، ثم تجاوز اللام: ٱلرَّحْمَٰنِ تُنطق اَرْرَحْمَٰنِ.",
+   "انطق الحرف التالي مرتين كما تقتضي شدته: الأولى ساكنة، والثانية بحركتها، ولا يظهر بينهما صوت لام.",
+   "وعند الوصل تسقط الهمزة واللام معًا: وَٱلشَّمْسِ تُنطق وَشَّمْسِ.",
+   "وقبل اللام (وَٱلَّيْلِ) تصيران لامًا واحدة مشددة. وقبل النون (ٱلنَّاسِ) تُسمع نون مشددة، وكيف تمسك صوتها يأتي في درس لاحق.",
+   "والحروف الأربعة عشر أوائل كلمات هذا البيت: «طِبْ ثُمَّ صِلْ رُحْمًا تَفُزْ ضِفْ ذَا نِعَمْ دَعْ سُوءَ ظَنٍّ زُرْ شَرِيفًا لِلْكَرَمْ»."
+  ],
+  "why": "مخرج اللام قريب من مخارج هذه الحروف، وقبل اللام يلتقي الحرف بمثله، فيثقل نطقها ثم نطق ما بعدها؛ فتدخل في الحرف التالي ليخف النطق ويسلس. وتُسمّى اللام الشمسية لأنها لا تُسمع في «ٱلشَّمْس».",
+  "spot": "لا علامة على اللام، وعلى الحرف الذي بعدها شدة، كما في ٱلرَّحْمَٰنِ أدناه. فاللام الخالية من العلامة وبعدها شدة معناها: لا تنطق اللام.",
+  "mistakes": [
+   {
+    "wrong": "نطق اللام: اَلْرَحْمَٰنِ.",
+    "right": "تجاوزها: اَرْرَحْمَٰنِ."
+   },
+   {
+    "wrong": "نطق الحرف المشدد مرة واحدة: اَرَحْمَٰنِ.",
+    "right": "مرتين متصلتين: اَرْرَحْمَٰنِ."
+   },
+   {
+    "wrong": "الحكم على اللام بالسماع والتخمين.",
+    "right": "انظر إلى العلامات: سكون على اللام فانطقها، وشدة على ما بعدها فتجاوزها."
+   }
+  ]
+ }
+}

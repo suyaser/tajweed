@@ -1,0 +1,58 @@
+{
+ "lesson": "lazim-h",
+ "terms": [],
+ "en": {
+  "plain": "Some surahs open with letters read by their names: الٓمٓ is read أَلِفْ لَامْ مِّيمْ. When a letter's name has three letters with a مد in the middle, hold that مد six counts.",
+  "fits": "This is المد اللازم again, now inside a letter's name: in مِيمْ the ي is followed by a fixed سكون. 29 surahs open with such letters, 14 letters in all. Eight have three-letter names with a مد letter in the middle (in عَيْن, a ي after a فتحة), gathered in «نَقَصَ عَسَلُكُمْ»: six counts (عَيْن: 4 or 6). Five have two-letter names, gathered in «حَيٌّ طَهُرَ»: two counts. The ألف has no مد.",
+  "how": [
+   "Read each letter by its name, as the reciter did: الٓمٓ is أَلِفْ لَامْ مِيمْ.",
+   "لَام, مِيم, نُون, صَاد, قَاف, سِين, كَاف: six counts. نٓ is نُونْ, six.",
+   "عَيْن (in كٓهيعٓصٓ and عٓسٓقٓ) has a ي with سكون after a فتحة, not a full مد letter: 4 or 6 counts, and 6 is preferred.",
+   "حَا, يَا, طَا, هَا, رَا: two counts, like المد الطبيعي. أَلِف has no مد letter in its name, so no مد.",
+   "A name ending in م or ن merges into a following مِيم with a غنة: لَامْ مِّيمْ in الٓمٓ, سِيمْ مِّيمْ in طسٓمٓ. In آل عمران, joined to ٱللَّهُ, the last م takes a فتحة so two سكون don't meet (مِيمَ ٱللَّهُ); its ي may then be 6 counts or 2, both correct: read as your teacher does."
+  ],
+  "why": "These letters are read by their names, as they were passed down. A name like مِيمْ ends in a fixed سكون after its مد letter, so it is المد اللازم. A name like حَا has nothing after its مد, so it stays natural (غاية المريد).",
+  "spot": "The ٓ sits on the letters whose مد is long: الٓمٓ has it on the ل and the م, not on the ا. In كٓهيعٓصٓ the ه and the ي carry none: they are two counts.",
+  "mistakes": [
+   {
+    "wrong": "Reading الٓمٓ as one word: alam.",
+    "right": "Letter by letter, by name: أَلِفْ لَامْ مِّيمْ."
+   },
+   {
+    "wrong": "Giving حَا or يَا six counts.",
+    "right": "Only letters with a ٓ are long; these are two."
+   },
+   {
+    "wrong": "Holding عَيْن less than four counts.",
+    "right": "4 or 6, and 6 is preferred."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "تُفتتح بعض السور بحروف تُقرأ بأسمائها: الٓمٓ تُقرأ أَلِفْ لَامْ مِّيمْ. وكل حرف اسمه ثلاثة أحرف أوسطها حرف مد يُمد ست حركات.",
+  "fits": "هذا هو المد اللازم مرة أخرى، لكنه في اسم الحرف: ففي مِيمْ بعد الياء سكون ثابت. وقد افتُتحت تسع وعشرون سورة بهذه الحروف، وهي أربعة عشر حرفًا. منها ثمانية أسماؤها ثلاثية أوسطها حرف مد، أو ياء ساكنة بعد فتحة في عَيْن، يجمعها «نَقَصَ عَسَلُكُمْ»، وتُمد ستًا (وعَيْن أربعًا أو ستًا). وخمسة أسماؤها على حرفين، يجمعها «حَيٌّ طَهُرَ»، وتُمد حركتين. والألف لا مد فيها.",
+  "how": [
+   "اقرأ كل حرف باسمه كما سمعت القارئ: الٓمٓ تُقرأ أَلِفْ لَامْ مِيمْ.",
+   "لَام، مِيم، نُون، صَاد، قَاف، سِين، كَاف: ست حركات. ونٓ تُقرأ نُونْ بست حركات.",
+   "وعَيْن (في كٓهيعٓصٓ وعٓسٓقٓ) فيها ياء ساكنة بعد فتحة، لا حرف مد كامل، فتُمد أربعًا أو ستًا، والست مقدَّمة.",
+   "حَا، يَا، طَا، هَا، رَا: حركتان كالمد الطبيعي. وأَلِف ليس في وسط اسمها حرف مد، فلا مد فيها.",
+   "إذا انتهى اسم بميم أو نون وتلته مِيم أُدغم فيها بغنة: لَامْ مِّيمْ في الٓمٓ، وسِيمْ مِّيمْ في طسٓمٓ. وفي أول آل عمران إذا وصلت الٓمٓ بـ ٱللَّهُ فُتحت الميم الأخيرة لئلا يلتقي ساكنان (مِيمَ ٱللَّهُ)، فجاز في يائها ست حركات أو حركتان، وكلاهما صحيح، فاقرأ بما يقرأ به شيخك."
+  ],
+  "why": "تُقرأ هذه الحروف بأسمائها كما نُقلت إلينا. واسم مثل مِيمْ ينتهي بسكون ثابت بعد حرف المد، فهو مد لازم. أما اسم مثل حَا فليس بعد مده شيء، فبقي مدًا طبيعيًا (غاية المريد).",
+  "spot": "تجد علامة ٓ على الحروف التي يطول مدها: في الٓمٓ على اللام والميم دون الألف. وفي كٓهيعٓصٓ لا علامة على الهاء والياء، فهما حركتان.",
+  "mistakes": [
+   {
+    "wrong": "قراءة الٓمٓ كلمة واحدة: أَلَمْ.",
+    "right": "حرفًا حرفًا بأسمائها: أَلِفْ لَامْ مِّيمْ."
+   },
+   {
+    "wrong": "مدّ حَا أو يَا ست حركات.",
+    "right": "لا يطول إلا ما عليه علامة ٓ، وهذان حركتان."
+   },
+   {
+    "wrong": "مدّ عَيْن أقل من أربع حركات.",
+    "right": "أربع أو ست، والست مقدَّمة."
+   }
+  ]
+ }
+}

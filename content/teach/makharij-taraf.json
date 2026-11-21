@@ -1,0 +1,58 @@
+{
+ "lesson": "makharij-taraf",
+ "terms": [],
+ "en": {
+  "plain": "The tip of the tongue makes eleven letters at five places that lie very close together: ن, ر, ط د ت, ص س ز and ظ ذ ث. Small moves of the tip decide which letter you say.",
+  "fits": "This lesson finishes the tongue's 10 مخارج: after its back, middle and edges come the five places of its tip. They sit next to the place of ل from the last lesson.",
+  "how": [
+   "Say أَنْ: the tip touches the gum of the upper front teeth, a little below the place of ل. Say أَرْ: close to ن, but a little further onto the top of the tongue.",
+   "Say أَطْ، أَدْ، أَتْ: the tip presses on the roots of the upper front teeth, where tooth meets gum. All three come from the same spot.",
+   "Say أَسْ: the tip sits a little above the lower front teeth and leaves a narrow gap, so the air squeezes through with a sharp sound. ص and ز come from here too.",
+   "Say أَثْ: the tip touches the edges of the upper front teeth and shows a little between the teeth. ذ and ظ come from here too.",
+   "Check yourself: say أَتْ، أَسْ، أَثْ in a row and feel the tip move between the three spots. The muṣḥaf has no mark for this; you learn it by ear."
+  ],
+  "why": "The places are so close that a letter easily drifts into its neighbour, and the word changes: ذ said behind the teeth becomes ز, and ث becomes س.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Saying the ذّ of فَكَذَّبْنَا as ز, with the tip behind the teeth.",
+    "right": "Put the tip on the edges of the upper front teeth."
+   },
+   {
+    "wrong": "Saying the ث of ثُمَّ as س.",
+    "right": "Let the tip show a little between the teeth."
+   },
+   {
+    "wrong": "Saying the ط of طِبَاقًا light, like ت.",
+    "right": "Same place as ت, but ط is heavy."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "يخرج من رأس اللسان أحد عشر حرفًا، من خمسة مواضع متقاربة جدًّا: النون، والراء، والطاء والدال والتاء، والصاد والسين والزاي، والظاء والذال والثاء. وأدنى حركة لرأس اللسان تحدّد الحرف.",
+  "fits": "بهذا الدرس تكتمل مخارج اللسان العشرة: بعد أقصاه ووسطه وحافتيه تأتي مخارج طرفه الخمسة، وهي ملاصقة لمخرج اللام الذي عرفته في الدرس الماضي.",
+  "how": [
+   "قل: أَنْ؛ يلتقي طرف اللسان بلثة الثنايا العليا (الأسنان الأمامية)، تحت مخرج اللام قليلًا. ثم قل: أَرْ؛ هي قريبة من النون، لكنها أدخل قليلًا إلى ظهر اللسان.",
+   "قل: أَطْ، أَدْ، أَتْ؛ يعتمد طرف اللسان على أصول الثنايا العليا، حيث تلتقي السن باللثة. والثلاثة من موضع واحد.",
+   "قل: أَسْ؛ يكون طرف اللسان فويق الثنايا السفلى، مع فرجة ضيقة يندفع منها الهواء بصوت حادّ. ومن هنا أيضًا الصاد والزاي.",
+   "قل: أَثْ؛ يلامس طرف اللسان أطراف الثنايا العليا، ويبرز قليلًا بين الأسنان. ومن هنا أيضًا الذال والظاء.",
+   "اختبر نفسك: قل أَتْ، أَسْ، أَثْ متتابعة، وتحسّس طرف لسانك ينتقل بين المواضع الثلاثة. ولا علامة لهذا في المصحف، وإنما يُعرف بالسماع."
+  ],
+  "why": "المواضع شديدة التقارب، فيسهل أن ينتقل الحرف إلى جاره فتتغيّر الكلمة: الذال إذا تراجع اللسان عن الأسنان صارت زايًا، والثاء صارت سينًا.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "نطق الذال في فَكَذَّبْنَا زايًا، واللسان خلف الأسنان.",
+    "right": "ضع طرف اللسان على أطراف الثنايا العليا."
+   },
+   {
+    "wrong": "نطق الثاء في ثُمَّ سينًا.",
+    "right": "أبرز طرف اللسان قليلًا بين الأسنان."
+   },
+   {
+    "wrong": "ترقيق الطاء في طِبَاقًا حتى تصير تاءً.",
+    "right": "مخرجها مخرج التاء، لكنها مفخّمة."
+   }
+  ]
+ }
+}

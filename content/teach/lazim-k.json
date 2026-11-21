@@ -1,0 +1,79 @@
+{
+ "lesson": "lazim-k",
+ "terms": [
+  {
+   "term": "المد اللازم",
+   "say": "al-madd al-lāzim",
+   "en": "A مد letter followed by a سكون that is part of the word, usually inside a شدة. The سكون is there joined or stopping, so the مد is six counts (the next lesson has two exceptions in the opening letters).",
+   "literal": "the necessary madd",
+   "ar": "حرف مد بعده سكون أصلي ثابت وصلًا ووقفًا، وأكثره سكون في حرف مشدد. ويُمد ست حركات، وفي فواتح السور استثناءان يأتيان في الدرس التالي.",
+   "arLiteral": "اللازم: الثابت الذي لا يتغير."
+  },
+  {
+   "term": "مثقل",
+   "say": "muthaqqal",
+   "en": "Of المد اللازم: the سكون after the مد letter is inside a شدة, as in ضَآلًّا.",
+   "literal": "made heavy",
+   "ar": "وصف للمد اللازم إذا كان السكون بعد حرف المد في حرف مشدد، كما في ضَآلًّا."
+  },
+  {
+   "term": "مخفف",
+   "say": "mukhaffaf",
+   "en": "Of المد اللازم: the سكون after the مد letter is a plain سكون, with no شدة.",
+   "literal": "made light",
+   "ar": "وصف للمد اللازم إذا كان السكون بعد حرف المد سكونًا خالصًا بلا شدة."
+  }
+ ],
+ "en": {
+  "plain": "When a مد letter is followed by a شدة in the same word, hold it six full counts, whether you stop or read on: ضَآلًّا.",
+  "fits": "You know a سكون after a مد letter from المد العارض: it comes only when you stop, so its length is 2, 4 or 6. Here the سكون belongs to the word (usually inside a شدة), so it is there whether you stop or not. That makes it المد اللازم: six counts, always, and the strongest مد. The next lesson finds it in the opening letters of some surahs.",
+  "how": [
+   "Find a مد letter with a ٓ, and right after it a letter with a شدة: ضَآلًّا, ٱلْحَآقَّةُ, ٱلصَّآخَّةُ.",
+   "Hold the مد six counts at an even pace, the same speed you count your two-count مد. Then land on the doubled letter.",
+   "Reading on does not shorten it: ٱلطَّآمَّةُ ٱلْكُبْرَىٰ is still six.",
+   "With a شدة it is called مثقل. With a plain سكون it is مخفف; حفص has only ءَآلْـَٰٔنَ, twice in سورة يونس, when its second همزة is read as a long ا; its other way, a softened همزة, comes later."
+  ],
+  "why": "Its cause, a سكون after the مد letter, never leaves the word, so its length never changes; that is why it is called لازم, fixed (غاية المريد). Being permanent and inside the word makes it the strongest of all the مد.",
+  "spot": "The مد letter carries a ٓ and the next letter a شدة: ضَآلًّا. The ٓ says the مد is longer than two counts; the شدة right after it says it is this six-count one.",
+  "mistakes": [
+   {
+    "wrong": "Holding ضَآلًّا only four counts, like المد المتصل.",
+    "right": "Six, every time."
+   },
+   {
+    "wrong": "Shortening it when you read on: ٱلطَّآمَّةُ ٱلْكُبْرَىٰ with a short ا.",
+    "right": "The cause is inside the word: six, joined or stopping."
+   },
+   {
+    "wrong": "Speeding up the counts so six becomes four.",
+    "right": "Count at the same even pace as your other مد."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاء بعد حرف المد حرف مشدد في الكلمة نفسها، مددته ست حركات كاملة، وقفت أو وصلت: ضَآلًّا.",
+  "fits": "عرفتَ في المد العارض سكونًا يأتي بعد حرف المد، لكنه لا يكون إلا عند الوقف، فيجوز فيه حركتان أو أربع أو ست. أما هنا فالسكون من أصل الكلمة، وأكثره في حرف مشدد، فهو ثابت وقفت أو وصلت. وهذا هو المد اللازم: ست حركات دائمًا، وهو أقوى المدود. وفي الدرس القادم تجده في الحروف التي تُفتتح بها بعض السور.",
+  "how": [
+   "ابحث عن حرف مد عليه علامة ٓ، وبعده مباشرة حرف مشدد: ضَآلًّا، ٱلْحَآقَّةُ، ٱلصَّآخَّةُ.",
+   "مُدّه ست حركات متساوية، بالسرعة التي تعد بها حركتي المد الطبيعي، ثم انزل على الحرف المشدد.",
+   "الوصل لا ينقصه: ٱلطَّآمَّةُ ٱلْكُبْرَىٰ تبقى ست حركات.",
+   "فإن كان بعده حرف مشدد فهو مثقل، وإن كان سكونًا خالصًا فهو مخفف، وليس من المخفف عند حفص إلا ءَآلْـَٰٔنَ في موضعين من سورة يونس، إذا أُبدلت همزتها الثانية ألفًا ممدودة، ولها وجه آخر بتليين الهمزة يأتي في درس لاحق."
+  ],
+  "why": "سببه، وهو السكون بعد حرف المد، ملازم للكلمة لا يفارقها، فمقداره ثابت لا يتغير، ولذلك سُمي لازمًا (غاية المريد). وثبات سببه واتصاله بحرف المد في كلمة واحدة جعلاه أقوى المدود.",
+  "spot": "تجد على حرف المد علامة ٓ، وعلى الحرف الذي بعده شدة: ضَآلًّا. فالعلامة تدل على مد أطول من حركتين، والشدة بعدها تدل على أنه المد ذو الست.",
+  "mistakes": [
+   {
+    "wrong": "مدّ ضَآلًّا أربع حركات كالمتصل.",
+    "right": "ست حركات في كل مرة."
+   },
+   {
+    "wrong": "قصره في الوصل: ٱلطَّآمَّةُ ٱلْكُبْرَىٰ بألف قصيرة.",
+    "right": "سببه في الكلمة نفسها، فهو ست وصلًا ووقفًا."
+   },
+   {
+    "wrong": "الإسراع في العد حتى تصير الست أربعًا.",
+    "right": "عُدّ بالسرعة المتساوية نفسها التي تعد بها سائر المدود."
+   }
+  ]
+ }
+}

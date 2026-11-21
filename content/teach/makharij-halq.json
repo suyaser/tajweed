@@ -1,0 +1,56 @@
+{
+ "lesson": "makharij-halq",
+ "terms": [],
+ "en": {
+  "plain": "The throat has three places, one above the other, with two letters each: ء and هـ at the bottom, ع and ح in the middle, غ and خ at the top, next to the mouth.",
+  "fits": "You met these six letters as حروف الحلق: a نون ساكنة before them gets إظهار. Here you learn that the throat, the second of the five general places, is not one place but three of the 17.",
+  "how": [
+   "Say أَءْ, then أَهْ: both come from the bottom of the throat, near the chest (أقصى الحلق). With ء the throat closes and the sound cuts off; with هـ breath passes.",
+   "Move up and say أَعْ and أَحْ, as in نَعْقِلُ and أَحْسَنُ: both come from the middle of the throat (وسط الحلق). ع carries voice; ح is breath.",
+   "Move up again and say أَغْ and أَخْ, as in مَّغْفِرَةٌ and يَخْشَوْنَ: both come from the top of the throat, where it meets the mouth (أدنى الحلق).",
+   "Check yourself: say ءَ، عَ، غَ slowly in a row and feel the point rise toward the mouth. The muṣḥaf has no mark for this; you learn it by ear."
+  ],
+  "why": "Each pair shares one place, so a letter said one step too high or too low becomes another letter, and the word changes: عَلِيمٌ is not أَلِيمٌ.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Saying the ح of أَحْسَنُ from the bottom of the throat, like هـ.",
+    "right": "Take it from the middle of the throat, higher than هـ."
+   },
+   {
+    "wrong": "Saying ع as a همزة: نَأْقِلُ for نَعْقِلُ.",
+    "right": "Make ع in the middle of the throat; its sound goes on a little, where ء cuts off."
+   },
+   {
+    "wrong": "Saying خ or غ in the mouth, close to ك.",
+    "right": "Keep them at the top of the throat, right before the mouth."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في الحلق ثلاثة مواضع، بعضها فوق بعض، لكل موضع حرفان: الهمزة والهاء من أسفله، والعين والحاء من وسطه، والغين والخاء من أعلاه مما يلي الفم.",
+  "fits": "عرفتَ هذه الحروف الستة باسم حروف الحلق، وأن النون الساكنة تُظهر قبلها. والآن تعرف أن الحلق، وهو الثاني من المخارج العامة الخمسة، ليس موضعًا واحدًا، بل فيه ثلاثة من المخارج السبعة عشر.",
+  "how": [
+   "قل: أَءْ ثم أَهْ؛ كلتاهما من أقصى الحلق، أسفله مما يلي الصدر. مع الهمزة ينغلق الحلق وينقطع الصوت، ومع الهاء يجري النفس.",
+   "اصعد قليلًا وقل: أَعْ وأَحْ، كما في نَعْقِلُ وأَحْسَنُ؛ كلتاهما من وسط الحلق. العين فيها صوت، والحاء نفَس.",
+   "اصعد مرة أخرى وقل: أَغْ وأَخْ، كما في مَّغْفِرَةٌ ويَخْشَوْنَ؛ كلتاهما من أدنى الحلق، حيث يلتقي الحلق بالفم.",
+   "اختبر نفسك: قل ءَ، عَ، غَ متتابعة ببطء، وستحسّ أن الموضع يصعد نحو الفم. ولا علامة لهذا في المصحف، وإنما يُعرف بالسماع."
+  ],
+  "why": "كل حرفين يشتركان في موضع واحد، فإذا خرج الحرف أعلى من موضعه أو أسفل منه صار حرفًا آخر، وتغيّرت الكلمة: فـعَلِيمٌ غير أَلِيمٌ.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "إخراج الحاء في أَحْسَنُ من أسفل الحلق كأنها هاء.",
+    "right": "أخرجها من وسط الحلق، فوق موضع الهاء."
+   },
+   {
+    "wrong": "نطق العين همزةً: نَأْقِلُ بدل نَعْقِلُ.",
+    "right": "أخرج العين من وسط الحلق؛ يجري صوتها قليلًا، والهمزة ينقطع صوتها."
+   },
+   {
+    "wrong": "إخراج الخاء أو الغين من الفم قريبًا من الكاف.",
+    "right": "أبقهما في أعلى الحلق، قبل الفم مباشرة."
+   }
+  ]
+ }
+}

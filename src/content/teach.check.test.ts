@@ -57,6 +57,7 @@ it('teaching texts', () => {
       for (const k of ['plain', 'fits', 'why'] as const) if (!x[k]?.trim()) errs.push(`${id}.${lang}.${k}: empty`)
       if (!x.how?.length) errs.push(`${id}.${lang}.how: no steps`)
       if (!Array.isArray(x.mistakes)) errs.push(`${id}.${lang}.mistakes: missing`)
+      else if (x.mistakes.length > 4) errs.push(`${id}.${lang}.mistakes: ${x.mistakes.length} pairs; at most 4`)
       if (x.spot === undefined) errs.push(`${id}.${lang}.spot: missing (null when the muṣḥaf shows no sign)`)
       if (x.plain && x.plain.length > 320) warns.push(`${id}.${lang}.plain: ${x.plain.length} chars; keep "in plain words" to 1–2 sentences`)
       for (const s of x.how ?? []) if (s.length > 320) warns.push(`${id}.${lang}.how: a step of ${s.length} chars; split it`)

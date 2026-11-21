@@ -1,0 +1,73 @@
+{
+ "lesson": "qal-s",
+ "terms": [
+  {
+   "term": "قلقلة",
+   "say": "qalqalah",
+   "en": "A small bounce heard when one of ق ط ب ج د has a سكون: the closed place comes apart, so the letter is heard, with no vowel.",
+   "literal": "shaking, stirring",
+   "ar": "نبرةٌ تُسمع عند النطق بأحد حروف «قُطْبُ جَدٍ» ساكنًا، يضطرب فيها المخرج فيظهر الحرف، دون أن يتحرك.",
+   "arLiteral": "الاضطراب"
+  }
+ ],
+ "en": {
+  "plain": "Five letters, ق ط ب ج د, give a small bounce when they have a سكون. The bounce lets the letter be heard; it is not a vowel.",
+  "fits": "You know the سكون: a letter with no vowel. Most letters with a سكون are said without any bounce, like the لْ of قُلْ. These five, gathered in the words قُطْبُ جَدٍ, need one. This lesson is the small قلقلة, in the middle of a word or when you keep reading; the next is the stronger one when you stop.",
+  "how": [
+   "Close the letter's place fully: the back of the tongue on the roof of the mouth for ق, the middle of the tongue for ج, the tip behind the upper front teeth for ط and د, the lips for ب.",
+   "In that closure both sound and breath are held. Part the place quickly, without opening the mouth into a vowel: a short bounce is heard.",
+   "The bounce is not a vowel. Books differ on its colour: most let it lean toward the vowel before it, and another view leans it toward a فتحة every time; follow your teacher.",
+   "Then go on to the next letter: يَدْخُلُونَ, حَبْلٌ. At the end of a word joined to the next it is the same: يَلِدْ وَلَمْ."
+  ],
+  "why": "These five letters are made by closing their place completely, so neither breath nor sound runs on. Said with a سكون and no bounce, they would be lost; the bounce makes them heard.",
+  "spot": "The muṣḥaf has no mark for قلقلة. Look for ق ط ب ج د carrying a سكون, like the دْ of يَلِدْ.",
+  "mistakes": [
+   {
+    "wrong": "Adding a vowel after the letter: يَلِدَ وَلَمْ, أَجِرٌ",
+    "right": "A bounce, not a vowel: يَلِدْ, أَجْرٌ"
+   },
+   {
+    "wrong": "A bounce so faint only you can hear it",
+    "right": "Make it heard by those around you"
+   },
+   {
+    "wrong": "Stretching the bounce out",
+    "right": "One quick release"
+   },
+   {
+    "wrong": "Bouncing letters outside قُطْبُ جَدٍ, like the تْ of أَنْعَمْتَ",
+    "right": "Only ق ط ب ج د"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "خمسة أحرف هي ق ط ب ج د، إذا سكنت نُطقت بنبرة خفيفة تُظهر الحرف، وهذه النبرة ليست حركة.",
+  "fits": "تعرف السكون: حرف لا حركة عليه. وأكثر الحروف الساكنة تُنطق بلا نبرة، كاللام في قُلْ. أما حروف «قُطْبُ جَدٍ» الخمسة فتحتاج إلى نبرة لتُسمع. وفي هذا الدرس القلقلة الصغرى: في وسط الكلمة، أو في آخرها إذا واصلت القراءة. وفي الدرس التالي القلقلة الأقوى عند الوقف.",
+  "how": [
+   "أغلق مخرج الحرف إغلاقًا تامًا: أقصى اللسان مع سقف الحنك للقاف، ووسطه للجيم، وطرفه مع أصول الثنايا العليا للطاء والدال، والشفتان للباء.",
+   "في هذا الإغلاق ينحبس الصوت والنفَس معًا. ثم افصل طرفي المخرج بسرعة دون أن تفتح فمك بحركة، فتُسمع نبرة قصيرة.",
+   "النبرة ليست حركة. واختلفوا في صوتها: فالجمهور على أنها تتبع حركة ما قبلها، ومنهم من يجعلها أقرب إلى الفتح مطلقًا؛ فاتبع شيخك.",
+   "ثم انتقل إلى الحرف التالي: يَدْخُلُونَ، حَبْلٌ. وكذلك في آخر الكلمة إذا وصلتها بما بعدها: يَلِدْ وَلَمْ."
+  ],
+  "why": "تُنطق هذه الحروف بإغلاق المخرج كله، فلا يجري معها نفَس ولا صوت. فلو سكنت بلا نبرة لضاع صوتها، فأُتبعت بنبرة خفيفة ليظهر الحرف.",
+  "spot": "ليس في المصحف علامة للقلقلة. ابحث عن ق ط ب ج د عليها سكون، كالدال في يَلِدْ.",
+  "mistakes": [
+   {
+    "wrong": "إضافة حركة بعد الحرف: «يَلِدَ وَلَمْ»، «أَجِرٌ»",
+    "right": "نبرة بلا حركة: يَلِدْ، أَجْرٌ"
+   },
+   {
+    "wrong": "نبرة خافتة لا يسمعها إلا القارئ",
+    "right": "أسمِعها من حولك"
+   },
+   {
+    "wrong": "إطالة النبرة ومطّها",
+    "right": "انفصال واحد سريع"
+   },
+   {
+    "wrong": "قلقلة حروف ليست منها، كالتاء الساكنة في أَنْعَمْتَ",
+    "right": "القلقلة في ق ط ب ج د وحدها"
+   }
+  ]
+ }
+}

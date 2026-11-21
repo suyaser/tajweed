@@ -1,0 +1,77 @@
+{
+ "lesson": "mithlayn",
+ "terms": [
+  {
+   "term": "المثلين",
+   "forms": [
+    "المثلان",
+    "إدغام المثلين"
+   ],
+   "say": "al-mithlayn",
+   "en": "Two of the same letter side by side. When the first has a سكون and the second a vowel, the first merges into the second, unless the first is a حرف مد.",
+   "literal": "the two alike",
+   "ar": "حرفان متماثلان متجاوران؛ فإذا سكن الأول وتحرك الثاني أُدغم الأول في الثاني، إلا أن يكون الأول حرف مد.",
+   "arLiteral": "الشيئان المتماثلان"
+  }
+ ],
+ "en": {
+  "plain": "When a letter with no vowel is followed by the same letter, say them as one doubled letter, with no break.",
+  "fits": "You met this in إدغام: in فَلَن نَّزِيدَكُمْ a ن met a ن. It works for every letter: لْ لَ, بْ بِ, تْ تِ, دْ دَ. With ن and م the two-count غنة is held, as you learned. One exception you meet often: a حرف مد is never merged; one more place, مَالِيَهْ هَلَكَ, comes in a later lesson.",
+  "how": [
+   "Put the tongue or lips on the letter's place once: for هَل لَّكَ, the tip of the tongue for ل.",
+   "Hold it there for the time of two letters, then go into the second letter's vowel. Don't let go in between.",
+   "If the letter is one of قُطْبُ جَدٍ, the first gets no قلقلة: the merge takes its place. ٱذْهَب بِّكِتَٰبِى, وَقَد دَّخَلُوا۟.",
+   "If the first is a حرف مد, say both: فِى يَوْمٍ is a two-count ي, then يَوْمٍ. A و or ي with سكون after a فتحة is not a حرف مد, so it merges: أَو وَّزَنُوهُمْ."
+  ],
+  "why": "Saying the same letter twice in a row means leaving its place and coming straight back, which is heavy on the tongue; merging is lighter. A حرف مد is kept apart so that its length is not lost.",
+  "spot": "The first letter has no سكون and the second carries a شدة: هَل لَّكَ, ٱذْهَب بِّكِتَٰبِى. When the first is a حرف مد, the next letter has no شدة: فِى يَوْمٍ.",
+  "mistakes": [
+   {
+    "wrong": "The ل twice with a break: هَلْ … لَكَ",
+    "right": "One doubled ل: هَلَّكَ"
+   },
+   {
+    "wrong": "A قلقلة on the first ب of ٱذْهَب بِّكِتَٰبِى",
+    "right": "No bounce: one doubled ب"
+   },
+   {
+    "wrong": "Merging after a حرف مد: فِيَّوْمٍ",
+    "right": "فِى يَوْمٍ: a two-count ي, then يَوْمٍ"
+   },
+   {
+    "wrong": "Dropping the doubling: هَلَكَ",
+    "right": "Hold the ل for two letters"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاء حرف ساكن وبعده الحرف نفسه متحركًا، نطقتهما حرفًا واحدًا مشددًا، بلا فصل بينهما.",
+  "fits": "مرّ بك هذا في الإدغام: في فَلَن نَّزِيدَكُمْ التقت نون بنون. والقاعدة عامة في كل الحروف: لْ لَ، بْ بِ، تْ تِ، دْ دَ، وهذا إدغام المثلين. ومع النون والميم تبقى الغنة حركتين كما تعلمت. ويُستثنى حرف المد، فلا يُدغم أبدًا؛ وموضع آخر هو مَالِيَهْ هَلَكَ يأتي في درس لاحق.",
+  "how": [
+   "ضع اللسان أو الشفتين على مخرج الحرف مرة واحدة: في هَل لَّكَ طرف اللسان للام.",
+   "أبقِه هناك بزمن حرفين، ثم انتقل إلى حركة الثاني، ولا تفصل بينهما.",
+   "إذا كان الحرف من «قُطْبُ جَدٍ» فلا قلقلة على الأول، لأن الإدغام يغني عنها: ٱذْهَب بِّكِتَٰبِى، وَقَد دَّخَلُوا۟.",
+   "إذا كان الأول حرف مد فانطق الحرفين: فِى يَوْمٍ ياء ممدودة حركتين ثم يَوْمٍ. أما الواو أو الياء الساكنة بعد فتحة فليست حرف مد، فتُدغم: أَو وَّزَنُوهُمْ."
+  ],
+  "why": "النطق بالحرف نفسه مرتين متتاليتين يعني أن يفارق اللسان المخرج ثم يعود إليه فورًا، وفي ذلك ثقل، والإدغام أخف. ويبقى حرف المد ظاهرًا لئلا يذهب مدّه.",
+  "spot": "لا سكون على الحرف الأول، وعلى الثاني شدة: هَل لَّكَ، ٱذْهَب بِّكِتَٰبِى. فإن كان الأول حرف مد فلا شدة على ما بعده: فِى يَوْمٍ.",
+  "mistakes": [
+   {
+    "wrong": "نطق اللام مرتين بينهما فصل: «هَلْ … لَكَ»",
+    "right": "لام واحدة مشددة: «هَلَّكَ»"
+   },
+   {
+    "wrong": "قلقلة الباء الأولى في ٱذْهَب بِّكِتَٰبِى",
+    "right": "لا قلقلة: باء واحدة مشددة"
+   },
+   {
+    "wrong": "الإدغام بعد حرف المد: «فِيَّوْمٍ»",
+    "right": "فِى يَوْمٍ: ياء ممدودة ثم يَوْمٍ"
+   },
+   {
+    "wrong": "ترك التشديد: «هَلَكَ»",
+    "right": "أمسك اللام بزمن حرفين"
+   }
+  ]
+ }
+}

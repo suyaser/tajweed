@@ -1,0 +1,64 @@
+{
+ "lesson": "qal-k",
+ "terms": [],
+ "en": {
+  "plain": "When you stop on a word that ends in ق ط ب ج or د, the last letter loses its vowel and bounces more strongly than in the middle of your reading.",
+  "fits": "In the last lesson the قلقلة was small: inside a word, or at its end when you keep going. Here you stop, as at the end of an ayah: ٱلْفَلَقِ becomes ٱلْفَلَقْ, and the bounce is fuller. This is called القلقلة الكبرى, the bigger bounce. Many teachers count a third, strongest level when the stopped letter has a شدة, as in وَتَبَّ; others do not.",
+  "how": [
+   "On a وقف the last vowel drops, and so does a تنوين with ضمة or كسرة: أَحَدٌ becomes أَحَدْ.",
+   "Close the letter's place fully, then part it with a clear bounce, stronger than the small one.",
+   "Then the sound ends. Add no vowel and no همزة: أَحَدْ, not أَحَدَ or أَحَدْءْ.",
+   "If a حرف مد comes before the letter, as in ٱلْبُرُوجِ, hold the المد العارض (2, 4 or 6 counts), then bounce."
+  ],
+  "why": "The reason is the one you learned: these letters hold sound and breath, and would be lost without the bounce. The books add that it is clearest at a stop; ابن الجزري says: «وَإِنْ يَكُنْ فِي الوَقْفِ كَانَ أَبْيَنَا».",
+  "spot": "The muṣḥaf prints the vowel you read when joining: ٱلْفَلَقِ. Where you stop, most often at the end of an ayah (۝), drop that vowel and bounce.",
+  "mistakes": [
+   {
+    "wrong": "Keeping the vowel on a stop: ٱلْفَلَقِ",
+    "right": "ٱلْفَلَقْ, with a strong bounce"
+   },
+   {
+    "wrong": "Ending with a vowel or a همزة: أَحَدَ, أَحَدْءْ",
+    "right": "A clean bounce, then silence"
+   },
+   {
+    "wrong": "Stopping with no bounce, so the ق disappears",
+    "right": "Part the place so it is heard"
+   },
+   {
+    "wrong": "Bouncing the ط of ٱلْحَطَبِ",
+    "right": "It has a vowel; only the stopped ب bounces: ٱلْحَطَبْ"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا وقفتَ على كلمة آخرها ق أو ط أو ب أو ج أو د، سكن الحرف الأخير ونُطق بنبرة أقوى مما في وسط القراءة.",
+  "fits": "عرفتَ في الدرس السابق القلقلة الصغرى، في وسط الكلمة أو عند الوصل. وهنا تقف، كما في أواخر الآيات: ٱلْفَلَقِ تصير ٱلْفَلَقْ، فتكون القلقلة أوضح، وتسمى القلقلة الكبرى. ويعدّ كثير من المعلمين مرتبة ثالثة أقوى إذا كان الحرف الموقوف عليه مشددًا، كما في وَتَبَّ، ولا يوافقهم آخرون.",
+  "how": [
+   "عند الوقف تسقط الحركة الأخيرة، ويسقط التنوين المضموم والمكسور: أَحَدٌ تصير أَحَدْ.",
+   "أغلق مخرج الحرف إغلاقًا تامًا، ثم افصله بنبرة واضحة أقوى من الصغرى.",
+   "ثم ينتهي الصوت: لا تُتبعه حركة ولا همزة. قل أَحَدْ، لا «أَحَدَ» ولا «أَحَدْءْ».",
+   "إذا سبق الحرفَ حرفُ مد، كما في ٱلْبُرُوجِ، فامدده المد العارض (حركتين أو أربعًا أو ستًّا)، ثم قلقل."
+  ],
+  "why": "السبب هو الذي عرفته: هذه الحروف ينحبس فيها الصوت والنفَس، فتضيع لولا النبرة. والعلماء يجعلونها عند الوقف أبين، كما قال ابن الجزري: «وَإِنْ يَكُنْ فِي الوَقْفِ كَانَ أَبْيَنَا».",
+  "spot": "يطبع المصحف الحركة التي تقرأ بها عند الوصل: ٱلْفَلَقِ. فإذا وقفتَ عليها، وأكثر ذلك عند علامة آخر الآية (۝)، أسقطتَ الحركة وقلقلت.",
+  "mistakes": [
+   {
+    "wrong": "إبقاء الحركة عند الوقف: ٱلْفَلَقِ",
+    "right": "ٱلْفَلَقْ بقلقلة قوية"
+   },
+   {
+    "wrong": "ختم النبرة بحركة أو همزة: «أَحَدَ»، «أَحَدْءْ»",
+    "right": "نبرة نظيفة ثم ينقطع الصوت"
+   },
+   {
+    "wrong": "الوقف بلا نبرة فتضيع القاف",
+    "right": "افصل المخرج حتى تُسمع"
+   },
+   {
+    "wrong": "قلقلة الطاء في ٱلْحَطَبِ",
+    "right": "الطاء متحركة؛ القلقلة على الباء الموقوف عليها: ٱلْحَطَبْ"
+   }
+  ]
+ }
+}

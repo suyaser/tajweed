@@ -1,0 +1,91 @@
+{
+ "lesson": "arid",
+ "terms": [
+  {
+   "term": "المد العارض",
+   "say": "al-madd al-ʿāriḍ",
+   "en": "A حرف مد right before the last letter of a word you stop on, when that letter is not a ء. The stop gives it a سكون, and the مد may then be held 2, 4 or 6 حركات.",
+   "literal": "the passing lengthening",
+   "ar": "حرف مد بعده حرف سكونه عارض، لم يسكن إلا لأنك وقفت عليه، ما لم يكن الحرف الأخير همزة؛ فيجوز مده حركتين أو أربعًا أو ستًّا.",
+   "arLiteral": "العارض: الطارئ غير الثابت"
+  },
+  {
+   "term": "القصر",
+   "say": "al-qaṣr",
+   "en": "Holding a مد two حركات, its shortest length here.",
+   "literal": "shortening",
+   "ar": "مدّ حرف المد حركتين، وهو أقصر مقاديره هنا.",
+   "arLiteral": "الحبس والتقصير"
+  },
+  {
+   "term": "التوسط",
+   "say": "at-tawassuṭ",
+   "en": "Holding a مد four حركات, the middle length here.",
+   "literal": "taking the middle",
+   "ar": "مدّ حرف المد أربع حركات، وهو المقدار الأوسط هنا.",
+   "arLiteral": "الاعتدال بين الطرفين"
+  },
+  {
+   "term": "الإشباع",
+   "say": "al-ishbāʿ",
+   "en": "Holding a مد six حركات, its longest length.",
+   "literal": "filling up",
+   "ar": "مدّ حرف المد ست حركات، وهو أطول مقاديره.",
+   "arLiteral": "الإتمام والإكمال"
+  }
+ ],
+ "en": {
+  "plain": "When you stop on a word like ٱلنَّاسِ, its last letter loses its vowel, and the ا right before it may be held longer: 2, 4 or 6 counts, as long as that last letter is not a ء.",
+  "fits": "You know المد الطبيعي: two counts when nothing comes after. Here a سكون comes after, but only because you stopped. Join the word to the next and it is two counts again. This is the first مد that may be longer than two.",
+  "how": [
+   "Stop at the end of the ayah: ٱلنَّاسِ. The س drops its كسرة and you end on a closed سْ.",
+   "The ا before it is a حرف مد, and now it meets a letter with no vowel. Hold it 2 (القصر), 4 (التوسط) or 6 (الإشباع) حركات.",
+   "If the last letter is a ء, the حرف مد has a ٓ over it (ٱلسَّمَآءِ): that is a longer مد, in a later lesson.",
+   "Choose one length and keep it at every such stop in the same recitation: if ٱلْعَٰلَمِينَ had 4, ٱلرَّحِيمِ has 4.",
+   "Read on without stopping and it goes back to two. In 110:2, ٱلنَّاسَ is joined to يَدْخُلُونَ, so its ا is المد الطبيعي."
+  ],
+  "why": "The stop leaves two letters with no vowel side by side: the حرف مد and the stopped letter. The books allow three lengths: 6 counting that meeting, 2 because the سكون is only passing, and 4 between the two.",
+  "spot": "The muṣḥaf prints the last letter with its vowel (ٱلنَّاسِ), and no sign tells you to lengthen. Look at the end of the ayah, a usual place to stop, for a bare ا, و or ي right before the last letter.",
+  "mistakes": [
+   {
+    "wrong": "Holding 6 at one ayah's end and 2 at the next.",
+    "right": "Pick one length and keep it at every such stop."
+   },
+   {
+    "wrong": "Lengthening while joining: four counts in ٱلنَّاسَ يَدْخُلُونَ.",
+    "right": "Joined, it is two counts."
+   },
+   {
+    "wrong": "Stopping with the vowel still sounding: ٱلنَّاسِ with its كسرة.",
+    "right": "End on a closed letter: ٱلنَّاسْ."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا وقفت على كلمة مثل ٱلنَّاسِ سكن آخرها، وجاز لك أن تطيل الألف التي قبله: حركتين أو أربعًا أو ستًّا، ما لم يكن الحرف الأخير همزة. وهذا هو المد العارض.",
+  "fits": "عرفت المد الطبيعي: حركتان إذا لم يأتِ بعد حرف المد شيء. وهنا يأتي بعده سكون، لكنه لم يأتِ إلا لأنك وقفت. فإن وصلت الكلمة بما بعدها عاد حركتين. وهذا أول مد يجوز أن يزيد على حركتين.",
+  "how": [
+   "قف على آخر الآية: ٱلنَّاسِ. تسقط كسرة السين، فتختم بسين ساكنة.",
+   "الألف قبلها حرف مد، وقد جاء بعدها الآن حرف ساكن. فمُدّها حركتين (القصر) أو أربعًا (التوسط) أو ستًّا (الإشباع).",
+   "وإن كان الحرف الأخير همزة فعلى حرف المد علامة ٓ (ٱلسَّمَآءِ)، وذلك مد أطول يأتي في درس لاحق.",
+   "اختر مقدارًا واحدًا والتزمه في كل وقف مثله في التلاوة نفسها: إن مددت ٱلْعَٰلَمِينَ أربعًا فمُدّ ٱلرَّحِيمِ أربعًا.",
+   "فإن واصلت القراءة عاد حركتين: في 110:2 تتصل ٱلنَّاسَ بـ يَدْخُلُونَ، فألفها مد طبيعي."
+  ],
+  "why": "يجتمع عند الوقف حرفان ساكنان متجاوران: حرف المد والحرف الموقوف عليه. وأجاز العلماء المقادير الثلاثة: الست اعتدادًا باجتماعهما، والحركتين لأن السكون عارض، والأربع توسطًا بين الأمرين.",
+  "spot": "يكتب المصحف الحرف الأخير بحركته (ٱلنَّاسِ)، ولا علامة تأمرك بالمد. فانظر في آخر الآية، وهو موضع الوقف المعتاد: إن كان قبل الحرف الأخير ألف أو واو أو ياء بلا علامة فهو هذا المد.",
+  "mistakes": [
+   {
+    "wrong": "المد ستًّا في آخر آية وحركتين في التي بعدها.",
+    "right": "اختر مقدارًا واحدًا والتزمه في كل وقف مثله."
+   },
+   {
+    "wrong": "الإطالة عند الوصل: أربع حركات في ٱلنَّاسَ يَدْخُلُونَ.",
+    "right": "عند الوصل حركتان فقط."
+   },
+   {
+    "wrong": "الوقف مع بقاء الحركة: ٱلنَّاسِ بكسرتها.",
+    "right": "اختم بحرف ساكن: ٱلنَّاسْ."
+   }
+  ]
+ }
+}

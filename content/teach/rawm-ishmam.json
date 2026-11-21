@@ -1,0 +1,94 @@
+{
+ "lesson": "rawm-ishmam",
+ "terms": [
+  {
+   "term": "السكون المحض",
+   "say": "as-sukūn al-maḥḍ",
+   "en": "A plain سكون at a stop, with no hint of the vowel. It is the usual way to stop.",
+   "literal": "the pure stillness",
+   "ar": "سكون خالص عند الوقف، لا إشارة فيه إلى الحركة، وهو الأصل في الوقف.",
+   "arLiteral": "السكون الخالص"
+  },
+  {
+   "term": "روم",
+   "say": "rawm",
+   "en": "At a stop, saying about a third of the last vowel in a quiet voice, heard only by someone close. Used on a ضمة or a كسرة.",
+   "literal": "seeking, aiming at",
+   "ar": "النطق عند الوقف ببعض الحركة الأخيرة، نحو ثلثها، بصوت خفي لا يسمعه إلا القريب. ويكون في الضمة والكسرة.",
+   "arLiteral": "الطلب والقصد",
+   "not": [
+    "سورة الروم"
+   ]
+  },
+  {
+   "term": "إشمام",
+   "say": "ishmām",
+   "en": "At a stop, rounding the lips as for a ضمة right after the last letter is stilled, with no sound. It is seen, not heard. Used on a ضمة only.",
+   "literal": "giving a scent of something",
+   "ar": "ضم الشفتين عند الوقف كهيئتهما عند النطق بالضمة، بُعيد تسكين الحرف الأخير، بلا صوت. يُرى ولا يُسمع، ولا يكون إلا في الضمة.",
+   "arLiteral": "إيصال شيء يسير من الرائحة"
+  }
+ ],
+ "en": {
+  "plain": "When you stop, you may let a listener know the vowel you dropped: say a small part of it quietly (الروم), or round your lips silently after the سكون (الإشمام).",
+  "fits": "In the last lesson every stop ended in السكون المحض, a plain سكون. That is the normal way. This lesson adds two optional ways, both from الشاطبية. The muṣḥaf has no sign for them: the vowel on the last letter tells you which are allowed.",
+  "how": [
+   "الروم: say about a third of the last vowel, short and quiet, so only someone close hears it. On أَحَدٌ, give the د a faint touch of ضمة, with no tanween.",
+   "الروم is for a ضمة or a كسرة, with or without tanween: ٱلْأَكْرَمُ، ٱلْفَصْلِ، وَاقِعٍ. Part of the vowel is said, so a قلقلة letter does not bounce, and المد العارض before it is 2 counts only (ٱلنَّعِيمِ).",
+   "الإشمام: still the last letter with a سكون, then at once round your lips as for a ضمة, with no sound. A listener sees it; nobody hears it. Check in a mirror: the lips round after the د of أَحَدْ, and no sound comes.",
+   "الإشمام is for a ضمة only: أَحَدٌ، ٱلْأَكْرَمُ، فَصْلٌ. The stop is a full سكون, so a مد before it is read as at any stop.",
+   "Neither is used on a فتحة, on a ة you stop on as ه, on the ضمة a ميم الجمع takes before a سكون (عَلَيْهِمُ ٱلْقِتَالُ → عَلَيْهِمْ), or on a vowel added only to avoid التقاء الساكنين (قُمِ ٱلَّيْلَ → قُمْ). On هاء الضمير (فِيهِ) teachers differ; ask yours."
+  ],
+  "why": "Both show the listener which vowel the word ended in, so it is not lost at the stop. The books say a reader alone, with no one listening, has no need of them.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Using الإشمام on a كسرة, as in ٱلْفَصْلِ.",
+    "right": "On a كسرة use السكون المحض or الروم only."
+   },
+   {
+    "wrong": "Saying the whole vowel with its tanween and calling it الروم: أَحَدُنْ.",
+    "right": "Say only a short, quiet part of the vowel, with no نون."
+   },
+   {
+    "wrong": "Making a sound with الإشمام.",
+    "right": "Round the lips silently. Learn the shape by watching your teacher."
+   },
+   {
+    "wrong": "Holding ٱلنَّعِيمِ for 4 or 6 counts with الروم.",
+    "right": "With الروم, المد العارض is 2 counts."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا وقفت جاز لك أن تُعرّف السامع بالحركة التي حذفتها: إما أن تنطق ببعضها بصوت خفي، وهو الروم، وإما أن تضم شفتيك بلا صوت بعد السكون، وهو الإشمام.",
+  "fits": "في الدرس الماضي كان الوقف كله بالسكون المحض، وهو الأصل. وهنا وجهان جائزان ثابتان في الشاطبية. وليس لهما علامة في المصحف، وإنما تعرف ما يجوز منهما من حركة الحرف الأخير.",
+  "how": [
+   "الروم: انطق بنحو ثلث الحركة الأخيرة، قصيرةً خفيةً لا يسمعها إلا القريب. ففي أَحَدٌ تُشير إلى ضمة الدال بصوت خافت، بلا تنوين.",
+   "ويكون الروم في الضمة والكسرة، منوّنتين أو غير منوّنتين: ٱلْأَكْرَمُ، ٱلْفَصْلِ، وَاقِعٍ. ولأنك تنطق ببعض الحركة فلا قلقلة، ولا يُمد المد العارض قبل الحرف الموقوف عليه إلا حركتين (ٱلنَّعِيمِ).",
+   "الإشمام: سكّن الحرف الأخير، ثم ضم شفتيك فورًا كما تضمهما للضمة، بلا صوت. يراه الناظر ولا يسمعه أحد. وتحقّق بالمرآة: تنضم الشفتان بعد دال أَحَدْ، ولا يخرج صوت.",
+   "ولا يكون الإشمام إلا في الضمة: أَحَدٌ، ٱلْأَكْرَمُ، فَصْلٌ. والوقف معه سكون تام، فيُمد حرف المد قبله كما في أي وقف.",
+   "ولا يدخلان الفتحة، ولا التاء المربوطة الموقوف عليها هاءً، ولا ضمة ميم الجمع قبل الساكن (عَلَيْهِمُ ٱلْقِتَالُ ← عَلَيْهِمْ)، ولا الحركة العارضة للتخلص من التقاء الساكنين (قُمِ ٱلَّيْلَ ← قُمْ). وفي هاء الضمير (فِيهِ) خلاف، فاسأل شيخك."
+  ],
+  "why": "الغرض منهما بيان الحركة التي كانت على آخر الكلمة، حتى لا تخفى على السامع. ولذلك قالت الكتب إن القارئ وحده، ولا سامع له، لا يحتاج إليهما.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "الإشمام في المكسور، كما في ٱلْفَصْلِ.",
+    "right": "في الكسرة السكون المحض أو الروم فقط."
+   },
+   {
+    "wrong": "النطق بالحركة كاملة مع التنوين وتسميته رومًا: أَحَدُنْ.",
+    "right": "انطق ببعض الحركة فقط، خفيًّا قصيرًا، بلا نون."
+   },
+   {
+    "wrong": "إخراج صوت مع الإشمام.",
+    "right": "ضم الشفتين بلا صوت، وخذ هيئتهما بمشاهدة شيخك."
+   },
+   {
+    "wrong": "مدّ ٱلنَّعِيمِ أربعًا أو ستًّا مع الروم.",
+    "right": "مع الروم يُقصر المد العارض إلى حركتين."
+   }
+  ]
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "lesson": "m-izhar",
+ "terms": [
+  {
+   "term": "الميم الساكنة",
+   "forms": [
+    "ميم ساكنة"
+   ],
+   "say": "al-mīm as-sākinah",
+   "en": "A م with a سكون and no vowel: the مْ of أَلَمْ. What happens to it depends on the letter after it.",
+   "literal": "the still mīm",
+   "ar": "الميم التي عليها سكون فلا حركة لها، مثل مْ في أَلَمْ. ويتغير نطقها بحسب الحرف الذي بعدها.",
+   "arLiteral": "الساكنة: التي لا حركة لها."
+  },
+  {
+   "term": "شفوي",
+   "say": "shafawī",
+   "en": "Of the lips. The three rulings of الميم الساكنة are called شفوي because the م is made with the two lips.",
+   "literal": "from شَفَة, lip",
+   "ar": "نسبة إلى الشفتين. تُسمى أحكام الميم الساكنة الثلاثة شفوية لأن الميم تخرج من الشفتين.",
+   "arLiteral": "منسوب إلى الشَّفة."
+  }
+ ],
+ "en": {
+  "plain": "A م with no vowel is said clearly before almost every letter: the lips close once and open again, with no held hum, as you heard in أَلَمْ تَرَ.",
+  "fits": "You know the four rulings of النون الساكنة and تنوين, decided by the letter that comes next. الميم الساكنة has three, also decided by the next letter: before ب it is hidden (إخفاء), before م it merges (إدغام), and before the other 26 letters it is clear (إظهار). All three are called شفوي, of the lips. This lesson is the clear one; the other two follow.",
+  "how": [
+   "Close both lips once for the م. A م always sounds a little in the nose: a finger on the side of your nose feels a short buzz, not a held one.",
+   "Open the lips straight into the next letter: the ت of تَرَ, the ط of طَيْرًا. Don't hold a two-count hum as you do on مّ.",
+   "Take extra care before و and ف. The و is made with the lips and the ف right next to them, so the م easily slips away: close the lips fully first in كَيْدَهُمْ فِى and دِينُكُمْ وَلِىَ.",
+   "It can be inside one word (وَيَمْنَعُونَ) or across two (أَلَمْ تَرَ). The rule is the same."
+  ],
+  "why": "Most letters are made far from the lips, so the م is said fully in its own place, with nothing to hide or merge into (غاية المريد). Before و and ف, which share or nearly share its place, it could be hidden as it is before ب; so تحفة الأطفال warns: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي».",
+  "spot": "The م carries a sukun (مْ), as in أَلَمْ, and the letter after it has no شدة. In مصحف المدينة that sukun means: say the م clearly.",
+  "mistakes": [
+   {
+    "wrong": "Holding a hum on the مْ of أَلَمْ تَرَ, as if it were مّ.",
+    "right": "Close the lips once and move on, with no held hum."
+   },
+   {
+    "wrong": "Hiding the م before ف or و, the lips never quite closing in كَيْدَهُمْ فِى.",
+    "right": "Close the lips fully on the م, then say the ف or و."
+   },
+   {
+    "wrong": "Cutting the voice after the م, so أَلَمْ تَرَ breaks in two.",
+    "right": "Join it smoothly: the lips open straight into the ت."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا سكنت الميم نطقتها واضحة عند أكثر الحروف: تنضم الشفتان مرة واحدة ثم تنفتحان، بلا غنة ممدودة، كما سمعت في أَلَمْ تَرَ.",
+  "fits": "عرفتَ أحكام النون الساكنة والتنوين الأربعة، وأن الذي يحددها هو الحرف الذي بعدهما. وكذلك الميم الساكنة، لكن أحكامها ثلاثة: الإخفاء عند الباء، والإدغام عند الميم، والإظهار عند الحروف الستة والعشرين الباقية. وتُسمى كلها شفوية لأن الميم من الشفتين. وهذا الدرس للإظهار، والدرسان التاليان للحكمين الآخرين.",
+  "how": [
+   "اضمم شفتيك مرة واحدة على الميم. وفي الميم دائمًا شيء يسير من صوت الأنف، فإن وضعت إصبعك على جانب أنفك أحسست باهتزاز قصير لا يمتد.",
+   "افتح الشفتين مباشرة على الحرف التالي: التاء في تَرَ، والطاء في طَيْرًا. ولا تمد الغنة حركتين كما تفعل في مّ.",
+   "زد العناية عند الواو والفاء؛ فالواو من الشفتين، والفاء قريبة منهما، فتسهل على الميم أن تختفي عندهما. أتمّ ضم الشفتين أولًا في كَيْدَهُمْ فِى ودِينُكُمْ وَلِىَ.",
+   "يقع الإظهار في كلمة واحدة مثل وَيَمْنَعُونَ، وفي كلمتين مثل أَلَمْ تَرَ، والحكم واحد."
+  ],
+  "why": "أكثر الحروف بعيدة المخرج عن الشفتين، فتُنطق الميم تامة في موضعها، إذ لا يقربها ما تُخفى عنده أو تُدغم فيه (غاية المريد). أما الواو فتشاركها المخرج، والفاء تقاربه، فيُخشى أن تختفي عندهما كما تختفي عند الباء، ولذلك قال صاحب التحفة: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي».",
+  "spot": "تجد على الميم علامة السكون (مْ) كما في أَلَمْ، ولا شدة على الحرف الذي بعدها. وهذه العلامة في مصحف المدينة معناها: أظهر الميم.",
+  "mistakes": [
+   {
+    "wrong": "مدّ الغنة في مْ من أَلَمْ تَرَ كأنها ميم مشددة.",
+    "right": "اضمم الشفتين مرة وانتقل، بلا غنة ممدودة."
+   },
+   {
+    "wrong": "إخفاء الميم قبل الفاء أو الواو، فلا تنضم الشفتان تمامًا في كَيْدَهُمْ فِى.",
+    "right": "أتمّ ضم الشفتين على الميم، ثم انطق الفاء أو الواو."
+   },
+   {
+    "wrong": "قطع الصوت بعد الميم حتى تنفصل أَلَمْ عن تَرَ.",
+    "right": "صِل بسلاسة: تنفتح الشفتان على التاء مباشرة."
+   }
+  ]
+ }
+}

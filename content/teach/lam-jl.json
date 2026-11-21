@@ -1,0 +1,56 @@
+{
+ "lesson": "lam-jl",
+ "terms": [],
+ "en": {
+  "plain": "After a كسرة, the ل of the name اللَّه is light and thin, like any other ل: لِلَّهِ، بِٱللَّهِ.",
+  "fits": "Last lesson the ل of لفظ الجلالة was heavy after a فتحة or a ضمة, and when you start on the name. This is the other side: after a كسرة it is light. With it, the ل of ال and the ل of the name are complete: said, silent, heavy and light.",
+  "how": [
+   "Find the كسرة before the name. It can be in the same word (لِلَّهِ, بِٱللَّهِ) or at the end of the word before (دِينِ ٱللَّهِ).",
+   "Say the doubled ل thin: the back of the tongue stays low and the mouth does not fill. The ا after it is light too.",
+   "A كسرة added to join two words counts too: قُلْ becomes قُلِ before the name (قُلِ ٱللَّهُمَّ), and بَلْ becomes بَلِ (بَلِ ٱللَّهُ). The ل is light.",
+   "Go by the vowel you say: in أَفِى ٱللَّهِ (14:10) the ى is not said when joined, so the ل follows the كسرة of فِ and is light."
+  ],
+  "why": "Rising into a heavy sound straight after the tongue has dropped for a كسرة is hard on the tongue, so the ل stays light. The books agree on this, whether the كسرة is original or added for joining.",
+  "spot": "The name is written ٱللَّه, except after لِ ('for'), where the ٱ and the silent ل are dropped: لِلَّهِ, as below. What decides is the mark on the letter right before the doubled ل: here the كسرة under لِ.",
+  "mistakes": [
+   {
+    "wrong": "Making the ل heavy in لِلَّهِ or بِٱللَّهِ.",
+    "right": "Light after a كسرة."
+   },
+   {
+    "wrong": "Making it heavy after an added كسرة: قُلِ ٱللَّهُمَّ.",
+    "right": "An added كسرة counts the same: light."
+   },
+   {
+    "wrong": "Letting a heavy letter earlier in the phrase pull it heavy: بِنَصْرِ ٱللَّهِ.",
+    "right": "Only the vowel right before the name decides: here a كسرة, so light."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "بعد الكسرة تُنطق لام اسم «اللَّه» مرققة نحيفة، ككل لام أخرى: لِلَّهِ، بِٱللَّهِ.",
+  "fits": "في الدرس السابق فُخّمت لام لفظ الجلالة بعد الفتحة والضمة وعند الابتداء بها. وهذا وجهها الآخر: بعد الكسرة تُرقَّق. وبه يكتمل حكم لام ال ولام هذا الاسم: تُنطق، ولا تُنطق، وتُفخَّم، وتُرقَّق.",
+  "how": [
+   "ابحث عن الكسرة قبل الاسم: قد تكون في الكلمة نفسها (لِلَّهِ، بِٱللَّهِ)، أو في آخر الكلمة التي قبله (دِينِ ٱللَّهِ).",
+   "انطق اللام المشددة نحيفة: يبقى أقصى اللسان منخفضًا ولا يمتلئ الفم. والألف بعدها مرققة كذلك.",
+   "والكسرة التي تُزاد لوصل الكلمتين تُحسب أيضًا: قُلْ تصير قُلِ قبل الاسم (قُلِ ٱللَّهُمَّ)، وبَلْ تصير بَلِ (بَلِ ٱللَّهُ)، فتُرقَّق اللام.",
+   "العبرة بالحركة المنطوقة: في أَفِى ٱللَّهِ (14:10) لا تُنطق الياء عند الوصل، فتأتي اللام بعد كسرة الفاء فتُرقَّق."
+  ],
+  "why": "يثقل على اللسان أن يرتفع بالتفخيم بعد أن انخفض بالكسرة، فبقيت اللام مرققة. وهذا بإجماع، سواء أكانت الكسرة أصلية أم زيدت للوصل.",
+  "spot": "يُكتب الاسم ٱللَّه، إلا بعد لام الجر فتُحذف همزة الوصل واللام الساكنة: لِلَّهِ كما أدناه. والذي يحسم الأمر علامة الحرف الذي قبل اللام المشددة مباشرة، وهي هنا كسرة اللام.",
+  "mistakes": [
+   {
+    "wrong": "تفخيم اللام في لِلَّهِ أو بِٱللَّهِ.",
+    "right": "مرققة بعد الكسرة."
+   },
+   {
+    "wrong": "تفخيمها بعد كسرة زيدت للوصل: قُلِ ٱللَّهُمَّ.",
+    "right": "الكسرة المزيدة كالأصلية: ترقيق."
+   },
+   {
+    "wrong": "التأثر بحرف مفخم قبلها في العبارة: بِنَصْرِ ٱللَّهِ.",
+    "right": "لا يحكم إلا الحركة التي قبلها مباشرة، وهي هنا كسرة، فتُرقَّق."
+   }
+  ]
+ }
+}

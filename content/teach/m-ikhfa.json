@@ -1,0 +1,56 @@
+{
+ "lesson": "m-ikhfa",
+ "terms": [],
+ "en": {
+  "plain": "When a م with no vowel comes before ب, it is hidden: the lips come together softly, without pressing, a hum is held for two counts, then the ب comes, as in تَرْمِيهِم بِحِجَارَةٍ.",
+  "fits": "This is the third ruling of الميم الساكنة: before ب it is hidden (إخفاء), and it is called الإخفاء الشفوي. You already know the sound from الإقلاب, where a ن before ب turns into this same hidden م. So مَنۢ بَخِلَ and هُم بِٱلسَّاهِرَةِ sound alike where the two words meet. It only happens across two words.",
+  "how": [
+   "Bring the lips softly toward each other for the م; never press them (how far they close is in step 4).",
+   "Hold the hum from the nose for two counts. A finger on your nose feels it vibrate.",
+   "Then open the lips into the ب with its vowel: بِحِجَارَةٍ.",
+   "Teachers differ on the lips: some close them lightly, others leave a very slight gap. All agree: don't press them. Follow your teacher."
+  ],
+  "why": "م and ب come from the same place, the two lips, and are alike in most of how they are said. Hiding the م before the ب, with its hum, makes the speech easy (غاية المريد).",
+  "spot": "The م has no sukun and the ب after it has no شدة: تَرْمِيهِم بِحِجَارَةٍ. Here a bare م followed by a ب with no شدة means: hide the م.",
+  "mistakes": [
+   {
+    "wrong": "Saying a clear مْ with no hum before the ب.",
+    "right": "Hide it: hold the hum two counts, then the ب."
+   },
+   {
+    "wrong": "Pressing the lips hard on the hidden م.",
+    "right": "Let the lips meet softly; the sound rests in the nose."
+   },
+   {
+    "wrong": "Clipping the hum in short words like هُم بِٱلسَّاهِرَةِ.",
+    "right": "Two full counts every time."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاءت الباء بعد الميم الساكنة أُخفيت الميم: تقترب الشفتان برفق من غير ضغط، وتُمد الغنة حركتين، ثم تأتي الباء، كما سمعت في تَرْمِيهِم بِحِجَارَةٍ.",
+  "fits": "هذا الحكم الثالث من أحكام الميم الساكنة: الإخفاء عند الباء، ويسمى الإخفاء الشفوي. وصوته مألوف لك من الإقلاب، إذ تُقلب النون قبل الباء ميمًا مخفاة كهذه تمامًا، فيتشابه موضع الالتقاء في مَنۢ بَخِلَ وهُم بِٱلسَّاهِرَةِ. ولا يقع هذا الحكم إلا في كلمتين.",
+  "how": [
+   "قرّب شفتيك على الميم برفق، ولا تضغط عليهما (ومقدار انضمامهما في الخطوة الرابعة).",
+   "أمسك الغنة من الأنف حركتين. ضع إصبعك على أنفك تجده يهتز.",
+   "ثم افتح الشفتين على الباء بحركتها: بِحِجَارَةٍ.",
+   "يختلف المعلمون في الشفتين هنا: منهم من يضمهما ضمًا خفيفًا، ومنهم من يترك فرجة يسيرة جدًا، وكلهم ينهى عن الضغط عليهما. فاتبع شيخك."
+  ],
+  "why": "الميم والباء تخرجان من الشفتين، وتشتركان في أغلب خصائص النطق، فكان إخفاء الميم عند الباء مع غنتها أسهل على اللسان (غاية المريد).",
+  "spot": "الميم خالية من علامة السكون، والباء بعدها بلا شدة: تَرْمِيهِم بِحِجَارَةٍ. فإذا رأيت الميم خالية من السكون وبعدها باء غير مشددة فأخفِ الميم.",
+  "mistakes": [
+   {
+    "wrong": "إظهار الميم قبل الباء بلا غنة.",
+    "right": "أخفها: أمسك الغنة حركتين ثم انطق الباء."
+   },
+   {
+    "wrong": "الضغط على الشفتين عند الميم المخفاة.",
+    "right": "تلتقي الشفتان برفق، والصوت في الأنف."
+   },
+   {
+    "wrong": "اختطاف الغنة في الكلمات القصيرة مثل هُم بِٱلسَّاهِرَةِ.",
+    "right": "حركتان كاملتان في كل مرة."
+   }
+  ]
+ }
+}

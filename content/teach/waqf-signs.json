@@ -1,0 +1,99 @@
+{
+ "lesson": "waqf-signs",
+ "terms": [
+  {
+   "term": "الوقف اللازم",
+   "say": "al-waqf al-lāzim",
+   "en": "A place where you must stop, because joining could suggest a meaning that is not meant. Its sign is a small م (ۘ).",
+   "literal": "the required stop",
+   "ar": "موضع يجب الوقف عليه، لأن الوصل يوهم معنى غير المعنى المراد. وعلامته ميم صغيرة (ۘ).",
+   "arLiteral": "الوقف الواجب"
+  },
+  {
+   "term": "الوقف الممنوع",
+   "say": "al-waqf al-mamnūʿ",
+   "en": "A place where you must not stop, because the words are not complete there. Its sign is لا (ۙ).",
+   "literal": "the forbidden stop",
+   "ar": "موضع لا يصح الوقف عليه، لأن الكلام لم يتم. وعلامته «لا» (ۙ).",
+   "arLiteral": "الوقف الذي لا يُسمح به"
+  },
+  {
+   "term": "الوقف الجائز",
+   "say": "al-waqf al-jāʾiz",
+   "en": "A place where stopping and joining are equal. Its sign is ج (ۚ).",
+   "literal": "the allowed stop",
+   "ar": "موضع يستوي فيه الوقف والوصل. وعلامته الجيم (ۚ).",
+   "arLiteral": "الوقف المسموح به"
+  },
+  {
+   "term": "تعانق الوقف",
+   "say": "taʿānuq al-waqf",
+   "en": "Two places close together, each marked with three dots (ۛ): stop at one of them, never at both.",
+   "literal": "the stops embracing each other",
+   "ar": "موضعان متقاربان، على كل منهما ثلاث نقاط (ۛ): تقف على أحدهما، ولا تقف عليهما معًا.",
+   "arLiteral": "تعانق الشيئين: التقاؤهما واتصالهما"
+  }
+ ],
+ "en": {
+  "plain": "Small signs above the line in the muṣḥaf tell you where you must stop, where you may stop, and where you must not.",
+  "fits": "You know الوقف and الابتداء, and you have stopped at the end of each ayah. Inside a long ayah you also need a place to stop and breathe. This lesson reads the signs that choose those places; the next lesson shows what happens to the last word when you stop.",
+  "how": [
+   "ۘ (a small م) is الوقف اللازم: stop here. In قَوْلُهُمْ ۘ إِنَّا, joining would make إِنَّا نَعْلَمُ sound like their words.",
+   "ۙ (لا) is الوقف الممنوع: don't stop, as in طَيِّبِينَ ۙ يَقُولُونَ. If your breath runs out there, start again from an earlier word where the meaning is sound.",
+   "ۚ (ج) is الوقف الجائز: stopping and joining are equal. ۖ (صلى) means you may stop, but joining is better; ۗ (قلى) means you may join, but stopping is better.",
+   "ۛ … ۛ (three dots, twice) is تعانق الوقف: stop at one, never at both. In لَا رَيْبَ ۛ فِيهِ ۛ, stop after رَيْبَ or after فِيهِ.",
+   "At the end of an ayah, stopping is a سنة, even where لا is printed there. Scholars differ on that case; follow your teacher."
+  ],
+  "why": "Where you stop changes how the words are understood. A stop in the wrong place can cut a sentence so that it suggests a meaning that is not meant; the signs record where scholars judged the meaning complete, and where it is not.",
+  "spot": "The signs sit just above the last letter of a word, a little to the left: ۘ ۙ ۚ ۖ ۗ ۛ. The circle with a number marks the end of an ayah.",
+  "mistakes": [
+   {
+    "wrong": "Joining past a ۘ, as in قَوْلُهُمْ إِنَّا.",
+    "right": "Always stop at م; plan your breath to reach it."
+   },
+   {
+    "wrong": "Stopping at a لا for breath, then carrying on from the next word.",
+    "right": "Go back and start from a word where the meaning is sound."
+   },
+   {
+    "wrong": "Stopping at both sets of three dots.",
+    "right": "Stop at one of them only."
+   },
+   {
+    "wrong": "Thinking ج, صلى and قلى force a stop.",
+    "right": "They give a choice; only م requires one."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "في المصحف علامات صغيرة فوق السطر تبيّن لك أين يجب الوقف، وأين يجوز، وأين لا يصح.",
+  "fits": "عرفتَ الوقف والابتداء، ووقفتَ على أواخر الآيات. لكن الآية الطويلة تحتاج فيها إلى موضع تقف فيه وتتنفس، وهذه العلامات تدلك عليه. وفي الدرس التالي تتعلم ما يحدث لآخر الكلمة إذا وقفت عليها.",
+  "how": [
+   "الميم الصغيرة (ۘ) علامة الوقف اللازم: قف هنا. ففي قَوْلُهُمْ ۘ إِنَّا لو وصلت لأوهمتَ أن إِنَّا نَعْلَمُ من كلامهم.",
+   "«لا» (ۙ) علامة الوقف الممنوع: لا تقف، كما في طَيِّبِينَ ۙ يَقُولُونَ. فإن انقطع نفَسك عندها فارجع وابدأ من كلمة سابقة يستقيم بها المعنى.",
+   "الجيم (ۚ) علامة الوقف الجائز: الوقف والوصل سواء. و«صلى» (ۖ) معناها: يجوز الوقف والوصل أولى. و«قلى» (ۗ) معناها: يجوز الوصل والوقف أولى.",
+   "النقاط الثلاث مرتين (ۛ … ۛ) علامة تعانق الوقف: قف على إحداهما ولا تقف عليهما معًا. ففي لَا رَيْبَ ۛ فِيهِ ۛ قف بعد رَيْبَ أو بعد فِيهِ.",
+   "والوقف على رأس الآية سنة، ولو كُتبت عنده «لا»، وفي هذه المسألة خلاف بين العلماء، فاتبع شيخك."
+  ],
+  "why": "موضع الوقف يغيّر فهم الكلام. فالوقف في غير موضعه قد يقطع الجملة فيوهم معنى غير مراد، وهذه العلامات تبيّن ما رآه العلماء من تمام المعنى أو عدم تمامه.",
+  "spot": "توضع العلامة فوق آخر حرف من الكلمة مائلةً إلى اليسار: ۘ ۙ ۚ ۖ ۗ ۛ. أما الدائرة التي فيها رقم فهي نهاية الآية.",
+  "mistakes": [
+   {
+    "wrong": "الوصل بعد الميم، كقراءة قَوْلُهُمْ إِنَّا بلا وقف.",
+    "right": "قف عند الميم دائمًا، ودبّر نفَسك لتبلغها."
+   },
+   {
+    "wrong": "الوقف عند «لا» للتنفس ثم إكمال القراءة من الكلمة التالية.",
+    "right": "ارجع وابدأ من كلمة يستقيم بها المعنى."
+   },
+   {
+    "wrong": "الوقف على موضعي النقاط الثلاث كليهما.",
+    "right": "قف على أحدهما فقط."
+   },
+   {
+    "wrong": "ظنّ أن الجيم و«صلى» و«قلى» توجب الوقف.",
+    "right": "هي تخيير، ولا يجب الوقف إلا عند الميم."
+   }
+  ]
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "lesson": "idgh-g",
+ "terms": [
+  {
+   "term": "إدغام",
+   "say": "idghām",
+   "en": "Merging: a letter with no vowel goes into the next letter, and the two are said as one doubled letter.",
+   "literal": "putting one thing inside another",
+   "ar": "إدخال حرف ساكن في الحرف المتحرك بعده، فيصيران حرفًا واحدًا مشددًا.",
+   "arLiteral": "الإدخال"
+  },
+  {
+   "term": "إدغام كامل",
+   "forms": [
+    "الإدغام الكامل"
+   ],
+   "say": "idghām kāmil",
+   "en": "A complete merge: nothing of the first letter is left. Here, the ن into ن or م.",
+   "literal": "complete merging",
+   "ar": "إدغام لا يبقى فيه من الحرف الأول شيء، كإدغام النون في النون والميم."
+  },
+  {
+   "term": "إدغام ناقص",
+   "forms": [
+    "الإدغام الناقص"
+   ],
+   "say": "idghām nāqiṣ",
+   "en": "An incomplete merge: something of the first letter stays. Here, the غنة of the ن stays when it merges into ي or و.",
+   "literal": "incomplete merging",
+   "ar": "إدغام يبقى فيه شيء من الحرف الأول، كبقاء غنة النون عند إدغامها في الياء والواو."
+  },
+  {
+   "term": "الإظهار المطلق",
+   "say": "al-iẓhār al-muṭlaq",
+   "en": "The clear ن before ي or و inside one word. It happens in four words only: دُنْيَا، بُنْيَٰنٌ، صِنْوَانٌ، قِنْوَانٌ.",
+   "ar": "إظهار النون الساكنة قبل الياء أو الواو في كلمة واحدة، وهو في أربع كلمات: دُنْيَا، بُنْيَٰنٌ، صِنْوَانٌ، قِنْوَانٌ."
+  }
+ ],
+ "en": {
+  "plain": "When a word ends in a ن with no vowel, or a تنوين, and the next word starts with ي ن م or و, the ن goes into that letter. A two-count hum carries it across.",
+  "fits": "This is the second of the four rulings for النون الساكنة and the تنوين: إدغام. Its six letters are gathered in the word يَرْمَلُونَ. Four of them keep a غنة, gathered in يَنْمُو: this lesson. The other two, ل and ر, merge with no غنة: the next lesson.",
+  "how": [
+   "The ن of the first word is not said on its own. The two words join in one sound, with no break.",
+   "Before ن or م you say one doubled نّ or مّ, with the two-count غنة you held in ٱلْجِنَّةِ and عَمَّ: فَلَن نَّزِيدَكُمْ, نَفْسٌ مَّا. This is a إدغام كامل.",
+   "Before ي or و the mouth goes to the ي or و, while the ن's hum stays in the nose for two counts: فَمَن يَعْمَلْ. This is a إدغام ناقص.",
+   "Put a finger on the side of your nose: it vibrates through the two counts, then say the next letter's vowel."
+  ],
+  "why": "These letters are close to the ن: ن is the same letter, م shares its hum, and ي and و are near it in how they sound. A ن and then one of them, said apart, is heavy; merged, it is lighter. Inside one word the ن stays clear (الإظهار المطلق), as in دُنْيَا, so the word is not mistaken for one with a doubled letter.",
+  "spot": "The ن has no سكون (فَمَن). A شدة on the next letter (نَفْسٌ مَّا) means a complete merge; no شدة on the ي or و (فَمَن يَعْمَلْ) means the غنة stays. The printed مصحف المدينة also staggers a تنوين's two marks here, but this screen draws every تنوين the same way, so look at the next letter and its شدة.",
+  "mistakes": [
+   {
+    "wrong": "A clear ن in فَمَن يَعْمَلْ, as before a throat letter",
+    "right": "The ن is not said; its hum flows into the ي"
+   },
+   {
+    "wrong": "Cutting the غنة short in نَفْسٌ مَّا",
+    "right": "Hold the مّ for two counts"
+   },
+   {
+    "wrong": "A plain doubled ي in مَن يَخْشَىٰ, with no hum",
+    "right": "Keep the ن's hum two counts as you reach the ي"
+   },
+   {
+    "wrong": "Merging inside one word: دُيَّا for دُنْيَا",
+    "right": "Inside one word the ن stays clear: دُنْيَا"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا انتهت كلمة بنون ساكنة أو تنوين، وبدأت التي بعدها بحرف من حروف «يَنْمُو» (ي ن م و)، دخلت النون في ذلك الحرف، وبقيت غنة مقدارها حركتان.",
+  "fits": "هذا هو الحكم الثاني من أحكام النون الساكنة والتنوين: الإدغام. وحروفه ستة يجمعها لفظ «يَرْمَلُونَ»، وهي قسمان: أربعة تبقى معها الغنة، يجمعها لفظ «يَنْمُو»، وهي موضوع هذا الدرس؛ وحرفان بلا غنة، اللام والراء، وهما موضوع الدرس التالي.",
+  "how": [
+   "لا تنطق النون وحدها: تتصل الكلمتان في نطق واحد بلا انقطاع.",
+   "مع النون والميم تنطق نونًا أو ميمًا مشددة بغنة حركتين، كالتي سمعتها في ٱلْجِنَّةِ وعَمَّ: فَلَن نَّزِيدَكُمْ، نَفْسٌ مَّا. وهذا إدغام كامل.",
+   "مع الياء والواو يتهيأ الفم للياء أو الواو، وتبقى غنة النون في الخيشوم حركتين: فَمَن يَعْمَلْ. وهذا إدغام ناقص.",
+   "ضع إصبعك على جانب أنفك: تشعر باهتزازه مدة الحركتين، ثم انطق حركة الحرف التالي."
+  ],
+  "why": "هذه الحروف قريبة من النون: فالنون مثلها، والميم تشاركها في الغنة، والياء والواو قريبتان منها في النطق. وفي النطق بهما منفصلين ثقل، والإدغام أخف. أما في الكلمة الواحدة فتظهر النون، كما في دُنْيَا، لئلا تلتبس بكلمة حرفها مضعّف في أصله؛ ويسمى هذا الإظهار المطلق.",
+  "spot": "لا سكون على النون (فَمَن). فإن كان على الحرف التالي شدة (نَفْسٌ مَّا) فالإدغام كامل، وإن لم تكن، كما في فَمَن يَعْمَلْ، فهو ناقص تبقى فيه الغنة. وفي مصحف المدينة المطبوع تأتي حركتا التنوين هنا متتابعتين، لكن هذه الشاشة ترسم كل تنوين بصورة واحدة، فانظر إلى الحرف التالي وشدته.",
+  "mistakes": [
+   {
+    "wrong": "إظهار النون في فَمَن يَعْمَلْ كأنها قبل حرف حلقي",
+    "right": "لا تُنطق النون، بل تجري غنتها إلى الياء"
+   },
+   {
+    "wrong": "تقصير الغنة في نَفْسٌ مَّا",
+    "right": "أتمّ الميم المشددة حركتين"
+   },
+   {
+    "wrong": "ياء مشددة بلا غنة في مَن يَخْشَىٰ",
+    "right": "تبقى غنة النون حركتين ثم الياء"
+   },
+   {
+    "wrong": "الإدغام في الكلمة الواحدة: «دُيَّا» بدل دُنْيَا",
+    "right": "في الكلمة الواحدة تظهر النون: دُنْيَا"
+   }
+  ]
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "lesson": "badal",
+ "terms": [
+  {
+   "term": "مد البدل",
+   "say": "madd al-badal",
+   "en": "A مد letter that comes after a همزة in the same word, with no همزة or سكون after it: ءَامَنُوا۟, إِيمَٰنًا, أُوتُوا۟. In حفص it is two counts.",
+   "literal": "the madd of substitution",
+   "ar": "حرف مد تتقدمه همزة في الكلمة نفسها، وليس بعده همزة ولا سكون: ءَامَنُوا۟، إِيمَٰنًا، أُوتُوا۟. ومقداره عند حفص حركتان.",
+   "arLiteral": "البدل: ما يقوم مقام غيره."
+  }
+ ],
+ "en": {
+  "plain": "When a همزة comes first and a مد letter right after it in the same word, the مد is only two counts in حفص: ءَامَنُوا۟.",
+  "fits": "You know the مد that comes before a همزة: المد المتصل in one word and المد المنفصل across two, 4 or 5 counts. مد البدل reverses the order: the همزة first, then the مد letter. In حفص it stays at two counts, like المد الطبيعي; some other readings lengthen it, حفص does not.",
+  "how": [
+   "Find the همزة, then the مد letter right after it: ءَا in ءَامَنُوا۟, أُو in أُوتُوا۟, إِى in لِإِيلَٰفِ.",
+   "Say the همزة cleanly, then hold the مد letter two counts, no more and no less.",
+   "Check what comes after the مد letter. If a همزة or a سكون follows, another rule sets the length; a later lesson shows which one wins."
+  ],
+  "why": "The name means substitution: in most of these words the مد letter took the place of a second همزة, so ءَأْمَنُوا became ءَامَنُوا۟ (غاية المريد). Its cause comes before it, not after, which makes it the weakest kind of مد, and حفص reads it at the natural length.",
+  "spot": "There is no special sign. You see a همزة followed by a مد letter with no ٓ: ءَامَنُوا۟. The ٓ marks only a مد longer than two counts.",
+  "mistakes": [
+   {
+    "wrong": "Stretching ءَامَنُوا۟ to 4 counts because a همزة is near.",
+    "right": "The همزة is before it: two counts."
+   },
+   {
+    "wrong": "Cutting it short, as if ءَامَنُوا۟ were ءَمَنُوا.",
+    "right": "A full two counts on the ا."
+   },
+   {
+    "wrong": "Treating جَآءَ and ءَاثَرَ alike.",
+    "right": "In جَآءَ the همزة comes after the ا (4 or 5); in ءَاثَرَ before it (2)."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا تقدمت الهمزة وجاء بعدها حرف مد في الكلمة نفسها، فالمد عند حفص حركتان فقط: ءَامَنُوا۟.",
+  "fits": "عرفتَ المد الذي يأتي قبل الهمزة: المتصل في كلمة، والمنفصل في كلمتين، وكلاهما أربع حركات أو خمس. أما مد البدل فالترتيب فيه معكوس: الهمزة أولًا ثم حرف المد. ويبقى عند حفص حركتين كالمد الطبيعي، وإن مده بعض القراء غيره.",
+  "how": [
+   "ابحث عن الهمزة ثم حرف المد الذي يليها: ءَا في ءَامَنُوا۟، وأُو في أُوتُوا۟، وإِى في لِإِيلَٰفِ.",
+   "انطق الهمزة واضحة، ثم مُدّ حرف المد حركتين لا تزيد ولا تنقص.",
+   "انظر إلى ما بعد حرف المد؛ فإن جاءت بعده همزة أو سكون حدد المقدارَ حكم آخر، وسيأتي في درس لاحق أيهما يُقدَّم."
+  ],
+  "why": "سُمي بدلًا لأن حرف المد فيه أُبدل في الغالب من همزة ثانية، فأصل ءَامَنُوا۟ ءَأْمَنُوا (غاية المريد). وسببه قبله لا بعده، فهو أضعف المدود، ولذلك قرأه حفص بمقدار المد الطبيعي.",
+  "spot": "لا علامة خاصة له. تجد همزة يليها حرف مد بلا علامة ٓ: ءَامَنُوا۟. فعلامة ٓ لا تُكتب إلا على مد يزيد على حركتين.",
+  "mistakes": [
+   {
+    "wrong": "مدّ ءَامَنُوا۟ أربع حركات لقرب الهمزة.",
+    "right": "الهمزة قبل المد، فهو حركتان."
+   },
+   {
+    "wrong": "قصره حتى تُقرأ ءَامَنُوا۟ كأنها ءَمَنُوا.",
+    "right": "حركتان كاملتان على الألف."
+   },
+   {
+    "wrong": "التسوية بين جَآءَ وءَاثَرَ.",
+    "right": "في جَآءَ الهمزة بعد الألف (٤ أو ٥)، وفي ءَاثَرَ قبلها (٢)."
+   }
+  ]
+ }
+}

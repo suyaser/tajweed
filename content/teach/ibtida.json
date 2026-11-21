@@ -1,0 +1,91 @@
+{
+ "lesson": "ibtida",
+ "terms": [
+  {
+   "term": "ابتداء",
+   "say": "ibtidāʾ",
+   "en": "Starting to recite, at the beginning or again after a stop.",
+   "literal": "beginning",
+   "ar": "الشروع في القراءة، في أولها أو بعد وقف.",
+   "arLiteral": "البدء"
+  },
+  {
+   "term": "همزة الوصل",
+   "say": "hamzat al-waṣl",
+   "en": "A همزة at the start of a word, written ٱ, that is said only when you start on that word. When you join it to the word before, it drops out.",
+   "literal": "the joining hamzah",
+   "ar": "همزة في أول الكلمة تُكتب ٱ، تُنطق إذا بدأت بالكلمة، وتسقط إذا وصلتها بما قبلها.",
+   "arLiteral": "الهمزة التي يُتوصَّل بها إلى النطق بالساكن"
+  },
+  {
+   "term": "همزة القطع",
+   "say": "hamzat al-qaṭʿ",
+   "en": "A همزة that is always said, whether you start on it or join it, as in أَعُوذُ and إِنَّ.",
+   "literal": "the cutting hamzah",
+   "ar": "همزة تُنطق دائمًا، في البدء والوصل، كما في أَعُوذُ وإِنَّ.",
+   "arLiteral": "الهمزة التي يُقطع بها الصوت"
+  }
+ ],
+ "en": {
+  "plain": "After a stop, start again where the meaning is sound. If the word begins with ٱ, give it a vowel when you start on it, and drop it when you join.",
+  "fits": "You learned وقف and وصل in the basics; this lesson is the other side, starting again. You have already met ٱ in بِٱللَّهِ and ٱلنَّاسِ, silent because it was joined. Starting on ال opens the next lessons: the ل of ال, then the ل in the name اللَّه.",
+  "how": [
+   "Choose a place to start where the words make sound sense: usually the start of an ayah or of a sentence.",
+   "Starting on ٱ, say a همزة. With ال give it a فتحة (ٱلَّذِى → اَلَّذِى); nouns without ال take a كسرة, and the seven that come up most are ٱسْم، ٱبْن، ٱبْنَت، ٱمْرُؤ، ٱمْرَأَة، ٱثْنَان، ٱثْنَتَان.",
+   "In a verb, count the ٱ as the first letter and look at the third (the ع of ٱدْعُ). If it has a ضمة, start with a ضمة: اُدْعُ; otherwise a كسرة: اِهْدِنَا, اِقْرَأْ.",
+   "A few verbs have a ضمة there only because of the و after it; they still start with a كسرة: ٱمْشُوا۟, ٱمْضُوا۟, ٱقْضُوٓا۟, ٱئْتُوا۟, ٱبْنُوا۟. These are the five the books list.",
+   "Joined, the ٱ drops: مَعَ ٱلْعُسْرِ is said مَعَلْعُسْرِ, and بِٱسْمِ is said بِسْمِ."
+  ],
+  "why": "Arabic never starts on a letter with سكون, and the letter after ٱ has one (the ه in ٱهْدِنَا). So a همزة is brought in to reach it. When you join, the word before carries you into that letter, so the همزة is not needed and is not said.",
+  "spot": "مصحف المدينة writes همزة الوصل as an ا with a small sign like the head of a ص on it (ٱ), never with ء. A همزة القطع is written with a small ء: أ or إ.",
+  "mistakes": [
+   {
+    "wrong": "Saying the همزة when joining: مَعَ ءَلْعُسْرِ.",
+    "right": "Join straight through: مَعَلْعُسْرِ."
+   },
+   {
+    "wrong": "Starting ٱدْعُ with a كسرة.",
+    "right": "اُدْعُ: its third letter has a ضمة."
+   },
+   {
+    "wrong": "Starting ٱلْحَمْدُ or ٱلَّذِى with a كسرة.",
+    "right": "With ال it is always a فتحة: اَلْحَمْدُ."
+   },
+   {
+    "wrong": "Starting in the middle of a phrase, where the meaning breaks.",
+    "right": "Go back to a place where the words make sense."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "بعد الوقف ابدأ من موضع يستقيم فيه المعنى. وإن كانت الكلمة تبدأ بـ ٱ فحرّكها إذا بدأت بها، وأسقطها إذا وصلت.",
+  "fits": "تعلّمت في الدرس الأول الوقف والوصل، وهذا الدرس وجهه الآخر: الابتداء بعد الوقف. وقد مرّت بك ٱ في بِٱللَّهِ وٱلنَّاسِ صامتةً لأنها موصولة. والابتداء بـ ال مدخل الدروس التالية: لام ال، ثم لام اسم «اللَّه».",
+  "how": [
+   "اختر للابتداء موضعًا يستقيم فيه المعنى، وغالبًا أول آية أو أول جملة.",
+   "إذا بدأت بـ ٱ فانطق همزة: مع ال تكون مفتوحة (ٱلَّذِى ← اَلَّذِى)، والأسماء التي بلا ال تُبدأ بالكسر، وأكثرها ورودًا سبعة: ٱسْم، ٱبْن، ٱبْنَت، ٱمْرُؤ، ٱمْرَأَة، ٱثْنَان، ٱثْنَتَان.",
+   "وفي الفعل عُدّ ٱ الحرف الأول وانظر إلى الثالث (العين في ٱدْعُ): إن كان مضمومًا فابدأ بالضم: اُدْعُ، وإلا فبالكسر: اِهْدِنَا، اِقْرَأْ.",
+   "وأفعال معدودة جاءت الضمة على ثالثها من أجل الواو بعده فقط، فتبقى الهمزة مكسورة: ٱمْشُوا۟، ٱمْضُوا۟، ٱقْضُوٓا۟، ٱئْتُوا۟، ٱبْنُوا۟، وهي الخمسة التي تذكرها الكتب، فاحفظها.",
+   "وعند الوصل تسقط ٱ: مَعَ ٱلْعُسْرِ تُنطق مَعَلْعُسْرِ، وبِٱسْمِ تُنطق بِسْمِ."
+  ],
+  "why": "العرب لا تبدأ بساكن، والحرف الذي بعد ٱ ساكن (الهاء في ٱهْدِنَا)، فجيء بهمزة يُتوصَّل بها إلى النطق به. فإذا وصلت أوصلتك الكلمة السابقة إليه، فاستُغني عن الهمزة ولم تُنطق.",
+  "spot": "يكتب مصحف المدينة همزة الوصل ألفًا عليها رأس صاد صغيرة (ٱ)، ولا يضع عليها ء. أمّا همزة القطع فعليها ء صغيرة: أ أو إ.",
+  "mistakes": [
+   {
+    "wrong": "نطق الهمزة عند الوصل: مَعَ ءَلْعُسْرِ.",
+    "right": "صِل مباشرة: مَعَلْعُسْرِ."
+   },
+   {
+    "wrong": "البدء بـ ٱدْعُ بهمزة مكسورة.",
+    "right": "اُدْعُ: ثالثها مضموم."
+   },
+   {
+    "wrong": "البدء بـ ٱلْحَمْدُ أو ٱلَّذِى بهمزة مكسورة.",
+    "right": "مع ال تُفتح دائمًا: اَلْحَمْدُ."
+   },
+   {
+    "wrong": "البدء من وسط عبارة ينقطع فيها المعنى.",
+    "right": "ارجع إلى موضع يستقيم فيه المعنى."
+   }
+  ]
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "lesson": "m-idgham",
+ "terms": [],
+ "en": {
+  "plain": "When a م with no vowel meets a م with a vowel, the two become one doubled م: the lips stay closed and you hum for two counts, as in أَطْعَمَهُم مِّن.",
+  "fits": "This is the second ruling of الميم الساكنة: before م it merges (إدغام). It is المثلين from the last unit, the same letter twice, and the result is a مّ with the full two-count غنة you learned in the غنة lesson. The books also call it إدغام مثلين صغير: صغير (small) because only the first م has a سكون.",
+  "how": [
+   "Close the lips on the first م and keep them closed. Don't open them between the two م.",
+   "Let the hum flow from the nose for two full counts. A finger on your nose feels it vibrate the whole time.",
+   "Then open the lips into the vowel of the second م: مِّن, مَّا, مُّؤْصَدَةٌ."
+  ],
+  "why": "Two identical letters side by side, the first without a vowel, are heavy to say one after the other, so the first is merged into the second to make the speech light. A doubled م always keeps its غنة.",
+  "spot": "The first م has no sukun and the next م has a شدة: هُم مِّن. In مصحف المدينة a bare letter followed by a letter with a شدة means: merge it.",
+  "mistakes": [
+   {
+    "wrong": "Saying two separate م, the lips opening between أَطْعَمَهُمْ and مِن.",
+    "right": "One closing of the lips: أَطْعَمَهُمِّن."
+   },
+   {
+    "wrong": "Cutting the hum short in quick words like كَم مِّن.",
+    "right": "Two full counts, as in ثُمَّ."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاءت بعد الميم الساكنة ميم متحركة صارتا ميمًا واحدة مشددة: تبقى الشفتان منضمتين، وتخرج الغنة من الأنف بمقدار حركتين، كما سمعت في أَطْعَمَهُم مِّن.",
+  "fits": "هذا الحكم الثاني من أحكام الميم الساكنة: الإدغام عند الميم. وهو من باب المثلين الذي مرّ بك، أي حرف يلقى مثله، والنتيجة ميم مشددة بغنتها الكاملة التي عرفتها في درس الغنة. ويسميه العلماء أيضًا إدغام مثلين صغيرًا، لأن الأولى ساكنة والثانية متحركة.",
+  "how": [
+   "اضمم شفتيك على الميم الأولى وأبقهما كذلك، ولا تفتحهما بين الميمين.",
+   "دع الغنة تجري من الأنف حركتين كاملتين. ضع إصبعك على أنفك تجده يهتز طوال الغنة.",
+   "ثم افتح الشفتين على حركة الميم الثانية: مِّن، مَّا، مُّؤْصَدَةٌ."
+  ],
+  "why": "في النطق بحرفين متماثلين متتاليين أولهما ساكن ثقل، فيُدغم الأول في الثاني ليخف النطق. والميم المشددة لا تفارقها غنتها.",
+  "spot": "الميم الأولى خالية من علامة السكون، والميم بعدها عليها شدة: هُم مِّن. وفي مصحف المدينة يدل الحرف الخالي من السكون إذا تلاه حرف مشدد على الإدغام.",
+  "mistakes": [
+   {
+    "wrong": "نطق ميمين منفصلتين، فتنفتح الشفتان بين أَطْعَمَهُمْ ومِن.",
+    "right": "ضمة واحدة للشفتين: أَطْعَمَهُمِّن."
+   },
+   {
+    "wrong": "تقصير الغنة في الكلمات القصيرة مثل كَم مِّن.",
+    "right": "أتمّ الغنة حركتين كما في ثُمَّ."
+   }
+  ]
+ }
+}

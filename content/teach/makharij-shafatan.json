@@ -1,0 +1,64 @@
+{
+ "lesson": "makharij-shafatan",
+ "terms": [
+  {
+   "term": "الحروف الشفوية",
+   "say": "al-ḥurūf al-shafawiyyah",
+   "en": "The lip letters: ف from the inside of the lower lip with the edges of the upper front teeth, and و ب م from both lips.",
+   "literal": "the lip letters",
+   "ar": "حروف الشفتين: الفاء من بطن الشفة السفلى مع أطراف الثنايا العليا، والواو والباء والميم من الشفتين معًا."
+  }
+ ],
+ "en": {
+  "plain": "The lips make four letters: ف from the lower lip against the upper front teeth, and ب م و from both lips. The غنة of ن and م comes from inside the nose, from الخيشوم.",
+  "fits": "These are the last two general places: the lips, with two of the 17 مخارج, and الخيشوم, with one. That completes the 17. You know الخيشوم from the غنة lessons; here it takes its place in the map.",
+  "how": [
+   "Say أَفْ: the inside of the lower lip touches the edges of the upper front teeth and the air passes between them. The upper lip stays free.",
+   "Say أَبْ and أَمْ: both lips close. With ب the sound stops; with م it goes on through the nose.",
+   "Say the first و of وُجُوهُ: the lips round and come forward but do not close. This و is not a حرف مد; the second و of the word is one, from الجوف.",
+   "Say أَنَّ, hold the غنة, then pinch your nose: the sound stops, which shows the غنة comes from الخيشوم. The muṣḥaf has no mark for these places; you learn them by ear."
+  ],
+  "why": "These letters sit very close together, so a مْ before و or ف can slip into them. تحفة الأطفال warns: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي».",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Closing both lips for ف.",
+    "right": "Only the lower lip touches the upper teeth."
+   },
+   {
+    "wrong": "Closing the lips fully for the و of وُجُوهُ.",
+    "right": "Round them and leave a gap."
+   },
+   {
+    "wrong": "Letting a مْ fade before و or ف.",
+    "right": "Close the lips fully on the م, then open them for the next letter."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "الحروف الشفوية أربعة: الفاء من الشفة السفلى مع الأسنان العليا الأمامية، والباء والميم والواو من الشفتين معًا. أما غنة النون والميم فتخرج من داخل الأنف، من الخيشوم.",
+  "fits": "هذان آخر المخارج العامة: الشفتان وفيهما مخرجان من السبعة عشر، والخيشوم وفيه مخرج واحد. وبهما تتمّ المخارج السبعة عشر. والخيشوم تعرفه من دروس الغنة، وهنا يأخذ مكانه في الخريطة.",
+  "how": [
+   "قل: أَفْ؛ يلتقي بطن الشفة السفلى بأطراف الثنايا العليا، ويجري الهواء بينهما. والشفة العليا لا تشارك.",
+   "قل: أَبْ وأَمْ؛ تنطبق الشفتان. في الباء ينقطع الصوت، وفي الميم يستمر من الأنف.",
+   "انطق الواو الأولى في وُجُوهُ: تنضمّ الشفتان إلى الأمام دون أن تنطبقا. هذه واو غير مدية، أما الثانية فحرف مد من الجوف.",
+   "قل: أَنَّ وأطل الغنة، ثم أمسك أنفك، فينقطع الصوت؛ وهذا دليل على أن الغنة من الخيشوم. ولا علامة لهذه المخارج في المصحف، وإنما تُعرف بالسماع."
+  ],
+  "why": "هذه الحروف شديدة التقارب، فالميم الساكنة قبل الواو أو الفاء قد تختفي فيهما. ولذلك قال صاحب تحفة الأطفال: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي».",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "إطباق الشفتين معًا عند الفاء.",
+    "right": "تلتقي الشفة السفلى وحدها بالثنايا العليا."
+   },
+   {
+    "wrong": "إطباق الشفتين في واو وُجُوهُ.",
+    "right": "ضمّهما واترك بينهما فرجة."
+   },
+   {
+    "wrong": "إضعاف الميم الساكنة قبل الواو أو الفاء.",
+    "right": "أطبق الشفتين على الميم إطباقًا تامًّا، ثم افتحهما للحرف الذي بعدها."
+   }
+  ]
+ }
+}

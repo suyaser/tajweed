@@ -1,0 +1,73 @@
+{
+ "lesson": "iwad",
+ "terms": [
+  {
+   "term": "العوض",
+   "say": "al-ʿiwaḍ",
+   "en": "The ا that takes the place of a تنوين with فتحة (ً) when you stop on it, held two حركات: أَفْوَاجًا, stopped, is أَفْوَاجَا.",
+   "literal": "the replacement",
+   "ar": "الألف التي تحل محل تنوين الفتح عند الوقف عليه، وتُمد حركتين: أَفْوَاجًا يُوقف عليها أَفْوَاجَا.",
+   "arLiteral": "ما يُعطى مكان غيره"
+  }
+ ],
+ "en": {
+  "plain": "When you stop on a word ending in ً, you drop the ن sound and end on a long ا of two counts: أَفْوَاجًا, stopped, is أَفْوَاجَا.",
+  "fits": "In the basics you learned that a تنوين is a ن said after the vowel when you join: أَفْوَاجًا joined sounds أَفْوَاجَنْ. Here you stop on it. With ٌ and ٍ a stop ends on a plain سكون (نَارٌ → نَارْ); only ً turns into an ا. Its length is that of المد الطبيعي, two counts.",
+  "how": [
+   "When you join, say the تنوين: أَفْوَاجَنْ.",
+   "When you stop, drop the ن. Keep the فتحة and let it run on into an ا: أَفْوَاجَا.",
+   "Hold that ا two حركات, like any المد الطبيعي, and no more.",
+   "With a شدة the letter stays doubled: حَبًّا → حَبَّا. A ة is different: رَحْمَةً is stopped as رَحْمَهْ, with no ا."
+  ],
+  "why": "The ا replaces the تنوين, which is why it is called العوض. Arabic stops on ً with an ا and on ٌ and ٍ with a سكون, and the muṣḥaf writes that ا after most words ending in ً, ready for the stop.",
+  "spot": "Look for ً on the last letter, usually followed by a bare ا, as in أَفْوَاجًا below; that ا is said only when you stop. A few words such as مَآءً have no ا after the ً, yet you still stop with an ا: مَآءَا. Only ة differs (رَحْمَةً → رَحْمَهْ).",
+  "mistakes": [
+   {
+    "wrong": "Keeping the ن at a stop: أَفْوَاجَنْ.",
+    "right": "Stop on a long ا: أَفْوَاجَا."
+   },
+   {
+    "wrong": "Stopping on a short فتحة: أَفْوَاجَ.",
+    "right": "Two full counts on the ا."
+   },
+   {
+    "wrong": "Holding it 4 or 6 counts, as in المد العارض.",
+    "right": "Two counts only."
+   },
+   {
+    "wrong": "Stopping on رَحْمَةً with an ا: رَحْمَتَا.",
+    "right": "The ة becomes a ه with سكون: رَحْمَهْ."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا وقفت على كلمة آخرها تنوين فتح (ً) حذفت صوت النون، وختمت بألف تمدها حركتين: أَفْوَاجًا يُوقف عليها أَفْوَاجَا.",
+  "fits": "عرفت في الدرس الأول أن التنوين نون تُنطق بعد الحركة عند الوصل: أَفْوَاجًا موصولةً تُسمع أَفْوَاجَنْ. وهنا تقف عليه. فتنوين الضم والكسر يُوقف عليهما بالسكون (نَارٌ ← نَارْ)، ولا يصير ألفًا إلا تنوين الفتح. ومقدارها مقدار المد الطبيعي: حركتان.",
+  "how": [
+   "عند الوصل انطق التنوين: أَفْوَاجَنْ.",
+   "وعند الوقف احذف النون، وأبقِ الفتحة ممدودة بألف: أَفْوَاجَا.",
+   "مُدّ هذه الألف حركتين كأي مد طبيعي، ولا تزد.",
+   "ومع الشدة يبقى الحرف مشددًا: حَبًّا ← حَبَّا. أمّا التاء المربوطة فلا: رَحْمَةً يُوقف عليها رَحْمَهْ، بلا ألف."
+  ],
+  "why": "الألف عوض عن التنوين، ولذلك سُمّي العوض. فالعرب تقف على المنوّن بالفتح بالألف، وعلى المنوّن بالضم والكسر بالسكون، والمصحف يكتب هذه الألف بعد أكثر الكلمات المنونة بالفتح تهيئةً للوقف.",
+  "spot": "ابحث عن ً على الحرف الأخير، وبعده في الغالب ألف خالية من العلامات كما في أَفْوَاجًا أدناه، ولا تُنطق إلا عند الوقف. وبعض الكلمات مثل مَآءً لا تُكتب بعدها ألف، ومع ذلك تقف عليها بالألف: مَآءَا. ولا يُستثنى إلا التاء المربوطة (رَحْمَةً ← رَحْمَهْ).",
+  "mistakes": [
+   {
+    "wrong": "إبقاء النون عند الوقف: أَفْوَاجَنْ.",
+    "right": "قف بألف ممدودة: أَفْوَاجَا."
+   },
+   {
+    "wrong": "الوقف بفتحة قصيرة: أَفْوَاجَ.",
+    "right": "أتمّ الحركتين في الألف."
+   },
+   {
+    "wrong": "مدها أربعًا أو ستًّا كالمد العارض.",
+    "right": "حركتان فقط."
+   },
+   {
+    "wrong": "الوقف على رَحْمَةً بألف: رَحْمَتَا.",
+    "right": "تصير التاء هاءً ساكنة: رَحْمَهْ."
+   }
+  ]
+ }
+}

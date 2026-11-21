@@ -1,0 +1,193 @@
+{
+ "lesson": "basics",
+ "terms": [
+  {
+   "term": "تجويد",
+   "say": "tajwīd",
+   "en": "Reciting the Quran with every letter given its due: said from its own place, with its own sound, and with the changes it takes next to other letters.",
+   "literal": "making something good",
+   "ar": "إعطاء كل حرف حقه ومستحقه في التلاوة: إخراجه من موضعه، ونطقه على هيئته، ومراعاة ما يتغير فيه إذا جاور غيره.",
+   "arLiteral": "التحسين والإتقان"
+  },
+  {
+   "term": "حركة",
+   "say": "ḥarakah",
+   "en": "A short vowel said with a letter (فتحة, ضمة or كسرة). It is also tajweed's unit of time: one حركة is the time it takes to say one short vowel.",
+   "literal": "movement",
+   "ar": "صوت قصير يُنطق مع الحرف: فتحة أو ضمة أو كسرة. وهي أيضًا وحدة الزمن في التجويد: الحركة الواحدة زمن نطق حركة قصيرة.",
+   "arLiteral": "التحرّك، ضد السكون"
+  },
+  {
+   "term": "فتحة",
+   "say": "fatḥah",
+   "en": "The mark َ above a letter: a short a, said with the mouth open (مَ).",
+   "literal": "an opening",
+   "ar": "علامة َ فوق الحرف: صوت قصير يُنطق بفتح الفم (مَ).",
+   "arLiteral": "من فتح الفم"
+  },
+  {
+   "term": "ضمة",
+   "say": "ḍammah",
+   "en": "The mark ُ above a letter: a short u, said with the lips rounded forward (دُ).",
+   "literal": "a drawing together (of the lips)",
+   "ar": "علامة ُ فوق الحرف: صوت قصير يُنطق بضم الشفتين (دُ).",
+   "arLiteral": "من ضم الشفتين"
+  },
+  {
+   "term": "كسرة",
+   "say": "kasrah",
+   "en": "The mark ِ below a letter: a short i, said with the lower jaw dropped a little (بِ).",
+   "literal": "a breaking",
+   "ar": "علامة ِ تحت الحرف: صوت قصير يُنطق بخفض الفك السفلي قليلًا (بِ).",
+   "arLiteral": "من الكسر"
+  },
+  {
+   "term": "سكون",
+   "say": "sukūn",
+   "en": "The mark ْ above a letter: the letter has no vowel. You say it closed and go straight on (قُلْ).",
+   "literal": "stillness",
+   "ar": "علامة ْ فوق الحرف: الحرف بلا حركة، تنطقه ساكنًا ثم تنتقل إلى ما بعده (قُلْ).",
+   "arLiteral": "الثبات وعدم الحركة"
+  },
+  {
+   "term": "شدة",
+   "say": "shaddah",
+   "en": "The mark ّ above a letter: the letter is said twice, first with سكون, then with its vowel, joined: رَبِّ = رَبْ + بِ.",
+   "literal": "strength",
+   "ar": "علامة ّ فوق الحرف: الحرف مكرر، أوله ساكن وثانيه متحرك، يُنطقان متصلين: رَبِّ = رَبْ + بِ.",
+   "arLiteral": "القوة"
+  },
+  {
+   "term": "تنوين",
+   "say": "tanwīn",
+   "en": "A doubled vowel mark at the end of a noun (ً ٌ ٍ): after the vowel a ن with سكون is said, though it is not written: أَحَدٌ = أَحَدُنْ.",
+   "literal": "adding a nūn",
+   "ar": "حركتان في آخر الاسم (ً ٌ ٍ): تُنطق بعد الحركة نون ساكنة لا تُكتب: أَحَدٌ = أَحَدُنْ.",
+   "arLiteral": "إلحاق النون"
+  },
+  {
+   "term": "حرف مد",
+   "say": "ḥarf madd",
+   "en": "A letter that lets the voice run on: ا after a فتحة, و with no vowel after a ضمة, ي with no vowel after a كسرة.",
+   "literal": "a letter of lengthening",
+   "ar": "حرف يمتد به الصوت: الألف بعد فتحة، والواو الساكنة بعد ضمة، والياء الساكنة بعد كسرة.",
+   "arLiteral": "حرف الإطالة"
+  },
+  {
+   "term": "مد",
+   "say": "madd",
+   "en": "Holding the voice on a حرف مد. It is counted in حركات, and its basic length is two.",
+   "literal": "stretching",
+   "ar": "إطالة الصوت بحرف المد. ويُقاس بالحركات، وأصله حركتان.",
+   "arLiteral": "الزيادة والإطالة"
+  },
+  {
+   "term": "همزة",
+   "say": "hamzah",
+   "en": "The letter ء: a short catch from the deepest part of the throat, as at the start of أَعُوذُ. It is written on ا, و or ي, or on its own (أ إ ؤ ئ ء).",
+   "literal": "a press",
+   "ar": "الحرف ء: يخرج من أقصى الحلق بانحباس ثم انطلاق، كما في أول أَعُوذُ. ويُكتب على ألف أو واو أو ياء، أو منفردًا (أ إ ؤ ئ ء).",
+   "arLiteral": "الضغط والدفع"
+  },
+  {
+   "term": "وقف",
+   "say": "waqf",
+   "en": "Stopping on the end of a word, long enough to take a breath, intending to carry on reading.",
+   "literal": "stopping",
+   "ar": "قطع الصوت على آخر الكلمة زمنًا يُتنفس فيه عادة، بنية مواصلة القراءة.",
+   "arLiteral": "الكف والحبس"
+  },
+  {
+   "term": "وصل",
+   "say": "waṣl",
+   "en": "Reading a word joined to the next one, without stopping.",
+   "literal": "joining",
+   "ar": "قراءة الكلمة متصلة بما بعدها من غير وقف.",
+   "arLiteral": "ضد القطع"
+  },
+  {
+   "term": "مخرج",
+   "say": "makhraj",
+   "en": "The place a letter's sound comes from: the throat, the mouth (tongue and lips), the nose, or, for the حروف مد, the open space of the mouth and throat. Plural مخارج.",
+   "literal": "a way out",
+   "ar": "الموضع الذي يخرج منه صوت الحرف: الحلق، أو الفم (اللسان والشفتان)، أو الأنف، أو فراغ الفم والحلق لحروف المد. وجمعه مخارج.",
+   "arLiteral": "موضع الخروج"
+  },
+  {
+   "term": "رواية",
+   "say": "riwāyah",
+   "en": "One way of reciting the Quran, as a particular student handed it down from one of the great reciters.",
+   "literal": "a narration",
+   "ar": "قراءة القرآن كما نقلها تلميذ معيّن عن أحد أئمة القراءة.",
+   "arLiteral": "النقل"
+  },
+  {
+   "term": "حفص",
+   "say": "Ḥafṣ",
+   "en": "Ḥafṣ ibn Sulaymān of Kufa (d. 180 AH), the student of the reciter ʿĀṣim. His رواية is the one printed in مصحف المدينة, and this course teaches it as the الشاطبية, the famous poem on the readings by al-Shāṭibī, gives it.",
+   "ar": "حفص بن سليمان الكوفي (ت ١٨٠ هـ)، تلميذ الإمام عاصم. وروايته عنه هي المطبوعة في مصحف المدينة، ويعلّمها هذا المقرر من طريق الشاطبية، وهي المنظومة المشهورة للإمام الشاطبي في القراءات."
+  }
+ ],
+ "en": {
+  "plain": "Every letter in the muṣḥaf carries a mark that tells you how to say it: a short vowel, no vowel, the letter twice, or an extra ن sound. A few letters stretch the voice, and every length is counted in short beats.",
+  "fits": "This is where the course starts. It teaches تجويد in رواية حفص عن عاصم, the reading printed in مصحف المدينة. These marks are the alphabet of every later lesson, and the حركة as a beat measures every مد you will meet. Each letter also has its own مخرج; you will study them later, and for now you copy the reciter.",
+  "how": [
+   "The short vowels: in مَلِكِ the mouth opens for the فتحة on مَ; in يُوَسْوِسُ the lips round forward for the ضمة on يُ; for the كسرة on بِ in بِرَبِّ the lower jaw drops a little. Each lasts one حركة.",
+   "سكون: in قُلْ the ل has no vowel. The tongue closes on it and nothing follows.",
+   "شدة: in بِرَبِّ the ب is said twice, رَبْ then بِ, with no break. The lips stay pressed a moment longer than for a single ب.",
+   "تنوين: in نَارٌ, read with وصل to the next word, you hear نَارُنْ. What happens at a وقف comes in later lessons.",
+   "مد: a حرف مد stretches the vowel before it to two حركات: مَٰلِكِ, يَقُولُ. A common aid: close or open one finger for each حركة, at your normal speed, and keep that speed through the whole recitation."
+  ],
+  "why": "The marks were added to the muṣḥaf so that every reader says each word as it was taught. One mark can change the meaning: in أَنْعَمْتَ (1:7) the فتحة on the ت means 'You blessed'; a ضمة there would mean 'I blessed'.",
+  "spot": "In مَلِكِ below, a فتحة is on the م and a كسرة on the ل and the ك. A letter with no mark at all is special: often it is a حرف مد, like the و in يَقُولُ; later lessons explain the rest.",
+  "mistakes": [
+   {
+    "wrong": "Adding a little vowel after a سكون: قُلَ for قُلْ.",
+    "right": "Close the letter and move on: قُلْ."
+   },
+   {
+    "wrong": "Saying a letter with شدة only once: رَبِ.",
+    "right": "Say it twice, joined: رَبْ + بِ."
+   },
+   {
+    "wrong": "Stretching a short vowel: مَلِكِ read as مَالِكِ.",
+    "right": "A short vowel is one حركة; only a حرف مد takes two."
+   },
+   {
+    "wrong": "Letting the همزة of أَعُوذُ melt into the vowel.",
+    "right": "Start with a clear catch in the throat, then the vowel."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "على كل حرف في المصحف علامة تخبرك كيف تنطقه: حركة قصيرة، أو لا حركة، أو تكرار الحرف، أو نون تُسمع ولا تُكتب. وبعض الحروف يمتد بها الصوت، وكل امتداد يُعدّ بزمن محدد.",
+  "fits": "هنا يبدأ المقرر، وفيه تتعلم التجويد برواية حفص عن عاصم، وهي المطبوعة في مصحف المدينة. وهذه العلامات أساس كل درس بعدها، والحركة وحدةٌ تقيس بها كل مد يمر بك. ولكل حرف مخرج يخرج منه، وستدرس المخارج لاحقًا؛ أمّا الآن فقلّد القارئ.",
+  "how": [
+   "الحركات القصيرة: في مَلِكِ ينفتح الفم مع فتحة الميم، وفي يُوَسْوِسُ تنضم الشفتان مع ضمة الياء، ومع كسرة بِ في بِرَبِّ ينخفض الفك السفلي قليلًا. وكل واحدة بمقدار حركة.",
+   "السكون: في قُلْ لا حركة على اللام، فيستقر اللسان عليها ولا يتبعها صوت.",
+   "الشدة: في بِرَبِّ تُنطق الباء مرتين متصلتين: رَبْ ثم بِ، فتبقى الشفتان مطبقتين لحظة أطول من الباء المفردة.",
+   "التنوين: إذا قرأت نَارٌ بالوصل بما بعدها سمعت نَارُنْ. أمّا الوقف عليه فيأتي في دروس لاحقة.",
+   "المد: حرف المد يطيل الحركة التي قبله إلى حركتين: مَٰلِكِ، يَقُولُ. ومن الوسائل المعينة أن تعدّ الحركة بقبض إصبع أو بسطه بسرعتك المعتادة، وتلتزم هذه السرعة في التلاوة كلها."
+  ],
+  "why": "وُضعت هذه العلامات في المصحف ليقرأ كل قارئ الكلمة كما تُلقّيت. وعلامة واحدة قد تغيّر المعنى: في أَنْعَمْتَ (1:7) فتحة التاء خطاب لله تعالى، ولو ضُمّت لصار المعنى «أنعمتُ أنا».",
+  "spot": "في مَلِكِ أدناه فتحة على الميم، وكسرة على اللام والكاف. أمّا الحرف الخالي من كل علامة فله شأن خاص: كثيرًا ما يكون حرف مد، كالواو في يَقُولُ، وتشرح الدروس اللاحقة غيره.",
+  "mistakes": [
+   {
+    "wrong": "إضافة حركة خفيفة بعد الساكن: قُلَ بدل قُلْ.",
+    "right": "أقفل الحرف وانتقل: قُلْ."
+   },
+   {
+    "wrong": "نطق الحرف المشدد مرة واحدة: رَبِ.",
+    "right": "انطقه مرتين متصلتين: رَبْ + بِ."
+   },
+   {
+    "wrong": "إطالة الحركة القصيرة: قراءة مَلِكِ مَالِكِ.",
+    "right": "الحركة القصيرة بمقدار حركة واحدة، ولا يُمد حركتين إلا حرف المد."
+   },
+   {
+    "wrong": "تذويب الهمزة في أول أَعُوذُ حتى تختفي.",
+    "right": "ابدأ بهمزة واضحة من الحلق، ثم الحركة."
+   }
+  ]
+ }
+}

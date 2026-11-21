@@ -1,0 +1,56 @@
+{
+ "lesson": "idgh-n",
+ "terms": [],
+ "en": {
+  "plain": "When a word ends in a ن with no vowel, or a تنوين, and the next word starts with ل or ر, the ن disappears completely. You say a doubled ل or ر, with no hum at all.",
+  "fits": "This is still the second ruling, إدغام, with its last two letters, ل and ر. With the letters of يَنْمُو a two-count غنة was heard. Here the merge is complete, as with ن and م, but no غنة is heard: nothing of the ن is left.",
+  "how": [
+   "Skip the ن: from the vowel before it, go straight to the ل or ر.",
+   "Say the ل or ر doubled, for the time of two letters, then its vowel: عَن رَّبِّهِمْ sounds عَرَّبِّهِمْ, and أَن لَّمْ sounds أَلَّمْ.",
+   "Nothing goes through the nose: if you pinch it, the sound does not change.",
+   "One place keeps its ن: مَنْ رَاقٍ (75:27), where حفص pauses briefly on the ن without taking a breath. A later lesson covers it."
+  ],
+  "why": "ن, ل and ر are made very close together at the front of the tongue; some scholars even give them one place. So the ن merges into them, and the غنة is dropped to make the reading as light as possible. Keeping a غنة here belongs to another route of reading, not the one this course follows.",
+  "spot": "The ن has no سكون, and the ل or ر after it carries a شدة: عَن رَّبِّهِمْ, خَيْرٌ لَّكَ. The شدة tells you the ن is gone. A تنوين's marks are staggered in the printed muṣḥaf, but not on this screen, so the شدة is your sign here.",
+  "mistakes": [
+   {
+    "wrong": "A hum through the nose in عَن رَّبِّهِمْ, as before م",
+    "right": "No غنة: a plain doubled ر"
+   },
+   {
+    "wrong": "A trace of ن before the ل: أَنْ لَمْ",
+    "right": "أَلَّمْ: the ن is gone"
+   },
+   {
+    "wrong": "A single, light ل: خَيْرُ لَكَ",
+    "right": "Hold the لّ for two letters: خَيْرُلَّكَ"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا انتهت كلمة بنون ساكنة أو تنوين، وبدأت التي بعدها بلام أو راء، ذهبت النون كلها، ونطقتَ لامًا أو راءً مشددة بلا غنة.",
+  "fits": "ما زلنا في الحكم الثاني، الإدغام، مع حرفيه الأخيرين: اللام والراء. عرفتَ أن الغنة تُسمع مع حروف «يَنْمُو». أما هنا فالإدغام كامل كما في النون والميم، لكن بلا غنة، فلا يبقى من النون شيء.",
+  "how": [
+   "تجاوز النون: من الحركة التي قبلها انتقل مباشرة إلى اللام أو الراء.",
+   "انطق اللام أو الراء مشددة بزمن حرفين، ثم حركتها: عَن رَّبِّهِمْ تُنطق «عَرَّبِّهِمْ»، وأَن لَّمْ تُنطق «أَلَّمْ».",
+   "لا يمر شيء من الصوت إلى الأنف: لو أمسكتَ أنفك لم يتغير الصوت.",
+   "ويُستثنى موضع واحد: مَنْ رَاقٍ (القيامة ٢٧)، يقف فيه حفص على النون وقفة يسيرة بلا نَفَس، فتظهر النون. وسيأتي في درس لاحق."
+  ],
+  "why": "النون واللام والراء تخرج من طرف اللسان متقاربة جدًا، حتى جعلها بعض العلماء مخرجًا واحدًا. فلقربها أُدغمت النون فيها، وحُذفت الغنة مبالغةً في التخفيف. وإبقاء الغنة هنا وجهٌ من طريق آخر غير الذي نقرأ به.",
+  "spot": "لا سكون على النون، وعلى اللام أو الراء بعدها شدة: عَن رَّبِّهِمْ، خَيْرٌ لَّكَ. فالشدة علامة أن النون ذهبت كلها. وحركتا التنوين متتابعتان في المصحف المطبوع لا في هذه الشاشة، فعلامتك هنا الشدة.",
+  "mistakes": [
+   {
+    "wrong": "غنة في الأنف في عَن رَّبِّهِمْ، كما قبل الميم",
+    "right": "لا غنة: راء مشددة خالصة"
+   },
+   {
+    "wrong": "أثر من النون قبل اللام: «أَنْ لَمْ»",
+    "right": "«أَلَّمْ»: ذهبت النون كلها"
+   },
+   {
+    "wrong": "لام خفيفة غير مشددة: «خَيْرُ لَكَ»",
+    "right": "شدّد اللام بزمن حرفين: «خَيْرُلَّكَ»"
+   }
+  ]
+ }
+}

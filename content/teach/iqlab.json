@@ -1,0 +1,73 @@
+{
+ "lesson": "iqlab",
+ "terms": [
+  {
+   "term": "إقلاب",
+   "say": "iqlāb",
+   "en": "Turning the ن or تنوين into a م before ب: a light, hidden م with a two-count غنة.",
+   "literal": "turning into something else",
+   "ar": "قلب النون الساكنة أو التنوين ميمًا خفيّة عند الباء، مع غنة مقدارها حركتان.",
+   "arLiteral": "التحويل"
+  }
+ ],
+ "en": {
+  "plain": "When a ن with no vowel, or a تنوين, comes before ب, it is not said as a ن. It becomes a light م with a two-count hum, and then the ب.",
+  "fits": "This is the third of the four rulings, and it has one letter only: ب. As in إدغام with م, you hear a م and a غنة. The difference: there is no شدة here. The م is not doubled; it stays light and hidden at the ب.",
+  "how": [
+   "Leave the ن out: the tip of the tongue does not touch the gum at all.",
+   "Bring the lips gently for the م, without pressing: some teachers close them lightly, others leave a very slight gap. Follow your teacher.",
+   "Hold the غنة in the nose for two counts. A finger on the side of your nose feels it vibrate.",
+   "Then release the lips into the ب and its vowel: مَنۢ بَخِلَ, فَأَنۢبَتْنَا."
+  ],
+  "why": "A clear ن with its hum and then closing the lips at once for ب is hard on the mouth. Merging is not possible either, as ن and ب are made far apart. So the ن becomes a م: the م is made at the lips like ب and has a hum like ن.",
+  "spot": "A small م (ۢ) sits on the ن in place of the سكون: مَنۢ بَخِلَ. On a تنوين you see the small م after the vowel marks, above for a فتحة or ضمة, below for a كسرة: كِرَامٍۭ بَرَرَةٍ (the printed muṣḥaf keeps only one vowel mark there; this screen shows two). The ب after it has no شدة.",
+  "mistakes": [
+   {
+    "wrong": "A clear ن before the ب: مَنْ بَخِلَ",
+    "right": "A light م with a two-count hum, then the ب"
+   },
+   {
+    "wrong": "Pressing the lips hard on the م",
+    "right": "The lips meet gently; follow your teacher on how they sit"
+   },
+   {
+    "wrong": "Cutting the hum short and jumping to the ب",
+    "right": "Hold the غنة two counts, then the ب"
+   },
+   {
+    "wrong": "A doubled ب, as if it had a شدة",
+    "right": "One ب, after the hidden م"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا جاءت الباء بعد نون ساكنة أو تنوين، لم تُنطق النون نونًا، بل ميمًا خفيفة معها غنة حركتين، ثم الباء.",
+  "fits": "هذا هو الحكم الثالث من أحكام النون الساكنة والتنوين: الإقلاب، وله حرف واحد هو الباء. وتسمع فيه ميمًا وغنة كما في إدغام النون في الميم، لكن لا شدة هنا: فالميم لا تُشدَّد، بل تبقى خفيفة خفيّة عند الباء.",
+  "how": [
+   "اترك النون: لا يلمس طرف اللسان اللثة أبدًا.",
+   "قرّب الشفتين للميم برفق دون ضغط: فمن المعلمين من يُطبقهما إطباقًا خفيفًا، ومنهم من يترك بينهما فرجة يسيرة جدًا. فاتبع شيخك.",
+   "أمسك الغنة في الخيشوم حركتين؛ ضع إصبعك على جانب أنفك تشعر باهتزازه.",
+   "ثم افتح الشفتين بالباء وحركتها: مَنۢ بَخِلَ، فَأَنۢبَتْنَا."
+  ],
+  "why": "لو أظهرتَ النون بغنتها ثم أطبقتَ الشفتين للباء فورًا لكان في ذلك عسر وكلفة. ولا يحسن الإدغام لبُعد مخرج النون عن الباء. فقُلبت النون ميمًا، لأن الميم تشارك الباء في مخرجها من الشفتين، وتشارك النون في الغنة.",
+  "spot": "ميم صغيرة (ۢ) فوق النون مكان السكون: مَنۢ بَخِلَ. وفي التنوين ترى الميم الصغيرة بعد الحركة، فوقها مع الفتح والضم، وتحتها مع الكسر: كِرَامٍۭ بَرَرَةٍ (والمصحف المطبوع يكتب هنا حركة واحدة، وهذه الشاشة تُظهر حركتين). ولا شدة على الباء بعدها.",
+  "mistakes": [
+   {
+    "wrong": "نون واضحة قبل الباء: «مَنْ بَخِلَ»",
+    "right": "ميم خفيفة بغنة حركتين، ثم الباء"
+   },
+   {
+    "wrong": "ضغط الشفتين بقوة على الميم",
+    "right": "تلتقي الشفتان برفق، واتبع شيخك في هيئتهما"
+   },
+   {
+    "wrong": "قطع الغنة والقفز إلى الباء",
+    "right": "أتمّ الغنة حركتين ثم الباء"
+   },
+   {
+    "wrong": "باء مشددة كأن عليها شدة",
+    "right": "باء واحدة بعد الميم الخفية"
+   }
+  ]
+ }
+}

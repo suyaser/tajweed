@@ -1,0 +1,56 @@
+{
+ "lesson": "makharij-wasat",
+ "terms": [],
+ "en": {
+  "plain": "ج, ش and a ي that is not a حرف مد come from the middle of the tongue against the palate. ض comes from the side edge of the tongue against the upper molars, and ل from the front of that edge up to the tip.",
+  "fits": "Still on the tongue: after its back (ق ك) come its middle and its edges. This lesson covers three more of its 10 مخارج. You met ض already, when you set it beside ظ.",
+  "how": [
+   "Say أَجْ، أَشْ، أَيْ: the middle of the tongue rises to the palate above it. With ج it closes there; with ش and ي the sound passes.",
+   "This is the ي of تَمَيَّزُ and بِيَدِهِ: a voweled ي, or a لين ي as in بَيْتِ. A ي that is a حرف مد comes from الجوف.",
+   "Say أَضْ: one side edge of the tongue presses along the upper molars (the back teeth). The left side is easier and more common, the right is correct too, and both together is rarer.",
+   "Say أَلْ: the front part of the edge, up to the tip, touches the gums of the upper front teeth. The muṣḥaf has no mark for this; you learn it by ear."
+  ],
+  "why": "Each of these letters has its own spot, and a small shift turns one into another. ض moved to the tip of the tongue loses its place and comes out like ظ.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "Saying ض with the tip of the tongue on the front teeth, so it sounds like ظ.",
+    "right": "Keep the tip back and press the side of the tongue on the upper molars. Learn the exact sound of ض from your teacher."
+   },
+   {
+    "wrong": "Saying جْ soft, like the s in \"measure\", in وَجْهِهِۦٓ.",
+    "right": "Close the middle of the tongue fully on the palate, then release."
+   },
+   {
+    "wrong": "Letting the weight of ض spread to the ل of ضَلَٰلٍ.",
+    "right": "Lower the tongue after ض: the ل is light."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "الجيم والشين والياء غير المدية تخرج من وسط اللسان مع الحنك. والضاد من جانب اللسان مع الأضراس العليا، واللام من مقدّم ذلك الجانب إلى رأس اللسان.",
+  "fits": "ما زلنا في اللسان: بعد أقصاه (ق ك) يأتي وسطه وحافتاه. وفي هذا الدرس ثلاثة أخرى من مخارجه العشرة. وقد لقيتَ الضاد من قبل حين قابلتها بالظاء.",
+  "how": [
+   "قل: أَجْ، أَشْ، أَيْ؛ يرتفع وسط اللسان إلى ما يحاذيه من الحنك الأعلى. مع الجيم ينطبق عليه، ومع الشين والياء يجري الصوت.",
+   "وهذه هي الياء في تَمَيَّزُ وبِيَدِهِ: ياء متحركة، أو ياء لين كما في بَيْتِ. أما الياء المدية فمن الجوف.",
+   "قل: أَضْ؛ تعتمد إحدى حافتي اللسان على ما يحاذيها من الأضراس العليا. واليسرى أيسر وأكثر، واليمنى صحيحة أيضًا، وخروجها من الحافتين معًا أقل.",
+   "قل: أَلْ؛ يلتقي أدنى حافة اللسان إلى منتهى طرفه بلثة الأسنان العليا الأمامية. ولا علامة لهذا في المصحف، وإنما يُعرف بالسماع."
+  ],
+  "why": "لكل حرف من هذه موضعه، وأدنى انتقال يحوّله إلى حرف آخر. فإذا نُطقت الضاد بطرف اللسان فقدت مخرجها وقاربت الظاء.",
+  "spot": null,
+  "mistakes": [
+   {
+    "wrong": "نطق الضاد بطرف اللسان على الثنايا حتى تشبه الظاء.",
+    "right": "أبعد طرف اللسان، واعتمد بحافته على الأضراس العليا، وخذ صوت الضاد من معلّمك مشافهة."
+   },
+   {
+    "wrong": "تليين الجيم في وَجْهِهِۦٓ كالجيم الشامية.",
+    "right": "أطبق وسط اللسان على الحنك إطباقًا تامًّا ثم افتحه."
+   },
+   {
+    "wrong": "سريان تفخيم الضاد إلى اللام في ضَلَٰلٍ.",
+    "right": "اخفض اللسان بعد الضاد، فاللام مرقّقة."
+   }
+  ]
+ }
+}

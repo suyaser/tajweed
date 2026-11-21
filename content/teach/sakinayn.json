@@ -1,0 +1,75 @@
+{
+ "lesson": "sakinayn",
+ "terms": [
+  {
+   "term": "التقاء الساكنين",
+   "say": "iltiqāʾ as-sākinayn",
+   "en": "Two letters with سكون coming one right after the other, here when you join two words.",
+   "literal": "the meeting of the two still letters",
+   "ar": "أن يلتقي حرفان ساكنان متتاليان، وهنا عند وصل كلمتين.",
+   "arLiteral": "اجتماع حرفين لا حركة عليهما"
+  }
+ ],
+ "en": {
+  "plain": "Two letters with no vowel can't be said one right after the other when you join two words. If the first is a long vowel letter, you drop it; otherwise you give it a short vowel.",
+  "fits": "In the ابتداء lesson you learned that the ٱ of همزة الوصل is not said when you join. So after a word that ends in a ساكن, two sukuns meet: in فِى ٱلْعُقَدِ the ى meets the لْ. This lesson is what to do. At a وقف two sukuns may meet: that is the المد العارض you know, as in ٱلْعَٰلَمِينْ.",
+  "how": [
+   "If the first is a حرف مد (ا و ي), don't say it, and keep the vowel before it short: فِى ٱلْعُقَدِ is read فِلْعُقَدِ, ذُو ٱلْعَرْشِ is ذُلْعَرْشِ.",
+   "If it is another letter with سكون, give it a كسرة: بَلِ ٱلَّذِينَ, قُلِ ٱللَّهُمَّ.",
+   "Some take another vowel: the plural م of هُمْ and كُمْ (ميم الجمع) and a plural و after a فتحة take a ضمة, هُمُ ٱلْكَفَرَةُ, ٱشْتَرَوُا۟ ٱلضَّلَٰلَةَ; مِنْ before ال takes a فتحة, مِنَ ٱلَّذِينَ. The muṣḥaf prints these vowels, so read what is written.",
+   "A تنوين is a ن, so its ن takes a كسرة: نُوحٌ ٱبْنَهُۥ is read نُوحُنِ ٱبْنَهُ.",
+   "If you stop on the first word, the dropped letter comes back: stopped, فِى is two counts."
+  ],
+  "why": "Arabic does not put two sukuns side by side across joined words: there is no vowel to carry the voice from one to the other. So the first is dropped in speech or given a vowel. At a stop the meeting is allowed.",
+  "spot": "The حرف مد stays written, so the eye wants to lengthen it; the sign is the ٱ that starts the next word: فِى ٱلْعُقَدِ. When another letter takes a vowel, the muṣḥaf prints it: بَلِ, هُمُ, مِنَ. A تنوين is the exception: in نُوحٌ ٱبْنَهُۥ the muṣḥaf, printed or on this screen, shows an ordinary تنوين and no extra ن, so the ٱ after it is your cue to say نِ.",
+  "mistakes": [
+   {
+    "wrong": "Lengthening the ى of فِى ٱلْعُقَدِ because it is written",
+    "right": "A short فِ straight into the ل: فِلْعُقَدِ"
+   },
+   {
+    "wrong": "Saying the ٱ as a همزة: فِى أَلْعُقَدِ",
+    "right": "Join with no همزة"
+   },
+   {
+    "wrong": "A كسرة on the م: هُمِ ٱلْكَفَرَةُ",
+    "right": "هُمُ ٱلْكَفَرَةُ, with a ضمة"
+   },
+   {
+    "wrong": "Dropping the تنوين before ٱ: نُوحُ ٱبْنَهُ",
+    "right": "نُوحُنِ ٱبْنَهُ"
+   }
+  ]
+ },
+ "ar": {
+  "plain": "لا يُنطق حرفان ساكنان متتاليان عند وصل كلمتين. فإن كان الأول حرف مد حُذف في النطق، وإن كان غيره أُعطي حركة.",
+  "fits": "عرفتَ في درس الابتداء أن همزة الوصل لا تُنطق عند الوصل. فإذا جاءت بعد كلمة آخرها ساكن وقع التقاء الساكنين: في فِى ٱلْعُقَدِ تلتقي الياء باللام الساكنة. وهذا الدرس يبيّن ما تصنع. أما عند الوقف فيجوز التقاؤهما، وهو المد العارض الذي تعرفه، كما في ٱلْعَٰلَمِينْ.",
+  "how": [
+   "إن كان الأول حرف مد (ا و ي) فلا تنطقه، واجعل الحركة قبله قصيرة: فِى ٱلْعُقَدِ تُنطق «فِلْعُقَدِ»، وذُو ٱلْعَرْشِ «ذُلْعَرْشِ».",
+   "وإن كان حرفًا ساكنًا غير حرف المد فاكسره: بَلِ ٱلَّذِينَ، قُلِ ٱللَّهُمَّ.",
+   "وبعضها يُعطى حركة أخرى: تُضم ميم الجمع في هُمْ وكُمْ، وواو الجماعة بعد فتحة: هُمُ ٱلْكَفَرَةُ، ٱشْتَرَوُا۟ ٱلضَّلَٰلَةَ؛ وتُفتح نون مِنْ قبل «ال»: مِنَ ٱلَّذِينَ. والمصحف يطبع هذه الحركات، فاقرأ ما تراه.",
+   "والتنوين نون، فتُكسر نونه: نُوحٌ ٱبْنَهُۥ تُنطق «نُوحُنِ ٱبْنَهُ».",
+   "فإن وقفتَ على الكلمة الأولى رجع حرف المد، فإذا وقفتَ على فِى نطقتَها ممدودة حركتين."
+  ],
+  "why": "لا تجمع العربية بين ساكنين من كلمتين عند الوصل، إذ لا حركة يعبر عليها الصوت من الأول إلى الثاني. فيُتخلص من الأول بحذفه أو تحريكه. أما عند الوقف فيجوز.",
+  "spot": "حرف المد يبقى مكتوبًا فتميل العين إلى مده؛ والعلامة أن الكلمة التالية تبدأ بهمزة وصل (ٱ): فِى ٱلْعُقَدِ. وإذا حُرِّك ساكن غيره طبع المصحف حركته: بَلِ، هُمُ، مِنَ. إلا التنوين: ففي نُوحٌ ٱبْنَهُۥ يظهر تنوين عادي بلا نون صغيرة، في المصحف المطبوع وفي هذه الشاشة، فالهمزة ٱ بعده هي التي تدلك على أن تقول «نِ».",
+  "mistakes": [
+   {
+    "wrong": "مدّ ياء فِى في فِى ٱلْعُقَدِ لأنها مكتوبة",
+    "right": "فاء قصيرة متصلة باللام: «فِلْعُقَدِ»"
+   },
+   {
+    "wrong": "نطق همزة الوصل همزة: «فِى أَلْعُقَدِ»",
+    "right": "صِل بلا همزة"
+   },
+   {
+    "wrong": "كسر ميم الجمع: «هُمِ ٱلْكَفَرَةُ»",
+    "right": "هُمُ ٱلْكَفَرَةُ بالضم"
+   },
+   {
+    "wrong": "حذف نون التنوين: «نُوحُ ٱبْنَهُ»",
+    "right": "«نُوحُنِ ٱبْنَهُ»"
+   }
+  ]
+ }
+}

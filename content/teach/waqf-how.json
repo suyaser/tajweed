@@ -1,0 +1,66 @@
+{
+ "lesson": "waqf-how",
+ "terms": [],
+ "en": {
+  "plain": "When you stop on a word, its last letter changes: usually the vowel goes and the letter gets a سكون. A few endings change in their own way.",
+  "fits": "You know where you may stop from the signs. You have already met two stop changes: المد العارض, when a حرف مد comes before the last letter, and العوض, when تنوين فتح becomes an ا. This lesson gathers the kinds of ending.",
+  "how": [
+   "A final فتحة, ضمة or كسرة: drop it and give the letter a سكون: ٱلْمُزَّمِّلُ → ٱلْمُزَّمِّلْ, كَٱلْعِهْنِ → كَٱلْعِهْنْ, أُفِكَ → أُفِكْ.",
+   "تنوين ضم or كسر: drop the vowel and the tanween together: لَوَٰقِعٌ → لَوَٰقِعْ, دَافِعٍ → دَافِعْ. تنوين فتح becomes a long ا of two counts (العوض): أَبَدًا → أَبَدَا.",
+   "The round ة (التاء المربوطة) becomes a ه with سكون, even with تنوين فتح: ٱلْقِيَٰمَةِ → ٱلْقِيَٰمَهْ, وَٰحِدَةً → وَٰحِدَهْ.",
+   "A ت written open, as in رَحْمَتَ or نِعْمَتَ: حفص stops on it as it is written, a ت with سكون: رَحْمَتْ.",
+   "A letter that already has a سكون, or a حرف مد at the end, stays as it is. The صلة of هاء الضمير is not read at a stop: بِهِۦ → بِهْ."
+  ],
+  "why": "Arabic speech does not stop on a vowel, as it does not start on a سكون. So the last letter is stilled, and each ending is stopped on as حفص received it, following how the word is written in the muṣḥaf.",
+  "spot": "Most changes have no sign: look at the last letter (a vowel, a tanween, a ة or an open ت). One sign does mark a stop change: the small upright oval ۠ on an ا, as in أَنَا۠, which you met earlier: that ا is said only when you stop.",
+  "mistakes": [
+   {
+    "wrong": "Stopping on أَبَدًا with a نون: أَبَدَنْ.",
+    "right": "Say أَبَدَا, with an ا of two counts."
+   },
+   {
+    "wrong": "Stopping on وَٰحِدَةً with an ا: وَٰحِدَتَا.",
+    "right": "A ة always ends in a quiet ه: وَٰحِدَهْ."
+   },
+   {
+    "wrong": "Stopping on an open ت, رَحْمَتَ, with a ه.",
+    "right": "Keep the ت: رَحْمَتْ."
+   },
+   {
+    "wrong": "Stopping on ٱلْحَقُّ as a single ق: ٱلْحَقْ.",
+    "right": "Keep the doubling: press on the ق, then still it."
+   }
+  ]
+ },
+ "ar": {
+  "plain": "إذا وقفت على كلمة تغيّر آخر حرف فيها: تذهب حركته غالبًا ويصير ساكنًا، ولبعض الأواخر حكم خاص.",
+  "fits": "عرفت من العلامات أين تقف. ومرّ بك قبلُ أثران للوقف: المد العارض إذا جاء حرف مد قبل الحرف الأخير، والعوض إذا صار تنوين الفتح ألفًا. وفي هذا الدرس تجتمع لك أنواع الأواخر.",
+  "how": [
+   "الفتحة أو الضمة أو الكسرة في الآخر: احذفها وسكّن الحرف: ٱلْمُزَّمِّلُ ← ٱلْمُزَّمِّلْ، كَٱلْعِهْنِ ← كَٱلْعِهْنْ، أُفِكَ ← أُفِكْ.",
+   "تنوين الضم أو الكسر: تُحذف الحركة والتنوين معًا: لَوَٰقِعٌ ← لَوَٰقِعْ، دَافِعٍ ← دَافِعْ. أما تنوين الفتح فيُبدل ألفًا تُمد حركتين، وهو العوض: أَبَدًا ← أَبَدَا.",
+   "التاء المربوطة (ة) تُقلب هاءً ساكنة، ولو كان عليها تنوين فتح: ٱلْقِيَٰمَةِ ← ٱلْقِيَٰمَهْ، وَٰحِدَةً ← وَٰحِدَهْ.",
+   "التاء المكتوبة مفتوحة، مثل رَحْمَتَ و نِعْمَتَ: يقف عليها حفص كما رُسمت، تاءً ساكنة: رَحْمَتْ.",
+   "الحرف الساكن أصلًا، وحرف المد في آخر الكلمة، يبقيان كما هما. وصلة هاء الضمير لا تُقرأ عند الوقف: بِهِۦ ← بِهْ."
+  ],
+  "why": "العرب لا تقف على متحرك كما لا تبتدئ بساكن، فيُسكَّن الحرف الأخير. ويُوقف على كل آخر كما رُوي عن حفص، تبعًا لرسم الكلمة في المصحف.",
+  "spot": "أكثر هذه التغيّرات لا علامة لها، فانظر إلى آخر حرف: الحركة أو التنوين أو التاء المربوطة أو التاء المفتوحة. وعلامة واحدة تدل على تغيّر عند الوقف: الصفر المستطيل ۠ فوق الألف، كما في أَنَا۠، وقد عرفتَه من قبل: تُنطق هذه الألف عند الوقف فقط.",
+  "mistakes": [
+   {
+    "wrong": "الوقف على أَبَدًا بالنون: أَبَدَنْ.",
+    "right": "قل أَبَدَا بألف تُمد حركتين."
+   },
+   {
+    "wrong": "الوقف على وَٰحِدَةً بالألف: وَٰحِدَتَا.",
+    "right": "التاء المربوطة يوقف عليها بهاء ساكنة: وَٰحِدَهْ."
+   },
+   {
+    "wrong": "الوقف على التاء المفتوحة في رَحْمَتَ بالهاء.",
+    "right": "أبقِ التاء ساكنة: رَحْمَتْ."
+   },
+   {
+    "wrong": "الوقف على ٱلْحَقُّ بقاف واحدة خفيفة.",
+    "right": "أبقِ التشديد: اضغط على القاف ثم سكّنها."
+   }
+  ]
+ }
+}
