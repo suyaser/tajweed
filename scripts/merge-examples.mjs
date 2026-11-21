@@ -7,6 +7,7 @@ import fs from 'node:fs'
 
 const dir = process.argv[2] ?? 'docs/examples/proposals'
 const rules = JSON.parse(fs.readFileSync('content/rules.json', 'utf8'))
+const course = JSON.parse(fs.readFileSync('content/course.json', 'utf8'))
 const ar = JSON.parse(fs.readFileSync('content/ar.json', 'utf8'))
 const ex = ({ verse, word_from, word_to, text, focus, stop, note }) => ({ verse, word_from, word_to, text, focus, stop: !!stop, ...(note ? { note } : {}) })
 
@@ -21,6 +22,10 @@ for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()) {
     if (e.contrast?.noteAr) notes[`${i + 1}c`] = e.contrast.noteAr
     return { ...ex(e), role: e.role, ...(e.contrast ? { contrast: { lesson: e.contrast.lesson, ...ex(e.contrast) } } : {}) }
   })
+  if (p.noticeText) { // the Hear step's "what to listen for", which names the examples
+    course.lessons[p.lesson] = { ...course.lessons[p.lesson], notice: p.noticeText.en }
+    ar.course[p.lesson] = { ...ar.course[p.lesson], notice: p.noticeText.ar }
+  }
   ar.lessons[p.lesson] ??= {}
   if (Object.keys(notes).length) ar.lessons[p.lesson].exampleNotes = notes
   else delete ar.lessons[p.lesson].exampleNotes
@@ -29,4 +34,5 @@ for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()) {
 // both files are written with a one-space indent (their existing format)
 fs.writeFileSync('content/rules.json', JSON.stringify(rules, null, 1) + '\n')
 fs.writeFileSync('content/ar.json', JSON.stringify(ar, null, 1) + '\n')
+fs.writeFileSync('content/course.json', JSON.stringify(course, null, 1) + '\n')
 console.log(`merged ${n} lessons; now run: UPDATE_ALSO=1 npx vitest run src/content/also.test.ts && npx vitest run`)

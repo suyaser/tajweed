@@ -49,6 +49,7 @@ Every example has a short `note` saying what to listen for or why it is this rul
   "lesson": "ikhfa",
   "coverage": "within a word: #4; across words: #1 #2; tanween: #3 #5; heavy letter: #2; light: #1",
   "notes": "anything a reviewer should know",
+  "noticeText": { "en": "Hear step prompt naming this lesson's anchor/hear words", "ar": "…" },
   "examples": [
     { "role": "anchor", "verse": "113:3", "word_from": 2, "word_to": 3, "text": "…", "focus": "…", "stop": false,
       "note": "…", "noteAr": "…", "why": "why this word, which case it covers", "source": "book and page, or 'data only'" },
@@ -57,7 +58,7 @@ Every example has a short `note` saying what to listen for or why it is this rul
   ]
 }
 ```
-`text` is copied exactly from `public/data/surah/NNN.json` (`words`, basmala already removed). `word_from`/`word_to` are 1-based.
+`noticeText` replaces the lesson's `notice` in `course.json` (and its Arabic in `ar.json`). It is required whenever the old prompt names words that are no longer the anchor or hear examples. `text` is copied exactly from `public/data/surah/NNN.json` (`words`, basmala already removed). `word_from`/`word_to` are 1-based.
 
 ## 6. Checks (`EXAMPLES_DIR=docs/examples/proposals npx vitest run src/content/examples.check.test.ts`, `REPORT=1` for the full analysis)
 - **Errors:**
