@@ -2,6 +2,7 @@
 // books, and the credits the data licences require) and Guide.tsx (#/guide: how the app works). Both read the web's
 // own texts: content/resources.json and content/guide.json. Entries marked `app: false` need an account or the
 // teacher log (phase 2) and are left out here.
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -198,15 +199,28 @@ class _Credit extends StatelessWidget {
         children: [
           Text(t(cr['title']), style: ty.bodyMd.weight(600).copyWith(color: c.onSurface)),
           if (parts != null)
-            Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                for (final p in parts)
-                  if (p['link'] != null)
-                    _Ext(url: p['link'], text: p['text'], style: ty.bodyMd)
-                  else
-                    Text(p['text'], textDirection: p['ltr'] == true ? TextDirection.ltr : null, style: body),
-              ],
+            Text.rich(
+              TextSpan(
+                children: [
+                  for (final p in parts)
+                    if (p['link'] != null) ...[
+                      TextSpan(
+                        text: p['ltr'] == true ? '\u2066${p['text']}\u2069' : p['text'],
+                        style: TextStyle(color: c.primary, fontWeight: FontWeight.w600, decoration: TextDecoration.underline, decorationColor: c.primary),
+                        recognizer: TapGestureRecognizer()..onTap = () => _open(p['link']),
+                      ),
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 2),
+                          child: Icon(Icons.open_in_new, size: 14, color: c.primary),
+                        ),
+                      ),
+                    ] else
+                      TextSpan(text: p['ltr'] == true ? '\u2066${p['text']}\u2069' : p['text']),
+                ],
+              ),
+              style: body,
             ),
           if (cr['reciters'] == true)
             for (final r in content.reciters) Text('• ${r.nameAr}${isAr ? '' : ' · ${r.nameEn}'}', style: body),

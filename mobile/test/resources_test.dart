@@ -17,7 +17,7 @@ void main() {
       expect(find.bySemanticsLabel(t('Episode {n}', {'n': 6})), findsOneWidget);
       expect(find.textContaining('Bring your teacher log'), findsNothing); // phase 2
       expect(find.text(t('Fonts')), findsOneWidget);
-      expect(find.text('everyayah.com'), findsWidgets);
+      expect(find.textContaining('everyayah.com', findRichText: true), findsWidgets);
       expect(find.text(t('Licences')), findsOneWidget);
       expect(tester.takeException(), isNull);
     });

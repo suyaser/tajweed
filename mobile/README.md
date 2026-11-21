@@ -3,9 +3,11 @@
 The iOS and Android app (docs/19-play-store-plan.md, option d). It reads the web repo's content; nothing is copied by hand.
 Foundations F1–F11 are in (docs/19 §3): tokens and theme (`lib/ui/`), i18n (`lib/i18n/`), the content adapter
 and rulemap (`lib/content/`), core logic and the store (`lib/core/`), the kit widgets (`lib/ui/kit.dart`), the Quran
-text (`lib/quran/`), audio (`lib/audio/`). Screens so far (`lib/screens/`, routed by `lib/app/`): Shell (tabs Today,
-Rules, Path; Recovery), Onboarding, Today, Plan, Unit and the Lesson with every step. Routes not ported yet show
-"Not built yet". The dev pages open with `--dart-define=DEV_PAGE=gallery|quran`.
+text (`lib/quran/`), audio (`lib/audio/`). Every MVP screen is ported (`lib/screens/`, routed by `lib/app/`): Shell
+(tabs Today, Rules, Path; Recovery), Onboarding, Today, Plan, Progress, Unit, the Lesson with every step, Review,
+Listen, Rules, Rule, Mutun, Settings (MVP part), Resources and Guide. The phase-2 routes (account, teacher, circles)
+and the reserved ones (mushaf, drill) have no links in the app; opened directly they show "Not built yet". The dev
+pages open with `--dart-define=DEV_PAGE=gallery|quran`.
 
 ## App shell and navigation
 
@@ -19,6 +21,8 @@ A new learner's walk on a device, with a screenshot per step (onboarding, lesson
 
 ```sh
 tool/walk_shots.sh ios <sim-udid> <dir> ar light      # or android <serial>; en | dark
+tool/walk_shots.sh ios <sim-udid> <dir> ar light integration_test/screens_test.dart   # a learner five lessons in:
+                                                      # Today, Review, Listen, Rules, Rule, Mutun, Progress, Settings, Resources, Guide
 ```
 
 **Never type Arabic in Dart source**: editors normalise it (composed آ, shadda reordered). Take it from the data or
@@ -27,9 +31,11 @@ the dictionaries, or write `\u` escapes.
 ## Quran text
 
 `lib/quran/verse.dart` lays a verse or passage out as ONE `RichText` paragraph and paints every highlight (focus,
-lamp, Find marks, current ayah) behind it from the paragraph's selection boxes: words are never split into styled runs
-for a highlight (that cut letters off their marks on the web). Pause marks and brackets are their own smaller runs;
-tajweed colours are colour-only runs and stay off except where asked (`tajweed: true`). Each word is a semantics node
+lamp, Find marks, current ayah) behind it from the paragraph's selection boxes: a highlight background is never a styled run (on the web
+that cut letters off their marks). Pause marks and brackets are their own smaller runs;
+tajweed colours and the focus ink (teal, as the web) are colour-only runs; tajweed colours stay off except where asked
+(`tajweed: true`). A colour-only run keeps the word joined with all its marks: `test/verse_ink_test.dart` checks 9:1
+and the mid-word focus of 6:80 against the same text as one run. Each word is a semantics node
 with a tap action when `onWord` is set. The dev page `lib/dev/quran_page.dart` shows them with real data:
 
 ```sh
@@ -71,7 +77,8 @@ It copies `content/*.json`, `content/teach/`, `src/i18n/ar/`, `src/content/also.
 
 `lib/content/content.dart` adapts that JSON exactly as `src/content/{index,course,teach}.ts` do (Arabic overlay
 included); the topic list and the reciters are JSON (`content/topics.json`, `content/reciters.json`) read by both apps.
-Guide and Resources texts still live in their web screens; they move to JSON when those screens are ported.
+The Guide and Resources texts are JSON too (`content/guide.json`, `content/resources.json`); entries marked
+`"app": false` need an account or the teacher log and are hidden on the phone until phase 2.
 
 ## Run
 

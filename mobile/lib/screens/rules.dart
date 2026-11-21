@@ -178,6 +178,17 @@ class _RulesState extends State<Rules> {
             style: ty.bodyLg.copyWith(color: c.onSurface),
             decoration: InputDecoration(
               hintText: t('Search · \u0627\u0628\u062d\u062b — e.g. \u0625\u062e\u0641\u0627\u0621 or \u0645\u062f'),
+              filled: true,
+              fillColor: c.surfaceContainerLowest,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.control),
+                borderSide: BorderSide(color: c.outline),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Radii.control),
+                borderSide: BorderSide(color: c.outline),
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 12),
               prefixIcon: Icon(Icons.search, color: c.onSurfaceVariant),
               suffixIcon: _q.text.isEmpty ? null : AppIconButton(icon: Icons.close, label: t('Clear'), onPressed: () => setState(_q.clear)),
             ),
@@ -419,7 +430,16 @@ class _RuleRow extends StatelessWidget {
                     style: TextStyle(fontFamily: Fonts.naskh, fontSize: ty.bodyLg.fontSize, height: 1.5, color: c.onSurface).weight(600),
                   ),
                   if (!isAr) Text(l.nameEn, style: ty.bodyMd.weight(500).copyWith(color: c.onSurfaceVariant)),
-                  if (facts.isNotEmpty) Text(facts.join(sep), style: ty.label.weight(400).copyWith(color: c.onSurfaceVariant)),
+                  if (facts.isNotEmpty)
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        for (final (i, f) in facts.indexed) ...[
+                          if (i > 0) const Sep(),
+                          Text(f, style: ty.label.weight(400).copyWith(color: c.onSurfaceVariant)),
+                        ],
+                      ],
+                    ),
                 ],
               ),
             ),

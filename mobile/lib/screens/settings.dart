@@ -391,11 +391,7 @@ class _RecitersState extends State<_Reciters> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        r.nameAr,
-                                        textDirection: TextDirection.rtl,
-                                        style: ty.arabicBody.weight(500).copyWith(color: c.onSurface, height: 1.4),
-                                      ),
+                                      Text(r.nameAr, style: ty.arabicBody.weight(500).copyWith(color: c.onSurface, height: 1.4)),
                                       if (!isAr) Text(r.nameEn, style: ty.caption.copyWith(color: c.onSurfaceVariant)),
                                     ],
                                   ),

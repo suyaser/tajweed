@@ -2,13 +2,14 @@
 # Screenshots of a new learner's walk (integration_test/walk_test.dart): onboarding, lesson 1, Today, Path, the unit.
 #   tool/walk_shots.sh ios <simulator-udid> <out-dir> [ar|en] [light|dark]
 #   tool/walk_shots.sh android <adb-serial> <out-dir> [ar|en] [light|dark]
+# A sixth argument runs another walk: integration_test/screens_test.dart (a learner five lessons in, every other screen).
 set -eu
-platform=$1 dev=$2 out=$3 lang=${4:-ar} theme=${5:-light}
+platform=$1 dev=$2 out=$3 lang=${4:-ar} theme=${5:-light} walk=${6:-integration_test/walk_test.dart}
 cd "$(dirname "$0")/.."
 mkdir -p "$out"
-log="$out/${platform}_${lang}_${theme}_walk.log"
+log="$out/${platform}_${lang}_${theme}_$(basename "$walk" .dart).log"
 adb="${ANDROID_HOME:-$HOME/Library/Android/sdk}/platform-tools/adb"
-flutter test integration_test/walk_test.dart -d "$dev" --dart-define=WALK_LANG="$lang" --dart-define=WALK_THEME="$theme" >"$log" 2>&1 &
+flutter test "$walk" -d "$dev" --dart-define=WALK_LANG="$lang" --dart-define=WALK_THEME="$theme" >"$log" 2>&1 &
 pid=$!
 seen=""
 while kill -0 $pid 2>/dev/null; do

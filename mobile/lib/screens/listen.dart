@@ -154,7 +154,8 @@ class _ListenState extends State<Listen> {
   @override
   void dispose() {
     _listenTimer?.cancel();
-    if (_acc > 0) store.addListenSeconds(_acc);
+    final left = _acc; // after the unmount: saving notifies listeners, which may not rebuild while the tree is locked
+    if (left > 0) scheduleMicrotask(() => store.addListenSeconds(left));
     _compare?.cancel();
     _player.removeListener(_changed);
     _player.dispose();
@@ -645,7 +646,10 @@ class _Transport extends StatelessWidget {
                     : Text.rich(
                         TextSpan(
                           children: [
-                            if (phase != ComparePhase.silence) TextSpan(text: '$speaker$sep'),
+                            if (phase != ComparePhase.silence) ...[
+                              TextSpan(text: speaker),
+                              const WidgetSpan(alignment: PlaceholderAlignment.middle, child: Sep()),
+                            ],
                             TextSpan(
                               text: label,
                               style: TextStyle(color: c.onSurface),
