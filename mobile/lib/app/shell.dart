@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../content/content.dart';
 import '../i18n/i18n.dart';
+import '../screens/onboarding.dart';
 import '../ui/kit.dart';
 import '../ui/theme.dart';
 import 'recovery.dart';
@@ -138,6 +139,7 @@ class _ShellPageState extends State<ShellPage> {
   }
 
   Widget _screen(AppRoute r) => switch (r.name) {
+    'onboarding' => const Onboarding(),
     _ => NotBuilt(route: r),
   };
 }
