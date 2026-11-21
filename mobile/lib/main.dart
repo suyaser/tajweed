@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'spike.dart';
+import 'ui/theme.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -10,6 +11,8 @@ void main() {
       ('Amiri Quran', 'OFL-AmiriQuran.txt'),
       ('Amiri', 'OFL-Amiri.txt'),
       ('Noto Naskh Arabic', 'OFL-NotoNaskhArabic.txt'),
+      ('Noto Sans Arabic', 'OFL-NotoSansArabic.txt'),
+      ('Inter', 'OFL-Inter.txt'),
     ]) {
       yield LicenseEntryWithLineBreaks([font], await rootBundle.loadString('assets/fonts/$file'));
     }
@@ -17,7 +20,8 @@ void main() {
   runApp(MaterialApp(
     title: 'Tajweed Path',
     themeMode: ThemeMode.system,
-    darkTheme: ThemeData(brightness: Brightness.dark),
+    theme: buildTheme(brightness: Brightness.light, ar: true),
+    darkTheme: buildTheme(brightness: Brightness.dark, ar: true),
     home: const SpikeScreen(),
   ));
 }

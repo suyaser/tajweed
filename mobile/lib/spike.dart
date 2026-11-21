@@ -6,6 +6,7 @@ import 'package:just_audio/just_audio.dart';
 
 import 'audio/word_clip.dart';
 import 'quran/verse_text.dart';
+import 'ui/theme.dart';
 
 /// Week-1 go/no-go spike (docs/19 §2.5, P0): real examples from content/rules.json, whole ayah with the focus
 /// highlight, and the example's words played as a clip of the ayah file. Run with
@@ -27,14 +28,6 @@ class _Example {
   final String rule;
   final Map ex, verse;
   String? result;
-}
-
-class Tokens {
-  const Tokens(this.surface, this.ink, this.muted, this.focusBg, this.focusInk, this.gold, this.secondary);
-  final Color surface, ink, muted, focusBg, focusInk, gold, secondary;
-  // hand-ported from src/styles/app.css (light @theme, dark block); tool/gen_tokens.mjs replaces this in F2
-  static const light = Tokens(Color(0xfff8f5ef), Color(0xff1c1a17), Color(0xff4f4942), Color(0xffe2eeec), Color(0xff0b6e63), Color(0xff94702a), Color(0xff77561a));
-  static const dark = Tokens(Color(0xff121110), Color(0xffefe9df), Color(0xffb8b0a4), Color(0xff273834), Color(0xff5fd3c2), Color(0xffd9b46a), Color(0xffdfbe7a));
 }
 
 class SpikeScreen extends StatefulWidget {
@@ -100,7 +93,7 @@ class _SpikeScreenState extends State<SpikeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final k = Theme.of(context).brightness == Brightness.dark ? Tokens.dark : Tokens.light;
+    final k = _Ink(context.c);
     return Scaffold(
       backgroundColor: k.surface,
       appBar: AppBar(
@@ -125,7 +118,7 @@ class _SpikeScreenState extends State<SpikeScreen> {
     );
   }
 
-  Widget _card(_Example e, Tokens k) {
+  Widget _card(_Example e, _Ink k) {
     final words = (e.verse['words'] as List).cast<String>();
     final pauses = {for (final m in (e.verse['marks'] as List? ?? [])) m['after'] as int: m['mark'] as String};
     final v = layoutVerse(words,
@@ -144,4 +137,12 @@ class _SpikeScreenState extends State<SpikeScreen> {
       ]),
     );
   }
+}
+
+/// The spike's names for the token roles.
+class _Ink {
+  _Ink(AppColors c)
+      : surface = c.surface, ink = c.onSurface, muted = c.onSurfaceVariant, focusBg = c.focusBg, focusInk = c.focusInk,
+        gold = c.gold, secondary = c.secondary;
+  final Color surface, ink, muted, focusBg, focusInk, gold, secondary;
 }

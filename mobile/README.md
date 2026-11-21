@@ -33,7 +33,19 @@ The iOS bundle id and Android applicationId are set in ONE place: `mobile/app_id
 **Replace it with the owned domain's reverse id before the first upload to either store: the id is permanent once uploaded.**
 The Android `namespace` (Kotlin package of MainActivity) is not the store id and need not change.
 
+## Theme tokens
+
+`lib/ui/tokens.g.dart` is generated from `src/styles/app.css` (light `@theme`, dark block) and `tokens.css` (muṣḥaf palette):
+
+```sh
+node mobile/tool/gen_tokens.mjs          # after any colour, spacing, radius or shadow change on the web
+```
+
+`tool/check.sh` fails when it is out of date. `src/styles/tokens.test.ts` stays the only contrast check.
+`lib/ui/theme.dart` maps the roles onto `ThemeData` and holds the type scale (`context.type.bodyMd`, `context.c.primary`).
+
 ## Fonts
 
-`assets/fonts/`: Amiri Quran, Amiri, Noto Naskh Arabic (the web's `--font-quran` stack), each with its SIL OFL 1.1 text,
-registered in `main.dart` so they show on the Licences page. Noto Sans Arabic and Inter come with the UI work (F2).
+`assets/fonts/`: Amiri Quran, Amiri, Noto Naskh Arabic, Noto Sans Arabic and Inter (the web's `--font-*` stacks, from
+google/fonts), each with its SIL OFL 1.1 text, registered in `main.dart` so they show on the Licences page. Noto Naskh,
+Noto Sans Arabic and Inter are variable fonts: set weights with `style.weight(600)` (it sets the `wght` axis too).

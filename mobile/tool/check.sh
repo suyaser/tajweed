@@ -5,6 +5,7 @@ set -eu
 cd "$(dirname "$0")/../.."          # repo root
 npx vitest run
 mobile/tool/sync_assets.sh
+node mobile/tool/gen_tokens.mjs --check   # lib/ui/tokens.g.dart matches src/styles/*.css
 cd mobile
 flutter pub get >/dev/null 2>&1 || flutter pub get
 flutter analyze

@@ -26,7 +26,10 @@ flutter:
     - assets/fonts/OFL-AmiriQuran.txt
     - assets/fonts/OFL-Amiri.txt
     - assets/fonts/OFL-NotoNaskhArabic.txt
-  # Same faces as the web (src/styles/app.css --font-quran). Noto Sans Arabic and Inter come with the UI work (F2).
+    - assets/fonts/OFL-NotoSansArabic.txt
+    - assets/fonts/OFL-Inter.txt
+  # Same faces as the web (src/styles/app.css --font-*). Inter, Noto Sans Arabic and Noto Naskh Arabic are variable
+  # fonts: weights go through FontVariation (lib/ui/theme.dart `weight()`).
   fonts:
     - family: Amiri Quran
       fonts: [{asset: assets/fonts/AmiriQuran-Regular.ttf}]
@@ -34,3 +37,7 @@ flutter:
       fonts: [{asset: assets/fonts/Amiri-Regular.ttf}]
     - family: Noto Naskh Arabic
       fonts: [{asset: assets/fonts/NotoNaskhArabic.ttf}]
+    - family: Noto Sans Arabic
+      fonts: [{asset: assets/fonts/NotoSansArabic.ttf}]
+    - family: Inter
+      fonts: [{asset: assets/fonts/Inter.ttf}]
