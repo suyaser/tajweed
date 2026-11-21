@@ -4,7 +4,7 @@ What to give a muezzin we commission. One page; the agreement terms are at the e
 
 ## 1. What to record
 
-Two voices, two athans each:
+Three voices, two athans each:
 
 | # | Voice | Recording | Used for |
 |---|---|---|---|
@@ -12,10 +12,12 @@ Two voices, two athans each:
 | A2 | Makkah style | **Fajr athan** (with الصلاة خير من النوم) | Fajr |
 | B1 | **Egyptian style** | Regular athan | Dhuhr, Asr, Maghrib, Isha |
 | B2 | Egyptian style | Fajr athan | Fajr |
+| C1 | **Madinah (Masjid an-Nabawi) style**: slower, longer phrases, softer ornamentation than Makkah | Regular athan | Dhuhr, Asr, Maghrib, Isha |
+| C2 | Madinah style | Fajr athan | Fajr |
 
 Optional, if the session allows: the iqamah in the same voice (for a later feature).
 
-The two voices can be one muezzin who can do both styles well, or two muezzins. The maqam is the muezzin's choice; we want the familiar character of each style, not an imitation of a named sheikh.
+The voices can come from one muezzin who does several styles well, or from different muezzins. If the budget covers only two styles, record Makkah and Madinah first (the two users ask for most) and Egyptian later. The maqam is the muezzin's choice; we want the familiar character of each style, not an imitation of a named sheikh.
 
 ## 2. Text
 
