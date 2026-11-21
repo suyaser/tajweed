@@ -20,7 +20,7 @@ const TEXT = cn(
   '[&_.w[data-mark=found]]:bg-success-container [&_.w[data-mark=found]]:shadow-[0_0_0_2px_var(--color-success)]',
   '[&_.w[data-mark=missed]]:outline-2 [&_.w[data-mark=missed]]:outline-offset-1 [&_.w[data-mark=missed]]:outline-dashed [&_.w[data-mark=missed]]:outline-gold',
   '[&_.w[data-mark=wrong]]:outline-2 [&_.w[data-mark=wrong]]:outline-offset-1 [&_.w[data-mark=wrong]]:outline-dotted [&_.w[data-mark=wrong]]:outline-outline',
-  '[&_mark.focus]:rounded-md [&_mark.focus]:bg-focus-bg [&_mark.focus]:px-0.5 [&_mark.focus]:text-focus-ink [&_mark.focus]:[-webkit-text-stroke:0.025em_currentColor]',
+  '[&_mark.focus]:rounded-md [&_mark.focus]:bg-focus-bg [&_mark.focus]:shadow-[0_0_0_0.12em_var(--color-focus-bg)] [&_mark.focus]:[box-decoration-break:clone] [&_mark.focus]:text-focus-ink [&_mark.focus]:[-webkit-text-stroke:0.025em_currentColor]',
   '[&_.pause]:text-[0.8em] [&_.pause]:text-secondary [&_.br]:text-[0.85em] [&_.br]:text-gold',
 )
 /** Find: each tappable word a chip on its own tinted tile. */
@@ -113,7 +113,10 @@ function underline(text: string, off: number, q?: [number, number]): ReactNode {
 export function WordToken({ parts, mark, tajweed = true, isolate, onTap, tabbable, q }: WordTokenProps) {
   const word = parts.map((p) => p.text).join('')
   let off = 0
-  const inner = parts.map((p, i) => {
+  // Uncoloured words get one highlight over the whole substring: a highlight per segment cut a letter off from its
+  // vowel mark where segments meet (the tanween of بَرَآءَةٌ vanished).
+  const coloured = tajweed && parts.some((p) => p.colour && (!isolate || isolate === p.colour))
+  const inner = !coloured ? underline(word, 0, q) : parts.map((p, i) => {
     const t = underline(p.text, off, q)
     off += p.text.length
     return p.colour && tajweed && (!isolate || isolate === p.colour) ? (

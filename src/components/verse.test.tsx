@@ -19,3 +19,10 @@ it('pause marks follow their word; ayah 1 gets the surah title and basmala (not 
   expect(p.match(/class="basmala"/g)).toHaveLength(1)
   expect(p.indexOf('basmala')).toBeGreaterThan(p.indexOf('يونس'))
 })
+
+it('a word split into tajweed segments gets one highlight, so no vowel mark is cut off from its letter', () => {
+  // بَرَآءَةٌ as the data splits it (the madd in its own segment); colours off, as in lessons
+  const segments = [{ text: 'بَ' }, { text: 'رَآ', colour: 'madd2' as const }, { text: 'ءَةٌ' }, { text: ' مِّنَ' }]
+  const out = html(<VerseBlock segments={segments} tajweed={false} focus={[1, 1]} focusText="بَرَآءَةٌ" />)
+  expect(out.match(/<mark class="focus">([^<]*)<\/mark>/g)).toEqual(['<mark class="focus">بَرَآءَةٌ</mark>'])
+})
