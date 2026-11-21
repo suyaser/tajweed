@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../app/services.dart';
+import '../app/shell.dart';
 import '../audio/compare.dart';
 import '../audio/player.dart';
 import '../audio/recorder_view.dart';
@@ -15,6 +16,7 @@ import '../quran/quran.dart';
 import '../quran/verse.dart';
 import '../ui/kit.dart';
 import '../ui/theme.dart';
+import 'listen.dart';
 
 (int, int) _parse(VerseKey k) {
   final [s, a] = k.split(':').map(int.parse).toList();
@@ -223,10 +225,14 @@ class PlayOptions extends StatelessWidget {
     listenable: audio,
     builder: (context, _) => audio.offline
         ? const SizedBox.shrink()
-        : Wrap(spacing: Space.sm, runSpacing: Space.sm, children: [
-            AppChip(icon: Icons.speed_outlined, label: t('Slower'), pressed: audio.slow, onTap: () => audio.setSlow(!audio.slow)),
-            AppChip(icon: Icons.repeat, label: t('Loop'), pressed: audio.loop, onTap: () => audio.setLoop(!audio.loop)),
-          ]),
+        : Wrap(
+            spacing: Space.sm,
+            runSpacing: Space.sm,
+            children: [
+              AppChip(icon: Icons.speed_outlined, label: t('Slower'), pressed: audio.slow, onTap: () => audio.setSlow(!audio.slow)),
+              AppChip(icon: Icons.repeat, label: t('Loop'), pressed: audio.loop, onTap: () => audio.setLoop(!audio.loop)),
+            ],
+          ),
   );
 }
 
@@ -345,10 +351,7 @@ class _ExampleCardState extends State<ExampleCard> {
   @override
   Widget build(BuildContext context) => VersesOf(
     from: widget.ex.verseKey,
-    builder: (context, vs, failed) => ListenableBuilder(
-      listenable: widget.audio,
-      builder: (context, _) => _card(context, vs?.firstOrNull, failed),
-    ),
+    builder: (context, vs, failed) => ListenableBuilder(listenable: widget.audio, builder: (context, _) => _card(context, vs?.firstOrNull, failed)),
   );
 
   Widget _card(BuildContext context, Verse? v, bool failed) {
@@ -396,22 +399,25 @@ class _ExampleCardState extends State<ExampleCard> {
             onLoop: () => a.setLoop(!a.loop),
           ),
         if (!hide && v != null)
-          Column(spacing: Space.sm, children: [
-            AppButton(
-              label: _whole ? t('Hide the whole ayah') : t('Show the whole ayah'),
-              icon: _whole ? Icons.expand_less : Icons.expand_more,
-              variant: ButtonVariant.tertiary,
-              size: ButtonSize.sm,
-              onPressed: () => setState(() => _whole = !_whole),
-            ),
-            if (_whole)
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: Space.md),
-                decoration: BoxDecoration(color: c.surfaceContainerLow, borderRadius: BorderRadius.circular(Radii.control)),
-                child: ExampleVerse(ex: ex, verse: v, size: VerseSize.read),
+          Column(
+            spacing: Space.sm,
+            children: [
+              AppButton(
+                label: _whole ? t('Hide the whole ayah') : t('Show the whole ayah'),
+                icon: _whole ? Icons.expand_less : Icons.expand_more,
+                variant: ButtonVariant.tertiary,
+                size: ButtonSize.sm,
+                onPressed: () => setState(() => _whole = !_whole),
               ),
-          ]),
+              if (_whole)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: Space.md),
+                  decoration: BoxDecoration(color: c.surfaceContainerLow, borderRadius: BorderRadius.circular(Radii.control)),
+                  child: ExampleVerse(ex: ex, verse: v, size: VerseSize.read),
+                ),
+            ],
+          ),
         ...widget.children,
       ],
       child: hide
@@ -421,11 +427,17 @@ class _ExampleCardState extends State<ExampleCard> {
               decoration: BoxDecoration(color: c.surfaceContainer, shape: BoxShape.circle),
               child: Icon(Icons.hearing, size: 36, color: c.onSurfaceVariant),
             )
-          : Column(children: [
-              ExampleVerse(ex: ex, verse: v, spanOnly: true, size: VerseSize.focus, reference: false),
-              if (ex.note != null && ex.note!.isNotEmpty)
-                Tx(ex.note!, textAlign: TextAlign.center, style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
-            ]),
+          : Column(
+              children: [
+                ExampleVerse(ex: ex, verse: v, spanOnly: true, size: VerseSize.focus, reference: false),
+                if (ex.note != null && ex.note!.isNotEmpty)
+                  Tx(
+                    ex.note!,
+                    textAlign: TextAlign.center,
+                    style: ty.bodyMd.copyWith(color: c.onSurfaceVariant),
+                  ),
+              ],
+            ),
     );
   }
 }
@@ -442,20 +454,27 @@ class RowCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.c, ty = context.type;
-    return Panel(children: [
-      Row(spacing: Space.sm, children: [
-        Container(
-          width: 28,
-          height: 28,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(color: c.surfaceContainer, shape: BoxShape.circle),
-          child: Text(digits(n), style: ty.label.weight(700).copyWith(color: c.primary, height: 1)),
+    return Panel(
+      children: [
+        Row(
+          spacing: Space.sm,
+          children: [
+            Container(
+              width: 28,
+              height: 28,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(color: c.surfaceContainer, shape: BoxShape.circle),
+              child: Text(digits(n), style: ty.label.weight(700).copyWith(color: c.primary, height: 1)),
+            ),
+            Expanded(
+              child: Text(title, style: ty.bodyLg.weight(600).copyWith(color: c.onSurface)),
+            ),
+            ?status,
+          ],
         ),
-        Expanded(child: Text(title, style: ty.bodyLg.weight(600).copyWith(color: c.onSurface))),
-        ?status,
-      ]),
-      ...children,
-    ]);
+        ...children,
+      ],
+    );
   }
 }
 
@@ -484,20 +503,24 @@ Widget recorderCards({
   onStatus: onStatus,
   layout: (context, record, compare, private) {
     final c = context.c;
-    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: Space.lg, children: [
-      RowCard(
-        n: recordN,
-        title: t('Record yourself'),
-        status: hideCompareUntilTake && compare != null ? AppChip(tone: ChipTone.success, icon: Icons.check_circle, fill: true, label: t('Recorded')) : null,
-        children: [record, private],
-      ),
-      if (compare != null || !hideCompareUntilTake)
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      spacing: Space.lg,
+      children: [
         RowCard(
-          n: compareN ?? recordN + 1,
-          title: t('Compare'),
-          children: [compare ?? Text(t('Record first, then compare.'), style: context.type.bodyMd.copyWith(color: c.onSurfaceVariant))],
+          n: recordN,
+          title: t('Record yourself'),
+          status: hideCompareUntilTake && compare != null ? AppChip(tone: ChipTone.success, icon: Icons.check_circle, fill: true, label: t('Recorded')) : null,
+          children: [record, private],
         ),
-    ]);
+        if (compare != null || !hideCompareUntilTake)
+          RowCard(
+            n: compareN ?? recordN + 1,
+            title: t('Compare'),
+            children: [compare ?? Text(t('Record first, then compare.'), style: context.type.bodyMd.copyWith(color: c.onSurfaceVariant))],
+          ),
+      ],
+    );
   },
 );
 
@@ -516,61 +539,92 @@ class PassageRecite extends StatelessWidget {
     return VersesOf(
       from: from,
       to: to,
-      builder: (context, verses, failed) => Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: Space.md, children: [
-        if (onReady == null) Tx(t('Recite {x}. Listen first, then recite it yourself and record.', {'x': rangeRef(from, to)}), style: ty.bodyLg.copyWith(color: c.onSurface)),
-        Container(
-          padding: const EdgeInsets.all(Space.md),
-          decoration: BoxDecoration(color: c.surfaceContainerLowest, borderRadius: BorderRadius.circular(Radii.card), border: Border.all(color: c.outlineVariant)),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Row(spacing: 6, children: [
-              Icon(Icons.bookmark_outline, size: 16, color: c.secondary),
-              Text(rangeRef(from, to), style: ty.label.weight(600).copyWith(color: c.secondary)),
-            ]),
-            if (failed) Text(t('The text needs a connection the first time it is opened.'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
-            if (verses == null && !failed) ...[for (var i = 0; i < 3; i++) const Padding(padding: EdgeInsets.only(top: 12), child: Skeleton())],
-            if (verses != null) Passage(ayahs: [for (final v in verses) QAyah.of(v)], size: VerseSize.read),
-          ]),
-        ),
-        ListenableBuilder(
-          listenable: audio,
-          builder: (context, _) => RowCard(n: 1, title: t('Listen to the reciter'), children: [
-            if (audio.offline)
-              Text(t('Audio needs a connection. Read it aloud instead.'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant))
-            else
-              Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: AppButton(
-                  label: audio.busy ? t('Stop') : t('Listen'),
-                  icon: audio.busy ? Icons.pause : Icons.play_arrow,
-                  variant: ButtonVariant.secondary,
-                  onPressed: verses == null
-                      ? null
-                      : () {
-                          if (audio.busy) return audio.stop();
-                          audio.passage(verses);
-                          audio.player.whenDone().then((ok) => ok ? onReady?.call() : null);
-                        },
+      builder: (context, verses, failed) => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: Space.md,
+        children: [
+          if (onReady == null)
+            Tx(t('Recite {x}. Listen first, then recite it yourself and record.', {'x': rangeRef(from, to)}), style: ty.bodyLg.copyWith(color: c.onSurface)),
+          Container(
+            padding: const EdgeInsets.all(Space.md),
+            decoration: BoxDecoration(
+              color: c.surfaceContainerLowest,
+              borderRadius: BorderRadius.circular(Radii.card),
+              border: Border.all(color: c.outlineVariant),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  spacing: 6,
+                  children: [
+                    Icon(Icons.bookmark_outline, size: 16, color: c.secondary),
+                    Text(rangeRef(from, to), style: ty.label.weight(600).copyWith(color: c.secondary)),
+                  ],
                 ),
-              ),
-            PlayOptions(audio: audio),
-          ]),
-        ),
-        recorderCards(
-          from: from,
-          to: to,
-          audio: audio,
-          recordN: 2,
-          reciter: verses == null || audio.offline ? null : () => audio.passage(verses),
-          model: verses == null
-              ? null
-              : (path) {
-                  audio.player.load(verses, audio.reciter);
-                  playModelThenMe(audio.player, path);
-                },
-          onStatus: (s) => s == 'saved' || audio.offline ? onReady?.call() : null,
-        ),
-        if (onDone != null) AppButton(label: doneLabel ?? '', size: ButtonSize.lg, block: true, onPressed: onDone),
-      ]),
+                if (failed) Text(t('The text needs a connection the first time it is opened.'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
+                if (verses == null && !failed) ...[for (var i = 0; i < 3; i++) const Padding(padding: EdgeInsets.only(top: 12), child: Skeleton())],
+                if (verses != null) Passage(ayahs: [for (final v in verses) QAyah.of(v)], size: VerseSize.read),
+              ],
+            ),
+          ),
+          ListenableBuilder(
+            listenable: audio,
+            builder: (context, _) => RowCard(
+              n: 1,
+              title: t('Listen to the reciter'),
+              children: [
+                if (audio.offline)
+                  Text(t('Audio needs a connection. Read it aloud instead.'), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant))
+                else
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: AppButton(
+                      label: audio.busy ? t('Stop') : t('Listen'),
+                      icon: audio.busy ? Icons.pause : Icons.play_arrow,
+                      variant: ButtonVariant.secondary,
+                      onPressed: verses == null
+                          ? null
+                          : () {
+                              if (audio.busy) return audio.stop();
+                              audio.passage(verses);
+                              audio.player.whenDone().then((ok) => ok ? onReady?.call() : null);
+                            },
+                    ),
+                  ),
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: AppButton(
+                    label: t('Open in the player'),
+                    iconEnd: Icons.chevron_right,
+                    variant: ButtonVariant.tertiary,
+                    onPressed: () {
+                      audio.stop();
+                      go(context, listenPath(from, to));
+                    },
+                  ),
+                ),
+                PlayOptions(audio: audio),
+              ],
+            ),
+          ),
+          recorderCards(
+            from: from,
+            to: to,
+            audio: audio,
+            recordN: 2,
+            reciter: verses == null || audio.offline ? null : () => audio.passage(verses),
+            model: verses == null
+                ? null
+                : (path) {
+                    audio.player.load(verses, audio.reciter);
+                    playModelThenMe(audio.player, path);
+                  },
+            onStatus: (s) => s == 'saved' || audio.offline ? onReady?.call() : null,
+          ),
+          if (onDone != null) AppButton(label: doneLabel ?? '', size: ButtonSize.lg, block: true, onPressed: onDone),
+        ],
+      ),
     );
   }
 }

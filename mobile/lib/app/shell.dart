@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../content/content.dart';
 import '../i18n/i18n.dart';
 import '../screens/learn.dart';
+import '../screens/listen.dart';
 import '../screens/onboarding.dart';
 import '../screens/plan.dart';
 import '../screens/review.dart';
@@ -150,6 +151,7 @@ class _ShellPageState extends State<ShellPage> {
     'today' => const Today(),
     'learn' => Learn(lessonId: r.params['lessonId']!),
     'plan' => const Plan(),
+    'listen' => Listen(range: r.params['range']),
     'review' => ReviewScreen(go: r.params['go'] != null, more: int.tryParse(r.params['more'] ?? '') ?? 0),
     'unit' => UnitScreen(id: r.params['unitId']!, finale: r.params['finale'] != null),
     _ => NotBuilt(route: r),
