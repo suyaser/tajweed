@@ -1,7 +1,13 @@
 // Dev page: the Quran widgets (F7) with real data. English-only labels for the page's own controls.
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
+import '../audio/downloads.dart';
 import '../audio/player.dart';
+import '../audio/recorder.dart';
+import '../audio/recorder_view.dart';
+import '../audio/recordings.dart';
 import '../content/content.dart';
 import '../content/rulemap.dart';
 import '../core/types.dart' hide Passage;
@@ -26,7 +32,7 @@ const _walk = bool.fromEnvironment('DEV_WALK');
 
 class _QuranPageState extends State<QuranPage> {
   final _scroll = ScrollController();
-  final _keys = {for (final k in ['examples', 'passage', 'colours', 'find', 'player']) k: GlobalKey()};
+  final _keys = {for (final k in ['examples', 'passage', 'colours', 'find', 'player', 'recorder', 'download']) k: GlobalKey()};
 
   Future<void> _shot(String name) async {
     await Future<void>.delayed(const Duration(milliseconds: 900));
@@ -35,11 +41,23 @@ class _QuranPageState extends State<QuranPage> {
   }
 
   Future<void> _show(String section) async {
+    // the list is lazy: scroll on until the section is built
+    for (var i = 0; i < 40 && _keys[section]!.currentContext == null; i++) {
+      final p = _scroll.position;
+      _scroll.jumpTo(p.pixels + 500 > p.maxScrollExtent ? 0 : p.pixels + 500);
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+    }
     final ctx = _keys[section]!.currentContext;
-    if (ctx != null) await Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 200));
+    if (ctx != null && ctx.mounted) await Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 200));
   }
 
   Future<void> _runWalk() async {
+    const only = String.fromEnvironment('DEV_WALK_ONLY'); // recorder | download: start the walk there
+    if (only.isNotEmpty) {
+      await (only == 'recorder' ? _walkRecorder() : _walkDownload());
+      debugPrint('SHOT done');
+      return;
+    }
     await _shot('examples');
     _scroll.jumpTo(_scroll.position.maxScrollExtent * 0.33);
     await _shot('examples2');
@@ -83,7 +101,68 @@ class _QuranPageState extends State<QuranPage> {
     await _walkRecorder();
   }
 
-  Future<void> _walkRecorder() async {}
+  /// Record ~3 s (the mic permission granted beforehand: simctl privacy / adb pm grant), then Both.
+  Future<void> _walkRecorder() async {
+    await _show('recorder');
+    final r = _recorder.currentState!;
+    final saved = r.record();
+    for (var i = 0; i < 200 && r.status != RecStatus.recording; i++) {
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+    }
+    if (r.status != RecStatus.recording) {
+      debugPrint('RECORDER did not start: ${r.status.name}');
+      await _until((_) => r.status != RecStatus.requesting); // the start timeout
+      await _shot('recorder_failed');
+      return _walkDownload();
+    }
+    await Future<void>.delayed(const Duration(seconds: 3));
+    await _shot('recorder_recording');
+    await r.record(); // stop
+    await saved;
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    debugPrint('RECORDER take ${r.last?.durationMs} ms ${r.last == null ? '' : File(_recordings!.pathOf(r.last!)).lengthSync()} bytes');
+    await _shot('recorder_saved');
+    _player.load([_ikhlas[1]], _reciter); // Both: one short ayah, then the take
+    final both = r.both();
+    await _until((s) => s.clip && s.status == PlayerStatus.playing);
+    await _shot('recorder_both_me');
+    await both;
+    _player.load(_ikhlas, _reciter);
+    await _walkDownload();
+  }
+
+  /// Download the first unit, then (airplane mode switched on by the host when it sees SHOT downloaded) play a saved
+  /// ayah and an unsaved one.
+  Future<void> _walkDownload() async {
+    await _show('download');
+    final o = _offline.currentState!;
+    if (o.saved) await o.delete();
+    final keys = content.unitAyahs(_unit);
+    final run = o.download();
+    await Future<void>.delayed(const Duration(milliseconds: 400));
+    await _shot('downloading');
+    await run;
+    debugPrint('DOWNLOAD ${await _downloads!.count(_reciter, keys)} of ${keys.length} saved');
+    await _shot('downloaded');
+    for (var i = 0; i < 30 && await isOnline(); i++) {
+      await Future<void>.delayed(const Duration(seconds: 1));
+    }
+    debugPrint('NETWORK online=${await isOnline()}');
+    final saved = (await getVerse(keys[1]))!;
+    debugPrint('SOURCE ${await _downloads!.source(_reciter, saved.verseKey)}');
+    await _show('player');
+    _player.load([saved], _reciter, skipBasmala: true);
+    _player.play();
+    await _until((s) => s.word != null || s.status == PlayerStatus.idle || s.error != null);
+    await _shot('offline_saved_ayah');
+    await _until((s) => s.status == PlayerStatus.idle || s.error != null, seconds: 40);
+    final unsaved = (await getVerse('2:255'))!;
+    _player.load([unsaved], _reciter);
+    _player.play();
+    await _until((s) => s.error != null || s.status == PlayerStatus.playing);
+    await _shot('offline_unsaved_ayah');
+    _player.stop();
+  }
 
   final _verses = <VerseKey, Verse>{};
   List<Verse> _ikhlas = [], _falaq = [];
@@ -91,6 +170,11 @@ class _QuranPageState extends State<QuranPage> {
   String? _isolate;
   final _find = <int, WordMark>{};
   final _player = Player();
+  Recordings? _recordings;
+  final _recorder = GlobalKey<RecorderViewState>();
+  Downloads? _downloads;
+  final _offline = GlobalKey<OfflineAudioState>();
+  Unit get _unit => content.units.first;
   var _lastLog = '';
 
   Reciter get _reciter => content.reciters.first; // husary-muallim, the web's default
@@ -115,6 +199,9 @@ class _QuranPageState extends State<QuranPage> {
     _verses['114:4'] = (await getVerse('114:4'))!;
     _ikhlas = await loadSurah(112);
     _falaq = await loadSurah(113);
+    _recordings = await Recordings.open();
+    _downloads = await Downloads.open();
+    _player.source = _downloads!.source; // a saved file first, else the network
     _player.addListener(_log);
     _player.load(_ikhlas, _reciter);
     if (mounted) setState(() {});
@@ -187,6 +274,24 @@ class _QuranPageState extends State<QuranPage> {
           ]),
           sec('Player: tap a word for its clip; play for the lamp', key: 'player', [
             ListenableBuilder(listenable: _player, builder: (context, _) => _playerPanel(context)),
+          ]),
+          sec('Recorder: record, then Reciter / Me / Both (112:1-4)', key: 'recorder', [
+            Panel(children: [
+              RecorderView(
+                key: _recorder,
+                from: '112:1',
+                to: '112:4',
+                player: _player,
+                recordings: _recordings!,
+                reciter: () {
+                  _player.load(_ikhlas, _reciter);
+                  _player.play();
+                },
+              ),
+            ]),
+          ]),
+          sec('Offline audio (unit ${_unit.n}; the player prefers saved files)', key: 'download', [
+            OfflineAudio(key: _offline, unit: _unit, reciter: _reciter, downloads: _downloads!),
           ]),
           sec('Find chips (ikhfa in 114:4; tap a word)', key: 'find', [
             Panel(children: [
