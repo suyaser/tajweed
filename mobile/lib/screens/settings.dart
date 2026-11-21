@@ -18,7 +18,6 @@ import '../quran/quran.dart';
 import '../quran/verse.dart';
 import '../ui/kit.dart';
 import '../ui/theme.dart';
-import 'lesson_parts.dart';
 import 'review.dart';
 import 'study.dart';
 
@@ -153,7 +152,7 @@ class _SettingsState extends State<SettingsScreen> {
           ar: '\u0627\u0644\u062a\u0644\u0627\u0648\u0629',
           children: [
             _Reciters(value: s.reciterId, onChange: (id) => _set({'reciterId': id})),
-            Fold(
+            _RowFold(
               icon: Icons.tune,
               title: t('Advanced'),
               children: [
@@ -719,5 +718,47 @@ class _ResetState extends State<_Reset> {
         ],
       ),
     );
+  }
+}
+
+/// A fold that is one row of a [Group] (the web's details in Recitation): the summary as a row with its icon tile,
+/// the rows under a divider when open. No card of its own.
+class _RowFold extends StatefulWidget {
+  const _RowFold({required this.icon, required this.title, required this.children});
+  final IconData icon;
+  final String title;
+  final List<Widget> children;
+  @override
+  State<_RowFold> createState() => _RowFoldState();
+}
+
+class _RowFoldState extends State<_RowFold> {
+  bool _open = false;
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c, ty = context.type;
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Semantics(
+        button: true,
+        expanded: _open,
+        child: InkWell(
+          onTap: () => setState(() => _open = !_open),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Space.md, vertical: 12),
+            child: Row(spacing: 12, children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(color: c.surfaceContainer, borderRadius: BorderRadius.circular(Radii.control)),
+                child: Icon(widget.icon, size: 20, color: c.onSurfaceVariant),
+              ),
+              Expanded(child: Text(widget.title, style: (isAr ? ty.bodyLg : ty.bodyMd).weight(600).copyWith(color: c.onSurface))),
+              AnimatedRotation(turns: _open ? 0.5 : 0, duration: const Duration(milliseconds: 150), child: Icon(Icons.expand_more, size: 20, color: c.outline)),
+            ]),
+          ),
+        ),
+      ),
+      if (_open) ...[for (final w in widget.children) ...[Divider(height: 1, color: c.outlineVariant), w]],
+    ]);
   }
 }
