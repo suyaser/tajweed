@@ -50,7 +50,9 @@ void main() {
       }
     }
 
+    var shots = 0;
     Future<void> shot(String name) async {
+      shots++;
       await idle(900);
       debugPrint('SHOT ${_lang}_${_theme}_$name');
       await idle(2200);
@@ -169,7 +171,7 @@ void main() {
     await shot('i0_guide');
     await scrollDown(900);
     await shot('i1_guide_more');
-    debugPrint('SHOT done');
+    debugPrint('SHOT done $shots'); // walk_shots.sh checks it took this many
     await idle(500);
   });
 }
