@@ -1,5 +1,6 @@
 import { AR } from '.'
 import library from './ar/library.json'
+import resources from '../../content/resources.json'
 
 // Every t('…') literal in the library/teacher/settings/shell side of the app has an Arabic entry (library.json, or study.json for shared phrases).
 const SOURCES = import.meta.glob<string>([
@@ -13,7 +14,10 @@ const DYNAMIC = [
   'pause mark: continuing is better', 'pause mark: stopping is better', 'pause mark: stop', 'pause mark: do not stop',
   'pause mark: stopping allowed', 'pause mark: stop at one of the pair', 'pause mark: sakt', 'prostration mark', 'pause mark',
   'Found', 'Missed', 'Not this one',
-]
+  // Resources' texts (content/resources.json)
+  ...resources.panels.flatMap((p) => (p.items as { note?: string; body?: string }[]).flatMap((i) => [i.note, i.body])),
+  ...(resources.credits.items as { title: string; after?: string; editions?: { text: string; label: string }[] }[]).flatMap((c) => [c.title, c.after, ...(c.editions ?? []).flatMap((e) => [e.text, e.label])]),
+].filter((k): k is string => !!k)
 
 const LIT = /\bt\(\s*(['"])((?:\\.|(?!\1).)*)\1/g
 const literals = (src: string) => [...src.matchAll(LIT)].map((m) => m[2].replace(/\\(['"\\])/g, '$1'))

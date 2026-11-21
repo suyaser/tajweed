@@ -7,6 +7,9 @@ const html: string = readFileSync('index.html', 'utf8')
 const listed = html.match(/icon_names=([a-z0-9_,]+)/)?.[1].split(',') ?? []
 
 const sources = import.meta.glob<string>(['../../**/*.{ts,tsx}', '!../../**/*.test.{ts,tsx}'], { query: '?raw', import: 'default', eager: true })
+// Shared texts that name icons ("icon": "x"), read as `icon: "x"`.
+const content = import.meta.glob<string>('../../../content/{guide,resources}.json', { query: '?raw', import: 'default', eager: true })
+for (const [f, s] of Object.entries(content)) sources[f] = s.replace(/"icon":/g, 'icon:')
 
 /** Icon names in code: <Icon name="x"> / name={a ? 'x' : 'y'}, icon="x" / icon: 'x' / icon={…}, and *_ICON(S) maps. */
 export function iconNames(src: string): string[] {

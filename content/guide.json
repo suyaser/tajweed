@@ -1,0 +1,93 @@
+{
+  "basics": [
+    { "icon": "route", "ar": "المسار", "en": "The course", "body": "Ten units that follow real surahs, from الناس back to الضحى, then الفاتحة and beyond. Lessons open one after another; each unit ends with a finale passage you recite, which opens the next unit." },
+    { "icon": "menu_book", "ar": "الدرس", "en": "A lesson", "body": "Seven short steps: hear real words, notice the sound, learn the rule, say it, find it in an ayah, check yourself, then recite a passage. At most two new lessons a day." },
+    { "icon": "history_edu", "ar": "المراجعة", "en": "Review", "body": "Every rule you learn is asked daily for a week, then after 3, 7, 14, 30, 60 and 120 days. Answer right and it waits longer; answer wrong and it comes back sooner." },
+    { "icon": "record_voice_over", "ar": "الشيخ", "en": "A teacher (optional)", "body": "The app never grades your recitation. If you have a teacher, plan what to recite, log corrections in class, and they come back in your review until fixed." }
+  ],
+  "sections": [
+    {
+      "icon": "route", "ar": "المسار", "en": "The course",
+      "blocks": [
+        { "kind": "p", "mixed": true, "text": "Ten units (0–9) that follow the surahs of the intro course by المهندس علاء حامد: الناس back towards الضحى, then الفاتحة, then rules from beyond جزء عمّ, then المخارج والصفات in full." },
+        { "kind": "ul", "items": [
+          { "text": "Lessons open one after another. Today always shows the next one." },
+          { "text": "At most two new lessons a day. Spacing is what makes them stick." },
+          { "text": "After a unit's last lesson comes its finale: a passage you recite. “I recited it” opens the next unit." },
+          { "text": "Some units list lines of تحفة الأطفال or الجزرية to memorise. They are optional." }
+        ] },
+        { "kind": "link", "to": "plan", "text": "Open the course map" }
+      ]
+    },
+    {
+      "icon": "menu_book", "ar": "الدرس", "en": "The seven lesson steps",
+      "blocks": [
+        { "kind": "ol", "items": [
+          { "mixed": true, "text": "اسمع Hear: three real words with the rule, from the reciter. Play each as often as you like." },
+          { "mixed": true, "text": "لاحظ Notice: two words, one with the sound you just heard and one without. Which is which, by ear? Then both are named." },
+          { "mixed": true, "text": "تعلّم Learn: the rule card, with its name, definition and examples." },
+          { "mixed": true, "text": "ردّد Say: repeat after the reciter, record yourself, compare, and say if it sounded the same." },
+          { "mixed": true, "text": "استخرج Find: tap every word in an ayah that has the rule." },
+          { "mixed": true, "text": "تحقّق Check: two or three quick questions." },
+          { "mixed": true, "text": "اقرأ Recite: a real passage that uses only rules you know. Listen, recite, record, then “I recited it”." }
+        ] },
+        { "kind": "note", "text": "Leave mid-lesson and it resumes at the same step the same day. Finished lessons can be replayed from the course map." }
+      ]
+    },
+    {
+      "icon": "history_edu", "ar": "سبق · سبقي · منزل", "en": "How review works",
+      "blocks": [
+        { "kind": "ul", "items": [
+          { "mixed": true, "text": "سبق: today's new lesson." },
+          { "mixed": true, "text": "سبقي: lessons of the past week. Each is asked every day for its first week." },
+          { "mixed": true, "text": "منزل: older lessons. They return after 3, 7, 14, 30, 60, then 120 days. A wrong answer brings the rule back the next day and starts its ladder again." }
+        ] },
+        { "kind": "levels", "lead": "Each rule shows a level:", "levels": ["not started", "learning", "known", "strong"], "tail": ". Strong means a month of right answers on different examples." },
+        { "kind": "note", "text": "If more than 15 reviews are overdue, new lessons pause until you catch up. The practice card on Today lists your recent passages to recite again." }
+      ]
+    },
+    {
+      "icon": "record_voice_over", "ar": "الشيخ", "en": "With a teacher (optional)",
+      "blocks": [
+        { "kind": "ul", "items": [
+          { "text": "Before class: Teacher tab → Plan a session. The app suggests your unit finale and corrections to re-check." },
+          { "mixed": true, "text": "In class: tap the word your teacher corrected, choose the rule and whether it was clear (جلي) or subtle (خفي)." },
+          { "text": "After class: mark the finale passed or not yet (passed opens the next unit). Corrections join your review." },
+          { "text": "Next class: re-check each correction. “Fixed” closes it; “still wrong” sends its rule back to the start." }
+        ] }
+      ]
+    },
+    {
+      "icon": "headphones", "ar": "الأحكام والاستماع", "en": "Rules and listening",
+      "blocks": [
+        { "kind": "ul", "items": [
+          { "text": "Rules tab: every rule card, the mind map, and confusing pairs. Open any card any time, even before its lesson." },
+          { "text": "Colours in the Quran text are the tajweed colours of the printed coloured muṣḥaf. Turn them off in the player with “Colours off”." },
+          { "text": "The player can loop, slow down, and pause after each ayah for you to repeat." },
+          { "text": "Cards marked “needs teacher” have a point the sources disagree on. Ask your teacher." }
+        ] }
+      ]
+    },
+    {
+      "icon": "shield", "ar": "بياناتك", "en": "Your data",
+      "blocks": [
+        { "kind": "ul", "items": [
+          { "text": "Your progress is kept on this device by default. No account is needed." },
+          { "text": "If you sign in (optional), your progress is backed up to our server and kept in step on your other devices." },
+          { "text": "Your recordings never leave this device, signed in or not." },
+          { "text": "Not signed in? Install the app to your home screen so the browser doesn't clear it, and save a backup file from Settings now and then." }
+        ] }
+      ]
+    },
+    {
+      "icon": "group", "ar": "الحساب والحلقة", "en": "Account and circles (optional)",
+      "blocks": [
+        { "kind": "ul", "items": [
+          { "text": "Sign in from Settings with an email link or Google to back up and sync your progress." },
+          { "text": "Teacher link: a read-only page of your progress for your teacher. You can turn it off any time." },
+          { "mixed": true, "text": "A circle (حلقة) is a small group of friends who see who studied on which days this week. No scores and no ranking." }
+        ] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "panels": [
+    {
+      "ar": "اقرأ على شيخ", "en": "Find a teacher",
+      "items": [
+        { "note": "This app cannot hear you. A teacher with a sanad can, and only a teacher can grant an ijazah. These connect you with one online." },
+        { "icon": "school", "name": "مقرأة الحرمين", "link": "https://maqraa.prh.gov.sa/", "body": "The online maqraʾa of the Two Holy Mosques: live recitation sessions with qualified teachers, with a section for women." },
+        { "icon": "school", "name": "المقرأة الإلكترونية العالمية، الجامعة الإسلامية", "link": "https://apps.apple.com/app/id6448706254", "body": "Run under the Quran College of the Islamic University of Madinah. Teachers with a sanad, in all ten readings." },
+        { "icon": "school", "name": "Maqraatec", "link": "https://apps.apple.com/app/id1582779076", "body": "A free app with certified teachers for correcting recitation and memorisation, at any hour." },
+        { "icon": "school", "name": "Qutor", "link": "https://qutor.com/", "body": "Paid one-to-one tutors who set their own rates, with a free 30-minute trial." },
+        { "note": "Bring your teacher log: Teacher keeps their corrections, and a share link shows them your progress." }
+      ]
+    },
+    {
+      "ar": "الاستماع والترديد", "en": "Listen & repeat",
+      "items": [
+        { "icon": "headphones", "name": "المصحف المعلم، الحصري", "link": "https://www.youtube.com/results?search_query=%D8%A7%D9%84%D8%AD%D8%B5%D8%B1%D9%8A%20%D8%A7%D9%84%D9%85%D8%B5%D8%AD%D9%81%20%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%85", "body": "He reads, pauses, and you repeat. The best daily model." },
+        { "icon": "headphones", "name": "المصحف المعلم، المنشاوي مع الأطفال", "link": "https://www.youtube.com/results?search_query=%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A7%D9%88%D9%8A%20%D8%A7%D9%84%D9%85%D8%B5%D8%AD%D9%81%20%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%85%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%A3%D8%B7%D9%81%D8%A7%D9%84", "body": "Children repeat after him, so you hear common mistakes being corrected." },
+        { "icon": "public", "name": "Quran.com", "link": "https://quran.com", "body": "Ayah audio and word-by-word playback. The player links there for every passage." }
+      ]
+    },
+    {
+      "ar": "الشرح", "en": "Explanations",
+      "items": [
+        { "icon": "smart_display", "name": "تعلم التجويد بطريقة عملية مبسطة، م. علاء حامد", "link": "https://www.youtube.com/playlist?list=PL1i_D1Vw3d5PrPubon8D1z9Cl3Hl8jJsX", "episodes": true, "body": "Your intro course: 6 practical episodes. The course units follow its surahs, and each lesson links to the moment its rule is explained." },
+        { "icon": "smart_display", "name": "التجويد المصور، د. أيمن سويد", "link": "https://www.youtube.com/results?search_query=%D8%A3%D9%8A%D9%85%D9%86%20%D8%B3%D9%88%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AA%D8%AC%D9%88%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B5%D9%88%D8%B1", "body": "The most detailed visual explanation of المخارج والصفات. Use it with unit 9." }
+      ]
+    },
+    {
+      "ar": "متون للحفظ", "en": "Texts to memorise",
+      "items": [
+        { "icon": "history_edu", "name": "تحفة الأطفال، الجمزوري", "body": "61 lines on النون والميم واللام والمد. The unit pages show the lines that match each unit." },
+        { "icon": "history_edu", "name": "المقدمة الجزرية، ابن الجزري", "body": "107 lines on المخارج, الصفات and all the rules. The standard text for mastery." }
+      ]
+    },
+    {
+      "ar": "كتب وأدوات", "en": "Books & tools",
+      "items": [
+        { "icon": "menu_book", "name": "مصحف التجويد الملوّن، دار المعرفة", "body": "The colours in this app follow its scheme, so your eye learns both at once." },
+        { "icon": "menu_book", "name": "القاعدة النورانية", "body": "Only if reading letters and vowels is still slow. Use it alongside the first units." },
+        { "icon": "menu_book", "name": "Tajweed Rules of the Qur'an", "body": "Kareema Carol Czerepinski, 3 parts. A clear English textbook with exercises." },
+        { "icon": "mic", "name": "Tarteel", "link": "https://www.tarteel.ai", "body": "Listens while you recite and flags missed or wrong words. It cannot judge fine tajweed; a teacher still can." }
+      ]
+    }
+  ],
+  "credits": {
+    "ar": "شكر وإسناد", "en": "Credits",
+    "items": [
+      {
+        "title": "Quran text",
+        "en": [{ "text": "Uthmani text from the " }, { "link": "https://tanzil.net", "text": "Tanzil Quran Text" }, { "text": " (Tanzil Project, " }, { "link": "https://tanzil.net", "text": "tanzil.net" }, { "text": "), copied verbatim and unchanged." }],
+        "ar": [{ "text": "النص العثماني من " }, { "link": "https://tanzil.net", "text": "Tanzil Quran Text", "ltr": true }, { "text": " (مشروع تنزيل، " }, { "link": "https://tanzil.net", "text": "tanzil.net" }, { "text": ")، منقولًا بحرفه دون تغيير." }]
+      },
+      {
+        "title": "Tajweed colours",
+        "en": [{ "link": "https://github.com/cpfair/quran-tajweed", "text": "quran-tajweed" }, { "text": " by Collin Fair, licensed " }, { "link": "https://creativecommons.org/licenses/by/4.0/", "text": "CC BY 4.0" }, { "text": ". Converted to per-ayah spans; colours mapped to the muṣḥaf palette." }],
+        "ar": [{ "link": "https://github.com/cpfair/quran-tajweed", "text": "quran-tajweed" }, { "text": " من إعداد " }, { "text": "Collin Fair", "ltr": true }, { "text": "، بترخيص " }, { "link": "https://creativecommons.org/licenses/by/4.0/", "text": "CC BY 4.0", "ltr": true }, { "text": ". حُوِّل إلى مقاطع لكل آية، ورُبطت ألوانه بألوان المصحف." }]
+      },
+      {
+        "title": "Word timings",
+        "en": [{ "link": "https://github.com/cpfair/quran-align", "text": "quran-align" }, { "text": " by Collin Fair, licensed " }, { "link": "https://creativecommons.org/licenses/by/4.0/", "text": "CC BY 4.0" }, { "text": ". Used to light the current word and play single words." }],
+        "ar": [{ "link": "https://github.com/cpfair/quran-align", "text": "quran-align" }, { "text": " من إعداد " }, { "text": "Collin Fair", "ltr": true }, { "text": "، بترخيص " }, { "link": "https://creativecommons.org/licenses/by/4.0/", "text": "CC BY 4.0", "ltr": true }, { "text": ". يُستخدم لإضاءة الكلمة الحالية وتشغيل الكلمات منفردة." }]
+      },
+      {
+        "title": "Recitation audio",
+        "en": [{ "text": "Streamed from " }, { "link": "https://everyayah.com", "text": "everyayah.com" }, { "text": ". Reciters:" }],
+        "ar": [{ "text": "تُبَثّ من " }, { "link": "https://everyayah.com", "text": "everyayah.com" }, { "text": ". القرّاء:" }],
+        "reciters": true
+      },
+      {
+        "title": "Mutun editions",
+        "editions": [
+          { "text": "تحفة الأطفال · سليمان الجمزوري, with the notes of علي محمد الضباع.", "link": "https://shamela.ws/book/9632", "label": "Shamela 9632" },
+          { "text": "المقدمة الجزرية · ابن الجزري, ed. عبد المحسن القاسم, 2nd ed. 1441/2020.", "link": "https://shamela.ws/book/581", "label": "Shamela 581" }
+        ],
+        "after": "The classical texts are in the public domain; the vowelling and notes belong to their editors."
+      },
+      {
+        "title": "Fonts",
+        "en": [{ "text": "Amiri Quran, Amiri, Noto Naskh Arabic, Noto Sans Arabic and Inter, licensed " }, { "link": "https://openfontlicense.org", "text": "SIL Open Font License 1.1" }, { "text": ". Icons: Material Symbols, licensed " }, { "link": "https://www.apache.org/licenses/LICENSE-2.0", "text": "Apache License 2.0" }, { "text": "." }],
+        "ar": [{ "text": "خطوط " }, { "text": "Amiri Quran, Amiri, Noto Naskh Arabic, Noto Sans Arabic, Inter", "ltr": true }, { "text": "، بترخيص " }, { "link": "https://openfontlicense.org", "text": "SIL Open Font License 1.1", "ltr": true }, { "text": ". الأيقونات: " }, { "text": "Material Symbols", "ltr": true }, { "text": "، بترخيص " }, { "link": "https://www.apache.org/licenses/LICENSE-2.0", "text": "Apache License 2.0", "ltr": true }, { "text": "." }]
+      }
+    ]
+  }
+}

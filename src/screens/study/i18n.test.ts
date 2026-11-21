@@ -21,6 +21,19 @@ function keys(code: string): string[] {
   return out
 }
 
+import guide from '../../../content/guide.json'
+
+// The Guide's texts (content/guide.json): every English string is a t() key.
+const GUIDE = [
+  ...guide.basics.flatMap((b) => [b.en, b.body]),
+  ...guide.sections.flatMap((s) => [s.en, ...(s.blocks as { text?: string; lead?: string; tail?: string; levels?: string[]; items?: { text: string }[] }[]).flatMap((b) => [b.text, b.lead, b.tail, ...(b.levels ?? []), ...(b.items ?? []).map((i) => i.text)])]),
+].filter((k): k is string => !!k)
+
+test('content/guide.json: every key has an Arabic entry', () => {
+  expect(GUIDE.length).toBeGreaterThan(40)
+  expect(GUIDE.filter((k) => !(k in AR))).toEqual([])
+})
+
 test('finds keys (sanity)', () => {
   expect(keys(`t('a'), tn('{n} day', "{n} days", n), t("it's"), t('don\\'t')`)).toEqual(['a', '{n} day', '{n} days', "it's", "don't"])
   expect(Object.keys(sources).length).toBeGreaterThan(20)
