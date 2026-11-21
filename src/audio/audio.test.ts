@@ -160,6 +160,16 @@ describe('player', () => {
     expect(p.state.status).toBe('idle')
   })
 
+  it('playWords from the first word starts at the file start (its timing can begin after the voice)', async () => {
+    const { el, p } = setup()
+    const v: Verse = { ...verse(1), timings: { husary: [[1, 1, 300, 900], [2, 2, 1000, 1500]] } }
+    p.load([v], reciter)
+    p.playWords(v, 1, 1)
+    el.emit('loadedmetadata')
+    expect(el.currentTime).toBe(0)
+    expect(p.state.word).toEqual([0, 1]) // 0-based start, as in the test above
+  })
+
   it('plays the basmala (001001) before ayah 1, unlit, then the ayah; skipBasmala turns it off', async () => {
     const el = new FakeAudio()
     const p = new Player(() => el as unknown as HTMLAudioElement)

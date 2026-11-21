@@ -168,7 +168,9 @@ export class Player {
     this.clearGap()
     this.resumeAdvances = false
     this.set({ index: i, verseKey: verse.verseKey })
-    this.start(timed ? Math.max(0, a[2] / 1000 - PAD_BEFORE) : 0, false)
+    // from the ayah's first word, play from the file's start: each file is one ayah, and the first word's timing can start
+    // after the voice does (a cut first letter: ثُمَّ 80:21, and up to 1 s with some reciters)
+    this.start(timed && fromWord > 1 ? Math.max(0, a[2] / 1000 - PAD_BEFORE) : 0, false)
     this.sliceEnd = timed ? b[3] / 1000 + PAD_AFTER : Infinity
     if (timed) this.set({ word: [a[0], b[1]] })
   }
