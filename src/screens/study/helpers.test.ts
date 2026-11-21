@@ -61,3 +61,10 @@ describe('study helpers', () => {
     expect(spread(['n1', 'n2', 'n3', 'm1', 'm2', 'q1'], key)).toEqual(['n1', 'm1', 'n2', 'm2', 'n3', 'q1']) // topics interleaved
   })
 })
+
+test('Notice prefers the same word with and without the rule', async () => {
+  const { minimalPair } = await import('../Learn')
+  const { getLesson } = await import('../../content')
+  const pair = minimalPair(getLesson('tabii')!.examples, getLesson('basics')!.examples)
+  expect(pair?.map(e => e.text)).toEqual(['مَٰلِكِ', 'مَلِكِ'])
+})

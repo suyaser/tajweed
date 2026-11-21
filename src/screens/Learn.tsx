@@ -327,9 +327,15 @@ function Hear({ exs, audio, nextLabel, onNext, onDone, wasDone, notice }: StepPr
  * Notice: which one has the sound from Hear? By ear first, then both revealed with their names (spec §3.2). The rule's
  * name is taught in the next step, so the question describes the sound, never the name (UX B2).
  */
+const skeleton = (s: string) => s.replace(/[\u064B-\u0652\u0670\u06D6-\u06ED]/g, '').replace(/ٱ/g, 'ا')
+/** The same word with and without the rule (مَٰلِكِ / مَلِكِ): the clearest contrast, preferred when the two lessons have one. */
+export function minimalPair(mine: Example[], theirs: Example[]): [Example, Example] | undefined {
+  for (const a of mine) for (const b of theirs) if (a.text !== b.text && skeleton(a.text) === skeleton(b.text)) return [a, b]
+}
+
 function Notice({ lesson, other, ex, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { other: Lesson; ex: Example }) {
   const pair = useMemo(() => {
-    const xs = [ex, other.examples[0]]
+    const xs = minimalPair(lesson.examples, other.examples) ?? [ex, other.examples[0]]
     return lesson.id.length % 2 ? xs : xs.reverse() // fixed per lesson, not always first
   }, [lesson, other, ex])
   const [played, setPlayed] = useState<number[]>([])
