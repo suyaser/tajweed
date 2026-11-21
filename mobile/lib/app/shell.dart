@@ -10,6 +10,7 @@ import '../screens/listen.dart';
 import '../screens/onboarding.dart';
 import '../screens/plan.dart';
 import '../screens/review.dart';
+import '../screens/rules.dart';
 import '../screens/today.dart';
 import '../screens/unit.dart';
 import '../ui/kit.dart';
@@ -151,6 +152,8 @@ class _ShellPageState extends State<ShellPage> {
     'today' => const Today(),
     'learn' => Learn(lessonId: r.params['lessonId']!),
     'plan' => const Plan(),
+    'rules' => const Rules(),
+    'rule' => RuleScreen(lessonId: r.params['lessonId']!),
     'listen' => Listen(range: r.params['range']),
     'review' => ReviewScreen(go: r.params['go'] != null, more: int.tryParse(r.params['more'] ?? '') ?? 0),
     'unit' => UnitScreen(id: r.params['unitId']!, finale: r.params['finale'] != null),

@@ -481,8 +481,8 @@ int letterCount(String letters) => _latin.hasMatch(letters)
     ? 0
     : letters.replaceAll(RegExp(r'\([^)]*\)'), '').split(RegExp(r'[\s\u00b7]+')).where((x) => x.isNotEmpty && !x.endsWith(':') && RegExp('[\u0600-\u06ff]').hasMatch(x)).length;
 
-class _Letters extends StatelessWidget {
-  const _Letters({required this.letters});
+class Letters extends StatelessWidget {
+  const Letters({super.key, required this.letters});
   final String letters;
   @override
   Widget build(BuildContext context) {
@@ -549,7 +549,7 @@ class _RuleBodyState extends State<RuleBody> {
       sec('What happens', Tx(what, style: p)),
       if (lesson.letters != null)
         sec('Which letters', Column(crossAxisAlignment: CrossAxisAlignment.start, spacing: Space.sm, children: [
-          _Letters(letters: lesson.letters!),
+          Letters(letters: lesson.letters!),
           if (letterCount(lesson.letters!) > 1) Text(tn('{n} letter', '{n} letters', letterCount(lesson.letters!)), style: ty.label.copyWith(color: c.onSurfaceVariant)),
         ])),
       if (shown.isNotEmpty)
