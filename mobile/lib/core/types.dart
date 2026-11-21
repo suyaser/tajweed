@@ -132,3 +132,101 @@ extension type Reciter(Json j) {
   String get style => j['style']; // muallim | murattal
   bool get hasTimings => j['hasTimings'];
 }
+
+/* ---------------- User data (local, sync-ready) ---------------- */
+
+extension type Settings(Json j) {
+  String get wirdTime => j['wirdTime']; // 'HH:MM'
+  String get reciterId => j['reciterId'];
+  int get munfasilLength => j['munfasilLength']; // 4 | 5
+  List<int> get teacherDays => (j['teacherDays'] as List).cast<int>(); // 0=Sun..6=Sat
+  String? get teacherName => j['teacherName'];
+  String get textSize => j['textSize']; // m | l | xl
+  String get theme => j['theme']; // system | light | dark
+  bool get tajweedPatterns => j['tajweedPatterns'];
+  bool get tajweedColours => j['tajweedColours'];
+  Day? get onboardedOn => j['onboardedOn'];
+  Day? get lastExportOn => j['lastExportOn'];
+}
+
+/// kind: lesson | correction | matn | contrast; state: sabqi | manzil | closed | suspended.
+extension type ReviewItem(Json j) {
+  String get id => j['id'];
+  String get kind => j['kind'];
+  String get refId => j['refId'];
+  String get state => j['state'];
+  set state(String v) => j['state'] = v;
+  Day get introducedOn => j['introducedOn'];
+  int get step => j['step']; // 0..6
+  set step(int v) => j['step'] = v;
+  Day get dueOn => j['dueOn'];
+  set dueOn(Day v) => j['dueOn'] = v;
+  Day? get lastReviewedOn => j['lastReviewedOn'];
+  String? get lastExampleId => j['lastExampleId'];
+  int get reps => j['reps'];
+  int get lapses => j['lapses'];
+  int? get sabqiCorrect => j['sabqiCorrect'];
+  String? get severity => j['severity']; // jali | khafi
+  List<String>? get linkedLessonIds => (j['linkedLessonIds'] as List?)?.cast<String>();
+  Iso? get deletedAt => j['deletedAt'];
+}
+
+/// source: pretest | learn | review | relearn | early | analyser | selfrate | teacher.
+extension type Attempt(Json j) {
+  String get id => j['id'];
+  String? get itemId => j['itemId'];
+  String get refId => j['refId'];
+  String get kind => j['kind'];
+  Day get on => j['on'];
+  Iso get at => j['at'];
+  String get source => j['source'];
+  String? get questionKind => j['questionKind'];
+  String? get exampleId => j['exampleId'];
+  String? get chosen => j['chosen'];
+  bool get correct => j['correct'] == true;
+  bool get countsForSchedule => j['countsForSchedule'] == true;
+}
+
+extension type Correction(Json j) {
+  String get id => j['id'];
+  VerseKey get verseKey => j['verseKey'];
+  String get severity => j['severity'];
+  List<String> get lessonIds => (j['lessonIds'] as List? ?? const []).cast<String>();
+  String get status => j['status']; // open | resolved
+  Iso get createdAt => j['createdAt'];
+  Iso? get deletedAt => j['deletedAt'];
+  Day? get on => j['on'];
+}
+
+extension type Session(Json j) {
+  String get id => j['id'];
+  Day get on => j['on'];
+  String get status => j['status']; // planned | done
+}
+
+extension type Introduction(Json j) {
+  String get lessonId => j['lessonId'];
+  Day get on => j['on'];
+  Iso get at => j['at'];
+}
+
+/// parts: listen | sabaq | recite | review → null | 'auto' | 'manual'.
+extension type DayLog(Json j) {
+  Day get id => j['id'];
+  Json get parts => j['parts'];
+  num get listenSeconds => j['listenSeconds'];
+}
+
+extension type UserData(Json j) {
+  int get schemaVersion => j['schemaVersion'];
+  Settings get settings => Settings(j['settings']);
+  List<Introduction> get introductions => _list(j['introductions'], Introduction.new);
+  List<ReviewItem> get items => _list(j['items'], ReviewItem.new);
+  List<Attempt> get attempts => _list(j['attempts'], Attempt.new);
+  List<Session> get sessions => _list(j['sessions'], Session.new);
+  List<Correction> get corrections => _list(j['corrections'], Correction.new);
+  List<DayLog> get days => _list(j['days'], DayLog.new);
+  List<({String unitId, Day on})> get finales => [
+    for (final f in j['finales'] as List) (unitId: f['unitId'] as String, on: f['on'] as String),
+  ];
+}

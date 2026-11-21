@@ -8,10 +8,15 @@ import 'package:flutter_test/flutter_test.dart';
 const _str = r"'((?:[^'\\]|\\.)*)'" '|' r'"((?:[^"\\]|\\.)*)"';
 final _call = RegExp('\\btn?\\(\\s*(?:$_str)(?:\\s*,\\s*(?:$_str))?');
 
+// Dart escapes: \uXXXX (Arabic is never typed, see lib/i18n/i18n.dart), then \x → x.
+String _unescape(String s) => s
+    .replaceAllMapped(RegExp(r'\\u([0-9a-fA-F]{4})'), (x) => String.fromCharCode(int.parse(x[1]!, radix: 16)))
+    .replaceAllMapped(RegExp(r'\\(.)'), (x) => x[1]!);
+
 List<String> keys(String code) => [
   for (final m in _call.allMatches(code)) ...[
-    (m[1] ?? m[2])!.replaceAllMapped(RegExp(r'\\(.)'), (x) => x[1]!),
-    if (m[0]!.startsWith('tn') && (m[3] ?? m[4]) != null) (m[3] ?? m[4])!.replaceAllMapped(RegExp(r'\\(.)'), (x) => x[1]!),
+    _unescape((m[1] ?? m[2])!),
+    if (m[0]!.startsWith('tn') && (m[3] ?? m[4]) != null) _unescape((m[3] ?? m[4])!),
   ],
 ];
 
