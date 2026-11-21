@@ -14,6 +14,10 @@ mobile/tool/sync_assets.sh
 It copies `content/*.json`, `content/teach/`, `src/i18n/ar/`, `src/content/also.json`, `src/quran/surahs.json` and
 `public/data/` (≈ 12 MB). Run it again after any content change.
 
+`lib/content/content.dart` adapts that JSON exactly as `src/content/{index,course,teach}.ts` do (Arabic overlay
+included); the topic list and the reciters are JSON (`content/topics.json`, `content/reciters.json`) read by both apps.
+Guide and Resources texts still live in their web screens; they move to JSON when those screens are ported.
+
 ## Run
 
 ```sh

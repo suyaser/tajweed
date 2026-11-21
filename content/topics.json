@@ -1,0 +1,68 @@
+[
+  {
+    "id": "found",
+    "nameAr": "المخارج والصفات",
+    "nameEn": "Foundations",
+    "intro": "Before any rule: each letter from its place (المخرج) with its qualities (الصفات)."
+  },
+  {
+    "id": "nun",
+    "nameAr": "النون الساكنة والتنوين",
+    "nameEn": "Noon with sukoon & tanween",
+    "intro": "Look at the letter after the نْ or the تنوين. That letter decides which of the four rules applies."
+  },
+  {
+    "id": "meem",
+    "nameAr": "الميم الساكنة",
+    "nameEn": "Meem with sukoon",
+    "intro": "Look at the letter after the مْ. There are three outcomes."
+  },
+  {
+    "id": "ghunnah",
+    "nameAr": "الغنة",
+    "nameEn": "The nasal sound",
+    "intro": "A sound from the nose (الخيشوم), held for two counts on every نّ and مّ."
+  },
+  {
+    "id": "lam",
+    "nameAr": "أحكام اللام",
+    "nameEn": "Laam rules",
+    "intro": "Two questions: is it the ل of ال, or the ل in the name اللَّه?"
+  },
+  {
+    "id": "ra",
+    "nameAr": "أحكام الراء",
+    "nameEn": "Heavy or light ر",
+    "intro": "Look at the ر's own vowel first. If it has سكون, look at the letter before it."
+  },
+  {
+    "id": "qal",
+    "nameAr": "القلقلة",
+    "nameEn": "The echo",
+    "intro": "Five letters bounce when they carry سكون: قطب جد."
+  },
+  {
+    "id": "madd",
+    "nameAr": "المدود",
+    "nameEn": "Lengthening",
+    "intro": "Every مد starts at 2 counts. A همزة or a سكون after it makes it longer."
+  },
+  {
+    "id": "merge",
+    "nameAr": "المثلان والمتجانسان والمتقاربان",
+    "nameEn": "When two letters meet",
+    "intro": "When two letters meet and the first has سكون, they may merge into one."
+  },
+  {
+    "id": "waqf",
+    "nameAr": "الوقف والابتداء",
+    "nameEn": "Stopping & starting",
+    "intro": "Where to stop, how to stop, and how to start again."
+  },
+  {
+    "id": "hafs",
+    "nameAr": "كلمات خاصة برواية حفص",
+    "nameEn": "Special words in Hafs",
+    "intro": "A few words in رواية حفص have their own way of reading."
+  }
+]

@@ -1,12 +1,7 @@
 // Pure helpers shared by scripts/build-quran-data.mjs (Node strips the types) and the app.
 // Keep this file free of runtime imports so Node can load it directly.
-import type { Reciter, Verse } from '../core/types'
+import type { Verse } from '../core/types'
 
-export const RECITERS: Reciter[] = [
-  { id: 'husary-muallim', nameAr: 'محمود خليل الحصري (المعلّم)', nameEn: 'Mahmoud Khalil al-Husary (Muʿallim)', folder: 'Husary_Muallim_128kbps', style: 'muallim', hasTimings: true },
-  { id: 'husary', nameAr: 'محمود خليل الحصري', nameEn: 'Mahmoud Khalil al-Husary', folder: 'Husary_128kbps', style: 'murattal', hasTimings: true },
-  { id: 'minshawy', nameAr: 'محمد صديق المنشاوي', nameEn: 'Muhammad Siddiq al-Minshawi', folder: 'Minshawy_Murattal_128kbps', style: 'murattal', hasTimings: true },
-]
 
 /** Basmala as it prefixes ayah 1 in the pinned Tanzil text (trailing space included).
  * Escaped: Tanzil orders shadda before fatha, which editors silently reorder. */

@@ -2,7 +2,9 @@
 // Raw downloads are cached in .cache/. Needs Node >= 22.18 (imports src/quran/data.ts with type stripping) and `unzip`.
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-import { RECITERS, stripBasmala } from '../src/quran/data.ts'
+import { stripBasmala } from '../src/quran/data.ts'
+
+const RECITERS = JSON.parse(readFileSync(new URL('../content/reciters.json', import.meta.url), 'utf8'))
 
 const SRC = {
   text: 'https://github.com/cpfair/quran-tajweed/files/7281388/quran-uthmani.txt',

@@ -4,6 +4,8 @@ import type { ColourKey, ConfusablePair, ExampleRole, Lesson, MatnLine, Question
 import rawRules from '../../content/rules.json'
 import rawPairs from '../../content/pairs.json'
 import rawMutun from '../../content/mutun.json'
+// The 11 topics (chapters) in order; ar.json translates their name and intro.
+import rawTopics from '../../content/topics.json'
 import also from './also.json'
 // Arabic overlay (content/ar.json), keyed by id; merged only when the UI is Arabic, English fields are the fallback.
 import { arContent } from '../i18n/arData'
@@ -35,22 +37,9 @@ export interface ArContent {
 }
 export const AR_CONTENT = (arContent.data ?? { topics: {}, lessons: {}, units: {}, course: {}, pairs: {}, mutun: {} }) as ArContent
 
-const CATS: [id: string, nameAr: string, nameEn: string, intro: string][] = [
-  ['found', 'المخارج والصفات', 'Foundations', 'Before any rule: each letter from its place (المخرج) with its qualities (الصفات).'],
-  ['nun', 'النون الساكنة والتنوين', 'Noon with sukoon & tanween', 'Look at the letter after the نْ or the تنوين. That letter decides which of the four rules applies.'],
-  ['meem', 'الميم الساكنة', 'Meem with sukoon', 'Look at the letter after the مْ. There are three outcomes.'],
-  ['ghunnah', 'الغنة', 'The nasal sound', 'A sound from the nose (الخيشوم), held for two counts on every نّ and مّ.'],
-  ['lam', 'أحكام اللام', 'Laam rules', 'Two questions: is it the ل of ال, or the ل in the name اللَّه?'],
-  ['ra', 'أحكام الراء', 'Heavy or light ر', "Look at the ر's own vowel first. If it has سكون, look at the letter before it."],
-  ['qal', 'القلقلة', 'The echo', 'Five letters bounce when they carry سكون: قطب جد.'],
-  ['madd', 'المدود', 'Lengthening', 'Every مد starts at 2 counts. A همزة or a سكون after it makes it longer.'],
-  ['merge', 'المثلان والمتجانسان والمتقاربان', 'When two letters meet', 'When two letters meet and the first has سكون, they may merge into one.'],
-  ['waqf', 'الوقف والابتداء', 'Stopping & starting', 'Where to stop, how to stop, and how to start again.'],
-  ['hafs', 'كلمات خاصة برواية حفص', 'Special words in Hafs', 'A few words in رواية حفص have their own way of reading.'],
-]
 // Topics that are not a muṣḥaf colour rule: their lessons get no colour (UX review M4).
 const NO_COLOUR = new Set(['found', 'waqf', 'hafs'])
-export const topics: Topic[] = CATS.map(([id, nameAr, nameEn, intro], order) => ({
+export const topics: Topic[] = rawTopics.map(({ id, nameAr, nameEn, intro }, order) => ({
   id, nameAr, nameEn: pick(nameEn, AR_CONTENT.topics[id]?.name), intro: pick(intro, AR_CONTENT.topics[id]?.intro), order,
 }))
 
