@@ -4,5 +4,7 @@
   "The microphone is blocked. Allow it in Settings.": "الميكروفون محظور. اسمح به من الإعدادات.",
   "Delete the saved audio": "احذف الصوت المحفوظ",
   "Clear": "مسح",
-  "Rules": "الأحكام"
+  "Rules": "الأحكام",
+  "Quran text: Tanzil (Uthmani). Tajweed markup: cpfair/quran-tajweed. Word timings: cpfair/quran-align. Recitations: everyayah.com. Everything you do is stored on this device.": "نص القرآن: تنزيل (الرسم العثماني). ترميز التجويد: cpfair/quran-tajweed. توقيت الكلمات: cpfair/quran-align. التلاوات: everyayah.com. كل ما تفعله محفوظ على هذا الجهاز.",
+  "Back up to a file you keep (Files, Drive, email). Phones can lose app data.": "احفظ نسخة في ملف تحتفظ به (الملفات، أو Drive، أو البريد). قد تضيع بيانات التطبيقات على الهاتف."
 }
