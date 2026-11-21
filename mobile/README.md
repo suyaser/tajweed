@@ -23,6 +23,15 @@ flutter run --dart-define=DEV_PAGE=quran                       # open the Quran/
 tool/dev_shots.sh ios <sim-udid> <dir>                         # the page walks itself; screenshots per step
 ```
 
+## Audio
+
+`lib/audio/player.dart` ports `src/audio/player.ts`: a queue for one reciter, the basmala (1:1) before a surah's first
+ayah, word clips as `ClippingAudioSource` slices (PAD_BEFORE 80 ms, PAD_AFTER 120 ms, the ayah's first word from 0),
+the word lamp from the quran-align timings (polled ~30×/s), loop, repeat gap and rate, and errors (offline when DNS
+for the audio host fails). The engine sits behind `AudioOut`, so `test/player_test.dart` runs on a fake engine and a
+fake clock. The audio session is `playback`/speech (`configurePlaybackSession()` in `main.dart`): the iOS silent switch
+doesn't mute recitation.
+
 ## Content sync
 
 The web files stay the single source. Copy them into `assets/shared/` (git-ignored) before running, testing or building:

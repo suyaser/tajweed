@@ -272,3 +272,23 @@ test('lesson steps', async () => {
   }
   check('lessonSteps', { fresh: S.freshSteps('hear', D), required: S.REQUIRED, steps: S.STEP_IDS, minutes: S.LESSON_MINUTES, out })
 })
+
+/* ---------------- player: segments, the word lamp, basmala ---------------- */
+
+test('player segments', async () => {
+  const P = await import('./audio/player')
+  const { RECITERS } = await import('./quran')
+  const verses = ['1:1', '2:4', '9:1', '80:21', '112:1', '112:4', '113:1', '114:4', '6:80', '83:14'].map((k) => {
+    const [s, a] = k.split(':').map(Number)
+    return surahFile(s)[a - 1]
+  })
+  const out = []
+  for (const v of verses)
+    for (const r of RECITERS) {
+      const segs = P.segsOf(v, r.id)
+      const end = segs?.length ? segs[segs.length - 1][3] + 500 : 0
+      const at = segs ? Array.from({ length: Math.ceil(end / 37) }, (_, i) => i * 37).map((ms) => P.segAt(segs, ms)) : null
+      out.push({ key: v.verseKey, reciter: r.id, segs, at, forWord: v.words.map((_: string, w: number) => P.segForWord(segs, w) ?? null) })
+    }
+  check('player', { segs: out, basmala: ['1:1', '1:2', '9:1', '2:1', '112:1', '112:2', '114:1'].map((k) => [k, P.needsBasmala(k)]) })
+})

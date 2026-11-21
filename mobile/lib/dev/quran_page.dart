@@ -1,6 +1,7 @@
 // Dev page: the Quran widgets (F7) with real data. English-only labels for the page's own controls.
 import 'package:flutter/material.dart';
 
+import '../audio/player.dart';
 import '../content/content.dart';
 import '../content/rulemap.dart';
 import '../core/types.dart' hide Passage;
@@ -25,7 +26,7 @@ const _walk = bool.fromEnvironment('DEV_WALK');
 
 class _QuranPageState extends State<QuranPage> {
   final _scroll = ScrollController();
-  final _keys = {for (final k in ['examples', 'passage', 'colours', 'find']) k: GlobalKey()};
+  final _keys = {for (final k in ['examples', 'passage', 'colours', 'find', 'player']) k: GlobalKey()};
 
   Future<void> _shot(String name) async {
     await Future<void>.delayed(const Duration(milliseconds: 900));
@@ -61,14 +62,45 @@ class _QuranPageState extends State<QuranPage> {
     debugPrint('SHOT done');
   }
 
+  Future<void> _until(bool Function(PlayerState) f, {int seconds = 20}) async {
+    for (var i = 0; i < seconds * 20 && !f(_player.state); i++) {
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+    }
+  }
+
   /// Player and recorder sections join the walk here.
-  Future<void> _walkMore() async {}
+  Future<void> _walkMore() async {
+    await _show('player');
+    // a word clip (word 3 of 112:1), then the whole surah with the lamp
+    _player.playWord(_ikhlas[0], 2);
+    await _until((s) => s.status == PlayerStatus.playing);
+    await _shot('player_word');
+    await _until((s) => s.status == PlayerStatus.idle);
+    _player.play();
+    await _until((s) => s.verseKey == '112:2' && s.word != null && s.word!.$1 == 1);
+    debugPrint('SHOT player_lamp');
+    await _until((s) => s.status == PlayerStatus.idle, seconds: 40);
+    await _walkRecorder();
+  }
+
+  Future<void> _walkRecorder() async {}
 
   final _verses = <VerseKey, Verse>{};
   List<Verse> _ikhlas = [], _falaq = [];
   var _lit = (key: '112:1', word: 3);
   String? _isolate;
   final _find = <int, WordMark>{};
+  final _player = Player();
+  var _lastLog = '';
+
+  Reciter get _reciter => content.reciters.first; // husary-muallim, the web's default
+
+  /// Logged for the device walk (what played, which word was lit).
+  void _log() {
+    final s = _player.state;
+    final line = 'PLAYER ${s.status.name} ${s.verseKey} word=${s.word} basmala=${s.basmala} clip=${s.clip}${s.error == null ? '' : ' ${s.error}'}';
+    if (line != _lastLog) debugPrint(_lastLog = line);
+  }
 
   @override
   void initState() {
@@ -83,12 +115,15 @@ class _QuranPageState extends State<QuranPage> {
     _verses['114:4'] = (await getVerse('114:4'))!;
     _ikhlas = await loadSurah(112);
     _falaq = await loadSurah(113);
+    _player.addListener(_log);
+    _player.load(_ikhlas, _reciter);
     if (mounted) setState(() {});
     if (_walk) WidgetsBinding.instance.addPostFrameCallback((_) => _runWalk());
   }
 
   @override
   void dispose() {
+    _player.dispose();
     _scroll.dispose();
     super.dispose();
   }
@@ -150,6 +185,9 @@ class _QuranPageState extends State<QuranPage> {
             ]),
             Panel(children: [Passage(ayahs: [for (final v in _falaq) QAyah.of(v, tajweed: true)], tajweed: true, isolate: _isolate)]),
           ]),
+          sec('Player: tap a word for its clip; play for the lamp', key: 'player', [
+            ListenableBuilder(listenable: _player, builder: (context, _) => _playerPanel(context)),
+          ]),
           sec('Find chips (ikhfa in 114:4; tap a word)', key: 'find', [
             Panel(children: [
               VerseBlock(
@@ -173,5 +211,49 @@ class _QuranPageState extends State<QuranPage> {
         ],
       ),
     );
+  }
+
+  Widget _playerPanel(BuildContext context) {
+    final s = _player.state, c = context.c, ty = context.type;
+    final w = s.word;
+    final lit = <String, WordMark>{
+      if (w != null && s.verseKey != null) for (var i = w.$1; i < w.$2; i++) '${s.verseKey}/${i + 1}': WordMark.lamp,
+    };
+    return Panel(children: [
+      Passage(
+        ayahs: [for (final v in _ikhlas) QAyah.of(v)],
+        size: VerseSize.read,
+        marks: lit,
+        currentAyah: s.busy && !s.clip ? s.verseKey : null,
+        onWord: (k, n, _) => _player.playWord(_ikhlas.firstWhere((v) => v.verseKey == k), n - 1),
+        onAyah: (k) {
+          _player.seek(_ikhlas.indexWhere((v) => v.verseKey == k));
+          if (!_player.state.busy) _player.play();
+        },
+      ),
+      Wrap(spacing: Space.sm, runSpacing: Space.sm, crossAxisAlignment: WrapCrossAlignment.center, children: [
+        AppButton(
+          label: s.busy ? t('Pause') : t('Play'),
+          icon: s.busy ? Icons.pause : Icons.play_arrow,
+          onPressed: _player.toggle,
+        ),
+        AppIconButton(icon: Icons.stop, label: t('Stop'), onPressed: _player.stop),
+        AppChip(icon: Icons.speed_outlined, label: t('Slower'), pressed: s.rate < 1, onTap: () => _player.setRate(s.rate < 1 ? 1 : 0.75)),
+        AppChip(icon: Icons.repeat, semanticLabel: t('Loop'), pressed: s.loops > 1, onTap: () => _player.setLoops(s.loops > 1 ? 1 : 1 << 30)),
+      ]),
+      Segmented<String>(
+        small: true,
+        value: switch (s.gap) { GapOff() => 'off', GapSame() => 'same', GapSeconds() => '2' },
+        onChanged: (v) => _player.setGap(switch (v) { 'same' => const GapSame(), '2' => const GapSeconds(2), _ => const GapOff() }),
+        options: const [(value: 'off', label: 'gap off', icon: null), (value: 'same', label: 'gap = ayah', icon: null), (value: '2', label: 'gap 2 s', icon: null)],
+      ),
+      Text(
+        '${s.status.name} · ${s.verseKey ?? '-'} · word ${s.word ?? '-'}${s.basmala ? ' · basmala' : ''}'
+        '${s.status == PlayerStatus.gap ? ' · ${s.gapLeft}/${s.gapTotal} s' : ''} · loop ${s.loop}',
+        textDirection: TextDirection.ltr,
+        style: ty.caption.copyWith(color: c.onSurfaceVariant),
+      ),
+      if (s.error != null) Text(s.error!, style: ty.bodyMd.copyWith(color: c.error)),
+    ]);
   }
 }

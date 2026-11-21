@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'app.dart';
+import 'audio/player.dart';
 import 'content/content.dart';
 import 'dev/gallery.dart';
 import 'dev/quran_page.dart';
@@ -22,6 +23,7 @@ Future<void> main() async {
   });
   WidgetsFlutterBinding.ensureInitialized();
   await loadArabic();
+  await configurePlaybackSession(); // iOS `playback`: the silent switch doesn't mute recitation
   final raw = await loadRawContent();
   useContent(raw);
   lang.addListener(() => useContent(raw)); // before the app rebuilds for the new language

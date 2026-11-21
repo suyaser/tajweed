@@ -309,12 +309,20 @@ class _MarksPainter extends CustomPainter {
     // below the lower ones, plus a 0.12em spread. The baseline sits at the strut's own ascent (found once per line).
     Iterable<RRect> bands(Range r, {double spread = 0.12}) sync* {
       // one box per line: a range spans several runs, and their boxes overlap (stacked tints)
-      final lines = <double, TextBox>{};
+      // (runs of a smaller size have boxes with other tops: same line when their centres are within a line's height)
+      final lines = <TextBox>[];
       for (final b in rp.getBoxesForSelection(TextSelection(baseOffset: r.$1, extentOffset: r.$2))) {
-        final o = lines[b.top];
-        lines[b.top] = o == null ? b : TextBox.fromLTRBD(min(o.left, b.left), b.top, max(o.right, b.right), b.bottom, b.direction);
+        final c = (b.top + b.bottom) / 2;
+        final i = lines.indexWhere((o) => (c - (o.top + o.bottom) / 2).abs() < (o.bottom - o.top) / 2);
+        if (i < 0) {
+          lines.add(b);
+        } else {
+          final o = lines[i];
+          final tall = b.bottom - b.top > o.bottom - o.top ? b : o; // the full-size run's line box
+          lines[i] = TextBox.fromLTRBD(min(o.left, b.left), tall.top, max(o.right, b.right), tall.bottom, o.direction);
+        }
       }
-      for (final box in lines.values) {
+      for (final box in lines) {
         final base = box.top + (box.bottom - box.top) * ratio;
         yield RRect.fromRectAndRadius(
           Rect.fromLTRB(box.left - em * spread, base - em * 1.25, box.right + em * spread, base + em * 0.75),

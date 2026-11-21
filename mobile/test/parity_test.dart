@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tajweed/audio/player.dart';
 import 'package:tajweed/content/content.dart';
 import 'package:tajweed/core/course.dart';
 import 'package:tajweed/content/rulemap.dart';
@@ -217,6 +218,22 @@ void main() {
       same(missingSteps(s, (_) => true, 'recite'), o['missingExceptRecite'], 'missing except recite');
       final sc = checkScore(s);
       same({'n': sc.n, 'm': sc.m}, o['score'], 'checkScore');
+    }
+  });
+
+  test('player: segments, the lamp, basmala', () async {
+    final f = fixture('player');
+    for (final c in f['segs']) {
+      final v = (await getVerse(c['key']))!;
+      final segs = segsOf(v, c['reciter']);
+      same(segs, c['segs'], 'segsOf ${c['key']} ${c['reciter']}');
+      if (segs != null) {
+        same([for (var i = 0; i < (c['at'] as List).length; i++) segAt(segs, i * 37)], c['at'], 'segAt ${c['key']}');
+      }
+      same([for (var w = 0; w < v.words.length; w++) segForWord(segs, w)], c['forWord'], 'segForWord ${c['key']}');
+    }
+    for (final [k, b] in f['basmala']) {
+      expect(needsBasmala(k), b, reason: 'needsBasmala $k');
     }
   });
 }
