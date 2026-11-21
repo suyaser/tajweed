@@ -1,12 +1,10 @@
 // Lesson 1 end to end on a fake audio engine (every clip "plays" at once): steps, saved step state, self-ratings,
 // the finished lesson in the store. And a later lesson's gate, Check questions and the Rule sheet.
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tajweed/app/services.dart';
-import 'package:tajweed/app/shell.dart';
 import 'package:tajweed/audio/player.dart';
 import 'package:tajweed/content/content.dart';
 import 'package:tajweed/i18n/i18n.dart';
@@ -14,58 +12,10 @@ import 'package:tajweed/quran/verse.dart';
 
 import 'harness.dart';
 
-/// Plays instantly: playing, then ended.
-class InstantOut implements AudioOut {
-  final _events = StreamController<AudioEvent>.broadcast();
-  @override
-  Duration position = Duration.zero;
-  @override
-  Duration? duration = const Duration(seconds: 1);
-  @override
-  Future<void> open(Uri uri, {Duration? start, Duration? end}) async {}
-  @override
-  void play() {
-    _events.add(AudioEvent.playing);
-    Timer(const Duration(milliseconds: 50), () => _events.add(AudioEvent.ended));
-  }
-
-  @override
-  void pause() {}
-  @override
-  Future<void> setSpeed(double rate) async {}
-  @override
-  Stream<AudioEvent> get events => _events.stream;
-  @override
-  Future<void> dispose() => _events.close();
-}
-
 void main() {
   setUpAll(loadAll);
   setUp(() => makePlayer = () => Player(out: InstantOut(), online: () async => true));
   tearDown(() => lang.value = Lang.ar);
-
-  Future<void> settle(WidgetTester tester) async {
-    for (var i = 0; i < 10; i++) {
-      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 30)));
-      await tester.pump(const Duration(milliseconds: 100));
-    }
-  }
-
-  Future<void> tap(WidgetTester tester, Finder f) async {
-    final ctx = tester.element(f.first);
-    if (Scrollable.maybeOf(ctx) != null) await Scrollable.ensureVisible(ctx, alignment: 0.3);
-    await tester.pump();
-    await tester.tap(f.first);
-    await settle(tester);
-  }
-
-  Future<NavigatorState> open(WidgetTester tester, String path) async {
-    await pumpApp(tester);
-    final nav = tester.state<NavigatorState>(find.byType(Navigator).first);
-    go(nav.context, path);
-    await settle(tester);
-    return nav;
-  }
 
   for (final l in Lang.values) {
     testWidgets('lesson 1 (${l.name}): every step to Finish lesson', (tester) async {

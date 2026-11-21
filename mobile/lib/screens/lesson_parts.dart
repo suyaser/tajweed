@@ -81,8 +81,10 @@ class QuestionView extends StatefulWidget {
     required this.onNext,
     this.nextLabel,
     this.eyebrow,
+    this.note,
   });
   final Question q;
+  final Widget? note; // above the question (Review: halfway, the confusable hint)
   final QMode mode;
   final StudyAudio audio;
   final void Function(String chosen, bool correct) onAnswer; // once, on the tap: write the attempt here
@@ -118,6 +120,7 @@ class _QuestionViewState extends State<QuestionView> {
       final v = vs?.firstOrNull;
       return Column(crossAxisAlignment: CrossAxisAlignment.stretch, spacing: Space.md, children: [
         if (widget.eyebrow != null) Text(widget.eyebrow!, style: ty.label.weight(600).copyWith(color: c.secondary)),
+        ?widget.note,
         Panel(children: [
           Tx(q.prompt, style: ty.bodyLg.weight(500).copyWith(color: c.onSurface)),
           if (ex != null)
