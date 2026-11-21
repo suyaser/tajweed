@@ -1,0 +1,4 @@
+// THE app id (iOS bundle id and Android applicationId), read by ios/Flutter/*.xcconfig and android/app/build.gradle.kts.
+// PLACEHOLDER: replace with the reverse of the owned domain (e.g. com.example.tajweedpath) BEFORE the first upload
+// to either store. Once uploaded, the id is permanent on Google Play and the App Store.
+APP_ID = app.placeholder.tajweed
