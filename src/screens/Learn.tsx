@@ -14,7 +14,7 @@ import { findTargets } from '../content/rulemap'
 import { getVerse, wordSegments } from '../quran'
 import { href } from '../app/router'
 import { VerseBlock, type TajweedSegment, type WordMark } from '../components'
-import { Callout, Chip, EmptyState, Panel, STEP_ICONS } from '@/components/kit'
+import { Callout, Chip, EmptyState, Panel, Sep, STEP_ICONS } from '@/components/kit'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
@@ -27,6 +27,7 @@ import { ExampleAudio, ExampleCard, flat, PlayButton, stepperNav, useStepper, us
 import { Drill } from './study/Drill'
 import { QuestionView } from './study/QuestionView'
 import { RuleBody } from './study/RuleBody'
+import { Teach } from './study/Teach'
 import videos from '../../content/videos.json'
 import { CompareControl, PassageRecite, RecordControl, Recorder, RowCard, useTakes } from './study/Recorder'
 import { BottomBar, DoneLine, Instruction, LessonHeader, StepNav, stepName, type StepState } from './study/LessonShell'
@@ -385,6 +386,10 @@ function Notice({ lesson, other, ex, audio, nextLabel, onNext, onDone, wasDone }
 function LearnStep({ lesson, ex, audio, nextLabel, onNext, onDone }: StepProps & { ex?: Example }) {
   return (
     <>
+      <Teach lesson={lesson} anchor={ex} audio={audio} />
+      <h2 className="mt-space-md flex items-center gap-space-sm text-label font-semibold tracking-wider text-secondary uppercase rtl:normal-case">
+        <Icon name="bookmark" size={18} />{isAr ? 'الخلاصة' : <>Summary<Sep /><span lang="ar">الخلاصة</span></>}
+      </h2>
       <RuleBody lesson={lesson} audio={audio} onRead={onDone} example={ex} />
       <VideoLink lessonId={lesson.id} />
       <BottomBar><Button size="lg" onClick={() => { onDone(); onNext() }}><Next>{nextLabel}</Next></Button></BottomBar>

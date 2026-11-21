@@ -504,7 +504,7 @@
   "Tap at least one word to check.": "المس كلمة واحدة على الأقل لتتحقّق.",
   "Tap every word that has {x}. Then tap Check.": "المس كل كلمة فيها {x}، ثم المس «تحقّق».",
   "Warm-up · say each one slowly": "تمهيد، انطق كل واحد ببطء",
-  "What happens": "ما الذي يحدث",
+  "What happens": "ماذا يحدث",
   "When it applies": "متى يكون",
   "Which letters": "الحروف",
   "Yes, the same": "نعم، مثله",
@@ -587,5 +587,14 @@
   "step {n} of {m}": "الخطوة {n} من {m}",
   "review due": "حان موعد مراجعته",
   "Lesson {n}": "الدرس {n}",
-  "In the matn": "من المتن"
+  "In the matn": "من المتن",
+  "Literally: {x}": "حرفيًا: {x}",
+  "Lesson {n}: {x}": "الدرس {n}: {x}",
+  "Words from other lessons ({n})": "كلمات من دروس أخرى ({n})",
+  "Why: ": "لماذا: ",
+  "In plain words": "بكلمات بسيطة",
+  "New words": "كلمات جديدة",
+  "Where it fits": "أين يقع",
+  "Spot it in the muṣḥaf": "كيف تعرفه في المصحف",
+  "Common mistakes": "أخطاء شائعة"
 }
