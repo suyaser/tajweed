@@ -113,7 +113,8 @@ class _ListenState extends State<Listen> {
   String? _dotted;
   Timer? _listenTimer;
   int _acc = 0;
-  int _takesGen = 0;
+  List<Recording> _recs = [];
+  bool _saved = false; // a take recorded on this visit: Model, then me is the filled button
   ({Future<void> done, void Function() cancel})? _compare;
   ComparePhase? _phase;
 
@@ -123,6 +124,7 @@ class _ListenState extends State<Listen> {
     _player.addListener(_changed);
     _setGap();
     _load();
+    _refreshTakes();
     // listening time → today's log, flushed every 15 s and on leave
     _listenTimer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (_player.state.status == PlayerStatus.playing && !_player.state.clip && ++_acc >= 15) {
@@ -166,6 +168,25 @@ class _ListenState extends State<Listen> {
     _compare?.cancel();
     _compare = null;
     _phase = null;
+  }
+
+  Future<void> _refreshTakes() async {
+    final xs = await recordings.list(_range.from, _range.to);
+    if (mounted) setState(() => _recs = xs);
+  }
+
+  /// The reciter over the passage once, a short pause, then the take (compare.ts playModelThenMe).
+  void _modelThenMe(Recording r) {
+    _cancelCompare();
+    final b = playModelThenMe(_player, recordings.pathOf(r), (p) => mounted ? setState(() => _phase = p == ComparePhase.done ? null : p) : null);
+    setState(() => _compare = b);
+    b.done.whenComplete(() => mounted && identical(_compare, b) ? setState(_cancelCompare) : null);
+  }
+
+  void _me(Recording r) {
+    setState(_cancelCompare);
+    _player.stop();
+    playMe(_player, recordings.pathOf(r));
   }
 
   void _togglePlay() {
@@ -322,11 +343,48 @@ class _ListenState extends State<Listen> {
               to: _range.to,
               player: _player,
               recordings: recordings,
-              onSaved: store.noteRecording,
-              onStatus: (_) => setState(() => _takesGen++),
-              reciter: verses == null ? null : () => _player.play(),
+              onSaved: () {
+                store.noteRecording();
+                _saved = true;
+              },
+              onStatus: (_) => _refreshTakes(),
+              // as the web: [Model, then me] [Me] under the button, then what plays now (compare is null while recording)
+              layout: (context, record, compare, _) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                spacing: Space.md,
+                children: [
+                  record,
+                  if (compare != null && _recs.isNotEmpty)
+                    Wrap(
+                      spacing: Space.sm,
+                      runSpacing: Space.sm,
+                      children: [
+                        AppButton(
+                          label: t('Model, then me'),
+                          icon: Icons.compare_arrows,
+                          variant: _saved ? ButtonVariant.primary : ButtonVariant.secondary,
+                          onPressed: verses == null ? null : () => _modelThenMe(_recs.first),
+                        ),
+                        AppButton(label: t('Me'), icon: Icons.play_arrow, variant: ButtonVariant.ghost, onPressed: () => _me(_recs.first)),
+                      ],
+                    ),
+                  if (_phase != null)
+                    Semantics(
+                      liveRegion: true,
+                      child: Text.rich(
+                        _phase == ComparePhase.model
+                            ? TextSpan(children: [
+                                TextSpan(text: '${t('Now:')} '),
+                                TextSpan(text: _reciter.nameAr, style: ty.arabicLabel),
+                              ])
+                            : TextSpan(text: _phase == ComparePhase.silence ? t('Now: your turn is next…') : t('Now: You')),
+                        style: ty.bodyMd.copyWith(color: c.primary),
+                      ),
+                    ),
+                ],
+              ),
             ),
-            _Takes(key: ValueKey(_takesGen), range: _range, player: _player, verses: verses, onChanged: () => setState(() => _takesGen++)),
+            if (_recs.isNotEmpty) _Takes(recs: _recs, onMe: _me, onModelThenMe: verses == null ? null : _modelThenMe, onDelete: (r) => recordings.remove(r.id).then((_) => _refreshTakes())),
           ],
         ),
         Align(
@@ -469,50 +527,54 @@ class Legend extends StatelessWidget {
   }
 }
 
-/// The takes kept for this passage, newest first: play one, delete one.
+/// The takes kept for this passage, newest first: Me, Model, then me, delete.
 class _Takes extends StatelessWidget {
-  const _Takes({super.key, required this.range, required this.player, required this.verses, required this.onChanged});
-  final AyahRange range;
-  final Player player;
-  final List<Verse>? verses;
-  final VoidCallback onChanged;
+  const _Takes({required this.recs, required this.onMe, required this.onModelThenMe, required this.onDelete});
+  final List<Recording> recs;
+  final ValueChanged<Recording> onMe;
+  final ValueChanged<Recording>? onModelThenMe;
+  final ValueChanged<Recording> onDelete;
   @override
-  Widget build(BuildContext context) => FutureBuilder(
-    future: recordings.list(range.from, range.to),
-    builder: (context, snap) {
-      final recs = snap.data ?? const <Recording>[];
-      if (recs.isEmpty) return const SizedBox.shrink();
-      final c = context.c, ty = context.type;
-      String when(Recording r) => digits(DateFormat('d MMM, HH:mm', isAr ? 'ar' : 'en_GB').format(DateTime.parse(r.createdAt).toLocal()));
-      return Fold(
-        icon: Icons.library_music_outlined,
-        title: t('Recordings · {n} · latest {time}', {'n': recs.length, 'time': _mmss(recs.first.durationMs)}),
-        children: [
-          for (final r in recs)
-            Row(
-              children: [
-                Expanded(
-                  child: Text('${when(r)}$sep${_mmss(r.durationMs)}', style: ty.bodyMd.copyWith(color: c.onSurface)),
-                ),
-                AppButton(
-                  label: t('Me'),
-                  icon: Icons.play_arrow,
-                  variant: ButtonVariant.ghost,
-                  size: ButtonSize.sm,
-                  onPressed: () => playMe(player, recordings.pathOf(r)),
-                ),
-                AppIconButton(
-                  icon: Icons.delete_outline,
-                  label: t('Delete recording {when}', {'when': when(r)}),
-                  onPressed: () => recordings.remove(r.id).then((_) => onChanged()),
-                ),
-              ],
-            ),
-          Text(t('Keeps your last {n} for this passage. They stay on this device.', {'n': keepPerRange}), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
-        ],
-      );
-    },
-  );
+  Widget build(BuildContext context) {
+    final c = context.c, ty = context.type;
+    String when(Recording r) => digits(DateFormat('d MMM, HH:mm', isAr ? 'ar' : 'en_GB').format(DateTime.parse(r.createdAt).toLocal()));
+    return Fold(
+      icon: Icons.library_music_outlined,
+      title: t('Recordings · {n} · latest {time}', {'n': recs.length, 'time': _mmss(recs.first.durationMs)}),
+      children: [
+        for (final r in recs)
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text('${when(r)}$sep${_mmss(r.durationMs)}', style: ty.bodyMd.copyWith(color: c.onSurface)),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppButton(
+                    label: t('Me'),
+                    semanticLabel: t('Play me, {when}', {'when': when(r)}),
+                    icon: Icons.play_arrow,
+                    variant: ButtonVariant.ghost,
+                    size: ButtonSize.sm,
+                    onPressed: () => onMe(r),
+                  ),
+                  AppButton(
+                    label: t('Model, then me'),
+                    semanticLabel: t('Model, then me, {when}', {'when': when(r)}),
+                    variant: ButtonVariant.ghost,
+                    size: ButtonSize.sm,
+                    onPressed: onModelThenMe == null ? null : () => onModelThenMe!(r),
+                  ),
+                  AppIconButton(icon: Icons.delete_outline, label: t('Delete recording {when}', {'when': when(r)}), onPressed: () => onDelete(r)),
+                ],
+              ),
+            ],
+          ),
+        Text(t('Keeps your last {n} for this passage. They stay on this device.', {'n': keepPerRange}), style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
+      ],
+    );
+  }
 }
 
 /// The pinned player (Controls.tsx AudioTransport): ayah pips, the status line, Next / Play / Prev, the chips.

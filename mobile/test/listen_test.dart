@@ -1,4 +1,6 @@
 // Listen: range parsing as range.ts, the passage and transport (play, loop, gap, a word tap), listening counted.
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tajweed/app/services.dart';
 import 'package:tajweed/audio/player.dart';
@@ -42,6 +44,22 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   }
+
+  testWidgets('a take: Model, then me and Me (the web\'s compare), the takes fold', (tester) async {
+    openTemp();
+    seedLearner(1);
+    await tester.runAsync(() async {
+      final f = File('${Directory.systemTemp.createTempSync().path}/t.m4a')..writeAsBytesSync([0]);
+      await recordings.save(path: f.path, id: 'r1', from: '112:1', to: '112:4', durationMs: 4000);
+    });
+    await open(tester, 'listen/112');
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+    await tester.pump();
+    expect(find.text(t('Model, then me')), findsOneWidget);
+    expect(find.text(t('Me')), findsOneWidget);
+    expect(find.text(t('Both')), findsNothing);
+    expect(find.textContaining(t('Recordings · {n} · latest {time}', {'n': 1, 'time': ''}).split('·').first.trim()), findsOneWidget);
+  });
 
   testWidgets('a bad link says so and opens al-Fatihah', (tester) async {
     openTemp();

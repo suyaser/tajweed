@@ -70,9 +70,13 @@ class AppButton extends StatelessWidget {
     this.icon,
     this.iconEnd,
     this.block = false,
+    this.semanticLabel,
   });
   final String label;
   final VoidCallback? onPressed;
+
+  /// The accessible name when it says more than the label (the web's aria-label).
+  final String? semanticLabel;
   final ButtonVariant variant;
   final ButtonSize size;
   final IconData? icon;
@@ -103,6 +107,9 @@ class AppButton extends StatelessWidget {
     return Semantics(
       button: true,
       enabled: onPressed != null,
+      label: semanticLabel,
+      excludeSemantics: semanticLabel != null,
+      onTap: semanticLabel != null ? onPressed : null,
       child: Opacity(
         opacity: onPressed == null ? 0.5 : 1,
         child: Material(
