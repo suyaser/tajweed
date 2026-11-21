@@ -183,3 +183,9 @@ describe('learning review fixes', () => {
     for (const f of facts) expect(f.options[f.answer]).not.toMatch(/\bbecause\b/)
   })
 })
+
+test('no "which rule" question for مخارج, صفات or the ابتداء/وقف lessons, as answer or wrong option', async () => {
+  const { lessons } = await import('../content')
+  for (const id of ['makharij-aqsa', 'sifat-hams', 'ibtida', 'waqf-how'])
+    expect(lessons.find(l => l.id === id)!.questionKinds).not.toContain('identify')
+})

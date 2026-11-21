@@ -67,6 +67,8 @@ export const mutun: MatnLine[] = rawMutun.lines.map(l => ({
 /** The one English phrase in source locators (rules.json), in Arabic for the Arabic UI. */
 const arLocator = (l: string) => (isAr ? l.replace(/paging per the OpenITI copy of/g, 'بترقيم نسخة OpenITI من') : l)
 
+const NO_IDENTIFY = /^(makharij-|sifat-|maratib$|ibtida$|waqf-signs$|waqf-how$)/
+
 export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const a = isAr ? AR_CONTENT.lessons[r.id] : undefined
   const examples = (r.examples ?? []).map((e, i) => ({
@@ -85,7 +87,9 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
     answer: typeof f.answer === 'number' ? f.answer : f.options.indexOf(f.answer), explanation: pick(f.why, a?.facts?.[i]?.why),
   }))
   const questionKinds: QuestionKind[] = []
-  if (examples.length) questionKinds.push('identify')
+  // "Which rule is highlighted?" only where one answer is right: a letter has a مخرج and several صفات at once (ق is
+  // مستعلٍ, مقلقل and شديد), and a ابتداء/وقف example names a way of reading, not a rule in the letters (unit 9 review X1)
+  if (examples.length && !NO_IDENTIFY.test(r.id)) questionKinds.push('identify')
   if (r.counts && r.cat === 'madd') questionKinds.push('length')
   if (facts.length) questionKinds.push('fact')
   return {
