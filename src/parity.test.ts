@@ -225,3 +225,50 @@ test('store migrate', async () => {
     bad: bad.map((raw) => { try { S.migrate(raw, '2025-06-01'); return { raw, error: null } } catch (e) { return { raw, error: (e as Error).message } } }),
   })
 })
+
+/* ---------------- quran: tajweed segments, rulemap, unit ayahs, lesson steps ---------------- */
+
+const surahFile = (n: number) => JSON.parse(readFileSync(`public/data/surah/${String(n).padStart(3, '0')}.json`, 'utf8'))
+
+test('quran', async () => {
+  const Q = await import('./quran')
+  const R = await import('./content/rulemap')
+  const { lessons } = await import('./content')
+  const { units } = await import('./content/course')
+  const { unitAyahs } = await import('./audio/download')
+  const all = lessons.flatMap((l) => l.examples)
+  const byKey = new Map<string, import('./core/types').Verse>()
+  const verse = (k: string) => {
+    const [s, a] = k.split(':').map(Number)
+    if (!byKey.has(k)) byKey.set(k, surahFile(s)[a - 1])
+    return byKey.get(k)!
+  }
+  // every example's ayah, plus whole short surahs and the hard cases (spike: 9:1, 6:80, 83:14, 79:46)
+  for (const k of ['9:1', '6:80', '83:14', '79:46', '2:4', '2:258', ...Array.from({ length: 7 }, (_, i) => `1:${i + 1}`), ...[112, 113, 114].flatMap((s) => surahFile(s).map((v: { verseKey: string }) => v.verseKey))]) verse(k)
+  for (const e of all) verse(e.verseKey)
+  const keys = [...byKey.keys()]
+  check('quran', {
+    keys,
+    segments: keys.map((k) => Q.wordSegments(verse(k))),
+    inAyah: keys.map((k) => R.lessonsInAyah(verse(k))),
+    targets: keys.map((k) => Object.fromEntries(lessons.map((l) => [l.id, R.findTargets(verse(k), l.id)]).filter(([, t]) => t.length))),
+    also: all.map((e) => [e.id, R.alsoLessons(e, verse(e.verseKey), all.filter((o) => o.id !== e.id)), R.alsoLessons(e, undefined, [])]),
+    unitAyahs: units.map((u) => [u.id, unitAyahs(u)]),
+  })
+}, 60000)
+
+test('lesson steps', async () => {
+  const S = await import('./screens/study/lessonSteps')
+  const D = '2026-11-20', D2 = '2026-11-21'
+  const ops: [string, string, string][] = [['visit', 'notice', D], ['complete', 'hear', D], ['complete', 'hear', D], ['visit', 'learn', D], ['complete', 'learn', D],
+    ['visit', 'say', D2], ['complete', 'say', D2], ['score', 'check', D2], ['visit', 'find', D2], ['complete', 'recite', D2]]
+  let s = S.freshSteps('hear', D)
+  const out = []
+  const exists = [() => true, (id: string) => id !== 'check' && id !== 'say']
+  for (const [op, id, on] of ops) {
+    const step = id as (typeof S.STEP_IDS)[number]
+    s = op === 'visit' ? S.visitStep(s, step, on) : op === 'complete' ? S.completeStep(s, step, on) : S.scoreCheck(s, [true, false, true], on)
+    out.push({ op, id, on, s, missing: exists.map((f) => S.missingSteps(s, f)), missingExceptRecite: S.missingSteps(s, () => true, 'recite'), score: S.checkScore(s) })
+  }
+  check('lessonSteps', { fresh: S.freshSteps('hear', D), required: S.REQUIRED, steps: S.STEP_IDS, minutes: S.LESSON_MINUTES, out })
+})

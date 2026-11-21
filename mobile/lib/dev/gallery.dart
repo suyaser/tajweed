@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import '../app.dart';
 import '../content/content.dart';
 import '../i18n/i18n.dart';
-import '../quran/verse_text.dart';
+import '../quran/verse.dart';
 import '../spike.dart';
+import 'quran_page.dart';
 import '../ui/kit.dart';
 import '../ui/theme.dart';
 
@@ -77,7 +78,7 @@ class _DevGalleryState extends State<DevGallery> {
     final unit = content.unitOf(lesson.id)!;
     final ex = lesson.examples.first;
     final words = ex.text.split(' ');
-    final verse = layoutVerse(words, focus: (1, words.length), focusText: ex.focus);
+    final verse = layoutQuran([QAyah(key: ex.verseKey, words: words)], brackets: true, focus: (1, words.length), focusText: ex.focus);
     final gloss = content.glossary.first;
     StepMark stateOf(String id) => id == _step
         ? StepMark.current
@@ -135,6 +136,11 @@ class _DevGalleryState extends State<DevGallery> {
                     ),
                   ),
                   AppIconButton(
+                    icon: Icons.menu_book_outlined,
+                    label: 'Quran, player, recorder',
+                    onPressed: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const QuranPage())),
+                  ),
+                  AppIconButton(
                     icon: Icons.science_outlined,
                     label: 'Spike',
                     onPressed: () => Navigator.push(context, MaterialPageRoute<void>(builder: (_) => const SpikeScreen())),
@@ -170,7 +176,7 @@ class _DevGalleryState extends State<DevGallery> {
                     ],
                   ),
                   // centred like the web's example card (F7 owns the verse layout)
-                  Center(child: VerseText(text: verse.text, ranges: verse.ranges, ink: c.onSurface, pauseInk: c.secondary, focusBg: c.focusBg, focusInk: c.focusInk)),
+                  QuranText(layout: verse, size: VerseSize.read, textAlign: TextAlign.center),
                 ],
               ),
             ]),

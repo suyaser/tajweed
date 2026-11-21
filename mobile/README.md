@@ -1,13 +1,27 @@
 # Tajweed Path, mobile (Flutter)
 
 The iOS and Android app (docs/19-play-store-plan.md, option d). It reads the web repo's content; nothing is copied by hand.
-Foundations F1–F6 and F11 are in (docs/19 §3): tokens and theme (`lib/ui/`), i18n (`lib/i18n/`), the content adapter
-(`lib/content/`), core logic and the store (`lib/core/`), and the kit widgets (`lib/ui/kit.dart`). No screens yet: the app
+Foundations F1–F7 and F11 are in (docs/19 §3): tokens and theme (`lib/ui/`), i18n (`lib/i18n/`), the content adapter
+and rulemap (`lib/content/`), core logic and the store (`lib/core/`), the kit widgets (`lib/ui/kit.dart`), and the Quran
+text (`lib/quran/`: surah loader, tajweed segments, `VerseBlock`/`WordToken`/`Passage`). No screens yet: the app
 opens on the dev gallery (`lib/dev/gallery.dart`, every kit widget with real content; AR/EN and light/dark at the top),
 with the week-1 spike (`lib/spike.dart`) one tap away.
 
 **Never type Arabic in Dart source**: editors normalise it (composed آ, shadda reordered). Take it from the data or
 the dictionaries, or write `\u` escapes.
+
+## Quran text
+
+`lib/quran/verse.dart` lays a verse or passage out as ONE `RichText` paragraph and paints every highlight (focus,
+lamp, Find marks, current ayah) behind it from the paragraph's selection boxes: words are never split into styled runs
+for a highlight (that cut letters off their marks on the web). Pause marks and brackets are their own smaller runs;
+tajweed colours are colour-only runs and stay off except where asked (`tajweed: true`). Each word is a semantics node
+with a tap action when `onWord` is set. The dev page `lib/dev/quran_page.dart` shows them with real data:
+
+```sh
+flutter run --dart-define=DEV_PAGE=quran                       # open the Quran/player/recorder page directly
+tool/dev_shots.sh ios <sim-udid> <dir>                         # the page walks itself; screenshots per step
+```
 
 ## Content sync
 
@@ -30,7 +44,6 @@ Guide and Resources texts still live in their web screens; they move to JSON whe
 cd mobile
 flutter run                      # pick the iOS simulator or Android emulator
 flutter run --dart-define=SPIKE_AUTORUN=true     # plays every word clip on launch, logs timings ("SPIKE …")
-flutter run --dart-define=SPIKE_INK_SPLIT=true   # focus ink as a colour-only TextSpan split
 flutter analyze && flutter test
 ```
 

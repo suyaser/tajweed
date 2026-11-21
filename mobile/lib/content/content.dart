@@ -141,6 +141,28 @@ class Content {
     for (final m in u.mutun) ...mutun.where((l) => l.matn == m.matn && l.n >= m.from && l.n <= m.to),
   ];
 
+  /// Every ayah the unit plays (examples, closing passages, finale), plus the basmala (1:1) that precedes a surah's
+  /// first ayah: src/audio/download.ts unitAyahs.
+  List<VerseKey> unitAyahs(Unit u) {
+    // ponytail: passages never cross a surah (course.build.test checks it)
+    List<VerseKey> range(VerseKey from, VerseKey to) {
+      final [s, a] = from.split(':');
+      final [s2, b] = to.split(':');
+      if (s != s2) return [from, to];
+      return [for (var i = int.parse(a); i <= int.parse(b); i++) '$s:$i'];
+    }
+
+    final keys = <VerseKey>{'1:1'};
+    for (final id in u.lessonIds) {
+      keys.addAll([for (final e in getLesson(id)?.examples ?? const <Example>[]) e.verseKey]);
+      final c = courseLesson(id).closing;
+      if (c != null) keys.addAll(range(c.from, c.to));
+    }
+    final f = u.finale;
+    if (f != null) keys.addAll(range(f.from, f.to));
+    return keys.toList();
+  }
+
   /// 1-based surah number → its Arabic name (src/quran/surahs.json).
   String surahName(int n) => (raw['surahs'] as List)[n - 1][0];
   int surahAyahs(int n) => (raw['surahs'] as List)[n - 1][1];

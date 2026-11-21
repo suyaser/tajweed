@@ -133,6 +133,28 @@ extension type Reciter(Json j) {
   bool get hasTimings => j['hasTimings'];
 }
 
+/// One tajweed span: code-point offsets [start, end) into Verse.text; src cpfair | ours.
+typedef TajweedSpan = ({String rule, int start, int end});
+
+/// One ayah as in public/data/surah/NNN.json (Tanzil Uthmani, basmala removed except 1:1).
+extension type Verse(Json j) {
+  VerseKey get verseKey => j['verseKey'];
+  String get text => j['text'];
+  List<String> get words => _strings(j['words']);
+  List<TajweedSpan> get tajweed => [
+    for (final s in j['tajweed'] as List) (rule: s['rule'] as String, start: s['start'] as int, end: s['end'] as int),
+  ];
+
+  /// By reciter id: 1-based inclusive [wordFrom, wordTo, startMs, endMs].
+  List<List<int>>? timings(String reciterId) =>
+      ((j['timings'] as Json?)?[reciterId] as List?)?.map((t) => (t as List).cast<int>()).toList();
+
+  /// Pause (waqf/sakt) and sajdah marks, each after 1-based word `after`; not part of `text`.
+  List<({int after, String mark})> get marks => [
+    for (final m in (j['marks'] as List? ?? const [])) (after: m['after'] as int, mark: m['mark'] as String),
+  ];
+}
+
 /* ---------------- User data (local, sync-ready) ---------------- */
 
 extension type Settings(Json j) {

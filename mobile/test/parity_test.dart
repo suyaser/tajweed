@@ -6,12 +6,15 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tajweed/content/content.dart';
 import 'package:tajweed/core/course.dart';
+import 'package:tajweed/content/rulemap.dart';
 import 'package:tajweed/core/day.dart';
+import 'package:tajweed/core/lesson_steps.dart';
 import 'package:tajweed/core/questions.dart';
 import 'package:tajweed/core/scheduler.dart';
 import 'package:tajweed/core/store.dart';
 import 'package:tajweed/core/types.dart';
 import 'package:tajweed/i18n/i18n.dart';
+import 'package:tajweed/quran/quran.dart';
 
 dynamic fixture(String name) => jsonDecode(File('test/fixtures/$name.json').readAsStringSync());
 
@@ -178,6 +181,42 @@ void main() {
         error = e.message;
       }
       expect(error, c['error'], reason: 'migrate ${jsonEncode(c['raw'])}');
+    }
+  });
+
+  test('quran: tajweed segments, rulemap, unit ayahs', () async {
+    useLang(Lang.en);
+    final f = fixture('quran');
+    final keys = (f['keys'] as List).cast<String>();
+    final verses = <String, Verse>{for (final k in keys) k: (await getVerse(k))!};
+    for (final (i, k) in keys.indexed) {
+      final v = verses[k]!;
+      same(wordSegments(v), f['segments'][i], 'wordSegments $k');
+      same(lessonsInAyah(v), f['inAyah'][i], 'lessonsInAyah $k');
+      same({for (final l in content.lessons) if (findTargets(v, l.id).isNotEmpty) l.id: findTargets(v, l.id)}, f['targets'][i], 'findTargets $k');
+    }
+    final all = [for (final l in content.lessons) ...l.examples];
+    for (final [id, also, noVerse] in f['also']) {
+      final e = all.firstWhere((x) => x.id == id);
+      same(alsoLessons(e, verses[e.verseKey], all.where((o) => o.id != id).toList()), also, 'alsoLessons $id');
+      same(alsoLessons(e, null, const []), noVerse, 'alsoLessons $id without the verse');
+    }
+    same([for (final u in content.units) [u.id, content.unitAyahs(u)]], f['unitAyahs'], 'unitAyahs');
+  });
+
+  test('lesson steps', () {
+    final f = fixture('lessonSteps');
+    expect([stepIds, requiredSteps, lessonMinutes], [f['steps'], f['required'], f['minutes']]);
+    var s = freshSteps('hear', '2026-11-20');
+    same(s, f['fresh'], 'freshSteps');
+    for (final o in f['out']) {
+      final String op = o['op'], id = o['id'], on = o['on'];
+      s = op == 'visit' ? visitStep(s, id, on) : op == 'complete' ? completeStep(s, id, on) : scoreCheck(s, [true, false, true], on);
+      same(s, o['s'], '$op $id');
+      same([missingSteps(s, (_) => true), missingSteps(s, (id) => id != 'check' && id != 'say')], o['missing'], 'missing after $op $id');
+      same(missingSteps(s, (_) => true, 'recite'), o['missingExceptRecite'], 'missing except recite');
+      final sc = checkScore(s);
+      same({'n': sc.n, 'm': sc.m}, o['score'], 'checkScore');
     }
   });
 }

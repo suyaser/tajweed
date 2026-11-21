@@ -5,13 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 
 import 'audio/word_clip.dart';
-import 'quran/verse_text.dart';
+import 'core/types.dart';
+import 'quran/verse.dart';
 import 'ui/theme.dart';
 
 /// Week-1 go/no-go spike (docs/19 §2.5, P0): real examples from content/rules.json, whole ayah with the focus
 /// highlight, and the example's words played as a clip of the ayah file. Run with
-/// --dart-define=SPIKE_AUTORUN=true to play every clip on launch and log the measurements, and
-/// --dart-define=SPIKE_INK_SPLIT=true to start with the focus ink as a colour-only TextSpan split.
+/// --dart-define=SPIKE_AUTORUN=true to play every clip on launch and log the measurements.
 // (rule, verse, first word). Not keyed by the Arabic focus: editors normalise typed Arabic (آ composed, shadda
 // reordered), so a literal here would not match the data.
 const _picks = [
@@ -40,7 +40,6 @@ class _SpikeScreenState extends State<SpikeScreen> {
   final _player = AudioPlayer();
   final _scroll = ScrollController();
   List<_Example> _examples = [];
-  bool _inkSplit = const bool.fromEnvironment('SPIKE_INK_SPLIT');
 
   @override
   void initState() {
@@ -100,12 +99,6 @@ class _SpikeScreenState extends State<SpikeScreen> {
         backgroundColor: k.surface,
         foregroundColor: k.ink,
         title: const Text('Spike: text + word clips'),
-        actions: [
-          Row(children: [
-            Text('ink split', style: TextStyle(color: k.muted, fontSize: 13)),
-            Switch(value: _inkSplit, onChanged: (v) => setState(() => _inkSplit = v)),
-          ]),
-        ],
       ),
       body: ListView(
         controller: _scroll,
@@ -119,17 +112,14 @@ class _SpikeScreenState extends State<SpikeScreen> {
   }
 
   Widget _card(_Example e, _Ink k) {
-    final words = (e.verse['words'] as List).cast<String>();
-    final pauses = {for (final m in (e.verse['marks'] as List? ?? [])) m['after'] as int: m['mark'] as String};
-    final v = layoutVerse(words,
-        pauses: pauses, focus: (e.ex['word_from'] as int, e.ex['word_to'] as int), focusText: e.ex['focus']);
+    final verse = Verse(e.verse.cast<String, dynamic>());
+    final v = layoutQuran([QAyah.of(verse)], brackets: true, focus: (e.ex['word_from'] as int, e.ex['word_to'] as int), focusText: e.ex['focus']);
     return Padding(
       padding: const EdgeInsets.only(top: 12),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Text('${e.rule} · ${e.verse['verseKey']} · words ${e.ex['word_from']}–${e.ex['word_to']} · focus “${e.ex['focus']}”',
             style: TextStyle(color: k.muted, fontSize: 12)),
-        VerseText(
-            text: v.text, ranges: v.ranges, pauses: v.pauses, ink: k.ink, pauseInk: k.secondary, focusBg: k.focusBg, focusInk: k.focusInk, inkSplit: _inkSplit),
+        QuranText(layout: v, size: VerseSize.read),
         Row(children: [
           IconButton(onPressed: () => _play(e), icon: Icon(Icons.play_arrow, color: k.gold), tooltip: 'Play the words'),
           Expanded(child: Text(e.result ?? '', style: TextStyle(color: k.muted, fontSize: 11))),
