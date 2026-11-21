@@ -1,4 +1,6 @@
-# Athan · أذان — plan (research and MVP)
+# Muqim · مُقيم (working name Athan) — plan (research and MVP)
+
+> **Decided 2026-11-22:** name **مُقيم · Muqim**, from Ibrāhīm's duʿāʾ «رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ» (14:40). Shared domain **tajweedpath.app** (the user buys it), so this app's id becomes `app.tajweedpath.muqim`. The Tajweed app keeps **مسار التجويد · Tajweed Path**. "Athan" below is the working name; the name research is kept as it was.
 
 Working name **Athan**. A mobile-only sibling of Tajweed Path (مسار التجويد). It ships on **Google Play and the App Store from day one**, with both platforms weighted equally. This file is planning only and will move to the app's own repo. Research date: 2026-11-21. Sources are linked inline and listed in §14.
 
@@ -372,6 +374,8 @@ iOS costs less than Android in the athan phase (the scheduler is simpler) but mo
 ---
 
 ## 14. Open decisions for the user
+
+**Decided 2026-11-22:** (2) the name is مُقيم · Muqim; the shared domain is tajweedpath.app (the user buys it); the Tajweed app keeps Tajweed Path.
 
 **Decided 2026-11-21:** (1) b, launch before Ramadan 2027; (2) a new name, lead candidate ميقات / Miqat, availability in docs/athan/02-voices-and-name.md; (3) personal accounts shared by both apps, one bought domain for both app ids; (4) openly licensed recordings only (see 02); no accounts; (10) yes. **Theme:** the user wants Tajweed Path's Sand & Ink theme replicated (§10), with changes only where the prayer app needs them (e.g. a night accent for Fajr/Isha, the large time display). The rest below follow the recommendations.
 

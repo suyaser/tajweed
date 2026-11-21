@@ -1,4 +1,6 @@
-# Athan · voices we can bundle, and a name
+# Athan (now Muqim) · voices we can bundle, and a name
+
+> **Decided 2026-11-22:** name **مُقيم · Muqim**, from Ibrāhīm's duʿāʾ «رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ» (14:40). Shared domain **tajweedpath.app** (the user buys it), so this app's id becomes `app.tajweedpath.muqim`. The Tajweed app keeps **مسار التجويد · Tajweed Path**. "Athan" below is the working name; the name research is kept as it was.
 
 Research date: 2026-11-21. This follows on from [01-plan.md](01-plan.md) §6.4 (athan audio rights) and §14 open decisions 2 (store name) and 4 (voices). It is research only: no audio was added to the repo. Licence and uploader facts come from the Wikimedia Commons API, Freesound pages, Internet Archive metadata and the RDAP registries, all read on the date above. Sources are linked inline.
 
