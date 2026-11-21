@@ -189,3 +189,10 @@ test('no "which rule" question for مخارج, صفات or the ابتداء/وق
   for (const id of ['makharij-aqsa', 'sifat-hams', 'ibtida', 'waqf-how', 'rawm-ishmam'])
     expect(lessons.find(l => l.id === id)!.questionKinds).not.toContain('identify')
 })
+
+test('a ر in the words keeps both ر lessons out of the wrong options; تَأْمَ۫نَّا keeps المثلين out', async () => {
+  const { lessons } = await import('../content')
+  const withRa = lessons.flatMap(l => l.examples).filter(e => e.lessonId !== 'ra-h' && e.lessonId !== 'ra-l' && /ر/.test(e.text))
+  expect(withRa.length).toBeGreaterThan(0)
+  for (const e of withRa) expect(e.also).toEqual(expect.arrayContaining(['ra-h', 'ra-l']))
+})

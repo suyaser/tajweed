@@ -67,6 +67,16 @@ export const mutun: MatnLine[] = rawMutun.lines.map(l => ({
 /** The one English phrase in source locators (rules.json), in Arabic for the Arabic UI. */
 const arLocator = (l: string) => (isAr ? l.replace(/paging per the OpenITI copy of/g, 'بترقيم نسخة OpenITI من') : l)
 
+/**
+ * Lessons that are also right about these words but that the data can't mark (also.json comes from the tajweed
+ * spans): any ر is heavy or light, so neither ر lesson may be a wrong option; ۫ (تَأْمَ۫نَّا) is also a merge of two
+ * نون. Questions only; the Find step keeps the data's own targets.
+ */
+function quizAlso(text: string, also: string[] | undefined): string[] | undefined {
+  const extra = [...(/ر/.test(text) ? ['ra-h', 'ra-l'] : []), ...(text.includes('\u06EB') ? ['mithlayn'] : [])]
+  return extra.length ? [...new Set([...(also ?? []), ...extra])].sort() : also
+}
+
 const NO_IDENTIFY = /^(makharij-|sifat-|maratib$|ibtida$|waqf-signs$|waqf-how$|rawm-ishmam$)/ // + الروم: heard, never written (unit 8 review)
 
 export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
@@ -74,7 +84,7 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const examples = (r.examples ?? []).map((e, i) => ({
     id: `${r.id}#${i + 1}`, lessonId: r.id, verseKey: e.verse, wordFrom: e.word_from, wordTo: e.word_to,
     text: e.text, focus: e.focus, stopping: !!e.stop, ...(e.note ? { note: pick(e.note, a?.exampleNotes?.[i + 1]) } : {}),
-    also: ALSO[`${r.id}#${i + 1}`], ...(e.role ? { role: e.role } : {}),
+    also: quizAlso(e.text, ALSO[`${r.id}#${i + 1}`]), ...(e.role ? { role: e.role } : {}),
     ...(e.contrast ? { contrast: {
       id: `${r.id}#${i + 1}c`, lessonId: e.contrast.lesson, verseKey: e.contrast.verse, wordFrom: e.contrast.word_from, wordTo: e.contrast.word_to,
       text: e.contrast.text, focus: e.contrast.focus, stopping: !!e.contrast.stop,
