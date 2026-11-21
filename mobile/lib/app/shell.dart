@@ -11,6 +11,7 @@ import '../screens/mutun.dart';
 import '../screens/onboarding.dart';
 import '../screens/plan.dart';
 import '../screens/progress.dart';
+import '../screens/resources.dart';
 import '../screens/review.dart';
 import '../screens/rules.dart';
 import '../screens/settings.dart';
@@ -155,6 +156,8 @@ class _ShellPageState extends State<ShellPage> {
     'today' => const Today(),
     'learn' => Learn(lessonId: r.params['lessonId']!),
     'plan' => const Plan(),
+    'resources' => const Resources(),
+    'guide' => const Guide(),
     'settings' => SettingsScreen(section: r.params['s']),
     'progress' => const Progress(),
     'mutun' => Mutun(matnId: r.params['matnId']!, from: r.params['from'], to: r.params['to']),

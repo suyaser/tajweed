@@ -8,7 +8,7 @@
         { "icon": "school", "name": "المقرأة الإلكترونية العالمية، الجامعة الإسلامية", "link": "https://apps.apple.com/app/id6448706254", "body": "Run under the Quran College of the Islamic University of Madinah. Teachers with a sanad, in all ten readings." },
         { "icon": "school", "name": "Maqraatec", "link": "https://apps.apple.com/app/id1582779076", "body": "A free app with certified teachers for correcting recitation and memorisation, at any hour." },
         { "icon": "school", "name": "Qutor", "link": "https://qutor.com/", "body": "Paid one-to-one tutors who set their own rates, with a free 30-minute trial." },
-        { "note": "Bring your teacher log: Teacher keeps their corrections, and a share link shows them your progress." }
+        { "app": false, "note": "Bring your teacher log: Teacher keeps their corrections, and a share link shows them your progress." }
       ]
     },
     {

@@ -11,6 +11,7 @@ import { Icon } from '@/components/ui/icon'
 // Carried over from docs/reference/artifact-v3.html (Resources), plus Credits (licence requirement, spec §8.2).
 // Texts live in content/resources.json (shared with the mobile app): English strings are t() keys; credit bodies are
 // per-language arrays of parts {text, link?, ltr?} (ltr: a Latin run in the Arabic text, isolated in a <bdi dir="ltr">).
+// `app: false` marks what the phone app hides until it has the teacher log (docs/19 phase 2).
 const EPISODES = videos.episodes
 type Part = { text: string; link?: string; ltr?: boolean }
 type Entry = { note?: string; icon?: string; name?: string; link?: string; body?: string; episodes?: boolean }

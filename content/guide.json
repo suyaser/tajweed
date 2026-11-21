@@ -47,7 +47,7 @@
       ]
     },
     {
-      "icon": "record_voice_over", "ar": "الشيخ", "en": "With a teacher (optional)",
+      "app": false, "icon": "record_voice_over", "ar": "الشيخ", "en": "With a teacher (optional)",
       "blocks": [
         { "kind": "ul", "items": [
           { "text": "Before class: Teacher tab → Plan a session. The app suggests your unit finale and corrections to re-check." },
@@ -73,14 +73,14 @@
       "blocks": [
         { "kind": "ul", "items": [
           { "text": "Your progress is kept on this device by default. No account is needed." },
-          { "text": "If you sign in (optional), your progress is backed up to our server and kept in step on your other devices." },
+          { "app": false, "text": "If you sign in (optional), your progress is backed up to our server and kept in step on your other devices." },
           { "text": "Your recordings never leave this device, signed in or not." },
-          { "text": "Not signed in? Install the app to your home screen so the browser doesn't clear it, and save a backup file from Settings now and then." }
+          { "app": false, "text": "Not signed in? Install the app to your home screen so the browser doesn't clear it, and save a backup file from Settings now and then." }
         ] }
       ]
     },
     {
-      "icon": "group", "ar": "الحساب والحلقة", "en": "Account and circles (optional)",
+      "app": false, "icon": "group", "ar": "الحساب والحلقة", "en": "Account and circles (optional)",
       "blocks": [
         { "kind": "ul", "items": [
           { "text": "Sign in from Settings with an email link or Google to back up and sync your progress." },

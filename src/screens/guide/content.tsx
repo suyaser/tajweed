@@ -8,6 +8,7 @@ import { Tx } from '../study/i18n'
 import guide from '../../../content/guide.json'
 
 // Texts live in content/guide.json (shared with the mobile app); strings are t() keys. Language is fixed per page load.
+// `app: false` marks what the phone app hides until it has accounts and the teacher log (docs/19 phase 2).
 export const BASICS: { ar: string; en: string; body: string; icon: string }[] = guide.basics.map((b) => ({ ...b, en: t(b.en), body: t(b.body) }))
 
 const BUL = 'flex list-disc flex-col gap-space-xs ps-5 marker:text-gold'

@@ -10,7 +10,7 @@ import '../i18n/i18n.dart';
 
 const _dir = 'assets/shared/content';
 const _files = [
-  'rules', 'pairs', 'mutun', 'also', 'ar', 'course', 'topics', 'reciters', 'glossary', 'surahs', 'videos', //
+  'rules', 'pairs', 'mutun', 'also', 'ar', 'course', 'topics', 'reciters', 'glossary', 'surahs', 'videos', 'guide', 'resources', //
 ];
 
 /// The decoded JSON files, by name ('rules', 'ar', …). Loaded once; [Content] is rebuilt per language.
