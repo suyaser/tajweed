@@ -431,8 +431,11 @@ class PageHeader extends StatelessWidget {
     this.stacked = false,
     this.plain = false,
     this.ornament = true,
+    this.secondaryDetail = const {},
   });
   final String en;
+  /// Indexes of [detail] items shown in the secondary (gold) colour (Today's Hijri date).
+  final Set<int> secondaryDetail;
   final String? ar;
   /// Eyebrow items (Lesson 17 of 58, Unit 2), joined by [Sep].
   final List<String>? eyebrow;
@@ -443,7 +446,7 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.c, ty = context.type;
-    final items = detail.where((x) => x.isNotEmpty).toList();
+    final items = [for (final (i, x) in detail.indexed) if (x.isNotEmpty) (x, secondaryDetail.contains(i))];
     final arTitle = ty.arabicHeadline.copyWith(color: c.onSurface);
     return Column(
       children: [
@@ -506,9 +509,9 @@ class PageHeader extends StatelessWidget {
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              for (final (i, x) in items.indexed) ...[
+              for (final (i, (x, gold)) in items.indexed) ...[
                 if (i > 0) const Sep(),
-                Text(x, style: ty.bodyMd.copyWith(color: c.onSurfaceVariant)),
+                Text(x, style: ty.bodyMd.copyWith(color: gold ? c.secondary : c.onSurfaceVariant)),
               ],
             ],
           ),

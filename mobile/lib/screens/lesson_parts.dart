@@ -196,7 +196,7 @@ class _QuestionViewState extends State<QuestionView> {
           onTap: _chosen == null ? () => _choose(o.id) : null,
           child: Stack(children: [
             ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 80),
+              constraints: const BoxConstraints(minHeight: 80, minWidth: double.infinity),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(Space.sm, Space.md, Space.sm, Space.md),
                 child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [

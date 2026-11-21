@@ -1,11 +1,25 @@
 # Tajweed Path, mobile (Flutter)
 
 The iOS and Android app (docs/19-play-store-plan.md, option d). It reads the web repo's content; nothing is copied by hand.
-Foundations F1–F7 and F11 are in (docs/19 §3): tokens and theme (`lib/ui/`), i18n (`lib/i18n/`), the content adapter
-and rulemap (`lib/content/`), core logic and the store (`lib/core/`), the kit widgets (`lib/ui/kit.dart`), and the Quran
-text (`lib/quran/`: surah loader, tajweed segments, `VerseBlock`/`WordToken`/`Passage`). No screens yet: the app
-opens on the dev gallery (`lib/dev/gallery.dart`, every kit widget with real content; AR/EN and light/dark at the top),
-with the week-1 spike (`lib/spike.dart`) one tap away.
+Foundations F1–F11 are in (docs/19 §3): tokens and theme (`lib/ui/`), i18n (`lib/i18n/`), the content adapter
+and rulemap (`lib/content/`), core logic and the store (`lib/core/`), the kit widgets (`lib/ui/kit.dart`), the Quran
+text (`lib/quran/`), audio (`lib/audio/`). Screens so far (`lib/screens/`, routed by `lib/app/`): Shell (tabs Today,
+Rules, Path; Recovery), Onboarding, Today, Plan, Unit and the Lesson with every step. Routes not ported yet show
+"Not built yet". The dev pages open with `--dart-define=DEV_PAGE=gallery|quran`.
+
+## App shell and navigation
+
+`lib/app/router.dart` ports the web's hash routes (`parseHash`, parity fixture `router.json`) and Shell META, so a link
+in content (`#/rules/ikhfa`, `#/unit/u1?finale=1`) opens the same screen: `go(context, path)`. One `Navigator`: a tab
+root starts a fresh stack, everything else is pushed (Android back, iOS swipe-back). Services are globals opened before
+the first frame (`lib/app/services.dart`: store, device-local prefs, recordings, downloads). Device-local conveniences
+the web keeps in localStorage (lesson step state, dismissed nudges, the routine card) are `local.json` (`lib/app/local.dart`).
+
+A new learner's walk on a device, with a screenshot per step (onboarding, lesson 1 with real audio, Today, Path, unit):
+
+```sh
+tool/walk_shots.sh ios <sim-udid> <dir> ar light      # or android <serial>; en | dark
+```
 
 **Never type Arabic in Dart source**: editors normalise it (composed آ, shadda reordered). Take it from the data or
 the dictionaries, or write `\u` escapes.

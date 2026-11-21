@@ -78,8 +78,10 @@ class _ShellPageState extends State<ShellPage> {
     super.dispose();
   }
 
-  bool _onScroll(ScrollNotification n) {
-    if (n.depth == 0 && n.metrics.axis == Axis.vertical) _scrolled.value = n.metrics.pixels > 96;
+  // a new scroll view (the next lesson step) reports its metrics too, so the title hides again at the top
+  bool _onScroll(Notification n) {
+    final m = n is ScrollNotification ? (n.depth == 0 ? n.metrics : null) : n is ScrollMetricsNotification && n.depth == 0 ? n.metrics : null;
+    if (m != null && m.axis == Axis.vertical) _scrolled.value = m.pixels > 96;
     return false;
   }
 
@@ -88,7 +90,7 @@ class _ShellPageState extends State<ShellPage> {
     final r = widget.route;
     final m = meta[r.name]!;
     final c = context.c;
-    final body = NotificationListener<ScrollNotification>(onNotification: _onScroll, child: _screen(r));
+    final body = NotificationListener<Notification>(onNotification: _onScroll, child: _screen(r));
     final hasNav = m.kind == ShellKind.tab || m.kind == ShellKind.pushed;
     final top = switch (m.kind) {
       ShellKind.tab => const _TabBarTop(),

@@ -41,7 +41,7 @@ class _PlanState extends State<Plan> {
         tn('{n} unit', '{n} units', units.length),
         t('{n} of {m} lessons done', {'n': p.done.length, 'm': total}),
         riwayah,
-      ]),
+      ], secondaryDetail: const {2}),
       Segmented<String>(
         value: 'plan',
         onChanged: (v) => v == 'progress' ? go(context, 'progress') : null,

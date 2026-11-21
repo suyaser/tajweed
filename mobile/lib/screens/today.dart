@@ -149,7 +149,7 @@ class _TodayState extends State<Today> {
     }
 
     return PageBody(items: [
-      PageHeader(en: 'Today', ar: '\u0627\u0644\u064a\u0648\u0645', detail: [d.gregorian, d.hijri, d.late]),
+      PageHeader(en: 'Today', ar: '\u0627\u0644\u064a\u0648\u0645', detail: [d.gregorian, d.hijri, d.late], secondaryDetail: const {1}),
       Container(
         padding: const EdgeInsets.all(Space.md),
         decoration: BoxDecoration(

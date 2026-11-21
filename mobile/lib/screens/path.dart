@@ -1,6 +1,7 @@
 // Building blocks shared by Today, the course map and Unit (port of src/screens/path/blocks.tsx, path/helpers.ts and
 // study/helpers.ts week()).
 import 'package:flutter/material.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
 import '../app/router.dart';
@@ -34,18 +35,10 @@ const _hijriMonths = [
 ];
 
 /// '٢١ جمادى الآخرة ١٤٤٨'.
-// ponytail: the tabular (arithmetical) Islamic calendar; the web's Umm al-Qura can differ by a day. A table of
-// Umm al-Qura month starts if it matters.
+/// '١١ جمادى الآخرة ١٤٤٨' (Umm al-Qura, as the web's ar-SA-u-ca-islamic-umalqura).
 String hijri(DateTime d) {
-  var l = DateTime.utc(d.year, d.month, d.day).millisecondsSinceEpoch ~/ 86400000 + 2440588 - 1948440 + 10632;
-  final n = (l - 1) ~/ 10631;
-  l = l - 10631 * n + 354;
-  final j = ((10985 - l) ~/ 5316) * ((50 * l) ~/ 17719) + (l ~/ 5670) * ((43 * l) ~/ 15238);
-  l = l - ((30 - j) ~/ 15) * ((17719 * j) ~/ 50) - (j ~/ 16) * ((15238 * j) ~/ 43) + 29;
-  final m = (24 * l) ~/ 709;
-  final day = l - (709 * m) ~/ 24;
-  final y = 30 * n + j - 30;
-  return '${arDigits(day)} ${_hijriMonths[m - 1]} ${arDigits(y)}';
+  final h = HijriCalendar.fromDate(DateTime(d.year, d.month, d.day));
+  return '${arDigits(h.hDay)} ${_hijriMonths[h.hMonth - 1]} ${arDigits(h.hYear)}';
 }
 
 /* ---------------- the week ---------------- */

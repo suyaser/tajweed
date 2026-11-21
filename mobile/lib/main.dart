@@ -15,6 +15,16 @@ import 'dev/quran_page.dart';
 import 'i18n/i18n.dart';
 
 Future<void> main() async {
+  await boot();
+  // --dart-define=DEV_PAGE=quran | gallery opens a dev page (device checks, screenshots).
+  const page = String.fromEnvironment('DEV_PAGE');
+  runApp(page.isEmpty
+      ? TajweedApp(initialRoute: startRoute, onGenerateRoute: buildRoute)
+      : TajweedApp(home: (_) => page == 'quran' ? const QuranPage() : const DevGallery()));
+}
+
+/// Everything before the first frame (also the device walk, integration_test/walk_test.dart).
+Future<void> boot() async {
   LicenseRegistry.addLicense(() async* {
     for (final (font, file) in [
       ('Amiri Quran', 'OFL-AmiriQuran.txt'),
@@ -43,9 +53,4 @@ Future<void> main() async {
 
   applySettings();
   store.addListener(applySettings);
-  // --dart-define=DEV_PAGE=quran | gallery opens a dev page (device checks, screenshots).
-  const page = String.fromEnvironment('DEV_PAGE');
-  runApp(page.isEmpty
-      ? TajweedApp(initialRoute: startRoute, onGenerateRoute: buildRoute)
-      : TajweedApp(home: (_) => page == 'quran' ? const QuranPage() : const DevGallery()));
 }
