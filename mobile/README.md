@@ -24,6 +24,8 @@ flutter run --dart-define=SPIKE_INK_SPLIT=true   # focus ink as a colour-only Te
 flutter analyze && flutter test
 ```
 
+The whole check, in CI order (web tests → sync → analyze → Dart tests): `mobile/tool/check.sh`.
+
 ## App id (placeholder)
 
 The iOS bundle id and Android applicationId are set in ONE place: `mobile/app_id.xcconfig` (`APP_ID = app.placeholder.tajweed`).
