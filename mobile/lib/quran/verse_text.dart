@@ -27,7 +27,7 @@ Map<int, (int, int)>? focusRanges(List<String> words, int from, int to, String t
   String? focusText,
 }) {
   final q = focus != null && focusText != null ? focusRanges(words, focus.$1, focus.$2, focusText) : null;
-  final b = StringBuffer('﴿\u00a0');
+  final b = StringBuffer('\ufd3f\u00a0');
   final ranges = <(int, int)>[], pauseRanges = <(int, int)>[];
   int? wholeStart;
   for (var n = 1; n <= words.length; n++) {
@@ -46,7 +46,7 @@ Map<int, (int, int)>? focusRanges(List<String> words, int from, int to, String t
       b.write('\u00a0${pauses[n]}');
     }
   }
-  b.write('\u00a0﴾');
+  b.write('\u00a0\ufd3e');
   return (text: b.toString(), ranges: ranges, pauses: pauseRanges);
 }
 

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'app.dart';
+import 'content/content.dart';
+import 'dev/gallery.dart';
 import 'i18n/i18n.dart';
-import 'spike.dart';
 
 Future<void> main() async {
   LicenseRegistry.addLicense(() async* {
@@ -20,5 +21,9 @@ Future<void> main() async {
   });
   WidgetsFlutterBinding.ensureInitialized();
   await loadArabic();
-  runApp(TajweedApp(home: (_) => const SpikeScreen()));
+  final raw = await loadRawContent();
+  useContent(raw);
+  lang.addListener(() => useContent(raw)); // before the app rebuilds for the new language
+  // Until the screens are ported (docs/19 §3) the app opens on the dev gallery; the spike is one tap away.
+  runApp(TajweedApp(home: (_) => const DevGallery()));
 }

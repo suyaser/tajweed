@@ -21,6 +21,7 @@ List<String> keys(String code) => [
 ];
 
 void main() {
+  arabicIsEscaped();
   test('finds keys (sanity)', () {
     expect(keys(r"""t('a'), tn('{n} day', "{n} days", n), t("it's"), t('don\'t')"""), ['a', '{n} day', '{n} days', "it's", "don't"]);
   });
@@ -39,3 +40,17 @@ void main() {
     expect(missing, isEmpty);
   });
 }
+
+/// Arabic typed into code gets normalised by editors (and some tools turn \u escapes into characters): code lines in
+/// lib/ must hold Arabic only as \u escapes. Comments may show it.
+void arabicIsEscaped() => test('no Arabic characters in lib/ code (only \\u escapes)', () {
+  final arabic = RegExp('[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufdff\ufe70-\ufeff]');
+  final bad = <String>[];
+  for (final f in Directory('lib').listSync(recursive: true).whereType<File>().where((f) => f.path.endsWith('.dart'))) {
+    for (final (i, line) in f.readAsLinesSync().indexed) {
+      final code = line.trimLeft().startsWith('//') ? '' : line.split(RegExp(r'\s//')).first;
+      if (arabic.hasMatch(code)) bad.add('${f.path}:${i + 1}');
+    }
+  }
+  expect(bad, isEmpty);
+});

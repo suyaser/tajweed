@@ -1,7 +1,13 @@
 # Tajweed Path, mobile (Flutter)
 
 The iOS and Android app (docs/19-play-store-plan.md, option d). It reads the web repo's content; nothing is copied by hand.
-Right now it holds only the week-1 spike screen (`lib/spike.dart`): Arabic rendering with the focus highlight, and word clips.
+Foundations F1–F6 and F11 are in (docs/19 §3): tokens and theme (`lib/ui/`), i18n (`lib/i18n/`), the content adapter
+(`lib/content/`), core logic and the store (`lib/core/`), and the kit widgets (`lib/ui/kit.dart`). No screens yet: the app
+opens on the dev gallery (`lib/dev/gallery.dart`, every kit widget with real content; AR/EN and light/dark at the top),
+with the week-1 spike (`lib/spike.dart`) one tap away.
+
+**Never type Arabic in Dart source**: editors normalise it (composed آ, shadda reordered). Take it from the data or
+the dictionaries, or write `\u` escapes.
 
 ## Content sync
 
@@ -27,6 +33,9 @@ flutter run --dart-define=SPIKE_AUTORUN=true     # plays every word clip on laun
 flutter run --dart-define=SPIKE_INK_SPLIT=true   # focus ink as a colour-only TextSpan split
 flutter analyze && flutter test
 ```
+
+Gallery screenshots, Arabic/English × light/dark: `tool/gallery_shots.sh ios <sim-udid> <dir>` or
+`tool/gallery_shots.sh android emulator-5554 <dir>`.
 
 The whole check, in CI order (web tests → sync → analyze → Dart tests): `mobile/tool/check.sh`.
 
