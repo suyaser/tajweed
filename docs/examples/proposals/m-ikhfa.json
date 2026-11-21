@@ -1,0 +1,123 @@
+{
+  "lesson": "m-ikhfa",
+  "coverage": "م before بِ across words (the card's only case): all; after هُم: #2 #7; كُم: #3; هِم: #1 #5; a verb's م: #4; with a later إقلاب in the same phrase: #6; classic: #8",
+  "notes": "Every case is م then بِ across two words, so variety comes from the word before. The lips question (الإطباق or الفرجة) stays with the teacher (card review).",
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "105:4",
+      "word_from": 1,
+      "word_to": 2,
+      "text": "تَرْمِيهِم بِحِجَارَةٍ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "The م before ب is hidden with a two-count hum, then the ب.",
+      "noteAr": "تخفى الميم عند الباء بغنة حركتين، ثم الباء.",
+      "why": "In the unit (الفيل); the common teaching example of الإخفاء الشفوي. تحفة states the rule (بيت 19) without naming a word. The lips (الإطباق or الفرجة) are left to the teacher, as on the card.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "hear",
+      "verse": "79:14",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "هُم بِٱلسَّاهِرَةِ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "هُم بِـ: a hidden م with a held hum.",
+      "noteAr": "«هُم بِـ»: ميم مخفاة بغنة.",
+      "why": "Juz عمّ; the shortest word.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "hear",
+      "verse": "81:22",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "صَاحِبُكُم بِمَجْنُونٍ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "صَاحِبُكُم بِـ: the hum is held before the ب.",
+      "noteAr": "«صَاحِبُكُم بِـ»: تُمد الغنة قبل الباء.",
+      "why": "Juz عمّ; كُم ending for variety.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "say",
+      "verse": "96:14",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "يَعْلَم بِأَنَّ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "يَعْلَم بِأَنَّ: the م of the verb is hidden before ب, two counts.",
+      "noteAr": "«يَعْلَم بِأَنَّ»: تُخفى ميم الفعل عند الباء بغنة حركتين.",
+      "why": "From العلق (unit 6 surah, Juz عمّ); the م ends a verb, not a pronoun. No ر next to the target (فَبَشِّرْهُم had an untaught light ر).",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "say",
+      "verse": "88:22",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "عَلَيْهِم بِمُصَيْطِرٍ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "عَلَيْهِم بِـ: a hidden م, two counts.",
+      "noteAr": "«عَلَيْهِم بِـ»: ميم مخفاة حركتين.",
+      "why": "Juz عمّ. ص and ط are heavy letters (unit 1).",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "say",
+      "verse": "91:14",
+      "word_from": 5,
+      "word_to": 6,
+      "text": "رَبُّهُم بِذَنۢبِهِمْ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "A hidden م, then in بِذَنۢبِهِمْ the نۢ turns into a hidden م too (إقلاب).",
+      "noteAr": "ميم مخفاة، ثم نون مقلوبة قبل الباء في الكلمة نفسها.",
+      "why": "Juz عمّ; harder: the إقلاب (unit 2) in بِذَنۢبِهِمْ sounds the same, a good link.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "notice",
+      "verse": "100:11",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "رَبَّهُم بِهِمْ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "رَبَّهُم بِهِمْ: the first م, before ب, is hidden with a hum.",
+      "noteAr": "في «رَبَّهُم بِهِمْ» تُخفى الميم الأولى عند الباء بغنة.",
+      "why": "Unit 5 surah; the same pronoun هم, hidden here and clear in 98:8 رَبِّهِمْ جَنَّٰتُ.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200",
+      "contrast": {
+        "lesson": "m-izhar",
+        "verse": "98:8",
+        "word_from": 3,
+        "word_to": 4,
+        "text": "رَبِّهِمْ جَنَّٰتُ",
+        "focus": "مْ جَ",
+        "stop": false,
+        "note": "رَبِّهِمْ before ج: the م is clear, no hum held.",
+        "noteAr": "«رَبِّهِمْ» قبل الجيم: ميم ظاهرة بلا غنة ممدودة.",
+        "why": "Same word رب + هم, the م before ج instead of ب."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "3:101",
+      "word_from": 11,
+      "word_to": 12,
+      "text": "يَعْتَصِم بِٱللَّهِ",
+      "focus": "م بِ",
+      "stop": false,
+      "note": "A hidden م before بِٱللَّهِ.",
+      "noteAr": "ميم مخفاة قبل «بِٱللَّهِ».",
+      "why": "The common book example, kept for Check questions.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    }
+  ]
+}

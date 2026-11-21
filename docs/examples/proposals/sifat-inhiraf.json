@@ -1,0 +1,115 @@
+{
+  "lesson": "sifat-inhiraf",
+  "coverage": "الانحراف: #1 (ر) #2 (ل) #5 (ل); التكرير: #1 #7; التفشي: #3 #6; الاستطالة: #4 #8",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to كَرَّتَيْنِ، كُلِّ، لِّلشَّيَٰطِينِ, and to أَرْ and أَشْ: the ر does not trill; the ش spreads through the mouth.",
+    "ar": "استمع إلى كَرَّتَيْنِ، كُلِّ، لِّلشَّيَٰطِينِ، وإلى أَرْ وأَشْ: الراء لا ترتعد، والشين ينتشر صوتها في الفم."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:4",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "كَرَّتَيْنِ",
+      "focus": "رَّ",
+      "stop": false,
+      "note": "رّ has الانحراف and التكرير: say it firmly, without letting the tongue trill.",
+      "noteAr": "الراء المشددة: فيها الانحراف والتكرير؛ انطقها دون أن يرتعد اللسان.",
+      "why": "رّ is where التكرير is most at risk; the Jazariyya warns «وأخفِ تكريرًا إذا تُشدَّدُ».",
+      "source": "الجزرية، صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57) وباب الراءات (الأبيات 41–43، https://shamela.ws/book/581/66): «وأخفِ تكريرًا إذا تُشدَّدُ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:1",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "كُلِّ",
+      "focus": "لِّ",
+      "stop": false,
+      "note": "لّ has الانحراف: its sound leans away from its مخرج toward another.",
+      "noteAr": "اللام المشددة: فيها الانحراف، يميل صوتها بعد خروجه من مخرجه.",
+      "why": "ل with شدة.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:5",
+      "word_from": 8,
+      "word_to": 8,
+      "text": "لِّلشَّيَٰطِينِ",
+      "focus": "شَّ",
+      "stop": false,
+      "note": "شّ has التفشي: the air spreads through the mouth.",
+      "noteAr": "الشين المشددة: فيها التفشي، ينتشر الهواء في الفم.",
+      "why": "ش with شدة.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "107:3",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "يَحُضُّ",
+      "focus": "ضُّ",
+      "stop": false,
+      "note": "ضّ has الاستطالة: its sound runs along the edge of the tongue until it nears the place of ل.",
+      "noteAr": "الضاد المشددة: فيها الاستطالة، يمتد صوتها على حافة اللسان حتى يقرب من مخرج اللام.",
+      "why": "ض with شدة, from جزء عمّ; no ضّ in الملك.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:3",
+      "word_from": 15,
+      "word_to": 15,
+      "text": "هَلْ",
+      "focus": "لْ",
+      "stop": false,
+      "note": "لْ before تَ is shown in حفص; its sound leans (الانحراف).",
+      "noteAr": "اللام الساكنة قبل التاء مظهرة عند حفص، وفيها الانحراف.",
+      "why": "ل with سكون.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:15",
+      "word_from": 14,
+      "word_to": 14,
+      "text": "ٱلنُّشُورُ",
+      "focus": "شُ",
+      "stop": false,
+      "note": "ش: let the air spread through the mouth; that is التفشي.",
+      "noteAr": "الشين: اجعل الهواء ينتشر في الفم، وهذا هو التفشي.",
+      "why": "ش with a vowel.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "more",
+      "verse": "67:19",
+      "word_from": 11,
+      "word_to": 11,
+      "text": "ٱلرَّحْمَٰنُ",
+      "focus": "رَّ",
+      "stop": false,
+      "note": "رّ again: keep its التكرير hidden; the tongue does not shake.",
+      "noteAr": "الراء المشددة: أخفِ تكريرها، فلا يرتعد اللسان.",
+      "why": "A second رّ.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "more",
+      "verse": "67:24",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "ٱلْأَرْضِ",
+      "focus": "ضِ",
+      "stop": false,
+      "note": "ض: الاستطالة along the edge of the tongue.",
+      "noteAr": "الضاد: فيها الاستطالة على حافة اللسان.",
+      "why": "A second ض.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «والانحرافُ صُحِّحا في اللامِ والرا، وبتكريرٍ جُعِلْ، وللتفشي الشينُ، ضادًا استطِلْ»؛ هداية القاري 1/79–86"
+    }
+  ]
+}

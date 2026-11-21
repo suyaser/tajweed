@@ -1,0 +1,127 @@
+{
+  "lesson": "aqwa-maddayn",
+  "coverage": "بدل+متصل: #1 #6; بدل+عارض: #2 #4 #8; بدل+منفصل: #3 #5; بدل+لازم: #7",
+  "notes": "مد الفرق (ءَآلذَّكَرَيْنِ، ءَآلْـَٔـٰنَ) left out (card review note). Anchor is رِئَآءَ (review round 1): one حرف مد held 4–5 instead of 2, clearly audible. وَلَآ ءَآمِّينَ is the notice word, the only بدل+لازم word, paired with ءَامِنِينَ. يُرَآءُونَ also has a متصل on رَآءُ; its focus is the second مد.",
+  "noticeText": {
+    "en": "Listen to رِئَآءَ: the ا has a همزة before it (بدل) and after it (متصل); the stronger متصل wins, four or five counts.",
+    "ar": "استمع إلى «رِئَآءَ»: الألف بين همزتين، بدل ومتصل، فيُعمل بالمتصل الأقوى أربعًا أو خمسًا."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "4:38",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "رِئَآءَ",
+      "focus": "ئَآءَ",
+      "stop": false,
+      "note": "The ا has a همزة before it and after it: المتصل wins, 4 or 5.",
+      "noteAr": "الألف بين همزتين: بدل ومتصل، فيُعمل بالمتصل أربعًا أو خمسًا.",
+      "why": "The card's بدل+متصل example; one clear long مد, joined to ٱلنَّاسِ by all reciters.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    },
+    {
+      "role": "hear",
+      "verse": "107:6",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "يُرَآءُونَ",
+      "focus": "ءُو",
+      "stop": true,
+      "note": "Stopping: the و after the همزة is بدل and عارض; العارض wins: 2, 4 or 6.",
+      "noteAr": "عند الوقف: الواو بعد الهمزة بدل وعارض، فيُعمل بالعارض: حركتان أو أربع أو ست.",
+      "why": "From الماعون (unit 4), at its ayah end. The رَآءُ before it is a separate متصل.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    },
+    {
+      "role": "hear",
+      "verse": "12:16",
+      "word_from": 1,
+      "word_to": 2,
+      "text": "وَجَآءُوٓ أَبَاهُمْ",
+      "focus": "ءُوٓ أَ",
+      "stop": false,
+      "note": "بدل and منفصل: joined, the منفصل wins, 4 or 5.",
+      "noteAr": "بدل ومنفصل: عند الوصل يُعمل بالمنفصل أربعًا أو خمسًا.",
+      "why": "The book example (غاية المريد 7311/145).",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    },
+    {
+      "role": "say",
+      "verse": "3:14",
+      "word_from": 24,
+      "word_to": 24,
+      "text": "ٱلْمَـَٔابِ",
+      "focus": "مَـَٔا",
+      "stop": true,
+      "note": "Stopping: ٱلْمَآبْ. The ا after the همزة becomes عارض: 2, 4 or 6.",
+      "noteAr": "عند الوقف «ٱلْمَآبْ»: بدل وعارض، فيُعمل بالعارض.",
+      "why": "The ا form of بدل+عارض.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    },
+    {
+      "role": "say",
+      "verse": "11:70",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "رَءَآ أَيْدِيَهُمْ",
+      "focus": "ءَآ أَ",
+      "stop": false,
+      "note": "رَءَآ before أَيْدِيَهُمْ: the منفصل wins, 4 or 5.",
+      "noteAr": "«رَءَآ أَيْدِيَهُمْ»: يُعمل بالمنفصل أربعًا أو خمسًا.",
+      "why": "The ا form of بدل+منفصل.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    },
+    {
+      "role": "say",
+      "verse": "60:4",
+      "word_from": 14,
+      "word_to": 14,
+      "text": "بُرَءَٰٓؤُا۟",
+      "focus": "ءَٰٓؤُ",
+      "stop": false,
+      "note": "بُرَءَٰٓؤُا۟: المتصل wins, 4 or 5.",
+      "noteAr": "«بُرَءَٰٓؤُا۟»: يُعمل بالمتصل أربعًا أو خمسًا.",
+      "why": "Harder; a small ا.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    },
+    {
+      "role": "notice",
+      "verse": "5:2",
+      "word_from": 16,
+      "word_to": 16,
+      "text": "ءَآمِّينَ",
+      "focus": "ءَآ",
+      "stop": false,
+      "note": "ءَآمِّينَ: بدل and a شدة after it: لازم wins, six.",
+      "noteAr": "«ءَآمِّينَ»: بدل وبعده شدة، فيُعمل باللازم ستًّا.",
+      "why": "A minimal pair with ءَامِنِينَ: the same letters without the شدة.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313",
+      "contrast": {
+        "lesson": "badal",
+        "verse": "48:27",
+        "word_from": 13,
+        "word_to": 13,
+        "text": "ءَامِنِينَ",
+        "focus": "ءَا",
+        "stop": false,
+        "note": "ءَامِنِينَ: no شدة after the ا, so only the بدل: two counts.",
+        "noteAr": "«ءَامِنِينَ»: لا شدة بعد الألف، فهو بدل فقط: حركتان.",
+        "why": "Same letters, no second cause."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "2:14",
+      "word_from": 16,
+      "word_to": 16,
+      "text": "مُسْتَهْزِءُونَ",
+      "focus": "زِءُو",
+      "stop": true,
+      "note": "Stopping: مُسْتَهْزِءُونْ. بدل and عارض: 2, 4 or 6.",
+      "noteAr": "عند الوقف «مُسْتَهْزِءُونْ»: بدل وعارض، حركتان أو أربع أو ست.",
+      "why": "The card's old example.",
+      "source": "غاية المريد https://shamela.ws/book/7311/144–145 (مراتب المدود، والعمل بأقوى السببين)؛ هداية القاري https://shamela.ws/book/22869/310–313"
+    }
+  ]
+}

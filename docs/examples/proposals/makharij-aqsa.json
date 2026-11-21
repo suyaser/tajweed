@@ -1,0 +1,102 @@
+{
+  "lesson": "makharij-aqsa",
+  "coverage": "ق: #1 #4 #5 #7; ك: #2 #3 #4 #6",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to ق and ك in وَيَقْبِضْنَ، تَوَكَّلْنَا، ٱلْأَكْبَرَ, and in أَقْ and أَكْ: the back of the tongue touches the palate, ق further back than ك.",
+    "ar": "استمع إلى القاف والكاف في وَيَقْبِضْنَ، تَوَكَّلْنَا، ٱلْأَكْبَرَ، وفي أَقْ وأَكْ: أقصى اللسان يلامس الحنك، والقاف أبعد من الكاف."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:19",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "وَيَقْبِضْنَ",
+      "focus": "قْ",
+      "stop": false,
+      "note": "قْ: the back of the tongue, next to the throat, against the palate above it.",
+      "noteAr": "القاف الساكنة: من أقصى اللسان مما يلي الحلق مع ما يحاذيه من الحنك الأعلى.",
+      "why": "The only قْ with سكون in الملك; its قلقلة is a ṣifah of ق, learned in unit 2.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:29",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "تَوَكَّلْنَا",
+      "focus": "كَّ",
+      "stop": false,
+      "note": "كّ: a little lower than ق and nearer the mouth, against the palate.",
+      "noteAr": "الكاف المشددة: من أسفل مخرج القاف قليلًا، أقرب إلى الفم.",
+      "why": "ك with شدة, held on its مخرج.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "88:24",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلْأَكْبَرَ",
+      "focus": "كْ",
+      "stop": false,
+      "note": "كْ with سكون: the back of the tongue meets the palate just in front of the place of ق.",
+      "noteAr": "الكاف الساكنة: يلتقي أقصى اللسان بالحنك أمام مخرج القاف بقليل.",
+      "why": "No كْ with سكون in الملك; this one is from جزء عمّ. Focus is mid-word, so the ayah-end stop does not touch it.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:21",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "يَرْزُقُكُمْ",
+      "focus": "قُكُ",
+      "stop": false,
+      "note": "قُ then كُ side by side: the tongue moves a little forward from ق to ك.",
+      "noteAr": "القاف ثم الكاف متجاورتين: يتقدم اللسان قليلًا من مخرج القاف إلى مخرج الكاف.",
+      "why": "The two اللهويتان next to each other, to feel the difference.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:23",
+      "word_from": 10,
+      "word_to": 10,
+      "text": "قَلِيلًا",
+      "focus": "قَ",
+      "stop": false,
+      "note": "ق with a فتحة: still from أقصى اللسان, and heavy.",
+      "noteAr": "القاف المفتوحة: من أقصى اللسان، وهي مفخمة.",
+      "why": "ق with a vowel, a short sayable word.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:1",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلْمُلْكُ",
+      "focus": "كُ",
+      "stop": false,
+      "note": "After لْ, the back of the tongue closes on the palate for كُ.",
+      "noteAr": "بعد اللام الساكنة يلتقي أقصى اللسان بالحنك لنطق الكاف.",
+      "why": "ك after a tip letter, in the surah's first ayah.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "96:1",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "ٱقْرَأْ",
+      "focus": "قْ",
+      "stop": false,
+      "note": "قْ in the first word revealed: the back of the tongue, then the قلقلة.",
+      "noteAr": "القاف الساكنة في أول كلمة نزلت: من أقصى اللسان، ثم القلقلة.",
+      "why": "Classical book example of قْ.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والقافُ أقصى اللسانِ فوقُ ثم الكافُ أسفلُ»؛ هداية القاري 1/61–68"
+    }
+  ]
+}

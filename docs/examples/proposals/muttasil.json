@@ -1,0 +1,127 @@
+{
+ "lesson": "muttasil",
+ "coverage": "ا: #1 #4 #5 #6 #7; و: #2; ي: #3 #8.",
+ "notes": "All joined mid-ayah, so the 4/5 of الوصل is heard (no stop on a final همزة).",
+ "noticeText": {
+  "en": "Listen to جَآءَ, سُوٓءَ and سِىٓءَ: the ا, و or ي before a همزة in the same word is held four or five counts.",
+  "ar": "استمع إلى جَآءَ وسُوٓءَ وسِىٓءَ: الألف أو الواو أو الياء قبل الهمزة في الكلمة نفسها تُمد أربع حركات أو خمسًا."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "110:1",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "جَآءَ",
+   "focus": "آءَ",
+   "stop": false,
+   "note": "The ا before the همزة in the same word is held four or five counts.",
+   "noteAr": "تُمد الألف قبل الهمزة في الكلمة نفسها أربع حركات أو خمسًا.",
+   "why": "From النصر (this unit); the only متصل in units 1–3 surahs. The book's first example (جاء).",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168"
+  },
+  {
+   "role": "hear",
+   "verse": "2:49",
+   "word_from": 7,
+   "word_to": 7,
+   "text": "سُوٓءَ",
+   "focus": "وٓءَ",
+   "stop": false,
+   "note": "The و of سُوٓءَ before the همزة: four or five counts.",
+   "noteAr": "واو سُوٓءَ قبل الهمزة: أربع حركات أو خمس.",
+   "why": "و case; none in جزء عمّ. Clean (no other rule).",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168; تحفة الأطفال، أقسام المد وأحكامه https://shamela.ws/book/9632/6"
+  },
+  {
+   "role": "hear",
+   "verse": "11:77",
+   "word_from": 5,
+   "word_to": 5,
+   "text": "سِىٓءَ",
+   "focus": "ىٓءَ",
+   "stop": false,
+   "note": "The ي of سِىٓءَ before the همزة: four or five counts.",
+   "noteAr": "ياء سِىٓءَ قبل الهمزة: أربع حركات أو خمس.",
+   "why": "ي case, the book's type (جيء). The only ي متصل in جزء عمّ (وَجِا۟ىٓءَ) has a silent ا (later lesson).",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168"
+  },
+  {
+   "role": "say",
+   "verse": "84:10",
+   "word_from": 5,
+   "word_to": 5,
+   "text": "وَرَآءَ",
+   "focus": "آءَ",
+   "stop": false,
+   "note": "وَرَآءَ: hold the ا four or five counts before the همزة.",
+   "noteAr": "وَرَآءَ: تُمد الألف أربعًا أو خمسًا قبل الهمزة.",
+   "why": "ا, mid-ayah.",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168"
+  },
+  {
+   "role": "say",
+   "verse": "78:36",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "عَطَآءً",
+   "focus": "آءً",
+   "stop": false,
+   "note": "عَطَآءً: the same length before the همزة.",
+   "noteAr": "عَطَآءً: المقدار نفسه قبل الهمزة.",
+   "why": "ا, mid-ayah (the ayah goes on with حِسَابًا).",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168"
+  },
+  {
+   "role": "say",
+   "verse": "98:5",
+   "word_from": 9,
+   "word_to": 9,
+   "text": "حُنَفَآءَ",
+   "focus": "آءَ",
+   "stop": false,
+   "note": "حُنَفَآءَ: keep the length equal to the others.",
+   "noteAr": "حُنَفَآءَ: سوِّ المد بغيره من المتصل.",
+   "why": "ا, mid-ayah; tests keeping one length.",
+   "source": "الميزان، التسوية بين مدود النوع الواحد https://shamela.ws/book/38104/180"
+  },
+  {
+   "role": "notice",
+   "verse": "80:22",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "شَآءَ",
+   "focus": "آءَ",
+   "stop": false,
+   "note": "In شَآءَ a همزة follows the ا in the same word: hold it four or five counts.",
+   "noteAr": "في شَآءَ تأتي الهمزة بعد الألف في الكلمة نفسها: تُمد أربعًا أو خمسًا.",
+   "why": "Pair with وَشَاهِدٍ: the same شَا, with and without a همزة after the ا.",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168",
+   "contrast": {
+    "lesson": "tabii",
+    "verse": "85:3",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَشَاهِدٍ",
+    "focus": "شَا",
+    "stop": false,
+    "note": "In وَشَاهِدٍ no همزة follows the ا: two counts only.",
+    "noteAr": "في وَشَاهِدٍ لا همزة بعد الألف: حركتان فقط.",
+    "why": "Same شَا opening; the تنوين merging into وَمَشْهُودٍ is taught (الإدغام بغنة)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "89:23",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَجِا۟ىٓءَ",
+   "focus": "ىٓءَ",
+   "stop": false,
+   "note": "The ي before the همزة in وَجِا۟ىٓءَ: four or five counts. The small-circled ا is not read.",
+   "noteAr": "الياء قبل الهمزة في وَجِا۟ىٓءَ: أربع حركات أو خمس، والألف المعلَّمة بالدائرة لا تُقرأ.",
+   "why": "ي case from جزء عمّ, kept in more because of the silent ا.",
+   "source": "الميزان، المد الواجب المتصل (جاء، جيء، السماء) https://shamela.ws/book/38104/168"
+  }
+ ]
+}

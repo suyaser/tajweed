@@ -31,13 +31,18 @@ describe.skipIf(!existsSync('public/data/surah/001.json'))('also.json', () => {
   })
 
   it('covers the tajweed review cases', () => {
-    const now = compute()
-    const find = (lessonId: string, text: string) => lessons.find(l => l.id === lessonId)!.examples.find(e => e.text === text)!.id
-    expect(now[find('qal-k', 'ٱلْفَلَقِ')]).toContain('lam-q') // same word as lam-q
-    expect(now[find('lam-q', 'ٱلْفَلَقِ')]).toContain('qal-k')
-    expect(now[find('ra-l', 'قَدِيرٌ')]).toContain('arid') // stopping: مد before the last letter
-    expect(now[find('ra-h', 'تَرْمِيهِم')]).toContain('m-ikhfa') // مْ before بِحِجَارَةٍ
-    expect(now[find('ra-h', 'ٱرْجِعِىٓ')]).toContain('munfasil')
-    expect(now[find('ra-l', 'رِجَالٌ')]).toContain('idgh-n')
+    // fixed cases from the tajweed review, built from the Quran data (independent of which words the lessons use)
+    const also = (lessonId: string, key: string, from: number, to: number, stopping: boolean) => {
+      const [s, a] = key.split(':').map(Number)
+      const v = surah(s)[a - 1]
+      const ex = { id: 'x', lessonId, verseKey: key, wordFrom: from, wordTo: to, text: v.words.slice(from - 1, to).join(' '), focus: '', stopping }
+      return alsoLessons(ex, v, [])
+    }
+    expect(also('qal-k', '113:1', 4, 4, true)).toContain('lam-q') // ٱلْفَلَقِ
+    expect(also('lam-q', '113:1', 4, 4, true)).toContain('qal-k')
+    expect(also('ra-l', '2:20', 25, 25, true)).toContain('arid') // قَدِيرٌ stopping: مد before the last letter
+    expect(also('ra-h', '105:4', 1, 1, false)).toContain('m-ikhfa') // تَرْمِيهِم: مْ before بِحِجَارَةٍ
+    expect(also('ra-h', '89:28', 1, 1, false)).toContain('munfasil') // ٱرْجِعِىٓ إِلَىٰ
+    expect(also('ra-l', '24:37', 1, 1, false)).toContain('idgh-n') // رِجَالٌ لَّا
   })
 })

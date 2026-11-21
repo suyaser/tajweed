@@ -1,0 +1,89 @@
+{
+  "lesson": "rawm-ishmam",
+  "coverage": "تنوين ضم (سكون، روم، إشمام): #1 #6; ضمة: #2; كسرة (سكون أو روم): #3; تنوين كسر: #4; كسرة after a مد, with روم the عارض is 2: #5. The cases where neither is allowed (فتحة، ة، ميم الجمع) are on the card and in the facts, not in the examples.",
+  "notes": "Every example ends an ayah (stop: true). The reciters stop with a plain سكون, so الروم and الإشمام are not in the audio; the notes say so and the Hear prompt sends the learner to a teacher. أَحَدٌ (112:1) is the deliberate share with qal-k (SHARED_OK): with الروم the قلقلة is not made. نَسْتَعِينُ, ٱلرَّحِيمِ (1:3) and ٱلْعَٰلَمِينَ are left to المد العارض. Round 1: the three not-allowed examples (فَعَدَلَكَ، ٱلْحُطَمَةُ، حِسَابَهُم) were removed, since every example is a positive case of the lesson; فَعَدَلَكَ moved to waqf-how. هاء الضمير (a disputed case) is left out.",
+  "noticeText": {
+    "en": "The reciters here stop on أَحَدٌ and ٱلْأَكْرَمُ with a plain سكون. الروم (a third of the vowel, whispered) is heard only from close by, and الإشمام (the lips round after the سكون) is seen, not heard: watch a teacher's lips.",
+    "ar": "يقف القرّاء هنا على أَحَدٌ و ٱلْأَكْرَمُ بالسكون المحض. أما الروم (النطق بثلث الحركة بصوت خفي) فلا يسمعه إلا القريب، والإشمام (ضمّ الشفتين بعد السكون) يُرى ولا يُسمع: انظر إلى شفتي المعلّم."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "112:1",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "أَحَدٌ",
+      "focus": "دٌ",
+      "stop": true,
+      "note": "تنوين ضم: سكون, روم or إشمام. With الروم the د does not bounce (no قلقلة).",
+      "noteAr": "تنوين ضم: يجوز السكون والروم والإشمام. ومع الروم لا تُقلقل الدال.",
+      "why": "Known by every learner and in this lesson's closing passage (الإخلاص); shared on purpose with qal-k (SHARED_OK).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الروم والإشمام، https://shamela.ws/book/38104/208–209"
+    },
+    {
+      "role": "hear",
+      "verse": "96:3",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلْأَكْرَمُ",
+      "focus": "مُ",
+      "stop": true,
+      "note": "ضمة: سكون, روم or إشمام.",
+      "noteAr": "ضمة: يجوز السكون والروم والإشمام.",
+      "why": "A plain ضمة with no tanween and no مد before it, at an ayah end; from العلق, an early unit. Replaces وَٱلْفَتْحُ, lam-jh's notice contrast (round 1).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/208–209"
+    },
+    {
+      "role": "hear",
+      "verse": "77:13",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "ٱلْفَصْلِ",
+      "focus": "لِ",
+      "stop": true,
+      "note": "كسرة: سكون or روم; never إشمام.",
+      "noteAr": "كسرة: يجوز السكون أو الروم، ولا إشمام.",
+      "why": "The كسرة case, short, with no مد before the last letter.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/208–209"
+    },
+    {
+      "role": "say",
+      "verse": "70:1",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "وَاقِعٍ",
+      "focus": "عٍ",
+      "stop": true,
+      "note": "تنوين كسر: سكون or روم.",
+      "noteAr": "تنوين كسر: يجوز السكون أو الروم.",
+      "why": "The تنوين الكسر case.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/209 (الخلاصة)"
+    },
+    {
+      "role": "say",
+      "verse": "102:8",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "ٱلنَّعِيمِ",
+      "focus": "يمِ",
+      "stop": true,
+      "note": "كسرة after a مد: with الروم, the مد before it is 2 counts only.",
+      "noteAr": "كسرة بعد مد: مع الروم لا يُمد ما قبلها إلا حركتين.",
+      "why": "The card's tip (الروم shortens المد العارض); the focus takes in the ي of the مد. A different word from arid's ٱلرَّحِيمِ, which was 27:30 in the first draft (round 1).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، «الروم كالوصل»، https://shamela.ws/book/38104/208؛ هداية القاري (المرصفي)"
+    },
+    {
+      "role": "say",
+      "verse": "86:13",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "فَصْلٌ",
+      "focus": "لٌ",
+      "stop": true,
+      "note": "تنوين ضم: سكون, روم or إشمام.",
+      "noteAr": "تنوين ضم: يجوز السكون والروم والإشمام.",
+      "why": "A second ضمة word to practise الإشمام on.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/209"
+    }
+  ]
+}

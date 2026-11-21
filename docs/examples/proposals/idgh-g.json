@@ -1,0 +1,140 @@
+{
+ "lesson": "idgh-g",
+ "coverage": "ي: #1 (ن) #4 (تنوين) #7 (ن); ن: #3 (ن) #6 (تنوين); م: #2 (تنوين) #8 (ن); و: #5 (تنوين) #9 (ن). Complete (ن م): #2 #3 #6 #8; incomplete (ي و): #1 #4 #5 #7 #9. All across two words.",
+ "notes": "The exceptions دُنْيَا، بُنْيَانٌ، صِنْوَانٌ، قِنْوَانٌ are not used. No example in units 1–2 surahs or الفاتحة. Course-surah cases: عَابِدٌ مَّا (109:4) overlaps silent-letters#1 أَنَا۠ عَابِدٌ; حَبْلٌ مِّن (111:5) is kept for القلقلة الصغرى; لَهَبٍ وَتَبَّ ends on وَتَبَّ (القلقلة الكبرى); مِّن مَّسَدٍۭ is in more.",
+ "noticeText": {
+  "en": "Listen to فَمَن يَعْمَلْ, نَفْسٌ مَّا and فَلَن نَّزِيدَكُمْ: the ن or تنوين disappears into the next letter and a two-count غنة carries it.",
+  "ar": "استمع إلى فَمَن يَعْمَلْ ونَفْسٌ مَّا وفَلَن نَّزِيدَكُمْ: تختفي النون أو التنوين في الحرف التالي، وتصحبها غنة مقدارها حركتان."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "99:7",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "فَمَن يَعْمَلْ",
+   "focus": "ن يَ",
+   "stop": false,
+   "note": "The ن of فَمَن disappears into the ي; its غنة stays for two counts.",
+   "noteAr": "تختفي نون فَمَن في الياء وتبقى غنتها حركتين.",
+   "why": "No idgham بغنة in units 1–2 surahs or الفاتحة; عَابِدٌ مَّا (الكافرون) overlaps the silent-letters example أَنَا۠ عَابِدٌ. فَمَن يَعْمَلْ is clean (no other rule) and is the book's own exercise phrase. ن into ي: incomplete merge (ناقص), no شدة written on the ي.",
+   "source": "غاية المريد، تمرين: {فَمَنْ يَعْمَلْ} https://shamela.ws/book/7311/78; غاية المريد، الإدغام بغنة في «ينمو» بشرط أن يكون من كلمتين https://shamela.ws/book/7311/73"
+  },
+  {
+   "role": "hear",
+   "verse": "82:5",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "نَفْسٌ مَّا",
+   "focus": "سٌ مَّ",
+   "stop": false,
+   "note": "The تنوين merges into the م: one doubled مّ held with a two-count غنة.",
+   "noteAr": "يُدغم التنوين في الميم فتصير ميمًا مشددة بغنة مقدارها حركتان.",
+   "why": "Tanween into م, a complete merge (شدة on the م).",
+   "source": "غاية المريد، الإدغام بغنة في «ينمو» بشرط أن يكون من كلمتين https://shamela.ws/book/7311/73"
+  },
+  {
+   "role": "hear",
+   "verse": "78:30",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "فَلَن نَّزِيدَكُمْ",
+   "focus": "ن نَّ",
+   "stop": false,
+   "note": "Two ن meet: one doubled نّ with a two-count غنة.",
+   "noteAr": "تلتقي نونان فتصيران نونًا مشددة بغنة حركتين.",
+   "why": "ن into ن (complete merge).",
+   "source": "غاية المريد، {مِنْ نِعْمَةٍ} إدغام المتماثلين https://shamela.ws/book/7311/77"
+  },
+  {
+   "role": "say",
+   "verse": "80:38",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "وُجُوهٌ يَوْمَئِذٍ",
+   "focus": "هٌ يَ",
+   "stop": false,
+   "note": "The تنوين of وُجُوهٌ merges into the ي, with a two-count غنة.",
+   "noteAr": "يُدغم تنوين وُجُوهٌ في الياء بغنة حركتين.",
+   "why": "Tanween into ي.",
+   "source": "غاية المريد، الإدغام بغنة في «ينمو» بشرط أن يكون من كلمتين https://shamela.ws/book/7311/73"
+  },
+  {
+   "role": "say",
+   "verse": "91:7",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "وَنَفْسٍ وَمَا",
+   "focus": "سٍ وَ",
+   "stop": false,
+   "note": "The تنوين of نَفْسٍ merges into the و, keeping its غنة.",
+   "noteAr": "يُدغم تنوين نَفْسٍ في الواو مع بقاء الغنة.",
+   "why": "Tanween into و.",
+   "source": "غاية المريد، تمرين {خَيْرٌ وَأَبْقَى} https://shamela.ws/book/7311/78; غاية المريد، الإدغام بغنة في «ينمو» بشرط أن يكون من كلمتين https://shamela.ws/book/7311/73"
+  },
+  {
+   "role": "say",
+   "verse": "88:3",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "عَامِلَةٌ نَّاصِبَةٌ",
+   "focus": "ةٌ نَّ",
+   "stop": true,
+   "note": "The تنوين merges into the ن of نَّاصِبَةٌ: one نّ with a two-count غنة.",
+   "noteAr": "يُدغم التنوين في نون نَّاصِبَةٌ فتصير نونًا مشددة بغنة حركتين.",
+   "why": "Tanween into ن. Ends the ayah; the target is joined inside it.",
+   "source": "غاية المريد، الإدغام بغنة في «ينمو» بشرط أن يكون من كلمتين https://shamela.ws/book/7311/73"
+  },
+  {
+   "role": "notice",
+   "verse": "87:10",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مَن يَخْشَىٰ",
+   "focus": "ن يَ",
+   "stop": true,
+   "note": "مَن runs into يَخْشَىٰ: no full ن is heard, but its two-count غنة stays.",
+   "noteAr": "تتصل مَن بـيَخْشَىٰ فلا تُنطق النون كاملة، وتبقى غنتها حركتين.",
+   "why": "Pairs with لِمَنْ خَشِىَ: the same مَن and almost the same word, merged here, clear there.",
+   "source": "غاية المريد، الإدغام بغنة في «ينمو» بشرط أن يكون من كلمتين https://shamela.ws/book/7311/73",
+   "contrast": {
+    "lesson": "izhar",
+    "verse": "98:8",
+    "word_from": 19,
+    "word_to": 20,
+    "text": "لِمَنْ خَشِىَ",
+    "focus": "نْ خَ",
+    "stop": false,
+    "note": "Before خ the ن of لِمَنْ stays clear: no merging, no held غنة.",
+    "noteAr": "قبل الخاء تبقى نون لِمَنْ ظاهرة: لا إدغام ولا غنة ممدودة.",
+    "why": "Same مَن, same root (خشي): only the letter after the ن differs."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "111:5",
+   "word_from": 4,
+   "word_to": 5,
+   "text": "مِّن مَّسَدٍۭ",
+   "focus": "ن مَّ",
+   "stop": true,
+   "note": "The ن of مِّن merges into the م of مَّسَدٍۭ.",
+   "noteAr": "تُدغم نون مِّن في ميم مَّسَدٍۭ.",
+   "why": "ن into م, from المسد (unit 3). The ayah ends on مَّسَدٍۭ; the target is joined before it.",
+   "source": "غاية المريد، {مِنْ مَاءٍ} https://shamela.ws/book/7311/77"
+  },
+  {
+   "role": "more",
+   "verse": "13:11",
+   "word_from": 34,
+   "word_to": 35,
+   "text": "مِن وَالٍ",
+   "focus": "ن وَ",
+   "stop": true,
+   "note": "The ن of مِن merges into the و of وَالٍ, keeping its غنة.",
+   "noteAr": "تُدغم نون مِن في واو وَالٍ مع بقاء الغنة.",
+   "why": "ن into و; the book's example (الرعد: 11). No ن + و without other later rules in جزء عمّ.",
+   "source": "غاية المريد https://shamela.ws/book/7311/75 (حاشية: سورة الرعد: ١١)"
+  }
+ ]
+}

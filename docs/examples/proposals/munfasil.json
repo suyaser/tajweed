@@ -1,0 +1,140 @@
+{
+ "lesson": "munfasil",
+ "coverage": "ا: #1 #4 #5 #7 #9; و: #8 #3; ي: #2 #6.",
+ "notes": "All joined mid-ayah: stopping on the first word would make it a مد طبيعي.",
+ "noticeText": {
+  "en": "Listen to لَآ أَعْبُدُ, فِىٓ أَحْسَنِ and قَالُوٓا۟ إِنَّ: the ا, ي or و at the end of one word is held long before the همزة that starts the next.",
+  "ar": "استمع إلى لَآ أَعْبُدُ وفِىٓ أَحْسَنِ وقَالُوٓا۟ إِنَّ: يُمد حرف المد في آخر الكلمة قبل الهمزة التي تبدأ بها الكلمة التالية."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "109:2",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "لَآ أَعْبُدُ",
+   "focus": "آ أَ",
+   "stop": false,
+   "note": "The ا at the end of لَآ is held four or five counts before أَعْبُدُ.",
+   "noteAr": "تُمد ألف لَآ أربع حركات أو خمسًا قبل همزة أَعْبُدُ.",
+   "why": "From الكافرون (this unit), clean, the clearest case: a مد ending one word and a همزة starting the next.",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "hear",
+   "verse": "95:4",
+   "word_from": 4,
+   "word_to": 5,
+   "text": "فِىٓ أَحْسَنِ",
+   "focus": "ىٓ أَ",
+   "stop": false,
+   "note": "The ي of فِىٓ is held long before the همزة of أَحْسَنِ.",
+   "noteAr": "تُمد ياء فِىٓ قبل همزة أَحْسَنِ.",
+   "why": "ي case, clean (the book's type وفي أنفسكم).",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "hear",
+   "verse": "83:32",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "قَالُوٓا۟ إِنَّ",
+   "focus": "وٓا۟ إِ",
+   "stop": false,
+   "note": "The و of قَالُوٓا۟ is held long before إِنَّ; the ا after it is not read.",
+   "noteAr": "تُمد واو قَالُوٓا۟ قبل إِنَّ، والألف بعدها لا تُقرأ.",
+   "why": "و case (the book's type قولوا آمنا). Every و منفصل is a plural ending written with a silent ا (later lesson); the note tells the learner it is not read.",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "say",
+   "verse": "111:2",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "مَآ أَغْنَىٰ",
+   "focus": "آ أَ",
+   "stop": false,
+   "note": "مَآ أَغْنَىٰ: the ا held four or five counts.",
+   "noteAr": "مَآ أَغْنَىٰ: تُمد الألف أربعًا أو خمسًا.",
+   "why": "From المسد (unit 3).",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "say",
+   "verse": "111:1",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "يَدَآ أَبِى",
+   "focus": "آ أَ",
+   "stop": false,
+   "note": "يَدَآ أَبِى: the same length as your other منفصل.",
+   "noteAr": "يَدَآ أَبِى: بمقدار مدك المنفصل نفسه.",
+   "why": "From المسد (unit 3).",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "say",
+   "verse": "82:8",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "فِىٓ أَىِّ",
+   "focus": "ىٓ أَ",
+   "stop": false,
+   "note": "فِىٓ أَىِّ: the ي held long before the همزة.",
+   "noteAr": "فِىٓ أَىِّ: تُمد الياء قبل الهمزة.",
+   "why": "ي again, short.",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "notice",
+   "verse": "82:17",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "وَمَآ أَدْرَىٰكَ",
+   "focus": "آ أَ",
+   "stop": false,
+   "note": "The همزة is in the next word: the ا of وَمَآ is held long only when you join.",
+   "noteAr": "الهمزة في الكلمة التالية: تُمد ألف وَمَآ عند الوصل فقط.",
+   "why": "Pair with مَآءَهَا: the same مَآ, with the همزة in the next word here and in the same word there.",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169",
+   "contrast": {
+    "lesson": "muttasil",
+    "verse": "79:31",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "مَآءَهَا",
+    "focus": "آءَ",
+    "stop": false,
+    "note": "In مَآءَهَا the همزة is in the same word: متصل, held long whether you join or not.",
+    "noteAr": "في مَآءَهَا الهمزة في الكلمة نفسها: مد متصل يُمد وصلًا ووقفًا.",
+    "why": "Same letters مَآ + همزة; only the word boundary differs."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "79:46",
+   "word_from": 5,
+   "word_to": 6,
+   "text": "يَلْبَثُوٓا۟ إِلَّا",
+   "focus": "وٓا۟ إِ",
+   "stop": false,
+   "note": "The و of يَلْبَثُوٓا۟ held long before إِلَّا; the ا after the و is silent.",
+   "noteAr": "تُمد واو يَلْبَثُوٓا۟ قبل إِلَّا، والألف بعدها لا تُقرأ.",
+   "why": "Another و case from جزء عمّ.",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  },
+  {
+   "role": "more",
+   "verse": "109:1",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "يَٰٓأَيُّهَا",
+   "focus": "يَٰٓأَ",
+   "stop": false,
+   "note": "يَٰٓأَيُّهَا: يَا and أَيُّهَا are written joined but are two words, so this is منفصل.",
+   "noteAr": "يَٰٓأَيُّهَا: «يا» و«أيها» كلمتان كُتبتا متصلتين، فالمد منفصل.",
+   "why": "From الكافرون; the book's example (يا أيها).",
+   "source": "الميزان، المد الجائز المنفصل (يا أيها، قولوا آمنا، وفي أنفسكم) https://shamela.ws/book/38104/168–169"
+  }
+ ]
+}

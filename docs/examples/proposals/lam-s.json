@@ -1,0 +1,114 @@
+{
+ "lesson": "lam-s",
+ "coverage": "sun letters: ر #1, س #2, ص #3, ت #4, ل #5, ض #6, ش #7. Starting an ayah: #1 #2 #4 #5 #7; joined after a word: #3; a one-word ayah, stopped: #6. ن is left out on purpose: every ن sun word carries the untaught نّ غنة.",
+ "notes": "Round 1: ٱلنَّاسِ (114:2) removed (arid keeps that word, the repetition the learner complained of); ٱلرَّحْمَٰنِ is the anchor and وَٱلسَّٰبِحَٰتِ (79:3) a new hear. None of the core is from الناس: its only other sun word, ٱلَّذِى, is the ibtida anchor. Notice is the classic pair that names the two lessons: وَٱلشَّمْسِ (91:1) / وَٱلْقَمَرِ (91:2). ٱلَّذِينَ (1:7) went to tabii; وَٱلَّيْلِ (92:1, old) gives the ل. Later rules flagged (ibtida, dad-zha on ض) sit on the merged letter's شدة or before it and do not change the silent ل.",
+ "noticeText": {
+  "en": "Listen to ٱلرَّحْمَٰنِ, وَٱلسَّٰبِحَٰتِ and ٱلصِّرَٰطَ: the ل of ال is silent and the next letter is doubled.",
+  "ar": "استمع إلى ٱلرَّحْمَٰنِ ووَٱلسَّٰبِحَٰتِ وٱلصِّرَٰطَ: لام ال لا تُنطق، والحرف الذي بعدها مشدد."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "1:3",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱلرَّحْمَٰنِ",
+   "focus": "ٱلرَّ",
+   "stop": false,
+   "note": "The ل is not said; it merges into the ر, which is doubled.",
+   "noteAr": "اللام لا تُنطق، بل تُدغم في الراء فتُشدَّد.",
+   "why": "Old anchor, from الفاتحة, known to every learner. Starting the ayah, the ٱ has a فتحة, then straight to the doubled ر.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "79:3",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلسَّٰبِحَٰتِ",
+   "focus": "ٱلسَّٰ",
+   "stop": false,
+   "note": "The ل is not said; it merges into the س, which is doubled.",
+   "noteAr": "اللام لا تُنطق، بل تُدغم في السين فتُشدَّد.",
+   "why": "Starts the ayah, joined to سَبْحًا; only a مد طبيعي (taught) besides. A light sun letter next to the heavy ص of #3.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "1:6",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلصِّرَٰطَ",
+   "focus": "ٱلصِّ",
+   "stop": false,
+   "note": "The ل is not said; it merges into the ص, which is doubled.",
+   "noteAr": "اللام لا تُنطق، بل تُدغم في الصاد فتُشدَّد.",
+   "why": "From الفاتحة, joined after ٱهْدِنَا; a heavy sun letter (tafkhim, taught).",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "95:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلتِّينِ",
+   "focus": "ٱلتِّ",
+   "stop": false,
+   "note": "The ل is not said; it merges into the ت, which is doubled.",
+   "noteAr": "اللام لا تُنطق، بل تُدغم في التاء فتُشدَّد.",
+   "why": "Old example, kept: short, opens التين.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "92:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلَّيْلِ",
+   "focus": "ٱلَّ",
+   "stop": false,
+   "note": "The ل of ال merges into the ل after it: one doubled ل.",
+   "noteAr": "لام ال تُدغم في اللام بعدها: لام واحدة مشددة.",
+   "why": "Old example, kept: the ل-into-ل case, where learners say two separate ل. Data warning: the data marks lam_shamsiyyah only before the other sun letters, not ل+ل; ل is a sun letter («…للكرم» in تحفة الأطفال) and the شدة on the second ل shows the merge.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "93:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلضُّحَىٰ",
+   "focus": "ٱلضُّ",
+   "stop": true,
+   "note": "The ل is not said; it merges into the ض, which is doubled.",
+   "noteAr": "اللام لا تُنطق، بل تُدغم في الضاد فتُشدَّد.",
+   "why": "Old example, kept: a one-word ayah. The ض has its own lesson later (dad-zha); here only the silent ل.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "notice",
+   "verse": "91:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلشَّمْسِ",
+   "focus": "ٱلشَّ",
+   "stop": false,
+   "note": "The ل is silent and the ش is doubled: وَشَّمْسِ.",
+   "noteAr": "اللام لا تُنطق والشين مشددة: وَشَّمْسِ.",
+   "why": "The pair that names both lessons, in two consecutive ayat of الشمس.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; هداية القاري (المرصفي) 1/204–206 (paging per the OpenITI copy of shamela.ws/book/22869)",
+   "contrast": {
+    "lesson": "lam-q",
+    "verse": "91:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْقَمَرِ",
+    "focus": "ٱلْقَ",
+    "stop": false,
+    "note": "Here the ل is said, with سكون, before the ق: وَلْقَمَرِ.",
+    "noteAr": "هنا تُنطق اللام ساكنة قبل القاف: وَلْقَمَرِ.",
+    "why": "Same pattern (وَ + ال + noun), the ل said."
+   }
+  }
+ ]
+}

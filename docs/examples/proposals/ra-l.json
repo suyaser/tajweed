@@ -1,0 +1,140 @@
+{
+  "lesson": "ra-l",
+  "coverage": "رِ: #1 #2; رْ after an original كسرة: #3 #7; stop after يْ: #4; stop right after a كسرة: #5; stop after a ساكن (not heavy) after a كسرة: #6; two-way at a stop: #8 #9",
+  "notes": "فِرْقٍ (26:63) is left out: the books differ on which reading comes first (card review note), so it stays on the card. مَجْر۪ىٰهَا belongs to imalah. #5 ٱلْمَقَابِرَ is heavy joined (فتحة) but the ayah ends there, so the reciter stops and it is light.",
+  "noticeText": {
+    "en": "Listen to the ر in ٱلْخَيْرِ and وَٱسْتَغْفِرْهُ: thin and light, with or after a كسرة.",
+    "ar": "استمع إلى الراء في «ٱلْخَيْرِ» و«وَٱسْتَغْفِرْهُ»: مرققة خفيفة، مكسورة أو بعد كسر."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "100:8",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلْخَيْرِ",
+      "focus": "رِ",
+      "stop": false,
+      "note": "The ر with كسرة is thin and light.",
+      "noteAr": "الراء المكسورة مرققة.",
+      "why": "In the unit (العاديات).",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "hear",
+      "verse": "98:7",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "ٱلْبَرِيَّةِ",
+      "focus": "رِ",
+      "stop": true,
+      "note": "The ر with كسرة: light, even stopping (the ر is not the last letter).",
+      "noteAr": "الراء المكسورة مرققة، ولا يغيرها الوقف لأنها ليست آخر الكلمة.",
+      "why": "In the unit (البينة).",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "hear",
+      "verse": "110:3",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "وَٱسْتَغْفِرْهُ",
+      "focus": "فِرْ",
+      "stop": false,
+      "note": "رْ after a كسرة, no heavy letter after: light.",
+      "noteAr": "راء ساكنة بعد كسر أصلي وليس بعدها حرف استعلاء: مرققة.",
+      "why": "From النصر (unit 3). The ۚ after it does not touch the ر.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "say",
+      "verse": "100:11",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "لَّخَبِيرٌۢ",
+      "focus": "يرٌۢ",
+      "stop": true,
+      "note": "Stopping: لَخَبِيرْ. A ي before the ر: light.",
+      "noteAr": "عند الوقف «لَخَبِيرْ»: قبلها ياء ساكنة فترقق.",
+      "why": "In the unit; stop after يْ.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "say",
+      "verse": "102:2",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلْمَقَابِرَ",
+      "focus": "بِرَ",
+      "stop": true,
+      "note": "Stopping: ٱلْمَقَابِرْ. A كسرة right before the ر: light.",
+      "noteAr": "عند الوقف «ٱلْمَقَابِرْ»: قبلها كسر مباشرة فترقق.",
+      "why": "In the unit; stop right after a كسرة.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "say",
+      "verse": "89:5",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "حِجْرٍ",
+      "focus": "جْرٍ",
+      "stop": true,
+      "note": "Stopping: حِجْرْ. A ساكن ج, then a كسرة: light.",
+      "noteAr": "عند الوقف «حِجْرْ»: قبلها ساكن غير مستعل قبله كسر، فترقق.",
+      "why": "Juz عمّ; the hardest stop case.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "notice",
+      "verse": "79:17",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "فِرْعَوْنَ",
+      "focus": "فِرْ",
+      "stop": false,
+      "note": "فِرْعَوْنَ: رْ after a كسرة and no heavy letter after it: light.",
+      "noteAr": "«فِرْعَوْنَ»: راء ساكنة بعد كسر وليس بعدها حرف استعلاء: مرققة.",
+      "why": "Near-minimal pair with مِرْصَادِ: the same رْ after a كسرة, there a ص follows.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100",
+      "contrast": {
+        "lesson": "ra-h",
+        "verse": "89:14",
+        "word_from": 3,
+        "word_to": 3,
+        "text": "لَبِٱلْمِرْصَادِ",
+        "focus": "مِرْ",
+        "stop": false,
+        "note": "مِرْصَادِ: the same رْ after a كسرة, but the ص after it makes it heavy.",
+        "noteAr": "«مِرْصَادِ»: راء ساكنة بعد كسر، لكن الصاد بعدها تفخمها.",
+        "why": "The ra-h word with the heavy letter after."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "34:12",
+      "word_from": 10,
+      "word_to": 10,
+      "text": "ٱلْقِطْرِ",
+      "focus": "طْرِ",
+      "stop": true,
+      "note": "Stopping: ٱلْقِطْرْ. Both readings; light is preferred.",
+      "noteAr": "عند الوقف «ٱلْقِطْرْ»: يجوز الوجهان والترقيق أولى.",
+      "why": "A two-way word from the card, its only place. Only the default reciter (husary-muallim) stops at the ۖ (4.7 s); husary joins (10 ms), where its كسرة makes it light anyway.",
+      "source": "الميزان https://shamela.ws/book/38104/100–101 (مصر والقطر ويسر ونذر وأسر)؛ هداية القاري 1/123–130"
+    },
+    {
+      "role": "more",
+      "verse": "89:4",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "يَسْرِ",
+      "focus": "سْرِ",
+      "stop": true,
+      "note": "Stopping: يَسْرْ. Both readings; light is preferred.",
+      "noteAr": "عند الوقف «يَسْرْ»: يجوز الوجهان والترقيق أولى.",
+      "why": "A two-way word from the card, in Juz عمّ.",
+      "source": "الميزان https://shamela.ws/book/38104/100–101 (مصر والقطر ويسر ونذر وأسر)؛ هداية القاري 1/123–130"
+    }
+  ]
+}

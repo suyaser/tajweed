@@ -1,0 +1,20 @@
+{
+  "lesson": "ishmam",
+  "coverage": "the only word: #1 (both ways in the note)",
+  "notes": "One word in the Quran (12:11); no hear, say or more words exist (warnings answered). Both ways are from الشاطبية (البيتان 773–774: «وتأمننا للكل يخفى مفصلا، وأدغم مع إشمامه البعض»): الروم/الاختلاس without merging, and الإدغام with الإشمام. الشاطبي names the الإخفاء way first and المرصفي reads it first; many teachers drill الإشمام first. The reviewer/teacher picks which to drill.",
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "12:11",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "تَأْمَ۫نَّا",
+      "focus": "مَ۫نَّا",
+      "stop": false,
+      "note": "Two ways: الروم (الاختلاس), part of the first ن's ضمة with no merge; or merge with الإشمام. Your teacher picks the first.",
+      "noteAr": "وجهان: الروم (الاختلاس) بالنطق ببعض ضمة النون الأولى بلا إدغام، أو الإدغام مع الإشمام. وخذ بما يقدّمه شيخك.",
+      "why": "The only word with this mark in the Quran.",
+      "source": "متن الشاطبية البيتان 773–774، https://shamela.ws/book/7754/67؛ الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/208؛ هداية القاري (المرصفي) 1/261"
+    }
+  ]
+}

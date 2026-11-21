@@ -1,0 +1,75 @@
+{
+  "lesson": "sakt",
+  "coverage": "required, inside an ayah: #1 (بَلْ ۜ رَانَ) #2 #3 (مَنْ ۜ رَاقٍ) #4 (مَرْقَدِنَا ۜ هَٰذَا, where stopping is preferred); عِوَجَا ۜ قَيِّمًا and the optional places (مَالِيَهْ ۜ هَلَكَ، الأنفال → التوبة): on the card only",
+  "notes": "السكت in حفص من الشاطبية is fixed: four required places (الشاطبية 830–831) and two optional ones. Only two places, بَلْ ۜ رَانَ and مَنْ ۜ رَاقٍ, have a sakt that the default audio really makes inside one ayah, so the core is those two: anchor, hear and notice (the notice widened to وَقِيلَ مَنْ رَاقٍ to differ from the hear span). Hence 1 hear and 0 say (warnings answered here); Say repeats the core words. 36:52 is in `more`: ۗ is printed with ۜ and the muallim audio makes a full stop there (5.25 s). Dropped: عِوَجَا (it ends its ayah, so the clip is a stop on the ألف التنوين, where مد العوض would be an equally right quiz answer and the data cannot tell), مَالِيَهْ (the merge, إدغام المثلين, is an equally valid way, so a quiz answer of المثلين would be right too) and عَلِيمٌۢ 8:75 (its ۢ is an إقلاب mark and السكت is one of three equal ways). Both stay on the card. The muallim gap at 75:27 is 1.95 s (murattal 0.66 s), longer than at 83:14 (0.85 s); per the coordinator the timings are trusted, but the reviewer may want an ear check.",
+  "noticeText": {
+    "en": "Listen to بَلْ ۜ رَانَ and مَنْ ۜ رَاقٍ: the voice stops for a moment with no breath, so the ل and the ن stay clear instead of merging into the ر.",
+    "ar": "استمع إلى بَلْ ۜ رَانَ و مَنْ ۜ رَاقٍ: يقف الصوت لحظة دون تنفّس، فتبقى اللام والنون ظاهرتين ولا تُدغمان في الراء."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "83:14",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "بَلْ رَانَ",
+      "focus": "لْ",
+      "stop": false,
+      "note": "Required سكت on the ل, no breath, then رَانَ: the ل is not merged into the ر.",
+      "noteAr": "سكت واجب على اللام دون تنفّس ثم رَانَ، فلا تُدغم اللام في الراء.",
+      "why": "One of the four places; the pause is inside the ayah, so it is heard (850 ms), and it is the exception to the ل ← ر merge just learned.",
+      "source": "متن الشاطبية البيتان 830–831، https://shamela.ws/book/7754/72؛ الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/210"
+    },
+    {
+      "role": "hear",
+      "verse": "75:27",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "مَنْ رَاقٍ",
+      "focus": "نْ",
+      "stop": false,
+      "note": "Required سكت on the ن, no breath, then رَاقٍ: the ن stays clear, not merged into the ر.",
+      "noteAr": "سكت واجب على النون دون تنفّس ثم رَاقٍ، فتبقى النون ظاهرة ولا تُدغم في الراء.",
+      "why": "The other required place inside one ayah; the second one the audio really carries.",
+      "source": "متن الشاطبية البيت 831، https://shamela.ws/book/7754/72؛ الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/210"
+    },
+    {
+      "role": "notice",
+      "verse": "75:27",
+      "word_from": 1,
+      "word_to": 3,
+      "text": "وَقِيلَ مَنْ رَاقٍ",
+      "focus": "نْ",
+      "stop": false,
+      "note": "وَقِيلَ مَنْ ۜ رَاقٍ: سكت on the ن, so it stays a clear ن.",
+      "noteAr": "وَقِيلَ مَنْ ۜ رَاقٍ: سكت على النون فتبقى ظاهرة.",
+      "why": "The best minimal pair in the Quran: مَنْ ۜ رَاقٍ against مَن رَّبُّ, the same مَن before a ر. Widened to the whole ayah so it is not the hear span.",
+      "source": "متن الشاطبية البيت 831، https://shamela.ws/book/7754/72؛ الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/210",
+      "contrast": {
+        "lesson": "idgh-n",
+        "verse": "23:86",
+        "word_from": 2,
+        "word_to": 3,
+        "text": "مَن رَّبُّ",
+        "focus": "ن رَّ",
+        "stop": false,
+        "note": "No سكت: the ن merges into the ر with no غنة, and the ر is doubled.",
+        "noteAr": "لا سكت هنا: تُدغم النون في الراء بلا غنة، وتُشدَّد الراء.",
+        "why": "Same مَن + ر, from المؤمنون (the unit's surah); the only difference is the sakt."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "36:52",
+      "word_from": 6,
+      "word_to": 7,
+      "text": "مَّرْقَدِنَا هَٰذَا",
+      "focus": "نَا",
+      "stop": false,
+      "note": "ۜ and ۗ: joining, سكت on the ا; stopping (preferred here) is also correct.",
+      "noteAr": "ۜ و ۗ: عند الوصل سكت على الألف، والوقف هنا أولى وهو صحيح كذلك.",
+      "why": "A required place when joining, but ۗ is printed too and the audio stops there, so it is not a core example.",
+      "source": "متن الشاطبية، https://shamela.ws/book/7754/72؛ الميزان في أحكام تجويد القرآن (فريال زمزمي) (السكت أو الوقف)، https://shamela.ws/book/38104/210"
+    }
+  ]
+}

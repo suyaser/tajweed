@@ -1,0 +1,153 @@
+{
+  "lesson": "silah-s",
+  "coverage": "هُۥ (و): #1 #3 #4 #5; هِۦ (ي): #2 #6 #7; no صلة at a stop: #8; فِيهِۦ مُهَانًا exception: #9; no صلة before a ساكن: #10; no صلة after a ساكن: the contrast فِيهِ",
+  "notes": "يَرْضَهُ (39:7) is not used: its span would sit next to the ۗ after لَكُمْ and the point is the absence of a صلة; the card states it. 112:4 لَّهُۥ كُفُوًا dropped: basics uses 112:4 w4.",
+  "noticeText": {
+    "en": "Listen to وَإِنَّهُۥ عَلَىٰ: the هـ of the pronoun is stretched two counts, like a small و, because the letters on both sides of it have vowels.",
+    "ar": "استمع إلى «وَإِنَّهُۥ عَلَىٰ»: تُمد هاء الضمير بين متحركين حركتين كأن بعدها واوًا."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "100:7",
+      "word_from": 1,
+      "word_to": 2,
+      "text": "وَإِنَّهُۥ عَلَىٰ",
+      "focus": "هُۥ",
+      "stop": false,
+      "note": "The هُ between two vowels is stretched two counts, like a small و.",
+      "noteAr": "تُمد هاء الضمير بين متحركين حركتين كأن بعدها واوًا صغيرة.",
+      "why": "In the unit (العاديات); إِنَّهُۥ is the most frequent case.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "hear",
+      "verse": "100:4",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "بِهِۦ نَقْعًا",
+      "focus": "هِۦ",
+      "stop": false,
+      "note": "بِهِۦ: the هِ is stretched like a small ي.",
+      "noteAr": "«بِهِۦ»: تُمد الهاء كأن بعدها ياءً صغيرة.",
+      "why": "In the unit; the هِۦ form.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "hear",
+      "verse": "101:9",
+      "word_from": 1,
+      "word_to": 2,
+      "text": "فَأُمُّهُۥ هَاوِيَةٌ",
+      "focus": "هُۥ",
+      "stop": false,
+      "note": "فَأُمُّهُۥ: two counts on the هُ before هَاوِيَةٌ.",
+      "noteAr": "«فَأُمُّهُۥ»: تُمد الهاء حركتين قبل «هَاوِيَةٌ».",
+      "why": "In the unit (القارعة).",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "say",
+      "verse": "110:3",
+      "word_from": 5,
+      "word_to": 6,
+      "text": "إِنَّهُۥ كَانَ",
+      "focus": "هُۥ",
+      "stop": false,
+      "note": "إِنَّهُۥ كَانَ: two counts on the هُ.",
+      "noteAr": "«إِنَّهُۥ كَانَ»: صلة بحركتين.",
+      "why": "From النصر (unit 3), already recited. The ۚ is after word 4, outside the span.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "say",
+      "verse": "111:2",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "مَالُهُۥ وَمَا",
+      "focus": "هُۥ",
+      "stop": false,
+      "note": "مَالُهُۥ وَمَا: two counts on the هُ.",
+      "noteAr": "«مَالُهُۥ وَمَا»: صلة بحركتين.",
+      "why": "From المسد (unit 3).",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "say",
+      "verse": "100:6",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "لِرَبِّهِۦ لَكَنُودٌ",
+      "focus": "هِۦ",
+      "stop": false,
+      "note": "لِرَبِّهِۦ لَكَنُودٌ: two counts on the هِ.",
+      "noteAr": "«لِرَبِّهِۦ لَكَنُودٌ»: صلة بحركتين.",
+      "why": "In the unit; harder.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "notice",
+      "verse": "100:5",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "بِهِۦ جَمْعًا",
+      "focus": "هِۦ",
+      "stop": false,
+      "note": "بِهِۦ: the هِ itself is stretched, two counts.",
+      "noteAr": "«بِهِۦ»: الهاء نفسها تُمد حركتين.",
+      "why": "In the unit. Paired with فِيهِ, where the مد is on the written ي and the هـ after it stays short.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360",
+      "contrast": {
+        "lesson": "tabii",
+        "verse": "78:3",
+        "word_from": 3,
+        "word_to": 3,
+        "text": "فِيهِ",
+        "focus": "فِي",
+        "stop": false,
+        "note": "فِيهِ: the مد is the written ي; the هـ after the ساكن ي stays short.",
+        "noteAr": "«فِيهِ»: المد على الياء المكتوبة، والهاء بعدها لا توصل.",
+        "why": "Near-minimal: the same هِ, but a written حرف مد before it (natural مد) and so no صلة."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "104:2",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "وَعَدَّدَهُۥ",
+      "focus": "هُۥ",
+      "stop": true,
+      "note": "At the stop the صلة goes: وَعَدَّدَهْ.",
+      "noteAr": "عند الوقف تسقط الصلة: «وَعَدَّدَهْ».",
+      "why": "The card condition \"no صلة when you stop\", in the unit. The data cannot see a صلة at a stop.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "more",
+      "verse": "25:69",
+      "word_from": 7,
+      "word_to": 8,
+      "text": "فِيهِۦ مُهَانًا",
+      "focus": "هِۦ",
+      "stop": false,
+      "note": "A حفص exception: فِيهِۦ مُهَانًا has a صلة although a ساكن ي comes before.",
+      "noteAr": "من استثناءات حفص: «فِيهِۦ مُهَانًا» توصل مع سكون ما قبلها.",
+      "why": "The card's حفص exception (غاية المريد 7311/272).",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "more",
+      "verse": "98:5",
+      "word_from": 7,
+      "word_to": 8,
+      "text": "لَهُ ٱلدِّينَ",
+      "focus": "هُ",
+      "stop": false,
+      "note": "لَهُ ٱلدِّينَ: a ساكن follows the هـ, so no صلة.",
+      "noteAr": "«لَهُ ٱلدِّينَ»: بعد الهاء ساكن فلا صلة.",
+      "why": "The card's \"ساكن after\" case (HQ 1/356, الحالة الثانية), in the unit; all three reciters join it (10 ms). The checker's \"data does not see silah-s\" is the point: there is no صلة here.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    }
+  ]
+}

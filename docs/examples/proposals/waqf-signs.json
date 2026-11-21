@@ -1,0 +1,128 @@
+{
+  "lesson": "waqf-signs",
+  "coverage": "ۘ م لازم: #1 #7; ۙ لا: #2; ۚ ج: #3 #9; ۖ صلى: #4; ۗ قلى: #5 #8; ۛ تعانق: #6",
+  "notes": "The data has the pause marks only as `marks` (not in the text), so each span covers the word before the sign and the word after it, and the focus is the word you stop on. stop is false: the point is where a stop is allowed, not how to stop. The reciter (الحصري المعلّم) may stop or join at ج/صلى/قلى; the audio is a cut of the ayah either way. Meanings: الميزان 38104/189–204 (م لازم، قلى الوقف أولى (التام)، ج جائز and صلى الوصل أولى (الكافي)، لا ممنوع (القبيح)، ∴ ∴ المعانقة). The ۛ example is 2:2 w3–5 لَا رَيْبَ فِيهِ: both signs (after words 4 and 5) are inside or at the end of the span, it does not touch idgh-n's 2:2 w6–7, and the muallim audio joins رَيْبَ فِيهِ and stops once after فِيهِ. 7:172 was dropped: the audio pauses at both ۛ, which the note forbids.",
+  "noticeText": {
+    "en": "Look at the small sign over قَوْلُهُمْ ۘ: a stop there is required, and joining could suggest a wrong meaning. Each sign tells you whether a pause is required, allowed, better or forbidden.",
+    "ar": "انظر إلى العلامة الصغيرة فوق قَوْلُهُمْ ۘ: الوقف هناك لازم، والوصل يوهم معنى غير مراد. وكل علامة تبيّن هل الوقف لازم أو جائز أو أولى أو ممنوع."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "36:76",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "قَوْلُهُمْ إِنَّا",
+      "focus": "قَوْلُهُمْ",
+      "stop": false,
+      "note": "ۘ (م) الوقف اللازم: stop on قَوْلُهُمْ; joining would make إِنَّا نَعْلَمُ sound like their words.",
+      "noteAr": "ۘ (م) وقف لازم: قف على قَوْلُهُمْ، فالوصل يوهم أن إِنَّا نَعْلَمُ من قولهم.",
+      "why": "الميزان names this ayah as the one the مصاحف mark with م; the clearest case of why a stop can be required.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/193 (فلا يحزنك قولهم رمز لها ب م)؛ https://shamela.ws/book/38104/189 (الوقف اللازم)"
+    },
+    {
+      "role": "hear",
+      "verse": "16:32",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "طَيِّبِينَ يَقُولُونَ",
+      "focus": "طَيِّبِينَ",
+      "stop": false,
+      "note": "ۙ (لا): don't stop on طَيِّبِينَ; يَقُولُونَ completes it. If you stop for breath, go back and join.",
+      "noteAr": "ۙ (لا): لا تقف على طَيِّبِينَ، فما بعدها متمّم لها. فإن وقفت لنفَس فارجع وصِل.",
+      "why": "A لا sign in the middle of an ayah, so the reciter joins; the meaning link is easy to see.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، علامة لا للوقف القبيح، https://shamela.ws/book/38104/200؛ the sign: data"
+    },
+    {
+      "role": "hear",
+      "verse": "32:18",
+      "word_from": 6,
+      "word_to": 7,
+      "text": "فَاسِقًا لَّا",
+      "focus": "فَاسِقًا",
+      "stop": false,
+      "note": "ۚ (ج) الوقف الجائز: stopping on فَاسِقًا and joining are equal.",
+      "noteAr": "ۚ (ج) وقف جائز: الوقف على فَاسِقًا والوصل سواء.",
+      "why": "الميزان lists this place among the stops reported from the Prophet ﷺ (ما يلحق بالوقف التام) and notes most مصاحف mark such places ج; here the مصحف has ج.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/193؛ معنى ج: https://shamela.ws/book/38104/194"
+    },
+    {
+      "role": "say",
+      "verse": "27:34",
+      "word_from": 11,
+      "word_to": 12,
+      "text": "أَذِلَّةً وَكَذَٰلِكَ",
+      "focus": "أَذِلَّةً",
+      "stop": false,
+      "note": "ۖ (صلى) الوصل أولى: you may stop on أَذِلَّةً, but joining is better.",
+      "noteAr": "ۖ (صلى) الوصل أولى: يجوز الوقف على أَذِلَّةً، والوصل أفضل.",
+      "why": "الميزان's own first example of الوقف الكافي, which it says is marked ج or صلى; here the مصحف has صلى.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/194"
+    },
+    {
+      "role": "say",
+      "verse": "25:29",
+      "word_from": 7,
+      "word_to": 8,
+      "text": "جَآءَنِى وَكَانَ",
+      "focus": "جَآءَنِى",
+      "stop": false,
+      "note": "ۗ (قلى) الوقف أولى: you may join, but stopping on جَآءَنِى is better.",
+      "noteAr": "ۗ (قلى) الوقف أولى: يجوز الوصل، والوقف على جَآءَنِى أفضل.",
+      "why": "الميزان prints this place with قلى as its example of a complete stop in mid-ayah.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/190"
+    },
+    {
+      "role": "say",
+      "verse": "2:2",
+      "word_from": 3,
+      "word_to": 5,
+      "text": "لَا رَيْبَ فِيهِ",
+      "focus": "رَيْبَ فِيهِ",
+      "stop": false,
+      "note": "∴ ∴ تعانق الوقف: stop on لَا رَيْبَ or on فِيهِ, never on both.",
+      "noteAr": "∴ ∴ تعانق الوقف: قف على لَا رَيْبَ أو على فِيهِ، ولا تقف عليهما معًا.",
+      "why": "الميزان's own تعانق example; the audio joins رَيْبَ فِيهِ and stops once, after فِيهِ.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، وقف المعانقة، https://shamela.ws/book/38104/204"
+    },
+    {
+      "role": "more",
+      "verse": "6:36",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "يَسْمَعُونَ وَٱلْمَوْتَىٰ",
+      "focus": "يَسْمَعُونَ",
+      "stop": false,
+      "note": "ۘ (م): stop on يَسْمَعُونَ; joining would make the dead among those who respond.",
+      "noteAr": "ۘ (م): قف على يَسْمَعُونَ، فالوصل يوهم أن الموتى ممن يستجيبون.",
+      "why": "A second الوقف اللازم; the meaning change is clear.",
+      "source": "data; الوقف اللازم: الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/189"
+    },
+    {
+      "role": "more",
+      "verse": "16:5",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "خَلَقَهَا لَكُمْ",
+      "focus": "خَلَقَهَا",
+      "stop": false,
+      "note": "ۗ (قلى): stopping on خَلَقَهَا is better.",
+      "noteAr": "ۗ (قلى): الوقف على خَلَقَهَا أولى.",
+      "why": "الميزان notes that the مصاحف mark this place with قلى.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/193"
+    },
+    {
+      "role": "more",
+      "verse": "23:96",
+      "word_from": 5,
+      "word_to": 6,
+      "text": "ٱلسَّيِّئَةَ نَحْنُ",
+      "focus": "ٱلسَّيِّئَةَ",
+      "stop": false,
+      "note": "ۚ (ج): stop on ٱلسَّيِّئَةَ or join; both are equal.",
+      "noteAr": "ۚ (ج): قف على ٱلسَّيِّئَةَ أو صِل، والأمران سواء.",
+      "why": "In the unit's closing passage (المؤمنون 93–97), so the learner meets it again when reciting.",
+      "source": "data; معنى ج: الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/194"
+    }
+  ]
+}

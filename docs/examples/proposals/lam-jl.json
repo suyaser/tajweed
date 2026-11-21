@@ -1,0 +1,114 @@
+{
+ "lesson": "lam-jl",
+ "coverage": "كسرة in the same word: #1 #4 #7; كسرة on the word before: #2 #5; a كسرة added to join: #3 #6.",
+ "notes": "Round 1: لِّلَّهِ (82:19) → وَلِلَّهِ (3:109); بِسْمِ ٱللَّهِ (27:30) → بِنَصْرِ ٱللَّهِ (30:5), so the بسملة is not repeated after istiadha; «نحيفة» dropped. بِسْمِ ٱللَّهِ (1:1) is the istiadha example (the بسملة), so the anchor is لِلَّهِ (1:2), the other light ل in الفاتحة. Notice is a near-minimal pair in consecutive ayat of البروج: بِٱللَّهِ (85:8, light) / وَٱللَّهُ (85:9, heavy): one prefix letter, كسرة vs فتحة. جزء عمّ has only five light names; #3–#6 come from elsewhere.",
+ "noticeText": {
+  "en": "Listen to the ل of the name in لِلَّهِ, دِينِ ٱللَّهِ and قُلِ ٱللَّهُمَّ: after a كسرة, even one added to join the words, it is light and thin.",
+  "ar": "استمع إلى لام لفظ الجلالة في لِلَّهِ ودِينِ ٱللَّهِ وقُلِ ٱللَّهُمَّ: بعد الكسرة، ولو كانت عارضة للوصل، تُرقَّق."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "1:2",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "لِلَّهِ",
+   "focus": "لِلَّ",
+   "stop": false,
+   "note": "The كسرة is in the word itself (لِ): the ل of the name is light.",
+   "noteAr": "الكسرة في الكلمة نفسها (لِ): فلام لفظ الجلالة مرققة.",
+   "why": "From الفاتحة, known to every learner; the first case غاية المريد gives ({لله}).",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/209 ({لله}، {بسم الله}، {قل اللهم}); هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "110:2",
+   "word_from": 5,
+   "word_to": 6,
+   "text": "دِينِ ٱللَّهِ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the كسرة of دِينِ: light.",
+   "noteAr": "بعد كسرة دِينِ: مرققة.",
+   "why": "The word-before case, from جزء عمّ; the next ayah after نَصْرُ ٱللَّهِ (heavy, lam-jh notice).",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "3:26",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "قُلِ ٱللَّهُمَّ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "The كسرة on قُلِ is added to join the words; the ل is still light.",
+   "noteAr": "الكسرة في قُلِ عارضة للوصل، ومع ذلك تبقى اللام مرققة.",
+   "why": "The added-كسرة case named on the card and in غاية المريد ({قل اللهم}). Not in جزء عمّ. Flagged sakinayn is that added كسرة itself (the point here); the مّ (ghunnah, lesson 12) comes after the ل.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/209; الميزان (فريال زمزمي) https://shamela.ws/book/38104/92"
+  },
+  {
+   "role": "say",
+   "verse": "3:109",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَلِلَّهِ",
+   "focus": "لِلَّ",
+   "stop": false,
+   "note": "After the كسرة of the لِ in وَلِلَّهِ: light.",
+   "noteAr": "بعد كسرة اللام في وَلِلَّهِ: مرققة.",
+   "why": "Same-word case, a new word: starts the ayah, joined to مَا; the pause sign is after word 7, outside the span. No later rule. Replaces لِّلَّهِ (82:19), whose first لّ exists only by the merged تنوين before it.",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/92 ({لله}، {بالله})"
+  },
+  {
+   "role": "say",
+   "verse": "30:5",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "بِنَصْرِ ٱللَّهِ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the كسرة of بِنَصْرِ: light.",
+   "noteAr": "بعد كسرة بِنَصْرِ: مرققة.",
+   "why": "Word-before case. Starts the ayah, joined; the pause sign ۚ is after word 2, at the end of the span. The same word as lam-jh's نَصْرُ ٱللَّهِ (heavy) with a كسرة instead of a ضمة. Replaces بِسْمِ ٱللَّهِ (27:30), which repeated the بسملة of istiadha.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); الميزان (فريال زمزمي) https://shamela.ws/book/38104/92"
+  },
+  {
+   "role": "say",
+   "verse": "3:150",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "بَلِ ٱللَّهُ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "بَلْ takes a كسرة to join: بَلِ. The ل of the name is light.",
+   "noteAr": "تُكسر لام بَلْ للوصل: بَلِ، فتُرقَّق لام لفظ الجلالة.",
+   "why": "A second added-كسرة word (بَلِ), at the start of an ayah, so it is said exactly as joined. Flagged sakinayn is that added كسرة, the point of the example.",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/92"
+  },
+  {
+   "role": "notice",
+   "verse": "85:8",
+   "word_from": 7,
+   "word_to": 7,
+   "text": "بِٱللَّهِ",
+   "focus": "بِٱللَّ",
+   "stop": false,
+   "note": "After the كسرة of بِ: light.",
+   "noteAr": "بعد كسرة الباء: مرققة.",
+   "why": "Paired with وَٱللَّهُ in the next ayah.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869)",
+   "contrast": {
+    "lesson": "lam-jh",
+    "verse": "85:9",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "وَٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "After the فتحة of وَ: heavy.",
+    "noteAr": "بعد فتحة الواو: مفخمة.",
+    "why": "Same shape (one prefix letter + ٱللَّه), only the vowel differs. After the pause sign ۚ the reciter may start here: still heavy (فتحة)."
+   }
+  }
+ ]
+}

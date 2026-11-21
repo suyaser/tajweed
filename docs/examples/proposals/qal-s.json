@@ -1,0 +1,140 @@
+{
+ "lesson": "qal-s",
+ "coverage": "ق: #6; ط: #4 #9; ب: #3; ج: #5; د: #1 #2 #7 #8. Mid-word: #2–#7 #9; end of a word, joined: #1 #8. Together with qal-k all five letters appear in both lessons.",
+ "notes": "None of these is at an ayah end or before a pause sign.",
+ "noticeText": {
+  "en": "Listen to يَلِدْ, يَدْخُلُونَ and حَبْلٌ: the قلقلة letter with a سكون gives a small bounce as it is released, without a vowel.",
+  "ar": "استمع إلى يَلِدْ ويَدْخُلُونَ وحَبْلٌ: حرف القلقلة الساكن يُسمع له صدى خفيف عند النطق به، دون حركة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "112:3",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "يَلِدْ",
+   "focus": "دْ",
+   "stop": false,
+   "note": "The دْ of يَلِدْ bounces lightly as you go on to وَلَمْ; no vowel is added.",
+   "noteAr": "تُقلقل الدال الساكنة في يَلِدْ قلقلة خفيفة عند الوصل بـوَلَمْ، دون إضافة حركة.",
+   "why": "From الإخلاص (this unit), mid-ayah and joined; the book's own example of قلقلة وصلًا (لم يلد ولم).",
+   "source": "الميزان (فريال زمزمي)، القلقلة: في وسط الكلمة وآخرها، وصلًا (لم يلد ولم) ووقفًا (برب الفلق) https://shamela.ws/book/38104/74"
+  },
+  {
+   "role": "hear",
+   "verse": "110:2",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "يَدْخُلُونَ",
+   "focus": "دْ",
+   "stop": false,
+   "note": "دْ in the middle of يَدْخُلُونَ: a short bounce, then the خ.",
+   "noteAr": "الدال الساكنة وسط يَدْخُلُونَ: قلقلة قصيرة ثم الخاء.",
+   "why": "From النصر (unit 3); قلقلة in the middle of a word, the most typical place.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "hear",
+   "verse": "111:5",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "حَبْلٌ",
+   "focus": "بْ",
+   "stop": false,
+   "note": "بْ in the middle of حَبْلٌ: a light bounce before the ل.",
+   "noteAr": "الباء الساكنة وسط حَبْلٌ: قلقلة خفيفة قبل اللام.",
+   "why": "From المسد (unit 3); a second letter (ب). The تنوين merging into مِّن after it is taught (الإدغام بغنة).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "say",
+   "verse": "85:12",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "بَطْشَ",
+   "focus": "طْ",
+   "stop": false,
+   "note": "طْ in بَطْشَ: a firm bounce, the strongest قلقلة letter.",
+   "noteAr": "الطاء الساكنة في بَطْشَ: قلقلة واضحة، وهي أقوى حروف القلقلة.",
+   "why": "ط, mid-word; short.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "say",
+   "verse": "84:25",
+   "word_from": 7,
+   "word_to": 7,
+   "text": "أَجْرٌ",
+   "focus": "جْ",
+   "stop": false,
+   "note": "جْ in أَجْرٌ: a light bounce before the ر.",
+   "noteAr": "الجيم الساكنة في أَجْرٌ: قلقلة خفيفة قبل الراء.",
+   "why": "ج, mid-word. The تنوين before غَيْرُ is إظهار (taught).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "say",
+   "verse": "90:1",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "أُقْسِمُ",
+   "focus": "قْ",
+   "stop": false,
+   "note": "قْ in أُقْسِمُ: a light bounce before the س.",
+   "noteAr": "القاف الساكنة في أُقْسِمُ: قلقلة خفيفة قبل السين.",
+   "why": "ق, mid-word: the fifth letter.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "notice",
+   "verse": "90:12",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "أَدْرَىٰكَ",
+   "focus": "دْ",
+   "stop": false,
+   "note": "دْ in أَدْرَىٰكَ bounces: you hear a small echo after the د.",
+   "noteAr": "الدال الساكنة في أَدْرَىٰكَ تُقلقل: يُسمع صدى خفيف بعد الدال.",
+   "why": "A ساكن in mid-word with a bounce, against a ساكن ن in mid-word that is hidden with a hum.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75",
+   "contrast": {
+    "lesson": "ikhfa",
+    "verse": "79:45",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "مُنذِرُ",
+    "focus": "نذِ",
+    "stop": false,
+    "note": "The ساكن ن in مُنذِرُ has no bounce: it is hidden in a غنة before the ذ.",
+    "noteAr": "النون الساكنة في مُنذِرُ لا تُقلقل، بل تُخفى بغنة قبل الذال.",
+    "why": "Also a ساكن in the middle of a word, followed by a د-like ذ; the sound is a hum, not an echo."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "81:23",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَلَقَدْ",
+   "focus": "دْ",
+   "stop": false,
+   "note": "The دْ of وَلَقَدْ bounces lightly as you join it to رَءَاهُ.",
+   "noteAr": "تُقلقل دال وَلَقَدْ قلقلة خفيفة عند وصلها بـرَءَاهُ.",
+   "why": "End of a word, joined (the book's «قد أفلح» type).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "more",
+   "verse": "80:19",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "نُّطْفَةٍ",
+   "focus": "طْ",
+   "stop": false,
+   "note": "طْ in نُّطْفَةٍ: a firm bounce before the ف.",
+   "noteAr": "الطاء الساكنة في نُّطْفَةٍ: قلقلة واضحة قبل الفاء.",
+   "why": "Another ط mid-word.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "lesson": "mithlayn",
+ "coverage": "ل: #1 #4 #9; ب: #2 #7; ت: #3; ذ: #5; د: #6; و (لين): #8. All صغير: the first ساكن, across two words.",
+ "notes": "مثلين of ن and م are their own lessons (الإدغام بغنة، إدغام الميم). The exception (حرف مد, e.g. فِى يَوْمٍ) has no merge, so it is not an example here. Notice (#7): no true minimal pair exists, because contrastWith is izhar (ن ساكنة before a throat letter) and ن+ن مثلين is taught as الإدغام بغنة. مِنْهُ is kept as the best available contrast: a ساكن before a different letter, said without merging. A tighter pair would need a different contrastWith in course.json (a course decision).",
+ "noticeText": {
+  "en": "Listen to هَل لَّكَ, ٱذْهَب بِّكِتَٰبِى and رَبِحَت تِّجَٰرَتُهُمْ: the two identical letters become one doubled letter, with no break between them.",
+  "ar": "استمع إلى هَل لَّكَ وٱذْهَب بِّكِتَٰبِى ورَبِحَت تِّجَٰرَتُهُمْ: يصير الحرفان المتماثلان حرفًا واحدًا مشددًا بلا فصل بينهما."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "79:18",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "هَل لَّكَ",
+   "focus": "ل لَّ",
+   "stop": false,
+   "note": "The ساكن ل of هَل merges into the لّ of لَّكَ: one doubled ل.",
+   "noteAr": "تُدغم لام هَل الساكنة في لام لَّكَ فتصيران لامًا واحدة مشددة.",
+   "why": "The book's example (فقل هل لك). No مثلين outside ن/م in units 1–3 surahs or الفاتحة.",
+   "source": "غاية المريد، {فقل هل لك إلى أن تزكى} https://shamela.ws/book/7311/110"
+  },
+  {
+   "role": "hear",
+   "verse": "27:28",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "ٱذْهَب بِّكِتَٰبِى",
+   "focus": "ب بِّ",
+   "stop": false,
+   "note": "ٱذْهَب بِّكِتَٰبِى: one doubled بّ, no bounce on the first ب.",
+   "noteAr": "ٱذْهَب بِّكِتَٰبِى: باء واحدة مشددة، بلا قلقلة على الباء الأولى.",
+   "why": "The book's own example of the صغير case; ب is a قلقلة letter, so it shows the merge replaces the bounce.",
+   "source": "غاية المريد، المتماثلان الصغير {اذهب بكتابي هذا}، واللين يُدغم {عصوا وكانوا} https://shamela.ws/book/7311/224"
+  },
+  {
+   "role": "hear",
+   "verse": "2:16",
+   "word_from": 7,
+   "word_to": 8,
+   "text": "رَبِحَت تِّجَٰرَتُهُمْ",
+   "focus": "ت تِّ",
+   "stop": false,
+   "note": "رَبِحَت تِّجَٰرَتُهُمْ: the two ت become one doubled تّ.",
+   "noteAr": "رَبِحَت تِّجَٰرَتُهُمْ: تصير التاءان تاءً واحدة مشددة.",
+   "why": "The book's example; ت.",
+   "source": "الميزان، المتماثلان الصغير: {فما ربحت تجارتهم} {اضرب بعصاك}، والإظهار بعد حرف المد https://shamela.ws/book/38104/129"
+  },
+  {
+   "role": "say",
+   "verse": "89:17",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "بَل لَّا",
+   "focus": "ل لَّ",
+   "stop": false,
+   "note": "بَل لَّا: say بَلَّا, one doubled ل.",
+   "noteAr": "بَل لَّا تُقرأ بَلَّا، بلام واحدة مشددة.",
+   "why": "Short; the example in the جزرية (بل لا). Starts after the ۖ sign, not across it.",
+   "source": "المقدمة الجزرية، البيت 50 (قل رب، بل لا) https://shamela.ws/book/581/69"
+  },
+  {
+   "role": "say",
+   "verse": "21:87",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "إِذ ذَّهَبَ",
+   "focus": "ذ ذَّ",
+   "stop": false,
+   "note": "إِذ ذَّهَبَ: one doubled ذّ.",
+   "noteAr": "إِذ ذَّهَبَ: ذال واحدة مشددة.",
+   "why": "ذ.",
+   "source": "الميزان، المتماثلان الصغير: {فما ربحت تجارتهم} {اضرب بعصاك}، والإظهار بعد حرف المد https://shamela.ws/book/38104/129"
+  },
+  {
+   "role": "say",
+   "verse": "5:61",
+   "word_from": 5,
+   "word_to": 6,
+   "text": "وَقَد دَّخَلُوا۟",
+   "focus": "د دَّ",
+   "stop": false,
+   "note": "وَقَد دَّخَلُوا۟: one doubled دّ, no bounce on the first د.",
+   "noteAr": "وَقَد دَّخَلُوا۟: دال واحدة مشددة بلا قلقلة على الأولى.",
+   "why": "د. The ا after دَّخَلُوا۟ is silent (later lesson), after the target.",
+   "source": "الميزان، المتماثلان الصغير: {فما ربحت تجارتهم} {اضرب بعصاك}، والإظهار بعد حرف المد https://shamela.ws/book/38104/129"
+  },
+  {
+   "role": "notice",
+   "verse": "2:60",
+   "word_from": 6,
+   "word_to": 7,
+   "text": "ٱضْرِب بِّعَصَاكَ",
+   "focus": "ب بِّ",
+   "stop": false,
+   "note": "Two ب meet, the first with سكون: they become one doubled بّ.",
+   "noteAr": "باءان أولاهما ساكنة: تصيران باءً واحدة مشددة.",
+   "why": "Book example (الميزان). Kept for notice because ٱضْرِب carries a ض (a later lesson).",
+   "source": "الميزان، المتماثلان الصغير: {فما ربحت تجارتهم} {اضرب بعصاك}، والإظهار بعد حرف المد https://shamela.ws/book/38104/129",
+   "contrast": {
+    "lesson": "izhar",
+    "verse": "78:37",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "مِنْهُ",
+    "focus": "نْهُ",
+    "stop": false,
+    "note": "In مِنْهُ the ساكن ن meets a different letter (ه): both are said, nothing merges.",
+    "noteAr": "في مِنْهُ تلتقي النون الساكنة بحرف مختلف (الهاء): يُنطق الحرفان ولا إدغام.",
+    "why": "A ساكن letter followed by a different, far letter: the opposite of two identical letters."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "83:3",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "أَو وَّزَنُوهُمْ",
+   "focus": "و وَّ",
+   "stop": false,
+   "note": "أَو وَّزَنُوهُمْ: a لين و merges into the next و.",
+   "noteAr": "أَو وَّزَنُوهُمْ: واو لينة تُدغم في الواو بعدها.",
+   "why": "The card's لين case; the book: a و after a فتحة merges (عصوا وكانوا).",
+   "source": "غاية المريد، المتماثلان الصغير {اذهب بكتابي هذا}، واللين يُدغم {عصوا وكانوا} https://shamela.ws/book/7311/224"
+  },
+  {
+   "role": "more",
+   "verse": "90:8",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "نَجْعَل لَّهُۥ",
+   "focus": "ل لَّ",
+   "stop": false,
+   "note": "نَجْعَل لَّهُۥ: one doubled ل.",
+   "noteAr": "نَجْعَل لَّهُۥ: لام واحدة مشددة.",
+   "why": "Another ل from جزء عمّ.",
+   "source": "الميزان، المتماثلان الصغير: {فما ربحت تجارتهم} {اضرب بعصاك}، والإظهار بعد حرف المد https://shamela.ws/book/38104/129"
+  }
+ ]
+}

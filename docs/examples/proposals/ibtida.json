@@ -1,0 +1,89 @@
+{
+ "lesson": "ibtida",
+ "coverage": "starting on ال: فتحة #1; a verb, third letter with كسرة: #2; third letter with an original ضمة: #3; third letter with فتحة → كسرة: #4; joined, the ٱ is not said: inside a word #5, between words #6 (94:5). Card-only (no audible start in the data): ٱمْشُوا۟ (a non-original ضمة, 38:6 is mid-ayah after أَنِ) and the seven nouns (#5 بِٱسْمِ shows ٱسْم, but joined).",
+ "noticeText": {
+  "en": "Listen to how the reciter starts ٱلَّذِى, ٱهْدِنَا and ٱدْعُ: the ٱ is said, with a فتحة, a كسرة or a ضمة. In Say you will hear it disappear when the word is joined.",
+  "ar": "استمع كيف يبدأ القارئ بـ ٱلَّذِى وٱهْدِنَا وٱدْعُ: تُنطق همزة الوصل مفتوحة أو مكسورة أو مضمومة، وستسمع في خطوة النطق كيف تسقط عند الوصل."
+ },
+ "notes": "Round 1: #6 is now مَعَ ٱلْعُسْرِ (94:5), a two-word join (ٱلْمُوقَدَةُ stays with waqf-how); noticeText added because Hear plays only starts. New: the lesson had no examples. Chosen only where the reciter really starts (an ayah's first word, after the stop at the end of the previous ayah) or really joins (mid-ayah). Data warnings on #1–#4 answered: the data marks همزة الوصل only mid-ayah (cpfair hamzat_wasl), not at an ayah's first word, so it does not see these starts; the starts are certain (every ayah is started after the stop at the previous ayah end in the reciter's ayah-by-ayah recording). #3 ٱدْعُ is outside جزء عمّ: no ayah in الفاتحة or جزء عمّ starts with a همزة وصل verb whose third letter has a ضمة; it is the card's and هداية القاري's example. الميزان (38104/199) warns against stopping on ٱلَّذِى without what follows; starting on it at 114:5 is fine (an ayah start). No start is taken from a surah's first ayah: the reciter may join the بسملة to it, and then the ٱ is dropped.",
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:5",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱلَّذِى",
+   "focus": "ٱلَّ",
+   "stop": false,
+   "note": "Starting the ayah on ال: the ٱ is said with a فتحة, اَلَّذِى.",
+   "noteAr": "عند البدء بالآية تُنطق همزة الوصل في ال مفتوحة: اَلَّذِى.",
+   "why": "The one ayah in الناس that starts with a همزة الوصل; the reciter starts it after stopping on ٱلْخَنَّاسِ. The silent ل and the ى (lam-s, tabii) follow the start.",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/226 (همزة ال مفتوحة عند البدء وتسقط وصلًا); هداية القاري (المرصفي) 2/480–488 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "1:6",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱهْدِنَا",
+   "focus": "ٱهْ",
+   "stop": false,
+   "note": "A verb whose third letter (د) has a كسرة: start with a كسرة, اِهْدِنَا.",
+   "noteAr": "فعل ثالثه مكسور (الدال): يُبدأ بهمزة مكسورة: اِهْدِنَا.",
+   "why": "The card's own example, from الفاتحة, started after the stop on نَسْتَعِينُ. Joined to ٱلصِّرَٰطَ the ا of نَا drops (sakinayn, later), after the start.",
+   "source": "هداية القاري (المرصفي) 2/480–488 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 101–103، https://shamela.ws/book/581/93"
+  },
+  {
+   "role": "hear",
+   "verse": "16:125",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱدْعُ",
+   "focus": "ٱدْ",
+   "stop": false,
+   "note": "The third letter (ع) has an original ضمة: start with a ضمة, اُدْعُ.",
+   "noteAr": "ثالثه مضموم ضمًّا أصليًّا (العين): يُبدأ بهمزة مضمومة: اُدْعُ.",
+   "why": "The card's own example; see notes for why it is outside جزء عمّ. The دْ gets a light bounce (qal-s, unit 2, flagged); it comes after the vowel of the ٱ, which is the point.",
+   "source": "هداية القاري (المرصفي) 2/481 ({ادع إلى سبيل ربك}) (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 101–103، https://shamela.ws/book/581/93"
+  },
+  {
+   "role": "say",
+   "verse": "96:3",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱقْرَأْ",
+   "focus": "ٱقْ",
+   "stop": false,
+   "note": "The third letter (ر) has a فتحة, so the ٱ takes a كسرة: اِقْرَأْ.",
+   "noteAr": "ثالثه مفتوح (الراء)، فتُكسر همزة الوصل: اِقْرَأْ.",
+   "why": "From جزء عمّ: the كسرة \"otherwise\" case with a فتحة on the third letter, a common slip (اَقْرَأْ). 96:3, not 96:1: at a surah's first ayah the reciter may join the بسملة to it, and then the ٱ is not heard; ayah 3 is always started after the stop at the end of ayah 2. The قْ bounces lightly (qal-s, unit 2, flagged), after the ٱ.",
+   "source": "هداية القاري (المرصفي) 2/480–488 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 101–103، https://shamela.ws/book/581/93"
+  },
+  {
+   "role": "say",
+   "verse": "96:1",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "بِٱسْمِ",
+   "focus": "بِٱسْ",
+   "stop": false,
+   "note": "Inside the word the ٱ is never said: read بِسْمِ. (Starting on ٱسْم alone, it would be اِسْم.)",
+   "noteAr": "همزة الوصل هنا في وسط الكلمة فلا تُنطق: تُقرأ بِسْمِ. (ولو بُدئ بـ ٱسْم وحدها لكانت اِسْم.)",
+   "why": "The joined case inside a word, and ٱسْم is one of the seven nouns with كسرة.",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/223 (الأسماء السبعة); هداية القاري (المرصفي) 2/480–488 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "94:5",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مَعَ ٱلْعُسْرِ",
+   "focus": "عَ ٱلْ",
+   "stop": false,
+   "note": "Joined to مَعَ before it, the ٱ is not said: مَعَلْعُسْرِ.",
+   "noteAr": "عند وصلها بـ مَعَ قبلها تسقط همزة الوصل: مَعَلْعُسْرِ.",
+   "why": "The joined case between two words, both words in the span so the join is heard (mid-ayah, no pause sign). The clear (قمرية) لْ makes the drop easy to hear; lam-q is the next lesson (flagged). Replaces ٱلْمُوقَدَةُ, whose one-word clip started on a bare لْ.",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/226 (تسقط وصلًا); هداية القاري (المرصفي) 2/480–488 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  }
+ ]
+}

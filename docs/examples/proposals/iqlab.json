@@ -1,0 +1,140 @@
+{
+ "lesson": "iqlab",
+ "coverage": "ن in one word: #2 #5 #9; ن across two words: #1 #4 #8; تنوين: #3 #7; نون التوكيد written as تنوين: #6.",
+ "notes": "The lips during the hidden م (light closing or a slight gap) stay a teacher matter, as on the card. Notes say only \"hidden م\" and never describe the lips.",
+ "noticeText": {
+  "en": "Listen to مَنۢ بَخِلَ, فَأَنۢبَتْنَا and كِرَامٍۭ بَرَرَةٍ: the ن or تنوين turns into a hidden م on the lips, with a two-count غنة before the ب.",
+  "ar": "استمع إلى مَنۢ بَخِلَ وفَأَنۢبَتْنَا وكِرَامٍۭ بَرَرَةٍ: تنقلب النون أو التنوين ميمًا مخفاة على الشفتين، مع غنة حركتين قبل الباء."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "92:8",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مَنۢ بَخِلَ",
+   "focus": "نۢ بَ",
+   "stop": false,
+   "note": "Before ب the ن of مَنۢ becomes a hidden م, with a two-count غنة.",
+   "noteAr": "قبل الباء تنقلب نون مَنۢ ميمًا مخفاة بغنة حركتين.",
+   "why": "The book's example (الليل: 8). No إقلاب joined inside units 1–3 surahs (تَوَّابًۢا and مَّسَدٍۭ end an ayah, heard with a stop).",
+   "source": "غاية المريد https://shamela.ws/book/7311/79–81 (حاشية وتمرين: {وَأَمَّا مَنْ بَخِلَ})"
+  },
+  {
+   "role": "hear",
+   "verse": "80:27",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "فَأَنۢبَتْنَا",
+   "focus": "نۢبَ",
+   "stop": false,
+   "note": "Inside one word: نۢب is said as a hidden م before the ب, with a غنة.",
+   "noteAr": "في كلمة واحدة: تُنطق النون ميمًا مخفاة قبل الباء مع الغنة.",
+   "why": "ن and ب in one word.",
+   "source": "غاية المريد، الإقلاب: من كلمة أو من كلمتين أو بعد التنوين https://shamela.ws/book/7311/79–81"
+  },
+  {
+   "role": "hear",
+   "verse": "80:16",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "كِرَامٍۭ بَرَرَةٍ",
+   "focus": "مٍۭ بَ",
+   "stop": true,
+   "note": "The تنوين of كِرَامٍۭ turns into a hidden م before بَرَرَةٍ.",
+   "noteAr": "ينقلب تنوين كِرَامٍۭ ميمًا مخفاة قبل بَرَرَةٍ.",
+   "why": "Tanween before ب. Ends the ayah; the target is joined inside it.",
+   "source": "غاية المريد، الإقلاب: من كلمة أو من كلمتين أو بعد التنوين https://shamela.ws/book/7311/79–81"
+  },
+  {
+   "role": "say",
+   "verse": "98:4",
+   "word_from": 7,
+   "word_to": 8,
+   "text": "مِنۢ بَعْدِ",
+   "focus": "نۢ بَ",
+   "stop": false,
+   "note": "مِنۢ بَعْدِ: a hidden م and a غنة, then the ب.",
+   "noteAr": "مِنۢ بَعْدِ: ميم مخفاة وغنة ثم الباء.",
+   "why": "Short, common phrase; ن across words.",
+   "source": "غاية المريد، الإقلاب: من كلمة أو من كلمتين أو بعد التنوين https://shamela.ws/book/7311/79–81"
+  },
+  {
+   "role": "say",
+   "verse": "104:4",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "لَيُنۢبَذَنَّ",
+   "focus": "نۢبَ",
+   "stop": false,
+   "note": "The ن in لَيُنۢبَذَنَّ becomes a hidden م before the ب.",
+   "noteAr": "تنقلب النون في لَيُنۢبَذَنَّ ميمًا مخفاة قبل الباء.",
+   "why": "The book's exercise word; ن in one word. The final نّ is الغنة (taught).",
+   "source": "غاية المريد، تمرين {كَلَّا لَيُنْبَذَنَّ فِي الْحُطَمَةِ} https://shamela.ws/book/7311/81"
+  },
+  {
+   "role": "say",
+   "verse": "96:15",
+   "word_from": 5,
+   "word_to": 6,
+   "text": "لَنَسْفَعًۢا بِٱلنَّاصِيَةِ",
+   "focus": "عًۢا بِ",
+   "stop": true,
+   "note": "The tanween-written ن of لَنَسْفَعًۢا turns into a hidden م before بِٱلنَّاصِيَةِ.",
+   "noteAr": "تنقلب نون التوكيد (المرسومة تنوينًا) في لَنَسْفَعًۢا ميمًا مخفاة قبل الباء.",
+   "why": "نون التوكيد الخفيفة written as تنوين, the case the book singles out. Ends the ayah; the target is joined inside it.",
+   "source": "غاية المريد، {لَنَسْفَعًا بِالنَّاصِيَةِ} https://shamela.ws/book/7311/79"
+  },
+  {
+   "role": "notice",
+   "verse": "89:23",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "يَوْمَئِذٍۭ بِجَهَنَّمَ",
+   "focus": "ذٍۭ بِ",
+   "stop": false,
+   "note": "Before ب the تنوين of يَوْمَئِذٍۭ becomes a hidden م, with a two-count غنة.",
+   "noteAr": "قبل الباء ينقلب تنوين يَوْمَئِذٍۭ ميمًا مخفاة بغنة حركتين.",
+   "why": "Minimal pair inside one ayah: the same word يَوْمَئِذٍ before ب and before ي. Ends before the ۚ sign, not across it.",
+   "source": "غاية المريد، الإقلاب: من كلمة أو من كلمتين أو بعد التنوين https://shamela.ws/book/7311/79–81",
+   "contrast": {
+    "lesson": "idgh-g",
+    "verse": "89:23",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "يَوْمَئِذٍ يَتَذَكَّرُ",
+    "focus": "ذٍ يَ",
+    "stop": false,
+    "note": "Before ي the same تنوين merges into the ي with a غنة; no م is heard.",
+    "noteAr": "قبل الياء يُدغم التنوين نفسه في الياء بغنة، ولا تُسمع ميم.",
+    "why": "Same word يَوْمَئِذٍ in the same ayah; the book uses يَوْمَئِذٍ يَتَذَكَّرُ as an idgham exercise (https://shamela.ws/book/7311/78)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "86:7",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مِنۢ بَيْنِ",
+   "focus": "نۢ بَ",
+   "stop": false,
+   "note": "مِنۢ بَيْنِ: hidden م and غنة before the ب.",
+   "noteAr": "مِنۢ بَيْنِ: ميم مخفاة وغنة قبل الباء.",
+   "why": "Another ن across words.",
+   "source": "غاية المريد، الإقلاب: من كلمة أو من كلمتين أو بعد التنوين https://shamela.ws/book/7311/79–81"
+  },
+  {
+   "role": "more",
+   "verse": "2:33",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "أَنۢبِئْهُم",
+   "focus": "نۢبِ",
+   "stop": false,
+   "note": "أَنۢبِئْهُم: hidden م with غنة before the ب in one word.",
+   "noteAr": "أَنۢبِئْهُم: ميم مخفاة بغنة قبل الباء في الكلمة نفسها.",
+   "why": "The card's example; the book cites البقرة 31–33 for this word.",
+   "source": "غاية المريد https://shamela.ws/book/7311/80 (حاشية: سورة البقرة)"
+  }
+ ]
+}

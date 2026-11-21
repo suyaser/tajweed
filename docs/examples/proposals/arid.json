@@ -1,0 +1,114 @@
+{
+ "lesson": "arid",
+ "coverage": "ا: #1, #7; ي: #2, #4, #5, #6; و: #3. Last letter with كسرة (#1 #4 #5 #7), فتحة (#2 #3), ضمة (#6). All at an ayah end with stop: true.",
+ "notes": "Every example is an ayah end, where the reciter stops. Notice is a minimal pair: the same word ٱلنَّاسِ stopped (العارض) and joined mid-ayah (ٱلنَّاسَ, 110:2: natural, two counts). The later rules flagged (ghunnah on نّ, the ل of ال: lam-q or lam-s, the همزة الوصل: ibtida) sit at the start of the word and do not touch the مد; the stop itself is this lesson. نَسْتَعِينُ also allows الروم and الإشمام (rawm-ishmam, unit 8); a plain سكون stop is what the reciter does here. Tell the learner to keep one length (التسوية, غاية المريد 7311/146).",
+ "noticeText": {
+  "en": "Listen to the end of ٱلنَّاسِ, ٱلْعَٰلَمِينَ and تَعْلَمُونَ when the reciter stops: the ا، ي or و before the last letter may be held 2, 4 or 6 counts; all three are correct.",
+  "ar": "استمع إلى آخر ٱلنَّاسِ وٱلْعَٰلَمِينَ وتَعْلَمُونَ عند وقف القارئ: يجوز في الألف أو الياء أو الواو قبل الحرف الأخير 2 أو 4 أو 6 حركات، وكلها صحيحة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:1",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "ٱلنَّاسِ",
+   "focus": "نَّاسِ",
+   "stop": true,
+   "note": "Stopping on ٱلنَّاسِ: the س is stilled, so the ا before it may be 2, 4 or 6 counts.",
+   "noteAr": "عند الوقف على ٱلنَّاسِ تسكن السين، فيجوز في الألف قبلها 2 أو 4 أو 6 حركات.",
+   "why": "The rhyme of الناس, heard at every ayah end of the unit's surah. The ghunnah on نّ and the silent ل are at the start of the word, away from the مد.",
+   "source": "هداية القاري (المرصفي) 1/280 (paging per the OpenITI copy of shamela.ws/book/22869); غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/132"
+  },
+  {
+   "role": "hear",
+   "verse": "1:2",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "ٱلْعَٰلَمِينَ",
+   "focus": "مِينَ",
+   "stop": true,
+   "note": "ي before the stilled ن. At the stop: 2, 4 or 6 counts.",
+   "noteAr": "ياء مدية قبل نون سكنت للوقف: 2 أو 4 أو 6 حركات.",
+   "why": "The ي case, from الفاتحة; هداية القاري cites this very ayah for العارض.",
+   "source": "هداية القاري (المرصفي) 1/331 (الحمد لله رب العالمين) (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "102:3",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "تَعْلَمُونَ",
+   "focus": "مُونَ",
+   "stop": true,
+   "note": "و before the stilled ن. At the stop: 2, 4 or 6 counts.",
+   "noteAr": "واو مدية قبل نون سكنت للوقف: 2 أو 4 أو 6 حركات.",
+   "why": "The و case: neither الناس nor الفاتحة has one. A short ayah from جزء عمّ, no later rule in the word.",
+   "source": "هداية القاري (المرصفي) 1/280 (paging per the OpenITI copy of shamela.ws/book/22869); غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/132"
+  },
+  {
+   "role": "say",
+   "verse": "1:3",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلرَّحِيمِ",
+   "focus": "حِيمِ",
+   "stop": true,
+   "note": "ي before the stilled م. At the stop: 2, 4 or 6 counts.",
+   "noteAr": "ياء مدية قبل ميم سكنت للوقف: 2 أو 4 أو 6 حركات.",
+   "why": "الفاتحة; the silent ل at the start is lam-s (later), away from the مد.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/235 (الرحيم); هداية القاري (المرصفي) 1/280 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "1:4",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "ٱلدِّينِ",
+   "focus": "دِّينِ",
+   "stop": true,
+   "note": "ي before the stilled ن. At the stop: 2, 4 or 6 counts.",
+   "noteAr": "ياء مدية قبل نون سكنت للوقف: 2 أو 4 أو 6 حركات.",
+   "why": "الفاتحة; the card's own example (ٱلدِّينِ at the end of 1:4).",
+   "source": "هداية القاري (المرصفي) 1/280 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "1:5",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "نَسْتَعِينُ",
+   "focus": "عِينُ",
+   "stop": true,
+   "note": "ي before the stilled ن, whose ضمة is dropped at the stop. At the stop: 2, 4 or 6 counts.",
+   "noteAr": "ياء مدية قبل نون سكنت للوقف وسقطت ضمتها: 2 أو 4 أو 6 حركات.",
+   "why": "هداية القاري's own example of العارض. A ضمة before the stop (the others are كسرة or فتحة).",
+   "source": "هداية القاري (المرصفي) 1/280 ({نستعين} [الفاتحة: ٥]) (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "notice",
+   "verse": "114:6",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "وَٱلنَّاسِ",
+   "focus": "نَّاسِ",
+   "stop": true,
+   "note": "The same word as the joined ٱلنَّاسَ, but stopped: the ا may now be 2, 4 or 6.",
+   "noteAr": "الكلمة نفسها، لكن موقوفًا عليها: يجوز في الألف الآن 2 أو 4 أو 6 حركات.",
+   "why": "Minimal pair with the contrast (same word, stopped vs joined).",
+   "source": "هداية القاري (المرصفي) 1/280 (paging per the OpenITI copy of shamela.ws/book/22869)",
+   "contrast": {
+    "lesson": "tabii",
+    "verse": "110:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلنَّاسَ",
+    "focus": "نَّا",
+    "stop": false,
+    "note": "Mid-ayah, joined to يَدْخُلُونَ: the ا is a plain two-count مد.",
+    "noteAr": "في وسط الآية موصولة بـ يَدْخُلُونَ: الألف مد طبيعي بحركتين فقط.",
+    "why": "ٱلنَّاسَ inside an ayah of النصر; the reciter does not stop on it, so it stays natural."
+   }
+  }
+ ]
+}

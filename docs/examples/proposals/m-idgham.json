@@ -1,0 +1,127 @@
+{
+  "lesson": "m-idgham",
+  "coverage": "مِّ: #1 #2 #4 #6; مُّ: #7; مَّ: #3 #5 #8; unit surah: #1 #2",
+  "notes": "Across words only (the card has no in-word case). 85:20 وَرَآئِهِم مُّحِيطٌۢ dropped: qal-k uses 85:20 w4.",
+  "noticeText": {
+    "en": "Listen to أَطْعَمَهُم مِّن: the two م become one doubled م with a two-count غنة.",
+    "ar": "استمع إلى «أَطْعَمَهُم مِّن»: تصير الميمان ميمًا واحدة مشددة بغنة حركتين."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "106:4",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "أَطْعَمَهُم مِّن",
+      "focus": "م مِّ",
+      "stop": false,
+      "note": "The two م become one doubled مّ, held two counts with a hum.",
+      "noteAr": "تدغم الميم في الميم فتصير ميمًا مشددة بغنة حركتين.",
+      "why": "In the unit; the clearest هم + مِن.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "hear",
+      "verse": "106:4",
+      "word_from": 5,
+      "word_to": 6,
+      "text": "وَءَامَنَهُم مِّنْ",
+      "focus": "م مِّ",
+      "stop": false,
+      "note": "Again هُم before مِن: one doubled مّ with a hum.",
+      "noteAr": "مرة أخرى «هم» قبل «مِن»: ميم مشددة بغنة.",
+      "why": "Same ayah of the unit. وَءَامَنَهُم has a بدل (lesson 8) on ءَا, two counts like a natural مد, away from the target.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "hear",
+      "verse": "83:4",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "أَنَّهُم مَّبْعُوثُونَ",
+      "focus": "م مَّ",
+      "stop": false,
+      "note": "A doubled مّ with a فتحة, held with a hum.",
+      "noteAr": "ميم مشددة مفتوحة بغنة.",
+      "why": "Juz عمّ; a مَّ with فتحة for variety.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "say",
+      "verse": "97:4",
+      "word_from": 6,
+      "word_to": 7,
+      "text": "رَبِّهِم مِّن",
+      "focus": "م مِّ",
+      "stop": false,
+      "note": "Say it as one مّ with a two-count hum.",
+      "noteAr": "انطقها ميمًا واحدة مشددة بغنة حركتين.",
+      "why": "Juz عمّ (القدر, unit 6 surah); short.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "say",
+      "verse": "83:14",
+      "word_from": 5,
+      "word_to": 6,
+      "text": "قُلُوبِهِم مَّا",
+      "focus": "م مَّ",
+      "stop": false,
+      "note": "Merge into مَّا and hold the hum.",
+      "noteAr": "أدغم في «مَّا» مع الغنة.",
+      "why": "Juz عمّ; short and sayable.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "say",
+      "verse": "2:249",
+      "word_from": 49,
+      "word_to": 50,
+      "text": "كَم مِّن",
+      "focus": "م مِّ",
+      "stop": false,
+      "note": "كَم مِّن: the classic case, one doubled مّ.",
+      "noteAr": "«كَم مِّن»: ميم واحدة مشددة بغنة.",
+      "why": "The classic book example, kept from the old set.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    },
+    {
+      "role": "notice",
+      "verse": "104:8",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "عَلَيْهِم مُّؤْصَدَةٌ",
+      "focus": "م مُّ",
+      "stop": false,
+      "note": "عَلَيْهِم before م: the lips stay closed and hum two counts.",
+      "noteAr": "«عَلَيْهِم» قبل الميم: تبقى الشفتان منطبقتين بغنة حركتين.",
+      "why": "A minimal pair: the same عَلَيْهِم, merged here, clear before ط in 105:3.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200",
+      "contrast": {
+        "lesson": "m-izhar",
+        "verse": "105:3",
+        "word_from": 2,
+        "word_to": 3,
+        "text": "عَلَيْهِمْ طَيْرًا",
+        "focus": "مْ طَ",
+        "stop": false,
+        "note": "عَلَيْهِمْ before ط: the lips close once, no hum held.",
+        "noteAr": "«عَلَيْهِمْ» قبل الطاء: انطباق واحد بلا غنة ممدودة.",
+        "why": "Same word, a different next letter, from the unit (الفيل)."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "4:109",
+      "word_from": 14,
+      "word_to": 15,
+      "text": "أَم مَّن",
+      "focus": "م مَّ",
+      "stop": false,
+      "note": "أَم مَّن: the م of أَمْ merges into the م of مَن.",
+      "noteAr": "«أَم مَّن»: تدغم ميم «أم» في ميم «مَن».",
+      "why": "A short word that is not a pronoun, for Check questions.",
+      "source": "تحفة الأطفال الأبيات 18–23 (https://shamela.ws/book/9632/4)؛ الجزرية البيتان 63–64 (https://shamela.ws/book/581/75)؛ هداية القاري 1/183، 1/199–200"
+    }
+  ]
+}

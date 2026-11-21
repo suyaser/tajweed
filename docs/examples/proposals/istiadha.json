@@ -1,0 +1,63 @@
+{
+ "lesson": "istiadha",
+ "coverage": "the command to seek refuge (16:98): #1, and its key word #3; the surah without a بسملة: #2; the بسملة at the start of a surah: #4. The four ways of stopping and joining are on the card (they are not words in an ayah).",
+ "notes": "Round 1: the app repeats the core words when a lesson has no say examples (Learn.tsx exampleSets), which made a beginner repeat whole ayat. Now Hear plays the command (16:98) and براءة (9:1); Say has the short command word فَٱسْتَعِذْ and the بسملة, the words the learner actually says. One hear and two say examples (count warnings, deliberate): no other real Quran words show this lesson. Previous notes: Theory lesson: the استعاذة itself is not an ayah and the data holds the opening بسملة only in 1:1 (every other surah's بسملة is stripped), so only three examples are real. Words carry many later rules: unavoidable for whole phrases, and the point is the phrase, not a letter. Kept the old three; lam-jl gives up بِسْمِ ٱللَّهِ (1:1) to this lesson and takes لِلَّهِ (1:2) as its anchor instead. noticeText now names what Hear plays (16:98 and 9:1).",
+ "noticeText": {
+  "en": "16:98 commands the استعاذة before reciting; the words you say are أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ, which are not themselves an ayah. Then listen to 9:1, التوبة, the one surah that starts with no بسملة.",
+  "ar": "تأمر الآية 16:98 بالاستعاذة قبل القراءة، والصيغة التي تقولها أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ ليست في نفسها آية. ثم استمع إلى 9:1 من سورة التوبة، السورة الوحيدة التي تبدأ بلا بسملة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "16:98",
+   "word_from": 1,
+   "word_to": 8,
+   "text": "فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
+   "focus": "فَٱسْتَعِذْ",
+   "stop": true,
+   "note": "The command to seek refuge before reciting. The words you say (أَعُوذُ بِٱللَّهِ…) are not themselves an ayah.",
+   "noteAr": "الأمر بالاستعاذة قبل القراءة. والصيغة التي تقولها (أَعُوذُ بِٱللَّهِ…) ليست في نفسها آية.",
+   "why": "The ayah that commands the استعاذة; the formula itself is not in the data. A whole ayah, so it carries later rules; the focus is the command.",
+   "source": "هداية القاري (المرصفي) 2/502–503 (shamela 22869/502) (paging per the OpenITI copy of shamela.ws/book/22869); غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/59"
+  },
+  {
+   "role": "hear",
+   "verse": "9:1",
+   "word_from": 1,
+   "word_to": 3,
+   "text": "بَرَآءَةٌ مِّنَ ٱللَّهِ",
+   "focus": "بَرَآءَةٌ",
+   "stop": false,
+   "note": "التوبة opens with no بسملة: start it with the استعاذة only.",
+   "noteAr": "تبدأ سورة التوبة بلا بسملة: يُكتفى بالاستعاذة.",
+   "why": "The one surah without a بسملة. The span is joined (بَرَآءَةٌ مِّنَ ٱللَّهِ) and carries later rules (متصل، إدغام بغنة); it is heard only, never said (Say uses #3–#4).",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/32 (براءة 37); غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/63"
+  },
+  {
+   "role": "say",
+   "verse": "16:98",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "فَٱسْتَعِذْ",
+   "focus": "فَٱسْتَعِذْ",
+   "stop": false,
+   "note": "The command word itself: fa-staʿidh, «seek refuge». The ٱ is not said.",
+   "noteAr": "كلمة الأمر نفسها: فَاسْتَعِذْ، أي اطلب العوذ بالله. وهمزة الوصل لا تُنطق.",
+   "why": "One short word that names the lesson, cut from the anchor ayah; its sounds (a joined ٱ, سكون on ذْ) are all basic. Say needs words a first-week learner can repeat, not whole ayat.",
+   "source": "هداية القاري (المرصفي) 2/502–503 (shamela 22869/502) (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "1:1",
+   "word_from": 1,
+   "word_to": 4,
+   "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+   "focus": "بِسْمِ",
+   "stop": true,
+   "note": "The بسملة, said at the start of every surah except التوبة: the words you will say most.",
+   "noteAr": "البسملة، تُقال في أول كل سورة إلا التوبة: أكثر ما ستقوله.",
+   "why": "The one thing this lesson asks the learner to say before each surah. Four words; the later rules in it (silent ل، مد) are heard, not taught, here. Counted as ayah 1 of الفاتحة in the Kufan count حفص follows.",
+   "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/32; غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/59"
+  }
+ ]
+}

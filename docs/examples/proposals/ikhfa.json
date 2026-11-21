@@ -1,0 +1,153 @@
+{
+ "lesson": "ikhfa",
+ "coverage": "within a word: #2 #5 #7 #8 #10; across words: #1 #4 #9; تنوين: #3 #6; heavy غنة (ق ق ق ظ ض): #4 #5 #6 #8 #9; light (ش ت ذ ت د): #1 #2 #3 #7 #10.",
+ "notes": "مِن شَرِّ appears five times in units 1–2; 113:2 is used so الناس (unit 1) stays free.",
+ "noticeText": {
+  "en": "Listen to مِن شَرِّ, أَنتُمْ and نَارًا ذَاتَ: the ن or تنوين is hidden, and a two-count غنة carries the sound into the next letter.",
+  "ar": "استمع إلى مِن شَرِّ وأَنتُمْ ونَارًا ذَاتَ: تُخفى النون أو التنوين، وتحمل غنةٌ مقدارها حركتان الصوت إلى الحرف التالي."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "113:2",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "مِن شَرِّ",
+   "focus": "ن شَ",
+   "stop": false,
+   "note": "The ن of مِن is hidden: no full ن, a two-count غنة flows into the ش.",
+   "noteAr": "تُخفى نون مِن: لا تُنطق نونًا كاملة، بل غنة حركتين تتصل بالشين.",
+   "why": "From الفلق (this unit); ن across two words, light letter ش.",
+   "source": "غاية المريد، الإخفاء الحقيقي: من كلمة أو كلمتين أو بعد التنوين https://shamela.ws/book/7311/82–85; تحفة الأطفال، أحكام النون الساكنة والتنوين https://shamela.ws/book/9632/2"
+  },
+  {
+   "role": "hear",
+   "verse": "109:3",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "أَنتُمْ",
+   "focus": "نتُ",
+   "stop": false,
+   "note": "Inside أَنتُمْ the ن is hidden before ت, with a light two-count غنة.",
+   "noteAr": "في أَنتُمْ تُخفى النون قبل التاء بغنة مرققة مقدارها حركتان.",
+   "why": "From الكافرون (unit 3); ن inside one word, light letter.",
+   "source": "غاية المريد، الإخفاء الحقيقي: من كلمة أو كلمتين أو بعد التنوين https://shamela.ws/book/7311/82–85"
+  },
+  {
+   "role": "hear",
+   "verse": "111:3",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "نَارًا ذَاتَ",
+   "focus": "ا ذَ",
+   "stop": false,
+   "note": "The تنوين of نَارًا is hidden before the ذ of ذَاتَ, with a light غنة.",
+   "noteAr": "يُخفى تنوين نَارًا قبل ذال ذَاتَ بغنة مرققة.",
+   "why": "From المسد (unit 3); tanween case.",
+   "source": "غاية المريد، الإخفاء الحقيقي: من كلمة أو كلمتين أو بعد التنوين https://shamela.ws/book/7311/82–85"
+  },
+  {
+   "role": "say",
+   "verse": "86:10",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "مِن قُوَّةٍ",
+   "focus": "ن قُ",
+   "stop": false,
+   "note": "Before ق the hidden ن of مِن has a heavy, full غنة.",
+   "noteAr": "قبل القاف تكون غنة نون مِن المخفاة مفخمة.",
+   "why": "Heavy letter across words (the card's heavy/light point). مَن طَغَىٰ is a tafkhim example and عَن صَلَاتِهِمْ overlaps m-izhar. The idgham of قُوَّةٍ وَلَا (taught) comes after the target.",
+   "source": "غاية المريد، غنة الإخفاء تتبع ما بعدها تفخيمًا وترقيقًا https://shamela.ws/book/7311/90"
+  },
+  {
+   "role": "say",
+   "verse": "84:9",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَيَنقَلِبُ",
+   "focus": "نقَ",
+   "stop": false,
+   "note": "Inside وَيَنقَلِبُ the ن is hidden before the heavy ق: a heavy غنة.",
+   "noteAr": "في وَيَنقَلِبُ تُخفى النون قبل القاف فتُفخم الغنة.",
+   "why": "Heavy letter in one word.",
+   "source": "غاية المريد، غنة الإخفاء تتبع ما بعدها تفخيمًا وترقيقًا https://shamela.ws/book/7311/90"
+  },
+  {
+   "role": "say",
+   "verse": "78:40",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "عَذَابًا قَرِيبًا",
+   "focus": "ا قَ",
+   "stop": false,
+   "note": "The تنوين of عَذَابًا is hidden before ق, with a heavy غنة.",
+   "noteAr": "يُخفى تنوين عَذَابًا قبل القاف بغنة مفخمة.",
+   "why": "Heavy letter after a تنوين. The idgham of قَرِيبًا يَوْمَ (taught) sits after the target.",
+   "source": "غاية المريد، غنة الإخفاء تتبع ما بعدها تفخيمًا وترقيقًا https://shamela.ws/book/7311/90"
+  },
+  {
+   "role": "notice",
+   "verse": "80:10",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "فَأَنتَ",
+   "focus": "نتَ",
+   "stop": false,
+   "note": "In فَأَنتَ the ن is hidden in a غنة before the ت.",
+   "noteAr": "في فَأَنتَ تُخفى النون في غنة قبل التاء.",
+   "why": "The next word in the same ayah is عَنْهُ (إظهار): the learner hears both side by side.",
+   "source": "غاية المريد، الإخفاء الحقيقي: من كلمة أو كلمتين أو بعد التنوين https://shamela.ws/book/7311/82–85",
+   "contrast": {
+    "lesson": "izhar",
+    "verse": "80:10",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "عَنْهُ",
+    "focus": "نْهُ",
+    "stop": false,
+    "note": "In عَنْهُ, right after, the ن is clear before ه: no hidden غنة.",
+    "noteAr": "في عَنْهُ بعدها مباشرة تظهر النون قبل الهاء بلا إخفاء.",
+    "why": "Same ayah, next word: a clear ن straight after a hidden one."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "78:40",
+   "word_from": 6,
+   "word_to": 6,
+   "text": "يَنظُرُ",
+   "focus": "نظُ",
+   "stop": false,
+   "note": "The ن in يَنظُرُ is hidden before ظ, with a heavy غنة.",
+   "noteAr": "تُخفى النون في يَنظُرُ قبل الظاء بغنة مفخمة.",
+   "why": "Heavy ظ in one word. ظ itself is a later lesson (الضاد والظاء).",
+   "source": "غاية المريد، غنة الإخفاء تتبع ما بعدها تفخيمًا وترقيقًا https://shamela.ws/book/7311/90"
+  },
+  {
+   "role": "more",
+   "verse": "88:6",
+   "word_from": 5,
+   "word_to": 6,
+   "text": "مِن ضَرِيعٍ",
+   "focus": "ن ضَ",
+   "stop": true,
+   "note": "The ن of مِن is hidden before ض, with a heavy غنة.",
+   "noteAr": "تُخفى نون مِن قبل الضاد بغنة مفخمة.",
+   "why": "Heavy ض across words. Ends the ayah; the target is joined inside it.",
+   "source": "غاية المريد، غنة الإخفاء تتبع ما بعدها تفخيمًا وترقيقًا https://shamela.ws/book/7311/90"
+  },
+  {
+   "role": "more",
+   "verse": "2:22",
+   "word_from": 21,
+   "word_to": 21,
+   "text": "أَندَادًا",
+   "focus": "ندَ",
+   "stop": false,
+   "note": "In أَندَادًا the ن is hidden before د, with a light غنة.",
+   "noteAr": "في أَندَادًا تُخفى النون قبل الدال بغنة مرققة.",
+   "why": "The book's example (البقرة: 22).",
+   "source": "غاية المريد https://shamela.ws/book/7311/85 (حاشية: سورة البقرة: ٢٢)"
+  }
+ ]
+}

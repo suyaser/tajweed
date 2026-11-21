@@ -1,0 +1,128 @@
+{
+  "lesson": "waqf-how",
+  "coverage": "ضمة → سكون: #1; كسرة → سكون: #4; فتحة → سكون: #7 #9; تنوين الفتح → ا: #2; تنوين الضم dropped: #5; تنوين الكسر dropped: #8; ة → هـ: #3; ةً → هـ (not ا): #6; open ت (رَحْمَتَ): not given",
+  "notes": "All stop on an ayah end, where the reciter really stops (stop: true). Words were chosen with no مد before the last letter, so المد العارض (an earlier lesson) does not compete with the point. No open ت (رَحْمَتَ) example: in the Quran such words sit inside an إضافة and are not at an ayah end or a pause sign, so the reciter never stops on one; the card's list covers it. Round 1: 104:6 ٱلْمُوقَدَةُ was dropped (ibtida, an earlier lesson, has it as a core example); فَعَدَلَكَ was added from rawm-ishmam.",
+  "noticeText": {
+    "en": "Listen to the last word at each stop: ٱلْمُزَّمِّلُ ends in a سكون, أَبَدًا ends in a long ا, and ٱلْقِيَٰمَةِ ends in a soft هـ.",
+    "ar": "استمع إلى آخر كلمة عند كل وقف: ٱلْمُزَّمِّلُ تنتهي بسكون، و أَبَدًا تنتهي بألف، و ٱلْقِيَٰمَةِ تنتهي بهاء ساكنة."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "73:1",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "ٱلْمُزَّمِّلُ",
+      "focus": "لُ",
+      "stop": true,
+      "note": "Stopping: the ضمة on the last ل goes, and you say ٱلْمُزَّمِّلْ.",
+      "noteAr": "عند الوقف تسقط ضمة اللام الأخيرة، فتقول: ٱلْمُزَّمِّلْ.",
+      "why": "An ayah end with a plain vowel and no مد before it, so the only change is vowel → سكون.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، كيفية الوقف، https://shamela.ws/book/38104/207–210"
+    },
+    {
+      "role": "hear",
+      "verse": "18:3",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "أَبَدًا",
+      "focus": "دًا",
+      "stop": true,
+      "note": "تنوين الفتح becomes a long ا at the stop: أَبَدَا (2 counts).",
+      "noteAr": "يُبدل تنوين الفتح ألفًا عند الوقف: أَبَدَا (حركتان).",
+      "why": "A short ayah-final word with تنوين الفتح and no other مد; الكهف also holds the sakt of عِوَجَا.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الوقف على التنوين، https://shamela.ws/book/38104/210"
+    },
+    {
+      "role": "hear",
+      "verse": "75:1",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلْقِيَٰمَةِ",
+      "focus": "ةِ",
+      "stop": true,
+      "note": "The تاء مربوطة becomes a هاء ساكنة at the stop: ٱلْقِيَٰمَهْ.",
+      "noteAr": "تُقلب التاء المربوطة هاءً ساكنة عند الوقف: ٱلْقِيَٰمَهْ.",
+      "why": "A common, well-known ة word at an ayah end; القيامة also holds the sakt of مَنْ ۜ رَاقٍ.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/207 (شجره، جنه) و210"
+    },
+    {
+      "role": "say",
+      "verse": "70:9",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "كَٱلْعِهْنِ",
+      "focus": "نِ",
+      "stop": true,
+      "note": "A كسرة at the end also becomes a سكون: كَٱلْعِهْنْ.",
+      "noteAr": "والكسرة في الآخر تصير سكونًا كذلك: كَٱلْعِهْنْ.",
+      "why": "The كسرة case, with no مد before the last letter.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/207"
+    },
+    {
+      "role": "say",
+      "verse": "52:7",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "لَوَٰقِعٌ",
+      "focus": "عٌ",
+      "stop": true,
+      "note": "تنوين الضم is dropped at the stop: لَوَٰقِعْ.",
+      "noteAr": "يُحذف تنوين الضم عند الوقف: لَوَٰقِعْ.",
+      "why": "Shows that a tanween other than الفتح just goes (الميزان: «رحيم، حميد»).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، الوقف على التنوين، https://shamela.ws/book/38104/210"
+    },
+    {
+      "role": "say",
+      "verse": "69:14",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "وَٰحِدَةً",
+      "focus": "ةً",
+      "stop": true,
+      "note": "ةً stops as هـ, not ا: وَٰحِدَهْ.",
+      "noteAr": "التاء المربوطة المنونة بالفتح يوقف عليها بالهاء لا بالألف: وَٰحِدَهْ.",
+      "why": "The trap case: تنوين الفتح on a ة gives هـ, not ا (الميزان).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/210"
+    },
+    {
+      "role": "more",
+      "verse": "51:9",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "أُفِكَ",
+      "focus": "كَ",
+      "stop": true,
+      "note": "A فتحة at the end becomes a سكون: أُفِكْ.",
+      "noteAr": "والفتحة في الآخر تصير سكونًا: أُفِكْ.",
+      "why": "The فتحة case (no tanween).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/207 (المتحرك بالفتح)"
+    },
+    {
+      "role": "more",
+      "verse": "52:8",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "دَافِعٍ",
+      "focus": "عٍ",
+      "stop": true,
+      "note": "تنوين الكسر is dropped too: دَافِعْ.",
+      "noteAr": "ويُحذف تنوين الكسر كذلك: دَافِعْ.",
+      "why": "The تنوين الكسر case, the ayah right after #5.",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/210"
+    },
+    {
+      "role": "more",
+      "verse": "82:7",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "فَعَدَلَكَ",
+      "focus": "كَ",
+      "stop": true,
+      "note": "A فتحة at the end becomes a سكون: فَعَدَلَكْ.",
+      "noteAr": "والفتحة في الآخر تصير سكونًا: فَعَدَلَكْ.",
+      "why": "A second فتحة case, moved here from rawm-ishmam (round 1).",
+      "source": "الميزان في أحكام تجويد القرآن (فريال زمزمي)، https://shamela.ws/book/38104/207 (المتحرك بالفتح)"
+    }
+  ]
+}

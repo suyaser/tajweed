@@ -1,0 +1,97 @@
+{
+  "lesson": "tashil",
+  "coverage": "required التسهيل: #1 #2 (#2 against مد البدل in ءَايَٰتُهُۥٓ); the three ءَآلْ words, التسهيل as the second way after الإبدال: ءَآلذَّكَرَيْنِ #3, ءَآلْـَٰٔنَ #4, ءَآللَّهُ #5 #6",
+  "notes": "التسهيل is required in one word only (41:44), so there is 1 example before `notice` (warnings answered). The ءَآلْ words are in `more`, not hear/say: the reciter reads them with the first way, الإبدال (an ا of 6 counts), so their audio does not carry التسهيل; the note says so. Six places exist; four are here (one of each word, plus a second ءَآللَّهُ). 10:51 ءَآلْـَٰٔنَ is left to lazim-k (an earlier lesson that uses it); 6:144 is on the card. Hafs from الشاطبية: الإبدال with 6 counts read first, التسهيل without مد second (الشاطبية 192–193). Say: with no say words the app now repeats the core words (anchor and notice), never a `more` word, so the learner never copies the الإبدال audio of the ءَآلْ words (fixed in code, round 1). The notice span keeps وَعَرَبِىٌّ: the only other choice, w8–9, would contain the contrast word, and a repeat of w9 alone is not allowed. The tajweed data marks only the required word (۬), so the checker warns that it does not see tashil in the four ءَآلْ words; the rule for them is the الشاطبية text cited in each source.",
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "41:44",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "ءَا۬عْجَمِىٌّ",
+      "focus": "ءَا۬",
+      "stop": false,
+      "note": "Required: the second همزة is eased, between a همزة and an ا, short, with no مد.",
+      "noteAr": "تسهيل واجب: تُنطق الهمزة الثانية بين الهمزة والألف، بلا مد.",
+      "why": "The only required التسهيل in حفص.",
+      "source": "متن الشاطبية البيتان 183، 185 (وحققها في فصلت صحبة)، https://shamela.ws/book/7754/21؛ هداية القاري (المرصفي) 2/577–578"
+    },
+    {
+      "role": "notice",
+      "verse": "41:44",
+      "word_from": 9,
+      "word_to": 10,
+      "text": "ءَا۬عْجَمِىٌّ وَعَرَبِىٌّ",
+      "focus": "ءَا۬",
+      "stop": false,
+      "note": "ءَا۬عْجَمِىٌّ وَعَرَبِىٌّ: the second همزة is eased, with no مد after it.",
+      "noteAr": "ءَا۬عْجَمِىٌّ وَعَرَبِىٌّ: الهمزة الثانية مسهّلة، ولا مد بعدها.",
+      "why": "The same word in its phrase, so the Notice step can pair it with ءَايَٰتُهُۥٓ, the word just before it.",
+      "source": "متن الشاطبية، https://shamela.ws/book/7754/21",
+      "contrast": {
+        "lesson": "badal",
+        "verse": "41:44",
+        "word_from": 8,
+        "word_to": 8,
+        "text": "ءَايَٰتُهُۥٓ",
+        "focus": "ءَا",
+        "stop": false,
+        "note": "ءَايَٰتُهُۥٓ: a full همزة, then a real ا (مد البدل, 2 counts). Stopped here, so no صلة.",
+        "noteAr": "ءَايَٰتُهُۥٓ: همزة محققة بعدها ألف مد (مد البدل، حركتان). ويقف القارئ هنا، فلا صلة.",
+        "why": "Written ءَا like the eased word right after it, but here a full همزة plus مد: the closest pair in the Quran."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "6:143",
+      "word_from": 10,
+      "word_to": 10,
+      "text": "ءَآلذَّكَرَيْنِ",
+      "focus": "ءَآ",
+      "stop": false,
+      "note": "Two ways: الإبدال, an ا of 6 counts (read first, and what the reciter reads), or التسهيل with no مد.",
+      "noteAr": "وجهان: الإبدال ألفًا مع المد ست حركات (ويُقدَّم، وبه يقرأ القارئ هنا)، أو التسهيل بلا مد.",
+      "why": "ءَآلذَّكَرَيْنِ, the first of the three ءَآلْ words.",
+      "source": "متن الشاطبية البيتان 192–193، https://shamela.ws/book/7754/22؛ هداية القاري (المرصفي) 2/501"
+    },
+    {
+      "role": "more",
+      "verse": "10:91",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "ءَآلْـَٰٔنَ",
+      "focus": "ءَآ",
+      "stop": false,
+      "note": "ءَآلْـَٰٔنَ: الإبدال with 6 counts (first) or التسهيل with no مد.",
+      "noteAr": "ءَآلْـَٰٔنَ: الإبدال مع المد ست حركات (ويُقدَّم) أو التسهيل بلا مد.",
+      "why": "The second ءَآلْ word; 10:51 is left to lazim-k.",
+      "source": "متن الشاطبية البيتان 192–193 («كآلان مثّلا»)، https://shamela.ws/book/7754/22"
+    },
+    {
+      "role": "more",
+      "verse": "27:59",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "ءَآللَّهُ",
+      "focus": "ءَآ",
+      "stop": false,
+      "note": "ءَآللَّهُ: الإبدال with 6 counts (first) or التسهيل with no مد.",
+      "noteAr": "ءَآللَّهُ: الإبدال مع المد ست حركات (ويُقدَّم) أو التسهيل بلا مد.",
+      "why": "The third ءَآلْ word.",
+      "source": "متن الشاطبية البيتان 192–193، https://shamela.ws/book/7754/22"
+    },
+    {
+      "role": "more",
+      "verse": "10:59",
+      "word_from": 14,
+      "word_to": 14,
+      "text": "ءَآللَّهُ",
+      "focus": "ءَآ",
+      "stop": false,
+      "note": "ءَآللَّهُ again: the same two ways, الإبدال first.",
+      "noteAr": "ءَآللَّهُ مرة أخرى: الوجهان نفسهما، والإبدال مقدَّم.",
+      "why": "The other ءَآللَّهُ place; kept from the old list.",
+      "source": "متن الشاطبية البيتان 192–193، https://shamela.ws/book/7754/22"
+    }
+  ]
+}

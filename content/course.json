@@ -404,7 +404,7 @@
   "istiadha": {
    "closing": null,
    "contrastWith": null,
-   "notice": "16:98 commands the استعاذة before reciting; the words you say are أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ, which are not themselves an ayah. Then listen to the بسملة that opens a surah."
+   "notice": "16:98 commands the استعاذة before reciting; the words you say are أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ, which are not themselves an ayah. Then listen to 9:1, التوبة, the one surah that starts with no بسملة."
   },
   "tabii": {
    "closing": {
@@ -412,7 +412,7 @@
     "to": "79:15"
    },
    "contrastWith": "basics",
-   "notice": "Listen to the ا in مَٰلِكِ and قَالَ and the و in يَقُولُ: each is held for exactly two counts, twice a short vowel."
+   "notice": "Listen to the و in أَعُوذُ, the small ا in إِلَٰهِ and the ي in ٱلَّذِينَ: each is held for exactly two counts, twice a short vowel."
   },
   "arid": {
    "closing": {
@@ -420,7 +420,7 @@
     "to": "1:5"
    },
    "contrastWith": "tabii",
-   "notice": "Listen to the end of ٱلْعَٰلَمِينَ when the reciter stops: the ي before the last letter may be held longer than a normal مد, 2, 4 or 6 counts."
+   "notice": "Listen to the end of ٱلنَّاسِ, ٱلْعَٰلَمِينَ and تَعْلَمُونَ when the reciter stops: the ا، ي or و before the last letter may be held 2, 4 or 6 counts; all three are correct."
   },
   "iwad": {
    "closing": {
@@ -436,7 +436,7 @@
     "to": "107:3"
    },
    "contrastWith": null,
-   "notice": "Listen to the ل in ٱلْحَمْدُ and ٱلْقَمَرُ: it is said clearly, with سكون, before the next letter."
+   "notice": "Listen to the ل in ٱلْوَسْوَاسِ, ٱلْحَمْدُ and وَٱلْقَمَرِ: it is said clearly, with سكون, before the next letter."
   },
   "lam-s": {
    "closing": {
@@ -444,7 +444,7 @@
     "to": "1:4"
    },
    "contrastWith": "lam-q",
-   "notice": "Listen to ٱلرَّحْمَٰنِ and ٱلشَّمْسِ: the ل of ال is silent and the next letter is doubled."
+   "notice": "Listen to ٱلرَّحْمَٰنِ, وَٱلسَّٰبِحَٰتِ and ٱلصِّرَٰطَ: the ل of ال is silent and the next letter is doubled."
   },
   "ibtida": {
    "closing": {
@@ -452,7 +452,7 @@
     "to": "87:3"
    },
    "contrastWith": null,
-   "notice": "Listen to how the reciter starts on a word with ٱ, and how the ٱ disappears when he joins it to the word before."
+   "notice": "Listen to how the reciter starts ٱلَّذِى, ٱهْدِنَا and ٱدْعُ: the ٱ is said, with a فتحة, a كسرة or a ضمة. In Say you will hear it disappear when the word is joined."
   },
   "tafkhim": {
    "closing": {
@@ -460,7 +460,7 @@
     "to": "84:5"
    },
    "contrastWith": "basics",
-   "notice": "Listen to the ق in ٱلْقَارِعَةُ and the خ in خَلَقَ: the mouth fills and the sound is full and deep."
+   "notice": "Listen to the خ in ٱلْخَنَّاسِ, the قَا in ٱلْقَارِعَةُ and the قِ in ٱلْمُسْتَقِيمَ: the mouth fills and the sound is full and deep, strongest with a فتحة and an ا, weakest with a كسرة."
   },
   "lam-jh": {
    "closing": {
@@ -468,7 +468,7 @@
     "to": "95:8"
    },
    "contrastWith": "lam-q",
-   "notice": "Listen to the ل of the name in قَالَ ٱللَّهُ: after a فتحة it is heavy and full."
+   "notice": "Listen to the ل of the name in هُوَ ٱللَّهُ, in ٱللَّهُ at the start of an ayah, and in رَسُولُ ٱللَّهِ: after a فتحة or a ضمة, and when you start on it, it is heavy and full."
   },
   "lam-jl": {
    "closing": {
@@ -476,7 +476,7 @@
     "to": "1:1"
    },
    "contrastWith": "lam-jh",
-   "notice": "Listen to the ل of the name in بِسْمِ ٱللَّهِ: after a كسرة it is light and thin."
+   "notice": "Listen to the ل of the name in لِلَّهِ, دِينِ ٱللَّهِ and قُلِ ٱللَّهُمَّ: after a كسرة, even one added to join the words, it is light and thin."
   },
   "ghunnah": {
    "closing": {
@@ -484,7 +484,7 @@
     "to": "114:3"
    },
    "contrastWith": "tabii",
-   "notice": "Listen to the نّ in إِنَّ and the مّ in ثُمَّ: a nasal hum is held for two counts."
+   "notice": "Listen to the نّ in ٱلْجِنَّةِ and إِنَّ and the مّ in عَمَّ: a nasal hum is held for two counts."
   },
   "izhar": {
    "closing": {
@@ -492,7 +492,7 @@
     "to": "78:17"
    },
    "contrastWith": "ghunnah",
-   "notice": "Listen to the ن in أَنْعَمْتَ: it is said clearly and the tongue moves straight on to the throat letter, with no held hum."
+   "notice": "Listen to حَاسِدٍ إِذَا, أَنْعَمْتَ and مَنْ خَافَ: the ن or تنوين is said clearly and the voice moves straight on to the throat letter, with no held hum."
   },
   "idgh-g": {
    "closing": {
@@ -500,7 +500,7 @@
     "to": "78:25"
    },
    "contrastWith": "izhar",
-   "notice": "Listen to مَن يَقُولُ: the ن disappears into the ي and a two-count غنة carries it."
+   "notice": "Listen to فَمَن يَعْمَلْ, نَفْسٌ مَّا and فَلَن نَّزِيدَكُمْ: the ن or تنوين disappears into the next letter and a two-count غنة carries it."
   },
   "idgh-n": {
    "closing": {
@@ -508,7 +508,7 @@
     "to": "104:2"
    },
    "contrastWith": "idgh-g",
-   "notice": "Listen to مِّن رَّبِّهِمْ: the ن merges into the ر completely, with no غنة at all."
+   "notice": "Listen to عَن رَّبِّهِمْ, أَن لَّمْ and خَيْرٌ لَّكَ: the ن or تنوين merges into the ر or ل completely, with no غنة at all."
   },
   "iqlab": {
    "closing": {
@@ -516,7 +516,7 @@
     "to": "80:16"
    },
    "contrastWith": "idgh-g",
-   "notice": "Listen to مِنۢ بَعْدِ: the ن turns into a hidden م on the lips, with a two-count غنة before the ب."
+   "notice": "Listen to مَنۢ بَخِلَ, فَأَنۢبَتْنَا and كِرَامٍۭ بَرَرَةٍ: the ن or تنوين turns into a hidden م on the lips, with a two-count غنة before the ب."
   },
   "ikhfa": {
    "closing": {
@@ -524,7 +524,7 @@
     "to": "114:4"
    },
    "contrastWith": "izhar",
-   "notice": "Listen to the ن in يُنفِقُونَ and مِن قَبْلِكَ: it is hidden, and a two-count غنة carries the sound into the next letter, full and heavy before the ق."
+   "notice": "Listen to مِن شَرِّ, أَنتُمْ and نَارًا ذَاتَ: the ن or تنوين is hidden, and a two-count غنة carries the sound into the next letter."
   },
   "qal-s": {
    "closing": {
@@ -532,7 +532,7 @@
     "to": "91:10"
    },
    "contrastWith": "ikhfa",
-   "notice": "Listen to the قْ in وَيَقْطَعُونَ: a small bounce as the letter is released, in the middle of the word."
+   "notice": "Listen to يَلِدْ, يَدْخُلُونَ and حَبْلٌ: the قلقلة letter with a سكون gives a small bounce as it is released, without a vowel."
   },
   "qal-k": {
    "closing": {
@@ -540,7 +540,7 @@
     "to": "113:3"
    },
    "contrastWith": "qal-s",
-   "notice": "Listen to the stop on ٱلْفَلَقِ: the ق at the end bounces more strongly than in the middle of a word."
+   "notice": "Listen to the stop on ٱلْفَلَقِ, أَحَدٌ and وَقَبَ: the last letter loses its vowel and bounces more strongly than in the middle of a word."
   },
   "muttasil": {
    "closing": {
@@ -548,7 +548,7 @@
     "to": "110:2"
    },
    "contrastWith": "tabii",
-   "notice": "Listen to جَآءَ: the ا before the همزة in the same word is held four or five counts."
+   "notice": "Listen to جَآءَ, سُوٓءَ and سِىٓءَ: the ا, و or ي before a همزة in the same word is held four or five counts."
   },
   "munfasil": {
    "closing": {
@@ -556,7 +556,7 @@
     "to": "108:3"
    },
    "contrastWith": "muttasil",
-   "notice": "Listen to إِنَّآ أَعْطَيْنَٰكَ: the ا at the end of one word is held long before the همزة that starts the next."
+   "notice": "Listen to لَآ أَعْبُدُ, فِىٓ أَحْسَنِ and قَالُوٓا۟ إِنَّ: the ا, ي or و at the end of one word is held long before the همزة that starts the next."
   },
   "mithlayn": {
    "closing": {
@@ -564,7 +564,7 @@
     "to": "79:19"
    },
    "contrastWith": "izhar",
-   "notice": "Listen to هَل لَّكَ and ٱضْرِب بِّعَصَاكَ: the two ل (and the two ب) become one doubled letter, with no break between them."
+   "notice": "Listen to هَل لَّكَ, ٱذْهَب بِّكِتَٰبِى and رَبِحَت تِّجَٰرَتُهُمْ: the two identical letters become one doubled letter, with no break between them."
   },
   "mutajanisayn": {
    "closing": {
@@ -572,7 +572,7 @@
     "to": "3:122"
    },
    "contrastWith": "mithlayn",
-   "notice": "Listen to قَد تَّبَيَّنَ: the د is not said; it becomes the ت, which is doubled."
+   "notice": "Listen to عَبَدتُّمْ: the د is not said; it becomes the ت, which is doubled."
   },
   "sakinayn": {
    "closing": {
@@ -580,7 +580,7 @@
     "to": "113:5"
    },
    "contrastWith": "tabii",
-   "notice": "Listen to فِى ٱلْعُقَدِ: the ى is not said and فِ runs straight into the ل."
+   "notice": "Listen to فِى ٱلْعُقَدِ, بَلِ ٱلَّذِينَ and ذُو ٱلْعَرْشِ: a حرف مد before ال is not said, and any other ساكن takes a vowel."
   },
   "m-izhar": {
    "closing": {
@@ -596,7 +596,7 @@
     "to": "97:5"
    },
    "contrastWith": "m-izhar",
-   "notice": "Listen to كَم مِّن: the two م become one doubled م with a two-count غنة."
+   "notice": "Listen to أَطْعَمَهُم مِّن: the two م become one doubled م with a two-count غنة."
   },
   "m-ikhfa": {
    "closing": {
@@ -612,7 +612,7 @@
     "to": "109:6"
    },
    "contrastWith": "munfasil",
-   "notice": "Listen to أَنَا۠ عَابِدٌ: the ا of أَنَا is written but, joined, not said, so there is no long مد before the همزة. In ءَامَنُوا۟ the ا marked ۟ is never said."
+   "notice": "Listen to فَلْيَعْبُدُوا۟: the ا after the و is written but never said. In أَنَا۠, joined, the ا is not said either."
   },
   "silah-s": {
    "closing": {
@@ -620,7 +620,7 @@
     "to": "100:11"
    },
    "contrastWith": "tabii",
-   "notice": "Listen to إِنَّهُۥ كَانَ: the هـ of the pronoun is stretched into a two-count و between two vowels."
+   "notice": "Listen to وَإِنَّهُۥ عَلَىٰ: the هـ of the pronoun is stretched two counts, like a small و, because the letters on both sides of it have vowels."
   },
   "silah-k": {
    "closing": {
@@ -652,7 +652,7 @@
     "to": "103:3"
    },
    "contrastWith": "basics",
-   "notice": "Listen to the ر in رَبِّ and مَرْيَمَ: full and heavy, like the heavy letters."
+   "notice": "Listen to the ر in رَبَّكَ and زُرْتُمُ: full and heavy, like the heavy letters."
   },
   "ra-l": {
    "closing": {
@@ -664,7 +664,7 @@
     "to": "100:3"
    },
    "contrastWith": "ra-h",
-   "notice": "Listen to the ر in رِجَالٌ and فِرْعَوْنَ: thin and light, after or with a كسرة."
+   "notice": "Listen to the ر in ٱلْخَيْرِ and وَٱسْتَغْفِرْهُ: thin and light, with or after a كسرة."
   },
   "aqwa-maddayn": {
    "closing": {
@@ -672,7 +672,7 @@
     "to": "107:7"
    },
    "contrastWith": "badal",
-   "notice": "Listen to وَلَآ ءَآمِّينَ: the ا after the همزة is held six counts, because the شدة after it is the stronger cause."
+   "notice": "Listen to رِئَآءَ: the ا has a همزة before it (بدل) and after it (متصل); the stronger متصل wins, four or five counts."
   },
   "dad-zha": {
    "closing": {
@@ -688,7 +688,7 @@
     "to": "93:11"
    },
    "contrastWith": "arid",
-   "notice": "Listen to ٱلضَّآلِّينَ: the ا before the شدة is held a full six counts, joined or stopping."
+   "notice": "Listen to ضَآلًّا: the ا before the شدة is held a full six counts, joined or stopping."
   },
   "lazim-h": {
    "closing": {
@@ -704,7 +704,7 @@
     "to": "23:97"
    },
    "contrastWith": "mutajanisayn",
-   "notice": "Listen to وَقُل رَّبِّ: the ل is not said and the ر is doubled."
+   "notice": "Listen to وَقُل رَّبِّ and بَل رَّفَعَهُ: the ل is not said and the ر is doubled. In نَخْلُقكُّم the ق goes into the ك."
   },
   "waqf-signs": {
    "closing": {
@@ -716,7 +716,7 @@
     "to": "30:5"
    },
    "contrastWith": null,
-   "notice": "Look at the small signs above the line: each says whether a pause there is allowed, preferred or best avoided. Reciters differ in which ones they use."
+   "notice": "Look at the small sign over قَوْلُهُمْ ۘ: a stop there is required, and joining could suggest a wrong meaning. Each sign tells you whether a pause is required, allowed, better or forbidden."
   },
   "waqf-how": {
    "closing": {
@@ -728,7 +728,7 @@
     "to": "104:6"
    },
    "contrastWith": null,
-   "notice": "Listen to the last word before each stop: its final vowel becomes a سكون, and a ة becomes a soft هـ."
+   "notice": "Listen to the last word at each stop: ٱلْمُزَّمِّلُ ends in a سكون, أَبَدًا ends in a long ا, and ٱلْقِيَٰمَةِ ends in a soft هـ."
   },
   "rawm-ishmam": {
    "closing": {
@@ -740,7 +740,7 @@
     "to": "112:4"
    },
    "contrastWith": null,
-   "notice": "The reciters here stop on نَسْتَعِينُ with a plain سكون. الروم (a third of the ضمة, whispered) is heard only from close by, and الإشمام (the lips round after the سكون) is seen, not heard: watch a teacher's lips."
+   "notice": "The reciters here stop on أَحَدٌ and ٱلْأَكْرَمُ with a plain سكون. الروم (a third of the vowel, whispered) is heard only from close by, and الإشمام (the lips round after the سكون) is seen, not heard: watch a teacher's lips."
   },
   "sakt": {
    "closing": {
@@ -752,7 +752,7 @@
     "to": "75:27"
    },
    "contrastWith": "idgh-n",
-   "notice": "Listen to مَنْ ۜ رَاقٍ: the voice stops for a moment with no breath, so the ن stays clear instead of merging into the ر."
+   "notice": "Listen to بَلْ ۜ رَانَ and مَنْ ۜ رَاقٍ: the voice stops for a moment with no breath, so the ل and the ن stay clear instead of merging into the ر."
   },
   "imalah": {
    "closing": {
@@ -760,7 +760,7 @@
     "to": "11:41"
    },
    "contrastWith": "tabii",
-   "notice": "Listen to مَجْر۪ىٰهَا: the ا leans toward an e sound, the only such word in حفص."
+   "notice": "Listen to مَجْر۪ىٰهَا: the رَا is tilted toward رِي (إمالة كبرى), the only such word in حفص."
   },
   "ishmam": {
    "closing": {
@@ -784,7 +784,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to بَا، بُو، بِي: the long vowels come from the open space of the mouth and throat, with no contact."
+   "notice": "Listen to the long vowels in قَالُوا۟، دُونِ، نَذِيرٌ, and in بَا، بُو، بِي: they come from the open space of the mouth and throat, with no contact."
   },
   "makharij-halq": {
    "closing": {
@@ -792,7 +792,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to أَءْ، أَهْ، أَعْ، أَحْ، أَغْ، أَخْ: each starts at a different depth of the throat."
+   "notice": "Listen to the throat letters in أَحْسَنُ، يَخْشَوْنَ، أَهْدَىٰٓ, and in أَءْ، أَهْ، أَعْ، أَحْ، أَغْ، أَخْ: each starts at a different depth of the throat."
   },
   "makharij-aqsa": {
    "closing": {
@@ -800,7 +800,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to أَقْ and أَكْ: the back of the tongue touches the palate, ق further back than ك."
+   "notice": "Listen to ق and ك in وَيَقْبِضْنَ، تَوَكَّلْنَا، ٱلْأَكْبَرَ, and in أَقْ and أَكْ: the back of the tongue touches the palate, ق further back than ك."
   },
   "makharij-wasat": {
    "closing": {
@@ -812,7 +812,7 @@
     "to": "67:9"
    },
    "contrastWith": null,
-   "notice": "Listen to أَجْ، أَشْ، أَيْ and أَضْ: the middle and the side of the tongue at work."
+   "notice": "Listen to يّ، جْ، شْ in تَمَيَّزُ، وَجْهِهِۦٓ، تَشْكُرُونَ, and to أَجْ، أَشْ، أَيْ and أَضْ: the middle and the side of the tongue at work."
   },
   "makharij-taraf": {
    "closing": {
@@ -824,7 +824,7 @@
     "to": "67:5"
    },
    "contrastWith": null,
-   "notice": "Listen to أَلْ، أَنْ، أَرْ and أَتْ، أَدْ، أَطْ: each made with the tip of the tongue at a slightly different spot."
+   "notice": "Listen to the tip of the tongue in ٱلدُّنْيَا، نَسْمَعُ، فَكَذَّبْنَا, and in أَنْ، أَرْ and أَتْ، أَدْ، أَطْ: each made at a slightly different spot."
   },
   "makharij-shafatan": {
    "closing": {
@@ -832,7 +832,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to أَفْ، أَبْ، أَمْ، أَوْ: the lips, and the hum from the nose in م and ن."
+   "notice": "Listen to the lips in أَمْسَكَ، صَٰٓفَّٰتٍ، وُجُوهُ, and in أَفْ، أَبْ، أَمْ، أَوْ: the lips, and the hum from the nose in م and ن."
   },
   "sifat-hams": {
    "closing": {
@@ -840,7 +840,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to أَفْ and أَبْ: a flow of breath with the first, the breath held back with the second."
+   "notice": "Listen to the breath in يَخْسِفَ، فَسُحْقًا، مُّسْتَقِيمٍ, and in أَفْ and أَبْ: a flow of breath with the first, the breath held back with the second."
   },
   "sifat-shidda": {
    "closing": {
@@ -848,7 +848,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to أَبْ, أَلْ and أَسْ: the sound stops, half-flows, or runs freely."
+   "notice": "Listen to قَدْ، وَأَعْتَدْنَا، تُحْشَرُونَ, and to أَبْ, أَلْ and أَسْ: the sound stops, half-flows, or runs freely."
   },
   "sifat-istila": {
    "closing": {
@@ -860,7 +860,7 @@
     "to": "67:20"
    },
    "contrastWith": null,
-   "notice": "Listen to أَصْ and أَسْ: the same place, but the tongue rises and covers in ص."
+   "notice": "Listen to the heavy letters in ٱلصُّدُورِ، ٱلْغَيْظِ، خَلَقَ, and to أَصْ and أَسْ: the same place, but the tongue rises and covers in ص."
   },
   "sifat-safir": {
    "closing": {
@@ -872,7 +872,7 @@
     "to": "67:3"
    },
    "contrastWith": null,
-   "notice": "Listen to أَصْ، أَزْ، أَسْ: a whistle runs through the front teeth."
+   "notice": "Listen to أَصْبَحَ، يَنقَلِبْ، ٱلْمَوْتَ: a whistle, a bounce, and a soft لين; and to أَصْ، أَزْ، أَسْ: a whistle runs through the front teeth."
   },
   "sifat-inhiraf": {
    "closing": {
@@ -880,7 +880,7 @@
     "to": "67:2"
    },
    "contrastWith": null,
-   "notice": "Listen to أَرْ and أَشْ: the ر trembles once, no more; the ش spreads through the mouth."
+   "notice": "Listen to كَرَّتَيْنِ، كُلِّ، لِّلشَّيَٰطِينِ, and to أَرْ and أَشْ: the ر does not trill; the ش spreads through the mouth."
   },
   "maratib": {
    "closing": {

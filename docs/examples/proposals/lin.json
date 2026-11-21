@@ -1,0 +1,110 @@
+{
+  "lesson": "lin",
+  "coverage": "يْ: #1 #3 #4 #5 #7; وْ: #2 #6; in the unit (قريش): #1 #2 #3 #7; all at a stop",
+  "notes": "Unit 5 surahs have no لين at a stop; قريش (unit 4) has four, then البلد 90:8–10. The only وْ at an ayah end in Juz عمّ is خَوْفٍۭ, so the second وْ is نَوْمٌ before the ۚ in آية الكرسي. \"Joined, no lengthening\" stays on the card; a joined word would read as a wrong answer in Check questions.",
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "106:1",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "قُرَيْشٍ",
+      "focus": "رَيْشٍ",
+      "stop": true,
+      "note": "Stopping: قُرَيْشْ. The يْ after a فتحة glides softly; it may be 2, 4 or 6.",
+      "noteAr": "عند الوقف «قُرَيْشْ»: الياء الساكنة بعد فتح تُمد بلين حركتين أو أربعًا أو ستًّا.",
+      "why": "In the unit; the surah's first word that learners stop on.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351"
+    },
+    {
+      "role": "hear",
+      "verse": "106:4",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "خَوْفٍۭ",
+      "focus": "خَوْفٍۭ",
+      "stop": true,
+      "note": "Stopping: خَوْفْ. The وْ after a فتحة, 2, 4 or 6.",
+      "noteAr": "عند الوقف «خَوْفْ»: الواو الساكنة بعد فتح، حركتان أو أربع أو ست.",
+      "why": "In the unit; the وْ form.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351"
+    },
+    {
+      "role": "hear",
+      "verse": "106:3",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلْبَيْتِ",
+      "focus": "بَيْتِ",
+      "stop": true,
+      "note": "Stopping: ٱلْبَيْتْ. Soft يْ, 2, 4 or 6.",
+      "noteAr": "عند الوقف «ٱلْبَيْتْ»: ياء لين، حركتان أو أربع أو ست.",
+      "why": "In the unit.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351"
+    },
+    {
+      "role": "say",
+      "verse": "90:8",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "عَيْنَيْنِ",
+      "focus": "نَيْنِ",
+      "stop": true,
+      "note": "Stopping: عَيْنَيْنْ. Stretch only the last يْ.",
+      "noteAr": "عند الوقف «عَيْنَيْنْ»: يُمد اللين في الياء الأخيرة فقط.",
+      "why": "Juz عمّ (البلد). The first يْ is followed by a vowelled ن, so it is not stretched.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351"
+    },
+    {
+      "role": "say",
+      "verse": "90:10",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "ٱلنَّجْدَيْنِ",
+      "focus": "دَيْنِ",
+      "stop": true,
+      "note": "Stopping: ٱلنَّجْدَيْنْ. Soft يْ before the stopped ن.",
+      "noteAr": "عند الوقف «ٱلنَّجْدَيْنْ»: ياء لين قبل النون الموقوف عليها.",
+      "why": "Juz عمّ.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351"
+    },
+    {
+      "role": "say",
+      "verse": "2:255",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "نَوْمٌ",
+      "focus": "نَوْمٌ",
+      "stop": true,
+      "note": "Stopping at the ۚ: نَوْمْ. Soft وْ, 2, 4 or 6.",
+      "noteAr": "عند الوقف على علامة الوقف: «نَوْمْ»، واو لين.",
+      "why": "The only second وْ: خَوْفٍۭ (106:4) is the only ayah-final وْ before one letter in the Quran. All three reciters pause at the ۚ (5.7 s / 0.4 s / 0.3 s), so the stop is heard.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351"
+    },
+    {
+      "role": "notice",
+      "verse": "106:2",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "وَٱلصَّيْفِ",
+      "focus": "صَّيْفِ",
+      "stop": true,
+      "note": "Stopping: وَٱلصَّيْفْ. The ي has سكون after a فتحة: a soft glide.",
+      "noteAr": "عند الوقف «وَٱلصَّيْفْ»: ياء ساكنة بعد فتح، لين.",
+      "why": "In the unit. Paired with ٱلْفِيلِ: the same stopped يـ, after a كسرة there (a true مد).",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/132، 152–153؛ هداية القاري 1/351",
+      "contrast": {
+        "lesson": "arid",
+        "verse": "105:1",
+        "word_from": 7,
+        "word_to": 7,
+        "text": "ٱلْفِيلِ",
+        "focus": "فِيلِ",
+        "stop": true,
+        "note": "Stopping: ٱلْفِيلْ. The ي after a كسرة is a true مد, العارض.",
+        "noteAr": "عند الوقف «ٱلْفِيلْ»: ياء مدية بعد كسر، مد عارض للسكون.",
+        "why": "From the unit (الفيل): the يـ is a حرف مد, not لين."
+      }
+    }
+  ]
+}

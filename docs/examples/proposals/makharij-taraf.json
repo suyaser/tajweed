@@ -1,0 +1,141 @@
+{
+  "lesson": "makharij-taraf",
+  "coverage": "ن: #1; ر: #4; ط د ت: #1 #6 #8 (ط) #9 (ت); ص س ز: #2 #5 #10; ظ ذ ث: #3 #7 (ظ only in ٱلْغَيْظِ, used by sifat-istila)",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to the tip of the tongue in ٱلدُّنْيَا، نَسْمَعُ، فَكَذَّبْنَا, and in أَنْ، أَرْ and أَتْ، أَدْ، أَطْ: each made at a slightly different spot.",
+    "ar": "استمع إلى طرف اللسان في ٱلدُّنْيَا، نَسْمَعُ، فَكَذَّبْنَا، وفي أَنْ، أَرْ وأَتْ، أَدْ، أَطْ: كل منها في موضع مختلف قليلًا."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:5",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلدُّنْيَا",
+      "focus": "دُّنْ",
+      "stop": false,
+      "note": "دّ: the tip against the roots of the upper front teeth; نْ: the tip against their gum.",
+      "noteAr": "الدال المشددة: طرف اللسان مع أصول الثنايا العليا، والنون الساكنة: طرفه مع لثتها.",
+      "why": "Two طرف اللسان places in one word; نْ before ي in one word is shown (إظهار مطلق).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:10",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "نَسْمَعُ",
+      "focus": "سْ",
+      "stop": false,
+      "note": "سْ: the tip near the lower front teeth, with a narrow gap for the whistle.",
+      "noteAr": "السين الساكنة: من طرف اللسان فوق الثنايا السفلى، ويخرج معها صفير.",
+      "why": "The whistle group (ص س ز), س with سكون.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:9",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "فَكَذَّبْنَا",
+      "focus": "ذَّ",
+      "stop": false,
+      "note": "ذّ: the tip of the tongue against the edges of the upper front teeth, like ظ and ث.",
+      "noteAr": "الذال المشددة: من طرف اللسان مع أطراف الثنايا العليا، كالظاء والثاء.",
+      "why": "The ظ ذ ث group, ذ with شدة.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:17",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "يُرْسِلَ",
+      "focus": "رْ",
+      "stop": false,
+      "note": "رْ: close to the place of ن, but further onto the top of the tongue.",
+      "noteAr": "الراء الساكنة: قريبة من مخرج النون، لكنها أدخل إلى ظهر اللسان.",
+      "why": "ر with سكون inside the word (not ٱرْجِعِ, whose clip starts on a bare رْ).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:10",
+      "word_from": 10,
+      "word_to": 10,
+      "text": "أَصْحَٰبِ",
+      "focus": "صْ",
+      "stop": false,
+      "note": "صْ: the place of س and ز, the tip near the lower front teeth.",
+      "noteAr": "الصاد الساكنة: من مخرج السين والزاي، طرف اللسان فوق الثنايا السفلى.",
+      "why": "ص with سكون.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:27",
+      "word_from": 13,
+      "word_to": 13,
+      "text": "تَدَّعُونَ",
+      "focus": "دَّ",
+      "stop": false,
+      "note": "دّ: the tip on the roots of the upper front teeth, where ت and ط are made too.",
+      "noteAr": "الدال المشددة: طرف اللسان مع أصول الثنايا العليا، مخرج التاء والطاء أيضًا.",
+      "why": "The ط د ت group with شدة; focus mid-word, so the ayah-end stop does not touch it.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "67:4",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "ثُمَّ",
+      "focus": "ثُ",
+      "stop": false,
+      "note": "ث: the tip of the tongue against the edges of the upper front teeth.",
+      "noteAr": "الثاء: من طرف اللسان مع أطراف الثنايا العليا.",
+      "why": "ث of the ظ ذ ث group.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "67:3",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "طِبَاقًا",
+      "focus": "طِ",
+      "stop": false,
+      "note": "طِ: the tip of the tongue against the roots of the upper front teeth, with د and ت.",
+      "noteAr": "الطاء: من طرف اللسان مع أصول الثنايا العليا، مع الدال والتاء.",
+      "why": "ط of the ط د ت group.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "67:3",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "تَفَٰوُتٍ",
+      "focus": "تَ",
+      "stop": false,
+      "note": "تَ: the tip on the roots of the upper front teeth, the place of ط and د.",
+      "noteAr": "التاء: من طرف اللسان مع أصول الثنايا العليا، مخرج الطاء والدال.",
+      "why": "ت of the ط د ت group.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "67:5",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "زَيَّنَّا",
+      "focus": "زَ",
+      "stop": false,
+      "note": "ز: a whistle letter, from the tip near the lower front teeth, with س and ص.",
+      "noteAr": "الزاي من حروف الصفير: من طرف اللسان فوق الثنايا السفلى، مع السين والصاد.",
+      "why": "ز of the whistle group.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والنونُ من طرفه تحتُ اجعلوا، والرا يدانيه لظهرٍ أدخلُ، والطاءُ والدالُ وتا منه ومن عُليا الثنايا، والصفيرُ مستكنٌّ منه ومن فوق الثنايا السفلى، والظاءُ والذالُ وثا للعليا»؛ هداية القاري 1/61–68"
+    }
+  ]
+}

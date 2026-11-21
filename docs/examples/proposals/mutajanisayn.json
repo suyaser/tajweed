@@ -1,0 +1,153 @@
+{
+  "lesson": "mutajanisayn",
+  "coverage": "د←ت: #1 (in one word) #7 #8; ت←ط: #2; ذ←ظ: #3; ت←د: #4 #10; ط←ت (ناقص): #5 #9; ب←م: #6; ث←ذ: not used (see notes)",
+  "notes": "ث←ذ (يَلْهَث ذَّٰلِكَ, 7:176) is left out: its only place has the pause sign ۚ after يَلْهَث, so the reciter may stop and the merge is not heard. No case occurs in the unit surahs; 109:4 (الكافرون, unit 3) is the one in the learner's surahs.",
+  "noticeText": {
+    "en": "Listen to عَبَدتُّمْ: the د is not said; it becomes the ت, which is doubled.",
+    "ar": "استمع إلى «عَبَدتُّمْ»: لا تُنطق الدال، بل تصير تاءً مشددة."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "109:4",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "عَبَدتُّمْ",
+      "focus": "دتُّ",
+      "stop": false,
+      "note": "The د is not said; it becomes the ت, which is doubled: عَبَتُّمْ.",
+      "noteAr": "لا تُنطق الدال، بل تدغم في التاء فتصير تاءً مشددة.",
+      "why": "From الكافرون (unit 3), already recited; د←ت inside one word.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "hear",
+      "verse": "3:122",
+      "word_from": 2,
+      "word_to": 3,
+      "text": "هَمَّت طَّآئِفَتَانِ",
+      "focus": "ت طَّ",
+      "stop": false,
+      "note": "The ت merges fully into the ط: one heavy doubled طّ.",
+      "noteAr": "تدغم التاء في الطاء إدغامًا كاملًا فتصير طاءً مشددة مفخمة.",
+      "why": "ت←ط, الميزان's example (همت طائفتان); in this lesson's closing passage (3:121–122). The ۗ is after word 8; the مّ غنة is taught.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "hear",
+      "verse": "4:64",
+      "word_from": 11,
+      "word_to": 12,
+      "text": "إِذ ظَّلَمُوٓا۟",
+      "focus": "ذ ظَّ",
+      "stop": false,
+      "note": "The ذ is not said; one heavy doubled ظّ.",
+      "noteAr": "لا تُنطق الذال، وتصير ظاءً مشددة.",
+      "why": "ذ←ظ, the book example (إذ ظلموا). The ظ is the target itself (its ض/ظ lesson comes in unit 6); the ۟ at the end of ظَّلَمُوٓا۟ is after the target.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "say",
+      "verse": "7:189",
+      "word_from": 20,
+      "word_to": 21,
+      "text": "أَثْقَلَت دَّعَوَا",
+      "focus": "ت دَّ",
+      "stop": false,
+      "note": "The ت becomes the د: أَثْقَلَدَّعَوَا.",
+      "noteAr": "تدغم التاء في الدال: دال مشددة.",
+      "why": "ت←د, one of its two places (الميزان).",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "say",
+      "verse": "5:28",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "بَسَطتَ",
+      "focus": "طتَ",
+      "stop": false,
+      "note": "Incomplete: keep the ط's heaviness, no قلقلة, then the ت.",
+      "noteAr": "إدغام ناقص: تبقى صفة الإطباق في الطاء بلا قلقلة، ثم التاء.",
+      "why": "ط←ت (ناقص), the book example (بسطت). The data (cpfair) does not mark the incomplete merge; the muṣḥaf shows it (no sukun on ط, no shadda on ت).",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "say",
+      "verse": "11:42",
+      "word_from": 14,
+      "word_to": 15,
+      "text": "ٱرْكَب مَّعَنَا",
+      "focus": "ب مَّ",
+      "stop": false,
+      "note": "The ب merges into the م: one doubled مّ with a hum.",
+      "noteAr": "تدغم الباء في الميم فتصير ميمًا مشددة بغنة.",
+      "why": "ب←م, its only place in the Quran (الميزان). The heavy رْ (ra-h, unit 5) is away from the target; no other place exists. The muṣḥaf marks the merge; the الإظهار mentioned in الميزان is the weak way, not used here.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "notice",
+      "verse": "29:38",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "وَقَد تَّبَيَّنَ",
+      "focus": "د تَّ",
+      "stop": false,
+      "note": "وَقَد before ت: the د disappears into a doubled تّ.",
+      "noteAr": "«وَقَد» قبل التاء: تذهب الدال في تاء مشددة.",
+      "why": "A minimal pair with وَقَد دَّخَلُوا۟: same word, a different next letter.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34",
+      "contrast": {
+        "lesson": "mithlayn",
+        "verse": "5:61",
+        "word_from": 5,
+        "word_to": 6,
+        "text": "وَقَد دَّخَلُوا۟",
+        "focus": "د دَّ",
+        "stop": false,
+        "note": "وَقَد before د: the same letter twice, one doubled د.",
+        "noteAr": "«وَقَد» قبل الدال: حرفان متماثلان، فيصيران دالًا مشددة.",
+        "why": "Same word وَقَد; the next letter is the same letter, so it is المثلين."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "9:117",
+      "word_from": 1,
+      "word_to": 2,
+      "text": "لَّقَد تَّابَ",
+      "focus": "د تَّ",
+      "stop": false,
+      "note": "لَّقَد تَّابَ: the د disappears into a doubled تّ.",
+      "noteAr": "«لَّقَد تَّابَ»: تدغم الدال في التاء فتصير تاءً مشددة.",
+      "why": "الميزان's example (لقد تاب); the ۚ is after word 23.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "more",
+      "verse": "27:22",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "أَحَطتُ",
+      "focus": "طتُ",
+      "stop": false,
+      "note": "Incomplete: the ط's heaviness stays.",
+      "noteAr": "إدغام ناقص: يبقى إطباق الطاء.",
+      "why": "A second ط←ت word (أحطت in الميزان). The data does not mark the incomplete merge; see #5.",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    },
+    {
+      "role": "more",
+      "verse": "10:89",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "أُجِيبَت دَّعْوَتُكُمَا",
+      "focus": "ت دَّ",
+      "stop": false,
+      "note": "أُجِيبَت دَّعْوَتُكُمَا: the ت becomes the د.",
+      "noteAr": "تدغم التاء في الدال.",
+      "why": "The other ت←د place (الميزان: موضعين فقط).",
+      "source": "الميزان (فريال زمزمي) https://shamela.ws/book/38104/131–132 (المتجانسان لحفص بأمثلتها)؛ تحفة الأطفال الأبيات 30–34"
+    }
+  ]
+}

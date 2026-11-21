@@ -1,0 +1,140 @@
+{
+ "lesson": "idgh-n",
+ "coverage": "ن + ل: #2; ن + ر: #1 #7; تنوين + ل: #3 #4 #5 #8; تنوين + ر: #6 #9.",
+ "notes": "مَنْ ۜ رَاقٍ (سكت) is not used. Read without غنة, the way of حفص من الشاطبية (الوافي، البيت 286).",
+ "noticeText": {
+  "en": "Listen to عَن رَّبِّهِمْ, أَن لَّمْ and خَيْرٌ لَّكَ: the ن or تنوين merges into the ر or ل completely, with no غنة at all.",
+  "ar": "استمع إلى عَن رَّبِّهِمْ وأَن لَّمْ وخَيْرٌ لَّكَ: تُدغم النون أو التنوين في الراء أو اللام إدغامًا كاملًا بلا غنة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "83:15",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "عَن رَّبِّهِمْ",
+   "focus": "ن رَّ",
+   "stop": false,
+   "note": "The ن of عَن disappears into the ر: one doubled رّ, with no غنة.",
+   "noteAr": "تذوب نون عَن في الراء فتصير راءً مشددة بلا غنة.",
+   "why": "ن into ر, clean (no later rule in the words). The unit's only case, يَكُن لَّهُۥ (112:4), overlaps silah-s#2 لَّهُۥ كُفُوًا and carries a صلة.",
+   "source": "غاية المريد، الإدغام بغير غنة في اللام والراء https://shamela.ws/book/7311/75"
+  },
+  {
+   "role": "hear",
+   "verse": "90:7",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "أَن لَّمْ",
+   "focus": "ن لَّ",
+   "stop": false,
+   "note": "أَن لَّمْ: say أَلَّمْ, the ن fully gone into the ل.",
+   "noteAr": "أَن لَّمْ تُقرأ أَلَّمْ: تذهب النون كلها في اللام.",
+   "why": "Short; ن into ل.",
+   "source": "غاية المريد، تمرين {أَنْ لَنْ يَقْدِر} https://shamela.ws/book/7311/78"
+  },
+  {
+   "role": "hear",
+   "verse": "93:4",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "خَيْرٌ لَّكَ",
+   "focus": "رٌ لَّ",
+   "stop": false,
+   "note": "The تنوين of خَيْرٌ merges into the لّ of لَّكَ, with no غنة.",
+   "noteAr": "يُدغم تنوين خَيْرٌ في لام لَّكَ بلا غنة.",
+   "why": "Tanween into ل.",
+   "source": "غاية المريد، الإدغام بغير غنة في اللام والراء https://shamela.ws/book/7311/75"
+  },
+  {
+   "role": "say",
+   "verse": "104:1",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "وَيْلٌ لِّكُلِّ",
+   "focus": "لٌ لِّ",
+   "stop": false,
+   "note": "The تنوين of وَيْلٌ merges into the لّ of لِّكُلِّ, with no غنة.",
+   "noteAr": "يُدغم تنوين وَيْلٌ في لام لِّكُلِّ بلا غنة.",
+   "why": "Tanween into ل, clean; from الهمزة (a course surah).",
+   "source": "غاية المريد، الإدغام بغير غنة في اللام والراء https://shamela.ws/book/7311/75"
+  },
+  {
+   "role": "say",
+   "verse": "85:16",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "فَعَّالٌ لِّمَا",
+   "focus": "لٌ لِّ",
+   "stop": false,
+   "note": "The تنوين of فَعَّالٌ merges into the لّ of لِّمَا, no غنة.",
+   "noteAr": "يُدغم تنوين فَعَّالٌ في لام لِّمَا بلا غنة.",
+   "why": "Tanween into ل.",
+   "source": "غاية المريد، الإدغام بغير غنة في اللام والراء https://shamela.ws/book/7311/75"
+  },
+  {
+   "role": "say",
+   "verse": "81:25",
+   "word_from": 4,
+   "word_to": 5,
+   "text": "شَيْطَٰنٍ رَّجِيمٍ",
+   "focus": "نٍ رَّ",
+   "stop": true,
+   "note": "The تنوين of شَيْطَٰنٍ merges into the رّ: no غنة, no n sound.",
+   "noteAr": "يُدغم تنوين شَيْطَٰنٍ في الراء: بلا غنة ولا نون.",
+   "why": "Tanween into ر. Ends the ayah; the target is joined inside it.",
+   "source": "غاية المريد، الإدغام بغير غنة في اللام والراء https://shamela.ws/book/7311/75"
+  },
+  {
+   "role": "notice",
+   "verse": "78:36",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مِّن رَّبِّكَ",
+   "focus": "ن رَّ",
+   "stop": false,
+   "note": "Before ر the ن of مِّن goes with no غنة at all.",
+   "noteAr": "قبل الراء تذهب نون مِّن بلا غنة أصلًا.",
+   "why": "Same word مِّن as the contrast; only the next letter differs (ر here, م there).",
+   "source": "غاية المريد، الإدغام بغير غنة في اللام والراء https://shamela.ws/book/7311/75",
+   "contrast": {
+    "lesson": "idgh-g",
+    "verse": "111:5",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مِّن مَّسَدٍۭ",
+    "focus": "ن مَّ",
+    "stop": true,
+    "note": "Before م the same مِّن merges with a two-count غنة.",
+    "noteAr": "قبل الميم تُدغم مِّن نفسها مع غنة حركتين.",
+    "why": "Same word مِّن, from المسد (unit 3)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "90:6",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "مَالًا لُّبَدًا",
+   "focus": "ا لُّ",
+   "stop": true,
+   "note": "The تنوين of مَالًا merges into the لّ of لُّبَدًا, no غنة.",
+   "noteAr": "يُدغم تنوين مَالًا في لام لُّبَدًا بلا غنة.",
+   "why": "The book's example (البلد: 6). Ends the ayah; the target is joined inside it.",
+   "source": "غاية المريد https://shamela.ws/book/7311/75 (حاشية: سورة البلد: ٦)"
+  },
+  {
+   "role": "more",
+   "verse": "101:7",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "عِيشَةٍ رَّاضِيَةٍ",
+   "focus": "ةٍ رَّ",
+   "stop": true,
+   "note": "The تنوين of عِيشَةٍ merges into the رّ of رَّاضِيَةٍ, no غنة.",
+   "noteAr": "يُدغم تنوين عِيشَةٍ في راء رَّاضِيَةٍ بلا غنة.",
+   "why": "Tanween into ر; the book gives the same phrase (الحاقة: 21). The ض is a later lesson (الضاد والظاء).",
+   "source": "غاية المريد https://shamela.ws/book/7311/75 (حاشية: سورة الحاقة: ٢١)"
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "lesson": "basics",
+ "coverage": "فتحة: #1; سكون: #2; شدة: #3; ضمة: #4; كسرة: #5; تنوين: #6. حرف مد is shown on the card and taught in tabii (lesson 3).",
+ "notes": "Unit 0 has no surahs, so the words come from الناس (unit 1, the learner's first surah). The Hear prompt still names مَلِكِ, قُلْ and بِرَبِّ, the anchor and hear words, so no noticeText. Every Quran word carries rules taught later (basics is lesson 1); only the marked letter is the point here. الفاتحة words (بِسْمِ، ٱلْحَمْدُ) were dropped: istiadha and lam-q need them. الناس has no تنوين, so #6 comes from القارعة, a تنوين before a throat letter (إظهار), so the ن is heard plainly.",
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:2",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "مَلِكِ",
+   "focus": "مَ",
+   "stop": false,
+   "note": "فتحة on the م: an open a, one short count.",
+   "noteAr": "فتحة على الميم: صوت مفتوح قصير بحركة واحدة.",
+   "why": "Short, from الناس, and the minimal pair with مَٰلِكِ (tabii notice): the plain فتحة the learner will contrast with a مد.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/119 (الحركة)"
+  },
+  {
+   "role": "hear",
+   "verse": "114:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "قُلْ",
+   "focus": "لْ",
+   "stop": false,
+   "note": "سكون on the ل: the letter is closed, with no vowel after it.",
+   "noteAr": "سكون على اللام: الحرف مقفل بلا حركة بعده.",
+   "why": "The first word of الناس; the clearest سكون, on the last letter, with nothing after it to blur it. The ق is heavy (tafkhim, lesson 6, flagged); the focus is the لْ, which it does not change.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/119"
+  },
+  {
+   "role": "hear",
+   "verse": "114:1",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "بِرَبِّ",
+   "focus": "بِّ",
+   "stop": false,
+   "note": "شدة: the ب is said twice, the first with سكون: رَبْ + بِ.",
+   "noteAr": "شدة: الباء حرفان، أولهما ساكن: رَبْ + بِ.",
+   "why": "The card's own شدة example (رَبِّ). The رَ is heavy (ra-h, later); it does not touch the بّ.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/119"
+  },
+  {
+   "role": "say",
+   "verse": "114:5",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "يُوَسْوِسُ",
+   "focus": "يُ",
+   "stop": false,
+   "note": "ضمة on the ي: a rounded u, lips forward.",
+   "noteAr": "ضمة على الياء: صوت مضموم تتقدم فيه الشفتان.",
+   "why": "ضمة from الناس; يُوَسْوِسُ also shows سكون (سْ) and كسرة (وِ) in one word, a good word to say slowly.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/119"
+  },
+  {
+   "role": "say",
+   "verse": "1:7",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "عَلَيْهِمْ",
+   "focus": "هِ",
+   "stop": false,
+   "note": "كسرة on the ه: an i, lips spread.",
+   "noteAr": "كسرة على الهاء: صوت مكسور تنبسط معه الشفتان.",
+   "why": "كسرة from الفاتحة. الناس has none free (مِنَ ٱلْجِنَّةِ is the old sakinayn example). The final مْ before غ is clear (m-izhar, later) and does not touch the هِ.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/119"
+  },
+  {
+   "role": "say",
+   "verse": "101:11",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "نَارٌ",
+   "focus": "رٌ",
+   "stop": false,
+   "note": "تنوين: a ن is heard after the ضمة, نَارُنْ, because the reading goes on to حَامِيَةٌ.",
+   "noteAr": "تنوين: تُسمع نون ساكنة بعد الضمة (نَارُنْ) لأن القراءة موصولة بما بعدها.",
+   "why": "A two-word ayah with the تنوين mid-ayah before ح, so the reciter joins and the ن is clear (إظهار, lesson izhar, later). Replaces كُفُوًا أَحَدٌۢ, a classic إظهار word that unit 2 may want. The heavy ر (ra-h) and the مد (tabii) are later and do not change the ن.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/119; تحفة الأطفال، البيت 7، https://shamela.ws/book/9632/2 (التنوين before حروف الحلق is clear)"
+  }
+ ]
+}

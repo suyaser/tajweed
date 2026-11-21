@@ -1,0 +1,153 @@
+{
+  "lesson": "silent-letters",
+  "coverage": "۟ ا after واو الجماعة: #1; ۟ ا after a verb's own و: #4; ۟ و: #2; ۟ ا: #5 #10; ۟ ي: #6; ۠ joined: #3 #7; ۠ at a stop: #8; قَوَارِيرَا۟ never: #9; سَلَٰسِلَا۟: card list only (no pause after it)",
+  "notes": "ءَامَنُوا۟ (103:3) is left to badal. The old notice prompt said أَنَا۠ عَابِدٌ has no مد before a همزة; عَابِدٌ starts with ع, so the notice pair now uses أَنَا۠ أُحْىِۦ (2:258), the card's own tip. لَأَا۟ذْبَحَنَّهُۥٓ rests on the muṣḥaf mark (card review note).",
+  "noticeText": {
+    "en": "Listen to فَلْيَعْبُدُوا۟: the ا after the و is written but never said. In أَنَا۠, joined, the ا is not said either.",
+    "ar": "استمع إلى «فَلْيَعْبُدُوا۟»: الألف بعد الواو تكتب ولا تقرأ. وفي «أَنَا» عند الوصل لا تُقرأ الألف كذلك."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "106:3",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "فَلْيَعْبُدُوا۟",
+      "focus": "دُوا۟",
+      "stop": false,
+      "note": "The ا after واو الجماعة is written, not said: the word ends on the و.",
+      "noteAr": "الألف بعد واو الجماعة تكتب ولا تقرأ، فتنتهي الكلمة بالواو.",
+      "why": "In the unit (قريش); the most frequent silent letter.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "hear",
+      "verse": "98:7",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "أُو۟لَٰٓئِكَ",
+      "focus": "أُو۟",
+      "stop": false,
+      "note": "The و is not said: read أُلَٰٓئِكَ.",
+      "noteAr": "الواو لا تُقرأ: تُنطق «أُلَٰٓئِكَ».",
+      "why": "Unit 5 surah (البينة); a و with ۟. Its مد متصل (unit 3) is already taught.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "hear",
+      "verse": "109:4",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "أَنَا۠",
+      "focus": "أَنَا۠",
+      "stop": false,
+      "note": "Joined to عَابِدٌ, the ا of أَنَا۠ is not said: أَنَ.",
+      "noteAr": "عند الوصل بما بعدها لا تُقرأ ألف «أَنَا»: «أَنَ عَابِدٌ».",
+      "why": "From الكافرون (unit 3); the ۠ joined case. One word only: idgh-g holds عَابِدٌ مَّا (w3-4).",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "say",
+      "verse": "98:2",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "يَتْلُوا۟",
+      "focus": "لُوا۟",
+      "stop": false,
+      "note": "The ا after the و is not said: يَتْلُو.",
+      "noteAr": "الألف بعد الواو لا تُقرأ: «يَتْلُو».",
+      "why": "Unit 5 surah; the ا after a verb's own و, not واو الجماعة.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "say",
+      "verse": "2:259",
+      "word_from": 19,
+      "word_to": 19,
+      "text": "مِا۟ئَةَ",
+      "focus": "مِا۟",
+      "stop": false,
+      "note": "The ا is not said: مِئَةَ.",
+      "noteAr": "الألف لا تُقرأ: «مِئَةَ».",
+      "why": "Card list; short.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "say",
+      "verse": "51:47",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "بِأَيْي۟دٍ",
+      "focus": "يْي۟",
+      "stop": false,
+      "note": "The second ي is not said: بِأَيْدٍ.",
+      "noteAr": "الياء الثانية لا تُقرأ: «بِأَيْدٍ».",
+      "why": "Card list; harder.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "notice",
+      "verse": "2:258",
+      "word_from": 21,
+      "word_to": 22,
+      "text": "أَنَا۠ أُحْىِۦ",
+      "focus": "أَنَا۠ أُ",
+      "stop": false,
+      "note": "Joined: أَنَ أُحْيِي. No ا is said, so no مد before the همزة.",
+      "noteAr": "عند الوصل: «أَنَ أُحْيِي»، لا ألف تُنطق فلا مد قبل الهمزة.",
+      "why": "The card's tip: the ا before a همزة is not said, so no منفصل.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة",
+      "contrast": {
+        "lesson": "munfasil",
+        "verse": "108:1",
+        "word_from": 1,
+        "word_to": 2,
+        "text": "إِنَّآ أَعْطَيْنَٰكَ",
+        "focus": "نَّآ أَ",
+        "stop": false,
+        "note": "إِنَّآ before أَعْطَيْنَٰكَ: the ا is said and held 4 or 5 counts.",
+        "noteAr": "«إِنَّآ أَعْطَيْنَٰكَ»: تُمد الألف أربع أو خمس حركات.",
+        "why": "From the unit (الكوثر): the same نا before a همزة, said and lengthened."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "33:10",
+      "word_from": 16,
+      "word_to": 16,
+      "text": "ٱلظُّنُونَا۠",
+      "focus": "نَا۠",
+      "stop": true,
+      "note": "At the ayah's end you stop, so the ا is said: ٱلظُّنُونَا.",
+      "noteAr": "عند الوقف على رأس الآية تُقرأ الألف: «ٱلظُّنُونَا».",
+      "why": "The ۠ at a stop.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "more",
+      "verse": "76:16",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "قَوَارِيرَا۟",
+      "focus": "رَا۟",
+      "stop": false,
+      "note": "The ا is never said: joined قَوَارِيرَ مِن, stopping قَوَارِيرْ.",
+      "noteAr": "الألف لا تُقرأ أبدًا: وصلًا «قَوَارِيرَ مِن»، ووقفًا «قَوَارِيرْ».",
+      "why": "The card's special word, joined as recited. سَلَٰسِلَا۟ (76:4) is not used: no pause sign follows it, so its stop is never heard.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    },
+    {
+      "role": "more",
+      "verse": "27:21",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "لَأَا۟ذْبَحَنَّهُۥٓ",
+      "focus": "أَا۟",
+      "stop": false,
+      "note": "The ا after the همزة is not said: لَأَذْبَحَنَّهُۥ.",
+      "noteAr": "الألف بعد الهمزة لا تُقرأ: «لَأَذْبَحَنَّهُۥ».",
+      "why": "Card list; the muṣḥaf mark.",
+      "source": "هداية القاري https://shamela.ws/book/22869/473–475، /498؛ العميد https://shamela.ws/book/12754/155–156؛ علامتا ۟ و۠ في مصحف المدينة"
+    }
+  ]
+}

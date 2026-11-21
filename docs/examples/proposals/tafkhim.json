@@ -1,0 +1,140 @@
+{
+ "lesson": "tafkhim",
+ "coverage": "levels: 1 فتحة+ا #2; 2 فتحة #1 #4 #5; 3 ضمة #7; 4 سكون #6; 5 كسرة #3. Letters: خ #1, ق #2 #3, غ #4, ط #5, ص #6 #7 (ض and ظ have their own lesson, dad-zha). The ا follows the letter: #2 (heavy قَا). ر basic: #8 heavy. The غنة before a heavy letter: #9.",
+ "notes": "Round 1: غَيْرِ (1:7) replaced by ٱلْغَفُورُ (85:14): غَيْرِ's husary-muallim clip is 300 ms and starts after a 4.1 s pause, probably cutting the غ in focus. (طَغَىٰ was tried first, but its غ has an ا after it, level 1, and it repeated #9.) Anchor and notice from الناس (its only heavy letters are ق in قُلْ, taken by basics, خ and ص). Notice is a near-minimal pair in one ayah (114:5): صُ and سُ share a place and a vowel; only the raised tongue differs. The five-level scheme is the one on the card (غاية المريد after ابن الجزري); the card's review note says teachers differ (3 or 5 levels). #8 and #9 are role more on purpose: the ر rules (ra-h, ra-l) and the إخفاء (ikhfa) are later lessons; a later lesson that takes the same words as a core example will see a warning, not an error. Later rules flagged on #1–#3 and #6 (lam-q on the ل of ال, the next-but-one lesson; ibtida on a mid-ayah ٱ; ghunnah on نّ) are not on the heavy letter and do not change it.",
+ "noticeText": {
+  "en": "Listen to the خ in ٱلْخَنَّاسِ, the قَا in ٱلْقَارِعَةُ and the قِ in ٱلْمُسْتَقِيمَ: the mouth fills and the sound is full and deep, strongest with a فتحة and an ا, weakest with a كسرة.",
+  "ar": "استمع إلى الخاء في ٱلْخَنَّاسِ، وقَا في ٱلْقَارِعَةُ، وقِ في ٱلْمُسْتَقِيمَ: يمتلئ الفم بالصوت فيخرج ممتلئًا عميقًا، أقواه مع الفتحة وبعدها ألف، وأضعفه مع الكسرة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:4",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "ٱلْخَنَّاسِ",
+   "focus": "خَ",
+   "stop": true,
+   "note": "خ with a فتحة: the back of the tongue rises and the sound is full.",
+   "noteAr": "خاء مفتوحة: يرتفع أقصى اللسان فيخرج الصوت ممتلئًا.",
+   "why": "The clearest heavy letter in الناس with a فتحة. The نّ (ghunnah) and the stop (arid) are later in the word and do not touch the خ.",
+   "source": "غاية المريد مراتب التفخيم غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205; المقدمة الجزرية، البيت 22، 45، https://shamela.ws/book/581/68 (المفتوح: {خلقكم})"
+  },
+  {
+   "role": "hear",
+   "verse": "101:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱلْقَارِعَةُ",
+   "focus": "قَا",
+   "stop": true,
+   "note": "ق with a فتحة and an ا after it: the strongest level; the ا is heavy too.",
+   "noteAr": "قاف مفتوحة بعدها ألف: أقوى المراتب، والألف مفخمة تبعًا لها.",
+   "why": "Old anchor, kept as the level-1 case and for \"the ا follows the letter before it\". A one-word ayah.",
+   "source": "غاية المريد مراتب التفخيم غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205; المقدمة الجزرية، البيت 22، 45، https://shamela.ws/book/581/68 (الأولى: {قال}); الميزان (فريال زمزمي) https://shamela.ws/book/38104/87–93 (الألف تتبع ما قبلها)"
+  },
+  {
+   "role": "hear",
+   "verse": "1:6",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "ٱلْمُسْتَقِيمَ",
+   "focus": "قِ",
+   "stop": true,
+   "note": "ق with a كسرة: the weakest level, still heavy. Only the ق; the letters around it stay light.",
+   "noteAr": "قاف مكسورة: أضعف المراتب وما زالت مفخمة، والحروف حولها مرققة.",
+   "why": "Level 5 from الفاتحة, and the card's tip word (ٱلْمُسْتَقِيمَ). The stop (arid) is after the ق.",
+   "source": "غاية المريد مراتب التفخيم غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205; المقدمة الجزرية، البيت 22، 45، https://shamela.ws/book/581/68"
+  },
+  {
+   "role": "say",
+   "verse": "85:14",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلْغَفُورُ",
+   "focus": "غَ",
+   "stop": false,
+   "note": "غ with a plain فتحة, no ا after it (level 2): heavy and full.",
+   "noteAr": "غين مفتوحة ليس بعدها ألف (المرتبة الثانية): مفخمة ممتلئة.",
+   "why": "Level 2 with غ, in the middle of the word (after ٱلْ), so a short clip cannot cut it; mid-ayah, joined to ٱلْوَدُودُ, no pause sign. The ٱ (dropped, joined: ibtida) and the clear لْ (lam-q), both flagged and lessons 7–8, come before the غ and do not change it. Replaces طَغَىٰ (79:17), whose غَ has an ا after it (level 1) and repeated #9.",
+   "source": "غاية المريد مراتب التفخيم غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205; المقدمة الجزرية، البيت 22، 45، https://shamela.ws/book/581/68"
+  },
+  {
+   "role": "say",
+   "verse": "1:7",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "صِرَٰطَ",
+   "focus": "طَ",
+   "stop": false,
+   "note": "ط with a فتحة: ط is the strongest of the heavy letters.",
+   "noteAr": "طاء مفتوحة: والطاء أقوى الحروف المفخمة.",
+   "why": "Adds ط, the strongest letter (غاية المريد: الطاء أقواها). From الفاتحة; the صِ at the start is heavy too.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205 (الطاء أقواها)"
+  },
+  {
+   "role": "say",
+   "verse": "103:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلْعَصْرِ",
+   "focus": "صْ",
+   "stop": true,
+   "note": "ص with a سكون: level 4, heavy and steady.",
+   "noteAr": "صاد ساكنة: المرتبة الرابعة، مفخمة ثابتة.",
+   "why": "Level 4. Old example, kept: a one-word ayah of العصر. Stopped, so the رْ is still too (its heaviness is ra-h, later).",
+   "source": "غاية المريد مراتب التفخيم غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205; المقدمة الجزرية، البيت 22، 45، https://shamela.ws/book/581/68 (الرابعة: الساكن)"
+  },
+  {
+   "role": "notice",
+   "verse": "114:5",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "صُدُورِ",
+   "focus": "صُ",
+   "stop": false,
+   "note": "ص with a ضمة (level 3): the tongue rises, the sound is full and deep.",
+   "noteAr": "صاد مضمومة (المرتبة الثالثة): يرتفع اللسان فيخرج الصوت ممتلئًا عميقًا.",
+   "why": "Level 3 from الناس, paired with سُ in the same ayah.",
+   "source": "غاية المريد مراتب التفخيم غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/205; المقدمة الجزرية، البيت 22، 45، https://shamela.ws/book/581/68 (الثالثة: المضموم)",
+   "contrast": {
+    "lesson": "basics",
+    "verse": "114:5",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يُوَسْوِسُ",
+    "focus": "سُ",
+    "stop": false,
+    "note": "س with a ضمة: the same place as ص, but light; the tongue stays low.",
+    "noteAr": "سين مضمومة من مخرج الصاد نفسه، لكنها مرققة: لا يرتفع اللسان.",
+    "why": "Same place of articulation and the same vowel as صُ; only the heaviness differs."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "1:2",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "رَبِّ",
+   "focus": "رَ",
+   "stop": false,
+   "note": "ر with a فتحة: heavy (the basic rule; the full ر rules come later).",
+   "noteAr": "راء مفتوحة: مفخمة (القاعدة الأولى، وتفصيل أحكام الراء لاحقًا).",
+   "why": "The card's ر row. Role more: ra-h (unit 5) teaches it in full. Data warning: the data's tafkhim covers only the seven letters, not ر; the فتحة on رَ makes it heavy (الجزرية 41–43).",
+   "source": "المقدمة الجزرية، البيت 41–43، https://shamela.ws/book/581/66; غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/209"
+  },
+  {
+   "role": "more",
+   "verse": "79:37",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مَن طَغَىٰ",
+   "focus": "ن طَ",
+   "stop": true,
+   "note": "The hidden ن before ط: its غنة is heavy, following the ط.",
+   "noteAr": "النون المخفاة قبل الطاء: غنتها مفخمة تبعًا للطاء.",
+   "why": "The card's own example (مَن طَغَىٰ) of the غنة that follows the next letter. Role more: الإخفاء is unit 2. Joined inside the ayah; the rule is not on the last letter.",
+   "source": "هداية القاري (المرصفي) 1/188 (الغنة تتبع ما بعدها تفخيمًا وترقيقًا) (paging per the OpenITI copy of shamela.ws/book/22869)"
+  }
+ ]
+}

@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest'
 import type { Example, Lesson } from './types'
 import { checkQuestions, distractors, makeQuestion, reasonFor, seeded } from './questions'
 import { lessons as real } from '../content'
+import { alsoLessons } from '../content/rulemap'
+// @ts-expect-error -- no @types/node in this project; vitest runs in node from the repo root.
+import { readFileSync } from 'node:fs'
 
 const ex = (lessonId: string, n: number): Example => ({
   id: `${lessonId}#${n}`, lessonId, verseKey: '1:1', wordFrom: 1, wordTo: 1, text: 'x', focus: 'x', stopping: n === 2,
@@ -109,22 +112,25 @@ describe('options never include a rule the underlined words also show (tajweed r
       expect(q.options.map(o => o.id)).not.toContain('izhar')
     }
   })
+  // the review's cases as fixed examples (verse, words, stop), each given its also-list from the data, so the test
+  // doesn't depend on which words the lessons currently use
   it.each([
-    ['qal-k', 'ٱلْفَلَقِ', 'lam-q'],
-    ['lam-q', 'ٱلْفَلَقِ', 'qal-k'],
-    ['ra-l', 'قَدِيرٌ', 'arid'],
-    ['ra-h', 'تَرْمِيهِم', 'm-ikhfa'],
-    ['ra-h', 'ٱرْجِعِىٓ', 'munfasil'],
-    ['ra-l', 'رِجَالٌ', 'idgh-n'],
-  ])('%s %s never offers %s', (lessonId, text, never) => {
-    const ex = real.find(l => l.id === lessonId)!.examples.find(e => e.text === text)!
-    const all = real.map(l => l.id)
+    ['qal-k', '113:1', 4, 4, true, 'lam-q'],
+    ['lam-q', '113:1', 4, 4, true, 'qal-k'],
+    ['ra-l', '2:20', 25, 25, true, 'arid'],
+    ['ra-h', '105:4', 1, 1, false, 'm-ikhfa'],
+    ['ra-h', '89:28', 1, 1, false, 'munfasil'],
+    ['ra-l', '24:37', 1, 1, false, 'idgh-n'],
+  ] as const)('%s %s never offers %s', (lessonId, key, from, to, stopping, never) => {
+    const [su, a] = key.split(':').map(Number)
+    const v = JSON.parse(readFileSync(`public/data/surah/${String(su).padStart(3, '0')}.json`, 'utf8'))[a - 1]
+    const base = { id: `${lessonId}#x`, lessonId, verseKey: key, wordFrom: from, wordTo: to, text: v.words.slice(from - 1, to).join(' '), focus: v.words[from - 1].slice(0, 2), stopping }
+    const ex: Example = { ...base, also: alsoLessons(base, v, []) }
+    const ls = real.map(l => (l.id === lessonId ? { ...l, examples: [ex] } : l))
+    const all = ls.map(l => l.id)
     for (let s = 1; s < 60; s++) {
       for (const pretest of [false, true]) {
-        const q = makeQuestion({ refId: lessonId }, {
-          lessons: real, introduced: all, munfasilLength: 4, rng: seeded(s), kind: 'identify', pretest,
-          excludeExampleIds: real.find(l => l.id === lessonId)!.examples.filter(e => e.id !== ex.id).map(e => e.id),
-        })!
+        const q = makeQuestion({ refId: lessonId }, { lessons: ls, introduced: all, munfasilLength: 4, rng: seeded(s), kind: 'identify', pretest })!
         expect(q.exampleId).toBe(ex.id)
         expect(q.options.map(o => o.id)).not.toContain(never)
       }
@@ -166,10 +172,11 @@ describe('learning review fixes', () => {
   })
   it('explains with the deciding letter when there is no note', () => {
     const ikhfa = real.find(l => l.id === 'ikhfa')!
-    expect(reasonFor(ikhfa, ikhfa.examples.find(e => e.text === 'مِن قَبْلِكَ')!)).toBe(`نْ then ق → ${ikhfa.nameAr}.`)
-    expect(reasonFor(ikhfa, ikhfa.examples.find(e => e.text === 'عَذَابٌ شَدِيدٌ')!)).toMatch(/^تنوين then ش/)
+    const bare = (text: string, focus: string): Example => ({ id: 'x', lessonId: 'ikhfa', verseKey: '2:4', wordFrom: 1, wordTo: 2, text, focus, stopping: false })
+    expect(reasonFor(ikhfa, bare('مِن قَبْلِكَ', 'ن قَ'))).toBe(`نْ then ق → ${ikhfa.nameAr}.`)
+    expect(reasonFor(ikhfa, bare('عَذَابٌ شَدِيدٌ', 'بٌ شَ'))).toMatch(/^تنوين then ش/)
     const lamS = real.find(l => l.id === 'lam-s')!
-    expect(reasonFor(lamS, lamS.examples[0])).toContain('sun letter')
+    expect(reasonFor(lamS, { ...lamS.examples[0], note: undefined })).toContain('sun letter') // every example has a note now; test the fallback
     const noted = real.flatMap(l => l.examples).find(e => e.note)!
     expect(reasonFor(real.find(l => l.id === noted.lessonId)!, noted)).toBe(noted.note)
   })

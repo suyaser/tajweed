@@ -1,0 +1,123 @@
+{
+  "lesson": "silah-k",
+  "coverage": "هُۥٓ before أ: #1 #3 #4 #5; before إ: #6 #7; هِۦٓ: #2; no صلة at a stop: #8",
+  "notes": "The pronoun before a همزة is read like your المنفصل: 4 or 5 counts, the same as you chose there.",
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "104:3",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "مَالَهُۥٓ أَخْلَدَهُۥ",
+      "focus": "هُۥٓ أَ",
+      "stop": false,
+      "note": "The pronoun's و is held 4 or 5 counts before the همزة.",
+      "noteAr": "تُمد صلة الهاء أربع أو خمس حركات قبل الهمزة.",
+      "why": "In the unit (الهمزة).",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "hear",
+      "verse": "83:12",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "بِهِۦٓ إِلَّا",
+      "focus": "هِۦٓ إِ",
+      "stop": false,
+      "note": "بِهِۦٓ إِلَّا: the ي-صلة held 4 or 5 before the همزة.",
+      "noteAr": "«بِهِۦٓ إِلَّا»: صلة بالياء تُمد أربعًا أو خمسًا.",
+      "why": "Juz عمّ; the هِۦٓ form.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "hear",
+      "verse": "89:25",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "عَذَابَهُۥٓ أَحَدٌ",
+      "focus": "هُۥٓ أَ",
+      "stop": false,
+      "note": "عَذَابَهُۥٓ أَحَدٌ: 4 or 5 counts.",
+      "noteAr": "«عَذَابَهُۥٓ أَحَدٌ»: أربع أو خمس حركات.",
+      "why": "Juz عمّ.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "say",
+      "verse": "90:7",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "يَرَهُۥٓ أَحَدٌ",
+      "focus": "هُۥٓ أَ",
+      "stop": false,
+      "note": "يَرَهُۥٓ أَحَدٌ: a short word, a long صلة.",
+      "noteAr": "«يَرَهُۥٓ أَحَدٌ»: صلة طويلة.",
+      "why": "Juz عمّ; short.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "say",
+      "verse": "89:26",
+      "word_from": 3,
+      "word_to": 4,
+      "text": "وَثَاقَهُۥٓ أَحَدٌ",
+      "focus": "هُۥٓ أَ",
+      "stop": false,
+      "note": "وَثَاقَهُۥٓ أَحَدٌ: 4 or 5 counts.",
+      "noteAr": "«وَثَاقَهُۥٓ أَحَدٌ»: أربع أو خمس حركات.",
+      "why": "Juz عمّ.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "say",
+      "verse": "2:255",
+      "word_from": 24,
+      "word_to": 25,
+      "text": "عِندَهُۥٓ إِلَّا",
+      "focus": "هُۥٓ إِ",
+      "stop": false,
+      "note": "عِندَهُۥٓ إِلَّا: hold it before the همزة.",
+      "noteAr": "«عِندَهُۥٓ إِلَّا»: مد قبل الهمزة.",
+      "why": "آية الكرسي, known to most learners; before إ.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    },
+    {
+      "role": "notice",
+      "verse": "92:11",
+      "word_from": 4,
+      "word_to": 5,
+      "text": "مَالُهُۥٓ إِذَا",
+      "focus": "هُۥٓ إِ",
+      "stop": false,
+      "note": "مَالُهُۥٓ before إِذَا: 4 or 5 counts, because a همزة follows.",
+      "noteAr": "«مَالُهُۥٓ» قبل «إِذَا»: أربع أو خمس حركات لأن بعدها همزة.",
+      "why": "A minimal pair: the same مَالُهُۥ in 111:2 has no همزة after it.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360",
+      "contrast": {
+        "lesson": "silah-s",
+        "verse": "111:2",
+        "word_from": 4,
+        "word_to": 5,
+        "text": "مَالُهُۥ وَمَا",
+        "focus": "هُۥ",
+        "stop": false,
+        "note": "مَالُهُۥ before وَمَا: no همزة, so only two counts.",
+        "noteAr": "«مَالُهُۥ» قبل «وَمَا»: لا همزة بعدها فتُمد حركتين فقط.",
+        "why": "The same word with no همزة after it."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "80:24",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "طَعَامِهِۦٓ",
+      "focus": "هِۦٓ",
+      "stop": true,
+      "note": "At the stop there is no صلة at all: طَعَامِهْ.",
+      "noteAr": "عند الوقف لا صلة: «طَعَامِهْ».",
+      "why": "The stop case. The next ayah starts with أَنَّا, so joined it would be a كبرى; at the ayah end you stop. The data cannot see a صلة at a stop.",
+      "source": "غاية المريد https://shamela.ws/book/7311/271–272 (هاء الكناية بين متحركين، والهمز بعدها منفصل)؛ هداية القاري 1/359–360"
+    }
+  ]
+}

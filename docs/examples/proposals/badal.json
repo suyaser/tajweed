@@ -1,0 +1,123 @@
+{
+  "lesson": "badal",
+  "coverage": "ا: #1 #4 #5 #7; و: #2; ي: #3 #8; unit: #1 #2 (unit 5), #3 (unit 4)",
+  "notes": "وَءَامَنَهُم (106:4) is taken by m-idgham. لِإِيلَٰفِ is the in-unit ي case; إِۦلَٰفِهِمْ (106:2) has the ي as a small ۦ and is not used.",
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "103:3",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ءَامَنُوا۟",
+      "focus": "ءَا",
+      "stop": false,
+      "note": "The ا after the همزة: only two counts.",
+      "noteAr": "الألف بعد الهمزة تُمد حركتين فقط.",
+      "why": "In the unit (العصر); the card's own example. The ۟ (unit 4) is already taught.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    },
+    {
+      "role": "hear",
+      "verse": "98:4",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "أُوتُوا۟",
+      "focus": "أُو",
+      "stop": false,
+      "note": "The و after the همزة: two counts.",
+      "noteAr": "الواو بعد الهمزة: حركتان.",
+      "why": "In the unit (البينة); the و form.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    },
+    {
+      "role": "hear",
+      "verse": "106:1",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "لِإِيلَٰفِ",
+      "focus": "إِي",
+      "stop": false,
+      "note": "The ي after the همزة: two counts.",
+      "noteAr": "الياء بعد الهمزة: حركتان.",
+      "why": "From قريش (unit 4); the ي form.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    },
+    {
+      "role": "say",
+      "verse": "79:38",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "وَءَاثَرَ",
+      "focus": "ءَا",
+      "stop": false,
+      "note": "وَءَاثَرَ: the ا after the همزة, two counts.",
+      "noteAr": "«وَءَاثَرَ»: الألف بعد الهمزة حركتان.",
+      "why": "Juz عمّ (النازعات); a new word with the ا form, joined to ٱلْحَيَوٰةَ by all three reciters (10 ms).",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    },
+    {
+      "role": "say",
+      "verse": "93:6",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "فَـَٔاوَىٰ",
+      "focus": "ـَٔا",
+      "stop": false,
+      "note": "فَـَٔاوَىٰ: the ا after the همزة is two counts.",
+      "noteAr": "«فَـَٔاوَىٰ»: الألف بعد الهمزة حركتان.",
+      "why": "Juz عمّ (الضحى). The ayah ends on ىٰ, not on this ا.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    },
+    {
+      "role": "say",
+      "verse": "93:4",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "وَلَلْءَاخِرَةُ",
+      "focus": "ءَا",
+      "stop": false,
+      "note": "وَلَلْءَاخِرَةُ: two counts, in a longer word.",
+      "noteAr": "«وَلَلْءَاخِرَةُ»: حركتان في كلمة أطول.",
+      "why": "Juz عمّ; harder. The ر has a فتحة, so it is heavy (heavy letters, unit 1; ra-h); the target is the ءَا.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    },
+    {
+      "role": "notice",
+      "verse": "96:7",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "رَّءَاهُ",
+      "focus": "ءَا",
+      "stop": false,
+      "note": "ء then ا: the همزة comes first, so the ا is only two counts.",
+      "noteAr": "الهمزة ثم الألف: الهمزة قبل المد فلا يزيد على حركتين.",
+      "why": "Juz عمّ (العلق). A mirror pair with جَآءَ: the same ا next to a همزة, before it or after it.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131",
+      "contrast": {
+        "lesson": "muttasil",
+        "verse": "110:1",
+        "word_from": 2,
+        "word_to": 2,
+        "text": "جَآءَ",
+        "focus": "جَآءَ",
+        "stop": false,
+        "note": "جَآءَ: the همزة comes after the ا, so it is held 4 or 5.",
+        "noteAr": "«جَآءَ»: الهمزة بعد المد فيُمد أربعًا أو خمسًا.",
+        "why": "The mirror order: ا then ء in one word."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "3:173",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "إِيمَٰنًا",
+      "focus": "إِي",
+      "stop": false,
+      "note": "إِيمَٰنًا: the card's ي example.",
+      "noteAr": "«إِيمَٰنًا»: مثال البطاقة بالياء.",
+      "why": "The card's example.",
+      "source": "تحفة الأطفال الأبيات 35–47 (https://shamela.ws/book/9632/6)؛ غاية المريد https://shamela.ws/book/7311/131"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+ "lesson": "sakinayn",
+ "coverage": "حرف مد dropped: ي #1 #7, و #3, ا #4; another ساكن given a vowel: كسرة #2, ضمة (ميم الجمع) #5, فتحة (مِنْ) #6, تنوين with كسرة #8.",
+ "notes": "مِنَ ٱلْجِنَّةِ (114:6) overlaps ghunnah's ٱلْجِنَّةِ, so it is not used. Focus follows the old pattern: the changed ending (and ال where the مد drops).",
+ "noticeText": {
+  "en": "Listen to فِى ٱلْعُقَدِ, بَلِ ٱلَّذِينَ and ذُو ٱلْعَرْشِ: a حرف مد before ال is not said, and any other ساكن takes a vowel.",
+  "ar": "استمع إلى فِى ٱلْعُقَدِ وبَلِ ٱلَّذِينَ وذُو ٱلْعَرْشِ: حرف المد قبل ال لا يُنطق، وغيره من السواكن يُحرك."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "113:4",
+   "word_from": 4,
+   "word_to": 5,
+   "text": "فِى ٱلْعُقَدِ",
+   "focus": "فِى ٱلْ",
+   "stop": true,
+   "note": "Joined, the ى of فِى is not said: فِ runs into the ل (فِلْعُقَدِ).",
+   "noteAr": "عند الوصل لا تُنطق ياء فِى، فتتصل الفاء باللام: فِلْعُقَدِ.",
+   "why": "From الفلق (this unit); حرف مد dropped. The ayah ends on ٱلْعُقَدِ; the target is the joining inside it.",
+   "source": "الميزان، التقاء الساكنين من كلمتين https://shamela.ws/book/38104/151–154"
+  },
+  {
+   "role": "hear",
+   "verse": "84:22",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "بَلِ ٱلَّذِينَ",
+   "focus": "بَلِ",
+   "stop": false,
+   "note": "بَلْ meets the ساكن ل of ٱلَّذِينَ, so its ل takes a كسرة: بَلِ ٱلَّذِينَ.",
+   "noteAr": "تلتقي لام بَلْ الساكنة بلام ٱلَّذِينَ الساكنة، فتُكسر: بَلِ ٱلَّذِينَ.",
+   "why": "A ساكن that is not a حرف مد takes the default كسرة.",
+   "source": "الميزان، التحريك بالكسر على الأصل https://shamela.ws/book/38104/153"
+  },
+  {
+   "role": "hear",
+   "verse": "85:15",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "ذُو ٱلْعَرْشِ",
+   "focus": "ذُو ٱلْ",
+   "stop": false,
+   "note": "Joined, the و of ذُو is not said: ذُلْعَرْشِ.",
+   "noteAr": "عند الوصل لا تُنطق واو ذُو: ذُلْعَرْشِ.",
+   "why": "A dropped و (the anchor drops a ي).",
+   "source": "الميزان، حذف حرف المد لفظًا لا خطًّا (ذي المعارج، قالوا الحمد لله) https://shamela.ws/book/38104/151–152"
+  },
+  {
+   "role": "say",
+   "verse": "81:3",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "وَإِذَا ٱلْجِبَالُ",
+   "focus": "ذَا ٱلْ",
+   "stop": false,
+   "note": "Joined, the ا of وَإِذَا is not said: وَإِذَلْجِبَالُ.",
+   "noteAr": "عند الوصل لا تُنطق ألف وَإِذَا: وَإِذَلْجِبَالُ.",
+   "why": "A dropped ا; the book's type إِذَا ٱلسَّمَآءُ.",
+   "source": "الميزان (إذا السماء) https://shamela.ws/book/38104/151"
+  },
+  {
+   "role": "say",
+   "verse": "80:42",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "هُمُ ٱلْكَفَرَةُ",
+   "focus": "هُمُ",
+   "stop": false,
+   "note": "ميم الجمع takes a ضمة before ال: هُمُ ٱلْكَفَرَةُ.",
+   "noteAr": "ميم الجمع تُضم قبل ال: هُمُ ٱلْكَفَرَةُ.",
+   "why": "ميم الجمع: ضمة.",
+   "source": "الميزان، ما يحرك بالضم: ميم الجمع (هم المفلحون) https://shamela.ws/book/38104/154"
+  },
+  {
+   "role": "say",
+   "verse": "83:29",
+   "word_from": 5,
+   "word_to": 6,
+   "text": "مِنَ ٱلَّذِينَ",
+   "focus": "مِنَ",
+   "stop": false,
+   "note": "مِنْ takes a فتحة before ال: مِنَ ٱلَّذِينَ.",
+   "noteAr": "تُفتح نون مِنْ قبل ال: مِنَ ٱلَّذِينَ.",
+   "why": "مِنْ: فتحة.",
+   "source": "الميزان، ما يحرك بالفتح: من الجارة https://shamela.ws/book/38104/154"
+  },
+  {
+   "role": "notice",
+   "verse": "78:18",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "فِى ٱلصُّورِ",
+   "focus": "فِى ٱل",
+   "stop": false,
+   "note": "Joined, the ى of فِى drops: فِ goes straight into the صّ (فِصُّورِ).",
+   "noteAr": "عند الوصل تسقط ياء فِى، فتنتقل الفاء مباشرة إلى الصاد المشددة.",
+   "why": "Pair with فِى دِينِ: the same فِى, kept long there and dropped here.",
+   "source": "الميزان، التقاء الساكنين من كلمتين https://shamela.ws/book/38104/151–154",
+   "contrast": {
+    "lesson": "tabii",
+    "verse": "110:2",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "فِى دِينِ",
+    "focus": "فِى",
+    "stop": false,
+    "note": "Before دِينِ (no ساكن) the ي of فِى keeps its two counts.",
+    "noteAr": "قبل دِينِ (لا ساكن بعدها) تبقى ياء فِى ممدودة حركتين.",
+    "why": "Same word فِى, from النصر (unit 3)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "11:42",
+   "word_from": 8,
+   "word_to": 9,
+   "text": "نُوحٌ ٱبْنَهُۥ",
+   "focus": "نُوحٌ",
+   "stop": false,
+   "note": "The تنوين of نُوحٌ takes a كسرة before the ساكن ب: نُوحُنِ ٱبْنَهُ.",
+   "noteAr": "يُكسر تنوين نُوحٌ قبل الباء الساكنة: نُوحُنِ ٱبْنَهُ.",
+   "why": "Tanween case (the card's list). None joined within one ayah in جزء عمّ.",
+   "source": "الميزان، التنوين يُحرك بالكسر (أحد الله الصمد، قوما الله) https://shamela.ws/book/38104/153–154"
+  }
+ ]
+}

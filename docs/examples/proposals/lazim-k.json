@@ -1,0 +1,140 @@
+{
+  "lesson": "lazim-k",
+  "coverage": "مثقل with ا: #1 #2 #3 #4 #7 #9; with ٰٓ: #5; with وٓ: #6; مخفف (حفص, الإبدال): #8; unit: #1",
+  "notes": "ٱلضَّآلِّينَ (1:7) is in `more` as the الفاتحة case for Check questions. It was a core sakinayn word in rules.json; the anchor stays ضَآلًّا from the unit surah.",
+  "noticeText": {
+    "en": "Listen to ضَآلًّا: the ا before the شدة is held a full six counts, joined or stopping.",
+    "ar": "استمع إلى «ضَآلًّا»: تُمد الألف قبل الشدة ست حركات كاملة، وصلًا ووقفًا."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "93:7",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "ضَآلًّا",
+      "focus": "ضَآلًّ",
+      "stop": false,
+      "note": "The ا before the شدة: six counts, always.",
+      "noteAr": "الألف قبل الحرف المشدد تُمد ست حركات دائمًا.",
+      "why": "In the unit (الضحى).",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    },
+    {
+      "role": "hear",
+      "verse": "80:33",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلصَّآخَّةُ",
+      "focus": "صَّآخَّ",
+      "stop": true,
+      "note": "Six counts before the doubled خّ.",
+      "noteAr": "ست حركات قبل الخاء المشددة.",
+      "why": "Juz عمّ.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    },
+    {
+      "role": "hear",
+      "verse": "83:32",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "لَضَآلُّونَ",
+      "focus": "ضَآلُّ",
+      "stop": true,
+      "note": "Six before the doubled لّ.",
+      "noteAr": "ست حركات قبل اللام المشددة.",
+      "why": "Juz عمّ; the plural of the anchor word.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    },
+    {
+      "role": "say",
+      "verse": "69:1",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "ٱلْحَآقَّةُ",
+      "focus": "حَآقَّ",
+      "stop": true,
+      "note": "Six before the doubled قّ.",
+      "noteAr": "ست حركات قبل القاف المشددة.",
+      "why": "A one-word ayah; classic.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    },
+    {
+      "role": "say",
+      "verse": "89:18",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "تَحَٰٓضُّونَ",
+      "focus": "حَٰٓضُّ",
+      "stop": false,
+      "note": "The small ا with ٓ: six before the doubled ضّ.",
+      "noteAr": "الألف الصغيرة بالمدة: ست حركات قبل الضاد المشددة.",
+      "why": "Juz عمّ; a small (dagger) ا.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    },
+    {
+      "role": "say",
+      "verse": "6:80",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "أَتُحَٰٓجُّوٓنِّى",
+      "focus": "حَٰٓجُّوٓنِّ",
+      "stop": false,
+      "note": "Two in one word: six on the ا before جّ, six on the و before نّ.",
+      "noteAr": "لازمان في كلمة: ست على الألف قبل الجيم، وست على الواو قبل النون.",
+      "why": "The و form; hardest, last in Say. The checker's lazim-h flag is a false hit (it reads وٓ as a letter name); there is no opening letter here.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    },
+    {
+      "role": "notice",
+      "verse": "79:34",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلطَّآمَّةُ",
+      "focus": "طَّآمَّ",
+      "stop": false,
+      "note": "Read on to ٱلْكُبْرَىٰ: still six counts. The cause is in the word.",
+      "noteAr": "بالوصل بـ«ٱلْكُبْرَىٰ» تبقى ست حركات، فالسبب في الكلمة نفسها.",
+      "why": "Juz عمّ; joined, so the six is heard without a stop.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279",
+      "contrast": {
+        "lesson": "arid",
+        "verse": "107:7",
+        "word_from": 2,
+        "word_to": 2,
+        "text": "ٱلْمَاعُونَ",
+        "focus": "عُونَ",
+        "stop": true,
+        "note": "ٱلْمَاعُونَ: long only because you stop; read on, it is two.",
+        "noteAr": "«ٱلْمَاعُونَ»: يطول لأجل الوقف فقط، وبالوصل حركتان.",
+        "why": "From الماعون (unit 4)."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "10:51",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "ءَآلْـَٰٔنَ",
+      "focus": "ءَآلْ",
+      "stop": false,
+      "note": "مخفف: the ا is six before the plain سكون of ل. Its other way is التسهيل.",
+      "noteAr": "مخفف: تُمد الألف ستًّا قبل لام ساكنة، والوجه الآخر التسهيل.",
+      "why": "The only مخفف in حفص (10:51، 10:91), in its الإبدال way (الشاطبية 192–193). tashil also shows this word.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279؛ الشاطبية 192–193"
+    },
+    {
+      "role": "more",
+      "verse": "1:7",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "ٱلضَّآلِّينَ",
+      "focus": "ضَّآلِّ",
+      "stop": true,
+      "note": "In الفاتحة: six before the doubled لّ.",
+      "noteAr": "في الفاتحة: ست حركات قبل اللام المشددة.",
+      "why": "The best-known case, from الفاتحة.",
+      "source": "تحفة الأطفال الأبيات 48–57 (https://shamela.ws/book/9632/7)؛ هداية القاري 1/279"
+    }
+  ]
+}

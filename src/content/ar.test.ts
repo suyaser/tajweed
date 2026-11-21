@@ -7,7 +7,7 @@ import { AR_CONTENT as A, topics } from './index'
 
 interface R {
   id: string; definition: string; tip?: string; counts?: { note?: string }; conditions?: string[]; list?: string[][]
-  examples?: { note?: string }[]; facts?: { options: string[] }[]
+  examples?: { note?: string; contrast?: { note?: string } }[]; facts?: { options: string[] }[]
 }
 
 test('every lesson field has Arabic, same shape', () => {
@@ -19,7 +19,7 @@ test('every lesson field has Arabic, same shape', () => {
     expect(!!a?.countsNote, `${r.id} countsNote`).toBe(!!r.counts?.note)
     expect(a?.conditions?.length ?? 0, `${r.id} conditions`).toBe(r.conditions?.length ?? 0)
     expect(a?.list?.map(l => l.length) ?? [], `${r.id} list`).toEqual(r.list?.map(l => l.length) ?? [])
-    const notes = (r.examples ?? []).flatMap((e, i) => (e.note ? [String(i + 1)] : []))
+    const notes = (r.examples ?? []).flatMap((e, i) => [...(e.note ? [String(i + 1)] : []), ...(e.contrast?.note ? [`${i + 1}c`] : [])]) // "7c": a notice example's contrast word
     expect(Object.keys(a?.exampleNotes ?? {}).sort(), `${r.id} exampleNotes`).toEqual(notes.sort())
     expect(a?.facts?.map(f => (f.q && f.why ? f.options.length : -1)) ?? [], `${r.id} facts`).toEqual(r.facts?.map(f => f.options.length) ?? [])
   }

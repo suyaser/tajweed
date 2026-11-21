@@ -1,0 +1,153 @@
+{
+ "lesson": "izhar",
+ "coverage": "ء: #1 #10; ه: #4 #7; ع: #2 #9; ح: #5 #8; غ: #6; خ: #3. نون in one word: #2 #5 #7; نون across two words: #3 #4 #6 #9 #10; تنوين: #1 #8.",
+ "notes": "Unit surahs have only tanween+ء cases (حَاسِدٍ إِذَا، غَاسِقٍ إِذَا، كُفُوًا أَحَدٌ); حَاسِدٍ إِذَا is the cleanest. كُفُوًا أَحَدٌ left out: كُفُوًا is a basics example and the ayah-final أَحَدٌ is heard with a stop.",
+ "noticeText": {
+  "en": "Listen to حَاسِدٍ إِذَا, أَنْعَمْتَ and مَنْ خَافَ: the ن or تنوين is said clearly and the voice moves straight on to the throat letter, with no held hum.",
+  "ar": "استمع إلى حَاسِدٍ إِذَا وأَنْعَمْتَ ومَنْ خَافَ: تُنطق النون أو التنوين واضحة، وينتقل الصوت مباشرة إلى الحرف الحلقي بلا غنة ممدودة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "113:5",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "حَاسِدٍ إِذَا",
+   "focus": "دٍ إِ",
+   "stop": false,
+   "note": "The تنوين is a clear n before the همزة of إِذَا: no held hum, no pause.",
+   "noteAr": "التنوين نونٌ واضحة قبل همزة إِذَا، بلا غنة ممدودة ولا سكت.",
+   "why": "From الفلق (this unit), joined mid-ayah so the تنوين is heard. Tanween before ء, the first throat letter (highest degree of إظهار).",
+   "source": "غاية المريد (عطية قابل نصر)، الإظهار الحلقي: في كلمة أو كلمتين، والتنوين لا يكون إلا من كلمتين https://shamela.ws/book/7311/69–71"
+  },
+  {
+   "role": "hear",
+   "verse": "1:7",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "أَنْعَمْتَ",
+   "focus": "نْعَ",
+   "stop": false,
+   "note": "نْ then ع in the same word: the ن is said clearly and the tongue goes straight to the ع.",
+   "noteAr": "نون ساكنة بعدها عين في الكلمة نفسها: تظهر النون ثم ينتقل اللسان إلى العين مباشرة.",
+   "why": "From الفاتحة; the card's own example of a نون in one word. The مْ of أَنْعَمْتَ is الإظهار الشفوي (later), but that is just a plain م: it does not change the ن the learner copies.",
+   "source": "الميزان (فريال زمزمي)، النون المظهرة في (أنعمت عليهم) غنتها أصلية لا تُمد https://shamela.ws/book/38104/83; تحفة الأطفال، أحكام النون الساكنة والتنوين https://shamela.ws/book/9632/2"
+  },
+  {
+   "role": "hear",
+   "verse": "79:40",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مَنْ خَافَ",
+   "focus": "نْ خَ",
+   "stop": false,
+   "note": "مَنْ ends in a clear ن before the خ of خَافَ.",
+   "noteAr": "تنتهي مَنْ بنونٍ واضحة قبل خاء خَافَ.",
+   "why": "نون across two words, with خ (lowest degree of إظهار), so the set spans ء to خ. Heavy خ is already taught (التفخيم).",
+   "source": "غاية المريد (عطية قابل نصر)، الإظهار الحلقي: في كلمة أو كلمتين، والتنوين لا يكون إلا من كلمتين https://shamela.ws/book/7311/69–71"
+  },
+  {
+   "role": "say",
+   "verse": "81:27",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "إِنْ هُوَ",
+   "focus": "نْ هُ",
+   "stop": false,
+   "note": "Clear ن, then the ه of هُوَ.",
+   "noteAr": "نونٌ واضحة ثم هاء هُوَ.",
+   "why": "Short and sayable; ن across words before ه.",
+   "source": "غاية المريد (عطية قابل نصر)، الإظهار الحلقي: في كلمة أو كلمتين، والتنوين لا يكون إلا من كلمتين https://shamela.ws/book/7311/69–71"
+  },
+  {
+   "role": "say",
+   "verse": "108:2",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "وَٱنْحَرْ",
+   "focus": "نْحَ",
+   "stop": true,
+   "note": "نْ before ح in one word: say the ن fully, then the ح, with no hum between.",
+   "noteAr": "النون الساكنة قبل الحاء في كلمة واحدة: تُنطق النون كاملة ثم الحاء بلا غنة بينهما.",
+   "why": "ح inside one word, from الكوثر (a course surah). Ends the ayah; the reciter stops on ر, after the target.",
+   "source": "غاية المريد، جدول الإظهار https://shamela.ws/book/7311/70 (أمثلة الحاء)"
+  },
+  {
+   "role": "say",
+   "verse": "20:22",
+   "word_from": 7,
+   "word_to": 8,
+   "text": "مِنْ غَيْرِ",
+   "focus": "نْ غَ",
+   "stop": false,
+   "note": "The ن of مِنْ is clear before غ; don't slide into a hum.",
+   "noteAr": "نون مِنْ واضحة قبل الغين، ولا تتحول إلى غنة.",
+   "why": "No clean ن before غ in جزء عمّ (أَجْرٌ غَيْرُ carries a قلقلة of a later lesson), so this short phrase covers غ.",
+   "source": "غاية المريد (عطية قابل نصر)، الإظهار الحلقي: في كلمة أو كلمتين، والتنوين لا يكون إلا من كلمتين https://shamela.ws/book/7311/69–71"
+  },
+  {
+   "role": "notice",
+   "verse": "111:2",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "عَنْهُ",
+   "focus": "نْهُ",
+   "stop": false,
+   "note": "نْ with a سكون before ه: one short, clear ن, not held.",
+   "noteAr": "نون ساكنة قبل الهاء: نونٌ قصيرة واضحة لا تُمد غنتها.",
+   "why": "From المسد (unit 3). Minimal pair with إِنَّهُۥ: the same ن and ه, with a سكون here and a شدة there.",
+   "source": "غاية المريد (عطية قابل نصر)، الإظهار الحلقي: في كلمة أو كلمتين، والتنوين لا يكون إلا من كلمتين https://shamela.ws/book/7311/69–71",
+   "contrast": {
+    "lesson": "ghunnah",
+    "verse": "110:3",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "إِنَّهُۥ",
+    "focus": "نَّ",
+    "stop": false,
+    "note": "نّ with a شدة: the غنة is held for two counts before the ه.",
+    "noteAr": "نون مشددة: تُمد غنتها حركتين قبل الهاء.",
+    "why": "Same letters ن and ه as عَنْهُ; from النصر (unit 3)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "88:4",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "نَارًا حَامِيَةً",
+   "focus": "ا حَ",
+   "stop": true,
+   "note": "The تنوين of نَارًا is a clear n before ح.",
+   "noteAr": "تنوين نَارًا نونٌ واضحة قبل الحاء.",
+   "why": "Tanween before ح. The ayah ends on the next word; the target is joined inside it.",
+   "source": "غاية المريد، جدول الإظهار https://shamela.ws/book/7311/70"
+  },
+  {
+   "role": "more",
+   "verse": "96:2",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "مِنْ عَلَقٍ",
+   "focus": "نْ عَ",
+   "stop": true,
+   "note": "Clear ن of مِنْ before the ع of عَلَقٍ.",
+   "noteAr": "نون مِنْ واضحة قبل عين عَلَقٍ.",
+   "why": "ن across words before ع; listed in the book's table (العلق: 2).",
+   "source": "غاية المريد https://shamela.ws/book/7311/70 (حاشية: سورة العلق: ٢)"
+  },
+  {
+   "role": "more",
+   "verse": "92:5",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "مَنْ أَعْطَىٰ",
+   "focus": "نْ أَ",
+   "stop": false,
+   "note": "Clear ن of مَنْ before the همزة of أَعْطَىٰ.",
+   "noteAr": "نون مَنْ واضحة قبل همزة أَعْطَىٰ.",
+   "why": "ن across words before ء; the book's own example (الليل: 5).",
+   "source": "غاية المريد https://shamela.ws/book/7311/70 (حاشية: سورة الليل: ٥)"
+  }
+ ]
+}

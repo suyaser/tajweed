@@ -1,0 +1,127 @@
+{
+ "lesson": "tabii",
+ "coverage": "ا: #4 (written), #2 and #7 (small ا); و: #1, #6, #8; ي/ى: #3 (ي), #5 (ى). Joined mid-ayah: all except #8, which ends the ayah with the مد in the first syllable (not before the last letter, so not عارض).",
+ "notes": "Round 1: ٱلَّذِينَ (coloured by the data) is now hear and فِى say, so the Hear step shows the مد colour on all three; يُولَدْ moved to more and وَتَكُونُ (101:5) took its Say place. Notice is the minimal pair from docs/15: مَٰلِكِ (1:4) / مَلِكِ (114:2). The old قَالَ، يَقُولُ، قِيلَ (البقرة) are replaced by words from الناس and الفاتحة. ٱلْوَسْوَاسِ went to lam-q (its anchor) and ٱلَّذِى (114:5) to ibtida (the only ayah-initial همزة وصل in الناس); هداية القاري 1/269 cites {الذى يوسوس} as the model natural madd, and فِى in the same ayah shows the same ى. #3 data warning: the data's مد pattern only reads ي (U+064A), not the dotless ى, so it misses فِى; the ى after a كسرة with no همزة or سكون after it is a plain natural madd (النشر 1/224 lists في يوم among them).",
+ "noticeText": {
+  "en": "Listen to the و in أَعُوذُ, the small ا in إِلَٰهِ and the ي in ٱلَّذِينَ: each is held for exactly two counts, twice a short vowel.",
+  "ar": "استمع إلى الواو في أَعُوذُ، والألف الصغيرة في إِلَٰهِ، والياء في ٱلَّذِينَ: كلٌّ منها يُمدّ حركتين بالضبط، أي ضعف الحركة القصيرة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:1",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "أَعُوذُ",
+   "focus": "عُو",
+   "stop": false,
+   "note": "و after a ضمة, with no همزة or سكون after it: two counts, no more.",
+   "noteAr": "واو مدية بعد ضمة، ليس بعدها همزة ولا سكون: حركتان لا أكثر.",
+   "why": "From الناس, short, the second word of the surah, no later rule in the word.",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869); تحفة الأطفال، البيت 35–37، https://shamela.ws/book/9632/6"
+  },
+  {
+   "role": "hear",
+   "verse": "114:3",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "إِلَٰهِ",
+   "focus": "لَٰ",
+   "stop": false,
+   "note": "The small ا after the فتحة of لَ: two counts, like a written ا.",
+   "noteAr": "الألف الصغيرة بعد اللام المفتوحة: حركتان كالألف المكتوبة.",
+   "why": "ا case from الناس, written as the small ا; no later rule in the word.",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "1:7",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلَّذِينَ",
+   "focus": "ذِي",
+   "stop": false,
+   "note": "ي after a كسرة, joined to أَنْعَمْتَ: two counts.",
+   "noteAr": "ياء مدية بعد كسرة، موصولة بـ أَنْعَمْتَ: حركتان.",
+   "why": "ي case from الفاتحة. The همزة الوصل and the silent ل (ibtida, lam-s, later; flagged) are at the start of the word, away from the مد.",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "1:5",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "إِيَّاكَ",
+   "focus": "يَّا",
+   "stop": false,
+   "note": "A written ا after the فتحة of يَّ: two counts.",
+   "noteAr": "ألف مكتوبة بعد فتحة الياء المشددة: حركتان.",
+   "why": "Written ا from الفاتحة, no later rule in the word. النشر 1/224 names إياك for keeping its شدة clean.",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869); النشر (ابن الجزري) 1/224, https://shamela.ws/book/22642"
+  },
+  {
+   "role": "say",
+   "verse": "114:5",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "فِى",
+   "focus": "فِى",
+   "stop": false,
+   "note": "ى after a كسرة, joined to صُدُورِ: two counts.",
+   "noteAr": "ياء مدية بعد كسرة، موصولة بـ صُدُورِ: حركتان.",
+   "why": "ى case from الناس, a one-syllable word. Data warning answered in notes (the data misses the dotless ى); in Say, not Hear, so the missing colour matters less.",
+   "source": "هداية القاري (المرصفي) 1/269 ({الذى يوسوس} in the same ayah) (paging per the OpenITI copy of shamela.ws/book/22869); النشر (ابن الجزري) 1/224 (في يوم، الذي يوسوس), https://shamela.ws/book/22642"
+  },
+  {
+   "role": "say",
+   "verse": "101:5",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَتَكُونُ",
+   "focus": "كُو",
+   "stop": false,
+   "note": "و after a ضمة, joined to ٱلْجِبَالُ: two counts.",
+   "noteAr": "واو مدية بعد ضمة، موصولة بـ ٱلْجِبَالُ: حركتان.",
+   "why": "Replaces يُولَدْ in Say (its final دْ has the strong قلقلة at the stop, untaught). Starts the ayah, joined; no other rule in the word.",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "notice",
+   "verse": "1:4",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "مَٰلِكِ",
+   "focus": "مَٰ",
+   "stop": false,
+   "note": "In حفص 1:4 is read with the ا: مَٰلِكِ, two counts on مَٰ.",
+   "noteAr": "تُقرأ 1:4 في رواية حفص بالألف: مَٰلِكِ، تُمد مَٰ حركتين.",
+   "why": "The minimal pair named in docs/15. No later rule in the word.",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869); متن الشاطبية، البيت 108 («ومالك يوم الدين راويه ناصر»: عاصم والكسائي بالألف)، https://shamela.ws/book/7754/15",
+   "contrast": {
+    "lesson": "basics",
+    "verse": "114:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "مَلِكِ",
+    "focus": "مَ",
+    "stop": false,
+    "note": "No ا here: مَ is one short فتحة.",
+    "noteAr": "لا ألف هنا: مَ فتحة قصيرة بحركة واحدة.",
+    "why": "Same letters, no مد: the basics anchor. Reused on purpose as the contrast (the docs/15 pair)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "112:3",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "يُولَدْ",
+   "focus": "يُو",
+   "stop": true,
+   "note": "و after a ضمة in the first syllable: two counts, even at the ayah's end.",
+   "noteAr": "واو مدية بعد ضمة في أول الكلمة: حركتان ولو في آخر الآية.",
+   "why": "Old example, now more: shows that a مد not before the last letter stays natural at a stop (the card's point about عارض). Not in Say, because the final دْ bounces strongly at the stop (qal-k, unit 2). A highlight on يُو shows tabii only (the also-list catches qal-k on the دْ).",
+   "source": "هداية القاري (المرصفي) 1/269 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  }
+ ]
+}

@@ -1,0 +1,115 @@
+{
+  "lesson": "makharij-shafatan",
+  "coverage": "ف: #2 #7; و: #3; ب: #4; م: #1 #5 #6; الغنة/الخيشوم: م #1 #5, ن #8",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to the lips in أَمْسَكَ، صَٰٓفَّٰتٍ، وُجُوهُ, and in أَفْ، أَبْ، أَمْ، أَوْ: the lips, and the hum from the nose in م and ن.",
+    "ar": "استمع إلى الشفتين في أَمْسَكَ، صَٰٓفَّٰتٍ، وُجُوهُ، وفي أَفْ، أَبْ، أَمْ، أَوْ: الشفتان، والغنة من الخيشوم في الميم والنون."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:21",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "أَمْسَكَ",
+      "focus": "مْ",
+      "stop": false,
+      "note": "مْ: both lips close; its غنة comes from الخيشوم.",
+      "noteAr": "الميم الساكنة: تنطبق الشفتان، وغنتها من الخيشوم.",
+      "why": "م with سكون, shown before س (إظهار شفوي).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:19",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "صَٰٓفَّٰتٍ",
+      "focus": "فَّٰ",
+      "stop": false,
+      "note": "فّ: the inside of the lower lip against the edges of the upper front teeth.",
+      "noteAr": "الفاء المشددة: من باطن الشفة السفلى مع أطراف الثنايا العليا.",
+      "why": "ف with شدة; no فْ in الملك that is simpler (وَٱلْأَفْـِٔدَةَ is harder). Its madd لازم is learned in unit 6.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:27",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "وُجُوهُ",
+      "focus": "وُ",
+      "stop": false,
+      "note": "The first وُ: both lips round without closing. The second is a حرف مد from الجوف.",
+      "noteAr": "الواو الأولى متحركة: تنضم الشفتان دون انطباق. والثانية حرف مد من الجوف.",
+      "why": "The lip و next to a madd و, to tell them apart.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:2",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "لِيَبْلُوَكُمْ",
+      "focus": "بْ",
+      "stop": false,
+      "note": "بْ: both lips close firmly, then open with a قلقلة.",
+      "noteAr": "الباء الساكنة: تنطبق الشفتان، ثم تنفتحان بقلقلة.",
+      "why": "ب with سكون.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:20",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "أَمَّنْ",
+      "focus": "مَّ",
+      "stop": false,
+      "note": "مّ: the lips stay closed while the غنة, two counts, comes from الخيشوم.",
+      "noteAr": "الميم المشددة: تبقى الشفتان منطبقتين، والغنة حركتين من الخيشوم.",
+      "why": "الخيشوم: the غنة of a doubled م.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:23",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "ٱلسَّمْعَ",
+      "focus": "مْ",
+      "stop": false,
+      "note": "مْ: the lips close for م, then open for ع.",
+      "noteAr": "الميم الساكنة: تنطبق الشفتان للميم، ثم تنفتحان للعين.",
+      "why": "م with سكون before a throat letter.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "89:27",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "ٱلنَّفْسُ",
+      "focus": "فْ",
+      "stop": false,
+      "note": "فْ with سكون: the lower lip rests on the edges of the upper front teeth.",
+      "noteAr": "الفاء الساكنة: تلتقي الشفة السفلى بأطراف الثنايا العليا.",
+      "why": "ف with سكون, from جزء عمّ.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "67:6",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "جَهَنَّمَ",
+      "focus": "نَّ",
+      "stop": false,
+      "note": "نّ: the tip of the tongue holds its place while the غنة, two counts, comes from الخيشوم.",
+      "noteAr": "النون المشددة: يثبت طرف اللسان في مخرجها، والغنة حركتين من الخيشوم.",
+      "why": "الخيشوم: the غنة of a doubled ن, next to the م examples.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ومن بطنِ الشفه فالفا مع اطرافِ الثنايا المشرفه، للشفتين الواوُ باءٌ ميمُ، وغنةٌ مخرجها الخيشومُ»؛ هداية القاري 1/61–68"
+    }
+  ]
+}

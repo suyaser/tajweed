@@ -181,7 +181,7 @@ describe.skipIf(!existsSync('public/data/surah/001.json'))('examples', () => {
     }
     if (!dir) for (const l of tagged) {
       const raw = JSON.parse(readFileSync('content/rules.json', 'utf8')).find((r: { id: string }) => r.id === l.id)
-      const { errs, warns } = checkProposal({ lesson: l.id, examples: raw.examples.map((e: RawEx & { role: ExampleRole }) => ({ ...e, why: '-', noteAr: e.note ? '-' : undefined })) }, everyone)
+      const { errs, warns } = checkProposal({ lesson: l.id, examples: raw.examples.map((e: RawEx & { role: ExampleRole; contrast?: RawEx & { lesson: string } }) => ({ ...e, why: '-', noteAr: e.note ? '-' : undefined, ...(e.contrast ? { contrast: { ...e.contrast, noteAr: e.contrast.note ? '-' : undefined } } : {}) })) }, everyone)
       all.push(...errs); warnings.push(...warns.filter(w => !/no "why"|no note/.test(w)))
     }
     if (warnings.length) console.log(`\nWARNINGS (${warnings.length})\n` + warnings.join('\n'))

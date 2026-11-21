@@ -1,0 +1,89 @@
+{
+ "lesson": "lam-q",
+ "coverage": "letters of «ابْغِ حَجَّكَ وَخَفْ عَقِيمَهُ»: و #1, ح #2, ق #3, ف #4, ك #5, ء #6. Joined mid-ayah: #1 #2 #3; at an ayah end: #4 #5 #6 (the ل is the same either way).",
+ "notes": "Round 1: ٱلْأَبْتَرُ (108:3) → ٱلْأَعْلَى (87:1). Anchor from الناس (ٱلْوَسْوَاسِ, no later rule). ٱلْخَنَّاسِ went to tafkhim (anchor) and ٱلْجِنَّةِ to ghunnah (anchor), so the other words are from الفاتحة and جزء عمّ. No notice (no contrastWith). ٱلْمَغْضُوبِ (1:7) is left to dad-zha (its ض); ٱلْقَمَرُ (54:1) is replaced by وَٱلْقَمَرِ (91:2), which is also the contrast word in lam-s's notice. The later rules flagged (ibtida on the ٱ mid-ayah, tafkhim/dad-zha on غ ض, arid/qal-k at the stop) are away from the ل or are lessons already taught (tafkhim, arid).",
+ "noticeText": {
+  "en": "Listen to the ل in ٱلْوَسْوَاسِ, ٱلْحَمْدُ and وَٱلْقَمَرِ: it is said clearly, with سكون, before the next letter.",
+  "ar": "استمع إلى اللام في ٱلْوَسْوَاسِ وٱلْحَمْدُ ووَٱلْقَمَرِ: تُنطق واضحة ساكنة قبل الحرف الذي يليها."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:4",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "ٱلْوَسْوَاسِ",
+   "focus": "ٱلْوَ",
+   "stop": false,
+   "note": "ل before و: said clearly, with سكون.",
+   "noteAr": "اللام قبل الواو: تُنطق ساكنة واضحة.",
+   "why": "From الناس, joined between شَرِّ and ٱلْخَنَّاسِ; the clear لْ before و is easy to hear.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (الإظهار القمري)"
+  },
+  {
+   "role": "hear",
+   "verse": "1:2",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱلْحَمْدُ",
+   "focus": "ٱلْحَ",
+   "stop": false,
+   "note": "ل before ح: clear. Starting the ayah here, the ٱ has a فتحة: اَلْحَمْدُ.",
+   "noteAr": "اللام قبل الحاء: واضحة. وعند البدء بالآية تُفتح همزة الوصل: اَلْحَمْدُ.",
+   "why": "Old anchor, the best-known example, kept as hear. The مْ before د is a clear م (m-izhar, unit 4, flagged), after the ل.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (الإظهار القمري)"
+  },
+  {
+   "role": "hear",
+   "verse": "91:2",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱلْقَمَرِ",
+   "focus": "ٱلْقَ",
+   "stop": false,
+   "note": "ل before ق: said clearly, with سكون.",
+   "noteAr": "اللام قبل القاف: تُنطق ساكنة واضحة.",
+   "why": "The word the قمرية ل is named after (القمر), joined mid-ayah. The heavy ق (tafkhim) is taught. Also the contrast word in lam-s's notice, on purpose.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (الإظهار القمري); الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (نسبة إلى اللام في كلمة القمر)"
+  },
+  {
+   "role": "say",
+   "verse": "105:1",
+   "word_from": 7,
+   "word_to": 7,
+   "text": "ٱلْفِيلِ",
+   "focus": "ٱلْفِ",
+   "stop": true,
+   "note": "ل before ف: said clearly, with سكون.",
+   "noteAr": "اللام قبل الفاء: تُنطق ساكنة واضحة.",
+   "why": "Old example, kept. Ayah end; the stop (arid, taught) is after the ل.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (الإظهار القمري)"
+  },
+  {
+   "role": "say",
+   "verse": "108:1",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "ٱلْكَوْثَرَ",
+   "focus": "ٱلْكَ",
+   "stop": true,
+   "note": "ل before ك: said clearly, with سكون.",
+   "noteAr": "اللام قبل الكاف: تُنطق ساكنة واضحة.",
+   "why": "ك, a letter the learner meets in الكوثر. Ayah end; the ل is not affected by the stop.",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (الإظهار القمري)"
+  },
+  {
+   "role": "say",
+   "verse": "87:1",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "ٱلْأَعْلَى",
+   "focus": "ٱلْأَ",
+   "stop": true,
+   "note": "ل before a همزة: clear, then the همزة in full.",
+   "noteAr": "اللام قبل الهمزة: واضحة، ثم تُنطق الهمزة كاملة.",
+   "why": "The همزة case, where learners drop the ل or the همزة. Ayah end, but the word ends on an ا (no عارض, no قلقلة). Replaces ٱلْأَبْتَرُ, whose بْ bounces (qal-s, unit 2).",
+   "source": "تحفة الأطفال، البيت 24–29، https://shamela.ws/book/9632/5; الميزان (فريال زمزمي) https://shamela.ws/book/38104/143 (الإظهار القمري)"
+  }
+ ]
+}

@@ -1,0 +1,102 @@
+{
+  "lesson": "sifat-shidda",
+  "coverage": "الشدة: #1 (د) #2 (د) #4 (ء) #7 (ب); التوسط: #2 (ع) #5 (ل) #6 (ن); الرخاوة: #3 (ح) #4 (س)",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to قَدْ، وَأَعْتَدْنَا، تُحْشَرُونَ, and to أَبْ, أَلْ and أَسْ: the sound stops, half-flows, or runs freely.",
+    "ar": "استمع إلى قَدْ، وَأَعْتَدْنَا، تُحْشَرُونَ، وإلى أَبْ وأَلْ وأَسْ: الصوت ينحبس، أو يجري بعضه، أو يجري كله."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:9",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "قَدْ",
+      "focus": "دْ",
+      "stop": false,
+      "note": "دْ: the sound is held back completely at its مخرج (الشدة), then it bounces out (قلقلة).",
+      "noteAr": "الدال الساكنة: ينحبس الصوت عند مخرجها انحباسًا تامًّا، وهي الشدة، ثم تقلقل.",
+      "why": "A شديد letter with سكون; قَدْ before ج is shown in حفص.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:5",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "وَأَعْتَدْنَا",
+      "focus": "عْتَدْ",
+      "stop": false,
+      "note": "عْ lets part of the sound run (التوسط); دْ holds it all back (الشدة).",
+      "noteAr": "العين الساكنة يجري بعض الصوت معها (التوسط)، والدال الساكنة تحبسه كله (الشدة).",
+      "why": "Two degrees side by side.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:24",
+      "word_from": 8,
+      "word_to": 8,
+      "text": "تُحْشَرُونَ",
+      "focus": "حْ",
+      "stop": false,
+      "note": "حْ: the sound runs on freely (الرخاوة), unlike دْ.",
+      "noteAr": "الحاء الساكنة: يجري الصوت معها جريانًا تامًّا، وهي الرخاوة.",
+      "why": "A رخو letter with سكون in Hear, so the three degrees are all heard; focus mid-word.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:6",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "وَبِئْسَ",
+      "focus": "ئْ",
+      "stop": false,
+      "note": "ئْ: the sound is cut off completely (الشدة); the سَ after it lets it run (الرخاوة).",
+      "noteAr": "الهمزة الساكنة: ينقطع الصوت معها تمامًا، وهي الشدة؛ ثم تجري السين بعدها، وهي الرخاوة.",
+      "why": "ء with سكون, read with a full همزة in حفص (replaces يَأْتِيكُم, the same verb as makharij-halq's يَأْتِكُمْ).",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:3",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "خَلْقِ",
+      "focus": "لْ",
+      "stop": false,
+      "note": "لْ: not cut off, not free; part of the sound runs (التوسط, «لِنْ عُمَرْ»).",
+      "noteAr": "اللام الساكنة: لا ينحبس الصوت كله ولا يجري كله، وهو التوسط.",
+      "why": "ل with سكون.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:14",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "مَنْ",
+      "focus": "نْ",
+      "stop": false,
+      "note": "نْ before خ, shown clearly: part of the sound runs; that is التوسط.",
+      "noteAr": "النون الساكنة قبل الخاء مظهرة: يجري بعض الصوت معها، وهو التوسط.",
+      "why": "ن with سكون, إظهار before خ.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "more",
+      "verse": "67:3",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "سَبْعَ",
+      "focus": "بْ",
+      "stop": false,
+      "note": "بْ: the lips close and the sound is fully held (الشدة), then released with قلقلة.",
+      "noteAr": "الباء الساكنة: تنطبق الشفتان وينحبس الصوت كله، وهي الشدة، ثم تقلقل.",
+      "why": "ب with سكون.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «شديدُها لفظُ أجد قطٍ بكت، وبين رخوٍ والشديدِ لن عمر»؛ هداية القاري 1/79–86"
+    }
+  ]
+}

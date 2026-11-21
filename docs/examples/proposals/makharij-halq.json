@@ -1,0 +1,89 @@
+{
+  "lesson": "makharij-halq",
+  "coverage": "أقصى ء هـ: #1 #3 #6; وسط ع ح: #1 #4; أدنى غ خ: #2 #5",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to the throat letters in أَحْسَنُ، يَخْشَوْنَ، أَهْدَىٰٓ, and in أَءْ، أَهْ، أَعْ، أَحْ، أَغْ، أَخْ: each starts at a different depth of the throat.",
+    "ar": "استمع إلى حروف الحلق في أَحْسَنُ، يَخْشَوْنَ، أَهْدَىٰٓ، وفي أَءْ، أَهْ، أَعْ، أَحْ، أَغْ، أَخْ: كل منها يبدأ من عمق مختلف في الحلق."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:2",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "أَحْسَنُ",
+      "focus": "أَحْ",
+      "stop": false,
+      "note": "The أ from the deepest part of the throat, then حْ from its middle (وسط الحلق).",
+      "noteAr": "الهمزة من أقصى الحلق، ثم الحاء الساكنة من وسطه.",
+      "why": "Two throat depths in one short word; حْ with سكون shows its مخرج clearly.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ثم لأقصى الحلق همزٌ هاءُ، ثم لوسطه فعينٌ حاءُ، أدناه غينٌ خاؤها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:12",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "يَخْشَوْنَ",
+      "focus": "خْ",
+      "stop": false,
+      "note": "خْ from the nearest part of the throat to the mouth (أدنى الحلق).",
+      "noteAr": "الخاء الساكنة من أدنى الحلق، أقربه إلى الفم.",
+      "why": "أدنى الحلق, the letter with سكون.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ثم لأقصى الحلق همزٌ هاءُ، ثم لوسطه فعينٌ حاءُ، أدناه غينٌ خاؤها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:22",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "أَهْدَىٰٓ",
+      "focus": "أَهْ",
+      "stop": false,
+      "note": "أ then هْ: both from the deepest part of the throat (أقصى الحلق).",
+      "noteAr": "همزة ثم هاء ساكنة: كلتاهما من أقصى الحلق.",
+      "why": "Both أقصى الحلق letters side by side, the هـ with سكون.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ثم لأقصى الحلق همزٌ هاءُ، ثم لوسطه فعينٌ حاءُ، أدناه غينٌ خاؤها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:10",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "نَعْقِلُ",
+      "focus": "عْ",
+      "stop": false,
+      "note": "عْ from the middle of the throat, the same place as ح.",
+      "noteAr": "العين الساكنة من وسط الحلق، من مخرج الحاء نفسه.",
+      "why": "وسط الحلق: ع with سكون.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ثم لأقصى الحلق همزٌ هاءُ، ثم لوسطه فعينٌ حاءُ، أدناه غينٌ خاؤها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:12",
+      "word_from": 7,
+      "word_to": 7,
+      "text": "مَّغْفِرَةٌ",
+      "focus": "غْ",
+      "stop": false,
+      "note": "غْ from أدنى الحلق, the same place as خ.",
+      "noteAr": "الغين الساكنة من أدنى الحلق، من مخرج الخاء نفسه.",
+      "why": "أدنى الحلق: غ with سكون. The م at its start is doubled by the merge with لَهُم before it; the target is the غ.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ثم لأقصى الحلق همزٌ هاءُ، ثم لوسطه فعينٌ حاءُ، أدناه غينٌ خاؤها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:8",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "يَأْتِكُمْ",
+      "focus": "أْ",
+      "stop": false,
+      "note": "أْ: a همزة with سكون, said fully from the deepest part of the throat.",
+      "noteAr": "همزة ساكنة تنطق محققة من أقصى الحلق.",
+      "why": "أقصى الحلق: ء with سكون (حفص reads it with a full همزة).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «ثم لأقصى الحلق همزٌ هاءُ، ثم لوسطه فعينٌ حاءُ، أدناه غينٌ خاؤها»؛ هداية القاري 1/61–68"
+    }
+  ]
+}

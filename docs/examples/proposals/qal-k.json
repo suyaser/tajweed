@@ -1,0 +1,140 @@
+{
+ "lesson": "qal-k",
+ "coverage": "ق: #1; ط: #8; ب: #3 #5 #9; ج: #6; د: #2 #4 #7. All at an ayah end with stop: true; مشدد at a stop: #9.",
+ "notes": "ٱلْعُقَدِ (113:4) is left to التقاء الساكنين (فِى ٱلْعُقَدِ); يُولَدْ (112:3) is kept by the tabii proposal.",
+ "noticeText": {
+  "en": "Listen to the stop on ٱلْفَلَقِ, أَحَدٌ and وَقَبَ: the last letter loses its vowel and bounces more strongly than in the middle of a word.",
+  "ar": "استمع إلى الوقف على ٱلْفَلَقِ وأَحَدٌ ووَقَبَ: يسكن الحرف الأخير ويُقلقل قلقلة أقوى منها في وسط الكلمة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "113:1",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "ٱلْفَلَقِ",
+   "focus": "قِ",
+   "stop": true,
+   "note": "Stop on ٱلْفَلَقِ: the vowel drops and the قْ bounces strongly (ٱلْفَلَقْ).",
+   "noteAr": "عند الوقف على ٱلْفَلَقِ تسكن القاف وتُقلقل قلقلة قوية: ٱلْفَلَقْ.",
+   "why": "From الفلق (this unit); the book's own example of قلقلة وقفًا (برب الفلق).",
+   "source": "الميزان (فريال زمزمي)، القلقلة: في وسط الكلمة وآخرها، وصلًا (لم يلد ولم) ووقفًا (برب الفلق) https://shamela.ws/book/38104/74"
+  },
+  {
+   "role": "hear",
+   "verse": "112:1",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "أَحَدٌ",
+   "focus": "دٌ",
+   "stop": true,
+   "note": "Stop on أَحَدٌ: no تنوين is heard; the دْ bounces strongly.",
+   "noteAr": "عند الوقف على أَحَدٌ يسقط التنوين وتُقلقل الدال قلقلة قوية.",
+   "why": "From الإخلاص; a second letter (د). Shared on purpose with الروم والإشمام (SHARED_OK: two stop rules on one word).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "hear",
+   "verse": "113:3",
+   "word_from": 5,
+   "word_to": 5,
+   "text": "وَقَبَ",
+   "focus": "بَ",
+   "stop": true,
+   "note": "Stop on وَقَبَ: the بْ bounces strongly (وَقَبْ).",
+   "noteAr": "عند الوقف على وَقَبَ تُقلقل الباء قلقلة قوية: وَقَبْ.",
+   "why": "From الفلق; a third letter (ب).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "say",
+   "verse": "113:5",
+   "word_from": 5,
+   "word_to": 5,
+   "text": "حَسَدَ",
+   "focus": "دَ",
+   "stop": true,
+   "note": "Stop on حَسَدَ: حَسَدْ, with a strong bounce on the د.",
+   "noteAr": "قف على حَسَدَ: حَسَدْ، بقلقلة قوية على الدال.",
+   "why": "From الفلق; short.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "say",
+   "verse": "111:4",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "ٱلْحَطَبِ",
+   "focus": "بِ",
+   "stop": true,
+   "note": "Stop on ٱلْحَطَبِ: the بْ bounces strongly. The طَ before it has a vowel: no bounce there.",
+   "noteAr": "عند الوقف على ٱلْحَطَبِ تُقلقل الباء قلقلة قوية، أما الطاء قبلها فمتحركة بلا قلقلة.",
+   "why": "From المسد (unit 3).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "say",
+   "verse": "85:1",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "ٱلْبُرُوجِ",
+   "focus": "جِ",
+   "stop": true,
+   "note": "Stop on ٱلْبُرُوجِ: the long و (العارض, taught), then a strong bounce on the جْ.",
+   "noteAr": "عند الوقف على ٱلْبُرُوجِ: مد عارض (سبق تعلمه) ثم قلقلة قوية على الجيم.",
+   "why": "ج at a stop; no ج ends an ayah in units 1–3 surahs.",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "notice",
+   "verse": "112:2",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلصَّمَدُ",
+   "focus": "دُ",
+   "stop": true,
+   "note": "Stop on ٱلصَّمَدُ: the vowel drops and the دْ bounces strongly.",
+   "noteAr": "عند الوقف على ٱلصَّمَدُ تسكن الدال وتُقلقل قلقلة قوية.",
+   "why": "Pair with يَلِدْ in the next ayah: the same د, at a stop here (كبرى) and joined mid-ayah there (صغرى). يُولَدْ (112:3), the closer pair, is the tabii example.",
+   "source": "الميزان (فريال زمزمي)، القلقلة: في وسط الكلمة وآخرها، وصلًا (لم يلد ولم) ووقفًا (برب الفلق) https://shamela.ws/book/38104/74",
+   "contrast": {
+    "lesson": "qal-s",
+    "verse": "112:3",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يَلِدْ",
+    "focus": "دْ",
+    "stop": false,
+    "note": "يَلِدْ is joined to وَلَمْ: the دْ has only a light bounce.",
+    "noteAr": "يَلِدْ موصولة بـوَلَمْ، فقلقلة الدال فيها خفيفة.",
+    "why": "Same surah and letter; the book gives لم يلد ولم as قلقلة وصلًا."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "85:20",
+   "word_from": 4,
+   "word_to": 4,
+   "text": "مُّحِيطٌۢ",
+   "focus": "طٌۢ",
+   "stop": true,
+   "note": "Stop on مُّحِيطٌۢ: no تنوين; العارض on the ي, then a strong bounce on the طْ.",
+   "noteAr": "عند الوقف على مُّحِيطٌۢ يسقط التنوين: مد عارض على الياء ثم قلقلة قوية على الطاء.",
+   "why": "ط at a stop (the fifth letter).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  },
+  {
+   "role": "more",
+   "verse": "111:1",
+   "word_from": 5,
+   "word_to": 5,
+   "text": "وَتَبَّ",
+   "focus": "بَّ",
+   "stop": true,
+   "note": "Stop on وَتَبَّ: a ب with شدة. Many teachers, not all, count this as a stronger level.",
+   "noteAr": "عند الوقف على وَتَبَّ: باء مشددة، ويعدّها كثير من المعلمين، لا جميعهم، مرتبة أقوى.",
+   "why": "The card's third-level case (needs-teacher: الميزان records د. أيمن سويد's reservation).",
+   "source": "الميزان، مراتب القلقلة: الكبرى عند الوقف، والصغرى وسط الكلمة أو وسط الكلام https://shamela.ws/book/38104/75"
+  }
+ ]
+}

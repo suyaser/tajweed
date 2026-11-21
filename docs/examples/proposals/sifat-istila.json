@@ -1,0 +1,89 @@
+{
+  "lesson": "sifat-istila",
+  "coverage": "خ: #3; ص: #1; ض: #5; غ: #2; ط: #4; ق: #3 #6; ظ: #2; الإطباق (ص ض ط ظ): #1 #2 #4 #5",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to the heavy letters in ٱلصُّدُورِ، ٱلْغَيْظِ، خَلَقَ, and to أَصْ and أَسْ: the same place, but the tongue rises and covers in ص.",
+    "ar": "استمع إلى الحروف المفخمة في ٱلصُّدُورِ، ٱلْغَيْظِ، خَلَقَ، وإلى أَصْ وأَسْ: المخرج واحد، لكن اللسان يرتفع وينطبق في الصاد."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:13",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "ٱلصُّدُورِ",
+      "focus": "صُّ",
+      "stop": false,
+      "note": "صّ: the back of the tongue rises (استعلاء) and covers the palate (إطباق): among the heaviest letters.",
+      "noteAr": "الصاد المشددة: يرتفع اللسان (استعلاء) وينطبق على الحنك (إطباق)، فهي من أفخم الحروف.",
+      "why": "Both qualities in one doubled letter; focus is not the ayah's last letter.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «وسبعُ علوٍ خُصَّ ضغطٍ قِظْ حَصَرْ، وصادُ ضادٌ طاءُ ظاءٌ مطبقه»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:8",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلْغَيْظِ",
+      "focus": "غَيْظِ",
+      "stop": false,
+      "note": "غ rises without covering (استعلاء only); ظ rises and covers (استعلاء and إطباق).",
+      "noteAr": "الغين مستعلية غير مطبقة، والظاء مستعلية مطبقة.",
+      "why": "A مستعلٍ and a مطبق letter in one word.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «وسبعُ علوٍ خُصَّ ضغطٍ قِظْ حَصَرْ، وصادُ ضادٌ طاءُ ظاءٌ مطبقه»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:2",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "خَلَقَ",
+      "focus": "خَلَقَ",
+      "stop": false,
+      "note": "خ and ق rise, so both are heavy, but the tongue does not cover the palate.",
+      "noteAr": "الخاء والقاف مستعليتان، فهما مفخمتان، لكن اللسان لا ينطبق معهما.",
+      "why": "Two استعلاء letters without إطباق; the ل between them stays light.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «وسبعُ علوٍ خُصَّ ضغطٍ قِظْ حَصَرْ، وصادُ ضادٌ طاءُ ظاءٌ مطبقه»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:19",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "ٱلطَّيْرِ",
+      "focus": "طَّ",
+      "stop": false,
+      "note": "طّ: rising and covering together, a full, heavy sound.",
+      "noteAr": "الطاء المشددة: استعلاء وإطباق معًا، فيخرج صوتها ممتلئًا مفخمًا.",
+      "why": "ط with شدة.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «وسبعُ علوٍ خُصَّ ضغطٍ قِظْ حَصَرْ، وصادُ ضادٌ طاءُ ظاءٌ مطبقه»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:9",
+      "word_from": 17,
+      "word_to": 17,
+      "text": "ضَلَٰلٍ",
+      "focus": "ضَ",
+      "stop": false,
+      "note": "ض: استعلاء and إطباق; keep it heavy, and the ل after it light.",
+      "noteAr": "الضاد: مستعلية مطبقة؛ فخمها، ورقق اللام بعدها.",
+      "why": "ض; the ل after it shows الاستفال.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «وسبعُ علوٍ خُصَّ ضغطٍ قِظْ حَصَرْ، وصادُ ضادٌ طاءُ ظاءٌ مطبقه»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:1",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "قَدِيرٌ",
+      "focus": "قَ",
+      "stop": false,
+      "note": "ق: the back of the tongue rises, so it is heavy, but with no إطباق.",
+      "noteAr": "القاف: يرتفع أقصى اللسان، فهي مفخمة، ولا إطباق فيها.",
+      "why": "ق; focus at the word start, the ayah-end stop does not touch it.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «وسبعُ علوٍ خُصَّ ضغطٍ قِظْ حَصَرْ، وصادُ ضادٌ طاءُ ظاءٌ مطبقه»؛ هداية القاري 1/79–86"
+    }
+  ]
+}

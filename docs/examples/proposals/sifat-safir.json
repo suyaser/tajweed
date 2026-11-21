@@ -1,0 +1,115 @@
+{
+  "lesson": "sifat-safir",
+  "coverage": "الصفير ص ز س: #1 #4 #7; القلقلة: #2 (ب) #5 (د) #8 (ج); اللين و ي: #3 #6",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to أَصْبَحَ، يَنقَلِبْ، ٱلْمَوْتَ: a whistle, a bounce, and a soft لين; and to أَصْ، أَزْ، أَسْ: a whistle runs through the front teeth.",
+    "ar": "استمع إلى أَصْبَحَ، يَنقَلِبْ، ٱلْمَوْتَ: صفير، وقلقلة، ولين؛ وإلى أَصْ، أَزْ، أَسْ: صوت صفير يخرج من بين الثنايا."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:30",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "أَصْبَحَ",
+      "focus": "صْ",
+      "stop": false,
+      "note": "صْ: a whistle-like sound runs with it; that is الصفير.",
+      "noteAr": "الصاد الساكنة: يخرج معها صوت يشبه الصفير، وهذا هو الصفير.",
+      "why": "ص with سكون: the whistle is clearest.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:4",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "يَنقَلِبْ",
+      "focus": "بْ",
+      "stop": false,
+      "note": "بْ is a قلقلة letter: with سكون it bounces lightly, here mid-reading.",
+      "noteAr": "الباء الساكنة من حروف القلقلة: تضطرب عند سكونها، وهي هنا في وسط الكلام.",
+      "why": "قلقلة with سكون in وصل (يَنقَلِبْ إِلَيْكَ).",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "hear",
+      "verse": "67:2",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلْمَوْتَ",
+      "focus": "مَوْ",
+      "stop": false,
+      "note": "وْ after a فتحة is a لين letter: said softly and easily, with no madd here.",
+      "noteAr": "الواو الساكنة بعد فتح حرف لين: تنطق بسهولة ولين، ولا مد هنا.",
+      "why": "لين و mid-ayah (not stopped, so no مد اللين).",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:15",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "رِّزْقِهِۦ",
+      "focus": "زْ",
+      "stop": false,
+      "note": "زْ: a whistle like ص and س, from the same place.",
+      "noteAr": "الزاي الساكنة: فيها صفير كالصاد والسين، ومخرجها مخرجهما.",
+      "why": "ز with سكون.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:5",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "وَلَقَدْ",
+      "focus": "دْ",
+      "stop": false,
+      "note": "دْ: a قلقلة letter; it bounces with its سكون before زَ.",
+      "noteAr": "الدال الساكنة من حروف القلقلة: تقلقل عند سكونها قبل الزاي.",
+      "why": "قلقلة of دْ; د is not merged into ز in حفص.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "say",
+      "verse": "67:17",
+      "word_from": 11,
+      "word_to": 11,
+      "text": "كَيْفَ",
+      "focus": "كَيْ",
+      "stop": false,
+      "note": "يْ after a فتحة: a لين letter, soft and easy.",
+      "noteAr": "الياء الساكنة بعد فتح حرف لين: تنطق بسهولة ولين.",
+      "why": "لين ي mid-ayah.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "more",
+      "verse": "67:5",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "ٱلسَّمَآءَ",
+      "focus": "سَّ",
+      "stop": false,
+      "note": "سّ: the third whistle letter; the whistle lasts through the doubled letter.",
+      "noteAr": "السين المشددة: ثالث حروف الصفير، يمتد صفيرها مع التشديد.",
+      "why": "س with شدة.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    },
+    {
+      "role": "more",
+      "verse": "67:12",
+      "word_from": 8,
+      "word_to": 8,
+      "text": "وَأَجْرٌ",
+      "focus": "جْ",
+      "stop": false,
+      "note": "جْ: a قلقلة letter bouncing inside the word.",
+      "noteAr": "الجيم الساكنة من حروف القلقلة: تقلقل في وسط الكلمة.",
+      "why": "قلقلة of جْ.",
+      "source": "الجزرية، باب صفات الحروف (الأبيات 20–26، https://shamela.ws/book/581/57): «صفيرُها صادٌ وزايٌ سينُ، قلقلةٌ قُطْبُ جَدٍ، واللينُ واوٌ وياءٌ سُكِّنا وانفتحا قبلهما»؛ هداية القاري 1/79–86"
+    }
+  ]
+}

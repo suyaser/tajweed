@@ -125,7 +125,69 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "114:5",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱلَّذِى",
+    "focus": "ٱلَّ",
+    "stop": false,
+    "note": "Starting the ayah on ال: the ٱ is said with a فتحة, اَلَّذِى.",
+    "role": "anchor"
+   },
+   {
+    "verse": "1:6",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱهْدِنَا",
+    "focus": "ٱهْ",
+    "stop": false,
+    "note": "A verb whose third letter (د) has a كسرة: start with a كسرة, اِهْدِنَا.",
+    "role": "hear"
+   },
+   {
+    "verse": "16:125",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱدْعُ",
+    "focus": "ٱدْ",
+    "stop": false,
+    "note": "The third letter (ع) has an original ضمة: start with a ضمة, اُدْعُ.",
+    "role": "hear"
+   },
+   {
+    "verse": "96:3",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱقْرَأْ",
+    "focus": "ٱقْ",
+    "stop": false,
+    "note": "The third letter (ر) has a فتحة, so the ٱ takes a كسرة: اِقْرَأْ.",
+    "role": "say"
+   },
+   {
+    "verse": "96:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "بِٱسْمِ",
+    "focus": "بِٱسْ",
+    "stop": false,
+    "note": "Inside the word the ٱ is never said: read بِسْمِ. (Starting on ٱسْم alone, it would be اِسْم.)",
+    "role": "say"
+   },
+   {
+    "verse": "94:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَعَ ٱلْعُسْرِ",
+    "focus": "عَ ٱلْ",
+    "stop": false,
+    "note": "Joined to مَعَ before it, the ٱ is not said: مَعَلْعُسْرِ.",
+    "role": "say"
+   }
+  ]
  },
  {
   "id": "makharij-jawf",
@@ -232,7 +294,69 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:9",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قَالُوا۟",
+    "focus": "قَالُو",
+    "stop": false,
+    "note": "ا after a فتحة, وْ after a ضمة: two حروف المد from الجوف; the sound runs on the breath, touching nothing.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:20",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "دُونِ",
+    "focus": "دُو",
+    "stop": false,
+    "note": "وْ after a ضمة is a حرف مد: its sound comes from الجوف and ends when the breath ends.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:9",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "نَذِيرٌ",
+    "focus": "ذِي",
+    "stop": false,
+    "note": "يْ after a كسرة is a حرف مد from الجوف, held two counts with no fixed point.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:8",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "تَكَادُ",
+    "focus": "كَا",
+    "stop": false,
+    "note": "The ا after the فتحة on ك: the mouth is open and nothing meets; that is الجوف.",
+    "role": "say"
+   },
+   {
+    "verse": "67:25",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَيَقُولُونَ",
+    "focus": "قُو",
+    "stop": false,
+    "note": "وْ after the ضمة on ق: a حرف مد from الجوف; the word has a second one before ن.",
+    "role": "say"
+   },
+   {
+    "verse": "67:7",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "فِيهَا",
+    "focus": "فِيهَا",
+    "stop": false,
+    "note": "يْ after a كسرة, then ا after a فتحة: two حروف المد in one word.",
+    "role": "say"
+   }
+  ]
  },
  {
   "id": "makharij-halq",
@@ -344,7 +468,69 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:2",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "أَحْسَنُ",
+    "focus": "أَحْ",
+    "stop": false,
+    "note": "The أ from the deepest part of the throat, then حْ from its middle (وسط الحلق).",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:12",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "يَخْشَوْنَ",
+    "focus": "خْ",
+    "stop": false,
+    "note": "خْ from the nearest part of the throat to the mouth (أدنى الحلق).",
+    "role": "hear"
+   },
+   {
+    "verse": "67:22",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "أَهْدَىٰٓ",
+    "focus": "أَهْ",
+    "stop": false,
+    "note": "أ then هْ: both from the deepest part of the throat (أقصى الحلق).",
+    "role": "hear"
+   },
+   {
+    "verse": "67:10",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "نَعْقِلُ",
+    "focus": "عْ",
+    "stop": false,
+    "note": "عْ from the middle of the throat, the same place as ح.",
+    "role": "say"
+   },
+   {
+    "verse": "67:12",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "مَّغْفِرَةٌ",
+    "focus": "غْ",
+    "stop": false,
+    "note": "غْ from أدنى الحلق, the same place as خ.",
+    "role": "say"
+   },
+   {
+    "verse": "67:8",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "يَأْتِكُمْ",
+    "focus": "أْ",
+    "stop": false,
+    "note": "أْ: a همزة with سكون, said fully from the deepest part of the throat.",
+    "role": "say"
+   }
+  ]
  },
  {
   "id": "makharij-aqsa",
@@ -444,7 +630,79 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:19",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "وَيَقْبِضْنَ",
+    "focus": "قْ",
+    "stop": false,
+    "note": "قْ: the back of the tongue, next to the throat, against the palate above it.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:29",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "تَوَكَّلْنَا",
+    "focus": "كَّ",
+    "stop": false,
+    "note": "كّ: a little lower than ق and nearer the mouth, against the palate.",
+    "role": "hear"
+   },
+   {
+    "verse": "88:24",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْأَكْبَرَ",
+    "focus": "كْ",
+    "stop": false,
+    "note": "كْ with سكون: the back of the tongue meets the palate just in front of the place of ق.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:21",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "يَرْزُقُكُمْ",
+    "focus": "قُكُ",
+    "stop": false,
+    "note": "قُ then كُ side by side: the tongue moves a little forward from ق to ك.",
+    "role": "say"
+   },
+   {
+    "verse": "67:23",
+    "word_from": 10,
+    "word_to": 10,
+    "text": "قَلِيلًا",
+    "focus": "قَ",
+    "stop": false,
+    "note": "ق with a فتحة: still from أقصى اللسان, and heavy.",
+    "role": "say"
+   },
+   {
+    "verse": "67:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْمُلْكُ",
+    "focus": "كُ",
+    "stop": false,
+    "note": "After لْ, the back of the tongue closes on the palate for كُ.",
+    "role": "say"
+   },
+   {
+    "verse": "96:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱقْرَأْ",
+    "focus": "قْ",
+    "stop": false,
+    "note": "قْ in the first word revealed: the back of the tongue, then the قلقلة.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "makharij-wasat",
@@ -544,7 +802,79 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:8",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "تَمَيَّزُ",
+    "focus": "يَّ",
+    "stop": false,
+    "note": "يّ is not a حرف مد: it comes from the middle of the tongue against the palate above it.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:22",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وَجْهِهِۦٓ",
+    "focus": "جْ",
+    "stop": false,
+    "note": "جْ: the middle of the tongue against the palate, the place shared with ش and ي.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:23",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "تَشْكُرُونَ",
+    "focus": "شْ",
+    "stop": false,
+    "note": "شْ: from the middle of the tongue and the palate, like ج and ي.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "بِيَدِهِ",
+    "focus": "يَ",
+    "stop": false,
+    "note": "يَ with a فتحة is not a حرف مد: it comes from وسط اللسان.",
+    "role": "say"
+   },
+   {
+    "verse": "67:15",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "ٱلْأَرْضَ",
+    "focus": "ضَ",
+    "stop": false,
+    "note": "ض: the edge of the tongue against the upper molars; the left side is easier and more common.",
+    "role": "say"
+   },
+   {
+    "verse": "67:27",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "زُلْفَةً",
+    "focus": "لْ",
+    "stop": false,
+    "note": "لْ: the front of the tongue's edge up to its tip, against the gums of the upper front teeth.",
+    "role": "say"
+   },
+   {
+    "verse": "67:29",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "ضَلَٰلٍ",
+    "focus": "ضَ",
+    "stop": false,
+    "note": "ض from the edge of the tongue, then a light ل from the front of the edge.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "makharij-taraf",
@@ -645,7 +975,109 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:5",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلدُّنْيَا",
+    "focus": "دُّنْ",
+    "stop": false,
+    "note": "دّ: the tip against the roots of the upper front teeth; نْ: the tip against their gum.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:10",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "نَسْمَعُ",
+    "focus": "سْ",
+    "stop": false,
+    "note": "سْ: the tip near the lower front teeth, with a narrow gap for the whistle.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:9",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "فَكَذَّبْنَا",
+    "focus": "ذَّ",
+    "stop": false,
+    "note": "ذّ: the tip of the tongue against the edges of the upper front teeth, like ظ and ث.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:17",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "يُرْسِلَ",
+    "focus": "رْ",
+    "stop": false,
+    "note": "رْ: close to the place of ن, but further onto the top of the tongue.",
+    "role": "say"
+   },
+   {
+    "verse": "67:10",
+    "word_from": 10,
+    "word_to": 10,
+    "text": "أَصْحَٰبِ",
+    "focus": "صْ",
+    "stop": false,
+    "note": "صْ: the place of س and ز, the tip near the lower front teeth.",
+    "role": "say"
+   },
+   {
+    "verse": "67:27",
+    "word_from": 13,
+    "word_to": 13,
+    "text": "تَدَّعُونَ",
+    "focus": "دَّ",
+    "stop": false,
+    "note": "دّ: the tip on the roots of the upper front teeth, where ت and ط are made too.",
+    "role": "say"
+   },
+   {
+    "verse": "67:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ثُمَّ",
+    "focus": "ثُ",
+    "stop": false,
+    "note": "ث: the tip of the tongue against the edges of the upper front teeth.",
+    "role": "more"
+   },
+   {
+    "verse": "67:3",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "طِبَاقًا",
+    "focus": "طِ",
+    "stop": false,
+    "note": "طِ: the tip of the tongue against the roots of the upper front teeth, with د and ت.",
+    "role": "more"
+   },
+   {
+    "verse": "67:3",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "تَفَٰوُتٍ",
+    "focus": "تَ",
+    "stop": false,
+    "note": "تَ: the tip on the roots of the upper front teeth, the place of ط and د.",
+    "role": "more"
+   },
+   {
+    "verse": "67:5",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "زَيَّنَّا",
+    "focus": "زَ",
+    "stop": false,
+    "note": "ز: a whistle letter, from the tip near the lower front teeth, with س and ص.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "makharij-shafatan",
@@ -760,7 +1192,89 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:21",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "أَمْسَكَ",
+    "focus": "مْ",
+    "stop": false,
+    "note": "مْ: both lips close; its غنة comes from الخيشوم.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:19",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "صَٰٓفَّٰتٍ",
+    "focus": "فَّٰ",
+    "stop": false,
+    "note": "فّ: the inside of the lower lip against the edges of the upper front teeth.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:27",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وُجُوهُ",
+    "focus": "وُ",
+    "stop": false,
+    "note": "The first وُ: both lips round without closing. The second is a حرف مد from الجوف.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:2",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "لِيَبْلُوَكُمْ",
+    "focus": "بْ",
+    "stop": false,
+    "note": "بْ: both lips close firmly, then open with a قلقلة.",
+    "role": "say"
+   },
+   {
+    "verse": "67:20",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "أَمَّنْ",
+    "focus": "مَّ",
+    "stop": false,
+    "note": "مّ: the lips stay closed while the غنة, two counts, comes from الخيشوم.",
+    "role": "say"
+   },
+   {
+    "verse": "67:23",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "ٱلسَّمْعَ",
+    "focus": "مْ",
+    "stop": false,
+    "note": "مْ: the lips close for م, then open for ع.",
+    "role": "say"
+   },
+   {
+    "verse": "89:27",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلنَّفْسُ",
+    "focus": "فْ",
+    "stop": false,
+    "note": "فْ with سكون: the lower lip rests on the edges of the upper front teeth.",
+    "role": "more"
+   },
+   {
+    "verse": "67:6",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "جَهَنَّمَ",
+    "focus": "نَّ",
+    "stop": false,
+    "note": "نّ: the tip of the tongue holds its place while the غنة, two counts, comes from الخيشوم.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "sifat-hams",
@@ -856,7 +1370,99 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:16",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "يَخْسِفَ",
+    "focus": "خْسِفَ",
+    "stop": false,
+    "note": "خْ, سِ, فَ: three مهموسة letters in a row; hear the breath run on with the خْ.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:11",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "فَسُحْقًا",
+    "focus": "حْ",
+    "stop": false,
+    "note": "حْ: the breath flows on with the letter; that is الهمس.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:22",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "مُّسْتَقِيمٍ",
+    "focus": "سْتَ",
+    "stop": false,
+    "note": "سْ then تَ, both مهموسة: the breath runs through the سْ.",
+    "role": "hear"
+   },
+   {
+    "verse": "81:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "كُوِّرَتْ",
+    "focus": "تْ",
+    "stop": true,
+    "note": "At the stop, تْ ends with a light breath: it is مهموسة as well as شديدة.",
+    "role": "say"
+   },
+   {
+    "verse": "67:28",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أَهْلَكَنِىَ",
+    "focus": "هْلَكَ",
+    "stop": false,
+    "note": "هْ then كَ, both مهموسة: the breath runs with each; say the هْ clearly.",
+    "role": "say"
+   },
+   {
+    "verse": "67:21",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "رِزْقَهُۥ",
+    "focus": "زْ",
+    "stop": false,
+    "note": "زْ: the place of س, but the breath is held back: مجهورة, the opposite of الهمس.",
+    "role": "say"
+   },
+   {
+    "verse": "99:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أَثْقَالَهَا",
+    "focus": "ثْ",
+    "stop": false,
+    "note": "ثْ: the breath flows between the tongue and the upper teeth.",
+    "role": "more"
+   },
+   {
+    "verse": "105:1",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "بِأَصْحَٰبِ",
+    "focus": "صْ",
+    "stop": false,
+    "note": "صْ: heavy, but still مهموسة; the breath runs with it.",
+    "role": "more"
+   },
+   {
+    "verse": "98:6",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "وَٱلْمُشْرِكِينَ",
+    "focus": "شْ",
+    "stop": false,
+    "note": "شْ: the breath runs and spreads with it.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "sifat-shidda",
@@ -963,7 +1569,79 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:9",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "قَدْ",
+    "focus": "دْ",
+    "stop": false,
+    "note": "دْ: the sound is held back completely at its مخرج (الشدة), then it bounces out (قلقلة).",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:5",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "وَأَعْتَدْنَا",
+    "focus": "عْتَدْ",
+    "stop": false,
+    "note": "عْ lets part of the sound run (التوسط); دْ holds it all back (الشدة).",
+    "role": "hear"
+   },
+   {
+    "verse": "67:24",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "تُحْشَرُونَ",
+    "focus": "حْ",
+    "stop": false,
+    "note": "حْ: the sound runs on freely (الرخاوة), unlike دْ.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:6",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "وَبِئْسَ",
+    "focus": "ئْ",
+    "stop": false,
+    "note": "ئْ: the sound is cut off completely (الشدة); the سَ after it lets it run (الرخاوة).",
+    "role": "say"
+   },
+   {
+    "verse": "67:3",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "خَلْقِ",
+    "focus": "لْ",
+    "stop": false,
+    "note": "لْ: not cut off, not free; part of the sound runs (التوسط, «لِنْ عُمَرْ»).",
+    "role": "say"
+   },
+   {
+    "verse": "67:14",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "مَنْ",
+    "focus": "نْ",
+    "stop": false,
+    "note": "نْ before خ, shown clearly: part of the sound runs; that is التوسط.",
+    "role": "say"
+   },
+   {
+    "verse": "67:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "سَبْعَ",
+    "focus": "بْ",
+    "stop": false,
+    "note": "بْ: the lips close and the sound is fully held (الشدة), then released with قلقلة.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "sifat-istila",
@@ -1076,7 +1754,69 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:13",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ٱلصُّدُورِ",
+    "focus": "صُّ",
+    "stop": false,
+    "note": "صّ: the back of the tongue rises (استعلاء) and covers the palate (إطباق): among the heaviest letters.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:8",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْغَيْظِ",
+    "focus": "غَيْظِ",
+    "stop": false,
+    "note": "غ rises without covering (استعلاء only); ظ rises and covers (استعلاء and إطباق).",
+    "role": "hear"
+   },
+   {
+    "verse": "67:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "خَلَقَ",
+    "focus": "خَلَقَ",
+    "stop": false,
+    "note": "خ and ق rise, so both are heavy, but the tongue does not cover the palate.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:19",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلطَّيْرِ",
+    "focus": "طَّ",
+    "stop": false,
+    "note": "طّ: rising and covering together, a full, heavy sound.",
+    "role": "say"
+   },
+   {
+    "verse": "67:9",
+    "word_from": 17,
+    "word_to": 17,
+    "text": "ضَلَٰلٍ",
+    "focus": "ضَ",
+    "stop": false,
+    "note": "ض: استعلاء and إطباق; keep it heavy, and the ل after it light.",
+    "role": "say"
+   },
+   {
+    "verse": "67:1",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "قَدِيرٌ",
+    "focus": "قَ",
+    "stop": false,
+    "note": "ق: the back of the tongue rises, so it is heavy, but with no إطباق.",
+    "role": "say"
+   }
+  ]
  },
  {
   "id": "sifat-safir",
@@ -1183,7 +1923,89 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:30",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أَصْبَحَ",
+    "focus": "صْ",
+    "stop": false,
+    "note": "صْ: a whistle-like sound runs with it; that is الصفير.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:4",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "يَنقَلِبْ",
+    "focus": "بْ",
+    "stop": false,
+    "note": "بْ is a قلقلة letter: with سكون it bounces lightly, here mid-reading.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْمَوْتَ",
+    "focus": "مَوْ",
+    "stop": false,
+    "note": "وْ after a فتحة is a لين letter: said softly and easily, with no madd here.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:15",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "رِّزْقِهِۦ",
+    "focus": "زْ",
+    "stop": false,
+    "note": "زْ: a whistle like ص and س, from the same place.",
+    "role": "say"
+   },
+   {
+    "verse": "67:5",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَلَقَدْ",
+    "focus": "دْ",
+    "stop": false,
+    "note": "دْ: a قلقلة letter; it bounces with its سكون before زَ.",
+    "role": "say"
+   },
+   {
+    "verse": "67:17",
+    "word_from": 11,
+    "word_to": 11,
+    "text": "كَيْفَ",
+    "focus": "كَيْ",
+    "stop": false,
+    "note": "يْ after a فتحة: a لين letter, soft and easy.",
+    "role": "say"
+   },
+   {
+    "verse": "67:5",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلسَّمَآءَ",
+    "focus": "سَّ",
+    "stop": false,
+    "note": "سّ: the third whistle letter; the whistle lasts through the doubled letter.",
+    "role": "more"
+   },
+   {
+    "verse": "67:12",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "وَأَجْرٌ",
+    "focus": "جْ",
+    "stop": false,
+    "note": "جْ: a قلقلة letter bouncing inside the word.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "sifat-inhiraf",
@@ -1294,7 +2116,89 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "67:4",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "كَرَّتَيْنِ",
+    "focus": "رَّ",
+    "stop": false,
+    "note": "رّ has الانحراف and التكرير: say it firmly, without letting the tongue trill.",
+    "role": "anchor"
+   },
+   {
+    "verse": "67:1",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "كُلِّ",
+    "focus": "لِّ",
+    "stop": false,
+    "note": "لّ has الانحراف: its sound leans away from its مخرج toward another.",
+    "role": "hear"
+   },
+   {
+    "verse": "67:5",
+    "word_from": 8,
+    "word_to": 8,
+    "text": "لِّلشَّيَٰطِينِ",
+    "focus": "شَّ",
+    "stop": false,
+    "note": "شّ has التفشي: the air spreads through the mouth.",
+    "role": "hear"
+   },
+   {
+    "verse": "107:3",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يَحُضُّ",
+    "focus": "ضُّ",
+    "stop": false,
+    "note": "ضّ has الاستطالة: its sound runs along the edge of the tongue until it nears the place of ل.",
+    "role": "say"
+   },
+   {
+    "verse": "67:3",
+    "word_from": 15,
+    "word_to": 15,
+    "text": "هَلْ",
+    "focus": "لْ",
+    "stop": false,
+    "note": "لْ before تَ is shown in حفص; its sound leans (الانحراف).",
+    "role": "say"
+   },
+   {
+    "verse": "67:15",
+    "word_from": 14,
+    "word_to": 14,
+    "text": "ٱلنُّشُورُ",
+    "focus": "شُ",
+    "stop": false,
+    "note": "ش: let the air spread through the mouth; that is التفشي.",
+    "role": "say"
+   },
+   {
+    "verse": "67:19",
+    "word_from": 11,
+    "word_to": 11,
+    "text": "ٱلرَّحْمَٰنُ",
+    "focus": "رَّ",
+    "stop": false,
+    "note": "رّ again: keep its التكرير hidden; the tongue does not shake.",
+    "role": "more"
+   },
+   {
+    "verse": "67:24",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "ٱلْأَرْضِ",
+    "focus": "ضِ",
+    "stop": false,
+    "note": "ض: الاستطالة along the edge of the tongue.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "izhar",
@@ -1312,36 +2216,24 @@
   "tip": "Don't hum or pause between the نون and the throat letter.",
   "examples": [
    {
+    "verse": "113:5",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "حَاسِدٍ إِذَا",
+    "focus": "دٍ إِ",
+    "stop": false,
+    "note": "The تنوين is a clear n before the همزة of إِذَا: no held hum, no pause.",
+    "role": "anchor"
+   },
+   {
     "verse": "1:7",
     "word_from": 3,
     "word_to": 3,
     "text": "أَنْعَمْتَ",
     "focus": "نْعَ",
-    "stop": false
-   },
-   {
-    "verse": "2:62",
-    "word_from": 8,
-    "word_to": 9,
-    "text": "مَنْ ءَامَنَ",
-    "focus": "نْ ءَ",
-    "stop": false
-   },
-   {
-    "verse": "2:10",
-    "word_from": 8,
-    "word_to": 9,
-    "text": "عَذَابٌ أَلِيمٌۢ",
-    "focus": "بٌ أَ",
-    "stop": false
-   },
-   {
-    "verse": "80:34",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "مِنْ أَخِيهِ",
-    "focus": "نْ أَ",
-    "stop": false
+    "stop": false,
+    "note": "نْ then ع in the same word: the ن is said clearly and the tongue goes straight to the ع.",
+    "role": "hear"
    },
    {
     "verse": "79:40",
@@ -1349,7 +2241,9 @@
     "word_to": 3,
     "text": "مَنْ خَافَ",
     "focus": "نْ خَ",
-    "stop": false
+    "stop": false,
+    "note": "مَنْ ends in a clear ن before the خ of خَافَ.",
+    "role": "hear"
    },
    {
     "verse": "81:27",
@@ -1357,15 +2251,9 @@
     "word_to": 2,
     "text": "إِنْ هُوَ",
     "focus": "نْ هُ",
-    "stop": false
-   },
-   {
-    "verse": "83:5",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "لِيَوْمٍ عَظِيمٍ",
-    "focus": "مٍ عَ",
-    "stop": false
+    "stop": false,
+    "note": "Clear ن, then the ه of هُوَ.",
+    "role": "say"
    },
    {
     "verse": "108:2",
@@ -1373,23 +2261,69 @@
     "word_to": 3,
     "text": "وَٱنْحَرْ",
     "focus": "نْحَ",
-    "stop": false
+    "stop": true,
+    "note": "نْ before ح in one word: say the ن fully, then the ح, with no hum between.",
+    "role": "say"
    },
    {
-    "verse": "79:12",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "كَرَّةٌ خَاسِرَةٌ",
-    "focus": "ةٌ خَ",
-    "stop": false
+    "verse": "20:22",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "مِنْ غَيْرِ",
+    "focus": "نْ غَ",
+    "stop": false,
+    "note": "The ن of مِنْ is clear before غ; don't slide into a hum.",
+    "role": "say"
    },
    {
-    "verse": "87:5",
+    "verse": "111:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "عَنْهُ",
+    "focus": "نْهُ",
+    "stop": false,
+    "note": "نْ with a سكون before ه: one short, clear ن, not held.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "ghunnah",
+     "verse": "110:3",
+     "word_from": 5,
+     "word_to": 5,
+     "text": "إِنَّهُۥ",
+     "focus": "نَّ",
+     "stop": false,
+     "note": "نّ with a شدة: the غنة is held for two counts before the ه."
+    }
+   },
+   {
+    "verse": "88:4",
     "word_from": 2,
     "word_to": 3,
-    "text": "غُثَآءً أَحْوَىٰ",
-    "focus": "ءً أَ",
-    "stop": false
+    "text": "نَارًا حَامِيَةً",
+    "focus": "ا حَ",
+    "stop": true,
+    "note": "The تنوين of نَارًا is a clear n before ح.",
+    "role": "more"
+   },
+   {
+    "verse": "96:2",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "مِنْ عَلَقٍ",
+    "focus": "نْ عَ",
+    "stop": true,
+    "note": "Clear ن of مِنْ before the ع of عَلَقٍ.",
+    "role": "more"
+   },
+   {
+    "verse": "92:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَنْ أَعْطَىٰ",
+    "focus": "نْ أَ",
+    "stop": false,
+    "note": "Clear ن of مَنْ before the همزة of أَعْطَىٰ.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -1442,60 +2376,34 @@
   "tip": "Hold the غنة for its two counts; don't clip it, and don't let it turn into a full ن.",
   "examples": [
    {
-    "verse": "2:8",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "مَن يَقُولُ",
-    "focus": "ن يَ",
-    "stop": false
-   },
-   {
-    "verse": "2:5",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "هُدًى مِّن",
-    "focus": "دًى مِّ",
-    "stop": false
-   },
-   {
-    "verse": "13:11",
-    "word_from": 34,
-    "word_to": 35,
-    "text": "مِن وَالٍ",
-    "focus": "ن وَ",
-    "stop": false
-   },
-   {
-    "verse": "78:15",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "حَبًّا وَنَبَاتًا",
-    "focus": "بًّا وَ",
-    "stop": false
-   },
-   {
-    "verse": "80:19",
+    "verse": "99:7",
     "word_from": 1,
     "word_to": 2,
-    "text": "مِن نُّطْفَةٍ",
-    "focus": "ن نُّ",
-    "stop": false
-   },
-   {
-    "verse": "79:45",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "مَن يَخْشَىٰهَا",
+    "text": "فَمَن يَعْمَلْ",
     "focus": "ن يَ",
-    "stop": false
+    "stop": false,
+    "note": "The ن of فَمَن disappears into the ي; its غنة stays for two counts.",
+    "role": "anchor"
    },
    {
-    "verse": "80:13",
+    "verse": "82:5",
     "word_from": 2,
     "word_to": 3,
-    "text": "صُحُفٍ مُّكَرَّمَةٍ",
-    "focus": "فٍ مُّ",
-    "stop": false
+    "text": "نَفْسٌ مَّا",
+    "focus": "سٌ مَّ",
+    "stop": false,
+    "note": "The تنوين merges into the م: one doubled مّ held with a two-count غنة.",
+    "role": "hear"
+   },
+   {
+    "verse": "78:30",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "فَلَن نَّزِيدَكُمْ",
+    "focus": "ن نَّ",
+    "stop": false,
+    "note": "Two ن meet: one doubled نّ with a two-count غنة.",
+    "role": "hear"
    },
    {
     "verse": "80:38",
@@ -1503,15 +2411,69 @@
     "word_to": 2,
     "text": "وُجُوهٌ يَوْمَئِذٍ",
     "focus": "هٌ يَ",
-    "stop": false
+    "stop": false,
+    "note": "The تنوين of وُجُوهٌ merges into the ي, with a two-count غنة.",
+    "role": "say"
    },
    {
-    "verse": "79:13",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "زَجْرَةٌ وَٰحِدَةٌ",
-    "focus": "ةٌ وَٰ",
-    "stop": false
+    "verse": "91:7",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَنَفْسٍ وَمَا",
+    "focus": "سٍ وَ",
+    "stop": false,
+    "note": "The تنوين of نَفْسٍ merges into the و, keeping its غنة.",
+    "role": "say"
+   },
+   {
+    "verse": "88:3",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "عَامِلَةٌ نَّاصِبَةٌ",
+    "focus": "ةٌ نَّ",
+    "stop": true,
+    "note": "The تنوين merges into the ن of نَّاصِبَةٌ: one نّ with a two-count غنة.",
+    "role": "say"
+   },
+   {
+    "verse": "87:10",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَن يَخْشَىٰ",
+    "focus": "ن يَ",
+    "stop": true,
+    "note": "مَن runs into يَخْشَىٰ: no full ن is heard, but its two-count غنة stays.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "izhar",
+     "verse": "98:8",
+     "word_from": 19,
+     "word_to": 20,
+     "text": "لِمَنْ خَشِىَ",
+     "focus": "نْ خَ",
+     "stop": false,
+     "note": "Before خ the ن of لِمَنْ stays clear: no merging, no held غنة."
+    }
+   },
+   {
+    "verse": "111:5",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مِّن مَّسَدٍۭ",
+    "focus": "ن مَّ",
+    "stop": true,
+    "note": "The ن of مِّن merges into the م of مَّسَدٍۭ.",
+    "role": "more"
+   },
+   {
+    "verse": "13:11",
+    "word_from": 34,
+    "word_to": 35,
+    "text": "مِن وَالٍ",
+    "focus": "ن وَ",
+    "stop": true,
+    "note": "The ن of مِن merges into the و of وَالٍ, keeping its غنة.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -1565,52 +2527,24 @@
   ],
   "examples": [
    {
-    "verse": "2:2",
-    "word_from": 6,
-    "word_to": 7,
-    "text": "هُدًى لِّلْمُتَّقِينَ",
-    "focus": "دًى لِّ",
-    "stop": false
-   },
-   {
-    "verse": "2:5",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "مِّن رَّبِّهِمْ",
+    "verse": "83:15",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "عَن رَّبِّهِمْ",
     "focus": "ن رَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ن of عَن disappears into the ر: one doubled رّ, with no غنة.",
+    "role": "anchor"
    },
    {
-    "verse": "2:173",
-    "word_from": 24,
-    "word_to": 25,
-    "text": "غَفُورٌ رَّحِيمٌ",
-    "focus": "رٌ رَّ",
-    "stop": false
-   },
-   {
-    "verse": "78:36",
+    "verse": "90:7",
     "word_from": 2,
     "word_to": 3,
-    "text": "مِّن رَّبِّكَ",
-    "focus": "ن رَّ",
-    "stop": false
-   },
-   {
-    "verse": "83:1",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "وَيْلٌ لِّلْمُطَفِّفِينَ",
-    "focus": "لٌ لِّ",
-    "stop": false
-   },
-   {
-    "verse": "81:25",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "شَيْطَٰنٍ رَّجِيمٍ",
-    "focus": "نٍ رَّ",
-    "stop": false
+    "text": "أَن لَّمْ",
+    "focus": "ن لَّ",
+    "stop": false,
+    "note": "أَن لَّمْ: say أَلَّمْ, the ن fully gone into the ل.",
+    "role": "hear"
    },
    {
     "verse": "93:4",
@@ -1618,23 +2552,79 @@
     "word_to": 3,
     "text": "خَيْرٌ لَّكَ",
     "focus": "رٌ لَّ",
-    "stop": false
+    "stop": false,
+    "note": "The تنوين of خَيْرٌ merges into the لّ of لَّكَ, with no غنة.",
+    "role": "hear"
    },
    {
-    "verse": "90:5",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "أَن لَّن",
-    "focus": "ن لَّ",
-    "stop": false
+    "verse": "104:1",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَيْلٌ لِّكُلِّ",
+    "focus": "لٌ لِّ",
+    "stop": false,
+    "note": "The تنوين of وَيْلٌ merges into the لّ of لِّكُلِّ, with no غنة.",
+    "role": "say"
    },
    {
-    "verse": "83:25",
+    "verse": "85:16",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "فَعَّالٌ لِّمَا",
+    "focus": "لٌ لِّ",
+    "stop": false,
+    "note": "The تنوين of فَعَّالٌ merges into the لّ of لِّمَا, no غنة.",
+    "role": "say"
+   },
+   {
+    "verse": "81:25",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "شَيْطَٰنٍ رَّجِيمٍ",
+    "focus": "نٍ رَّ",
+    "stop": true,
+    "note": "The تنوين of شَيْطَٰنٍ merges into the رّ: no غنة, no n sound.",
+    "role": "say"
+   },
+   {
+    "verse": "78:36",
     "word_from": 2,
     "word_to": 3,
-    "text": "مِن رَّحِيقٍ",
+    "text": "مِّن رَّبِّكَ",
     "focus": "ن رَّ",
-    "stop": false
+    "stop": false,
+    "note": "Before ر the ن of مِّن goes with no غنة at all.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "idgh-g",
+     "verse": "111:5",
+     "word_from": 4,
+     "word_to": 5,
+     "text": "مِّن مَّسَدٍۭ",
+     "focus": "ن مَّ",
+     "stop": true,
+     "note": "Before م the same مِّن merges with a two-count غنة."
+    }
+   },
+   {
+    "verse": "90:6",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "مَالًا لُّبَدًا",
+    "focus": "ا لُّ",
+    "stop": true,
+    "note": "The تنوين of مَالًا merges into the لّ of لُّبَدًا, no غنة.",
+    "role": "more"
+   },
+   {
+    "verse": "101:7",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "عِيشَةٍ رَّاضِيَةٍ",
+    "focus": "ةٍ رَّ",
+    "stop": true,
+    "note": "The تنوين of عِيشَةٍ merges into the رّ of رَّاضِيَةٍ, no غنة.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -1692,36 +2682,14 @@
   "tip": "Teachers differ on the lips here: some close them lightly (إطباق), others leave a very slight gap (فرجة). Follow your teacher. Either way, don't press the lips hard and don't add a full ب or ن.",
   "examples": [
    {
-    "verse": "2:27",
-    "word_from": 5,
-    "word_to": 6,
-    "text": "مِنۢ بَعْدِ",
-    "focus": "نۢ بَ",
-    "stop": false
-   },
-   {
-    "verse": "2:33",
-    "word_from": 3,
+    "verse": "92:8",
+    "word_from": 2,
     "word_to": 3,
-    "text": "أَنۢبِئْهُم",
-    "focus": "نۢبِ",
-    "stop": false
-   },
-   {
-    "verse": "22:61",
-    "word_from": 14,
-    "word_to": 15,
-    "text": "سَمِيعٌۢ بَصِيرٌ",
-    "focus": "عٌۢ بَ",
-    "stop": false
-   },
-   {
-    "verse": "80:16",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "كِرَامٍۭ بَرَرَةٍ",
-    "focus": "مٍۭ بَ",
-    "stop": false
+    "text": "مَنۢ بَخِلَ",
+    "focus": "نۢ بَ",
+    "stop": false,
+    "note": "Before ب the ن of مَنۢ becomes a hidden م, with a two-count غنة.",
+    "role": "anchor"
    },
    {
     "verse": "80:27",
@@ -1729,15 +2697,29 @@
     "word_to": 1,
     "text": "فَأَنۢبَتْنَا",
     "focus": "نۢبَ",
-    "stop": false
+    "stop": false,
+    "note": "Inside one word: نۢب is said as a hidden م before the ب, with a غنة.",
+    "role": "hear"
    },
    {
-    "verse": "92:8",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "مَنۢ بَخِلَ",
+    "verse": "80:16",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "كِرَامٍۭ بَرَرَةٍ",
+    "focus": "مٍۭ بَ",
+    "stop": true,
+    "note": "The تنوين of كِرَامٍۭ turns into a hidden م before بَرَرَةٍ.",
+    "role": "hear"
+   },
+   {
+    "verse": "98:4",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "مِنۢ بَعْدِ",
     "focus": "نۢ بَ",
-    "stop": false
+    "stop": false,
+    "note": "مِنۢ بَعْدِ: a hidden م and a غنة, then the ب.",
+    "role": "say"
    },
    {
     "verse": "104:4",
@@ -1745,7 +2727,19 @@
     "word_to": 2,
     "text": "لَيُنۢبَذَنَّ",
     "focus": "نۢبَ",
-    "stop": false
+    "stop": false,
+    "note": "The ن in لَيُنۢبَذَنَّ becomes a hidden م before the ب.",
+    "role": "say"
+   },
+   {
+    "verse": "96:15",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "لَنَسْفَعًۢا بِٱلنَّاصِيَةِ",
+    "focus": "عًۢا بِ",
+    "stop": true,
+    "note": "The tanween-written ن of لَنَسْفَعًۢا turns into a hidden م before بِٱلنَّاصِيَةِ.",
+    "role": "say"
    },
    {
     "verse": "89:23",
@@ -1753,15 +2747,39 @@
     "word_to": 3,
     "text": "يَوْمَئِذٍۭ بِجَهَنَّمَ",
     "focus": "ذٍۭ بِ",
-    "stop": false
+    "stop": false,
+    "note": "Before ب the تنوين of يَوْمَئِذٍۭ becomes a hidden م, with a two-count غنة.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "idgh-g",
+     "verse": "89:23",
+     "word_from": 4,
+     "word_to": 5,
+     "text": "يَوْمَئِذٍ يَتَذَكَّرُ",
+     "focus": "ذٍ يَ",
+     "stop": false,
+     "note": "Before ي the same تنوين merges into the ي with a غنة; no م is heard."
+    }
    },
    {
-    "verse": "91:12",
+    "verse": "86:7",
     "word_from": 2,
-    "word_to": 2,
-    "text": "ٱنۢبَعَثَ",
-    "focus": "نۢبَ",
-    "stop": false
+    "word_to": 3,
+    "text": "مِنۢ بَيْنِ",
+    "focus": "نۢ بَ",
+    "stop": false,
+    "note": "مِنۢ بَيْنِ: hidden م and غنة before the ب.",
+    "role": "more"
+   },
+   {
+    "verse": "2:33",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أَنۢبِئْهُم",
+    "focus": "نۢبِ",
+    "stop": false,
+    "note": "أَنۢبِئْهُم: hidden م with غنة before the ب in one word.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -1812,28 +2830,104 @@
   "tip": "Don't press the tongue on the gum as for a full ن, and don't hold the tongue on the next letter's place before its time.",
   "examples": [
    {
-    "verse": "2:3",
-    "word_from": 8,
-    "word_to": 8,
-    "text": "يُنفِقُونَ",
-    "focus": "نفِ",
-    "stop": false
+    "verse": "113:2",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "مِن شَرِّ",
+    "focus": "ن شَ",
+    "stop": false,
+    "note": "The ن of مِن is hidden: no full ن, a two-count غنة flows into the ش.",
+    "role": "anchor"
    },
    {
-    "verse": "2:4",
-    "word_from": 8,
-    "word_to": 9,
-    "text": "مِن قَبْلِكَ",
-    "focus": "ن قَ",
-    "stop": false
+    "verse": "109:3",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أَنتُمْ",
+    "focus": "نتُ",
+    "stop": false,
+    "note": "Inside أَنتُمْ the ن is hidden before ت, with a light two-count غنة.",
+    "role": "hear"
    },
    {
-    "verse": "3:4",
-    "word_from": 13,
-    "word_to": 14,
-    "text": "عَذَابٌ شَدِيدٌ",
-    "focus": "بٌ شَ",
-    "stop": false
+    "verse": "111:3",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "نَارًا ذَاتَ",
+    "focus": "ا ذَ",
+    "stop": false,
+    "note": "The تنوين of نَارًا is hidden before the ذ of ذَاتَ, with a light غنة.",
+    "role": "hear"
+   },
+   {
+    "verse": "86:10",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "مِن قُوَّةٍ",
+    "focus": "ن قُ",
+    "stop": false,
+    "note": "Before ق the hidden ن of مِن has a heavy, full غنة.",
+    "role": "say"
+   },
+   {
+    "verse": "84:9",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَيَنقَلِبُ",
+    "focus": "نقَ",
+    "stop": false,
+    "note": "Inside وَيَنقَلِبُ the ن is hidden before the heavy ق: a heavy غنة.",
+    "role": "say"
+   },
+   {
+    "verse": "78:40",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "عَذَابًا قَرِيبًا",
+    "focus": "ا قَ",
+    "stop": false,
+    "note": "The تنوين of عَذَابًا is hidden before ق, with a heavy غنة.",
+    "role": "say"
+   },
+   {
+    "verse": "80:10",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "فَأَنتَ",
+    "focus": "نتَ",
+    "stop": false,
+    "note": "In فَأَنتَ the ن is hidden in a غنة before the ت.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "izhar",
+     "verse": "80:10",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "عَنْهُ",
+     "focus": "نْهُ",
+     "stop": false,
+     "note": "In عَنْهُ, right after, the ن is clear before ه: no hidden غنة."
+    }
+   },
+   {
+    "verse": "78:40",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "يَنظُرُ",
+    "focus": "نظُ",
+    "stop": false,
+    "note": "The ن in يَنظُرُ is hidden before ظ, with a heavy غنة.",
+    "role": "more"
+   },
+   {
+    "verse": "88:6",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "مِن ضَرِيعٍ",
+    "focus": "ن ضَ",
+    "stop": true,
+    "note": "The ن of مِن is hidden before ض, with a heavy غنة.",
+    "role": "more"
    },
    {
     "verse": "2:22",
@@ -1841,56 +2935,9 @@
     "word_to": 21,
     "text": "أَندَادًا",
     "focus": "ندَ",
-    "stop": false
-   },
-   {
-    "verse": "78:40",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "عَذَابًا قَرِيبًا",
-    "focus": "بًا قَ",
-    "stop": false
-   },
-   {
-    "verse": "79:37",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "مَن طَغَىٰ",
-    "focus": "ن طَ",
     "stop": false,
-    "note": "heavy غنة before ط"
-   },
-   {
-    "verse": "80:8",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "مَن جَآءَكَ",
-    "focus": "ن جَ",
-    "stop": false
-   },
-   {
-    "verse": "81:19",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "رَسُولٍ كَرِيمٍ",
-    "focus": "لٍ كَ",
-    "stop": false
-   },
-   {
-    "verse": "78:18",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "يُنفَخُ",
-    "focus": "نفَ",
-    "stop": false
-   },
-   {
-    "verse": "79:45",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "مُنذِرُ",
-    "focus": "نذِ",
-    "stop": false
+    "note": "In أَندَادًا the ن is hidden before د, with a light غنة.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -1945,15 +2992,9 @@
     "word_to": 2,
     "text": "تَرْمِيهِم بِحِجَارَةٍ",
     "focus": "م بِ",
-    "stop": false
-   },
-   {
-    "verse": "3:101",
-    "word_from": 10,
-    "word_to": 12,
-    "text": "وَمَن يَعْتَصِم بِٱللَّهِ",
-    "focus": "م بِ",
-    "stop": false
+    "stop": false,
+    "note": "The م before ب is hidden with a two-count hum, then the ب.",
+    "role": "anchor"
    },
    {
     "verse": "79:14",
@@ -1961,7 +3002,9 @@
     "word_to": 3,
     "text": "هُم بِٱلسَّاهِرَةِ",
     "focus": "م بِ",
-    "stop": false
+    "stop": false,
+    "note": "هُم بِـ: a hidden م with a held hum.",
+    "role": "hear"
    },
    {
     "verse": "81:22",
@@ -1969,15 +3012,19 @@
     "word_to": 3,
     "text": "صَاحِبُكُم بِمَجْنُونٍ",
     "focus": "م بِ",
-    "stop": false
+    "stop": false,
+    "note": "صَاحِبُكُم بِـ: the hum is held before the ب.",
+    "role": "hear"
    },
    {
-    "verse": "84:24",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "فَبَشِّرْهُم بِعَذَابٍ",
+    "verse": "96:14",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "يَعْلَم بِأَنَّ",
     "focus": "م بِ",
-    "stop": false
+    "stop": false,
+    "note": "يَعْلَم بِأَنَّ: the م of the verb is hidden before ب, two counts.",
+    "role": "say"
    },
    {
     "verse": "88:22",
@@ -1985,15 +3032,9 @@
     "word_to": 3,
     "text": "عَلَيْهِم بِمُصَيْطِرٍ",
     "focus": "م بِ",
-    "stop": false
-   },
-   {
-    "verse": "100:11",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "رَبَّهُم بِهِمْ",
-    "focus": "م بِ",
-    "stop": false
+    "stop": false,
+    "note": "عَلَيْهِم بِـ: a hidden م, two counts.",
+    "role": "say"
    },
    {
     "verse": "91:14",
@@ -2001,7 +3042,39 @@
     "word_to": 6,
     "text": "رَبُّهُم بِذَنۢبِهِمْ",
     "focus": "م بِ",
-    "stop": false
+    "stop": false,
+    "note": "A hidden م, then in بِذَنۢبِهِمْ the نۢ turns into a hidden م too (إقلاب).",
+    "role": "say"
+   },
+   {
+    "verse": "100:11",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "رَبَّهُم بِهِمْ",
+    "focus": "م بِ",
+    "stop": false,
+    "note": "رَبَّهُم بِهِمْ: the first م, before ب, is hidden with a hum.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "m-izhar",
+     "verse": "98:8",
+     "word_from": 3,
+     "word_to": 4,
+     "text": "رَبِّهِمْ جَنَّٰتُ",
+     "focus": "مْ جَ",
+     "stop": false,
+     "note": "رَبِّهِمْ before ج: the م is clear, no hum held."
+    }
+   },
+   {
+    "verse": "3:101",
+    "word_from": 11,
+    "word_to": 12,
+    "text": "يَعْتَصِم بِٱللَّهِ",
+    "focus": "م بِ",
+    "stop": false,
+    "note": "A hidden م before بِٱللَّهِ.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -2043,20 +3116,24 @@
   },
   "examples": [
    {
-    "verse": "2:249",
-    "word_from": 49,
-    "word_to": 50,
-    "text": "كَم مِّن",
+    "verse": "106:4",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "أَطْعَمَهُم مِّن",
     "focus": "م مِّ",
-    "stop": false
+    "stop": false,
+    "note": "The two م become one doubled مّ, held two counts with a hum.",
+    "role": "anchor"
    },
    {
-    "verse": "2:134",
-    "word_from": 8,
-    "word_to": 9,
-    "text": "وَلَكُم مَّا",
-    "focus": "م مَّ",
-    "stop": false
+    "verse": "106:4",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "وَءَامَنَهُم مِّنْ",
+    "focus": "م مِّ",
+    "stop": false,
+    "note": "Again هُم before مِن: one doubled مّ with a hum.",
+    "role": "hear"
    },
    {
     "verse": "83:4",
@@ -2064,23 +3141,9 @@
     "word_to": 5,
     "text": "أَنَّهُم مَّبْعُوثُونَ",
     "focus": "م مَّ",
-    "stop": false
-   },
-   {
-    "verse": "83:14",
-    "word_from": 5,
-    "word_to": 6,
-    "text": "قُلُوبِهِم مَّا",
-    "focus": "م مَّ",
-    "stop": false
-   },
-   {
-    "verse": "85:20",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "وَرَآئِهِم مُّحِيطٌۢ",
-    "focus": "م مُّ",
-    "stop": false
+    "stop": false,
+    "note": "A doubled مّ with a فتحة, held with a hum.",
+    "role": "hear"
    },
    {
     "verse": "97:4",
@@ -2088,7 +3151,29 @@
     "word_to": 7,
     "text": "رَبِّهِم مِّن",
     "focus": "م مِّ",
-    "stop": false
+    "stop": false,
+    "note": "Say it as one مّ with a two-count hum.",
+    "role": "say"
+   },
+   {
+    "verse": "83:14",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "قُلُوبِهِم مَّا",
+    "focus": "م مَّ",
+    "stop": false,
+    "note": "Merge into مَّا and hold the hum.",
+    "role": "say"
+   },
+   {
+    "verse": "2:249",
+    "word_from": 49,
+    "word_to": 50,
+    "text": "كَم مِّن",
+    "focus": "م مِّ",
+    "stop": false,
+    "note": "كَم مِّن: the classic case, one doubled مّ.",
+    "role": "say"
    },
    {
     "verse": "104:8",
@@ -2096,15 +3181,29 @@
     "word_to": 3,
     "text": "عَلَيْهِم مُّؤْصَدَةٌ",
     "focus": "م مُّ",
-    "stop": false
+    "stop": false,
+    "note": "عَلَيْهِم before م: the lips stay closed and hum two counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "m-izhar",
+     "verse": "105:3",
+     "word_from": 2,
+     "word_to": 3,
+     "text": "عَلَيْهِمْ طَيْرًا",
+     "focus": "مْ طَ",
+     "stop": false,
+     "note": "عَلَيْهِمْ before ط: the lips close once, no hum held."
+    }
    },
    {
-    "verse": "106:4",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "أَطْعَمَهُم مِّن",
-    "focus": "م مِّ",
-    "stop": false
+    "verse": "4:109",
+    "word_from": 14,
+    "word_to": 15,
+    "text": "أَم مَّن",
+    "focus": "م مَّ",
+    "stop": false,
+    "note": "أَم مَّن: the م of أَمْ merges into the م of مَن.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -2145,76 +3244,104 @@
   "tip": "Be extra clear before و and ف. They are made with the lips too, so the ميم easily slides into them (تحفة الأطفال: «وَاحْذَرْ لَدَى وَاوٍ وَفَا أَنْ تَخْتَفِي»).",
   "examples": [
    {
-    "verse": "1:7",
-    "word_from": 7,
-    "word_to": 8,
-    "text": "عَلَيْهِمْ وَلَا",
-    "focus": "مْ وَ",
-    "stop": false
-   },
-   {
-    "verse": "2:39",
-    "word_from": 8,
-    "word_to": 9,
-    "text": "هُمْ فِيهَا",
-    "focus": "مْ فِ",
-    "stop": false
-   },
-   {
     "verse": "105:1",
     "word_from": 1,
     "word_to": 2,
     "text": "أَلَمْ تَرَ",
     "focus": "مْ تَ",
-    "stop": false
+    "stop": false,
+    "note": "The lips close once on the مْ and open into the ت: no held hum.",
+    "role": "anchor"
    },
    {
-    "verse": "78:3",
+    "verse": "105:2",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "كَيْدَهُمْ فِى",
+    "focus": "مْ فِ",
+    "stop": false,
+    "note": "Before ف keep the مْ clear: close the lips fully, then the ف.",
+    "role": "hear"
+   },
+   {
+    "verse": "107:7",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَيَمْنَعُونَ",
+    "focus": "مْنَ",
+    "stop": false,
+    "note": "Inside one word: the مْ is clear before the ن.",
+    "role": "hear"
+   },
+   {
+    "verse": "109:6",
     "word_from": 2,
     "word_to": 3,
-    "text": "هُمْ فِيهِ",
-    "focus": "مْ فِ",
-    "stop": false
+    "text": "دِينُكُمْ وَلِىَ",
+    "focus": "مْ وَ",
+    "stop": false,
+    "note": "Before و keep the مْ clear: the lips close, then round for the و.",
+    "role": "say"
    },
    {
-    "verse": "78:6",
+    "verse": "105:3",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "عَلَيْهِمْ طَيْرًا",
+    "focus": "مْ طَ",
+    "stop": false,
+    "note": "A clear مْ before the heavy ط: close the lips once, then ط.",
+    "role": "say"
+   },
+   {
+    "verse": "105:5",
     "word_from": 1,
     "word_to": 2,
-    "text": "أَلَمْ نَجْعَلِ",
-    "focus": "مْ نَ",
-    "stop": false
+    "text": "فَجَعَلَهُمْ كَعَصْفٍ",
+    "focus": "مْ كَ",
+    "stop": false,
+    "note": "A clear مْ before the ك, in a longer word.",
+    "role": "say"
    },
    {
-    "verse": "1:7",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "عَلَيْهِمْ غَيْرِ",
-    "focus": "مْ غَ",
-    "stop": false
+    "verse": "105:2",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "أَلَمْ يَجْعَلْ",
+    "focus": "مْ يَ",
+    "stop": false,
+    "note": "لَمْ: the lips close once and open, with no hum held.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "ghunnah",
+     "verse": "86:4",
+     "word_from": 4,
+     "word_to": 4,
+     "text": "لَّمَّا",
+     "focus": "مَّ",
+     "stop": false,
+     "note": "لَّمَّا: the doubled مّ is held two counts with a hum."
+    }
    },
    {
-    "verse": "79:33",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "لَّكُمْ وَلِأَنْعَٰمِكُمْ",
+    "verse": "106:2",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "إِۦلَٰفِهِمْ رِحْلَةَ",
+    "focus": "مْ رِ",
+    "stop": false,
+    "note": "A clear مْ before the ر.",
+    "role": "more"
+   },
+   {
+    "verse": "98:8",
+    "word_from": 15,
+    "word_to": 16,
+    "text": "عَنْهُمْ وَرَضُوا۟",
     "focus": "مْ وَ",
-    "stop": false
-   },
-   {
-    "verse": "78:37",
-    "word_from": 8,
-    "word_to": 8,
-    "text": "يَمْلِكُونَ",
-    "focus": "مْلِ",
-    "stop": false
-   },
-   {
-    "verse": "83:16",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "إِنَّهُمْ لَصَالُوا۟",
-    "focus": "مْ لَ",
-    "stop": false
+    "stop": false,
+    "note": "Another clear مْ before و.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -2257,28 +3384,24 @@
   "tip": "Keep both counts. It is easy to clip the غنة in short words like إِنَّ and ثُمَّ.",
   "examples": [
    {
-    "verse": "2:6",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "إِنَّ",
-    "focus": "نَّ",
-    "stop": false
-   },
-   {
-    "verse": "2:28",
-    "word_from": 7,
-    "word_to": 7,
-    "text": "ثُمَّ",
-    "focus": "مَّ",
-    "stop": false
-   },
-   {
     "verse": "114:6",
     "word_from": 2,
     "word_to": 2,
     "text": "ٱلْجِنَّةِ",
     "focus": "نَّ",
-    "stop": false
+    "stop": false,
+    "note": "A nasal hum on the نّ, held two counts.",
+    "role": "anchor"
+   },
+   {
+    "verse": "78:17",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "إِنَّ",
+    "focus": "نَّ",
+    "stop": false,
+    "note": "A nasal hum on the نّ, held two counts.",
+    "role": "hear"
    },
    {
     "verse": "78:1",
@@ -2286,7 +3409,9 @@
     "word_to": 1,
     "text": "عَمَّ",
     "focus": "مَّ",
-    "stop": false
+    "stop": false,
+    "note": "A nasal hum on the مّ, held two counts.",
+    "role": "hear"
    },
    {
     "verse": "78:2",
@@ -2294,23 +3419,29 @@
     "word_to": 2,
     "text": "ٱلنَّبَإِ",
     "focus": "نَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ل of ال is silent and the ن doubled: the نّ keeps its two-count غنة.",
+    "role": "say"
    },
    {
-    "verse": "114:4",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلْخَنَّاسِ",
+    "verse": "79:11",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "كُنَّا",
     "focus": "نَّ",
-    "stop": false
+    "stop": false,
+    "note": "A nasal hum on the نّ, held two counts.",
+    "role": "say"
    },
    {
-    "verse": "108:3",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "إِنَّ",
+    "verse": "78:21",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "جَهَنَّمَ",
     "focus": "نَّ",
-    "stop": false
+    "stop": false,
+    "note": "A nasal hum on the نّ, held two counts.",
+    "role": "say"
    },
    {
     "verse": "80:21",
@@ -2318,7 +3449,19 @@
     "word_to": 1,
     "text": "ثُمَّ",
     "focus": "مَّ",
-    "stop": false
+    "stop": false,
+    "note": "The مّ of ثُمَّ: lips closed, a hum through the nose for two counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "80:21",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "أَمَاتَهُۥ",
+     "focus": "مَا",
+     "stop": false,
+     "note": "The مَا of أَمَاتَهُۥ: also two counts, but an open vowel, with no hum."
+    }
    }
   ],
   "sources": [
@@ -2351,44 +3494,34 @@
   "letters": "ء ب غ ح ج ك و خ ف ع ق ي م ه",
   "examples": [
    {
+    "verse": "114:4",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْوَسْوَاسِ",
+    "focus": "ٱلْوَ",
+    "stop": false,
+    "note": "ل before و: said clearly, with سكون.",
+    "role": "anchor"
+   },
+   {
     "verse": "1:2",
     "word_from": 1,
     "word_to": 1,
     "text": "ٱلْحَمْدُ",
     "focus": "ٱلْحَ",
-    "stop": false
+    "stop": false,
+    "note": "ل before ح: clear. Starting the ayah here, the ٱ has a فتحة: اَلْحَمْدُ.",
+    "role": "hear"
    },
    {
-    "verse": "54:1",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلْقَمَرُ",
+    "verse": "91:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْقَمَرِ",
     "focus": "ٱلْقَ",
-    "stop": false
-   },
-   {
-    "verse": "1:6",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلْمُسْتَقِيمَ",
-    "focus": "ٱلْمُ",
-    "stop": false
-   },
-   {
-    "verse": "113:1",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلْفَلَقِ",
-    "focus": "ٱلْفَ",
-    "stop": false
-   },
-   {
-    "verse": "97:1",
-    "word_from": 5,
-    "word_to": 5,
-    "text": "ٱلْقَدْرِ",
-    "focus": "ٱلْقَ",
-    "stop": false
+    "stop": false,
+    "note": "ل before ق: said clearly, with سكون.",
+    "role": "hear"
    },
    {
     "verse": "105:1",
@@ -2396,23 +3529,29 @@
     "word_to": 7,
     "text": "ٱلْفِيلِ",
     "focus": "ٱلْفِ",
-    "stop": false
+    "stop": true,
+    "note": "ل before ف: said clearly, with سكون.",
+    "role": "say"
    },
    {
-    "verse": "101:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "ٱلْقَارِعَةُ",
-    "focus": "ٱلْقَ",
-    "stop": false
+    "verse": "108:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْكَوْثَرَ",
+    "focus": "ٱلْكَ",
+    "stop": true,
+    "note": "ل before ك: said clearly, with سكون.",
+    "role": "say"
    },
    {
-    "verse": "103:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "وَٱلْعَصْرِ",
-    "focus": "ٱلْعَ",
-    "stop": false
+    "verse": "87:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْأَعْلَى",
+    "focus": "ٱلْأَ",
+    "stop": true,
+    "note": "ل before a همزة: clear, then the همزة in full.",
+    "role": "say"
    }
   ],
   "sources": [
@@ -2446,23 +3585,19 @@
     "word_to": 1,
     "text": "ٱلرَّحْمَٰنِ",
     "focus": "ٱلرَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ل is not said; it merges into the ر, which is doubled.",
+    "role": "anchor"
    },
    {
-    "verse": "91:1",
+    "verse": "79:3",
     "word_from": 1,
     "word_to": 1,
-    "text": "وَٱلشَّمْسِ",
-    "focus": "ٱلشَّ",
-    "stop": false
-   },
-   {
-    "verse": "114:1",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلنَّاسِ",
-    "focus": "ٱلنَّ",
-    "stop": false
+    "text": "وَٱلسَّٰبِحَٰتِ",
+    "focus": "ٱلسَّٰ",
+    "stop": false,
+    "note": "The ل is not said; it merges into the س, which is doubled.",
+    "role": "hear"
    },
    {
     "verse": "1:6",
@@ -2470,31 +3605,9 @@
     "word_to": 2,
     "text": "ٱلصِّرَٰطَ",
     "focus": "ٱلصِّ",
-    "stop": false
-   },
-   {
-    "verse": "81:1",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ٱلشَّمْسُ",
-    "focus": "ٱلشَّ",
-    "stop": false
-   },
-   {
-    "verse": "86:1",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "وَٱلطَّارِقِ",
-    "focus": "ٱلطَّ",
-    "stop": false
-   },
-   {
-    "verse": "93:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "وَٱلضُّحَىٰ",
-    "focus": "ٱلضُّ",
-    "stop": false
+    "stop": false,
+    "note": "The ل is not said; it merges into the ص, which is doubled.",
+    "role": "hear"
    },
    {
     "verse": "95:1",
@@ -2502,7 +3615,9 @@
     "word_to": 1,
     "text": "وَٱلتِّينِ",
     "focus": "ٱلتِّ",
-    "stop": false
+    "stop": false,
+    "note": "The ل is not said; it merges into the ت, which is doubled.",
+    "role": "say"
    },
    {
     "verse": "92:1",
@@ -2510,7 +3625,39 @@
     "word_to": 1,
     "text": "وَٱلَّيْلِ",
     "focus": "ٱلَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ل of ال merges into the ل after it: one doubled ل.",
+    "role": "say"
+   },
+   {
+    "verse": "93:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلضُّحَىٰ",
+    "focus": "ٱلضُّ",
+    "stop": true,
+    "note": "The ل is not said; it merges into the ض, which is doubled.",
+    "role": "say"
+   },
+   {
+    "verse": "91:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلشَّمْسِ",
+    "focus": "ٱلشَّ",
+    "stop": false,
+    "note": "The ل is silent and the ش is doubled: وَشَّمْسِ.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "lam-q",
+     "verse": "91:2",
+     "word_from": 1,
+     "word_to": 1,
+     "text": "وَٱلْقَمَرِ",
+     "focus": "ٱلْقَ",
+     "stop": false,
+     "note": "Here the ل is said, with سكون, before the ق: وَلْقَمَرِ."
+    }
    }
   ],
   "sources": [
@@ -2538,28 +3685,14 @@
   "definition": "The ل in the name اللَّه (and in اللَّهُمَّ) is heavy, with a full mouth, after a فتحة or a ضمة. When you start from the name itself, its همزة الوصل has a فتحة, so the ل is heavy too.",
   "examples": [
    {
-    "verse": "3:55",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "قَالَ ٱللَّهُ",
-    "focus": "ٱللَّ",
-    "stop": false
-   },
-   {
-    "verse": "110:1",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "نَصْرُ ٱللَّهِ",
-    "focus": "ٱللَّ",
-    "stop": false
-   },
-   {
     "verse": "112:1",
     "word_from": 2,
     "word_to": 3,
     "text": "هُوَ ٱللَّهُ",
     "focus": "ٱللَّ",
-    "stop": false
+    "stop": false,
+    "note": "After the فتحة of هُوَ: the ل of the name is heavy, the mouth full.",
+    "role": "anchor"
    },
    {
     "verse": "112:2",
@@ -2568,31 +3701,8 @@
     "text": "ٱللَّهُ",
     "focus": "ٱللَّ",
     "stop": false,
-    "note": "Starting from the name: heavy."
-   },
-   {
-    "verse": "104:6",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "نَارُ ٱللَّهِ",
-    "focus": "ٱللَّ",
-    "stop": false
-   },
-   {
-    "verse": "96:14",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "بِأَنَّ ٱللَّهَ",
-    "focus": "ٱللَّ",
-    "stop": false
-   },
-   {
-    "verse": "98:8",
-    "word_from": 13,
-    "word_to": 14,
-    "text": "رَّضِىَ ٱللَّهُ",
-    "focus": "ٱللَّ",
-    "stop": false
+    "note": "Starting on the name: the ٱ takes a فتحة, so the ل is heavy.",
+    "role": "hear"
    },
    {
     "verse": "91:13",
@@ -2600,7 +3710,69 @@
     "word_to": 4,
     "text": "رَسُولُ ٱللَّهِ",
     "focus": "ٱللَّ",
-    "stop": false
+    "stop": false,
+    "note": "After the ضمة of رَسُولُ: heavy.",
+    "role": "hear"
+   },
+   {
+    "verse": "85:20",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "After the فتحة of وَ: heavy.",
+    "role": "say"
+   },
+   {
+    "verse": "104:6",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "نَارُ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "After the ضمة of نَارُ: heavy.",
+    "role": "say"
+   },
+   {
+    "verse": "79:25",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "فَأَخَذَهُ ٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "After the ضمة of هُ: heavy. The هُ is short here: no صلة before the ٱ.",
+    "role": "say"
+   },
+   {
+    "verse": "110:1",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "نَصْرُ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "After the ضمة of نَصْرُ: the ل of the name is heavy.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "lam-q",
+     "verse": "110:1",
+     "word_from": 5,
+     "word_to": 5,
+     "text": "وَٱلْفَتْحُ",
+     "focus": "ٱلْ",
+     "stop": true,
+     "note": "The ل of ال: said clearly with سكون, and light."
+    }
+   },
+   {
+    "verse": "10:10",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "سُبْحَٰنَكَ ٱللَّهُمَّ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "In ٱللَّهُمَّ too: after the فتحة of كَ, heavy.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -2632,20 +3804,24 @@
   "definition": "The ل in the name اللَّه is light after a كسرة, whether the كسرة is original or added to join the words (قُلِ ٱللَّهُمَّ), and whether it is in the same word (لِلَّهِ) or the word before.",
   "examples": [
    {
-    "verse": "1:1",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "بِسْمِ ٱللَّهِ",
-    "focus": "ٱللَّ",
-    "stop": false
-   },
-   {
     "verse": "1:2",
     "word_from": 2,
     "word_to": 2,
     "text": "لِلَّهِ",
     "focus": "لِلَّ",
-    "stop": false
+    "stop": false,
+    "note": "The كسرة is in the word itself (لِ): the ل of the name is light.",
+    "role": "anchor"
+   },
+   {
+    "verse": "110:2",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "دِينِ ٱللَّهِ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "After the كسرة of دِينِ: light.",
+    "role": "hear"
    },
    {
     "verse": "3:26",
@@ -2654,15 +3830,38 @@
     "text": "قُلِ ٱللَّهُمَّ",
     "focus": "ٱللَّ",
     "stop": false,
-    "note": "The كسرة on قُلِ is added to join the words; the ل is still light."
+    "note": "The كسرة on قُلِ is added to join the words; the ل is still light.",
+    "role": "hear"
    },
    {
-    "verse": "110:2",
-    "word_from": 5,
-    "word_to": 6,
-    "text": "دِينِ ٱللَّهِ",
+    "verse": "3:109",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَلِلَّهِ",
+    "focus": "لِلَّ",
+    "stop": false,
+    "note": "After the كسرة of the لِ in وَلِلَّهِ: light.",
+    "role": "say"
+   },
+   {
+    "verse": "30:5",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "بِنَصْرِ ٱللَّهِ",
     "focus": "ٱللَّ",
-    "stop": false
+    "stop": false,
+    "note": "After the كسرة of بِنَصْرِ: light.",
+    "role": "say"
+   },
+   {
+    "verse": "3:150",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "بَلِ ٱللَّهُ",
+    "focus": "ٱللَّ",
+    "stop": false,
+    "note": "بَلْ takes a كسرة to join: بَلِ. The ل of the name is light.",
+    "role": "say"
    },
    {
     "verse": "85:8",
@@ -2670,15 +3869,19 @@
     "word_to": 7,
     "text": "بِٱللَّهِ",
     "focus": "بِٱللَّ",
-    "stop": false
-   },
-   {
-    "verse": "82:19",
-    "word_from": 9,
-    "word_to": 9,
-    "text": "لِّلَّهِ",
-    "focus": "لِّلَّ",
-    "stop": false
+    "stop": false,
+    "note": "After the كسرة of بِ: light.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "lam-jh",
+     "verse": "85:9",
+     "word_from": 6,
+     "word_to": 6,
+     "text": "وَٱللَّهُ",
+     "focus": "ٱللَّ",
+     "stop": false,
+     "note": "After the فتحة of وَ: heavy."
+    }
    }
   ],
   "sources": [
@@ -2737,70 +3940,54 @@
   ],
   "examples": [
    {
-    "verse": "1:2",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "رَبِّ",
+    "verse": "99:5",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "رَبَّكَ",
     "focus": "رَ",
-    "stop": false
-   },
-   {
-    "verse": "19:16",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "مَرْيَمَ",
-    "focus": "مَرْ",
-    "stop": false
-   },
-   {
-    "verse": "89:28",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "ٱرْجِعِىٓ",
-    "focus": "ٱرْ",
     "stop": false,
-    "note": "Heavy when you start here with the كسرة of همزة الوصل, and when you join it to the ayah before."
+    "note": "The ر with فتحة is full and heavy.",
+    "role": "anchor"
    },
    {
-    "verse": "78:21",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "مِرْصَادًا",
+    "verse": "102:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "زُرْتُمُ",
+    "focus": "زُرْ",
+    "stop": false,
+    "note": "رْ after a ضمة: heavy.",
+    "role": "hear"
+   },
+   {
+    "verse": "100:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "فَأَثَرْنَ",
+    "focus": "ثَرْ",
+    "stop": false,
+    "note": "رْ after a فتحة: heavy.",
+    "role": "hear"
+   },
+   {
+    "verse": "98:6",
+    "word_from": 15,
+    "word_to": 15,
+    "text": "شَرُّ",
+    "focus": "شَرُّ",
+    "stop": false,
+    "note": "The ر with ضمة: heavy.",
+    "role": "say"
+   },
+   {
+    "verse": "89:14",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "لَبِٱلْمِرْصَادِ",
     "focus": "مِرْ",
-    "stop": false
-   },
-   {
-    "verse": "108:1",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلْكَوْثَرَ",
-    "focus": "ثَرَ",
-    "stop": false
-   },
-   {
-    "verse": "110:1",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "نَصْرُ",
-    "focus": "رُ",
-    "stop": false
-   },
-   {
-    "verse": "105:4",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "تَرْمِيهِم",
-    "focus": "تَرْ",
-    "stop": false
-   },
-   {
-    "verse": "89:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "وَٱلْفَجْرِ",
-    "focus": "جْرِ",
-    "stop": true,
-    "note": "Stopping: وَٱلْفَجْرْ. The letter before the ر is ساكن and before that is a فتحة."
+    "stop": false,
+    "note": "رْ after a كسرة, but ص comes next in the word: heavy.",
+    "role": "say"
    },
    {
     "verse": "103:2",
@@ -2809,15 +3996,48 @@
     "text": "خُسْرٍ",
     "focus": "سْرٍ",
     "stop": true,
-    "note": "Stopping: خُسْرْ, after a ضمة."
+    "note": "Stopping with سكون: خُسْرْ. A ساكن then a ضمة before it: heavy.",
+    "role": "say"
    },
    {
-    "verse": "89:14",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "لَبِٱلْمِرْصَادِ",
-    "focus": "مِرْ",
-    "stop": false
+    "verse": "98:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "رَسُولٌ",
+    "focus": "رَ",
+    "stop": false,
+    "note": "رَسُولٌ: the ر with فتحة is full, like a heavy letter.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "basics",
+     "verse": "94:1",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "لَكَ",
+     "focus": "لَ",
+     "stop": false,
+     "note": "لَكَ: the ل with فتحة stays thin."
+    }
+   },
+   {
+    "verse": "89:28",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "ٱرْجِعِىٓ",
+    "focus": "ٱرْ",
+    "stop": false,
+    "note": "Starting here: إِرْجِعِي. The كسرة of همزة الوصل is not original: heavy.",
+    "role": "more"
+   },
+   {
+    "verse": "97:5",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "ٱلْفَجْرِ",
+    "focus": "جْرِ",
+    "stop": true,
+    "note": "Stopping with سكون: ٱلْفَجْرْ. A ساكن then a فتحة before it: heavy.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -2876,37 +4096,14 @@
   ],
   "examples": [
    {
-    "verse": "24:37",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "رِجَالٌ",
+    "verse": "100:8",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْخَيْرِ",
     "focus": "رِ",
-    "stop": false
-   },
-   {
-    "verse": "2:49",
-    "word_from": 5,
-    "word_to": 5,
-    "text": "فِرْعَوْنَ",
-    "focus": "فِرْ",
-    "stop": false
-   },
-   {
-    "verse": "2:20",
-    "word_from": 25,
-    "word_to": 25,
-    "text": "قَدِيرٌ",
-    "focus": "رٌ",
-    "stop": true,
-    "note": "Stopping: قَدِيرْ, after يْ."
-   },
-   {
-    "verse": "114:4",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "شَرِّ",
-    "focus": "رِّ",
-    "stop": false
+    "stop": false,
+    "note": "The ر with كسرة is thin and light.",
+    "role": "anchor"
    },
    {
     "verse": "98:7",
@@ -2914,7 +4111,9 @@
     "word_to": 9,
     "text": "ٱلْبَرِيَّةِ",
     "focus": "رِ",
-    "stop": false
+    "stop": true,
+    "note": "The ر with كسرة: light, even stopping (the ر is not the last letter).",
+    "role": "hear"
    },
    {
     "verse": "110:3",
@@ -2922,16 +4121,9 @@
     "word_to": 4,
     "text": "وَٱسْتَغْفِرْهُ",
     "focus": "فِرْ",
-    "stop": false
-   },
-   {
-    "verse": "89:5",
-    "word_from": 6,
-    "word_to": 6,
-    "text": "حِجْرٍ",
-    "focus": "جْرٍ",
-    "stop": true,
-    "note": "Stopping: حِجْرْ. The ج is ساكن and before it is a كسرة."
+    "stop": false,
+    "note": "رْ after a كسرة, no heavy letter after: light.",
+    "role": "hear"
    },
    {
     "verse": "100:11",
@@ -2940,7 +4132,28 @@
     "text": "لَّخَبِيرٌۢ",
     "focus": "يرٌۢ",
     "stop": true,
-    "note": "Stopping: لَخَبِيرْ, after يْ."
+    "note": "Stopping: لَخَبِيرْ. A ي before the ر: light.",
+    "role": "say"
+   },
+   {
+    "verse": "102:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْمَقَابِرَ",
+    "focus": "بِرَ",
+    "stop": true,
+    "note": "Stopping: ٱلْمَقَابِرْ. A كسرة right before the ر: light.",
+    "role": "say"
+   },
+   {
+    "verse": "89:5",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "حِجْرٍ",
+    "focus": "جْرٍ",
+    "stop": true,
+    "note": "Stopping: حِجْرْ. A ساكن ج, then a كسرة: light.",
+    "role": "say"
    },
    {
     "verse": "79:17",
@@ -2948,7 +4161,39 @@
     "word_to": 3,
     "text": "فِرْعَوْنَ",
     "focus": "فِرْ",
-    "stop": false
+    "stop": false,
+    "note": "فِرْعَوْنَ: رْ after a كسرة and no heavy letter after it: light.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "ra-h",
+     "verse": "89:14",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "لَبِٱلْمِرْصَادِ",
+     "focus": "مِرْ",
+     "stop": false,
+     "note": "مِرْصَادِ: the same رْ after a كسرة, but the ص after it makes it heavy."
+    }
+   },
+   {
+    "verse": "34:12",
+    "word_from": 10,
+    "word_to": 10,
+    "text": "ٱلْقِطْرِ",
+    "focus": "طْرِ",
+    "stop": true,
+    "note": "Stopping: ٱلْقِطْرْ. Both readings; light is preferred.",
+    "role": "more"
+   },
+   {
+    "verse": "89:4",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "يَسْرِ",
+    "focus": "سْرِ",
+    "stop": true,
+    "note": "Stopping: يَسْرْ. Both readings; light is preferred.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -2990,60 +4235,34 @@
   "tip": "It is an echo, not a vowel. Don't add a short \"uh\" after the letter.",
   "examples": [
    {
-    "verse": "2:27",
-    "word_from": 8,
-    "word_to": 8,
-    "text": "وَيَقْطَعُونَ",
-    "focus": "قْ",
-    "stop": false
-   },
-   {
-    "verse": "2:19",
-    "word_from": 9,
-    "word_to": 9,
-    "text": "يَجْعَلُونَ",
-    "focus": "جْ",
-    "stop": false
-   },
-   {
-    "verse": "4:124",
-    "word_from": 12,
-    "word_to": 12,
-    "text": "يَدْخُلُونَ",
-    "focus": "دْ",
-    "stop": false
-   },
-   {
-    "verse": "78:12",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "سَبْعًا",
-    "focus": "بْ",
-    "stop": false
-   },
-   {
-    "verse": "97:1",
-    "word_from": 5,
-    "word_to": 5,
-    "text": "ٱلْقَدْرِ",
-    "focus": "دْ",
-    "stop": false
-   },
-   {
     "verse": "112:3",
     "word_from": 2,
     "word_to": 2,
     "text": "يَلِدْ",
     "focus": "دْ",
-    "stop": false
+    "stop": false,
+    "note": "The دْ of يَلِدْ bounces lightly as you go on to وَلَمْ; no vowel is added.",
+    "role": "anchor"
    },
    {
-    "verse": "87:14",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "قَدْ",
+    "verse": "110:2",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "يَدْخُلُونَ",
     "focus": "دْ",
-    "stop": false
+    "stop": false,
+    "note": "دْ in the middle of يَدْخُلُونَ: a short bounce, then the خ.",
+    "role": "hear"
+   },
+   {
+    "verse": "111:5",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "حَبْلٌ",
+    "focus": "بْ",
+    "stop": false,
+    "note": "بْ in the middle of حَبْلٌ: a light bounce before the ل.",
+    "role": "hear"
    },
    {
     "verse": "85:12",
@@ -3051,7 +4270,69 @@
     "word_to": 2,
     "text": "بَطْشَ",
     "focus": "طْ",
-    "stop": false
+    "stop": false,
+    "note": "طْ in بَطْشَ: a firm bounce, the strongest قلقلة letter.",
+    "role": "say"
+   },
+   {
+    "verse": "84:25",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "أَجْرٌ",
+    "focus": "جْ",
+    "stop": false,
+    "note": "جْ in أَجْرٌ: a light bounce before the ر.",
+    "role": "say"
+   },
+   {
+    "verse": "90:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أُقْسِمُ",
+    "focus": "قْ",
+    "stop": false,
+    "note": "قْ in أُقْسِمُ: a light bounce before the س.",
+    "role": "say"
+   },
+   {
+    "verse": "90:12",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أَدْرَىٰكَ",
+    "focus": "دْ",
+    "stop": false,
+    "note": "دْ in أَدْرَىٰكَ bounces: you hear a small echo after the د.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "ikhfa",
+     "verse": "79:45",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "مُنذِرُ",
+     "focus": "نذِ",
+     "stop": false,
+     "note": "The ساكن ن in مُنذِرُ has no bounce: it is hidden in a غنة before the ذ."
+    }
+   },
+   {
+    "verse": "81:23",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَلَقَدْ",
+    "focus": "دْ",
+    "stop": false,
+    "note": "The دْ of وَلَقَدْ bounces lightly as you join it to رَءَاهُ.",
+    "role": "more"
+   },
+   {
+    "verse": "80:19",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "نُّطْفَةٍ",
+    "focus": "طْ",
+    "stop": false,
+    "note": "طْ in نُّطْفَةٍ: a firm bounce before the ف.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3089,7 +4370,9 @@
     "word_to": 4,
     "text": "ٱلْفَلَقِ",
     "focus": "قِ",
-    "stop": true
+    "stop": true,
+    "note": "Stop on ٱلْفَلَقِ: the vowel drops and the قْ bounces strongly (ٱلْفَلَقْ).",
+    "role": "anchor"
    },
    {
     "verse": "112:1",
@@ -3097,7 +4380,69 @@
     "word_to": 4,
     "text": "أَحَدٌ",
     "focus": "دٌ",
-    "stop": true
+    "stop": true,
+    "note": "Stop on أَحَدٌ: no تنوين is heard; the دْ bounces strongly.",
+    "role": "hear"
+   },
+   {
+    "verse": "113:3",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وَقَبَ",
+    "focus": "بَ",
+    "stop": true,
+    "note": "Stop on وَقَبَ: the بْ bounces strongly (وَقَبْ).",
+    "role": "hear"
+   },
+   {
+    "verse": "113:5",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "حَسَدَ",
+    "focus": "دَ",
+    "stop": true,
+    "note": "Stop on حَسَدَ: حَسَدْ, with a strong bounce on the د.",
+    "role": "say"
+   },
+   {
+    "verse": "111:4",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْحَطَبِ",
+    "focus": "بِ",
+    "stop": true,
+    "note": "Stop on ٱلْحَطَبِ: the بْ bounces strongly. The طَ before it has a vowel: no bounce there.",
+    "role": "say"
+   },
+   {
+    "verse": "85:1",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْبُرُوجِ",
+    "focus": "جِ",
+    "stop": true,
+    "note": "Stop on ٱلْبُرُوجِ: the long و (العارض, taught), then a strong bounce on the جْ.",
+    "role": "say"
+   },
+   {
+    "verse": "112:2",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلصَّمَدُ",
+    "focus": "دُ",
+    "stop": true,
+    "note": "Stop on ٱلصَّمَدُ: the vowel drops and the دْ bounces strongly.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "qal-s",
+     "verse": "112:3",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "يَلِدْ",
+     "focus": "دْ",
+     "stop": false,
+     "note": "يَلِدْ is joined to وَلَمْ: the دْ has only a light bounce."
+    }
    },
    {
     "verse": "85:20",
@@ -3105,15 +4450,9 @@
     "word_to": 4,
     "text": "مُّحِيطٌۢ",
     "focus": "طٌۢ",
-    "stop": true
-   },
-   {
-    "verse": "113:2",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "خَلَقَ",
-    "focus": "قَ",
-    "stop": true
+    "stop": true,
+    "note": "Stop on مُّحِيطٌۢ: no تنوين; العارض on the ي, then a strong bounce on the طْ.",
+    "role": "more"
    },
    {
     "verse": "111:1",
@@ -3122,31 +4461,8 @@
     "text": "وَتَبَّ",
     "focus": "بَّ",
     "stop": true,
-    "note": "A قلقلة letter with شدة at a stop: the strongest level for those who count three."
-   },
-   {
-    "verse": "85:1",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلْبُرُوجِ",
-    "focus": "جِ",
-    "stop": true
-   },
-   {
-    "verse": "112:2",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ٱلصَّمَدُ",
-    "focus": "دُ",
-    "stop": true
-   },
-   {
-    "verse": "84:16",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "بِٱلشَّفَقِ",
-    "focus": "قِ",
-    "stop": true
+    "note": "Stop on وَتَبَّ: a ب with شدة. Many teachers, not all, count this as a stronger level.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3186,36 +4502,84 @@
   "tip": "Two even counts. Cutting it short is a clear error (لحن جلي) because it changes the word.",
   "examples": [
    {
+    "verse": "114:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أَعُوذُ",
+    "focus": "عُو",
+    "stop": false,
+    "note": "و after a ضمة, with no همزة or سكون after it: two counts, no more.",
+    "role": "anchor"
+   },
+   {
+    "verse": "114:3",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "إِلَٰهِ",
+    "focus": "لَٰ",
+    "stop": false,
+    "note": "The small ا after the فتحة of لَ: two counts, like a written ا.",
+    "role": "hear"
+   },
+   {
+    "verse": "1:7",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلَّذِينَ",
+    "focus": "ذِي",
+    "stop": false,
+    "note": "ي after a كسرة, joined to أَنْعَمْتَ: two counts.",
+    "role": "hear"
+   },
+   {
+    "verse": "1:5",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "إِيَّاكَ",
+    "focus": "يَّا",
+    "stop": false,
+    "note": "A written ا after the فتحة of يَّ: two counts.",
+    "role": "say"
+   },
+   {
+    "verse": "114:5",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "فِى",
+    "focus": "فِى",
+    "stop": false,
+    "note": "ى after a كسرة, joined to صُدُورِ: two counts.",
+    "role": "say"
+   },
+   {
+    "verse": "101:5",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَتَكُونُ",
+    "focus": "كُو",
+    "stop": false,
+    "note": "و after a ضمة, joined to ٱلْجِبَالُ: two counts.",
+    "role": "say"
+   },
+   {
     "verse": "1:4",
     "word_from": 1,
     "word_to": 1,
     "text": "مَٰلِكِ",
     "focus": "مَٰ",
-    "stop": false
-   },
-   {
-    "verse": "2:30",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "قَالَ",
-    "focus": "قَا",
-    "stop": false
-   },
-   {
-    "verse": "2:8",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "يَقُولُ",
-    "focus": "قُو",
-    "stop": false
-   },
-   {
-    "verse": "2:11",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "قِيلَ",
-    "focus": "قِي",
-    "stop": false
+    "stop": false,
+    "note": "In حفص 1:4 is read with the ا: مَٰلِكِ, two counts on مَٰ.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "basics",
+     "verse": "114:2",
+     "word_from": 1,
+     "word_to": 1,
+     "text": "مَلِكِ",
+     "focus": "مَ",
+     "stop": false,
+     "note": "No ا here: مَ is one short فتحة."
+    }
    },
    {
     "verse": "112:3",
@@ -3223,31 +4587,9 @@
     "word_to": 4,
     "text": "يُولَدْ",
     "focus": "يُو",
-    "stop": false
-   },
-   {
-    "verse": "96:2",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ٱلْإِنسَٰنَ",
-    "focus": "سَٰ",
-    "stop": false
-   },
-   {
-    "verse": "114:4",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلْوَسْوَاسِ",
-    "focus": "وَا",
-    "stop": false
-   },
-   {
-    "verse": "1:7",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "صِرَٰطَ",
-    "focus": "رَٰ",
-    "stop": false
+    "stop": true,
+    "note": "و after a ضمة in the first syllable: two counts, even at the ayah's end.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3298,47 +4640,9 @@
     "word_to": 7,
     "text": "أَفْوَاجًا",
     "focus": "جًا",
-    "stop": true
-   },
-   {
-    "verse": "110:3",
-    "word_from": 7,
-    "word_to": 7,
-    "text": "تَوَّابًۢا",
-    "focus": "بًۢا",
-    "stop": true
-   },
-   {
-    "verse": "78:6",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "مِهَٰدًا",
-    "focus": "دًا",
-    "stop": true
-   },
-   {
-    "verse": "78:7",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "أَوْتَادًا",
-    "focus": "دًا",
-    "stop": true
-   },
-   {
-    "verse": "100:1",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ضَبْحًا",
-    "focus": "حًا",
-    "stop": true
-   },
-   {
-    "verse": "100:2",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "قَدْحًا",
-    "focus": "حًا",
-    "stop": true
+    "stop": true,
+    "note": "Stopping, the تنوين is dropped and the word ends on an ا of two counts: أَفْوَاجَا.",
+    "role": "anchor"
    },
    {
     "verse": "78:9",
@@ -3346,7 +4650,79 @@
     "word_to": 3,
     "text": "سُبَاتًا",
     "focus": "تًا",
-    "stop": true
+    "stop": true,
+    "note": "تنوين الفتح at a stop: an ا of two counts. سُبَاتَا.",
+    "role": "hear"
+   },
+   {
+    "verse": "80:27",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "حَبًّا",
+    "focus": "بًّا",
+    "stop": true,
+    "note": "With a شدة too: keep the doubled ب, then an ا of two counts: حَبَّا.",
+    "role": "hear"
+   },
+   {
+    "verse": "78:10",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "لِبَاسًا",
+    "focus": "سًا",
+    "stop": true,
+    "note": "تنوين الفتح at a stop: an ا of two counts. لِبَاسَا.",
+    "role": "say"
+   },
+   {
+    "verse": "78:24",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "شَرَابًا",
+    "focus": "بًا",
+    "stop": true,
+    "note": "تنوين الفتح at a stop: an ا of two counts. شَرَابَا.",
+    "role": "say"
+   },
+   {
+    "verse": "86:16",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "كَيْدًا",
+    "focus": "دًا",
+    "stop": true,
+    "note": "تنوين الفتح at a stop: an ا of two counts. كَيْدَا.",
+    "role": "say"
+   },
+   {
+    "verse": "78:35",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "كِذَّٰبًا",
+    "focus": "بًا",
+    "stop": true,
+    "note": "The تنوين becomes an ا at the stop: كِذَّابَا, two counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "78:35",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "فِيهَا",
+     "focus": "هَا",
+     "stop": false,
+     "note": "A written ا at the end of فِيهَا, joined: also two counts, but it is always there."
+    }
+   },
+   {
+    "verse": "110:3",
+    "word_from": 7,
+    "word_to": 7,
+    "text": "تَوَّابًۢا",
+    "focus": "بًۢا",
+    "stop": true,
+    "note": "The small م (ۢ) is for joining only. Stopping, it is تَوَّابَا, two counts.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3393,52 +4769,24 @@
   ],
   "examples": [
    {
-    "verse": "110:3",
-    "word_from": 5,
-    "word_to": 6,
-    "text": "إِنَّهُۥ كَانَ",
-    "focus": "هُۥ",
-    "stop": false
-   },
-   {
-    "verse": "112:4",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "لَّهُۥ كُفُوًا",
-    "focus": "هُۥ",
-    "stop": false
-   },
-   {
-    "verse": "79:17",
-    "word_from": 4,
-    "word_to": 5,
-    "text": "إِنَّهُۥ طَغَىٰ",
-    "focus": "هُۥ",
-    "stop": false
-   },
-   {
-    "verse": "85:13",
+    "verse": "100:7",
     "word_from": 1,
     "word_to": 2,
-    "text": "إِنَّهُۥ هُوَ",
+    "text": "وَإِنَّهُۥ عَلَىٰ",
     "focus": "هُۥ",
-    "stop": false
+    "stop": false,
+    "note": "The هُ between two vowels is stretched two counts, like a small و.",
+    "role": "anchor"
    },
    {
-    "verse": "100:5",
+    "verse": "100:4",
     "word_from": 2,
     "word_to": 3,
-    "text": "بِهِۦ جَمْعًا",
+    "text": "بِهِۦ نَقْعًا",
     "focus": "هِۦ",
-    "stop": false
-   },
-   {
-    "verse": "87:15",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "رَبِّهِۦ فَصَلَّىٰ",
-    "focus": "هِۦ",
-    "stop": false
+    "stop": false,
+    "note": "بِهِۦ: the هِ is stretched like a small ي.",
+    "role": "hear"
    },
    {
     "verse": "101:9",
@@ -3446,7 +4794,89 @@
     "word_to": 2,
     "text": "فَأُمُّهُۥ هَاوِيَةٌ",
     "focus": "هُۥ",
-    "stop": false
+    "stop": false,
+    "note": "فَأُمُّهُۥ: two counts on the هُ before هَاوِيَةٌ.",
+    "role": "hear"
+   },
+   {
+    "verse": "110:3",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "إِنَّهُۥ كَانَ",
+    "focus": "هُۥ",
+    "stop": false,
+    "note": "إِنَّهُۥ كَانَ: two counts on the هُ.",
+    "role": "say"
+   },
+   {
+    "verse": "111:2",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "مَالُهُۥ وَمَا",
+    "focus": "هُۥ",
+    "stop": false,
+    "note": "مَالُهُۥ وَمَا: two counts on the هُ.",
+    "role": "say"
+   },
+   {
+    "verse": "100:6",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "لِرَبِّهِۦ لَكَنُودٌ",
+    "focus": "هِۦ",
+    "stop": false,
+    "note": "لِرَبِّهِۦ لَكَنُودٌ: two counts on the هِ.",
+    "role": "say"
+   },
+   {
+    "verse": "100:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "بِهِۦ جَمْعًا",
+    "focus": "هِۦ",
+    "stop": false,
+    "note": "بِهِۦ: the هِ itself is stretched, two counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "78:3",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "فِيهِ",
+     "focus": "فِي",
+     "stop": false,
+     "note": "فِيهِ: the مد is the written ي; the هـ after the ساكن ي stays short."
+    }
+   },
+   {
+    "verse": "104:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "وَعَدَّدَهُۥ",
+    "focus": "هُۥ",
+    "stop": true,
+    "note": "At the stop the صلة goes: وَعَدَّدَهْ.",
+    "role": "more"
+   },
+   {
+    "verse": "25:69",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "فِيهِۦ مُهَانًا",
+    "focus": "هِۦ",
+    "stop": false,
+    "note": "A حفص exception: فِيهِۦ مُهَانًا has a صلة although a ساكن ي comes before.",
+    "role": "more"
+   },
+   {
+    "verse": "98:5",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "لَهُ ٱلدِّينَ",
+    "focus": "هُ",
+    "stop": false,
+    "note": "لَهُ ٱلدِّينَ: a ساكن follows the هـ, so no صلة.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3484,12 +4914,84 @@
   },
   "examples": [
    {
-    "verse": "2:9",
-    "word_from": 4,
-    "word_to": 4,
+    "verse": "103:3",
+    "word_from": 3,
+    "word_to": 3,
     "text": "ءَامَنُوا۟",
     "focus": "ءَا",
-    "stop": false
+    "stop": false,
+    "note": "The ا after the همزة: only two counts.",
+    "role": "anchor"
+   },
+   {
+    "verse": "98:4",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أُوتُوا۟",
+    "focus": "أُو",
+    "stop": false,
+    "note": "The و after the همزة: two counts.",
+    "role": "hear"
+   },
+   {
+    "verse": "106:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "لِإِيلَٰفِ",
+    "focus": "إِي",
+    "stop": false,
+    "note": "The ي after the همزة: two counts.",
+    "role": "hear"
+   },
+   {
+    "verse": "79:38",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَءَاثَرَ",
+    "focus": "ءَا",
+    "stop": false,
+    "note": "وَءَاثَرَ: the ا after the همزة, two counts.",
+    "role": "say"
+   },
+   {
+    "verse": "93:6",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "فَـَٔاوَىٰ",
+    "focus": "ـَٔا",
+    "stop": false,
+    "note": "فَـَٔاوَىٰ: the ا after the همزة is two counts.",
+    "role": "say"
+   },
+   {
+    "verse": "93:4",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَلَلْءَاخِرَةُ",
+    "focus": "ءَا",
+    "stop": false,
+    "note": "وَلَلْءَاخِرَةُ: two counts, in a longer word.",
+    "role": "say"
+   },
+   {
+    "verse": "96:7",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "رَّءَاهُ",
+    "focus": "ءَا",
+    "stop": false,
+    "note": "ء then ا: the همزة comes first, so the ا is only two counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "muttasil",
+     "verse": "110:1",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "جَآءَ",
+     "focus": "جَآءَ",
+     "stop": false,
+     "note": "جَآءَ: the همزة comes after the ا, so it is held 4 or 5."
+    }
    },
    {
     "verse": "3:173",
@@ -3497,55 +4999,9 @@
     "word_to": 12,
     "text": "إِيمَٰنًا",
     "focus": "إِي",
-    "stop": false
-   },
-   {
-    "verse": "2:101",
-    "word_from": 14,
-    "word_to": 14,
-    "text": "أُوتُوا۟",
-    "focus": "أُو",
-    "stop": false
-   },
-   {
-    "verse": "79:20",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ٱلْءَايَةَ",
-    "focus": "ءَا",
-    "stop": false
-   },
-   {
-    "verse": "106:4",
-    "word_from": 5,
-    "word_to": 5,
-    "text": "وَءَامَنَهُم",
-    "focus": "ءَا",
-    "stop": false
-   },
-   {
-    "verse": "103:3",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ءَامَنُوا۟",
-    "focus": "ءَا",
-    "stop": false
-   },
-   {
-    "verse": "84:7",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "أُوتِىَ",
-    "focus": "أُو",
-    "stop": false
-   },
-   {
-    "verse": "87:17",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "وَٱلْءَاخِرَةُ",
-    "focus": "ءَا",
-    "stop": false
+    "stop": false,
+    "note": "إِيمَٰنًا: the card's ي example.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3596,15 +5052,9 @@
     "word_to": 2,
     "text": "جَآءَ",
     "focus": "آءَ",
-    "stop": false
-   },
-   {
-    "verse": "2:19",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلسَّمَآءِ",
-    "focus": "آءِ",
-    "stop": false
+    "stop": false,
+    "note": "The ا before the همزة in the same word is held four or five counts.",
+    "role": "anchor"
    },
    {
     "verse": "2:49",
@@ -3612,31 +5062,39 @@
     "word_to": 7,
     "text": "سُوٓءَ",
     "focus": "وٓءَ",
-    "stop": false
+    "stop": false,
+    "note": "The و of سُوٓءَ before the همزة: four or five counts.",
+    "role": "hear"
    },
    {
-    "verse": "78:1",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "يَتَسَآءَلُونَ",
+    "verse": "11:77",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "سِىٓءَ",
+    "focus": "ىٓءَ",
+    "stop": false,
+    "note": "The ي of سِىٓءَ before the همزة: four or five counts.",
+    "role": "hear"
+   },
+   {
+    "verse": "84:10",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وَرَآءَ",
     "focus": "آءَ",
-    "stop": false
+    "stop": false,
+    "note": "وَرَآءَ: hold the ا four or five counts before the همزة.",
+    "role": "say"
    },
    {
-    "verse": "78:14",
+    "verse": "78:36",
     "word_from": 4,
     "word_to": 4,
-    "text": "مَآءً",
+    "text": "عَطَآءً",
     "focus": "آءً",
-    "stop": false
-   },
-   {
-    "verse": "80:25",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلْمَآءَ",
-    "focus": "آءَ",
-    "stop": false
+    "stop": false,
+    "note": "عَطَآءً: the same length before the همزة.",
+    "role": "say"
    },
    {
     "verse": "98:5",
@@ -3644,15 +5102,39 @@
     "word_to": 9,
     "text": "حُنَفَآءَ",
     "focus": "آءَ",
-    "stop": false
+    "stop": false,
+    "note": "حُنَفَآءَ: keep the length equal to the others.",
+    "role": "say"
    },
    {
-    "verse": "78:19",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ٱلسَّمَآءُ",
-    "focus": "آءُ",
-    "stop": false
+    "verse": "80:22",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "شَآءَ",
+    "focus": "آءَ",
+    "stop": false,
+    "note": "In شَآءَ a همزة follows the ا in the same word: hold it four or five counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "85:3",
+     "word_from": 1,
+     "word_to": 1,
+     "text": "وَشَاهِدٍ",
+     "focus": "شَا",
+     "stop": false,
+     "note": "In وَشَاهِدٍ no همزة follows the ا: two counts only."
+    }
+   },
+   {
+    "verse": "89:23",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَجِا۟ىٓءَ",
+    "focus": "ىٓءَ",
+    "stop": false,
+    "note": "The ي before the همزة in وَجِا۟ىٓءَ: four or five counts. The small-circled ا is not read.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3715,69 +5197,104 @@
   "tip": "Choose one length and keep it through your whole recitation, equal to your المتصل: 4 with 4, or 5 with 5.",
   "examples": [
    {
-    "verse": "108:1",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "إِنَّآ أَعْطَيْنَٰكَ",
-    "focus": "آ أَ",
-    "stop": false
-   },
-   {
-    "verse": "51:21",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "وَفِىٓ أَنفُسِكُمْ",
-    "focus": "ىٓ أَ",
-    "stop": false
-   },
-   {
-    "verse": "2:21",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "يَٰٓأَيُّهَا",
-    "focus": "يَٰٓأَ",
-    "stop": false,
-    "note": "يَا and أَيُّهَا are written joined, but يَا is its own word, so this is منفصل."
-   },
-   {
-    "verse": "78:23",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "فِيهَآ أَحْقَابًا",
-    "focus": "آ أَ",
-    "stop": false
-   },
-   {
-    "verse": "97:1",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "إِنَّآ أَنزَلْنَٰهُ",
-    "focus": "آ أَ",
-    "stop": false
-   },
-   {
     "verse": "109:2",
     "word_from": 1,
     "word_to": 2,
     "text": "لَآ أَعْبُدُ",
     "focus": "آ أَ",
-    "stop": false
+    "stop": false,
+    "note": "The ا at the end of لَآ is held four or five counts before أَعْبُدُ.",
+    "role": "anchor"
    },
    {
-    "verse": "79:45",
+    "verse": "95:4",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "فِىٓ أَحْسَنِ",
+    "focus": "ىٓ أَ",
+    "stop": false,
+    "note": "The ي of فِىٓ is held long before the همزة of أَحْسَنِ.",
+    "role": "hear"
+   },
+   {
+    "verse": "83:32",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "قَالُوٓا۟ إِنَّ",
+    "focus": "وٓا۟ إِ",
+    "stop": false,
+    "note": "The و of قَالُوٓا۟ is held long before إِنَّ; the ا after it is not read.",
+    "role": "hear"
+   },
+   {
+    "verse": "111:2",
     "word_from": 1,
     "word_to": 2,
-    "text": "إِنَّمَآ أَنتَ",
+    "text": "مَآ أَغْنَىٰ",
     "focus": "آ أَ",
-    "stop": false
+    "stop": false,
+    "note": "مَآ أَغْنَىٰ: the ا held four or five counts.",
+    "role": "say"
    },
    {
-    "verse": "101:10",
+    "verse": "111:1",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "يَدَآ أَبِى",
+    "focus": "آ أَ",
+    "stop": false,
+    "note": "يَدَآ أَبِى: the same length as your other منفصل.",
+    "role": "say"
+   },
+   {
+    "verse": "82:8",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "فِىٓ أَىِّ",
+    "focus": "ىٓ أَ",
+    "stop": false,
+    "note": "فِىٓ أَىِّ: the ي held long before the همزة.",
+    "role": "say"
+   },
+   {
+    "verse": "82:17",
     "word_from": 1,
     "word_to": 2,
     "text": "وَمَآ أَدْرَىٰكَ",
     "focus": "آ أَ",
-    "stop": false
+    "stop": false,
+    "note": "The همزة is in the next word: the ا of وَمَآ is held long only when you join.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "muttasil",
+     "verse": "79:31",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "مَآءَهَا",
+     "focus": "آءَ",
+     "stop": false,
+     "note": "In مَآءَهَا the همزة is in the same word: متصل, held long whether you join or not."
+    }
+   },
+   {
+    "verse": "79:46",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "يَلْبَثُوٓا۟ إِلَّا",
+    "focus": "وٓا۟ إِ",
+    "stop": false,
+    "note": "The و of يَلْبَثُوٓا۟ held long before إِلَّا; the ا after the و is silent.",
+    "role": "more"
+   },
+   {
+    "verse": "109:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يَٰٓأَيُّهَا",
+    "focus": "يَٰٓأَ",
+    "stop": false,
+    "note": "يَٰٓأَيُّهَا: يَا and أَيُّهَا are written joined but are two words, so this is منفصل.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3840,15 +5357,9 @@
     "word_to": 4,
     "text": "مَالَهُۥٓ أَخْلَدَهُۥ",
     "focus": "هُۥٓ أَ",
-    "stop": false
-   },
-   {
-    "verse": "2:255",
-    "word_from": 24,
-    "word_to": 25,
-    "text": "عِندَهُۥٓ إِلَّا",
-    "focus": "هُۥٓ إِ",
-    "stop": false
+    "stop": false,
+    "note": "The pronoun's و is held 4 or 5 counts before the همزة.",
+    "role": "anchor"
    },
    {
     "verse": "83:12",
@@ -3856,7 +5367,9 @@
     "word_to": 4,
     "text": "بِهِۦٓ إِلَّا",
     "focus": "هِۦٓ إِ",
-    "stop": false
+    "stop": false,
+    "note": "بِهِۦٓ إِلَّا: the ي-صلة held 4 or 5 before the همزة.",
+    "role": "hear"
    },
    {
     "verse": "89:25",
@@ -3864,15 +5377,9 @@
     "word_to": 5,
     "text": "عَذَابَهُۥٓ أَحَدٌ",
     "focus": "هُۥٓ أَ",
-    "stop": false
-   },
-   {
-    "verse": "89:26",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "وَثَاقَهُۥٓ أَحَدٌ",
-    "focus": "هُۥٓ أَ",
-    "stop": false
+    "stop": false,
+    "note": "عَذَابَهُۥٓ أَحَدٌ: 4 or 5 counts.",
+    "role": "hear"
    },
    {
     "verse": "90:7",
@@ -3880,7 +5387,29 @@
     "word_to": 5,
     "text": "يَرَهُۥٓ أَحَدٌ",
     "focus": "هُۥٓ أَ",
-    "stop": false
+    "stop": false,
+    "note": "يَرَهُۥٓ أَحَدٌ: a short word, a long صلة.",
+    "role": "say"
+   },
+   {
+    "verse": "89:26",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "وَثَاقَهُۥٓ أَحَدٌ",
+    "focus": "هُۥٓ أَ",
+    "stop": false,
+    "note": "وَثَاقَهُۥٓ أَحَدٌ: 4 or 5 counts.",
+    "role": "say"
+   },
+   {
+    "verse": "2:255",
+    "word_from": 24,
+    "word_to": 25,
+    "text": "عِندَهُۥٓ إِلَّا",
+    "focus": "هُۥٓ إِ",
+    "stop": false,
+    "note": "عِندَهُۥٓ إِلَّا: hold it before the همزة.",
+    "role": "say"
    },
    {
     "verse": "92:11",
@@ -3888,7 +5417,29 @@
     "word_to": 5,
     "text": "مَالُهُۥٓ إِذَا",
     "focus": "هُۥٓ إِ",
-    "stop": false
+    "stop": false,
+    "note": "مَالُهُۥٓ before إِذَا: 4 or 5 counts, because a همزة follows.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "silah-s",
+     "verse": "111:2",
+     "word_from": 4,
+     "word_to": 5,
+     "text": "مَالُهُۥ وَمَا",
+     "focus": "هُۥ",
+     "stop": false,
+     "note": "مَالُهُۥ before وَمَا: no همزة, so only two counts."
+    }
+   },
+   {
+    "verse": "80:24",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "طَعَامِهِۦٓ",
+    "focus": "هِۦٓ",
+    "stop": true,
+    "note": "At the stop there is no صلة at all: طَعَامِهْ.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -3931,20 +5482,34 @@
   "tip": "Pick one length and use it at every such stop in the same recitation (التسوية).",
   "examples": [
    {
+    "verse": "114:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلنَّاسِ",
+    "focus": "نَّاسِ",
+    "stop": true,
+    "note": "Stopping on ٱلنَّاسِ: the س is stilled, so the ا before it may be 2, 4 or 6 counts.",
+    "role": "anchor"
+   },
+   {
     "verse": "1:2",
     "word_from": 4,
     "word_to": 4,
     "text": "ٱلْعَٰلَمِينَ",
     "focus": "مِينَ",
-    "stop": true
+    "stop": true,
+    "note": "ي before the stilled ن. At the stop: 2, 4 or 6 counts.",
+    "role": "hear"
    },
    {
-    "verse": "1:5",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "نَسْتَعِينُ",
-    "focus": "عِينُ",
-    "stop": true
+    "verse": "102:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "تَعْلَمُونَ",
+    "focus": "مُونَ",
+    "stop": true,
+    "note": "و before the stilled ن. At the stop: 2, 4 or 6 counts.",
+    "role": "hear"
    },
    {
     "verse": "1:3",
@@ -3952,7 +5517,9 @@
     "word_to": 2,
     "text": "ٱلرَّحِيمِ",
     "focus": "حِيمِ",
-    "stop": true
+    "stop": true,
+    "note": "ي before the stilled م. At the stop: 2, 4 or 6 counts.",
+    "role": "say"
    },
    {
     "verse": "1:4",
@@ -3960,39 +5527,39 @@
     "word_to": 3,
     "text": "ٱلدِّينِ",
     "focus": "دِّينِ",
-    "stop": true
+    "stop": true,
+    "note": "ي before the stilled ن. At the stop: 2, 4 or 6 counts.",
+    "role": "say"
    },
    {
-    "verse": "95:1",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "وَٱلزَّيْتُونِ",
-    "focus": "تُونِ",
-    "stop": true
-   },
-   {
-    "verse": "114:1",
+    "verse": "1:5",
     "word_from": 4,
     "word_to": 4,
-    "text": "ٱلنَّاسِ",
-    "focus": "نَّاسِ",
-    "stop": true
+    "text": "نَسْتَعِينُ",
+    "focus": "عِينُ",
+    "stop": true,
+    "note": "ي before the stilled ن, whose ضمة is dropped at the stop. At the stop: 2, 4 or 6 counts.",
+    "role": "say"
    },
    {
-    "verse": "109:1",
+    "verse": "114:6",
     "word_from": 3,
     "word_to": 3,
-    "text": "ٱلْكَٰفِرُونَ",
-    "focus": "رُونَ",
-    "stop": true
-   },
-   {
-    "verse": "105:1",
-    "word_from": 7,
-    "word_to": 7,
-    "text": "ٱلْفِيلِ",
-    "focus": "فِيلِ",
-    "stop": true
+    "text": "وَٱلنَّاسِ",
+    "focus": "نَّاسِ",
+    "stop": true,
+    "note": "The same word as the joined ٱلنَّاسَ, but stopped: the ا may now be 2, 4 or 6.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "110:2",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "ٱلنَّاسَ",
+     "focus": "نَّا",
+     "stop": false,
+     "note": "Mid-ayah, joined to يَدْخُلُونَ: the ا is a plain two-count مد."
+    }
    }
   ],
   "sources": [
@@ -4055,15 +5622,9 @@
     "word_to": 2,
     "text": "قُرَيْشٍ",
     "focus": "رَيْشٍ",
-    "stop": true
-   },
-   {
-    "verse": "106:3",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلْبَيْتِ",
-    "focus": "بَيْتِ",
-    "stop": true
+    "stop": true,
+    "note": "Stopping: قُرَيْشْ. The يْ after a فتحة glides softly; it may be 2, 4 or 6.",
+    "role": "anchor"
    },
    {
     "verse": "106:4",
@@ -4071,15 +5632,19 @@
     "word_to": 7,
     "text": "خَوْفٍۭ",
     "focus": "خَوْفٍۭ",
-    "stop": true
+    "stop": true,
+    "note": "Stopping: خَوْفْ. The وْ after a فتحة, 2, 4 or 6.",
+    "role": "hear"
    },
    {
-    "verse": "106:2",
+    "verse": "106:3",
     "word_from": 4,
     "word_to": 4,
-    "text": "وَٱلصَّيْفِ",
-    "focus": "صَّيْفِ",
-    "stop": true
+    "text": "ٱلْبَيْتِ",
+    "focus": "بَيْتِ",
+    "stop": true,
+    "note": "Stopping: ٱلْبَيْتْ. Soft يْ, 2, 4 or 6.",
+    "role": "hear"
    },
    {
     "verse": "90:8",
@@ -4087,15 +5652,9 @@
     "word_to": 4,
     "text": "عَيْنَيْنِ",
     "focus": "نَيْنِ",
-    "stop": true
-   },
-   {
-    "verse": "90:9",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "وَشَفَتَيْنِ",
-    "focus": "تَيْنِ",
-    "stop": true
+    "stop": true,
+    "note": "Stopping: عَيْنَيْنْ. Stretch only the last يْ.",
+    "role": "say"
    },
    {
     "verse": "90:10",
@@ -4103,7 +5662,39 @@
     "word_to": 2,
     "text": "ٱلنَّجْدَيْنِ",
     "focus": "دَيْنِ",
-    "stop": true
+    "stop": true,
+    "note": "Stopping: ٱلنَّجْدَيْنْ. Soft يْ before the stopped ن.",
+    "role": "say"
+   },
+   {
+    "verse": "2:255",
+    "word_from": 12,
+    "word_to": 12,
+    "text": "نَوْمٌ",
+    "focus": "نَوْمٌ",
+    "stop": true,
+    "note": "Stopping at the ۚ: نَوْمْ. Soft وْ, 2, 4 or 6.",
+    "role": "say"
+   },
+   {
+    "verse": "106:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "وَٱلصَّيْفِ",
+    "focus": "صَّيْفِ",
+    "stop": true,
+    "note": "Stopping: وَٱلصَّيْفْ. The ي has سكون after a فتحة: a soft glide.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "arid",
+     "verse": "105:1",
+     "word_from": 7,
+     "word_to": 7,
+     "text": "ٱلْفِيلِ",
+     "focus": "فِيلِ",
+     "stop": true,
+     "note": "Stopping: ٱلْفِيلْ. The ي after a كسرة is a true مد, العارض."
+    }
    }
   ],
   "sources": [
@@ -4145,12 +5736,34 @@
   },
   "examples": [
    {
-    "verse": "1:7",
-    "word_from": 9,
-    "word_to": 9,
-    "text": "ٱلضَّآلِّينَ",
-    "focus": "ضَّآلِّ",
-    "stop": false
+    "verse": "93:7",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ضَآلًّا",
+    "focus": "ضَآلًّ",
+    "stop": false,
+    "note": "The ا before the شدة: six counts, always.",
+    "role": "anchor"
+   },
+   {
+    "verse": "80:33",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلصَّآخَّةُ",
+    "focus": "صَّآخَّ",
+    "stop": true,
+    "note": "Six counts before the doubled خّ.",
+    "role": "hear"
+   },
+   {
+    "verse": "83:32",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "لَضَآلُّونَ",
+    "focus": "ضَآلُّ",
+    "stop": true,
+    "note": "Six before the doubled لّ.",
+    "role": "hear"
    },
    {
     "verse": "69:1",
@@ -4158,7 +5771,49 @@
     "word_to": 1,
     "text": "ٱلْحَآقَّةُ",
     "focus": "حَآقَّ",
-    "stop": false
+    "stop": true,
+    "note": "Six before the doubled قّ.",
+    "role": "say"
+   },
+   {
+    "verse": "89:18",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "تَحَٰٓضُّونَ",
+    "focus": "حَٰٓضُّ",
+    "stop": false,
+    "note": "The small ا with ٓ: six before the doubled ضّ.",
+    "role": "say"
+   },
+   {
+    "verse": "6:80",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أَتُحَٰٓجُّوٓنِّى",
+    "focus": "حَٰٓجُّوٓنِّ",
+    "stop": false,
+    "note": "Two in one word: six on the ا before جّ, six on the و before نّ.",
+    "role": "say"
+   },
+   {
+    "verse": "79:34",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلطَّآمَّةُ",
+    "focus": "طَّآمَّ",
+    "stop": false,
+    "note": "Read on to ٱلْكُبْرَىٰ: still six counts. The cause is in the word.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "arid",
+     "verse": "107:7",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "ٱلْمَاعُونَ",
+     "focus": "عُونَ",
+     "stop": true,
+     "note": "ٱلْمَاعُونَ: long only because you stop; read on, it is two."
+    }
    },
    {
     "verse": "10:51",
@@ -4167,47 +5822,18 @@
     "text": "ءَآلْـَٰٔنَ",
     "focus": "ءَآلْ",
     "stop": false,
-    "note": "مخفف: the plain سكون of the ل. Its other way is التسهيل."
+    "note": "مخفف: the ا is six before the plain سكون of ل. Its other way is التسهيل.",
+    "role": "more"
    },
    {
-    "verse": "79:34",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلطَّآمَّةُ",
-    "focus": "طَّآمَّ",
-    "stop": false
-   },
-   {
-    "verse": "80:33",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ٱلصَّآخَّةُ",
-    "focus": "صَّآخَّ",
-    "stop": false
-   },
-   {
-    "verse": "83:32",
-    "word_from": 6,
-    "word_to": 6,
-    "text": "لَضَآلُّونَ",
-    "focus": "ضَآلُّ",
-    "stop": false
-   },
-   {
-    "verse": "93:7",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ضَآلًّا",
-    "focus": "ضَآلًّ",
-    "stop": false
-   },
-   {
-    "verse": "89:18",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "تَحَٰٓضُّونَ",
-    "focus": "حَٰٓضُّ",
-    "stop": false
+    "verse": "1:7",
+    "word_from": 9,
+    "word_to": 9,
+    "text": "ٱلضَّآلِّينَ",
+    "focus": "ضَّآلِّ",
+    "stop": true,
+    "note": "In الفاتحة: six before the doubled لّ.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -4261,15 +5887,9 @@
     "word_to": 1,
     "text": "الٓمٓ",
     "focus": "لٓمٓ",
-    "stop": false
-   },
-   {
-    "verse": "50:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "قٓ",
-    "focus": "قٓ",
-    "stop": false
+    "stop": true,
+    "note": "أَلِفْ لَامْ مِّيمْ: لام and ميم six counts each; the ألف has no مد.",
+    "role": "anchor"
    },
    {
     "verse": "68:1",
@@ -4277,34 +5897,9 @@
     "word_to": 1,
     "text": "نٓ",
     "focus": "نٓ",
-    "stop": false
-   },
-   {
-    "verse": "19:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "كٓهيعٓصٓ",
-    "focus": "كٓ",
-    "stop": false,
-    "note": "كَافْ 6; هَا، يَا 2; عَيْنْ 4 or 6; صَادْ 6."
-   },
-   {
-    "verse": "42:2",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "عٓسٓقٓ",
-    "focus": "سٓقٓ",
-    "stop": false,
-    "note": "عَيْنْ 4 or 6; سِينْ، قَافْ 6."
-   },
-   {
-    "verse": "26:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "طسٓمٓ",
-    "focus": "سٓمٓ",
-    "stop": false,
-    "note": "طَا 2; سِينْ، مِيمْ 6."
+    "stop": true,
+    "note": "نُونْ: six counts. Stop at the ۚ.",
+    "role": "hear"
    },
    {
     "verse": "38:1",
@@ -4312,15 +5907,79 @@
     "word_to": 1,
     "text": "صٓ",
     "focus": "صٓ",
-    "stop": false
+    "stop": true,
+    "note": "صَادْ: six counts.",
+    "role": "hear"
    },
    {
-    "verse": "7:1",
+    "verse": "36:1",
     "word_from": 1,
     "word_to": 1,
-    "text": "الٓمٓصٓ",
-    "focus": "لٓمٓصٓ",
-    "stop": false
+    "text": "يسٓ",
+    "focus": "سٓ",
+    "stop": true,
+    "note": "يَا two counts, then سِينْ six.",
+    "role": "say"
+   },
+   {
+    "verse": "26:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "طسٓمٓ",
+    "focus": "سٓمٓ",
+    "stop": true,
+    "note": "طَا two; سِينْ merges: سِيمْ مِّيمْ, six each.",
+    "role": "say"
+   },
+   {
+    "verse": "19:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "كٓهيعٓصٓ",
+    "focus": "كٓهيعٓصٓ",
+    "stop": true,
+    "note": "كَافْ 6; هَا يَا 2; عَيْنْ 4 or 6; صَادْ 6.",
+    "role": "say"
+   },
+   {
+    "verse": "50:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قٓ",
+    "focus": "قٓ",
+    "stop": true,
+    "note": "قَافْ: the مد is inside a letter's name, six counts.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "lazim-k",
+     "verse": "69:1",
+     "word_from": 1,
+     "word_to": 1,
+     "text": "ٱلْحَآقَّةُ",
+     "focus": "حَآقَّ",
+     "stop": true,
+     "note": "ٱلْحَآقَّةُ: six too, but the شدة is inside an ordinary word."
+    }
+   },
+   {
+    "verse": "42:2",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "عٓسٓقٓ",
+    "focus": "عٓ",
+    "stop": true,
+    "note": "عَيْنْ: four or six; six is preferred.",
+    "role": "more"
+   },
+   {
+    "verse": "40:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "حمٓ",
+    "focus": "مٓ",
+    "stop": true,
+    "note": "حَا two counts; مِيمْ six.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -4374,23 +6033,19 @@
     "word_to": 3,
     "text": "هَل لَّكَ",
     "focus": "ل لَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ساكن ل of هَل merges into the لّ of لَّكَ: one doubled ل.",
+    "role": "anchor"
    },
    {
-    "verse": "2:60",
-    "word_from": 6,
-    "word_to": 7,
-    "text": "ٱضْرِب بِّعَصَاكَ",
+    "verse": "27:28",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "ٱذْهَب بِّكِتَٰبِى",
     "focus": "ب بِّ",
-    "stop": false
-   },
-   {
-    "verse": "5:61",
-    "word_from": 5,
-    "word_to": 6,
-    "text": "وَقَد دَّخَلُوا۟",
-    "focus": "د دَّ",
-    "stop": false
+    "stop": false,
+    "note": "ٱذْهَب بِّكِتَٰبِى: one doubled بّ, no bounce on the first ب.",
+    "role": "hear"
    },
    {
     "verse": "2:16",
@@ -4398,7 +6053,9 @@
     "word_to": 8,
     "text": "رَبِحَت تِّجَٰرَتُهُمْ",
     "focus": "ت تِّ",
-    "stop": false
+    "stop": false,
+    "note": "رَبِحَت تِّجَٰرَتُهُمْ: the two ت become one doubled تّ.",
+    "role": "hear"
    },
    {
     "verse": "89:17",
@@ -4406,15 +6063,49 @@
     "word_to": 3,
     "text": "بَل لَّا",
     "focus": "ل لَّ",
-    "stop": false
+    "stop": false,
+    "note": "بَل لَّا: say بَلَّا, one doubled ل.",
+    "role": "say"
    },
    {
-    "verse": "90:8",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "نَجْعَل لَّهُۥ",
-    "focus": "ل لَّ",
-    "stop": false
+    "verse": "21:87",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "إِذ ذَّهَبَ",
+    "focus": "ذ ذَّ",
+    "stop": false,
+    "note": "إِذ ذَّهَبَ: one doubled ذّ.",
+    "role": "say"
+   },
+   {
+    "verse": "5:61",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "وَقَد دَّخَلُوا۟",
+    "focus": "د دَّ",
+    "stop": false,
+    "note": "وَقَد دَّخَلُوا۟: one doubled دّ, no bounce on the first د.",
+    "role": "say"
+   },
+   {
+    "verse": "2:60",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "ٱضْرِب بِّعَصَاكَ",
+    "focus": "ب بِّ",
+    "stop": false,
+    "note": "Two ب meet, the first with سكون: they become one doubled بّ.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "izhar",
+     "verse": "78:37",
+     "word_from": 9,
+     "word_to": 9,
+     "text": "مِنْهُ",
+     "focus": "نْهُ",
+     "stop": false,
+     "note": "In مِنْهُ the ساكن ن meets a different letter (ه): both are said, nothing merges."
+    }
    },
    {
     "verse": "83:3",
@@ -4422,7 +6113,19 @@
     "word_to": 4,
     "text": "أَو وَّزَنُوهُمْ",
     "focus": "و وَّ",
-    "stop": false
+    "stop": false,
+    "note": "أَو وَّزَنُوهُمْ: a لين و merges into the next و.",
+    "role": "more"
+   },
+   {
+    "verse": "90:8",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "نَجْعَل لَّهُۥ",
+    "focus": "ل لَّ",
+    "stop": false,
+    "note": "نَجْعَل لَّهُۥ: one doubled ل.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -4497,20 +6200,24 @@
   ],
   "examples": [
    {
-    "verse": "2:256",
+    "verse": "109:4",
     "word_from": 5,
-    "word_to": 6,
-    "text": "قَد تَّبَيَّنَ",
-    "focus": "د تَّ",
-    "stop": false
+    "word_to": 5,
+    "text": "عَبَدتُّمْ",
+    "focus": "دتُّ",
+    "stop": false,
+    "note": "The د is not said; it becomes the ت, which is doubled: عَبَتُّمْ.",
+    "role": "anchor"
    },
    {
-    "verse": "3:72",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "وَقَالَت طَّآئِفَةٌ",
+    "verse": "3:122",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هَمَّت طَّآئِفَتَانِ",
     "focus": "ت طَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ت merges fully into the ط: one heavy doubled طّ.",
+    "role": "hear"
    },
    {
     "verse": "4:64",
@@ -4518,23 +6225,9 @@
     "word_to": 12,
     "text": "إِذ ظَّلَمُوٓا۟",
     "focus": "ذ ظَّ",
-    "stop": false
-   },
-   {
-    "verse": "11:42",
-    "word_from": 14,
-    "word_to": 15,
-    "text": "ٱرْكَب مَّعَنَا",
-    "focus": "ب مَّ",
-    "stop": false
-   },
-   {
-    "verse": "5:28",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "بَسَطتَ",
-    "focus": "طتَ",
-    "stop": false
+    "stop": false,
+    "note": "The ذ is not said; one heavy doubled ظّ.",
+    "role": "hear"
    },
    {
     "verse": "7:189",
@@ -4542,23 +6235,59 @@
     "word_to": 21,
     "text": "أَثْقَلَت دَّعَوَا",
     "focus": "ت دَّ",
-    "stop": false
+    "stop": false,
+    "note": "The ت becomes the د: أَثْقَلَدَّعَوَا.",
+    "role": "say"
    },
    {
-    "verse": "10:89",
+    "verse": "5:28",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "بَسَطتَ",
+    "focus": "طتَ",
+    "stop": false,
+    "note": "Incomplete: keep the ط's heaviness, no قلقلة, then the ت.",
+    "role": "say"
+   },
+   {
+    "verse": "11:42",
+    "word_from": 14,
+    "word_to": 15,
+    "text": "ٱرْكَب مَّعَنَا",
+    "focus": "ب مَّ",
+    "stop": false,
+    "note": "The ب merges into the م: one doubled مّ with a hum.",
+    "role": "say"
+   },
+   {
+    "verse": "29:38",
     "word_from": 3,
     "word_to": 4,
-    "text": "أُجِيبَت دَّعْوَتُكُمَا",
-    "focus": "ت دَّ",
-    "stop": false
+    "text": "وَقَد تَّبَيَّنَ",
+    "focus": "د تَّ",
+    "stop": false,
+    "note": "وَقَد before ت: the د disappears into a doubled تّ.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "mithlayn",
+     "verse": "5:61",
+     "word_from": 5,
+     "word_to": 6,
+     "text": "وَقَد دَّخَلُوا۟",
+     "focus": "د دَّ",
+     "stop": false,
+     "note": "وَقَد before د: the same letter twice, one doubled د."
+    }
    },
    {
-    "verse": "7:176",
-    "word_from": 20,
-    "word_to": 21,
-    "text": "يَلْهَث ذَّٰلِكَ",
-    "focus": "ث ذَّٰ",
-    "stop": false
+    "verse": "9:117",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "لَّقَد تَّابَ",
+    "focus": "د تَّ",
+    "stop": false,
+    "note": "لَّقَد تَّابَ: the د disappears into a doubled تّ.",
+    "role": "more"
    },
    {
     "verse": "27:22",
@@ -4566,15 +6295,19 @@
     "word_to": 5,
     "text": "أَحَطتُ",
     "focus": "طتُ",
-    "stop": false
+    "stop": false,
+    "note": "Incomplete: the ط's heaviness stays.",
+    "role": "more"
    },
    {
-    "verse": "12:80",
-    "word_from": 21,
-    "word_to": 21,
-    "text": "فَرَّطتُمْ",
-    "focus": "طتُ",
-    "stop": false
+    "verse": "10:89",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "أُجِيبَت دَّعْوَتُكُمَا",
+    "focus": "ت دَّ",
+    "stop": false,
+    "note": "أُجِيبَت دَّعْوَتُكُمَا: the ت becomes the د.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -4622,20 +6355,14 @@
   ],
   "examples": [
    {
-    "verse": "17:24",
-    "word_from": 7,
-    "word_to": 8,
+    "verse": "23:29",
+    "word_from": 1,
+    "word_to": 2,
     "text": "وَقُل رَّبِّ",
     "focus": "ل رَّ",
-    "stop": false
-   },
-   {
-    "verse": "77:20",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "نَخْلُقكُّم",
-    "focus": "قكُّ",
-    "stop": false
+    "stop": false,
+    "note": "The ل of قُلْ goes fully into the ر: one doubled ر, no trace of the ل.",
+    "role": "anchor"
    },
    {
     "verse": "4:158",
@@ -4643,7 +6370,29 @@
     "word_to": 2,
     "text": "بَل رَّفَعَهُ",
     "focus": "ل رَّ",
-    "stop": false
+    "stop": false,
+    "note": "بَلْ, a particle this time: its ل also goes into the ر.",
+    "role": "hear"
+   },
+   {
+    "verse": "77:20",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "نَخْلُقكُّم",
+    "focus": "قكُّ",
+    "stop": false,
+    "note": "ق into ك: the complete merge (no ق heard) is read first; keeping the ق's heaviness is also correct.",
+    "role": "hear"
+   },
+   {
+    "verse": "21:56",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "بَل رَّبُّكُمْ",
+    "focus": "ل رَّ",
+    "stop": false,
+    "note": "بَل رَّبُّكُمْ: say one doubled ر straight after the بَ.",
+    "role": "say"
    },
    {
     "verse": "23:93",
@@ -4651,15 +6400,39 @@
     "word_to": 2,
     "text": "قُل رَّبِّ",
     "focus": "ل رَّ",
-    "stop": false
+    "stop": false,
+    "note": "قُل رَّبِّ with no و before it: the ل is not said.",
+    "role": "say"
    },
    {
-    "verse": "23:118",
+    "verse": "6:147",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "فَقُل رَّبُّكُمْ",
+    "focus": "ل رَّ",
+    "stop": false,
+    "note": "فَقُل رَّبُّكُمْ: the ل goes into the ر after the فَ.",
+    "role": "say"
+   },
+   {
+    "verse": "23:97",
     "word_from": 1,
     "word_to": 2,
     "text": "وَقُل رَّبِّ",
     "focus": "ل رَّ",
-    "stop": false
+    "stop": false,
+    "note": "ل and ر: two close مخارج, and the ل goes into the ر.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "mutajanisayn",
+     "verse": "2:256",
+     "word_from": 5,
+     "word_to": 6,
+     "text": "قَد تَّبَيَّنَ",
+     "focus": "د تَّ",
+     "stop": false,
+     "note": "د and ت share one مخرج (المتجانسين): the د goes into the ت."
+    }
    },
    {
     "verse": "20:114",
@@ -4667,7 +6440,29 @@
     "word_to": 15,
     "text": "وَقُل رَّبِّ",
     "focus": "ل رَّ",
-    "stop": false
+    "stop": false,
+    "note": "وَقُل رَّبِّ زِدْنِى عِلْمًا: the same merge.",
+    "role": "more"
+   },
+   {
+    "verse": "17:24",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "وَقُل رَّبِّ",
+    "focus": "ل رَّ",
+    "stop": false,
+    "note": "وَقُل رَّبِّ ٱرْحَمْهُمَا: the same merge.",
+    "role": "more"
+   },
+   {
+    "verse": "23:118",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَقُل رَّبِّ",
+    "focus": "ل رَّ",
+    "stop": false,
+    "note": "وَقُل رَّبِّ ٱغْفِرْ: the last ayah of المؤمنون.",
+    "role": "more"
    },
    {
     "verse": "18:22",
@@ -4675,7 +6470,9 @@
     "word_to": 16,
     "text": "قُل رَّبِّىٓ",
     "focus": "ل رَّ",
-    "stop": false
+    "stop": false,
+    "note": "قُل رَّبِّىٓ: the same merge, then a منفصل on رَّبِّىٓ أَعْلَمُ.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -4851,7 +6648,99 @@
   "review": {
    "status": "needs-teacher",
    "notes": "The sign meanings are confirmed from secondary sources (الميزان، مساعد الطيار); the end notes of مصحف المدينة itself were not read. Stopping at a رأس آية that carries لا is a scholarly difference."
-  }
+  },
+  "examples": [
+   {
+    "verse": "36:76",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "قَوْلُهُمْ إِنَّا",
+    "focus": "قَوْلُهُمْ",
+    "stop": false,
+    "note": "ۘ (م) الوقف اللازم: stop on قَوْلُهُمْ; joining would make إِنَّا نَعْلَمُ sound like their words.",
+    "role": "anchor"
+   },
+   {
+    "verse": "16:32",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "طَيِّبِينَ يَقُولُونَ",
+    "focus": "طَيِّبِينَ",
+    "stop": false,
+    "note": "ۙ (لا): don't stop on طَيِّبِينَ; يَقُولُونَ completes it. If you stop for breath, go back and join.",
+    "role": "hear"
+   },
+   {
+    "verse": "32:18",
+    "word_from": 6,
+    "word_to": 7,
+    "text": "فَاسِقًا لَّا",
+    "focus": "فَاسِقًا",
+    "stop": false,
+    "note": "ۚ (ج) الوقف الجائز: stopping on فَاسِقًا and joining are equal.",
+    "role": "hear"
+   },
+   {
+    "verse": "27:34",
+    "word_from": 11,
+    "word_to": 12,
+    "text": "أَذِلَّةً وَكَذَٰلِكَ",
+    "focus": "أَذِلَّةً",
+    "stop": false,
+    "note": "ۖ (صلى) الوصل أولى: you may stop on أَذِلَّةً, but joining is better.",
+    "role": "say"
+   },
+   {
+    "verse": "25:29",
+    "word_from": 7,
+    "word_to": 8,
+    "text": "جَآءَنِى وَكَانَ",
+    "focus": "جَآءَنِى",
+    "stop": false,
+    "note": "ۗ (قلى) الوقف أولى: you may join, but stopping on جَآءَنِى is better.",
+    "role": "say"
+   },
+   {
+    "verse": "2:2",
+    "word_from": 3,
+    "word_to": 5,
+    "text": "لَا رَيْبَ فِيهِ",
+    "focus": "رَيْبَ فِيهِ",
+    "stop": false,
+    "note": "∴ ∴ تعانق الوقف: stop on لَا رَيْبَ or on فِيهِ, never on both.",
+    "role": "say"
+   },
+   {
+    "verse": "6:36",
+    "word_from": 4,
+    "word_to": 5,
+    "text": "يَسْمَعُونَ وَٱلْمَوْتَىٰ",
+    "focus": "يَسْمَعُونَ",
+    "stop": false,
+    "note": "ۘ (م): stop on يَسْمَعُونَ; joining would make the dead among those who respond.",
+    "role": "more"
+   },
+   {
+    "verse": "16:5",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "خَلَقَهَا لَكُمْ",
+    "focus": "خَلَقَهَا",
+    "stop": false,
+    "note": "ۗ (قلى): stopping on خَلَقَهَا is better.",
+    "role": "more"
+   },
+   {
+    "verse": "23:96",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "ٱلسَّيِّئَةَ نَحْنُ",
+    "focus": "ٱلسَّيِّئَةَ",
+    "stop": false,
+    "note": "ۚ (ج): stop on ٱلسَّيِّئَةَ or join; both are equal.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "waqf-how",
@@ -5002,7 +6891,99 @@
   "review": {
    "status": "verified",
    "notes": ""
-  }
+  },
+  "examples": [
+   {
+    "verse": "73:1",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلْمُزَّمِّلُ",
+    "focus": "لُ",
+    "stop": true,
+    "note": "Stopping: the ضمة on the last ل goes, and you say ٱلْمُزَّمِّلْ.",
+    "role": "anchor"
+   },
+   {
+    "verse": "18:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "أَبَدًا",
+    "focus": "دًا",
+    "stop": true,
+    "note": "تنوين الفتح becomes a long ا at the stop: أَبَدَا (2 counts).",
+    "role": "hear"
+   },
+   {
+    "verse": "75:1",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْقِيَٰمَةِ",
+    "focus": "ةِ",
+    "stop": true,
+    "note": "The تاء مربوطة becomes a هاء ساكنة at the stop: ٱلْقِيَٰمَهْ.",
+    "role": "hear"
+   },
+   {
+    "verse": "70:9",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "كَٱلْعِهْنِ",
+    "focus": "نِ",
+    "stop": true,
+    "note": "A كسرة at the end also becomes a سكون: كَٱلْعِهْنْ.",
+    "role": "say"
+   },
+   {
+    "verse": "52:7",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "لَوَٰقِعٌ",
+    "focus": "عٌ",
+    "stop": true,
+    "note": "تنوين الضم is dropped at the stop: لَوَٰقِعْ.",
+    "role": "say"
+   },
+   {
+    "verse": "69:14",
+    "word_from": 6,
+    "word_to": 6,
+    "text": "وَٰحِدَةً",
+    "focus": "ةً",
+    "stop": true,
+    "note": "ةً stops as هـ, not ا: وَٰحِدَهْ.",
+    "role": "say"
+   },
+   {
+    "verse": "51:9",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "أُفِكَ",
+    "focus": "كَ",
+    "stop": true,
+    "note": "A فتحة at the end becomes a سكون: أُفِكْ.",
+    "role": "more"
+   },
+   {
+    "verse": "52:8",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "دَافِعٍ",
+    "focus": "عٍ",
+    "stop": true,
+    "note": "تنوين الكسر is dropped too: دَافِعْ.",
+    "role": "more"
+   },
+   {
+    "verse": "82:7",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "فَعَدَلَكَ",
+    "focus": "كَ",
+    "stop": true,
+    "note": "A فتحة at the end becomes a سكون: فَعَدَلَكْ.",
+    "role": "more"
+   }
+  ]
  },
  {
   "id": "sakt",
@@ -5041,55 +7022,54 @@
   "exhaustive": true,
   "examples": [
    {
+    "verse": "83:14",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "بَلْ رَانَ",
+    "focus": "لْ",
+    "stop": false,
+    "note": "Required سكت on the ل, no breath, then رَانَ: the ل is not merged into the ر.",
+    "role": "anchor"
+   },
+   {
     "verse": "75:27",
     "word_from": 2,
     "word_to": 3,
     "text": "مَنْ رَاقٍ",
-    "focus": "مَنْ",
-    "stop": false
+    "focus": "نْ",
+    "stop": false,
+    "note": "Required سكت on the ن, no breath, then رَاقٍ: the ن stays clear, not merged into the ر.",
+    "role": "hear"
    },
    {
-    "verse": "18:1",
-    "word_from": 11,
-    "word_to": 11,
-    "text": "عِوَجَا",
-    "focus": "عِوَجَا",
+    "verse": "75:27",
+    "word_from": 1,
+    "word_to": 3,
+    "text": "وَقِيلَ مَنْ رَاقٍ",
+    "focus": "نْ",
     "stop": false,
-    "note": "سكت, then قَيِّمًا (18:2). Stopping at the end of the ayah is also allowed."
+    "note": "وَقِيلَ مَنْ ۜ رَاقٍ: سكت on the ن, so it stays a clear ن.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "idgh-n",
+     "verse": "23:86",
+     "word_from": 2,
+     "word_to": 3,
+     "text": "مَن رَّبُّ",
+     "focus": "ن رَّ",
+     "stop": false,
+     "note": "No سكت: the ن merges into the ر with no غنة, and the ر is doubled."
+    }
    },
    {
     "verse": "36:52",
     "word_from": 6,
     "word_to": 7,
     "text": "مَّرْقَدِنَا هَٰذَا",
-    "focus": "مَّرْقَدِنَا",
-    "stop": false
-   },
-   {
-    "verse": "83:14",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "بَلْ رَانَ",
-    "focus": "بَلْ",
-    "stop": false
-   },
-   {
-    "verse": "69:28",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "مَالِيَهْ",
-    "focus": "مَالِيَهْ",
+    "focus": "نَا",
     "stop": false,
-    "note": "Optional: سكت (read first) or إدغام when you join it to هَلَكَ (69:29)."
-   },
-   {
-    "verse": "8:75",
-    "word_from": 22,
-    "word_to": 22,
-    "text": "عَلِيمٌۢ",
-    "focus": "عَلِيمٌۢ",
-    "stop": false,
-    "note": "Optional: joining the end of الأنفال to التوبة, you may stop, pause (سكت) or join, without البسملة."
+    "note": "ۜ and ۗ: joining, سكت on the ا; stopping (preferred here) is also correct.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -5135,7 +7115,29 @@
     "word_to": 6,
     "text": "مَجْر۪ىٰهَا",
     "focus": "ر۪ىٰ",
-    "stop": false
+    "stop": false,
+    "note": "إمالة كبرى: the ر leans toward a كسرة and the ا toward a ي. The ر is light. The only one in حفص.",
+    "role": "anchor"
+   },
+   {
+    "verse": "11:41",
+    "word_from": 4,
+    "word_to": 6,
+    "text": "بِسْمِ ٱللَّهِ مَجْر۪ىٰهَا",
+    "focus": "ر۪ىٰ",
+    "stop": false,
+    "note": "بِسْمِ ٱللَّهِ مَجْر۪ىٰهَا: the ر and ا lean toward ي.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "11:41",
+     "word_from": 7,
+     "word_to": 7,
+     "text": "وَمُرْسَىٰهَآ",
+     "focus": "سَىٰ",
+     "stop": false,
+     "note": "وَمُرْسَىٰهَآ: a plain فتحة and ا, 2 counts, no leaning."
+    }
    }
   ],
   "sources": [
@@ -5169,7 +7171,9 @@
     "word_to": 6,
     "text": "تَأْمَ۫نَّا",
     "focus": "مَ۫نَّا",
-    "stop": false
+    "stop": false,
+    "note": "Two ways: الروم (الاختلاس), part of the first ن's ضمة with no merge; or merge with الإشمام. Your teacher picks the first.",
+    "role": "anchor"
    }
   ],
   "sources": [
@@ -5219,7 +7223,28 @@
     "text": "ءَا۬عْجَمِىٌّ",
     "focus": "ءَا۬",
     "stop": false,
-    "note": "Required."
+    "note": "Required: the second همزة is eased, between a همزة and an ا, short, with no مد.",
+    "role": "anchor"
+   },
+   {
+    "verse": "41:44",
+    "word_from": 9,
+    "word_to": 10,
+    "text": "ءَا۬عْجَمِىٌّ وَعَرَبِىٌّ",
+    "focus": "ءَا۬",
+    "stop": false,
+    "note": "ءَا۬عْجَمِىٌّ وَعَرَبِىٌّ: the second همزة is eased, with no مد after it.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "badal",
+     "verse": "41:44",
+     "word_from": 8,
+     "word_to": 8,
+     "text": "ءَايَٰتُهُۥٓ",
+     "focus": "ءَا",
+     "stop": false,
+     "note": "ءَايَٰتُهُۥٓ: a full همزة, then a real ا (مد البدل, 2 counts). Stopped here, so no صلة."
+    }
    },
    {
     "verse": "6:143",
@@ -5228,25 +7253,8 @@
     "text": "ءَآلذَّكَرَيْنِ",
     "focus": "ءَآ",
     "stop": false,
-    "note": "Second way (the first is الإبدال)."
-   },
-   {
-    "verse": "6:144",
-    "word_from": 8,
-    "word_to": 8,
-    "text": "ءَآلذَّكَرَيْنِ",
-    "focus": "ءَآ",
-    "stop": false,
-    "note": "Second way."
-   },
-   {
-    "verse": "10:51",
-    "word_from": 7,
-    "word_to": 7,
-    "text": "ءَآلْـَٰٔنَ",
-    "focus": "ءَآ",
-    "stop": false,
-    "note": "Second way."
+    "note": "Two ways: الإبدال, an ا of 6 counts (read first, and what the reciter reads), or التسهيل with no مد.",
+    "role": "more"
    },
    {
     "verse": "10:91",
@@ -5255,16 +7263,8 @@
     "text": "ءَآلْـَٰٔنَ",
     "focus": "ءَآ",
     "stop": false,
-    "note": "Second way."
-   },
-   {
-    "verse": "10:59",
-    "word_from": 14,
-    "word_to": 14,
-    "text": "ءَآللَّهُ",
-    "focus": "ءَآ",
-    "stop": false,
-    "note": "Second way."
+    "note": "ءَآلْـَٰٔنَ: الإبدال with 6 counts (first) or التسهيل with no مد.",
+    "role": "more"
    },
    {
     "verse": "27:59",
@@ -5273,7 +7273,18 @@
     "text": "ءَآللَّهُ",
     "focus": "ءَآ",
     "stop": false,
-    "note": "Second way."
+    "note": "ءَآللَّهُ: الإبدال with 6 counts (first) or التسهيل with no مد.",
+    "role": "more"
+   },
+   {
+    "verse": "10:59",
+    "word_from": 14,
+    "word_to": 14,
+    "text": "ءَآللَّهُ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "ءَآللَّهُ again: the same two ways, الإبدال first.",
+    "role": "more"
    }
   ],
   "sources": [
@@ -5346,7 +7357,8 @@
     "text": "مَلِكِ",
     "focus": "مَ",
     "stop": false,
-    "note": "فتحة on the م"
+    "note": "فتحة on the م: an open a, one short count.",
+    "role": "anchor"
    },
    {
     "verse": "114:1",
@@ -5355,7 +7367,8 @@
     "text": "قُلْ",
     "focus": "لْ",
     "stop": false,
-    "note": "سكون on the ل"
+    "note": "سكون on the ل: the letter is closed, with no vowel after it.",
+    "role": "hear"
    },
    {
     "verse": "114:1",
@@ -5364,34 +7377,38 @@
     "text": "بِرَبِّ",
     "focus": "بِّ",
     "stop": false,
-    "note": "شدة: the ب is said twice"
+    "note": "شدة: the ب is said twice, the first with سكون: رَبْ + بِ.",
+    "role": "hear"
    },
    {
-    "verse": "1:2",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "ٱلْحَمْدُ",
-    "focus": "دُ",
+    "verse": "114:5",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "يُوَسْوِسُ",
+    "focus": "يُ",
     "stop": false,
-    "note": "ضمة on the د"
+    "note": "ضمة on the ي: a rounded u, lips forward.",
+    "role": "say"
    },
    {
-    "verse": "1:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "بِسْمِ",
-    "focus": "بِ",
-    "stop": false,
-    "note": "كسرة on the ب"
-   },
-   {
-    "verse": "112:4",
+    "verse": "1:7",
     "word_from": 4,
     "word_to": 4,
-    "text": "كُفُوًا",
-    "focus": "وً",
+    "text": "عَلَيْهِمْ",
+    "focus": "هِ",
     "stop": false,
-    "note": "تنوين فتح: heard as a نون (كُفُوَنْ) because the ayah goes on. At the end of an ayah the reciter stops and the tanween is not heard (أَحَدْ)"
+    "note": "كسرة on the ه: an i, lips spread.",
+    "role": "say"
+   },
+   {
+    "verse": "101:11",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "نَارٌ",
+    "focus": "رٌ",
+    "stop": false,
+    "note": "تنوين: a ن is heard after the ضمة, نَارُنْ, because the reading goes on to حَامِيَةٌ.",
+    "role": "say"
    }
   ],
   "facts": [
@@ -5523,17 +7540,9 @@
     "word_to": 8,
     "text": "فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
     "focus": "فَٱسْتَعِذْ",
-    "stop": false,
-    "note": "This ayah commands the استعاذة. The words said before reciting are أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ, which are not an ayah themselves."
-   },
-   {
-    "verse": "1:1",
-    "word_from": 1,
-    "word_to": 4,
-    "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-    "focus": "بِسْمِ",
-    "stop": false,
-    "note": "The بسملة, counted as the first ayah of الفاتحة."
+    "stop": true,
+    "note": "The command to seek refuge before reciting. The words you say (أَعُوذُ بِٱللَّهِ…) are not themselves an ayah.",
+    "role": "anchor"
    },
    {
     "verse": "9:1",
@@ -5542,7 +7551,28 @@
     "text": "بَرَآءَةٌ مِّنَ ٱللَّهِ",
     "focus": "بَرَآءَةٌ",
     "stop": false,
-    "note": "Not a بسملة: the one surah without one. Start it with the استعاذة only."
+    "note": "التوبة opens with no بسملة: start it with the استعاذة only.",
+    "role": "hear"
+   },
+   {
+    "verse": "16:98",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "فَٱسْتَعِذْ",
+    "focus": "فَٱسْتَعِذْ",
+    "stop": false,
+    "note": "The command word itself: fa-staʿidh, «seek refuge». The ٱ is not said.",
+    "role": "say"
+   },
+   {
+    "verse": "1:1",
+    "word_from": 1,
+    "word_to": 4,
+    "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    "focus": "بِسْمِ",
+    "stop": true,
+    "note": "The بسملة, said at the start of every surah except التوبة: the words you will say most.",
+    "role": "say"
    }
   ],
   "facts": [
@@ -5693,40 +7723,24 @@
   "tip": "Keep the vowel true: a heavy letter with كسرة is still an i (قِ), not a heavy e; and do not let the heaviness spill onto the light letter next to it (ٱلْمُسْتَقِيمَ: only the ق is heavy).",
   "examples": [
    {
+    "verse": "114:4",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "ٱلْخَنَّاسِ",
+    "focus": "خَ",
+    "stop": true,
+    "note": "خ with a فتحة: the back of the tongue rises and the sound is full.",
+    "role": "anchor"
+   },
+   {
     "verse": "101:1",
     "word_from": 1,
     "word_to": 1,
     "text": "ٱلْقَارِعَةُ",
     "focus": "قَا",
     "stop": true,
-    "note": "Level 1: فتحة and an ا after it"
-   },
-   {
-    "verse": "113:2",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "خَلَقَ",
-    "focus": "خَ",
-    "stop": true,
-    "note": "Level 2: فتحة"
-   },
-   {
-    "verse": "114:5",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "صُدُورِ",
-    "focus": "صُ",
-    "stop": false,
-    "note": "Level 3: ضمة"
-   },
-   {
-    "verse": "103:1",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "وَٱلْعَصْرِ",
-    "focus": "صْ",
-    "stop": true,
-    "note": "Level 4: سكون"
+    "note": "ق with a فتحة and an ا after it: the strongest level; the ا is heavy too.",
+    "role": "hear"
    },
    {
     "verse": "1:6",
@@ -5735,34 +7749,78 @@
     "text": "ٱلْمُسْتَقِيمَ",
     "focus": "قِ",
     "stop": true,
-    "note": "Level 5: كسرة, still heavy"
+    "note": "ق with a كسرة: the weakest level, still heavy. Only the ق; the letters around it stay light.",
+    "role": "hear"
+   },
+   {
+    "verse": "85:14",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "ٱلْغَفُورُ",
+    "focus": "غَ",
+    "stop": false,
+    "note": "غ with a plain فتحة, no ا after it (level 2): heavy and full.",
+    "role": "say"
    },
    {
     "verse": "1:7",
-    "word_from": 5,
-    "word_to": 5,
-    "text": "غَيْرِ",
-    "focus": "غَ",
-    "stop": false,
-    "note": "غ with فتحة"
-   },
-   {
-    "verse": "105:3",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "طَيْرًا",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "صِرَٰطَ",
     "focus": "طَ",
     "stop": false,
-    "note": "ط, one of the four مطبقة letters (ص ض ط ظ), the heaviest"
+    "note": "ط with a فتحة: ط is the strongest of the heavy letters.",
+    "role": "say"
    },
    {
-    "verse": "114:1",
+    "verse": "103:1",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "وَٱلْعَصْرِ",
+    "focus": "صْ",
+    "stop": true,
+    "note": "ص with a سكون: level 4, heavy and steady.",
+    "role": "say"
+   },
+   {
+    "verse": "114:5",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "صُدُورِ",
+    "focus": "صُ",
+    "stop": false,
+    "note": "ص with a ضمة (level 3): the tongue rises, the sound is full and deep.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "basics",
+     "verse": "114:5",
+     "word_from": 2,
+     "word_to": 2,
+     "text": "يُوَسْوِسُ",
+     "focus": "سُ",
+     "stop": false,
+     "note": "س with a ضمة: the same place as ص, but light; the tongue stays low."
+    }
+   },
+   {
+    "verse": "1:2",
     "word_from": 3,
     "word_to": 3,
-    "text": "بِرَبِّ",
+    "text": "رَبِّ",
     "focus": "رَ",
     "stop": false,
-    "note": "ر with فتحة: heavy (basic rule)"
+    "note": "ر with a فتحة: heavy (the basic rule; the full ر rules come later).",
+    "role": "more"
+   },
+   {
+    "verse": "79:37",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "مَن طَغَىٰ",
+    "focus": "ن طَ",
+    "stop": true,
+    "note": "The hidden ن before ط: its غنة is heavy, following the ط.",
+    "role": "more"
    }
   ],
   "facts": [
@@ -5909,62 +7967,79 @@
     "word_to": 5,
     "text": "فِى ٱلْعُقَدِ",
     "focus": "فِى ٱلْ",
-    "stop": false,
-    "note": "The ى drops: فِلْعُقَدِ"
+    "stop": true,
+    "note": "Joined, the ى of فِى is not said: فِ runs into the ل (فِلْعُقَدِ).",
+    "role": "anchor"
    },
    {
-    "verse": "27:15",
-    "word_from": 6,
-    "word_to": 7,
-    "text": "وَقَالَا ٱلْحَمْدُ",
-    "focus": "قَالَا ٱلْ",
-    "stop": false,
-    "note": "The ا of the dual drops: وَقَالَلْحَمْدُ"
-   },
-   {
-    "verse": "1:7",
-    "word_from": 8,
-    "word_to": 9,
-    "text": "وَلَا ٱلضَّآلِّينَ",
-    "focus": "وَلَا ٱل",
-    "stop": false,
-    "note": "The ا drops before the ساكن ل of ال (merged into the ض): وَلَضَّآلِّينَ"
-   },
-   {
-    "verse": "3:26",
+    "verse": "84:22",
     "word_from": 1,
     "word_to": 2,
-    "text": "قُلِ ٱللَّهُمَّ",
-    "focus": "قُلِ",
+    "text": "بَلِ ٱلَّذِينَ",
+    "focus": "بَلِ",
     "stop": false,
-    "note": "The ل takes a كسرة"
+    "note": "بَلْ meets the ساكن ل of ٱلَّذِينَ, so its ل takes a كسرة: بَلِ ٱلَّذِينَ.",
+    "role": "hear"
    },
    {
-    "verse": "98:1",
+    "verse": "85:15",
     "word_from": 1,
-    "word_to": 3,
-    "text": "لَمْ يَكُنِ ٱلَّذِينَ",
-    "focus": "يَكُنِ",
+    "word_to": 2,
+    "text": "ذُو ٱلْعَرْشِ",
+    "focus": "ذُو ٱلْ",
     "stop": false,
-    "note": "The ن takes a كسرة"
+    "note": "Joined, the و of ذُو is not said: ذُلْعَرْشِ.",
+    "role": "hear"
    },
    {
-    "verse": "2:5",
-    "word_from": 7,
-    "word_to": 8,
-    "text": "هُمُ ٱلْمُفْلِحُونَ",
+    "verse": "81:3",
+    "word_from": 1,
+    "word_to": 2,
+    "text": "وَإِذَا ٱلْجِبَالُ",
+    "focus": "ذَا ٱلْ",
+    "stop": false,
+    "note": "Joined, the ا of وَإِذَا is not said: وَإِذَلْجِبَالُ.",
+    "role": "say"
+   },
+   {
+    "verse": "80:42",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "هُمُ ٱلْكَفَرَةُ",
     "focus": "هُمُ",
     "stop": false,
-    "note": "ميم الجمع takes a ضمة"
+    "note": "ميم الجمع takes a ضمة before ال: هُمُ ٱلْكَفَرَةُ.",
+    "role": "say"
    },
    {
-    "verse": "114:6",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "مِنَ ٱلْجِنَّةِ",
+    "verse": "83:29",
+    "word_from": 5,
+    "word_to": 6,
+    "text": "مِنَ ٱلَّذِينَ",
     "focus": "مِنَ",
     "stop": false,
-    "note": "مِنْ takes a فتحة before ال"
+    "note": "مِنْ takes a فتحة before ال: مِنَ ٱلَّذِينَ.",
+    "role": "say"
+   },
+   {
+    "verse": "78:18",
+    "word_from": 3,
+    "word_to": 4,
+    "text": "فِى ٱلصُّورِ",
+    "focus": "فِى ٱل",
+    "stop": false,
+    "note": "Joined, the ى of فِى drops: فِ goes straight into the صّ (فِصُّورِ).",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tabii",
+     "verse": "110:2",
+     "word_from": 4,
+     "word_to": 5,
+     "text": "فِى دِينِ",
+     "focus": "فِى",
+     "stop": false,
+     "note": "Before دِينِ (no ساكن) the ي of فِى keeps its two counts."
+    }
    },
    {
     "verse": "11:42",
@@ -5973,7 +8048,8 @@
     "text": "نُوحٌ ٱبْنَهُۥ",
     "focus": "نُوحٌ",
     "stop": false,
-    "note": "The تنوين takes a كسرة: نُوحُنِ ٱبْنَهُ"
+    "note": "The تنوين of نُوحٌ takes a كسرة before the ساكن ب: نُوحُنِ ٱبْنَهُ.",
+    "role": "more"
    }
   ],
   "facts": [
@@ -6088,31 +8164,44 @@
   "tip": "أَنَا before a همزة (أَنَا۠ أُحْىِۦ) stays short when joined: the ا is not said, so there is no مد منفصل.",
   "examples": [
    {
-    "verse": "109:4",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "أَنَا۠ عَابِدٌ",
-    "focus": "أَنَا۠",
-    "stop": false,
-    "note": "Joined: أَنَ عَابِدٌ; stopping on it: أَنَا"
-   },
-   {
-    "verse": "103:3",
-    "word_from": 3,
-    "word_to": 3,
-    "text": "ءَامَنُوا۟",
-    "focus": "نُوا۟",
-    "stop": false,
-    "note": "The ا after واو الجماعة is never said"
-   },
-   {
-    "verse": "2:5",
+    "verse": "106:3",
     "word_from": 1,
     "word_to": 1,
+    "text": "فَلْيَعْبُدُوا۟",
+    "focus": "دُوا۟",
+    "stop": false,
+    "note": "The ا after واو الجماعة is written, not said: the word ends on the و.",
+    "role": "anchor"
+   },
+   {
+    "verse": "98:7",
+    "word_from": 6,
+    "word_to": 6,
     "text": "أُو۟لَٰٓئِكَ",
     "focus": "أُو۟",
     "stop": false,
-    "note": "The و is not said: أُلَٰٓئِكَ"
+    "note": "The و is not said: read أُلَٰٓئِكَ.",
+    "role": "hear"
+   },
+   {
+    "verse": "109:4",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أَنَا۠",
+    "focus": "أَنَا۠",
+    "stop": false,
+    "note": "Joined to عَابِدٌ, the ا of أَنَا۠ is not said: أَنَ.",
+    "role": "hear"
+   },
+   {
+    "verse": "98:2",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "يَتْلُوا۟",
+    "focus": "لُوا۟",
+    "stop": false,
+    "note": "The ا after the و is not said: يَتْلُو.",
+    "role": "say"
    },
    {
     "verse": "2:259",
@@ -6121,16 +8210,8 @@
     "text": "مِا۟ئَةَ",
     "focus": "مِا۟",
     "stop": false,
-    "note": "مِا۟ئَةَ is read مِئَةَ"
-   },
-   {
-    "verse": "27:21",
-    "word_from": 5,
-    "word_to": 5,
-    "text": "لَأَا۟ذْبَحَنَّهُۥٓ",
-    "focus": "أَا۟",
-    "stop": false,
-    "note": "لَأَا۟ذْبَحَنَّهُۥ is read لَأَذْبَحَنَّهُۥ"
+    "note": "The ا is not said: مِئَةَ.",
+    "role": "say"
    },
    {
     "verse": "51:47",
@@ -6139,16 +8220,28 @@
     "text": "بِأَيْي۟دٍ",
     "focus": "يْي۟",
     "stop": false,
-    "note": "بِأَيْي۟دٍ is read بِأَيْدٍ"
+    "note": "The second ي is not said: بِأَيْدٍ.",
+    "role": "say"
    },
    {
-    "verse": "18:38",
-    "word_from": 1,
-    "word_to": 2,
-    "text": "لَّٰكِنَّا۠ هُوَ",
-    "focus": "لَّٰكِنَّا۠",
+    "verse": "2:258",
+    "word_from": 21,
+    "word_to": 22,
+    "text": "أَنَا۠ أُحْىِۦ",
+    "focus": "أَنَا۠ أُ",
     "stop": false,
-    "note": "Joined: لَٰكِنَّ هُوَ; stopping: لَٰكِنَّا"
+    "note": "Joined: أَنَ أُحْيِي. No ا is said, so no مد before the همزة.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "munfasil",
+     "verse": "108:1",
+     "word_from": 1,
+     "word_to": 2,
+     "text": "إِنَّآ أَعْطَيْنَٰكَ",
+     "focus": "نَّآ أَ",
+     "stop": false,
+     "note": "إِنَّآ before أَعْطَيْنَٰكَ: the ا is said and held 4 or 5 counts."
+    }
    },
    {
     "verse": "33:10",
@@ -6157,25 +8250,28 @@
     "text": "ٱلظُّنُونَا۠",
     "focus": "نَا۠",
     "stop": true,
-    "note": "At the ayah end the ا is said"
+    "note": "At the ayah's end you stop, so the ا is said: ٱلظُّنُونَا.",
+    "role": "more"
    },
    {
-    "verse": "76:4",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "سَلَٰسِلَا۟",
-    "focus": "لَا۟",
-    "stop": true,
-    "note": "Stopping: with the ا or without it, both from حفص"
+    "verse": "76:16",
+    "word_from": 1,
+    "word_to": 1,
+    "text": "قَوَارِيرَا۟",
+    "focus": "رَا۟",
+    "stop": false,
+    "note": "The ا is never said: joined قَوَارِيرَ مِن, stopping قَوَارِيرْ.",
+    "role": "more"
    },
    {
-    "verse": "76:15",
-    "word_from": 8,
-    "word_to": 8,
-    "text": "قَوَارِيرَا۠",
-    "focus": "رَا۠",
-    "stop": true,
-    "note": "The first قَوَارِيرَا: the ا is said at the stop"
+    "verse": "27:21",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "لَأَا۟ذْبَحَنَّهُۥٓ",
+    "focus": "أَا۟",
+    "stop": false,
+    "note": "The ا after the همزة is not said: لَأَذْبَحَنَّهُۥ.",
+    "role": "more"
    }
   ],
   "facts": [
@@ -6302,31 +8398,24 @@
   "tip": "Ask what comes after the حرف مد first (a سكون or a همزة); the همزة before it (بدل) only decides the length when nothing comes after.",
   "examples": [
    {
-    "verse": "5:2",
-    "word_from": 15,
-    "word_to": 16,
-    "text": "وَلَآ ءَآمِّينَ",
-    "focus": "ءَآ",
-    "stop": false,
-    "note": "بدل and لازم: read 6"
-   },
-   {
     "verse": "4:38",
     "word_from": 4,
     "word_to": 4,
     "text": "رِئَآءَ",
     "focus": "ئَآءَ",
     "stop": false,
-    "note": "بدل and متصل: read 4 or 5"
+    "note": "The ا has a همزة before it and after it: المتصل wins, 4 or 5.",
+    "role": "anchor"
    },
    {
-    "verse": "2:14",
-    "word_from": 16,
-    "word_to": 16,
-    "text": "مُسْتَهْزِءُونَ",
-    "focus": "زِءُو",
+    "verse": "107:6",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "يُرَآءُونَ",
+    "focus": "ءُو",
     "stop": true,
-    "note": "بدل and عارض at the stop: 2, 4 or 6"
+    "note": "Stopping: the و after the همزة is بدل and عارض; العارض wins: 2, 4 or 6.",
+    "role": "hear"
    },
    {
     "verse": "12:16",
@@ -6335,16 +8424,8 @@
     "text": "وَجَآءُوٓ أَبَاهُمْ",
     "focus": "ءُوٓ أَ",
     "stop": false,
-    "note": "بدل and منفصل: 4 or 5 joined"
-   },
-   {
-    "verse": "11:70",
-    "word_from": 2,
-    "word_to": 3,
-    "text": "رَءَآ أَيْدِيَهُمْ",
-    "focus": "رَءَآ أَ",
-    "stop": false,
-    "note": "بدل and منفصل: 4 or 5 joined"
+    "note": "بدل and منفصل: joined, the منفصل wins, 4 or 5.",
+    "role": "hear"
    },
    {
     "verse": "3:14",
@@ -6353,7 +8434,18 @@
     "text": "ٱلْمَـَٔابِ",
     "focus": "مَـَٔا",
     "stop": true,
-    "note": "بدل and عارض at the stop"
+    "note": "Stopping: ٱلْمَآبْ. The ا after the همزة becomes عارض: 2, 4 or 6.",
+    "role": "say"
+   },
+   {
+    "verse": "11:70",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "رَءَآ أَيْدِيَهُمْ",
+    "focus": "ءَآ أَ",
+    "stop": false,
+    "note": "رَءَآ before أَيْدِيَهُمْ: the منفصل wins, 4 or 5.",
+    "role": "say"
    },
    {
     "verse": "60:4",
@@ -6362,7 +8454,38 @@
     "text": "بُرَءَٰٓؤُا۟",
     "focus": "ءَٰٓؤُ",
     "stop": false,
-    "note": "بدل and متصل: read 4 or 5"
+    "note": "بُرَءَٰٓؤُا۟: المتصل wins, 4 or 5.",
+    "role": "say"
+   },
+   {
+    "verse": "5:2",
+    "word_from": 16,
+    "word_to": 16,
+    "text": "ءَآمِّينَ",
+    "focus": "ءَآ",
+    "stop": false,
+    "note": "ءَآمِّينَ: بدل and a شدة after it: لازم wins, six.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "badal",
+     "verse": "48:27",
+     "word_from": 13,
+     "word_to": 13,
+     "text": "ءَامِنِينَ",
+     "focus": "ءَا",
+     "stop": false,
+     "note": "ءَامِنِينَ: no شدة after the ا, so only the بدل: two counts."
+    }
+   },
+   {
+    "verse": "2:14",
+    "word_from": 16,
+    "word_to": 16,
+    "text": "مُسْتَهْزِءُونَ",
+    "focus": "زِءُو",
+    "stop": true,
+    "note": "Stopping: مُسْتَهْزِءُونْ. بدل and عارض: 2, 4 or 6.",
+    "role": "more"
    }
   ],
   "facts": [
@@ -6488,52 +8611,48 @@
     "text": "أَنقَضَ ظَهْرَكَ",
     "focus": "ضَ ظَ",
     "stop": false,
-    "note": "ض then ظ: both clear (الجزرية)"
+    "note": "ض runs along the side of the tongue; then ظ at the tip, at the teeth.",
+    "role": "anchor"
    },
    {
-    "verse": "25:27",
-    "word_from": 2,
+    "verse": "75:22",
+    "word_from": 3,
     "word_to": 3,
-    "text": "يَعَضُّ ٱلظَّالِمُ",
-    "focus": "ضُّ ٱلظَّ",
-    "stop": false,
-    "note": "ض then ظ"
+    "text": "نَّاضِرَةٌ",
+    "focus": "ضِ",
+    "stop": true,
+    "note": "نَاضِرَةٌ (radiant): ض, from the side of the tongue.",
+    "role": "hear"
    },
    {
-    "verse": "93:1",
+    "verse": "75:23",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "نَاظِرَةٌ",
+    "focus": "ظِ",
+    "stop": true,
+    "note": "نَاظِرَةٌ (looking): ظ, with the tongue tip at the teeth.",
+    "role": "hear"
+   },
+   {
+    "verse": "94:2",
     "word_from": 1,
     "word_to": 1,
-    "text": "وَٱلضُّحَىٰ",
-    "focus": "ضُّ",
-    "stop": true,
-    "note": "ض with ضمة"
+    "text": "وَوَضَعْنَا",
+    "focus": "ضَ",
+    "stop": false,
+    "note": "وَوَضَعْنَا: ض with فتحة from the side of the tongue; don't turn it into ظ.",
+    "role": "say"
    },
    {
-    "verse": "1:7",
-    "word_from": 9,
-    "word_to": 9,
-    "text": "ٱلضَّآلِّينَ",
-    "focus": "ضَّ",
-    "stop": true,
-    "note": "ض with شدة"
-   },
-   {
-    "verse": "81:24",
+    "verse": "105:2",
     "word_from": 5,
     "word_to": 5,
-    "text": "بِضَنِينٍ",
-    "focus": "ضَ",
+    "text": "تَضْلِيلٍ",
+    "focus": "ضْ",
     "stop": true,
-    "note": "بِضَنِينٍ with ض in حفص (meaning: not stingy)"
-   },
-   {
-    "verse": "4:40",
-    "word_from": 3,
-    "word_to": 4,
-    "text": "لَا يَظْلِمُ",
-    "focus": "ظْ",
-    "stop": false,
-    "note": "ظ with سكون"
+    "note": "ض with سكون: hold it on the side of the tongue.",
+    "role": "say"
    },
    {
     "verse": "92:14",
@@ -6542,25 +8661,58 @@
     "text": "تَلَظَّىٰ",
     "focus": "ظَّ",
     "stop": true,
-    "note": "ظ with شدة"
+    "note": "ظ with شدة: the tongue tip stays at the teeth.",
+    "role": "say"
    },
    {
-    "verse": "17:20",
-    "word_from": 12,
-    "word_to": 12,
-    "text": "مَحْظُورًا",
-    "focus": "ظُ",
+    "verse": "83:24",
+    "word_from": 4,
+    "word_to": 4,
+    "text": "نَضْرَةَ",
+    "focus": "ضْ",
+    "stop": false,
+    "note": "نَضْرَةَ: ض, heavy, and its sound runs along the side of the tongue.",
+    "role": "notice",
+    "contrast": {
+     "lesson": "tafkhim",
+     "verse": "110:1",
+     "word_from": 3,
+     "word_to": 3,
+     "text": "نَصْرُ",
+     "focus": "صْ",
+     "stop": false,
+     "note": "نَصْرُ: ص, heavy too, but a whistle from the tongue tip."
+    }
+   },
+   {
+    "verse": "25:27",
+    "word_from": 2,
+    "word_to": 3,
+    "text": "يَعَضُّ ٱلظَّالِمُ",
+    "focus": "ضُّ ٱلظَّ",
+    "stop": false,
+    "note": "ض then ظ: keep both apart (الجزرية).",
+    "role": "more"
+   },
+   {
+    "verse": "81:24",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "بِضَنِينٍ",
+    "focus": "ضَ",
     "stop": true,
-    "note": "مَحْظُورًا, one of the ظ words in الجزرية"
+    "note": "بِضَنِينٍ is read with ض in حفص.",
+    "role": "more"
    },
    {
     "verse": "2:173",
     "word_from": 14,
     "word_to": 14,
     "text": "ٱضْطُرَّ",
-    "focus": "ضْ",
+    "focus": "ضْطُ",
     "stop": false,
-    "note": "ض with سكون before ط"
+    "note": "ض with سكون before ط: say the ض fully, don't merge.",
+    "role": "more"
    }
   ],
   "facts": [
@@ -6683,67 +8835,64 @@
   "tip": "With الروم the letter is not fully stopped: a مد عارض before it is read 2 counts only (ٱلرَّحِيمِ), while a متصل stays 4 or 5 (ٱلسَّمَآءِ) and a لازم 6. A قلقلة letter does not bounce.",
   "examples": [
    {
-    "verse": "1:5",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "نَسْتَعِينُ",
-    "focus": "نُ",
-    "stop": true,
-    "note": "ضمة: سكون, روم or إشمام"
-   },
-   {
     "verse": "112:1",
     "word_from": 4,
     "word_to": 4,
     "text": "أَحَدٌ",
     "focus": "دٌ",
     "stop": true,
-    "note": "تنوين ضم: سكون, روم or إشمام"
+    "note": "تنوين ضم: سكون, روم or إشمام. With الروم the د does not bounce (no قلقلة).",
+    "role": "anchor"
    },
    {
-    "verse": "1:3",
+    "verse": "96:3",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "ٱلْأَكْرَمُ",
+    "focus": "مُ",
+    "stop": true,
+    "note": "ضمة: سكون, روم or إشمام.",
+    "role": "hear"
+   },
+   {
+    "verse": "77:13",
     "word_from": 2,
     "word_to": 2,
-    "text": "ٱلرَّحِيمِ",
-    "focus": "مِ",
+    "text": "ٱلْفَصْلِ",
+    "focus": "لِ",
     "stop": true,
-    "note": "كسرة: سكون or روم"
+    "note": "كسرة: سكون or روم; never إشمام.",
+    "role": "hear"
    },
    {
-    "verse": "114:2",
-    "word_from": 2,
-    "word_to": 2,
-    "text": "ٱلنَّاسِ",
-    "focus": "سِ",
-    "stop": true,
-    "note": "كسرة: سكون or روم"
-   },
-   {
-    "verse": "1:2",
+    "verse": "70:1",
     "word_from": 4,
     "word_to": 4,
-    "text": "ٱلْعَٰلَمِينَ",
-    "focus": "نَ",
+    "text": "وَاقِعٍ",
+    "focus": "عٍ",
     "stop": true,
-    "note": "فتحة: سكون only"
+    "note": "تنوين كسر: سكون or روم.",
+    "role": "say"
    },
    {
-    "verse": "104:5",
-    "word_from": 4,
-    "word_to": 4,
-    "text": "ٱلْحُطَمَةُ",
-    "focus": "مَةُ",
+    "verse": "102:8",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "ٱلنَّعِيمِ",
+    "focus": "يمِ",
     "stop": true,
-    "note": "تاء مربوطة: stopped as هاء, سكون only"
+    "note": "كسرة after a مد: with الروم, the مد before it is 2 counts only.",
+    "role": "say"
    },
    {
-    "verse": "73:2",
-    "word_from": 1,
-    "word_to": 1,
-    "text": "قُمِ",
-    "focus": "قُمِ",
+    "verse": "86:13",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "فَصْلٌ",
+    "focus": "لٌ",
     "stop": true,
-    "note": "The كسرة was added only to join: قُمْ, سكون only"
+    "note": "تنوين ضم: سكون, روم or إشمام.",
+    "role": "say"
    }
   ],
   "facts": [

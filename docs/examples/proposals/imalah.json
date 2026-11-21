@@ -1,0 +1,49 @@
+{
+  "lesson": "imalah",
+  "coverage": "the only إمالة in حفص: #1, and #2 in its phrase, set against وَمُرْسَىٰهَآ (no إمالة)",
+  "notes": "One word in the whole Quran for حفص, so there are no hear or say words (warnings answered). The notice entry repeats مَجْر۪ىٰهَا inside بِسْمِ ٱللَّهِ مَجْر۪ىٰهَا so the pair can be stored; its contrast is the very next word, وَمُرْسَىٰهَآ, the same pattern read with a plain فتحة and ا. Without a notice entry the app would pair the anchor with a random natural-madd word.",
+  "noticeText": {
+    "en": "Listen to مَجْر۪ىٰهَا: the رَا is tilted toward رِي (إمالة كبرى), the only such word in حفص.",
+    "ar": "استمع إلى مَجْر۪ىٰهَا: تُمال الراء والألف نحو الكسرة والياء، وهي الإمالة الوحيدة عند حفص."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "11:41",
+      "word_from": 6,
+      "word_to": 6,
+      "text": "مَجْر۪ىٰهَا",
+      "focus": "ر۪ىٰ",
+      "stop": false,
+      "note": "إمالة كبرى: the ر leans toward a كسرة and the ا toward a ي. The ر is light. The only one in حفص.",
+      "noteAr": "إمالة كبرى: تُمال فتحة الراء نحو الكسرة والألف نحو الياء، والراء مرققة. وهي الوحيدة عند حفص.",
+      "why": "The only إمالة in حفص من الشاطبية.",
+      "source": "متن الشاطبية البيت 311 «وحفصهم يوالي بمجراها»، https://shamela.ws/book/7754/31؛ هداية القاري (المرصفي) 2/577–578"
+    },
+    {
+      "role": "notice",
+      "verse": "11:41",
+      "word_from": 4,
+      "word_to": 6,
+      "text": "بِسْمِ ٱللَّهِ مَجْر۪ىٰهَا",
+      "focus": "ر۪ىٰ",
+      "stop": false,
+      "note": "بِسْمِ ٱللَّهِ مَجْر۪ىٰهَا: the ر and ا lean toward ي.",
+      "noteAr": "بِسْمِ ٱللَّهِ مَجْر۪ىٰهَا: تميل الراء والألف نحو الياء.",
+      "why": "The same word in its phrase, so the Notice step can pair it with its neighbour.",
+      "source": "متن الشاطبية، https://shamela.ws/book/7754/31",
+      "contrast": {
+        "lesson": "tabii",
+        "verse": "11:41",
+        "word_from": 7,
+        "word_to": 7,
+        "text": "وَمُرْسَىٰهَآ",
+        "focus": "سَىٰ",
+        "stop": false,
+        "note": "وَمُرْسَىٰهَآ: a plain فتحة and ا, 2 counts, no leaning.",
+        "noteAr": "وَمُرْسَىٰهَآ: فتحة خالصة وألف حركتان، بلا إمالة.",
+        "why": "The next word, the same pattern, read with no إمالة by حفص: the closest possible pair."
+      }
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+ "lesson": "ghunnah",
+ "coverage": "نّ: #1 #2 #4 #5 #6; مّ: #3 #7. In a short word: #2 #3 #7; mid-word: #1 #5 #6; the نّ made by the silent ل of ال: #4 (78:2).",
+ "notes": "Round 1: ٱلنَّاسِ (114:3) → ٱلنَّبَإِ (78:2), so ٱلنَّاسِ stays with arid only. Anchor ٱلْجِنَّةِ (114:6) from الناس, a plain نّ. It overlaps the old sakinayn example مِنَ ٱلْجِنَّةِ (114:6, words 1–2); ghunnah is earlier in course order, so sakinayn (unit 2) picks another. الناس has no مّ, so مّ is from النبأ and عبس. Notice: ثُمَّ أَمَاتَهُۥ (80:21), two neighbouring words: the مّ is held two counts as a hum, the مَا two counts as a vowel. Old إِنَّ (2:6) and ثُمَّ (2:28) replaced by جزء عمّ words.",
+ "noticeText": {
+  "en": "Listen to the نّ in ٱلْجِنَّةِ and إِنَّ and the مّ in عَمَّ: a nasal hum is held for two counts.",
+  "ar": "استمع إلى النون في ٱلْجِنَّةِ وإِنَّ والميم في عَمَّ: صوت أغنّ من الأنف يُمدّ حركتين."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "114:6",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلْجِنَّةِ",
+   "focus": "نَّ",
+   "stop": false,
+   "note": "A nasal hum on the نّ, held two counts.",
+   "noteAr": "غنة من الأنف على النون المشددة، تُمد حركتين.",
+   "why": "A plain نّ inside a word, from الناس, joined mid-ayah.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "78:17",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "إِنَّ",
+   "focus": "نَّ",
+   "stop": false,
+   "note": "A nasal hum on the نّ, held two counts.",
+   "noteAr": "غنة من الأنف على النون المشددة، تُمد حركتين.",
+   "why": "The short word إِنَّ, where the card's tip warns the غنة is easy to clip.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "78:1",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "عَمَّ",
+   "focus": "مَّ",
+   "stop": false,
+   "note": "A nasal hum on the مّ, held two counts.",
+   "noteAr": "غنة من الأنف على الميم المشددة، تُمد حركتين.",
+   "why": "The first word of جزء عمّ: the مّ case.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "78:2",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "ٱلنَّبَإِ",
+   "focus": "نَّ",
+   "stop": false,
+   "note": "The ل of ال is silent and the ن doubled: the نّ keeps its two-count غنة.",
+   "noteAr": "اللام لا تُنطق والنون مشددة، وللنون المشددة غنة بحركتين.",
+   "why": "The نّ made by the silent ل of ال, mid-ayah, joined to ٱلْعَظِيمِ; the other rules (ibtida, lam-s) are taught. Replaces ٱلنَّاسِ (114:3), which arid keeps.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "79:11",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "كُنَّا",
+   "focus": "نَّ",
+   "stop": false,
+   "note": "A nasal hum on the نّ, held two counts.",
+   "noteAr": "غنة من الأنف على النون المشددة، تُمد حركتين.",
+   "why": "Another short word, then the ا of نَّا: hum two counts, then the مد two counts.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "say",
+   "verse": "78:21",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "جَهَنَّمَ",
+   "focus": "نَّ",
+   "stop": false,
+   "note": "A nasal hum on the نّ, held two counts.",
+   "noteAr": "غنة من الأنف على النون المشددة، تُمد حركتين.",
+   "why": "Longest word to say: the نّ in the middle of جَهَنَّمَ.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "notice",
+   "verse": "80:21",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ثُمَّ",
+   "focus": "مَّ",
+   "stop": false,
+   "note": "The مّ of ثُمَّ: lips closed, a hum through the nose for two counts.",
+   "noteAr": "الميم المشددة في ثُمَّ: تنطبق الشفتان ويخرج صوت أغنّ من الأنف حركتين.",
+   "why": "Paired with the next word, which holds the same letter as a vowel.",
+   "source": "تحفة الأطفال، البيت 17، https://shamela.ws/book/9632/4; المقدمة الجزرية، البيت 62، https://shamela.ws/book/581/74; هداية القاري (المرصفي) 1/180 (paging per the OpenITI copy of shamela.ws/book/22869)",
+   "contrast": {
+    "lesson": "tabii",
+    "verse": "80:21",
+    "word_from": 2,
+    "word_to": 2,
+    "text": "أَمَاتَهُۥ",
+    "focus": "مَا",
+    "stop": false,
+    "note": "The مَا of أَمَاتَهُۥ: also two counts, but an open vowel, with no hum.",
+    "noteAr": "مَا في أَمَاتَهُۥ: حركتان أيضًا، لكنها صوت مفتوح بلا غنة.",
+    "why": "Same letter م, same length, mouth open: the difference is the nose."
+   }
+  }
+ ]
+}

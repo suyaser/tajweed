@@ -1,0 +1,127 @@
+{
+ "lesson": "lam-jh",
+ "coverage": "after a فتحة: #1 #4 #8; after a ضمة: #3 #5 #6 #7; starting on the name: #2; in ٱللَّهُمَّ: #8.",
+ "notes": "No name of اللَّه in الناس or الفاتحة after a فتحة or ضمة (الفاتحة has only light ones), so all from جزء عمّ, except #8 (ٱللَّهُمَّ heavy is not in جزء عمّ). Notice pairs the heavy ل of ٱللَّهِ with the light, clear ل of وَٱلْفَتْحُ in one ayah (110:1). #2: the reciter stops at the end of 112:1 and starts 112:2 on the name (فتحة, heavy); joined across the ayah end it would be light (أَحَدُنِ ٱللَّهُ, غاية المريد 7311/209), which this recording does not do. The old قَالَ ٱللَّهُ (3:55) was replaced by جزء عمّ words.",
+ "noticeText": {
+  "en": "Listen to the ل of the name in هُوَ ٱللَّهُ, in ٱللَّهُ at the start of an ayah, and in رَسُولُ ٱللَّهِ: after a فتحة or a ضمة, and when you start on it, it is heavy and full.",
+  "ar": "استمع إلى لام لفظ الجلالة في هُوَ ٱللَّهُ، وفي ٱللَّهُ أولَ الآية، وفي رَسُولُ ٱللَّهِ: بعد الفتحة والضمة، وعند البدء به، تُفخَّم وتُنطق ممتلئة."
+ },
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "112:1",
+   "word_from": 2,
+   "word_to": 3,
+   "text": "هُوَ ٱللَّهُ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the فتحة of هُوَ: the ل of the name is heavy, the mouth full.",
+   "noteAr": "بعد فتحة هُوَ: تُفخَّم لام لفظ الجلالة ويمتلئ بها الفم.",
+   "why": "The best-known name in جزء عمّ; short, joined inside the ayah.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67"
+  },
+  {
+   "role": "hear",
+   "verse": "112:2",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "ٱللَّهُ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "Starting on the name: the ٱ takes a فتحة, so the ل is heavy.",
+   "noteAr": "عند البدء بلفظ الجلالة تُفتح همزة الوصل، فتُفخَّم اللام.",
+   "why": "The card's \"starting from the name\" case (doc 04 correction 15); see notes for the stop before it.",
+   "source": "هداية القاري (المرصفي) 1/119 (paging per the OpenITI copy of shamela.ws/book/22869)"
+  },
+  {
+   "role": "hear",
+   "verse": "91:13",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "رَسُولُ ٱللَّهِ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the ضمة of رَسُولُ: heavy.",
+   "noteAr": "بعد ضمة رَسُولُ: مفخمة.",
+   "why": "The ضمة case, joined inside the ayah.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67"
+  },
+  {
+   "role": "say",
+   "verse": "85:20",
+   "word_from": 1,
+   "word_to": 1,
+   "text": "وَٱللَّهُ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the فتحة of وَ: heavy.",
+   "noteAr": "بعد فتحة الواو: مفخمة.",
+   "why": "One word to say, the فتحة inside the word (وَ); starts the ayah.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67"
+  },
+  {
+   "role": "say",
+   "verse": "104:6",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "نَارُ ٱللَّهِ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the ضمة of نَارُ: heavy.",
+   "noteAr": "بعد ضمة نَارُ: مفخمة.",
+   "why": "A second ضمة case, short.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67"
+  },
+  {
+   "role": "say",
+   "verse": "79:25",
+   "word_from": 1,
+   "word_to": 2,
+   "text": "فَأَخَذَهُ ٱللَّهُ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the ضمة of هُ: heavy. The هُ is short here: no صلة before the ٱ.",
+   "noteAr": "بعد ضمة الهاء: مفخمة. والهاء هنا لا تُوصل بواو لأن بعدها ساكنًا.",
+   "why": "Longer word, and the pronoun هُ with no صلة before a سكون (silah-s, later) is said short, which the note warns about.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67"
+  },
+  {
+   "role": "notice",
+   "verse": "110:1",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "نَصْرُ ٱللَّهِ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "After the ضمة of نَصْرُ: the ل of the name is heavy.",
+   "noteAr": "بعد ضمة نَصْرُ: لام لفظ الجلالة مفخمة.",
+   "why": "Paired with وَٱلْفَتْحُ in the same ayah.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67",
+   "contrast": {
+    "lesson": "lam-q",
+    "verse": "110:1",
+    "word_from": 5,
+    "word_to": 5,
+    "text": "وَٱلْفَتْحُ",
+    "focus": "ٱلْ",
+    "stop": true,
+    "note": "The ل of ال: said clearly with سكون, and light.",
+    "noteAr": "لام ال: تُنطق ساكنة واضحة، مرققة.",
+    "why": "A ل in the same ayah that is light: the ل is light everywhere except in the name of اللَّه."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "10:10",
+   "word_from": 3,
+   "word_to": 4,
+   "text": "سُبْحَٰنَكَ ٱللَّهُمَّ",
+   "focus": "ٱللَّ",
+   "stop": false,
+   "note": "In ٱللَّهُمَّ too: after the فتحة of كَ, heavy.",
+   "noteAr": "وفي ٱللَّهُمَّ كذلك: بعد فتحة الكاف، مفخمة.",
+   "why": "The card names ٱللَّهُمَّ; none heavy in جزء عمّ. Joined before the pause sign after word 7.",
+   "source": "هداية القاري (المرصفي) 1/119–120 (paging per the OpenITI copy of shamela.ws/book/22869); المقدمة الجزرية، البيت 44، https://shamela.ws/book/581/67"
+  }
+ ]
+}

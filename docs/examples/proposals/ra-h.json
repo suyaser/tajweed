@@ -1,0 +1,140 @@
+{
+  "lesson": "ra-h",
+  "coverage": "رَ رُ: #1 #4 #7; رْ after فتحة: #3; رْ after ضمة: #2; رْ after a كسرة with a heavy letter after: #5; stop after a ساكن after ضمة/فتحة: #6 #9; رْ after همزة الوصل: #8",
+  "notes": "مِصْرَ (heavy preferred at a stop) has no ayah end or pause sign after it in the Quran, so it cannot be shown at a stop; the card covers it in ra-l's tip. The two-way stop words (ٱلْقِطْرِ، يَسْرِ) are in ra-l.",
+  "noticeText": {
+    "en": "Listen to the ر in رَبَّكَ and زُرْتُمُ: full and heavy, like the heavy letters.",
+    "ar": "استمع إلى الراء في «رَبَّكَ» و«زُرْتُمُ»: ممتلئة مفخمة كحروف الاستعلاء."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "99:5",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "رَبَّكَ",
+      "focus": "رَ",
+      "stop": false,
+      "note": "The ر with فتحة is full and heavy.",
+      "noteAr": "الراء المفتوحة مفخمة.",
+      "why": "Unit 5 surah (الزلزلة); رَبَّ, the clearest heavy ر.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "hear",
+      "verse": "102:2",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "زُرْتُمُ",
+      "focus": "زُرْ",
+      "stop": false,
+      "note": "رْ after a ضمة: heavy.",
+      "noteAr": "راء ساكنة بعد ضم: مفخمة.",
+      "why": "Unit 5 surah (التكاثر).",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "hear",
+      "verse": "100:4",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "فَأَثَرْنَ",
+      "focus": "ثَرْ",
+      "stop": false,
+      "note": "رْ after a فتحة: heavy.",
+      "noteAr": "راء ساكنة بعد فتح: مفخمة.",
+      "why": "Unit 5 surah (العاديات).",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "say",
+      "verse": "98:6",
+      "word_from": 15,
+      "word_to": 15,
+      "text": "شَرُّ",
+      "focus": "شَرُّ",
+      "stop": false,
+      "note": "The ر with ضمة: heavy.",
+      "noteAr": "الراء المضمومة مفخمة.",
+      "why": "Unit 5 surah (البينة); short.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "say",
+      "verse": "89:14",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "لَبِٱلْمِرْصَادِ",
+      "focus": "مِرْ",
+      "stop": false,
+      "note": "رْ after a كسرة, but ص comes next in the word: heavy.",
+      "noteAr": "راء ساكنة بعد كسر وبعدها حرف استعلاء في الكلمة: مفخمة.",
+      "why": "Juz عمّ; the heavy-letter case (الجزرية).",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "say",
+      "verse": "103:2",
+      "word_from": 4,
+      "word_to": 4,
+      "text": "خُسْرٍ",
+      "focus": "سْرٍ",
+      "stop": true,
+      "note": "Stopping with سكون: خُسْرْ. A ساكن then a ضمة before it: heavy.",
+      "noteAr": "عند الوقف بالسكون «خُسْرْ»: قبلها ساكن قبله ضم، فتفخم.",
+      "why": "Unit 5 surah (العصر); the stop case.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "notice",
+      "verse": "98:2",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "رَسُولٌ",
+      "focus": "رَ",
+      "stop": false,
+      "note": "رَسُولٌ: the ر with فتحة is full, like a heavy letter.",
+      "noteAr": "«رَسُولٌ»: الراء المفتوحة ممتلئة كحروف الاستعلاء.",
+      "why": "Unit 5 surah. Paired with لَكَ: a light letter with the same فتحة.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100",
+      "contrast": {
+        "lesson": "basics",
+        "verse": "94:1",
+        "word_from": 3,
+        "word_to": 3,
+        "text": "لَكَ",
+        "focus": "لَ",
+        "stop": false,
+        "note": "لَكَ: the ل with فتحة stays thin.",
+        "noteAr": "«لَكَ»: اللام المفتوحة مرققة.",
+        "why": "A light letter with the same فتحة, from الشرح."
+      }
+    },
+    {
+      "role": "more",
+      "verse": "89:28",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "ٱرْجِعِىٓ",
+      "focus": "ٱرْ",
+      "stop": false,
+      "note": "Starting here: إِرْجِعِي. The كسرة of همزة الوصل is not original: heavy.",
+      "noteAr": "عند البدء «ٱرْجِعِىٓ»: كسرة همزة الوصل عارضة فتفخم الراء.",
+      "why": "The card's همزة الوصل case; ayah 28 starts with it.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    },
+    {
+      "role": "more",
+      "verse": "97:5",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "ٱلْفَجْرِ",
+      "focus": "جْرِ",
+      "stop": true,
+      "note": "Stopping with سكون: ٱلْفَجْرْ. A ساكن then a فتحة before it: heavy.",
+      "noteAr": "عند الوقف بالسكون «ٱلْفَجْرْ»: قبلها ساكن قبله فتح، فتفخم.",
+      "why": "A second stop case, from القدر.",
+      "source": "الجزرية الأبيات 41–43 (https://shamela.ws/book/581/66)؛ هداية القاري 1/122–132؛ الميزان https://shamela.ws/book/38104/100"
+    }
+  ]
+}

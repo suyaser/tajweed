@@ -1,0 +1,102 @@
+{
+  "lesson": "makharij-wasat",
+  "coverage": "ج ش ي: #1 #2 #3 #4; ض: #5 #7; ل: #6 #7",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to يّ، جْ، شْ in تَمَيَّزُ، وَجْهِهِۦٓ، تَشْكُرُونَ, and to أَجْ، أَشْ، أَيْ and أَضْ: the middle and the side of the tongue at work.",
+    "ar": "استمع إلى الياء والجيم والشين في تَمَيَّزُ، وَجْهِهِۦٓ، تَشْكُرُونَ، وإلى أَجْ، أَشْ، أَيْ وأَضْ: يعمل فيها وسط اللسان وحافته."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:8",
+      "word_from": 2,
+      "word_to": 2,
+      "text": "تَمَيَّزُ",
+      "focus": "يَّ",
+      "stop": false,
+      "note": "يّ is not a حرف مد: it comes from the middle of the tongue against the palate above it.",
+      "noteAr": "الياء المشددة ليست حرف مد: تخرج من وسط اللسان مع ما يحاذيه من الحنك الأعلى.",
+      "why": "ي with شدة: clearly the consonant ي, not the madd ي of الجوف.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:22",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "وَجْهِهِۦٓ",
+      "focus": "جْ",
+      "stop": false,
+      "note": "جْ: the middle of the tongue against the palate, the place shared with ش and ي.",
+      "noteAr": "الجيم الساكنة: من وسط اللسان مع ما يحاذيه من الحنك، مخرج الشين والياء.",
+      "why": "ج with سكون inside the word, after a فتحة (and its قلقلة); the صلة at the word's end is outside the focus.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:23",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "تَشْكُرُونَ",
+      "focus": "شْ",
+      "stop": false,
+      "note": "شْ: from the middle of the tongue and the palate, like ج and ي.",
+      "noteAr": "الشين الساكنة: من وسط اللسان مع الحنك الأعلى، كالجيم والياء.",
+      "why": "ش with سكون; focus mid-word, so the ayah-end stop does not touch it.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:1",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "بِيَدِهِ",
+      "focus": "يَ",
+      "stop": false,
+      "note": "يَ with a فتحة is not a حرف مد: it comes from وسط اللسان.",
+      "noteAr": "الياء المفتوحة ليست حرف مد: تخرج من وسط اللسان.",
+      "why": "The consonant ي with a vowel, in the surah's first ayah.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:15",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "ٱلْأَرْضَ",
+      "focus": "ضَ",
+      "stop": false,
+      "note": "ض: the edge of the tongue against the upper molars; the left side is easier and more common.",
+      "noteAr": "الضاد: من حافة اللسان مع ما يليها من الأضراس العليا، ومن اليسرى أيسر وأكثر.",
+      "why": "ض, the حافة letter.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:27",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "زُلْفَةً",
+      "focus": "لْ",
+      "stop": false,
+      "note": "لْ: the front of the tongue's edge up to its tip, against the gums of the upper front teeth.",
+      "noteAr": "اللام الساكنة: من أدنى حافة اللسان إلى منتهى طرفه مع لثة الثنايا العليا.",
+      "why": "ل with سكون before ف, mid-ayah (not قُلْ, which is basics' word).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "more",
+      "verse": "67:29",
+      "word_from": 12,
+      "word_to": 12,
+      "text": "ضَلَٰلٍ",
+      "focus": "ضَ",
+      "stop": false,
+      "note": "ض from the edge of the tongue, then a light ل from the front of the edge.",
+      "noteAr": "الضاد من حافة اللسان، ثم لام مرققة من أدنى الحافة.",
+      "why": "ض and ل, the two حافة letters, in one word.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «والوسطُ فجيمُ الشينُ يا، والضادُ من حافته إذ وَلِيا الاضراسَ من أيسرَ أو يُمناها، واللامُ أدناها لمنتهاها»؛ هداية القاري 1/61–68"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "lesson": "makharij-jawf",
+  "coverage": "ا: #1 #4 #6; وْ: #1 #2 #5; يْ: #3 #6",
+  "notes": "Theory lesson: the tajweed data has no المخارج/الصفات rules, so \"data does not see\" is expected for every example. Every word is from سورة الملك (the unit surah) unless its why says otherwise. Say shows the say words; the letter drill is its warm-up.",
+  "noticeText": {
+    "en": "Listen to the long vowels in قَالُوا۟، دُونِ، نَذِيرٌ, and in بَا، بُو، بِي: they come from the open space of the mouth and throat, with no contact.",
+    "ar": "استمع إلى حروف المد في قَالُوا۟، دُونِ، نَذِيرٌ، وفي بَا، بُو، بِي: تخرج من فراغ الفم والحلق، بلا اعتماد على موضع."
+  },
+  "examples": [
+    {
+      "role": "anchor",
+      "verse": "67:9",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "قَالُوا۟",
+      "focus": "قَالُو",
+      "stop": false,
+      "note": "ا after a فتحة, وْ after a ضمة: two حروف المد from الجوف; the sound runs on the breath, touching nothing.",
+      "noteAr": "ألف بعد فتح وواو ساكنة بعد ضم: حرفا مد من الجوف، يجري صوتهما مع الهواء بلا اعتماد على موضع.",
+      "why": "Ayah start in the unit surah; ا and وْ in one short word, both natural madd (بَلَىٰ follows, no همزة).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «فألفُ الجوفِ وأختاها وهي، حروفُ مدٍّ للهواءِ تنتهي»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:20",
+      "word_from": 9,
+      "word_to": 9,
+      "text": "دُونِ",
+      "focus": "دُو",
+      "stop": false,
+      "note": "وْ after a ضمة is a حرف مد: its sound comes from الجوف and ends when the breath ends.",
+      "noteAr": "الواو الساكنة بعد ضم حرف مد: يخرج صوتها من الجوف وينتهي بانتهاء الهواء.",
+      "why": "A plain وْ madd mid-ayah, no همزة or سكون after it.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «فألفُ الجوفِ وأختاها وهي، حروفُ مدٍّ للهواءِ تنتهي»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "hear",
+      "verse": "67:9",
+      "word_from": 5,
+      "word_to": 5,
+      "text": "نَذِيرٌ",
+      "focus": "ذِي",
+      "stop": false,
+      "note": "يْ after a كسرة is a حرف مد from الجوف, held two counts with no fixed point.",
+      "noteAr": "الياء الساكنة بعد كسر حرف مد من الجوف، تمد حركتين بلا موضع يعتمد عليه اللسان.",
+      "why": "The third madd letter, يْ, mid-ayah (not 67:8's ayah-final نَذِيرٌ).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «فألفُ الجوفِ وأختاها وهي، حروفُ مدٍّ للهواءِ تنتهي»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:8",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "تَكَادُ",
+      "focus": "كَا",
+      "stop": false,
+      "note": "The ا after the فتحة on ك: the mouth is open and nothing meets; that is الجوف.",
+      "noteAr": "الألف بعد فتح الكاف: الفم مفتوح ولا يلتقي فيه شيء، وهذا هو الجوف.",
+      "why": "Short, ayah-initial ا madd.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «فألفُ الجوفِ وأختاها وهي، حروفُ مدٍّ للهواءِ تنتهي»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:25",
+      "word_from": 1,
+      "word_to": 1,
+      "text": "وَيَقُولُونَ",
+      "focus": "قُو",
+      "stop": false,
+      "note": "وْ after the ضمة on ق: a حرف مد from الجوف; the word has a second one before ن.",
+      "noteAr": "الواو الساكنة بعد ضم القاف: حرف مد من الجوف، وفي الكلمة حرف مد آخر قبل النون.",
+      "why": "وْ madd at the start of an ayah, mid-recitation: two counts (replaces ayah-final ٱلْغَفُورُ, whose و is عارض at the stop).",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «فألفُ الجوفِ وأختاها وهي، حروفُ مدٍّ للهواءِ تنتهي»؛ هداية القاري 1/61–68"
+    },
+    {
+      "role": "say",
+      "verse": "67:7",
+      "word_from": 3,
+      "word_to": 3,
+      "text": "فِيهَا",
+      "focus": "فِيهَا",
+      "stop": false,
+      "note": "يْ after a كسرة, then ا after a فتحة: two حروف المد in one word.",
+      "noteAr": "ياء ساكنة بعد كسر، ثم ألف بعد فتح: حرفا مد في كلمة واحدة.",
+      "why": "يْ and ا together; فِيهَا is followed by سَمِعُوا۟, no همزة.",
+      "source": "الجزرية، باب مخارج الحروف (الأبيات 9–19، https://shamela.ws/book/581/54): «فألفُ الجوفِ وأختاها وهي، حروفُ مدٍّ للهواءِ تنتهي»؛ هداية القاري 1/61–68"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+ "lesson": "iwad",
+ "coverage": "plain letter before the تنوين: #1 #2 #4 #5 #6 #7; a doubled letter (شدة): #3; the iqlab sign ۢ, not read at a stop: #8. The ة exception (رَحْمَةً → رَحْمَهْ) is on the card only: an example of it would show the lesson's rule as absent, and Check questions draw on every example.",
+ "notes": "No تنوين الفتح in الناس or الفاتحة, so all words are from جزء عمّ, mostly النبأ, whose ayat end on this sound. Every example is an ayah end with stop: true. Notice pairs two ا endings in one ayah (78:35): the written ا of فِيهَا (natural, joined) and the ا that replaces the تنوين of كِذَّٰبًا at the stop; both are two counts. Prompt unchanged (it names أَفْوَاجًا, still the anchor).",
+ "examples": [
+  {
+   "role": "anchor",
+   "verse": "110:2",
+   "word_from": 7,
+   "word_to": 7,
+   "text": "أَفْوَاجًا",
+   "focus": "جًا",
+   "stop": true,
+   "note": "Stopping, the تنوين is dropped and the word ends on an ا of two counts: أَفْوَاجَا.",
+   "noteAr": "عند الوقف يسقط التنوين وتنتهي الكلمة بألف تُمد حركتين: أَفْوَاجَا.",
+   "why": "The example غاية المريد gives for مد العوض («مد العوض وهو يكون عند الوقف على التنوين المنصوب نحو: {أفواجا}», printed p. 118 = shamela 7311/155, not the card's 130–132); no later rule in the word.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155 (ص118: مد العوض، {أفواجا})"
+  },
+  {
+   "role": "hear",
+   "verse": "78:9",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "سُبَاتًا",
+   "focus": "تًا",
+   "stop": true,
+   "note": "تنوين الفتح at a stop: an ا of two counts. سُبَاتَا.",
+   "noteAr": "تنوين الفتح عند الوقف: ألف بحركتين، سُبَاتَا.",
+   "why": "A clear ending with a light letter, no later rule in the word.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155"
+  },
+  {
+   "role": "hear",
+   "verse": "80:27",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "حَبًّا",
+   "focus": "بًّا",
+   "stop": true,
+   "note": "With a شدة too: keep the doubled ب, then an ا of two counts: حَبَّا.",
+   "noteAr": "ومع الشدة كذلك: تبقى الباء مشددة ثم ألف بحركتين: حَبَّا.",
+   "why": "The doubled-letter case, short and clear.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155"
+  },
+  {
+   "role": "say",
+   "verse": "78:10",
+   "word_from": 3,
+   "word_to": 3,
+   "text": "لِبَاسًا",
+   "focus": "سًا",
+   "stop": true,
+   "note": "تنوين الفتح at a stop: an ا of two counts. لِبَاسَا.",
+   "noteAr": "تنوين الفتح عند الوقف: ألف بحركتين، لِبَاسَا.",
+   "why": "Easy word, no later rule in it.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155"
+  },
+  {
+   "role": "say",
+   "verse": "78:24",
+   "word_from": 6,
+   "word_to": 6,
+   "text": "شَرَابًا",
+   "focus": "بًا",
+   "stop": true,
+   "note": "تنوين الفتح at a stop: an ا of two counts. شَرَابَا.",
+   "noteAr": "تنوين الفتح عند الوقف: ألف بحركتين، شَرَابَا.",
+   "why": "Two مد ا in one word: the natural رَا and the عوض at the end, both two counts. The ر rules (later) do not change the ending.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155"
+  },
+  {
+   "role": "say",
+   "verse": "86:16",
+   "word_from": 2,
+   "word_to": 2,
+   "text": "كَيْدًا",
+   "focus": "دًا",
+   "stop": true,
+   "note": "تنوين الفتح at a stop: an ا of two counts. كَيْدَا.",
+   "noteAr": "تنوين الفتح عند الوقف: ألف بحركتين، كَيْدَا.",
+   "why": "Ends on د, a قلقلة letter, but the stop is on the ا, so there is no bounce; a good check that the learner ends on the ا.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155"
+  },
+  {
+   "role": "notice",
+   "verse": "78:35",
+   "word_from": 6,
+   "word_to": 6,
+   "text": "كِذَّٰبًا",
+   "focus": "بًا",
+   "stop": true,
+   "note": "The تنوين becomes an ا at the stop: كِذَّابَا, two counts.",
+   "noteAr": "يصير التنوين ألفًا عند الوقف: كِذَّابَا، بحركتين.",
+   "why": "Same ayah as the contrast, so the two endings are heard together.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155",
+   "contrast": {
+    "lesson": "tabii",
+    "verse": "78:35",
+    "word_from": 3,
+    "word_to": 3,
+    "text": "فِيهَا",
+    "focus": "هَا",
+    "stop": false,
+    "note": "A written ا at the end of فِيهَا, joined: also two counts, but it is always there.",
+    "noteAr": "ألف مكتوبة في آخر فِيهَا، موصولة: حركتان أيضًا، لكنها ثابتة دائمًا.",
+    "why": "Natural مد with no تنوين, in the same ayah, joined to لَغْوًا (no همزة or سكون after it)."
+   }
+  },
+  {
+   "role": "more",
+   "verse": "110:3",
+   "word_from": 7,
+   "word_to": 7,
+   "text": "تَوَّابًۢا",
+   "focus": "بًۢا",
+   "stop": true,
+   "note": "The small م (ۢ) is for joining only. Stopping, it is تَوَّابَا, two counts.",
+   "noteAr": "الميم الصغيرة (ۢ) للوصل فقط، وعند الوقف تُقرأ تَوَّابَا بحركتين.",
+   "why": "Edge case: a sign the learner may try to read at the stop. Old example, kept. Data warning: the data's pattern looks for ً at the very end and the ۢ after it hides it; the stop on تنوين الفتح gives an ا all the same.",
+   "source": "غاية المريد (عطية قابل نصر) https://shamela.ws/book/7311/155"
+  }
+ ]
+}
