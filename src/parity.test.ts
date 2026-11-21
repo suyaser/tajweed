@@ -3,9 +3,11 @@
 // produce the same outputs, so the two implementations can't drift. Without UPDATE_FIXTURES this test fails when the
 // committed fixtures no longer match the web; regenerate with `UPDATE_FIXTURES=1 npx vitest run src/parity.test.ts`,
 // then make the Dart side pass.
+// @ts-expect-error -- no @types/node in this project; vitest runs in node from the repo root.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { vi } from 'vitest'
 import type { Attempt, Correction, Introduction, UserData } from './core/types'
+declare const process: { env: Record<string, string | undefined> }
 
 const DIR = 'mobile/test/fixtures'
 const LANG_KEY = 'tajweed-path:lang'
