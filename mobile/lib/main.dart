@@ -2,10 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'app.dart';
+import 'i18n/i18n.dart';
 import 'spike.dart';
-import 'ui/theme.dart';
 
-void main() {
+Future<void> main() async {
   LicenseRegistry.addLicense(() async* {
     for (final (font, file) in [
       ('Amiri Quran', 'OFL-AmiriQuran.txt'),
@@ -17,11 +18,7 @@ void main() {
       yield LicenseEntryWithLineBreaks([font], await rootBundle.loadString('assets/fonts/$file'));
     }
   });
-  runApp(MaterialApp(
-    title: 'Tajweed Path',
-    themeMode: ThemeMode.system,
-    theme: buildTheme(brightness: Brightness.light, ar: true),
-    darkTheme: buildTheme(brightness: Brightness.dark, ar: true),
-    home: const SpikeScreen(),
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  await loadArabic();
+  runApp(TajweedApp(home: (_) => const SpikeScreen()));
 }

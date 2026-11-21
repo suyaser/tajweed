@@ -1,0 +1,36 @@
+// Every t('…') / tn('…', '…') literal in lib/ has an Arabic entry in src/i18n/ar/*.json (synced; docs/19 §2.4).
+// lib/dev/ (the dev gallery) is English only. Mobile-only strings go in src/i18n/ar/mobile.json.
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter_test/flutter_test.dart';
+
+const _str = r"'((?:[^'\\]|\\.)*)'" '|' r'"((?:[^"\\]|\\.)*)"';
+final _call = RegExp('\\btn?\\(\\s*(?:$_str)(?:\\s*,\\s*(?:$_str))?');
+
+List<String> keys(String code) => [
+  for (final m in _call.allMatches(code)) ...[
+    (m[1] ?? m[2])!.replaceAllMapped(RegExp(r'\\(.)'), (x) => x[1]!),
+    if (m[0]!.startsWith('tn') && (m[3] ?? m[4]) != null) (m[3] ?? m[4])!.replaceAllMapped(RegExp(r'\\(.)'), (x) => x[1]!),
+  ],
+];
+
+void main() {
+  test('finds keys (sanity)', () {
+    expect(keys(r"""t('a'), tn('{n} day', "{n} days", n), t("it's"), t('don\'t')"""), ['a', '{n} day', '{n} days', "it's", "don't"]);
+  });
+
+  test('every t() literal in lib/ has an Arabic entry', () {
+    final ar = <String, dynamic>{};
+    for (final f in Directory('assets/shared/i18n/ar').listSync().whereType<File>().where((f) => f.path.endsWith('.json'))) {
+      ar.addAll(jsonDecode(f.readAsStringSync()) as Map<String, dynamic>);
+    }
+    expect(ar.length, greaterThan(500), reason: 'run tool/sync_assets.sh');
+    final missing = <String>[];
+    for (final f in Directory('lib').listSync(recursive: true).whereType<File>()) {
+      if (!f.path.endsWith('.dart') || f.path.startsWith('lib/dev/') || f.path.endsWith('i18n.dart')) continue;
+      missing.addAll(keys(f.readAsStringSync()).where((k) => !ar.containsKey(k)).map((k) => '${f.path}: $k'));
+    }
+    expect(missing, isEmpty);
+  });
+}
