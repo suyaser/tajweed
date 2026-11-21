@@ -2,7 +2,7 @@
 // Recite, in one shell (header, step bar, instruction, one primary). Step state is per lesson (lessonSteps.ts).
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { ScreenProps } from '../app/App'
-import type { Example, Lesson, Verse } from '../core/types'
+import type { Example, ExampleRole, Lesson, Verse } from '../core/types'
 import { introduceLesson, recordAttempt, useData } from '../core/store'
 import { checkQuestions } from '../core/questions'
 import { buildQueue, lessonGate } from '../core/scheduler'
@@ -47,7 +47,15 @@ export function listenFor(s: string) {
  * Which examples each step shows: Hear the first three; Say, Learn and Notice start on other examples where the
  * lesson has them, so the same word doesn't open every step.
  */
-export function exampleSets<E>(xs: E[]) {
+export function exampleSets<E extends { role?: ExampleRole }>(xs: E[]) {
+  // Lessons whose examples carry roles (docs/15-example-strategy.md): each step shows exactly its examples, and the
+  // anchor opens Hear and is the one the rule card explains.
+  if (xs.some(x => x.role)) {
+    const by = (r: ExampleRole) => xs.filter(x => x.role === r)
+    const anchor = by('anchor')[0] ?? xs[0]
+    const say = by('say')
+    return { hear: [anchor, ...by('hear')].slice(0, 3), say: say.length ? say : xs.slice(0, 3), learn: anchor, notice: by('notice')[0] ?? anchor }
+  }
   const hear = xs.slice(0, 3)
   const say = xs.length >= 6 ? xs.slice(3, 6) : [...hear.slice(1), ...hear.slice(0, 1)]
   const fresh = (...not: (E | undefined)[]) => [...xs.slice(3), ...xs.slice(1, 3), ...xs.slice(0, 1)].find(x => !not.includes(x))
@@ -335,7 +343,7 @@ export function minimalPair(mine: Example[], theirs: Example[]): [Example, Examp
 
 function Notice({ lesson, other, ex, audio, nextLabel, onNext, onDone, wasDone }: StepProps & { other: Lesson; ex: Example }) {
   const pair = useMemo(() => {
-    const xs = minimalPair(lesson.examples, other.examples) ?? [ex, other.examples[0]]
+    const xs = ex.contrast ? [ex, ex.contrast] : minimalPair(lesson.examples, other.examples) ?? [ex, other.examples[0]]
     return lesson.id.length % 2 ? xs : xs.reverse() // fixed per lesson, not always first
   }, [lesson, other, ex])
   const [played, setPlayed] = useState<number[]>([])

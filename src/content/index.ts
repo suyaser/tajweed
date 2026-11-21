@@ -1,5 +1,5 @@
 // Adapts the reviewed content JSON (content/*.json) to the shared types.
-import type { ColourKey, ConfusablePair, Lesson, MatnLine, QuestionKind, Topic } from '../core/types'
+import type { ColourKey, ConfusablePair, ExampleRole, Lesson, MatnLine, QuestionKind, Topic } from '../core/types'
 // Content: reviewed rules/pairs from content/ (see docs/04-content-review.md); verified mutun (docs/05-mutun-verification.md).
 import rawRules from '../../content/rules.json'
 import rawPairs from '../../content/pairs.json'
@@ -11,11 +11,12 @@ import { isAr, pick } from '../i18n'
 
 const ALSO = also as Record<string, string[] | undefined>
 
+interface RawExample { verse: string; word_from: number; word_to: number; text: string; focus: string; stop?: boolean; note?: string }
 interface RawRule {
   id: string; cat: string; ar: string; en: string; color: string; definition: string
   letters?: string; counts?: { min: number; max: number; note?: string }; conditions?: string[]; tip?: string
   list?: string[][]
-  examples?: { verse: string; word_from: number; word_to: number; text: string; focus: string; stop?: boolean; note?: string }[]
+  examples?: (RawExample & { role?: ExampleRole; contrast?: RawExample & { lesson: string } })[]
   facts?: { q: string; options: string[]; answer: number | string; why: string }[]
   sources?: (string | { title: string; locator?: string })[]
   review?: { status: string; notes?: string }
@@ -71,7 +72,12 @@ export const lessons: Lesson[] = (rawRules as RawRule[]).map((r, order) => {
   const examples = (r.examples ?? []).map((e, i) => ({
     id: `${r.id}#${i + 1}`, lessonId: r.id, verseKey: e.verse, wordFrom: e.word_from, wordTo: e.word_to,
     text: e.text, focus: e.focus, stopping: !!e.stop, ...(e.note ? { note: pick(e.note, a?.exampleNotes?.[i + 1]) } : {}),
-    also: ALSO[`${r.id}#${i + 1}`],
+    also: ALSO[`${r.id}#${i + 1}`], ...(e.role ? { role: e.role } : {}),
+    ...(e.contrast ? { contrast: {
+      id: `${r.id}#${i + 1}c`, lessonId: e.contrast.lesson, verseKey: e.contrast.verse, wordFrom: e.contrast.word_from, wordTo: e.contrast.word_to,
+      text: e.contrast.text, focus: e.contrast.focus, stopping: !!e.contrast.stop,
+      ...(e.contrast.note ? { note: pick(e.contrast.note, a?.exampleNotes?.[`${i + 1}c`]) } : {}),
+    } } : {}),
   }))
   const facts = (r.facts ?? []).map((f, i) => ({
     id: `${r.id}?${i + 1}`, lessonId: r.id, prompt: pick(f.q, a?.facts?.[i]?.q),

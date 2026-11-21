@@ -25,7 +25,13 @@ export interface Example {
   stopping: boolean
   note?: string
   also?: string[] // other lesson ids whose rule also shows in these words: never a wrong option (src/content/also.json)
+  /** Its job in the lesson (docs/15-example-strategy.md): anchor = the card's main example and the first heard. */
+  role?: ExampleRole
+  /** Notice only: the real word heard beside this one, showing the contrast lesson's rule instead. */
+  contrast?: Example
 }
+
+export type ExampleRole = 'anchor' | 'hear' | 'say' | 'notice' | 'more'
 
 export interface FactQuestion { id: string; lessonId: string; prompt: string; options: string[]; answer: number; explanation: string }
 
