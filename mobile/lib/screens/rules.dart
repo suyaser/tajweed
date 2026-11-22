@@ -411,6 +411,11 @@ class _RuleRow extends StatelessWidget {
       if (l.counts != null) _counts(l.counts!),
       if (unit != null) t('Unit {n}', {'n': unit.n}),
     ];
+    final chips = [
+      if (status.correction) AppChip(tone: ChipTone.error, icon: Icons.flag, fill: true, label: t('correction open')),
+      LevelChip(level: status.level),
+    ];
+    final big = MediaQuery.textScalerOf(context).scale(1) >= 1.5; // no room beside the name: chips go under it
     return InkWell(
       onTap: () => go(context, href('rules', l.id)),
       child: Container(
@@ -440,11 +445,11 @@ class _RuleRow extends StatelessWidget {
                         ],
                       ],
                     ),
+                  if (big) Wrap(spacing: Space.xs, runSpacing: Space.xs, children: chips),
                 ],
               ),
             ),
-            if (status.correction) AppChip(tone: ChipTone.error, icon: Icons.flag, fill: true, label: t('correction open')),
-            LevelChip(level: status.level),
+            if (!big) ...chips,
             Icon(Icons.chevron_right, color: c.outline),
           ],
         ),
@@ -861,7 +866,7 @@ class _RuleState extends State<RuleScreen> {
                         mainAxisSize: MainAxisSize.min,
                         spacing: 8,
                         children: [
-                          Text(t('Learn this'), style: ty.bodyMd.weight(600).copyWith(color: c.onSecondaryContainer)),
+                          Flexible(child: Text(t('Learn this'), style: ty.bodyMd.weight(600).copyWith(color: c.onSecondaryContainer))),
                           Icon(Icons.arrow_forward, size: 20, color: c.onSecondaryContainer),
                         ],
                       ),

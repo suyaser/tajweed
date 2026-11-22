@@ -70,6 +70,12 @@ class _PlanState extends State<Plan> {
     final open = _sel == u.id;
     final locked = status == UnitStatus.locked;
     final fin = u.finale;
+    final Widget? chip = status == UnitStatus.passed
+        ? StatusChip(status: Status.done, label: t('done'))
+        : status == UnitStatus.active
+        ? AppChip(tone: ChipTone.gold, label: u.lessonIds.isNotEmpty ? t('{n} of {m}', {'n': n, 'm': u.lessonIds.length}) : t('finale'))
+        : null;
+    final big = MediaQuery.textScalerOf(context).scale(1) >= 1.5; // no room beside the name: the chip goes under it
     return Container(
       decoration: BoxDecoration(
         color: c.surfaceContainerLowest,
@@ -111,12 +117,10 @@ class _PlanState extends State<Plan> {
                     ]),
                     if (status == UnitStatus.active && u.lessonIds.isNotEmpty)
                       Padding(padding: const EdgeInsets.only(top: 6), child: ExcludeSemantics(child: ProgressBar(value: n / u.lessonIds.length))),
+                    if (big && chip != null) Padding(padding: const EdgeInsets.only(top: 4), child: chip),
                   ]),
                 ),
-                if (status == UnitStatus.passed)
-                  StatusChip(status: Status.done, label: t('done'))
-                else if (status == UnitStatus.active)
-                  AppChip(tone: ChipTone.gold, label: u.lessonIds.isNotEmpty ? t('{n} of {m}', {'n': n, 'm': u.lessonIds.length}) : t('finale')),
+                if (!big) ?chip,
                 AnimatedRotation(turns: open ? 0.5 : 0, duration: const Duration(milliseconds: 150), child: Icon(Icons.expand_more, size: 20, color: c.outline)),
               ]),
             ),

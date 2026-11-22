@@ -1358,10 +1358,12 @@ class Group extends StatelessWidget {
                   ),
                 ),
                 if (!isAr && ar != null)
-                  Text(
-                    ar!,
-                    textDirection: TextDirection.rtl,
-                    style: ty.arabicLabel.copyWith(color: c.secondary),
+                  Flexible(
+                    child: Text(
+                      ar!,
+                      textDirection: TextDirection.rtl,
+                      style: ty.arabicLabel.copyWith(color: c.secondary),
+                    ),
                   ),
               ],
             ),
@@ -1433,9 +1435,14 @@ class ListRow extends StatelessWidget {
     );
     return onTap == null
         ? body
-        : InkWell(
-            onTap: onTap,
-            child: ConstrainedBox(constraints: const BoxConstraints(minHeight: 56), child: body),
+        // its own button node: without it the tap merges into the Group's node, which then reads as one button
+        : Semantics(
+            button: true,
+            container: true,
+            child: InkWell(
+              onTap: onTap,
+              child: ConstrainedBox(constraints: const BoxConstraints(minHeight: 56), child: body),
+            ),
           );
   }
 }

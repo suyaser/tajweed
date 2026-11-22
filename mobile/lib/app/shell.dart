@@ -170,16 +170,23 @@ class _ShellPageState extends State<ShellPage> {
   };
 }
 
+/// The most the top and tab bars scale text by: they have fixed heights, as the platforms' own bars cap it.
+/// The page below scales fully.
+const barTextScale = 1.2;
+
 class _Bar extends StatelessWidget {
   const _Bar({required this.children});
   final List<Widget> children;
   @override
   Widget build(BuildContext context) {
     final c = context.c;
-    return Container(
-      decoration: BoxDecoration(color: c.surface, border: Border(bottom: BorderSide(color: c.outlineVariant)), boxShadow: c.shadowTop),
-      padding: EdgeInsets.only(top: MediaQuery.paddingOf(context).top, left: Space.sm, right: Space.sm),
-      child: SizedBox(height: 64, child: Row(spacing: Space.xs, children: children)),
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: barTextScale,
+      child: Container(
+        decoration: BoxDecoration(color: c.surface, border: Border(bottom: BorderSide(color: c.outlineVariant)), boxShadow: c.shadowTop),
+        padding: EdgeInsets.only(top: MediaQuery.paddingOf(context).top, left: Space.sm, right: Space.sm),
+        child: SizedBox(height: 64, child: Row(spacing: Space.xs, children: children)),
+      ),
     );
   }
 }
@@ -243,7 +250,9 @@ class _TabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.c, ty = context.type;
-    return Semantics(
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: barTextScale,
+      child: Semantics(
       label: t('Main'),
       container: true,
       child: Container(
@@ -282,6 +291,7 @@ class _TabBar extends StatelessWidget {
           ]),
         ),
       ),
+    ),
     );
   }
 }

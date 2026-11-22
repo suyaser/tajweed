@@ -304,9 +304,10 @@ class _ListenState extends State<Listen> {
               textDirection: TextDirection.rtl,
               style: TextStyle(fontFamily: Fonts.naskh, fontSize: 24, height: 1.4, color: c.onSurface).weight(700),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               spacing: Space.sm,
+              runSpacing: Space.xs,
               children: [
                 Text(t('Reciter'), style: ty.label.weight(600).copyWith(color: c.onSurfaceVariant)),
                 _ReciterPicker(
@@ -636,14 +637,17 @@ class _Transport extends StatelessWidget {
             spacing: 4,
             children: [
               if (iconFirst) Icon(icon, color: c.onSurfaceVariant),
-              Text(text, style: ty.label.weight(600).copyWith(color: c.onSurfaceVariant)),
+              Flexible(child: Text(text, style: ty.label.weight(600).copyWith(color: c.onSurfaceVariant), overflow: TextOverflow.ellipsis)),
               if (!iconFirst) Icon(icon, color: c.onSurfaceVariant),
             ],
           ),
         ),
       ),
     );
-    return GestureDetector(
+    // pinned like the tab bar: text scales up to barTextScale, so the passage keeps the screen at 200% text
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: barTextScale,
+      child: GestureDetector(
       onTap: s.status == PlayerStatus.gap ? onSkipGap : null,
       child: Container(
         decoration: BoxDecoration(
@@ -728,7 +732,7 @@ class _Transport extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: Space.lg,
                   children: [
-                    side(t('Next'), Icons.arrow_back, t('Next ayah'), onNext),
+                    Flexible(child: side(t('Next'), Icons.arrow_back, t('Next ayah'), onNext)),
                     Semantics(
                       button: true,
                       label: '${playing ? t('Pause') : t('Play')} $label',
@@ -747,7 +751,7 @@ class _Transport extends StatelessWidget {
                         ),
                       ),
                     ),
-                    side(t('Prev'), Icons.arrow_forward, t('Previous ayah'), onPrev, iconFirst: false),
+                    Flexible(child: side(t('Prev'), Icons.arrow_forward, t('Previous ayah'), onPrev, iconFirst: false)),
                   ],
                 ),
               ),
@@ -770,6 +774,7 @@ class _Transport extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }

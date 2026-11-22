@@ -92,6 +92,9 @@ flutter analyze && flutter test
 Gallery screenshots, Arabic/English × light/dark: `tool/gallery_shots.sh ios <sim-udid> <dir>` or
 `tool/gallery_shots.sh android emulator-5554 <dir>`.
 
+`test/a11y_test.dart` opens every MVP screen in both languages: every tap target has a label, and at 200% system
+text nothing overflows (the top bar, tab bar and Listen's pinned player cap text at 120%, as platform bars do).
+
 The whole check, in CI order (web tests and `tsc -b` → sync → analyze → Dart tests): `mobile/tool/check.sh`.
 
 ## Parity with the web
